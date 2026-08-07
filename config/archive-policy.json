@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "repository": "farfromexact/Global-Cross-Asset-Radar",
+  "timezone": "Asia/Shanghai",
+  "editions": {
+    "morning": {
+      "scheduled_time": "08:00",
+      "latest_markdown": "latest/morning.md",
+      "latest_json": "latest/morning.json",
+      "status_path": "status/morning_latest.json"
+    },
+    "evening": {
+      "scheduled_time": "20:00",
+      "latest_markdown": "latest/evening.md",
+      "latest_json": "latest/evening.json",
+      "status_path": "status/evening_latest.json"
+    }
+  },
+  "historical_path_template": "reports/{YYYY}/{MM}/{YYYY-MM-DD}_{edition}.{ext}",
+  "manual_test_path_template": "tests/{YYYY-MM-DDTHH-MM-SS}_{edition}.{ext}",
+  "manifest_path": "manifests/reports.json",
+  "write_order": [
+    "historical_markdown",
+    "historical_json",
+    "latest_markdown",
+    "latest_json",
+    "edition_status",
+    "manifest"
+  ],
+  "historical_file_policy": "upsert_same_date_and_edition; rely_on_git_history_for_revisions",
+  "latest_file_policy": "overwrite_only_after_report_generation_succeeds",
+  "chat_delivery_policy": "publish_report_in_chat_even_when_github_archive_fails",
+  "github_failure_policy": "mark_archive_status_failed_and_report_the_error; never_suppress_the_research_report",
+  "citation_policy": "GitHub Markdown uses ordinary Markdown links or footnotes; never write ChatGPT-only citation tokens such as filecite, cite, memcite, turn-search IDs or private connector IDs",
+  "source_policy": "JSON stores a structured sources array with title, publisher, URL when available, source date, access time and supported claims",
+  "input_data": {
+    "repository": "farfromexact/China-Options-Engine",
+    "priority": [
+      "data/radar_latest.json",
+      "data/latest.json",
+      "data/snapshots/YYYY-MM-DD.json"
+    ],
+    "required_health_fields": [
+      "date",
+      "generated_at",
+      "data_fresh",
+      "source_status",
+      "previous_date",
+      "errors"
+    ]
+  },
+  "idempotency": {
+    "scheduled_run": "update the same historical date/edition path if it already exists",
+    "manual_test": "write only under tests/ unless explicitly promoted",
+    "manifest_key": "report_date+edition"
+  },
+  "security": {
+    "repository_is_intended_for_research_reports_only": true,
+    "never_write": [
+      "API keys",
+      "access tokens",
+      "private email content",
+      "personally identifying account data",
+      "broker credentials",
+      "non-public employer information unless expressly approved"
+    ]
+  }
+}
