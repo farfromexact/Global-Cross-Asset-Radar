@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/farfromexact/Global-Cross-Asset-Radar/schemas/manifest.schema.json",
+  "title": "Global Cross-Asset Radar Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "updated_at_bjt",
+    "reports"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "updated_at_bjt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "reports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "report_date",
+          "edition",
+          "markdown_path",
+          "json_path",
+          "status"
+        ],
+        "properties": {
+          "report_date": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "edition": {
+            "type": "string",
+            "enum": [
+              "morning",
+              "evening"
+            ]
+          },
+          "generated_at_bjt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "markdown_path": {
+            "type": "string"
+          },
+          "json_path": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "published",
+              "archive_failed",
+              "partial"
+            ]
+          },
+          "regime": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "worth_taking_risk": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "top_opportunity": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "china_index_score": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 100
+          },
+          "china_options_date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "china_options_fresh": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "commit_sha": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "revision": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
