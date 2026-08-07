@@ -7,6 +7,12 @@
 - **China-Options-Engine**：采集和计算中国股指期货/期权底层数据，包括 IH、IF、IC、IM 与 HO、IO、MO 的价格、成交、持仓、IV、偏度和 Gamma 等指标。
 - **Global-Cross-Asset-Radar**：保存每天北京时间 08:00 晨间版和 20:00 晚间版的完整中文研究报告、结构化 JSON、最新版本、状态和历史清单。
 
+## 当前部署状态
+
+- 仓库写权限、目录、schema、模板、latest占位文件、状态文件、Manifest和Markdown/JSON配对测试已经完成。
+- GitHub Actions校验工作流已经创建；运行结果以Actions页面为准。
+- **08:00和20:00两个现有Scheduled Task尚未完成归档prompt注入。** 在将 `docs/SCHEDULE_ARCHIVE_INSTRUCTIONS.md` 加入两个任务prompt之前，任务仍会在对话中生成报告，但不会自动把完整报告写入本仓库。
+
 ## 目录
 
 ```text
