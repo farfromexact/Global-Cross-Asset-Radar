@@ -1,0 +1,465 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/farfromexact/Global-Cross-Asset-Radar/schemas/report.schema.json",
+  "title": "Global Cross-Asset Radar Report",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "status",
+    "edition"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "not_published",
+        "published",
+        "archive_failed"
+      ]
+    },
+    "report_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "edition": {
+      "type": "string",
+      "enum": [
+        "morning",
+        "evening"
+      ]
+    },
+    "generated_at_bjt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "weekend_mode": {
+      "type": "boolean"
+    },
+    "title": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "one_sentence_conclusion": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 300
+    },
+    "regime": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "worth_taking_risk": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "data_cutoff": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "input_snapshots": {
+      "type": "object",
+      "properties": {
+        "china_options_repository": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "china_options_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "china_options_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "china_options_generated_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "china_options_fresh": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "china_options_official_coverage": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "source_status": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "dashboard": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "asset"
+        ],
+        "properties": {
+          "asset": {
+            "type": "string"
+          },
+          "latest": {},
+          "change_1d": {},
+          "change_1w": {},
+          "signal": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "data_time": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "data_attribute": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "meaningful_changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    },
+    "top_opportunities": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "required": [
+          "rank",
+          "name",
+          "score"
+        ],
+        "properties": {
+          "rank": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "name": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "direction": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "holding_period": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "stage": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "instruments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "max_loss_limited": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "score_components": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "top_trade_cards": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    },
+    "gold_tracking": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "ai_tracking": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "china_tracking": {
+      "type": "object",
+      "properties": {
+        "qualified_trade": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "preferred_future": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "IH",
+            "IF",
+            "IC",
+            "IM",
+            null
+          ]
+        },
+        "futures_option_linkage": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "event_calendar": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    },
+    "action_list": {
+      "type": "object",
+      "required": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "properties": {
+        "A": {
+          "type": "string"
+        },
+        "B": {
+          "type": "string"
+        },
+        "C": {
+          "type": "string"
+        },
+        "D": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "risk_budget": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "title"
+        ],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "publisher": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri"
+          },
+          "source_date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "accessed_at_bjt": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "supported_claims": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "archive": {
+      "type": "object",
+      "properties": {
+        "markdown_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "json_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "latest_markdown_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "latest_json_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "archive_status": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "pending",
+            "success",
+            "partial",
+            "failed",
+            null
+          ]
+        },
+        "commit_sha": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "published"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "report_date",
+          "generated_at_bjt",
+          "title",
+          "one_sentence_conclusion",
+          "regime",
+          "worth_taking_risk",
+          "input_snapshots",
+          "source_status",
+          "dashboard",
+          "meaningful_changes",
+          "top_opportunities",
+          "top_trade_cards",
+          "gold_tracking",
+          "ai_tracking",
+          "china_tracking",
+          "event_calendar",
+          "action_list",
+          "risk_budget",
+          "sources",
+          "archive"
+        ]
+      }
+    }
+  ],
+  "additionalProperties": true
+}
