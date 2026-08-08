@@ -27,10 +27,22 @@
     "edition_status",
     "manifest"
   ],
+  "formal_archive_commit_mode": "atomic_single_commit",
+  "formal_archive_atomic_paths": [
+    "historical_markdown",
+    "historical_json",
+    "latest_markdown",
+    "latest_json",
+    "edition_status",
+    "manifest"
+  ],
+  "atomic_write_policy": "prepare all six final file contents first; create one Git tree/commit with the current main HEAD as parent; advance main exactly once; do not publish formal archive files through six sequential contents-API commits unless atomic Git-data operations are unavailable",
   "historical_file_policy": "upsert_same_date_and_edition; rely_on_git_history_for_revisions",
   "latest_file_policy": "overwrite_only_after_report_generation_succeeds",
   "chat_delivery_policy": "publish_report_in_chat_even_when_github_archive_fails",
-  "github_failure_policy": "mark_archive_status_failed_and_report_the_error; never_suppress_the_research_report",
+  "github_failure_policy": "mark_archive_status_failed_or_partial_and_report_the error; never_suppress_the_research_report",
+  "archive_status_semantics": "archive_status=success means the required repository files were written successfully; it does not by itself mean the GitHub Actions validation workflow passed",
+  "ci_validation_semantics": "GitHub Actions validation is a separate post-commit check; a green check means scripts/validate_reports.py completed successfully for that commit",
   "citation_policy": "GitHub Markdown uses ordinary Markdown links or footnotes; never write ChatGPT-only citation tokens such as filecite, cite, memcite, turn-search IDs or private connector IDs",
   "source_policy": "JSON stores a structured sources array with title, publisher, URL when available, source date, access time and supported claims",
   "input_data": {
