@@ -1,236 +1,196 @@
 # 全球跨资产高风险机会雷达｜晚间版
 
-## 2026-08-08｜周末模式
+## 2026-08-08｜周末模式｜Revision 2
 
-**数据截点：北京时间 2026-08-08 20:22。** 美国使用 8 月 7 日完整收盘；中国使用 8 月 7 日经 China-Options-Engine 验证的完整交易日。今晚没有美国 20:30 关键宏观数据，核心新增变量来自周末霍尔木兹谈判，以及周日 09:30 的中国 7 月 CPI/PPI。
+**数据截点：北京时间 2026-08-08 20:38。** 美国使用 8 月 7 日完整收盘；中国使用 8 月 7 日经 China-Options-Engine 验证的完整交易日。相较 20:22 的同日晚间初版，本次最重要的新增事实是：伊朗革命卫队称霍尔木兹重新开放取决于美国接受伊朗条件，而阿联酋称一艘 ADNOC 相关船只当天在海峡遭伊朗导弹袭击。由此，原先偏向“航运恢复→油价下行”的表达失效，周末原油风险重新向上偏斜。
 
 ## 一、今日一句话结论
 
-**值得保留有限风险凸性，不适合周末裸追 Delta：增长担忧与 Risk-on 并存；首选美债 2s30s 牛陡，其次黄金 Call Spread；中国小盘是 5 日战术反转而非已确认中期 regime shift。**
+**值得持有有限风险凸性，不适合周末裸追 Delta：首选 2s30s 牛陡、其次黄金 Call Spread；霍尔木兹新增袭船与强硬表态把原油从“等下行”翻成“买上行尾部”；中国小盘仍是 5 日战术反转，未确认 20 日 regime shift。**
 
 ## 二、市场仪表盘
 
 | 资产 | 最新确认值 | 1D / 1W | 信号 | 数据属性 |
 |---|---:|---:|---|---|
-| US 2Y | 4.19% | -6bp / -6bp | 前端政策路径重定价 | 8/7 Treasury CMT |
-| US 5Y | 4.35% | -5bp / -5bp | 中段跟随 | 8/7 Treasury CMT |
-| US 10Y | 4.65% | -4bp / -5bp | 下行但长端仍高 | 8/7 Treasury CMT |
-| US 30Y | 5.19% | -3bp / -4bp | 财政/期限风险仍黏 | 8/7 Treasury CMT |
-| 2s10s / 2s30s / 5s30s | +46 / +100 / +84bp | 日内约 +2/+3/+2bp | Bull steepening | 由官方曲线计算 |
-| 10Y real | 2.40% | -3bp | 黄金折现压力边际缓和 | 8/7 Treasury real CMT |
-| 10Y BEI | ≈2.25% | -1bp | 通胀尾部没有消失 | nominal-real 近似 |
+| US 2Y | 4.19% | -6bp | 前端政策路径重定价 | 8/7 Treasury CMT |
+| US 5Y | 4.35% | -5bp | 中段 rally | 8/7 Treasury CMT |
+| US 10Y | 4.65% | -4bp | 下行但长端仍高 | 8/7 Treasury CMT |
+| US 30Y | 5.19% | -3bp | 财政/能源/term premium 黏性 | 8/7 Treasury CMT |
+| 2s10s / 2s30s / 5s30s | +46 / +100 / +84bp | 约 +2/+3/+2bp | Bull steepening | 官方曲线计算 |
+| 10Y real | 2.40% | -3bp | 黄金折现压力缓和 | 8/7 Treasury real CMT |
+| 10Y BEI | ≈2.25% | ≈-1bp | 通胀尾部仍在 | nominal-real 近似 |
 | DXY | 99.50 | -0.44% / -0.31% | 美元走弱 | 8/7 Reuters |
-| EUR/USD | 1.1568 | +0.39% / +0.41% | 欧元受益于利差重定价 | 8/7 Reuters |
-| USD/JPY | 157.56 | -0.57% / 约+0.1% | 日元反弹但干预风险仍在 | 8/7 Reuters |
-| USD/CNH | N/A | — | 已二次补源仍未取得权威 8/7 收盘 | 不编造 |
-| Nasdaq | 26,690.62 | +1.3% / +5.2% | Risk-on | 8/7 正式收盘 |
-| SOX | 精确点位 N/A | +2.6% / 约+9% | 半导体重新领涨 | 8/7 市场报道 |
-| WTI | $78.18 | +1.15% / >-7% | 周末双向 gap 风险 | 8/7 结算 |
-| Brent | $83.55 | +1.3% / >-8% | 霍尔木兹风险溢价待重定价 | 8/7 结算 |
+| EUR/USD | 1.1568 | +0.39% / +0.41% | 利差重定价 | 8/7 Reuters |
+| USD/JPY | 157.56 | -0.57% / 约+0.1% | 日元反弹 | 8/7 Reuters |
+| USD/CNH | N/A | — | 二次补源仍未可靠取得权威 8/7 收盘 | 不编造 |
+| S&P 500 | 7,757.64 | +0.6% / +3.6% | 创纪录 | 8/7 AP 正式收盘 |
+| Nasdaq | 26,690.62 | +1.3% / +5.2% | Risk-on | 8/7 AP 正式收盘 |
+| Russell 2000 | 3,034.49 | +1.1% / +3.5% | 风险偏好并未崩塌 | 8/7 AP 正式收盘 |
+| WTI | $78.18 | +1.15% / >-7% | 周末上行 gap 风险上升 | 8/7 Reuters 结算 |
+| Brent | $83.55 | +1.3% / >-8% | 霍尔木兹上行尾部重新定价 | 8/7 Reuters 结算 |
 | Spot Gold | $4,347.29 | +2.55% | 宏观凸性增强 | 8/7 Reuters |
-| VIX | N/A | — | 已二次补源仍未取得可靠 8/7 精确收盘 | 不拿旧值替代 |
-| MOVE | N/A | — | ICE 确认指数存在，但 8/7 精确 EOD 未取得 | 不拿旧值替代 |
-| HY OAS | N/A | — | 官方系列存在，但本轮无法二次核验 8/7 精确值 | 不拿旧值替代 |
+| VIX | N/A | — | 二次补源仍未取得可靠 8/7 精确收盘 | 不用旧值替代 |
+| MOVE | N/A | — | 二次补源仍未取得可靠 8/7 精确 EOD | 不用旧值替代 |
+| HY OAS | N/A | — | 8/7 精确观察未可靠核验 | 不用旧值替代 |
 
-美国 8 月 7 日官方 Treasury CMT 为 2Y 4.19%、5Y 4.35%、10Y 4.65%、30Y 5.19%；10Y real 为 2.40%。就业报告后美元走弱，DXY 99.50，EUR/USD 1.1568，USD/JPY 157.56，现货黄金 4,347.29 美元。
+美国官方 8 月 7 日 CMT 为 2Y 4.19%、5Y 4.35%、10Y 4.65%、30Y 5.19%；10Y real 为 2.40%。就业报告显示 7 月非农 -2.3 万、失业率 4.1%、参与率 61.4%，市场把 9 月维持利率不变概率推至约 56%；DXY 跌至 99.50，黄金升至 4,347.29 美元。  
+来源：[U.S. Treasury nominal curve](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=202608&type=daily_treasury_yield_curve)、[U.S. Treasury real curve](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=202608&type=daily_treasury_real_yield_curve)、[Reuters FX/jobs/gold](https://www.reuters.com/world/asia-pacific/dollar-drifts-higher-traders-eye-iran-talks-ahead-us-jobs-data-2026-08-07/)、[AP US close](https://apnews.com/article/stocks-dow-jones-iran-oil-fed-interest-rates-9d586bdbf1fb230dcf1f915dcaf50858)。
 
-## 三、相比上一期，真正发生了什么
+## 三、相比同日晚间初版，真正发生了什么
 
-1. **就业从“降温”升级为增长担忧。** 7 月非农 -2.3 万，失业率 4.1%，劳动参与率降至 61.4%；市场把 9 月维持利率不变概率推至约 56%。前端利率下得比长端更多，因此 bull steepener 比 outright duration 更干净。
-2. **风险资产没有确认衰退。** S&P 500 创新高，Nasdaq +1.3%、周 +5.2%，Russell 2000 +1.1%。当前仍是“坏数据先交易成更友好的 Fed 路径”，而不是全面 earnings recession。
-3. **黄金上涨的传统解释重新部分成立，但政策信用 thesis 并未失效。** 当天 10Y real 下 3bp、DXY -0.44%，能够解释一部分黄金涨幅；但黄金在长端名义收益率仍高、地缘风险未解的环境中维持强势，继续适合作为财政/通胀/政策信用凸性。
-4. **原油进入周末二元事件。** Brent 与 WTI 周五反弹，但周线仍大跌；美国官员称伊朗—阿曼霍尔木兹安排接近达成，若商业航运无障碍恢复，近端地缘溢价可能周日先被砍；若谈判或执行失败，则反向 squeeze。
-5. **中国小盘是强烈 5 日反转，但 20 日趋势尚未翻转。** IM2609 相对 IF2609：1D +1.13%、3D +3.16%、5D +6.11%，但 20D 仍 -4.15%。因此现在更像战术风格反转，而不是已确认中期小盘 regime shift。
-6. **中国期权出现“价格涨、IV降、保护需求并未消失”的组合。** MO2609 5D ATM IV 从 33.52% 降至 27.42%，但 Put OI 增长约 14.2%；周五 RR25 又从 -1.11vol 走到 -2.09vol。说明波动风险溢价在正常化，但 downside protection 被重新买回。
+1. **霍尔木兹方向性判断发生实质变化。** 20:22 初版仍把“美国官员称接近协议”作为油价下行触发；随后确认的周末信息显示，伊朗革命卫队称开放海峡取决于美国接受伊朗条件，且阿联酋指称一艘 ADNOC 相关船只当天遭伊朗导弹袭击、无人受伤。此前的 Brent downside put spread 不再合格，改为有限风险 upside convexity。来源：[Reuters IRGC](https://www.reuters.com/world/middle-east/irans-revolutionary-guard-says-re-opening-strait-hormuz-does-not-depend-talks-2026-08-08/)、[Reuters ADNOC vessel](https://www.reuters.com/business/energy/uae-says-iran-attacked-adnoc-vessel-with-missile-strait-hormuz-2026-08-08/)。
+2. **就业冲击仍然首先作用于前端，而不是形成典型衰退式 bull-flattening。** 2Y/5Y/10Y/30Y 单日分别约 -6/-5/-4/-3bp，2s30s 扩至约 +100bp；这是“Fed 路径后移 + 长端财政/能源风险仍黏”的组合。
+3. **风险资产没有确认衰退。** S&P 创纪录，Nasdaq 周涨 5.2%，Russell 周涨 3.5%。当前仍是“坏数据先被解释为更友好的政策路径”，而非 earnings recession。
+4. **黄金的传统 beta 与政策信用 thesis 同时存在。** real yield 和美元当天都向黄金有利，能解释部分涨幅；但长端名义收益率仍高、霍尔木兹风险反而恶化，政策信用/地缘 convexity 继续有效。
+5. **中国小盘是强烈 5 日反转，但不是 20 日趋势反转。** IM2609 1/3/5/20 日相对 IF2609 约 +1.13/+3.22/+6.26/-4.09pct；周五 IM 主力 OI 仍减少 4,787 手，证明“价格强”尚未等价于“新多资金确认”。
+6. **MO 是“IV 大幅回落 + 中期限保护仍被买”的结构。** MO2609 ATM IV 1/3/5 日分别下降约 1.69/2.61/6.10 vol，但 20 日基本持平；周五 RR25 单日从约 -1.11vol 恶化至 -2.09vol，Put OI 增加、Call OI下降，说明不是简单 Risk-on vol crush。
 
 ## 四、全球统一机会排行榜
 
-| 排名 | 机会 | 分数 | 方向 | 持有期 | 阶段 | 工具 | 最大损失 |
+| 排名 | 机会 | 分数 | 方向 | 持有期 | 阶段 | 最佳工具 | 最大损失 |
 |---|---|---:|---|---|---|---|---|
-| 1 | 美国 2s30s Bull Steepener | 91 | Receive 2Y / Pay 30Y | 5–20D | 可试仓 | IRS / swaption pair | 期权版有限 |
-| 2 | 黄金 3–6M Call Spread | 87 | Long convex gold | 10–60D | 可试仓 | COMEX/GLD Call Spread | 有限 |
-| 3 | Long IM2609 / Short IF2609 + MO Put Spread | 84 | Long small-cap vs large-cap | 2–15D | 条件式 | 期货 Pair + MO hedge | Pair 非硬封顶 |
-| 4 | Brent 1–2M Downside Put Spread | 82 | Long downside convexity | 1–15D | 等霍尔木兹确认 | Brent options | 有限 |
-| 5 | QQQ 30–60D Put Spread / Diagonal | 77 | Tail hedge | 5–30D | 观察 | QQQ options | 有限 |
+| 1 | **US 2s30s Bull Steepener** | **91** | Receive 2Y / Pay 30Y | 5–20D | 可试仓 | 3M2Y receiver + 3M30Y payer swaption | 有限 |
+| 2 | **Gold 3–6M Call Spread** | **87** | Long convex gold | 10–60D | 可试仓 | COMEX/GLD Call Spread | 有限 |
+| 3 | **Brent 1–2M Upside Call Spread / Call Fly** | **86** | Long oil upside tail | 1–15D | 周日重开触发 | Brent options | 有限 |
+| 4 | **Long IM2609 / Short IF2609 + MO Put Spread** | **84** | Long small-cap relative value | 2–15D | 条件式 | Futures pair + MO hedge | Pair 非硬封顶 |
+| 5 | **QQQ 30–60D Put Spread / Diagonal** | **77** | Tail hedge | 5–30D | 观察 | QQQ options | 有限 |
 
 ## 五、前三名完整交易备忘录
 
-### 1. 美国 2s30s Bull Steepener｜91
+### 1. US 2s30s Bull Steepener｜91
 
-**核心逻辑 / 错误定价。** 弱就业直接打击前端加息路径，但 30Y 仍承受财政供给、期限溢价、能源与通胀尾部。市场把“增长弱”交易成全曲线利率下行时，前端和长端的驱动并不对称。
+**核心逻辑 / 错误定价。** 负非农直接削弱近端加息必要性，但 30Y 仍有财政供给、能源、期限溢价和长期通胀尾部。弱增长不等于应该直接买长债；更干净的是让前端 rally 多于长端。
 
-**为什么现在。** 8/7 2s30s 已约 +100bp，日内继续 bull-steepen；下一大确认是 8/12 CPI。若 CPI 温和，2Y 的下行弹性仍可能高于 30Y。
+**为什么现在。** 8/7 已经出现 2s30s +3bp 的 bull-steepening，下一大确认是 8/12 CPI。周末霍尔木兹风险上升反而强化长端通胀/term-premium 黏性。
 
-**最佳表达。** 3M2Y receiver swaption + 3M30Y payer swaption，按 DV01 配平；若接受非封顶损失，可用 receive 2Y / pay 30Y IRS。
+**最佳表达。** 3M2Y receiver swaption + 3M30Y payer swaption，按 DV01 配平；无合适期权流动性时才退化为 receive 2Y / pay 30Y IRS。
 
-**入场。** 周日/周一利率市场重开后，2s30s 维持约 95–100bp，且 2Y ≤4.20%、30Y ≥5.15% 时先 1/3；CPI 后若前端继续 rally 而长端黏住再加。
+**入场。** 周日/周一重开后 2s30s 仍在 95–100bp 左右，2Y ≤4.20%、30Y ≥5.15% 时先 1/3；CPI 后若 2Y继续下而 30Y黏住，再加 1/3–2/3。
 
 **TP1 / TP2。** 相对入场再陡 +15bp / +30bp。
 
-**失效。** 真正衰退恐慌导致 30Y 比 2Y 更强 rally、曲线跌回 85bp 以下；或热 CPI 引发明显 bear-flattening。2Y 重新上到 4.30% 上方是政策路径反转警报。
+**失效。** 真正增长恐慌令 30Y 比 2Y更强 rally、曲线跌回 85bp 以下；或热 CPI 形成明显 bear-flattening。2Y >4.30% 为政策路径反转警报。
 
-**风险 / Greeks。** 期权版最大损失为净权利金；核心暴露为曲线 DV01 + convexity。试仓最大损失 NAV 0.50%，确认后主题 ≤1.25%。
-
-**Gap risk。** 霍尔木兹真正恢复航运会压低长端通胀风险，可能令曲线不如预期陡；冲突升级则相反。
+**Greeks / 风险。** 核心是 curve DV01 + convexity；期权版最大损失净权利金。试仓 NAV 最大损失 0.50%，确认后主题 ≤1.25%。
 
 **Alternative expressions rejected。**
-- 不选直接 Long 30Y：会把财政供给和 term-premium 风险一起买进来。
-- 不优先 2s10s：它也能表达 Fed 重定价，但对“长端财政/通胀不跟跌”的纯度低于 2s30s。
+- 不做 outright Long 30Y：会把财政与 term-premium 风险一并买入。
+- 不优先 2s10s：也能表达 Fed 重定价，但对“长端财政/能源不跟跌”的纯度低于 2s30s。
 
-### 2. 黄金 3–6M Call Spread｜87
+### 2. Gold 3–6M Call Spread｜87
 
-**核心逻辑 / 错误定价。** 黄金同时承载 real yield、美元、财政信用和地缘尾部。周五真实利率和美元都向有利方向移动，因此当天不再是纯“异常背离”；但长期政策信用凸性仍值钱。
+**核心逻辑。** 黄金同时承载 real yield、美元、财政信用与地缘尾部。周五 10Y real -3bp、DXY -0.44%，传统定价重新提供顺风；而霍尔木兹周末恶化又增加尾部价值。
 
-**为什么现在。** 就业转弱把 Fed 路径向后推，而长端仍在 5% 上方附近；这使黄金同时受益于前端鸽化和对长端政策/财政风险的对冲需求。
+**最佳表达。** 3–6M 买约 30–35Δ Call、卖约 10–15Δ Call。完整 COMEX surface 本轮未可靠取得，执行时必须按最新链重选，不写虚构权利金。
 
-**最佳表达。** 3–6M，买约 30–35Δ Call、卖约 10–15Δ Call。当前未取得可靠完整 COMEX option chain，执行时必须按最新 surface 重选，不虚构权利金或固定 strike。
+**入场。** 从 4,347 附近回撤 1.5%–2.5%（约 4,238–4,282）且 DXY ≤100、10Y real ≤2.50% 时开第一笔；或周日/周一向上突破同时美元不反弹、real yield 不上冲。
 
-**入场。** 第一类是从 4,347 附近回撤 1.5%–2.5%，即约 4,238–4,282，且 DXY ≤100、10Y real ≤2.50%；第二类是周末后向上突破，但必须同时看到美元不反弹、real yield 不上冲。
+**TP1 / TP2。** 最大 spread value 的 50%–60% / 75%–85%。
 
-**TP1 / TP2。** Spread 最大价值的约 50%–60% / 75%–85%。
+**失效。** DXY >101、10Y real >2.55%、Gold <4,200 同时或近似同时成立。
 
-**失效。** DXY >101、10Y real >2.55%、黄金 <4,200 三者同时或近似同时出现。
-
-**风险 / Greeks。** +Delta、+Gamma、+Vega、-Theta；short higher-strike call 降低 vega/theta 成本。最大损失净权利金；NAV 0.50%–0.75%。
+**Greeks / 风险。** +Delta/+Gamma/+Vega/-Theta，short higher strike 降低追高的 theta/vega 成本。最大损失净权利金；NAV 0.50%–0.75%。
 
 **Alternative expressions rejected。**
-- 不选裸黄金期货：周末地缘和政策 headline 的 gap Delta 太大。
-- 不选裸 Call：当前黄金已经大幅上涨，裸 Call 的 theta/vega 成本和追高风险更差。
-- “Long Gold + Long 30Y Treasury Put”更纯政策信用，但因子更多，当前先用单资产有限风险结构。
+- 不做裸黄金期货：周末 headline gap Delta 太大。
+- 不做裸 Call：黄金已一周大涨，theta/vega 与追高风险更差。
+- 暂不把“Long Gold + Long 30Y Treasury Put”作为主仓：因子更多，当前先用单资产有限损失结构。
 
-### 3. Long IM2609 / Short IF2609 + MO2609 Put Spread｜84
+### 3. Brent 1–2M Upside Call Spread / Call Fly｜86
 
-**核心逻辑。** 5 日小盘相对强势很强，但 20 日仍未扭转；更关键的是周五 IM/IC 价格强而主力 OI 下降，IH/IF 则价格涨同时 OI 增加。小盘上涨仍含明显 short-covering / 去杠杆成分，尚不能定义成新多资金 fully confirmed。
+**核心逻辑 / 为什么现在。** 这是本次 revision 的最大变化。美国官员周五给出的“接近霍尔木兹协议”乐观预期，在周六被两条事实削弱：伊朗革命卫队明确把开放条件绑定到美国接受伊朗条件；阿联酋指称 ADNOC 相关船只遭导弹袭击。全球约五分之一油气在冲突前经该水道，周日开盘存在上行 gap 尾部。来源同上。
 
-**历史证据。**
-- IM/IF 相对：1D +1.13%、3D +3.16%、5D +6.11%、20D -4.15%。
-- IM Sep-Dec spread 5D 从 -157.2 扩至 -190.6 点，远月折价反而更深。
-- MO2609 5D ATM IV：33.52% → 27.42%，RR25：-3.36vol → -2.09vol；Call OI -2.9%、Put OI +14.2%。
-- 周五单日 MO2609 IV 再降约 1.69vol，但 RR25 从 -1.11vol 恶化到 -2.09vol，说明保护需求在价格上涨时重新偏向 Put。
+**最佳表达。** 1–2M Brent：买 25–35Δ Call，卖 10–15Δ Call；若开盘 IV/右尾极贵，则改成 call fly，牺牲极端上行参与来压低 vega/theta。当前没有可靠完整 Brent option chain，不虚构 strike/premium。
 
-**为什么现在。** 这是一个可以转为趋势、但必须等确认的 relative-value setup，而不是周末直接追 IM 的单腿趋势。
+**入场。** 不在周末“虚拟价格”里追。等 ICE 重开：若 front Brent 高开但回落后仍守住周五结算价上方，且没有可信的“无条件恢复商业航运”确认，再开 1/3；若海峡流量/保险条件继续恶化再加。
 
-**最佳表达。** Beta-adjusted / Dollar-neutral Long IM2609、Short IF2609，同时买 MO2609 约 20–25Δ Put、卖约 10Δ Put 做 downside hedge。开盘时重新计算 hedge ratio，不硬编码 1:1。
+**TP1 / TP2。** Call spread 达最大价值约 40%–50% / 70%–80%；若出现真实 reopen deal，直接退出而不是等价格止损。
 
-**入场触发。** 周日 09:30 中国 CPI/PPI 后，等周一开盘 30–45 分钟；同时满足：
-1) IM/IF 相对价突破周五高点；
-2) IM 主力 OI 从负转正；
-3) MO2609 RR25 不恶化至 -3vol 以下；
-4) IM Sep-Dec spread 不再扩大，最好回到 -180 点以内。
+**失效。** 伊朗与美国均确认可执行、无附加阻碍的商业航运恢复机制，且主要承保/船东恢复通行；这是 thesis break，不只是 mark-to-market 逆风。
 
-**TP1 / TP2。** Pair 相对收益 +2% / +3.5%。
-
-**失效。** IM/IF breakout 失败、IM OI 继续减少、MO skew <-3vol、远月折价继续恶化。
-
-**风险 / Greeks。** 期货 Pair 本身损失不封顶；Put Spread 在 selloff 中提供 -Delta/+Gamma/+Vega/-Theta。主题初始最大损失预算约 NAV 0.75%–1.00%。
+**Greeks / 风险。** +Delta/+Gamma/+Vega/-Theta；周末 headline gap 正是买 convexity 的原因。最大损失权利金，NAV 0.35%–0.60%。
 
 **Alternative expressions rejected。**
-- 不选裸 Long IM：当前上涨仍有 short covering，且 IM 远月贴水最深。
-- 不选 Long IM / Short IH：会额外引入银行/红利/价值因子，宏观纯度不如 IM/IF。
-- 不单独买 MO Call Spread：MO 的保护 skew 仍偏贵，且方向确认弱于相对价值。
+- 不裸多 Brent futures：若周日突然确认协议，gap-down 无硬止损。
+- 不再做 downside put spread：周六新增事实已经破坏其前提。
+- 不买裸 call：冲突环境下右尾 IV 很可能偏贵，spread/fly 更有效控制 vega 与 premium burn。
 
-## 六、黄金专项
+## 六、中国 50/300/500/1000 专项
 
-评级：**增强，但不能把周五全部涨幅归因于政策信用。** 8/7 10Y real 从 2.43% 降至 2.40%，DXY -0.44%，传统宏观模型本身已经给了黄金顺风；真正值得跟踪的是：若下周出现“黄金继续涨 + 30Y yield 不降甚至上升”，政策信用 thesis 才再次明显增强。
+### 1/3/5/20 日方向
 
-优先级：3–6M Call Spread > 微型黄金确认仓 > 黄金 + 长债 Put Spread。裸 Call 和周末裸期货都不是首选。
+| 合约 | 1D | 3D | 5D | 20D | 周五 OIΔ | Dec-Sep |
+|---|---:|---:|---:|---:|---:|---:|
+| IH2609 | +1.13% | +2.72% | +1.32% | +0.68% | +3,455 | -43.0 |
+| IF2609 | +0.73% | +2.04% | +2.37% | -1.25% | +4,447 | -80.0 |
+| IC2609 | +1.91% | +4.63% | +6.53% | -5.46% | -2,089 | -162.2 |
+| IM2609 | +1.86% | +5.26% | +8.63% | -5.35% | -4,787 | -190.6 |
 
-## 七、AI / 科技专项
+**结论：** 这是**5日战术小盘反转，不是20日已确认 regime shift**。8/4 的 IM 上涨伴随 OI +7,127，曾出现新多资金特征；但 8/6、8/7 IM继续涨而 OI分别下降，最近两日明显掺入 short covering。与此同时 IM Dec-Sep 从 5日前约 -157.2 扩到 -190.6 点，远月折价再次加深，说明中期资金仍要求更高的小盘风险补偿。数据均来自 `data/radar_history.json` 的经验证历史。
 
-周五 Nasdaq +1.3%，半导体 SOX 约 +2.6%，全周约 +9%，说明这不是全面 AI 基本面崩塌，而是 risk-on 环境下的重新扩散。与此同时，Big Tech AI capex 对自由现金流的侵蚀仍是估值约束：市场正在从“AI revenue growth”转向“AI cash-flow conversion”。
+### HO / IO / MO：同一 symbol 多周期
 
-因此当前最优框架仍是：**Long AI cash-flow leaders / Short AI capex-beta**，而不是简单 Long/Short 整个 Nasdaq。若 CPI 后 real yield 上升而高 capex 资产显著跑输，才增加 pair 强度。
+| 合约 | ATM IV | 1D ΔIV | 3D ΔIV | 5D ΔIV | 20D ΔIV | RR25 当前 |
+|---|---:|---:|---:|---:|---:|---:|
+| HO2609 | 15.82% | -0.87vol | -2.13vol | -2.90vol | -4.90vol | -0.19vol |
+| IO2609 | 18.55% | -0.68vol | -1.39vol | -2.33vol | -3.19vol | -0.95vol |
+| MO2609 | 27.42% | -1.69vol | -2.61vol | -6.10vol | +0.27vol | **-2.09vol** |
 
-## 八、中国 50 / 300 / 500 / 1000 专项
+MO2609 的主 Gamma 节点 5 日前和当前都在 8000，说明主要上方 Gamma 锚没有消失；次级节点从 7200/7000 上移到 7600/7800，反映行情上移后 Gamma 密集区跟随抬升。当前 futures-option forward gap 很小：IH/HO约 -0.31点、IF/IO约 -2.25点、IM/MO约 +1.54点，因此**当前最强信息不在 forward arbitrage，而在价格-OI-term structure-skew 的联合状态**。
 
-### 数据健康度
+**四个固定回答：**
+1. **一日异常还是趋势？** 不是单日异常；5日小盘相对趋势真实，但20日仍未翻转。
+2. **新资金还是 short covering？** 8/4 有新多迹象；8/6–8/7 更偏 short covering + 风险偏好修复，尚非纯新多趋势。
+3. **IV下降/保护需求怎么看？** 不是简单“IV降=Risk-on”。MO2609 5D vol crush 很大，但周五 RR25重新变负、Put OI增加，表明中期限 downside hedge 仍被买。
+4. **最优表达？** 不是裸 IM。首选**条件式 Long IM2609 / Short IF2609 + MO2609 Put Spread**；触发条件为周一开盘30–45分钟 IM/IF 再创新高、IM OI转正、MO RR25不差于 -3vol、IM Dec-Sep向 -180 以内改善。
 
-`radar_history.json` 当前有 21 个合格交易日，覆盖 2026-07-10 至 2026-08-07；8/7 记录 data_fresh=true，官方期权 EOD 726/726 覆盖，期指 16 条全部成功，errors=[]。本报告按 symbol 连接历史，不按“近月序号”硬接，避免换月误配。
+中国机会评分 **84/100**，但属于**条件合格，不是立即建立**。
 
-### 期指 1/3/5/20 日状态
+## 七、黄金专项
 
-| 合约 | 8/7 close | 1D | 3D | 5D | 20D | 8/7 OIΔ | Sep-Dec |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| IH2609 | 2930.0 | +1.13% | +2.72% | +1.32% | +0.68% | +3,455 | -43.0 |
-| IF2609 | 4645.6 | +0.73% | +2.04% | +2.37% | -1.25% | +4,447 | -80.0 |
-| IC2609 | 7877.8 | +1.91% | +4.63% | +6.53% | -5.46% | -2,089 | -162.2 |
-| IM2609 | 7590.6 | +1.86% | +5.26% | +8.63% | -5.35% | -4,787 | -190.6 |
+评级：**增强，但不追高。** 周五 gold +2.55% 同时 real yield 与美元下行，说明传统因子重新贡献；周末霍尔木兹风险又增加非线性尾部。优先级仍是 **3–6M Call Spread > 微型黄金确认仓 > 裸期货**。真正强化“政策信用”组合的确认信号是：未来出现 **Gold↑ + 30Y yield不降甚至升**。
 
-结论：**5D 风格切换成立，20D regime shift 尚未成立。** Friday 的 IM/IC 仍属于“价格强、主力 OI 下降”，更接近 short covering + 战术风险偏好回升；IH/IF 则出现价格和 OI 同时上升的新资金特征。
+## 八、AI / 科技专项
 
-### 现货基差
+美股对弱就业的第一反应仍是 Risk-on：S&P创高、Nasdaq单日 +1.3%、周 +5.2%。这暂时不是 AI 基本面反转，而更像“Fed路径更友好 + 盈利仍能支撑估值”。但 8/12 CPI 是下一次把 bad-news-is-good-news 切换成 stagflation-lite 的关键节点。优先仍是**多 AI 现金流兑现 / 空高 Capex、长 duration 的 AI beta**，不建议 CPI 前无差别追 Nasdaq。
 
-已可靠取得上证50 2960.42、沪深300 4694.44、中证1000 7679.53；中证500本轮二次补源仍未取得权威同日精确收盘。
+## 九、未来 24 小时 / 7 天事件树
 
-- IH2609 basis = -30.42 点 / -1.03%，简单年化约 -8.93%；
-- IF2609 = -48.84 / -1.04%，简单年化约 -9.04%；
-- IM2609 = -88.93 / -1.16%，简单年化约 -10.06%。
+- **8/9 09:30 北京时间：中国 7 月 CPI/PPI。** 国家统计局 2026 发布日程明确该时点。对周一 IM/IF、人民币及中国实际利率预期有直接影响。来源：[NBS schedule](https://www.stats.gov.cn/zs/tjws/zytjzbqs/)。
+- **周日夜间：ICE/CME 风险资产重开。** 首看 Brent gap、长端美债和黄金是否共同定价霍尔木兹新增风险；如果油高开而 30Y yield也上，2s30s/Gold thesis同时增强。
+- **8/12 20:30：中国时间，美国 7 月 CPI。** BLS 官方日程。它决定当前“弱就业=Fed更友好”能否持续。来源：[BLS August schedule](https://www.bls.gov/schedule/2026/08_sched_list.htm)。
+- **8/13 20:30：美国 7 月 PPI。** 重点看能源与供应链冲击是否向生产端扩散。来源：[BLS PPI](https://www.bls.gov/ppi/)。
+- **8/14 20:30：美国 7 月 Advance Retail Sales。** 判断增长担忧是否开始进入需求端。来源：[U.S. Census retail release schedule](https://www.census.gov/retail/release_schedule.html)。
 
-年化仅作近似，不调整股息与资金成本。IM 折价最深，而且 5D Sep-Dec spread 从 -157.2 扩到 -190.6，说明远端风险补偿没有跟随价格反弹改善。
+## 十、Scenario matrix
 
-### HO / IO / MO 历史状态
+| 情景 | 概率主观权重 | 资产联动 | 交易处理 |
+|---|---:|---|---|
+| 霍尔木兹继续受阻/袭船升级 | 35% | Oil↑ Gold↑ 30Y yield↑/黏 | 加 Brent upside convexity；保留 steepener/gold |
+| 谈判反复但无可执行 reopen | 40% | Oil高波动、曲线/金价震荡偏上 | 只持有限风险结构，不追 futures |
+| 可执行 reopen + 船东/保险恢复 | 25% | Oil↓ Gold部分回吐，长端通胀溢价↓ | 退出 Brent calls；降低 steepener；gold只保留核心 |
 
-| 2609合约 | ATM IV 8/7 | 1D ΔIV | 5D ΔIV | 20D ΔIV | RR25 8/7 | 5D ΔRR | PCR(OI) |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| HO2609 | 15.82% | -0.87vol | -2.90vol | -4.90vol | -0.19vol | -0.35vol | 0.698 |
-| IO2609 | 18.55% | -0.68vol | -2.33vol | -3.19vol | -0.95vol | -0.15vol | 0.680 |
-| MO2609 | 27.42% | -1.69vol | -6.10vol | +0.27vol | -2.09vol | +1.27vol | 0.704 |
-
-MO 是最有信息量的：过去 5 日指数反弹同时 IV 大幅压缩，但 Put OI 增加约 14.2%；周五又出现 ATM IV 继续降、RR25 却明显走负。这不是“纯 risk-on + protection unwinding”，而是**vol normalization + downside event hedge**。
-
-Gamma：MO2609 的第一 Absolute Gamma 节点 5D 前后都在 8000；次级节点从 7200/7000 上移至 7600/7800，说明价格中心向上迁移，但 8000 仍是最关键高 Gamma 区。该指标为绝对 Gamma 聚合，不代表真实 dealer signed position。
-
-### 中国固定问题
-
-- **今天更适合 IH/IF/IC/IM 哪个？** 条件式 IM，但只作为相对价值腿；绝对裸多不合格。
-- **大小盘切换了吗？** 5D 已切换，20D 未确认。
-- **基差/跨期异常吗？** IM 远月折价明显最深，而且反弹期没有同步改善，是负面确认缺口。
-- **期权优于裸期货吗？** 是。MO Put Spread 能把周末/数据/风格反转风险封装成凸性保护。
-- **最佳 relative value？** Long IM / Short IF 优于 Long IM / Short IH。
-- **中国机会评分：84/100，全球第 3；但只允许条件触发。**
-
-## 九、周末情景矩阵
-
-| 情景 | 首要反应 | 受益表达 | 主要风险 |
-|---|---|---|---|
-| 霍尔木兹商业航运可信恢复 | 油价 gap-down、通胀尾部下降 | Brent Put Spread | 长端收益率也可能下行，牛陡收益被削弱 |
-| 谈判失败/新攻击 | 油价、黄金、长端通胀风险上升 | 黄金 Call Spread、2s30s steepener | Risk assets gap-down |
-| 中国 CPI/PPI 偏弱 | 宽松预期升、但名义需求担忧加剧 | 只在 OI/跨期确认后做 IM/IF | “宽松=小盘多”可能是假信号 |
-| 中国通胀偏强 | 宽松空间下降，价值/周期可能追赶 | 减弱 IM/IF | 小盘高 Beta 折价扩大 |
-| 美国 CPI 偏冷 | 前端 rally 更强 | 2s30s steepener | 若长端也因衰退恐慌大 rally，则曲线不陡 |
-| 美国 CPI 偏热 | 前端加息重定价回归 | 退出 steepener；黄金看 real yield/USD | bear-flattening |
-
-## 十、事件日历（北京时间）
-
-- **8月9日 09:30：中国 7月 CPI/PPI。** 周一 A 股开盘前已经知道结果；IM/IF 必须等价格、OI、跨期三项共同确认。
-- **8月12日 20:30：美国 7月 CPI。** 下周第一大 Delta/Vega 事件；曲线仓位可保留有限风险 convexity，裸方向仓应降杠杆。
-- **8月13日 20:30：美国 7月 PPI。**
-- **8月12日 22:30：EIA 周度石油数据。** 与霍尔木兹 headline 共同决定近端油价结构。
-- **8月14日 20:30：美国 7月零售销售。**
-- **下周美国国债供给窗口：** 8 月月度 3Y/10Y/20Y/30Y 供给继续构成长端事件风险；具体 auction day 以 TreasuryDirect 最新公告为准，不预填未经核验的日期。
+概率为主观情景权重，不是市场隐含概率。
 
 ## 十一、四行行动清单
 
-**A 立即建立：** 仅小规模 2s30s bull steepener（优先 swaption 版）与黄金 3–6M Call Spread 试仓。  
-**B 只挂条件单：** Long IM2609 / Short IF2609 + MO Put Spread；Brent downside Put Spread 等霍尔木兹可信重开。  
-**C 继续观察：** 中国 CPI/PPI 后的 IM OI/跨期、MO skew，AI cash-flow/Capex pair，以及 VIX/MOVE 精确 EOD。  
-**D 必须避免/退出：** 周末裸空油、裸多 IM、追高裸黄金 Call；若热 CPI 使前端重新显著定价加息，退出 2s30s steepener。
+**A 立即建立：** 小规模 2s30s bull steepener；黄金 3–6M Call Spread 仅做 1/3 试仓。  
+**B 只挂条件单：** Brent 1–2M upside Call Spread/Call Fly 等周日重开确认；IM/IF + MO Put Spread 等周一 30–45 分钟与 OI/term/skew 共振。  
+**C 继续观察：** QQQ tail hedge、AI cash-flow/Capex pair、VIX/MOVE/HY OAS 精确值、USD/CNH、完整 ETF option surface。  
+**D 必须避免/退出：** 周末裸多/裸空原油、裸追 IM、裸追 Gold Call、把“IV下降”机械解释为全面 Risk-on；若霍尔木兹出现可执行无障碍 reopen，立即撤销 Brent upside thesis。
 
-## 风险预算
+## 数据与来源说明
 
-单一试仓最大损失 NAV 0.25%–0.75%；确认交易 0.75%–1.50%；高确信主题总风险 ≤2.5%–3.0%。黄金、曲线、油价与美元若实际暴露于同一“通胀/政策信用”因子，必须聚合；IM/IF 与 MO 保护也按同一小盘因子合并计算。
+China-Options-Engine：`data/radar_latest.json` 当前快照 + `data/radar_history.json` 21 个经验证交易日历史；未自行拼接 raw snapshots。历史序列仅接纳 `data_fresh=true` 且期权官方 EOD/期指官方数据一致的记录。模型 IV/RR/BF/Gamma 与交易所成交/OI事实严格分开。
 
-## 主要来源
-
-- [U.S. Treasury Daily Treasury Par Yield Curve Rates](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026)
-- [U.S. Treasury Daily Treasury Par Real Yield Curve Rates](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_real_yield_curve&field_tdr_date_value=2026)
-- [Reuters: Dollar drops as weak US jobs data pushes out Fed hike expectations](https://www.reuters.com/world/asia-pacific/dollar-drifts-higher-traders-eye-iran-talks-ahead-us-jobs-data-2026-08-07/)
-- [AP: How major US stock indexes fared Friday 8/7/2026](https://apnews.com/article/stocks-dow-jones-iran-oil-fed-interest-rates-9d586bdbf1fb230dcf1f915dcaf50858)
-- [Reuters: Brent climbs $1 on uncertainty over end to Iran war](https://www.reuters.com/business/energy/oil-rises-concerns-over-strait-hormuz-reopening-plans-2026-08-07/)
-- [Reuters: US expects Iran-Oman Strait of Hormuz deal soon](https://www.reuters.com/world/middle-east/us-official-we-expect-deal-soon-between-iran-oman-strait-hormuz-2026-08-07/)
-- [China-Options-Engine radar_latest.json](https://github.com/farfromexact/China-Options-Engine/blob/main/data/radar_latest.json)
-- [China-Options-Engine radar_history.json](https://github.com/farfromexact/China-Options-Engine/blob/main/data/radar_history.json)
-- [国家统计局 2026年主要统计信息发布日程](https://www.stats.gov.cn/xw/tjxw/tzgg/202512/t20251224_1962137.html)
-- [BLS August 2026 release calendar](https://www.bls.gov/schedule/2026/08_sched_list.htm)
-- [EIA Weekly Petroleum Status Report schedule](https://www.eia.gov/petroleum/supply/weekly/schedule.php)
-- [U.S. Census Monthly Retail Trade release schedule](https://www.census.gov/retail/release_schedule.html)
+关键公开来源：
+- [U.S. Treasury nominal CMT](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=202608&type=daily_treasury_yield_curve)
+- [U.S. Treasury real CMT](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=202608&type=daily_treasury_real_yield_curve)
+- [Reuters: weak jobs, FX and gold](https://www.reuters.com/world/asia-pacific/dollar-drifts-higher-traders-eye-iran-talks-ahead-us-jobs-data-2026-08-07/)
+- [AP: Aug. 7 US close](https://apnews.com/article/stocks-dow-jones-iran-oil-fed-interest-rates-9d586bdbf1fb230dcf1f915dcaf50858)
+- [Reuters: Brent Aug. 7 settlement and Hormuz uncertainty](https://www.reuters.com/business/energy/oil-rises-concerns-over-strait-hormuz-reopening-plans-2026-08-07/)
+- [Reuters: IRGC reopening conditions, Aug. 8](https://www.reuters.com/world/middle-east/irans-revolutionary-guard-says-re-opening-strait-hormuz-does-not-depend-talks-2026-08-08/)
+- [Reuters: ADNOC-linked vessel attack, Aug. 8](https://www.reuters.com/business/energy/uae-says-iran-attacked-adnoc-vessel-with-missile-strait-hormuz-2026-08-08/)
+- [NBS 2026 release calendar](https://www.stats.gov.cn/zs/tjws/zytjzbqs/)
+- [BLS August 2026 schedule](https://www.bls.gov/schedule/2026/08_sched_list.htm)
+- [Census retail release schedule](https://www.census.gov/retail/release_schedule.html)
