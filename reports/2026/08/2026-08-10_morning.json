@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "status": "published",
+  "report_date": "2026-08-10",
+  "edition": "morning",
+  "generated_at_bjt": "2026-08-10T08:03:41+08:00",
+  "weekend_mode": false,
+  "title": "全球跨资产高风险机会雷达｜晨间版｜2026-08-10",
+  "one_sentence_conclusion": "最优仍是2s30s牛陡；霍尔木兹未真正重开且油价亚洲早盘重新上行，使Brent上行Call Spread升至第二；中国小盘5日反弹成立但后半段short covering占比上升，周一不裸追IM。",
+  "regime": "Risk-on / weak-jobs policy-path repricing / China-demand-softness / Hormuz energy-tail mixed regime",
+  "worth_taking_risk": true,
+  "data_cutoff": {"beijing_time":"2026-08-10T08:03:41+08:00","us_market_date":"2026-08-07","china_market_date":"2026-08-07","energy_live_date":"2026-08-10","weekend_mode":false,"notes":["China is pre-open; latest verified CFFEX EOD is Friday 2026-08-07.","Energy uses early-Asia Monday confirmation; other US cash assets use Friday close."]},
+  "input_snapshots": {"china_options_repository":"farfromexact/China-Options-Engine","china_options_path":"data/radar_latest.json","china_options_history_path":"data/radar_history.json","china_options_date":"2026-08-07","china_options_generated_at":"2026-08-07T23:04:59.647197+08:00","china_options_fresh":true,"china_options_official_coverage":1.0,"china_options_history_record_count":21,"china_options_history_first_date":"2026-07-10","china_options_history_latest_date":"2026-08-07","previous_date":"2026-08-06","errors":[]},
+  "source_status": {"china_option_chain":"ok","china_volume":"ok","china_official_eod":"ok","china_futures":"ok","china_history":"ok","china_official_quote_matches":726,"china_total_chain_quotes":726,"methodology_note":"radar_latest=current state; radar_history=same-symbol 1/3/5/20-session comparisons; snapshots not stitched.","unavailable_exact_fields":["VIX precise current EOD","MOVE precise current EOD","HY OAS precise current observation","USD/CNH unified authoritative EOD in this run"]},
+  "dashboard": [
+    {"asset":"US2Y","latest":4.19,"signal":"front-end easing repricing","data_time":"2026-08-07"},
+    {"asset":"US5Y","latest":4.35,"signal":"mid-curve rally","data_time":"2026-08-07"},
+    {"asset":"US10Y","latest":4.65,"signal":"long end sticky","data_time":"2026-08-07"},
+    {"asset":"US30Y","latest":5.19,"signal":"fiscal/energy/term-premium stickiness","data_time":"2026-08-07"},
+    {"asset":"2s30s","latest":"+100bp","signal":"preferred curve expression","data_time":"2026-08-07"},
+    {"asset":"Brent","latest":"~84.8 USD/bbl","signal":"Hormuz right tail repriced higher","data_time":"2026-08-10 early Asia"},
+    {"asset":"WTI","latest":"~79.3 USD/bbl","signal":"Hormuz right tail repriced higher","data_time":"2026-08-10 early Asia"},
+    {"asset":"China CPI YoY","latest":"0.5%","signal":"domestic demand soft / policy support case","data_time":"July 2026 released 2026-08-09"},
+    {"asset":"China PPI YoY","latest":"3.5%","signal":"price pressure cooling","data_time":"July 2026 released 2026-08-09"},
+    {"asset":"IH2609","latest":2930.0,"change_1d":"+1.13%","change_1w":"+1.32% over 5 sessions","signal":"price up and OI up","data_time":"2026-08-07"},
+    {"asset":"IF2609","latest":4645.6,"change_1d":"+0.73%","change_1w":"+2.37% over 5 sessions","signal":"price up and OI up","data_time":"2026-08-07"},
+    {"asset":"IC2609","latest":7877.8,"change_1d":"+1.91%","change_1w":"+6.53% over 5 sessions","signal":"price up but OI down","data_time":"2026-08-07"},
+    {"asset":"IM2609","latest":7590.6,"change_1d":"+1.86%","change_1w":"+8.63% over 5 sessions","signal":"strong price / falling OI / deep next-below-main structure","data_time":"2026-08-07"},
+    {"asset":"MO2609 ATM IV","latest":"27.54%","change_1d":"-1.58 vol","change_1w":"-5.98 vol over 5 sessions","signal":"vol crush with Friday protection re-bid","data_time":"2026-08-07"}
+  ],
+  "meaningful_changes": [
+    {"change":"Oil right tail gets traded-price confirmation","detail":"Early-Asia Brent/WTI rose as Hormuz reopening remained conditional."},
+    {"change":"China inflation cooled","detail":"July CPI +0.5% YoY and PPI +3.5% YoY; weak demand/policy-support mix."},
+    {"change":"Small-cap rally remains tactical","detail":"IM/IC strong over 3-5 sessions but negative over 20 sessions; recent OI decline points to short covering."},
+    {"change":"MO vol normalization plus protection re-bid","detail":"MO2609 ATM IV -5.98 vol over 5 sessions; Friday RR25 became ~1.01 vol more put-skewed with put OI +2041."}
+  ],
+  "top_opportunities": [
+    {"rank":1,"name":"US 2s30s Bull Steepener","score":91,"direction":"receive front end / pay long end","holding_period":"5-20D","stage":"trial","instruments":["3M2Y receiver swaption","3M30Y payer swaption","DV01-neutral IRS fallback"],"max_loss_limited":true},
+    {"rank":2,"name":"Brent 1-2M Upside Call Spread / Call Fly","score":89,"direction":"long oil upside convexity","holding_period":"1-15D","stage":"wait for pullback/confirmation","instruments":["Brent call spread","Brent call fly"],"max_loss_limited":true},
+    {"rank":3,"name":"Gold 3-6M Call Spread","score":86,"direction":"long gold convexity","holding_period":"10-60D","stage":"conditional trial","instruments":["COMEX/GLD call spread"],"max_loss_limited":true},
+    {"rank":4,"name":"Long IM2609 / Short IF2609 + MO Put Spread","score":82,"direction":"long small-cap relative value with downside hedge","holding_period":"2-15D","stage":"China-open confirmation","instruments":["IM2609","IF2609","MO2609 put spread"],"max_loss_limited":false},
+    {"rank":5,"name":"QQQ 30-60D Put Spread / Diagonal","score":76,"direction":"tail hedge","holding_period":"5-30D","stage":"watch","instruments":["QQQ options"],"max_loss_limited":true}
+  ],
+  "top_trade_cards": [
+    {"name":"US 2s30s Bull Steepener","expression":"3M2Y receiver swaption + 3M30Y payer swaption, curve-DV01 matched","entry":"2Y<=4.20%, 30Y>=5.15%, 2s30s>=90bp; start 1/3","tp1":"+15bp steepening","tp2":"+30bp steepening","invalidation":"2s30s<85bp or recessionary long-end rally dominates or CPI sharply hawkish","risk_budget_nav":"0.50% trial; <=1.25% confirmed theme"},
+    {"name":"Brent 1-2M Upside Call Spread / Call Fly","expression":"25-35 delta call / short 10-15 delta call; fly if right-tail IV expensive","entry":"After first gap, hold above Friday settlement without executable unconditional reopening","invalidation":"unconditional reopening plus commercial shipping and insurance normalization","risk_budget_nav":"0.35%-0.60% max premium"},
+    {"name":"Gold 3-6M Call Spread","expression":"long 30-35 delta call / short 10-15 delta call","entry":"1.5%-2.5% pullback with DXY<=100 and real yield contained, or breakout without USD/real-yield reversal","invalidation":"DXY>101 + 10Y real>2.55% + gold loses breakout zone","risk_budget_nav":"0.50%-0.75% max premium"}
+  ],
+  "gold_tracking": {"stance":"bullish convexity, do not chase naked delta","reference_spot":"~4336 USD/oz on 2026-08-07","preferred_expression":"3-6M call spread"},
+  "ai_tracking": {"stance":"risk-on leadership remains intact; use options for tail hedge rather than outright short","key_breakpoint":"2026-08-12 US CPI"},
+  "china_tracking": {
+    "qualified_trade": false,
+    "score": 82,
+    "preferred_future": "IM",
+    "futures_returns": {"IH":{"1D":1.13,"3D":2.72,"5D":1.32,"20D":0.68},"IF":{"1D":0.73,"3D":2.04,"5D":2.37,"20D":-1.25},"IC":{"1D":1.91,"3D":4.63,"5D":6.53,"20D":-5.46},"IM":{"1D":1.86,"3D":5.26,"5D":8.63,"20D":-5.35}},
+    "option_atm_iv_changes_vol": {"HO2609":{"1D":-0.56,"3D":-1.83,"5D":-2.59,"20D":-4.59},"IO2609":{"1D":-0.46,"3D":-1.17,"5D":-2.11,"20D":-2.97},"MO2609":{"1D":-1.58,"3D":-2.50,"5D":-5.98,"20D":0.38}},
+    "MO2609": {"atm_iv":0.275384,"rr25":-0.021232,"bf25":0.008629,"pcr_oi":0.704202,"call_oi_change":-1179,"put_oi_change":2041,"gamma_peaks":[8000,7600,7800]},
+    "futures_option_linkage": {"IH_HO_gap_points":-0.18,"IF_IO_gap_points":-2.87,"IM_MO_gap_points":0.73},
+    "preferred_expression":"Long IM2609 / Short IF2609 + MO2609 Put Spread only after OI/term/skew confirmation",
+    "required_open_confirmation":["IM/IF relative strength persists","IM OI turns positive","IM Dec-Sep improves toward >-180","MO RR25 does not worsen below -3 vol"]
+  },
+  "event_calendar": [
+    {"date":"2026-08-10","event":"China Monday open after July CPI/PPI","importance":"high"},
+    {"date":"2026-08-12T20:30:00+08:00","event":"US July CPI","importance":"very high"},
+    {"date":"2026-08-13T20:30:00+08:00","event":"US July PPI","importance":"high"},
+    {"date":"2026-08-14T20:30:00+08:00","event":"US July Advance Retail Sales","importance":"high"},
+    {"date":"ongoing","event":"Strait of Hormuz reopening / shipping and insurance normalization","importance":"very high"}
+  ],
+  "action_list": {"A":"Small 2s30s bull steepener; Brent 1/3 upside call spread only after gap holds on pullback.","B":"Gold call spread and IM/IF + MO put spread only on stated confirmation conditions.","C":"Watch DXY 100, China policy-vs-earnings interpretation, QQQ tail hedge, Hormuz shipping insurance.","D":"Avoid naked Brent, naked IM, and naked high-IV calls; cancel oil upside thesis on executable unconditional reopening."},
+  "risk_budget": {"total_new_max_loss_nav":"1.5%-2.0%","Hormuz_correlated_option_premium_cap_nav":"<=1.0%","US_curve_trial_nav":"0.50%","US_curve_confirmed_theme_cap_nav":"1.25%","Brent_option_nav":"0.35%-0.60%","Gold_option_nav":"0.50%-0.75%","China_pair_scenario_risk_nav":"0.40%-0.60%"},
+  "sources": [
+    {"title":"China July factory-gate inflation eases to 3-month low, CPI slows","publisher":"Reuters","url":"https://www.reuters.com/world/china/chinas-producer-inflation-eases-july-below-expectations-2026-08-09/","source_date":"2026-08-09","accessed_at_bjt":"2026-08-10T08:03:41+08:00","source_type":"news","supported_claims":["China July CPI/PPI","domestic demand interpretation"]},
+    {"title":"Iran ties Hormuz reopening to US concessions on several demands","publisher":"Reuters","url":"https://www.reuters.com/world/middle-east/iran-ties-hormuz-reopening-us-concessions-several-demands-2026-08-09/","source_date":"2026-08-09","accessed_at_bjt":"2026-08-10T08:03:41+08:00","source_type":"news","supported_claims":["Hormuz reopening conditions","geopolitical energy tail"]},
+    {"title":"U.S. stock futures dip as investors await inflation data, grapple with more Iran uncertainty","publisher":"MarketWatch","url":"https://www.marketwatch.com/story/u-s-stock-futures-flat-as-investors-await-inflation-data-grapple-with-more-iran-uncertainty-133212d2","source_date":"2026-08-09","accessed_at_bjt":"2026-08-10T08:03:41+08:00","source_type":"news","supported_claims":["Sunday US equity futures","oil rebound context"]},
+    {"title":"Schedule of Selected Releases for August 2026","publisher":"U.S. Bureau of Labor Statistics","url":"https://www.bls.gov/schedule/2026/08_sched_list.htm","source_date":"2026-08","accessed_at_bjt":"2026-08-10T08:03:41+08:00","source_type":"official","supported_claims":["US CPI and PPI release times"]},
+    {"title":"Monthly Retail Trade - Release Schedule","publisher":"U.S. Census Bureau","url":"https://www.census.gov/retail/release_schedule.html","source_date":"2026","accessed_at_bjt":"2026-08-10T08:03:41+08:00","source_type":"official","supported_claims":["July 2026 advance retail sales release date"]},
+    {"title":"China Options Engine radar_latest","publisher":"GitHub/farfromexact","url":"https://github.com/farfromexact/China-Options-Engine/blob/main/data/radar_latest.json","source_date":"2026-08-07","accessed_at_bjt":"2026-08-10T08:03:41+08:00","source_type":"connected_repo","supported_claims":["current China futures/options state"]},
+    {"title":"China Options Engine radar_history","publisher":"GitHub/farfromexact","url":"https://github.com/farfromexact/China-Options-Engine/blob/main/data/radar_history.json","source_date":"2026-08-07","accessed_at_bjt":"2026-08-10T08:03:41+08:00","source_type":"connected_repo","supported_claims":["same-symbol 1/3/5/20-session China comparisons"]}
+  ],
+  "archive": {"markdown_path":"reports/2026/08/2026-08-10_morning.md","json_path":"reports/2026/08/2026-08-10_morning.json","latest_markdown_path":"latest/morning.md","latest_json_path":"latest/morning.json","archive_status":"success","commit_sha":null,"atomic_commit":false,"publication_atomic":true,"ci_validation_status":"pending_or_unverified","error":null}
+}
