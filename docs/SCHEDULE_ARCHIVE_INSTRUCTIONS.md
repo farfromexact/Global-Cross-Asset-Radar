@@ -41,7 +41,23 @@ farfromexact/Global-Cross-Asset-Radar
 6. 只将 `main` ref 前移**一次**到该 commit。
 7. 最终6个文件应来自同一个 commit；一次正式归档正常情况下只触发一次 `Validate Radar Reports` workflow。
 
-不得把正式归档实现为6次连续 `create_file` / `update_file` contents-API commit。只有在当前连接明确不提供 Git tree/commit/ref 原子操作时才允许降级为顺序写入；发生降级时必须在 `status/{edition}_latest.json` 和对话中明确写 `atomic_commit=false` 及降级原因，并且在最后一个路径成功前不得声称完整归档成功。
+不得把正式归档实现为6次连续 `create_file` / `update_file` contents-API commit。只有在当前连接明确不提供 Git tree/commit/ref 原子操作时才允许降级。
+
+### 原子写入不可用时：staging branch 必须完成PR合并
+
+如果无法安全取得当前 base tree SHA，允许采用 staging branch 作为降级方案，但**staging branch不是最终归档结果**。必须连续完成：
+
+1. 从当前 `main` 创建 `radar-archive-YYYY-MM-DD-{edition}-staging`。
+2. 在该分支写齐上述6个最终路径；缺少任何一个都不得进入下一步。
+3. 用 `compare main...staging` 确认分支不落后于main，且变更集合包含全部6个路径。
+4. 创建指向 `main` 的 Pull Request。
+5. 等待 `Validate Radar Reports`。若失败，读取日志并在同一 staging branch 修复；不得把已知失败的报告自动合并。
+6. 校验通过后，使用 squash 或 merge 将PR合入 `main`。
+7. 再次读取 `main` 中的历史Markdown、历史JSON和状态文件，确认正式报告已存在。
+8. 只有完成第7步，才可写或声称 `archive_status=success`。仅产生 staging branch、未创建PR或未合并时，只能记为 `pending` 或 `partial`。
+9. 合并完成后可删除 staging branch；不允许把黄色 “Compare & pull request” 横幅当作归档完成。
+
+发生任何降级时，必须在 `status/{edition}_latest.json` 和对话中明确写 `atomic_commit=false`、实际commit模式及降级原因。
 
 ### 写入行为
 
@@ -50,21 +66,21 @@ farfromexact/Global-Cross-Asset-Radar
 - Manifest 以 `report_date + edition` 为唯一键；重复运行时更新该条记录，而不是追加重复项。
 - Markdown必须保存完整中文报告；JSON必须符合 `schemas/report.schema.json`。
 - JSON中必须记录：报告日期、版本、生成时间、市场状态、机会榜、交易卡、行动清单、风险预算、来源、China-Options-Engine输入数据日期和新鲜度、归档路径及状态。
-- 正式历史文件的JSON字段 `archive.markdown_path` 和 `archive.json_path` 必须与实际路径一致。
+- 正式历史文件的JSON字段 `archive.markdown_path` 和 `archive.json_path` 必须与实际路径一致；或在 `archive.paths` 中完整列出实际历史Markdown与JSON路径。
 - GitHub Markdown不得包含ChatGPT专用引用标记、内部turn ID、connector ID或私有file引用；将关键来源转换为普通Markdown链接/脚注，并在JSON `sources` 数组中结构化保存。
 - 不得将API key、访问令牌、券商凭证、私人邮件、账户信息或未经批准的非公开公司信息写入仓库。
 
 ### Archive状态与CI状态必须区分
 
-- `archive.archive_status=success` / `status/*_latest.json` 中的 `archive_status=success` 只表示本次要求的仓库文件已经成功写入目标commit。
-- GitHub Actions 的 `Validate Radar Reports` 是**提交后的独立校验**。只有该workflow通过时，GitHub界面才显示绿钩。
-- 因此“归档成功但Actions红叉”是可能的：表示存储层成功，但提交后校验失败。不得把两者混为一谈。
-- 如果无法在当前执行上下文读取Actions最终结果，可以记录 `ci_validation_status="pending_or_unverified"`，不得虚构为 `passed`。
+- `archive.archive_status=success` / `status/*_latest.json` 中的 `archive_status=success` 表示本次要求的仓库文件已经出现在 `main`。
+- staging branch写齐但尚未合并时，状态只能是 `pending` 或 `partial`。
+- GitHub Actions 的 `Validate Radar Reports` 是提交后的独立校验。只有该workflow通过时，自动化才可以合并staging PR。
+- 如果无法在当前执行上下文读取Actions最终结果，不得把 staging PR 自动标记为成功；应保留 `ci_validation_status="pending_or_unverified"` 并明确说明尚未合并。
 
 ### GitHub失败处理
 
 - 对话中的正式报告必须先正常发布；GitHub写入失败不能吞掉报告。
-- 原子提交创建或ref更新失败时，不得声称完整归档成功。
+- 原子提交、staging写入、PR创建、校验或合并任一步失败时，不得声称完整归档成功。
 - 尽量把失败信息写入 `status/{edition}_latest.json`；若状态文件也无法写入，则在对话报告末尾明确写出失败路径和错误。
 - JSON `status` 使用 `published`、`archive_failed` 或 `not_published`；`archive.archive_status` 使用 `success`、`partial`、`failed` 或 `pending`。
 
@@ -76,13 +92,19 @@ farfromexact/Global-Cross-Asset-Radar
 farfromexact/China-Options-Engine/data/radar_latest.json
 ```
 
+历史多周期比较优先读取：
+
+```text
+farfromexact/China-Options-Engine/data/radar_history.json
+```
+
 需要逐执行价/逐合约细节时读取：
 
 ```text
 farfromexact/China-Options-Engine/data/latest.json
 ```
 
-需要历史比较时读取：
+需要审计或历史重建时读取：
 
 ```text
 farfromexact/China-Options-Engine/data/snapshots/YYYY-MM-DD.json
@@ -117,5 +139,7 @@ Scheduled Task正式运行以外的手工测试，默认写入：
 tests/YYYY-MM-DDTHH-MM-SS_{edition}.md
 tests/YYYY-MM-DDTHH-MM-SS_{edition}.json
 ```
+
+操作性 smoke-status 文件可以使用其他后缀，但不得冒充完整 report JSON，也不应被完整报告schema校验。
 
 除非用户明确要求“发布为正式报告”，否则不得覆盖 `reports/`、`latest/` 或正式Manifest记录。
