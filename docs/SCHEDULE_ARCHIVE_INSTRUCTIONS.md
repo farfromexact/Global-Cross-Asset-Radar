@@ -4,7 +4,7 @@
 
 ## 通用归档规则
 
-报告在对话中生成完成后，使用已连接的 GitHub 写入仓库：
+报告在对话中生成完成后，使用已连接的 GitHub connector 直接写入：
 
 ```text
 farfromexact/Global-Cross-Asset-Radar
@@ -18,7 +18,7 @@ farfromexact/Global-Cross-Asset-Radar
 4. 对应版本的 `status/*_latest.json`
 5. 对应版本的 `latest/*.json` 和 `latest/*.md`
 
-逻辑更新集合固定为：
+正式归档固定更新6个路径：
 
 1. `reports/YYYY/MM/YYYY-MM-DD_{edition}.md`
 2. `reports/YYYY/MM/YYYY-MM-DD_{edition}.json`
@@ -29,62 +29,72 @@ farfromexact/Global-Cross-Asset-Radar
 
 其中 `{edition}` 只能是 `morning` 或 `evening`。
 
-### 正式归档必须使用单次原子提交
+## 正式归档模式：Direct-to-Main
 
-上述6个路径是**一个归档事务**，不是6次独立Git提交。正式晨间版/晚间版归档必须优先使用 GitHub Git-data 操作一次完成：
+正式晨间版和晚间版归档必须**直接写入 `main` 分支**。
 
-1. 读取当前 `main` HEAD，并以其为唯一 parent/base。
-2. 在任何写入发生前，先在内存中生成并校验上述6个文件的最终完整内容。
-3. 对已存在路径使用替换后的完整内容；对新历史路径使用新内容。
-4. 基于当前 HEAD 创建一个包含全部6个路径变更的 Git tree。
-5. 只创建**一个** commit，commit message 使用对应版本规则。
-6. 只将 `main` ref 前移**一次**到该 commit。
-7. 最终6个文件应来自同一个 commit；一次正式归档正常情况下只触发一次 `Validate Radar Reports` workflow。
+禁止把下列流程作为正式归档的一部分：
 
-不得把正式归档实现为6次连续 `create_file` / `update_file` contents-API commit。只有在当前连接明确不提供 Git tree/commit/ref 原子操作时才允许降级。
+- 创建 staging branch
+- `Compare & pull request`
+- 创建 Pull Request
+- 等待或执行 merge
+- 等待 branch cleanup
 
-### 原子写入不可用时：staging branch 必须完成PR合并
+即使仓库中存在旧 branch、旧 PR、历史 staging 说明，也不得因此创建新的 staging branch。
 
-如果无法安全取得当前 base tree SHA，允许采用 staging branch 作为降级方案，但**staging branch不是最终归档结果**。必须连续完成：
+### 写入步骤
 
-1. 从当前 `main` 创建 `radar-archive-YYYY-MM-DD-{edition}-staging`。
-2. 在该分支写齐上述6个最终路径；缺少任何一个都不得进入下一步。
-3. 用 `compare main...staging` 确认分支不落后于main，且变更集合包含全部6个路径。
-4. 创建指向 `main` 的 Pull Request。
-5. 等待 `Validate Radar Reports`。若失败，读取日志并在同一 staging branch 修复；不得把已知失败的报告自动合并。
-6. 校验通过后，使用 squash 或 merge 将PR合入 `main`。
-7. 再次读取 `main` 中的历史Markdown、历史JSON和状态文件，确认正式报告已存在。
-8. 只有完成第7步，才可写或声称 `archive_status=success`。仅产生 staging branch、未创建PR或未合并时，只能记为 `pending` 或 `partial`。
-9. 合并完成后可删除 staging branch；不允许把黄色 “Compare & pull request” 横幅当作归档完成。
+1. 在任何GitHub写入发生前，先在本次任务上下文中生成并检查6个目标文件的最终完整内容。
+2. 对不存在的历史路径，直接在 `main` 创建。
+3. 对已存在路径，直接在 `main` 更新。
+4. `latest/{edition}.*` 只能在完整报告生成成功后覆盖。
+5. `manifests/reports.json` 以 `report_date + edition` 为唯一键；重复运行更新现有记录，不追加重复项。
+6. `status/{edition}_latest.json` 必须记录本次归档状态、报告日期、生成时间、CI状态和错误。
+7. 六个路径全部写入后，必须重新通过 GitHub connector 从 `main` 读取并验证：
+   - 历史Markdown存在；
+   - 历史JSON存在；
+   - latest Markdown/JSON对应本次报告；
+   - status对应本次运行；
+   - manifest中本次 `report_date + edition` 仅有一个记录。
+8. 只有第7步全部成功后，才能设置或声称 `archive_status=success`。
+9. main验证完成后立即结束本次 Scheduled Task；不要继续轮询、不要等待CI、不要创建或清理branch。
 
-发生任何降级时，必须在 `status/{edition}_latest.json` 和对话中明确写 `atomic_commit=false`、实际commit模式及降级原因。
+如果 GitHub Git-data 原子操作可以安全直接更新 `main`，可以使用；如果不能，允许通过 contents API 顺序创建/更新6个路径。**不得因为原子提交不可用而退回 staging/PR/merge。**
 
-### 写入行为
+## Archive状态与CI状态分离
 
-- 历史路径不存在时创建；已经存在时更新同一路径，不创建无序副本。Git提交历史即修订历史。
-- `latest/` 文件只能在完整报告已经生成后更新。
-- Manifest 以 `report_date + edition` 为唯一键；重复运行时更新该条记录，而不是追加重复项。
-- Markdown必须保存完整中文报告；JSON必须符合 `schemas/report.schema.json`。
-- JSON中必须记录：报告日期、版本、生成时间、市场状态、机会榜、交易卡、行动清单、风险预算、来源、China-Options-Engine输入数据日期和新鲜度、归档路径及状态。
-- 正式历史文件的JSON字段 `archive.markdown_path` 和 `archive.json_path` 必须与实际路径一致；或在 `archive.paths` 中完整列出实际历史Markdown与JSON路径。
-- GitHub Markdown不得包含ChatGPT专用引用标记、内部turn ID、connector ID或私有file引用；将关键来源转换为普通Markdown链接/脚注，并在JSON `sources` 数组中结构化保存。
+- `archive_status=success`：6个必需路径已经在 `main` 上重新读取并验证成功。
+- `archive_status=partial`：部分 main 写入或复核失败。
+- `archive_status=failed`：无法完成正式 main 归档。
+- GitHub Actions `Validate Radar Reports` 仅作为**push后的独立事后校验**，不得阻塞 Scheduled Task。
+- 如果任务结束时无法取得 Actions 最终结果，记录：
+
+```text
+ci_validation_status = pending_or_unverified
+```
+
+不得虚构 `passed`。
+
+如果之后 Actions 红叉，含义是“报告已写入 main，但CI校验失败”，不是归档未发生。
+
+## 写入内容规则
+
+- Markdown必须保存完整中文报告。
+- JSON必须符合 `schemas/report.schema.json`。
+- JSON中至少记录：报告日期、edition、生成时间、市场状态、机会榜、交易卡、行动清单、风险预算、来源、China-Options-Engine输入路径、数据日期、新鲜度、previous_date、errors、archive_status、ci_validation_status。
+- 正式历史JSON的 `archive.markdown_path` 和 `archive.json_path` 应与实际历史路径一致，或在 `archive.paths` 中完整列出实际路径。
+- GitHub Markdown不得包含ChatGPT专用引用标记、内部turn ID、connector ID或私有file引用；关键来源转换为普通Markdown链接/脚注，并在JSON `sources` 数组结构化保存。
 - 不得将API key、访问令牌、券商凭证、私人邮件、账户信息或未经批准的非公开公司信息写入仓库。
 
-### Archive状态与CI状态必须区分
+## GitHub失败处理
 
-- `archive.archive_status=success` / `status/*_latest.json` 中的 `archive_status=success` 表示本次要求的仓库文件已经出现在 `main`。
-- staging branch写齐但尚未合并时，状态只能是 `pending` 或 `partial`。
-- GitHub Actions 的 `Validate Radar Reports` 是提交后的独立校验。只有该workflow通过时，自动化才可以合并staging PR。
-- 如果无法在当前执行上下文读取Actions最终结果，不得把 staging PR 自动标记为成功；应保留 `ci_validation_status="pending_or_unverified"` 并明确说明尚未合并。
+- 对话中的正式报告必须正常发布；GitHub归档失败不能吞掉研究报告。
+- 任一目标路径写入失败时，继续尽可能完成可安全完成的其他目标路径，并记录失败路径。
+- main复核若发现任一必需路径缺失或日期/edition不正确，不得声称成功。
+- 若状态文件可以写入，记录 `archive_status=partial` 或 `failed`；若状态文件也无法写入，则在对话中明确说明错误。
 
-### GitHub失败处理
-
-- 对话中的正式报告必须先正常发布；GitHub写入失败不能吞掉报告。
-- 原子提交、staging写入、PR创建、校验或合并任一步失败时，不得声称完整归档成功。
-- 尽量把失败信息写入 `status/{edition}_latest.json`；若状态文件也无法写入，则在对话报告末尾明确写出失败路径和错误。
-- JSON `status` 使用 `published`、`archive_failed` 或 `not_published`；`archive.archive_status` 使用 `success`、`partial`、`failed` 或 `pending`。
-
-### 数据来源记录
+## 数据来源记录
 
 中国股指衍生品数据优先读取：
 
@@ -118,7 +128,7 @@ farfromexact/China-Options-Engine/data/snapshots/YYYY-MM-DD.json
 - 历史路径：`reports/YYYY/MM/YYYY-MM-DD_morning.md/json`
 - Latest路径：`latest/morning.md/json`
 - 状态路径：`status/morning_latest.json`
-- Commit message：`radar: publish YYYY-MM-DD morning report`
+- Commit message可使用：`radar: publish YYYY-MM-DD morning report`
 - 周末或中国节假日可使用最近一个经过验证的中国交易日数据，JSON中设置 `weekend_mode=true` 或写明节假日模式。
 
 ## 晚间版专用规则
@@ -127,13 +137,13 @@ farfromexact/China-Options-Engine/data/snapshots/YYYY-MM-DD.json
 - 历史路径：`reports/YYYY/MM/YYYY-MM-DD_evening.md/json`
 - Latest路径：`latest/evening.md/json`
 - 状态路径：`status/evening_latest.json`
-- Commit message：`radar: publish YYYY-MM-DD evening report`
-- 正常中国交易日晚间版应验证China-Options-Engine `date`为当日交易日且 `data_fresh=true`；否则必须标明数据降级或滞后。
+- Commit message可使用：`radar: publish YYYY-MM-DD evening report`
+- 正常中国交易日晚间版应验证 China-Options-Engine `date` 为当日交易日且 `data_fresh=true`；否则必须标明数据降级或滞后。
 - 如北京时间20:30有美国关键宏观数据，先完成数据公布后的市场反应更新，再形成最终报告和GitHub归档。
 
 ## 手工测试规则
 
-Scheduled Task正式运行以外的手工测试，默认写入：
+Scheduled Task正式运行以外的手工测试，默认只写：
 
 ```text
 tests/YYYY-MM-DDTHH-MM-SS_{edition}.md
