@@ -19,6 +19,8 @@ FORBIDDEN_REFERENCE_PATTERNS = [
     re.compile(r"\bconnector_[A-Za-z0-9_-]+\b"),
 ]
 
+REPORT_TEST_NAME = re.compile(r"_(morning|evening)\.json$")
+
 
 class ValidationFailure(Exception):
     pass
@@ -55,7 +57,15 @@ def scan_forbidden_tokens(path: Path) -> list[str]:
 def report_paths() -> list[Path]:
     paths = list((ROOT / "latest").glob("*.json"))
     paths.extend((ROOT / "reports").glob("**/*.json"))
-    paths.extend((ROOT / "tests").glob("**/*.json")) if (ROOT / "tests").exists() else None
+    if (ROOT / "tests").exists():
+        # The tests tree also contains operational smoke-status JSON files. Only
+        # files ending in _morning.json or _evening.json are report fixtures and
+        # should be validated against the full report schema.
+        paths.extend(
+            path
+            for path in (ROOT / "tests").glob("**/*.json")
+            if REPORT_TEST_NAME.search(path.name)
+        )
     return sorted(set(paths))
 
 
@@ -98,16 +108,17 @@ def validate_report_file(path: Path, schema: dict[str, Any]) -> list[str]:
         archive = data.get("archive", {})
         expected_json = archive.get("json_path")
         expected_md = archive.get("markdown_path")
+        archive_paths = set(archive.get("paths") or [])
         if "reports" in path.parts:
             rel_json = path.relative_to(ROOT).as_posix()
             rel_md = markdown_path.relative_to(ROOT).as_posix()
-            if expected_json != rel_json:
+            if expected_json != rel_json and rel_json not in archive_paths:
                 messages.append(
-                    f"{path.relative_to(ROOT)} archive.json_path={expected_json!r}; expected {rel_json!r}"
+                    f"{path.relative_to(ROOT)} archive.json_path={expected_json!r}; expected {rel_json!r} or inclusion in archive.paths"
                 )
-            if expected_md != rel_md:
+            if expected_md != rel_md and rel_md not in archive_paths:
                 messages.append(
-                    f"{path.relative_to(ROOT)} archive.markdown_path={expected_md!r}; expected {rel_md!r}"
+                    f"{path.relative_to(ROOT)} archive.markdown_path={expected_md!r}; expected {rel_md!r} or inclusion in archive.paths"
                 )
 
     messages.extend(scan_forbidden_tokens(path))
