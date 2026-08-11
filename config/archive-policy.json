@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "2.0",
   "repository": "farfromexact/Global-Cross-Asset-Radar",
   "timezone": "Asia/Shanghai",
   "editions": {
@@ -27,8 +27,13 @@
     "edition_status",
     "manifest"
   ],
-  "formal_archive_commit_mode": "atomic_single_commit",
-  "formal_archive_atomic_paths": [
+  "formal_archive_commit_mode": "direct_to_main",
+  "formal_archive_branch": "main",
+  "branch_policy": "do_not_create_staging_branches_for_formal_archives",
+  "pull_request_policy": "do_not_create_pull_requests_for_formal_archives",
+  "merge_policy": "no_merge_step_is_part_of_formal_archive",
+  "direct_write_policy": "prepare the final contents for all six required paths first, then create or update each required path directly on main through the GitHub connector; if atomic Git-data operations are safely available they may be used, but they are not required",
+  "required_paths": [
     "historical_markdown",
     "historical_json",
     "latest_markdown",
@@ -36,31 +41,17 @@
     "edition_status",
     "manifest"
   ],
-  "atomic_write_policy": "prepare all six final file contents first; create one Git tree/commit with the current main HEAD as parent; advance main exactly once; do not publish formal archive files through six sequential contents-API commits unless atomic Git-data operations are unavailable",
-  "fallback_commit_mode": "staging_branch_then_pull_request_merge",
-  "fallback_policy": {
-    "branch_template": "radar-archive-{YYYY-MM-DD}-{edition}-staging",
-    "required_steps": [
-      "create staging branch from current main",
-      "write all six required archive paths",
-      "confirm staging branch contains every required path",
-      "open a pull request to main",
-      "wait for Validate Radar Reports",
-      "repair validation failures on the same staging branch",
-      "merge the pull request into main",
-      "verify the historical report exists on main"
-    ],
-    "success_condition": "archive_status=success only after the pull request is merged or main is otherwise verified to contain all six paths",
-    "forbidden_terminal_state": "a staging branch with unmerged report files is never a completed archive",
-    "validation_failure_policy": "fix the staging branch and rerun validation; do not merge a known failing report unless the user explicitly overrides",
-    "cleanup_policy": "the staging branch may be deleted after successful merge"
-  },
+  "success_condition": "archive_status=success only after all six required paths have been re-read from main and verified for the current report_date and edition",
+  "partial_condition": "if some required main writes or post-write verification steps fail, archive_status=partial",
+  "failure_condition": "if formal archive cannot be written to main, archive_status=failed",
   "historical_file_policy": "upsert_same_date_and_edition; rely_on_git_history_for_revisions",
   "latest_file_policy": "overwrite_only_after_report_generation_succeeds",
+  "manifest_policy": "report_date+edition is the unique key; update an existing entry instead of appending a duplicate",
   "chat_delivery_policy": "publish_report_in_chat_even_when_github_archive_fails",
-  "github_failure_policy": "mark_archive_status_failed_or_partial_and report the error; never suppress the research report",
-  "archive_status_semantics": "archive_status=success means all required repository files are present on main; a completed staging branch alone is partial/pending, not success",
-  "ci_validation_semantics": "GitHub Actions validation is a separate check; a green Validate Radar Reports result is required before an automated staging-branch merge",
+  "github_failure_policy": "report the failing main path and error; never suppress the research report",
+  "archive_status_semantics": "archive_status=success means all required files are confirmed present on main for the current report; success does not imply CI validation passed",
+  "ci_validation_semantics": "Validate Radar Reports is post-push validation only; do not wait for it and do not let CI block Scheduled Task completion; if the result is unavailable record ci_validation_status=pending_or_unverified",
+  "completion_policy": "after all six main paths are re-read and verified, end the Scheduled Task immediately; do not poll CI, create branches, create PRs, merge, or perform branch cleanup",
   "citation_policy": "GitHub Markdown uses ordinary Markdown links or footnotes; never write ChatGPT-only citation tokens such as filecite, cite, memcite, turn-search IDs or private connector IDs",
   "source_policy": "JSON stores a structured sources array with title, publisher, URL when available, source date, access time and supported claims",
   "input_data": {
