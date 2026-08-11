@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "repository": "farfromexact/Global-Cross-Asset-Radar",
   "timezone": "Asia/Shanghai",
   "editions": {
@@ -37,18 +37,37 @@
     "manifest"
   ],
   "atomic_write_policy": "prepare all six final file contents first; create one Git tree/commit with the current main HEAD as parent; advance main exactly once; do not publish formal archive files through six sequential contents-API commits unless atomic Git-data operations are unavailable",
+  "fallback_commit_mode": "staging_branch_then_pull_request_merge",
+  "fallback_policy": {
+    "branch_template": "radar-archive-{YYYY-MM-DD}-{edition}-staging",
+    "required_steps": [
+      "create staging branch from current main",
+      "write all six required archive paths",
+      "confirm staging branch contains every required path",
+      "open a pull request to main",
+      "wait for Validate Radar Reports",
+      "repair validation failures on the same staging branch",
+      "merge the pull request into main",
+      "verify the historical report exists on main"
+    ],
+    "success_condition": "archive_status=success only after the pull request is merged or main is otherwise verified to contain all six paths",
+    "forbidden_terminal_state": "a staging branch with unmerged report files is never a completed archive",
+    "validation_failure_policy": "fix the staging branch and rerun validation; do not merge a known failing report unless the user explicitly overrides",
+    "cleanup_policy": "the staging branch may be deleted after successful merge"
+  },
   "historical_file_policy": "upsert_same_date_and_edition; rely_on_git_history_for_revisions",
   "latest_file_policy": "overwrite_only_after_report_generation_succeeds",
   "chat_delivery_policy": "publish_report_in_chat_even_when_github_archive_fails",
-  "github_failure_policy": "mark_archive_status_failed_or_partial_and_report_the_error; never_suppress_the_research_report",
-  "archive_status_semantics": "archive_status=success means the required repository files were written successfully; it does not by itself mean the GitHub Actions validation workflow passed",
-  "ci_validation_semantics": "GitHub Actions validation is a separate post-commit check; a green check means scripts/validate_reports.py completed successfully for that commit",
+  "github_failure_policy": "mark_archive_status_failed_or_partial_and report the error; never suppress the research report",
+  "archive_status_semantics": "archive_status=success means all required repository files are present on main; a completed staging branch alone is partial/pending, not success",
+  "ci_validation_semantics": "GitHub Actions validation is a separate check; a green Validate Radar Reports result is required before an automated staging-branch merge",
   "citation_policy": "GitHub Markdown uses ordinary Markdown links or footnotes; never write ChatGPT-only citation tokens such as filecite, cite, memcite, turn-search IDs or private connector IDs",
   "source_policy": "JSON stores a structured sources array with title, publisher, URL when available, source date, access time and supported claims",
   "input_data": {
     "repository": "farfromexact/China-Options-Engine",
     "priority": [
       "data/radar_latest.json",
+      "data/radar_history.json",
       "data/latest.json",
       "data/snapshots/YYYY-MM-DD.json"
     ],
