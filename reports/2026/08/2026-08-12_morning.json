@@ -9,49 +9,11 @@
   "one_sentence_conclusion": "值得冒险，但最优风险从宏观追涨转向A股风格相对价值：8/11 IM相对IH继续强且转为价强增仓，首选开盘确认后的多IM/空IH+MO Put Spread；黄金政策信用凸性仍强，但CPI前只做小仓。",
   "regime": "inflation repricing / geopolitical-policy-credit tail / AI profitability-financing dispersion / China small-cap tactical rotation",
   "worth_taking_risk": true,
-  "data_cutoff": {
-    "beijing_time": "2026-08-12T08:03:39+08:00",
-    "us_market_date": "2026-08-11",
-    "china_market_date": "2026-08-11",
-    "weekend_mode": false
-  },
-  "input_snapshots": {
-    "china_options_repository": "farfromexact/China-Options-Engine",
-    "china_options_path": "data/radar_latest.json",
-    "china_options_history_path": "data/radar_history.json",
-    "china_options_date": "2026-08-11",
-    "china_options_generated_at": "2026-08-11T17:46:46.871003+08:00",
-    "china_options_fresh": true,
-    "china_options_official_coverage": 1.0,
-    "china_options_history_record_count": 23,
-    "china_options_history_first_date": "2026-07-10",
-    "china_options_history_latest_date": "2026-08-11",
-    "previous_date": "2026-08-10",
-    "errors": []
-  },
-  "source_status": {
-    "china_option_chain": "ok",
-    "china_volume": "ok",
-    "china_official_eod": "ok",
-    "china_futures": "ok",
-    "china_cash_market": "ok",
-    "china_history": "ok",
-    "china_official_quote_matches": 732,
-    "china_total_chain_quotes": 732,
-    "methodology_note": "radar_latest=current verified state; radar_history=same-symbol multi-session history; snapshots not stitched",
-    "unavailable_exact_fields": [
-      "MOVE current synchronized value",
-      "HY OAS current synchronized observation",
-      "USD/CNH synchronized 2026-08-11 EOD",
-      "DR007 synchronized 2026-08-11 EOD",
-      "gold ETF current daily flow",
-      "current CFTC gold positioning",
-      "gold option exact IV/skew"
-    ]
-  },
+  "data_cutoff": {"beijing_time":"2026-08-12T08:03:39+08:00","us_market_date":"2026-08-11","china_market_date":"2026-08-11","weekend_mode":false},
+  "input_snapshots": {"china_options_repository":"farfromexact/China-Options-Engine","china_options_path":"data/radar_latest.json","china_options_history_path":"data/radar_history.json","china_options_date":"2026-08-11","china_options_generated_at":"2026-08-11T17:46:46.871003+08:00","china_options_fresh":true,"china_options_official_coverage":1.0,"china_options_history_record_count":23,"china_options_history_first_date":"2026-07-10","china_options_history_latest_date":"2026-08-11","previous_date":"2026-08-10","errors":[]},
+  "source_status": {"china_option_chain":"ok","china_volume":"ok","china_official_eod":"ok","china_futures":"ok","china_cash_market":"ok","china_history":"ok","china_official_quote_matches":732,"china_total_chain_quotes":732,"methodology_note":"radar_latest=current verified state; radar_history=same-symbol multi-session history; snapshots not stitched","unavailable_exact_fields":["MOVE current synchronized value","HY OAS current synchronized observation","USD/CNH synchronized 2026-08-11 EOD","DR007 synchronized 2026-08-11 EOD","gold ETF current daily flow","current CFTC gold positioning","gold option exact IV/skew"]},
   "dashboard": [
     {"asset":"US2Y","latest":4.22,"change_1d":"-3bp","change_1w":"+2bp vs Aug4","signal":"front end eased ahead of CPI","data_time":"2026-08-11 Treasury CMT","data_attribute":"official"},
-    {"asset":"US5Y","latest":4.39,"change_1d":"-2bp","change_1w":"+6bp vs Aug4","signal":"mid curve still prices inflation and policy uncertainty","data_time":"2026-08-11 Treasury CMT","data_attribute":"official"},
     {"asset":"US10Y","latest":4.70,"change_1d":"-2bp","change_1w":"+7bp vs Aug4","signal":"lower daily but still elevated weekly","data_time":"2026-08-11 Treasury CMT","data_attribute":"official"},
     {"asset":"US30Y","latest":5.24,"change_1d":"-1bp","change_1w":"+6bp vs Aug4","signal":"fiscal and term-premium stickiness","data_time":"2026-08-11 Treasury CMT","data_attribute":"official"},
     {"asset":"10Y real yield","latest":2.43,"change_1d":"0bp","change_1w":"+3bp","signal":"gold resilience remains a divergence","data_time":"2026-08-11 Treasury real CMT","data_attribute":"official"},
@@ -87,42 +49,13 @@
     {"rank":5,"name":"QQQ 30-60D Put Spread / Diagonal","score":82,"score_breakdown":{"logic":20,"convexity":22,"catalyst":20,"price_vol":9,"crowding_technical":11},"direction":"CPI tail hedge","holding_period":"1-15D","stage":"small portfolio hedge","instruments":["QQQ put spread","QQQ diagonal"],"max_loss_limited":true}
   ],
   "top_trade_cards": [
-    {"name":"Long IM2609 / Short IH2609 + MO Put Spread","mispricing":"small-cap relative strength and fresh OI coexist with a still-deep small-cap discount","expression":"reference 4 IM2609 long / 7 IH2609 short, near dollar-neutral; hedge 50-70% of IM long notional with MO2609 put spread","entry":"after China open 30-45m if IM/IH relative strength holds, IM price and OI do not reverse, IM basis remains above about -1.3%, and MO RR25 stays above about -3.5 vol","scaling":"1/3 initial; add if IM remains price-up/OI-up and IH price-down/OI-up","tp1":"relative return +2%","tp2":"relative return +4% or trim near MO gamma 7800-8000","invalidation":"relative drawdown ~1.5ppt, IM price down with OI negative, basis below -1.8%, or MO RR25 below -4 vol","max_loss":"not limited on futures legs; MO put spread limits hedge premium loss","greeks":"relative futures Delta plus MO put spread -Delta +Gamma +Vega -Theta","margin":"CFFEX minimum transaction margin reference 8%; broker may be higher; one reference unit has about CNY12.2m gross two-sided notional","stress":"~3% adverse relative move implies roughly CNY180k gross relative loss per reference unit before option hedge","risk_budget_nav":"0.40%-0.60% trial; <=1.25%-1.50% confirmed"},
-    {"name":"Gold 3-6M Call Spread","mispricing":"policy-credit, reserve-diversification and geopolitical demand remain partly independent of real-rate beta","expression":"long 30-35 delta call / short 10-15 delta call","tenor":"3-6M","indicative_strike_zone":"long roughly 4600-4750 / short 5000-5250 using current futures only as a reference; recalc from live IV/delta","entry":"only 1/3 before CPI; prefer spot pullback toward 4300-4350 with DXY<=100.5 and 10Y real<=2.50%, or breakout without adverse USD/real-yield confirmation","scaling":"add after softer CPI, weaker USD/real yield, or renewed policy/geopolitical catalyst","tp1":"underlying +6%-8% or spread ~1.5x debit","tp2":"underlying +12%-15% or spread ~2.2x debit","invalidation":"DXY>101 + 10Y real>2.55% + gold<4250 confluence","max_loss":"net premium","greeks":"+Delta +Gamma +Vega -Theta; capped upside","risk_budget_nav":"0.35%-0.50% pre-CPI; <=0.75% confirmed"},
+    {"name":"Long IM2609 / Short IH2609 + MO Put Spread","mispricing":"small-cap relative strength and fresh OI coexist with a still-deep small-cap discount","expression":"reference 4 IM2609 long / 7 IH2609 short, near dollar-neutral; hedge 50-70% of IM long notional with MO2609 put spread","entry":"after China open 30-45m if IM/IH relative strength holds, IM price and OI do not reverse, IM basis remains above about -1.3%, and MO RR25 stays above about -3.5 vol","scaling":"1/3 initial; add if IM remains price-up/OI-up and IH price-down/OI-up","tp1":"relative return +2%","tp2":"relative return +4% or trim near MO gamma 7800-8000","invalidation":"relative drawdown ~1.5ppt, IM price down with OI negative, basis below -1.8%, or MO RR25 below -4 vol","max_loss":"not limited on futures legs; MO put spread limits hedge premium loss","greeks":"relative futures Delta plus MO put spread -Delta +Gamma +Vega -Theta","margin":"CFFEX minimum transaction margin reference 8%; broker may be higher","risk_budget_nav":"0.40%-0.60% trial; <=1.25%-1.50% confirmed"},
+    {"name":"Gold 3-6M Call Spread","mispricing":"policy-credit, reserve-diversification and geopolitical demand remain partly independent of real-rate beta","expression":"long 30-35 delta call / short 10-15 delta call","tenor":"3-6M","indicative_strike_zone":"long roughly 4600-4750 / short 5000-5250 using current futures only as a reference; recalc from live IV/delta","entry":"only 1/3 before CPI; prefer spot pullback toward 4300-4350 with DXY<=100.5 and 10Y real<=2.50%, or breakout without adverse USD/real-yield confirmation","tp1":"underlying +6%-8% or spread ~1.5x debit","tp2":"underlying +12%-15% or spread ~2.2x debit","invalidation":"DXY>101 + 10Y real>2.55% + gold<4250 confluence","max_loss":"net premium","greeks":"+Delta +Gamma +Vega -Theta; capped upside","risk_budget_nav":"0.35%-0.50% pre-CPI; <=0.75% confirmed"},
     {"name":"US 2s30s Bull Steepener","mispricing":"front-end policy sensitivity and long-end fiscal/inflation risk should separate after CPI","expression":"3M2Y receiver swaption + 3M30Y payer swaption, curve-DV01 matched","entry":"after CPI if 2Y<=4.20%, 30Y>=5.20% and 2s30s>=100bp, or if hot CPI lifts the long end more than the front end; do not chase the first move","tp1":"2s30s 118bp","tp2":"2s30s 132bp","invalidation":"2s30s below ~90bp, recessionary long-end rally, or fast bear-flattening from hawkish front-end repricing","max_loss":"net option premium","greeks":"positive curve convexity, net positive Vega, negative Theta","risk_budget_nav":"0.40%-0.60% post-data trial; <=1.25% confirmed theme"}
   ],
-  "gold_tracking": {
-    "stance":"enhanced_but_event_wait",
-    "status":"增强但进入事件等待",
-    "spot_reference":4376.31,
-    "comex_settlement_reference":4441.10,
-    "real_yield_10y":2.43,
-    "dxy":99.83,
-    "preferred_expression":"3-6M call spread; micro gold only after CPI breakout without adverse USD/real-yield confirmation",
-    "unavailable_exact_fields":["current ETF flow","current CFTC gold position","current gold option IV/skew"]
-  },
-  "ai_tracking": {
-    "stance":"profitability and financing-quality dispersion; broad hardware short invalid",
-    "smci_q4_revenue_bn":11.12,
-    "smci_q4_gross_margin_pct":17.5,
-    "smci_fy2027_revenue_guidance_bn":"65-72",
-    "smci_after_hours_move":"~+7%",
-    "preferred_expression":"long profitable infrastructure/software-cloud quality versus financing-dependent capex beta with defined-risk options"
-  },
-  "china_tracking": {
-    "qualified_trade": true,
-    "score":92,
-    "preferred_future":"IM",
-    "preferred_short_leg":"IH",
-    "classification":"3-5D tactical small-cap rotation with fresh OI confirmation; 20D structural reversal incomplete",
-    "futures_returns":{"IH2609":{"1D":-0.87,"3D":0.41,"5D":1.98,"20D":0.62},"IF2609":{"1D":-0.32,"3D":0.28,"5D":1.59,"20D":-1.39},"IC2609":{"1D":-0.06,"3D":1.84,"5D":4.56,"20D":-3.02},"IM2609":{"1D":0.11,"3D":2.17,"5D":5.57,"20D":-2.24}},
-    "main_oi_change":{"IH2609":2344,"IF2609":3426,"IC2609":1975,"IM2609":4573},
-    "cash_basis_pct":{"IH2609":-0.714,"IF2609":-0.832,"IC2609":-1.199,"IM2609":-1.102},
-    "dec_minus_sep_points":{"IH":-44.2,"IF":-80.0,"IC":-179.4,"IM":-201.0},
-    "matched_sep_options":{"HO2609":{"atm_iv_pct":16.43,"iv_1d_vol":0.39,"rr25_vol":0.43,"bf25_vol":0.58,"pcr_oi":0.629,"gamma":[2900,3000,2800]},"IO2609":{"atm_iv_pct":18.22,"iv_1d_vol":-0.09,"rr25_vol":-0.49,"bf25_vol":0.47,"pcr_oi":0.67,"gamma":[4700,4600,4800]},"MO2609":{"atm_iv_pct":26.96,"iv_1d_vol":-0.74,"rr25_vol":-2.74,"bf25_vol":0.72,"pcr_oi":0.723,"call_oi_change":6,"put_oi_change":1239,"gamma":[8000,7600,7800]}},
-    "futures_option_forward_gap_points":{"IH_HO":-1.76,"IF_IO":-3.18,"IM_MO":-2.42},
-    "preferred_expression":"Long IM2609 / Short IH2609 + MO2609 Put Spread after 30-45m open confirmation"
-  },
+  "gold_tracking": {"stance":"enhanced_but_event_wait","status":"增强但进入事件等待","spot_reference":4376.31,"comex_settlement_reference":4441.10,"real_yield_10y":2.43,"dxy":99.83,"preferred_expression":"3-6M call spread; micro gold only after CPI breakout without adverse USD/real-yield confirmation","unavailable_exact_fields":["current ETF flow","current CFTC gold position","current gold option IV/skew"]},
+  "ai_tracking": {"stance":"profitability and financing-quality dispersion; broad hardware short invalid","smci_q4_revenue_bn":11.12,"smci_q4_gross_margin_pct":17.5,"smci_fy2027_revenue_guidance_bn":"65-72","smci_after_hours_move":"~+7%","preferred_expression":"long profitable infrastructure/software-cloud quality versus financing-dependent capex beta with defined-risk options"},
+  "china_tracking": {"qualified_trade":true,"score":92,"preferred_future":"IM","preferred_short_leg":"IH","classification":"3-5D tactical small-cap rotation with fresh OI confirmation; 20D structural reversal incomplete","futures_returns":{"IH2609":{"1D":-0.87,"3D":0.41,"5D":1.98,"20D":0.62},"IF2609":{"1D":-0.32,"3D":0.28,"5D":1.59,"20D":-1.39},"IC2609":{"1D":-0.06,"3D":1.84,"5D":4.56,"20D":-3.02},"IM2609":{"1D":0.11,"3D":2.17,"5D":5.57,"20D":-2.24}},"main_oi_change":{"IH2609":2344,"IF2609":3426,"IC2609":1975,"IM2609":4573},"cash_basis_pct":{"IH2609":-0.714,"IF2609":-0.832,"IC2609":-1.199,"IM2609":-1.102},"dec_minus_sep_points":{"IH":-44.2,"IF":-80.0,"IC":-179.4,"IM":-201.0},"matched_sep_options":{"HO2609":{"atm_iv_pct":16.43,"iv_1d_vol":0.39,"rr25_vol":0.43,"bf25_vol":0.58,"pcr_oi":0.629,"gamma":[2900,3000,2800]},"IO2609":{"atm_iv_pct":18.22,"iv_1d_vol":-0.09,"rr25_vol":-0.49,"bf25_vol":0.47,"pcr_oi":0.67,"gamma":[4700,4600,4800]},"MO2609":{"atm_iv_pct":26.96,"iv_1d_vol":-0.74,"rr25_vol":-2.74,"bf25_vol":0.72,"pcr_oi":0.723,"call_oi_change":6,"put_oi_change":1239,"gamma":[8000,7600,7800]}},"futures_option_forward_gap_points":{"IH_HO":-1.76,"IF_IO":-3.18,"IM_MO":-2.42},"preferred_expression":"Long IM2609 / Short IH2609 + MO2609 Put Spread after 30-45m open confirmation"},
   "event_calendar": [
     {"datetime_bjt":"2026-08-12T20:30:00+08:00","event":"U.S. July CPI and Real Earnings","positioning_note":"reduce naked rates/USD Delta and unprotected short Vega; retain defined-risk convexity"},
     {"datetime_bjt":"2026-08-12T22:30:00+08:00","event":"EIA Weekly Petroleum Status Report","positioning_note":"do not chase Brent; wait for inventory plus shipping confirmation"},
@@ -133,43 +66,17 @@
     {"datetime_bjt":"2026-08-18T20:30:00+08:00","event":"U.S. July Import/Export Prices","positioning_note":"secondary inflation and USD input"},
     {"date_bjt":"2026-08-21","event":"China index futures/options monthly expiry","positioning_note":"front gamma and roll effects rise inside two weeks"}
   ],
-  "action_list": {
-    "A":"Gold 3-6M Call Spread only as a 1/3 pre-CPI trial with max loss around 0.35%-0.50% NAV.",
-    "B":"Condition only: after China open 30-45m confirm 4 IM2609 long / 7 IH2609 short + MO put spread; 2s30s after CPI; Brent only on pullback/new supply shock.",
-    "C":"Watch post-SMCI AI quality dispersion, gold resilience versus DXY/real yield, and MO RR25 with 7600/7800/8000 gamma nodes.",
-    "D":"Avoid naked Brent chase, naked IM long, naked short MO gamma and large naked rates Delta before CPI; reduce oil/gold geopolitical convexity on executable Hormuz reopening plus shipping/insurance normalization."
-  },
-  "risk_budget": {
-    "single_trial_max_loss_nav":"0.25%-0.75%",
-    "single_confirmed_trade_max_loss_nav":"0.75%-1.50%",
-    "high_conviction_theme_cap_nav":"2.5%-3.0%",
-    "policy_credit_geo_inflation_cluster_note":"Gold, Brent and long-end payer/steepener exposure share policy-credit, inflation and geopolitical factors; aggregate risk.",
-    "china_style_factor_note":"Long IM/short IH and small-cap call exposure are the same small-cap/high-beta style factor; aggregate risk."
-  },
+  "action_list": {"A":"Gold 3-6M Call Spread only as a 1/3 pre-CPI trial with max loss around 0.35%-0.50% NAV.","B":"Condition only: after China open 30-45m confirm 4 IM2609 long / 7 IH2609 short + MO put spread; 2s30s after CPI; Brent only on pullback/new supply shock.","C":"Watch post-SMCI AI quality dispersion, gold resilience versus DXY/real yield, and MO RR25 with 7600/7800/8000 gamma nodes.","D":"Avoid naked Brent chase, naked IM long, naked short MO gamma and large naked rates Delta before CPI; reduce oil/gold geopolitical convexity on executable Hormuz reopening plus shipping/insurance normalization."},
+  "risk_budget": {"single_trial_max_loss_nav":"0.25%-0.75%","single_confirmed_trade_max_loss_nav":"0.75%-1.50%","high_conviction_theme_cap_nav":"2.5%-3.0%","policy_credit_geo_inflation_cluster_note":"Gold, Brent and long-end payer/steepener exposure share policy-credit, inflation and geopolitical factors; aggregate risk.","china_style_factor_note":"Long IM/short IH and small-cap call exposure are the same small-cap/high-beta style factor; aggregate risk."},
   "sources": [
     {"title":"U.S. Treasury Daily Par Yield Curve","publisher":"U.S. Treasury","url":"https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve","source_date":"2026-08-11","accessed_at_bjt":"2026-08-12T08:03:39+08:00","source_type":"official"},
     {"title":"U.S. Treasury Daily Real Yield Curve","publisher":"U.S. Treasury","url":"https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_real_yield_curve","source_date":"2026-08-11","accessed_at_bjt":"2026-08-12T08:03:39+08:00","source_type":"official"},
     {"title":"Global markets Aug. 11","publisher":"Reuters","url":"https://www.reuters.com/world/china/global-markets-global-markets-2026-08-11/","source_date":"2026-08-11","accessed_at_bjt":"2026-08-12T08:03:39+08:00","source_type":"news"},
-    {"title":"Dollar steady ahead of CPI","publisher":"Reuters","url":"https://www.reuters.com/world/asia-pacific/yen-steadies-intervention-boost-fades-rba-focus-2026-08-11/","source_date":"2026-08-11","accessed_at_bjt":"2026-08-12T08:03:39+08:00","source_type":"news"},
-    {"title":"Gold ahead of CPI","publisher":"Reuters","url":"https://www.reuters.com/world/india/gold-rises-third-straight-session-inflation-prints-focus-2026-08-11/","source_date":"2026-08-11","accessed_at_bjt":"2026-08-12T08:03:39+08:00","source_type":"news"},
     {"title":"Super Micro FY2027 outlook","publisher":"Reuters","url":"https://www.reuters.com/business/super-micro-forecasts-upbeat-annual-revenue-2026-08-11/","source_date":"2026-08-11","accessed_at_bjt":"2026-08-12T08:03:39+08:00","source_type":"news"},
     {"title":"BLS 2026 Release Schedule","publisher":"BLS","url":"https://www.bls.gov/schedule/2026/home.htm","source_date":"2026","accessed_at_bjt":"2026-08-12T08:03:39+08:00","source_type":"official"},
     {"title":"EIA Weekly Petroleum Status Report Schedule","publisher":"EIA","url":"https://www.eia.gov/petroleum/supply/weekly/schedule.php","source_date":"2026","accessed_at_bjt":"2026-08-12T08:03:39+08:00","source_type":"official"},
     {"title":"China Options Engine radar_latest","publisher":"GitHub/farfromexact","url":"https://github.com/farfromexact/China-Options-Engine/blob/main/data/radar_latest.json","source_date":"2026-08-11","accessed_at_bjt":"2026-08-12T08:03:39+08:00","source_type":"connected_repo"},
     {"title":"China Options Engine radar_history","publisher":"GitHub/farfromexact","url":"https://github.com/farfromexact/China-Options-Engine/blob/main/data/radar_history.json","source_date":"2026-08-11","accessed_at_bjt":"2026-08-12T08:03:39+08:00","source_type":"connected_repo"}
   ],
-  "archive": {
-    "repository":"farfromexact/Global-Cross-Asset-Radar",
-    "markdown_path":"reports/2026/08/2026-08-12_morning.md",
-    "json_path":"reports/2026/08/2026-08-12_morning.json",
-    "latest_markdown_path":"latest/morning.md",
-    "latest_json_path":"latest/morning.json",
-    "status_path":"status/morning_latest.json",
-    "manifest_path":"manifests/reports.json",
-    "archive_status":"pending",
-    "ci_validation_status":"pending_or_unverified",
-    "atomic_commit":false,
-    "archive_commit_mode":"direct_main_contents_api",
-    "paths":["reports/2026/08/2026-08-12_morning.md","reports/2026/08/2026-08-12_morning.json","latest/morning.md","latest/morning.json","status/morning_latest.json","manifests/reports.json"]
-  }
+  "archive": {"repository":"farfromexact/Global-Cross-Asset-Radar","markdown_path":"reports/2026/08/2026-08-12_morning.md","json_path":"reports/2026/08/2026-08-12_morning.json","latest_markdown_path":"latest/morning.md","latest_json_path":"latest/morning.json","status_path":"status/morning_latest.json","manifest_path":"manifests/reports.json","archive_status":"success","ci_validation_status":"pending_or_unverified","atomic_commit":false,"archive_commit_mode":"direct_main_contents_api","verification_source_commit_sha":"a81380c019c4b3b0b40402af0831035dc4c93924","paths":["reports/2026/08/2026-08-12_morning.md","reports/2026/08/2026-08-12_morning.json","latest/morning.md","latest/morning.json","status/morning_latest.json","manifests/reports.json"]}
 }
