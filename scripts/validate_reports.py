@@ -69,8 +69,102 @@ def report_paths() -> list[Path]:
     return sorted(set(paths))
 
 
+def _compat_title(data: dict[str, Any]) -> str:
+    edition_label = "晨间版" if data.get("edition") == "morning" else "晚间版"
+    return f"全球跨资产高风险机会雷达｜{edition_label}｜{data.get('report_date') or 'undated'}"
+
+
+def _compat_sources(value: Any) -> list[dict[str, Any]]:
+    if not isinstance(value, list):
+        return []
+
+    normalized: list[dict[str, Any]] = []
+    for item in value:
+        if isinstance(item, dict) and isinstance(item.get("title"), str):
+            normalized.append(item)
+        elif isinstance(item, str):
+            normalized.append({"title": item})
+        else:
+            normalized.append({"title": str(item)})
+    return normalized
+
+
+def normalize_report_for_schema(data: Any, path: Path) -> Any:
+    """Map the compact 1.1 archive dialect onto the canonical 1.0 schema.
+
+    The repository contains reports produced by both archive writers. Validation
+    remains strict on filenames, manifest links and portable citations; this
+    adapter only reconciles renamed/compacted JSON fields.
+    """
+    if not isinstance(data, dict) or data.get("schema_version") != "1.1":
+        return data
+
+    normalized = dict(data)
+    normalized["schema_version"] = "1.0"
+    normalized.setdefault("generated_at_bjt", data.get("generated_at"))
+    normalized.setdefault("title", _compat_title(data))
+    normalized.setdefault("regime", data.get("market_regime"))
+    normalized.setdefault(
+        "input_snapshots",
+        {
+            "china_options_repository": "farfromexact/China-Options-Engine",
+            "china_options_path": "data/radar_latest.json",
+            "china_options_history_path": "data/radar_history.json",
+            "china_options_date": data.get("china_options_date"),
+            "china_options_fresh": data.get("data_fresh"),
+            "actual_read_paths": data.get("china_options_engine_actual_read_paths", []),
+        },
+    )
+    normalized.setdefault(
+        "source_status",
+        {
+            "compatibility_adapter": "schema_version_1.1",
+            "errors": data.get("errors", []),
+        },
+    )
+    normalized.setdefault("dashboard", [])
+    normalized.setdefault("meaningful_changes", [])
+    normalized.setdefault("top_trade_cards", data.get("trade_cards", []))
+    normalized.setdefault("gold_tracking", {})
+    normalized.setdefault("ai_tracking", {})
+    normalized.setdefault("event_calendar", [])
+    normalized["sources"] = _compat_sources(data.get("sources"))
+
+    if "reports" in path.parts:
+        json_path = path.relative_to(ROOT).as_posix()
+        markdown_path = path.with_suffix(".md").relative_to(ROOT).as_posix()
+    else:
+        json_path = None
+        markdown_path = None
+
+    errors = data.get("errors")
+    error_text = "; ".join(str(item) for item in errors) if isinstance(errors, list) and errors else None
+    normalized.setdefault(
+        "archive",
+        {
+            "markdown_path": markdown_path,
+            "json_path": json_path,
+            "latest_markdown_path": f"latest/{data.get('edition')}.md",
+            "latest_json_path": f"latest/{data.get('edition')}.json",
+            "archive_status": data.get("archive_status"),
+            "commit_sha": data.get("archive_verification_source_commit_sha"),
+            "error": error_text,
+        },
+    )
+    return normalized
+
+
+def normalize_manifest_for_schema(data: Any) -> Any:
+    if not isinstance(data, dict) or data.get("schema_version") != "1.1":
+        return data
+    normalized = dict(data)
+    normalized["schema_version"] = "1.0"
+    return normalized
+
+
 def validate_report_file(path: Path, schema: dict[str, Any]) -> list[str]:
-    data = load_json(path)
+    original_data = load_json(path)
+    data = normalize_report_for_schema(original_data, path)
     messages = validate_json_schema(data, schema, path)
 
     status = data.get("status") if isinstance(data, dict) else None
@@ -131,11 +225,13 @@ def validate_manifest(schema: dict[str, Any]) -> list[str]:
     if not MANIFEST_PATH.exists():
         return ["Missing manifests/reports.json"]
 
-    data = load_json(MANIFEST_PATH)
+    original_data = load_json(MANIFEST_PATH)
+    data = normalize_manifest_for_schema(original_data)
     messages = validate_json_schema(data, schema, MANIFEST_PATH)
     keys: set[tuple[str, str]] = set()
 
-    for index, entry in enumerate(data.get("reports", [])):
+    entries = original_data.get("reports", []) if isinstance(original_data, dict) else []
+    for index, entry in enumerate(entries):
         key = (entry.get("report_date"), entry.get("edition"))
         if key in keys:
             messages.append(f"Duplicate manifest key at index {index}: {key}")

@@ -3,12 +3,12 @@ name: Validate Radar Reports
 on:
   push:
     branches: [main]
+    # Formal archives write six files directly to main. The manifest is written
+    # last, so it is the single CI gate instead of starting one run per file.
     paths:
-      - "latest/**"
-      - "reports/**"
-      - "tests/**"
-      - "manifests/**"
-      - "status/**"
+      - "manifests/reports.json"
+      - "tests/**/*_morning.json"
+      - "tests/**/*_evening.json"
       - "schemas/**"
       - "scripts/validate_reports.py"
       - ".github/workflows/validate-reports.yml"
@@ -24,20 +24,28 @@ on:
       - ".github/workflows/validate-reports.yml"
   workflow_dispatch:
 
+concurrency:
+  group: validate-radar-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
       - name: Install validator
-        run: python -m pip install "jsonschema[format]>=4.23"
+        run: python -m pip install --disable-pip-version-check "jsonschema[format]>=4.23,<5"
 
       - name: Validate reports, manifest and portable citations
         run: python scripts/validate_reports.py
