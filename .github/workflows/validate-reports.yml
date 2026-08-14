@@ -11,6 +11,7 @@ on:
       - "tests/**/*_evening.json"
       - "schemas/**"
       - "scripts/validate_reports.py"
+      - "scripts/validate_markdown_reports.py"
       - ".github/workflows/validate-reports.yml"
   pull_request:
     paths:
@@ -21,6 +22,7 @@ on:
       - "status/**"
       - "schemas/**"
       - "scripts/validate_reports.py"
+      - "scripts/validate_markdown_reports.py"
       - ".github/workflows/validate-reports.yml"
   workflow_dispatch:
 
@@ -50,4 +52,5 @@ jobs:
       - name: Validate reports, manifest and portable citations
         run: python scripts/validate_reports.py
 
-# Manual retrigger after repairing the 2026-08-13 evening archive.
+      - name: Validate full Markdown archives
+        run: python scripts/validate_markdown_reports.py
