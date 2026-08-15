@@ -113,88 +113,89 @@ def _compat_china_tracking(value: Any) -> dict[str, Any]:
         match = re.match(r"^(IH|IF|IC|IM)\b", upper)
         if not match:
             match = re.search(r"\b(IH|IF|IC|IM)\b", upper)
-        if match:
-            normalized["preferred_future"] = match.group(1)
-        else:
-            normalized["preferred_future"] = None
+        normalized["preferred_future"] = match.group(1) if match else None
     return normalized
 
 
 def normalize_report_for_schema(data: Any, path: Path) -> Any:
-    """Map compact schema_version 1.1 archives onto canonical schema 1.0.
+    """Normalize report dialects into the canonical schema for validation.
 
-    The compatibility layer is permissive about compact/renamed summary fields,
-    while remaining strict on malformed JSON, report identity, paired files,
-    manifest links and non-portable citation tokens.
+    Compatibility is intentionally permissive for compact/renamed summary
+    fields and descriptive labels, while identity, paired files, manifest links,
+    JSON validity and portable citations remain strict.
     """
-    if not isinstance(data, dict) or data.get("schema_version") != "1.1":
+    if not isinstance(data, dict):
         return data
 
     normalized = dict(data)
-    normalized["schema_version"] = "1.0"
-    normalized.setdefault("status", _compat_status(data, path))
-    normalized.setdefault("generated_at_bjt", data.get("generated_at"))
-    normalized.setdefault("title", _compat_title(data))
-    normalized.setdefault(
-        "one_sentence_conclusion",
-        data.get("one_line_conclusion") or data.get("one_sentence") or None,
-    )
-    normalized.setdefault("regime", data.get("market_regime"))
-    normalized.setdefault("worth_taking_risk", data.get("worth_taking_risk"))
-    normalized.setdefault(
-        "input_snapshots",
-        {
-            "china_options_repository": "farfromexact/China-Options-Engine",
-            "china_options_path": "data/radar_latest.json",
-            "china_options_history_path": "data/radar_history.json",
-            "china_options_date": data.get("china_options_date"),
-            "china_options_fresh": data.get("data_fresh"),
-            "actual_read_paths": data.get("china_options_engine_actual_read_paths")
-            or data.get("China-Options-Engine实际读取路径")
-            or [],
-        },
-    )
-    normalized.setdefault(
-        "source_status",
-        {
-            "compatibility_adapter": "schema_version_1.1",
-            "errors": data.get("errors", []),
-        },
-    )
-    normalized.setdefault("dashboard", [])
-    normalized.setdefault("meaningful_changes", [])
-    normalized.setdefault("top_opportunities", [])
-    normalized.setdefault("top_trade_cards", data.get("trade_cards", []))
-    normalized.setdefault("gold_tracking", {})
-    normalized.setdefault("ai_tracking", {})
-    normalized["china_tracking"] = _compat_china_tracking(data.get("china_tracking", {}))
-    normalized.setdefault("event_calendar", [])
-    normalized.setdefault("action_list", {"A": "", "B": "", "C": "", "D": ""})
-    normalized.setdefault("risk_budget", {})
-    normalized["sources"] = _compat_sources(data.get("sources"))
 
-    if "reports" in path.parts:
-        json_path = path.relative_to(ROOT).as_posix()
-        markdown_path = path.with_suffix(".md").relative_to(ROOT).as_posix()
-    else:
-        json_path = None
-        markdown_path = None
+    if data.get("schema_version") == "1.1":
+        normalized["schema_version"] = "1.0"
+        normalized.setdefault("status", _compat_status(data, path))
+        normalized.setdefault("generated_at_bjt", data.get("generated_at"))
+        normalized.setdefault("title", _compat_title(data))
+        normalized.setdefault(
+            "one_sentence_conclusion",
+            data.get("one_line_conclusion") or data.get("one_sentence") or None,
+        )
+        normalized.setdefault("regime", data.get("market_regime"))
+        normalized.setdefault("worth_taking_risk", data.get("worth_taking_risk"))
+        normalized.setdefault(
+            "input_snapshots",
+            {
+                "china_options_repository": "farfromexact/China-Options-Engine",
+                "china_options_path": "data/radar_latest.json",
+                "china_options_history_path": "data/radar_history.json",
+                "china_options_date": data.get("china_options_date"),
+                "china_options_fresh": data.get("data_fresh"),
+                "actual_read_paths": data.get("china_options_engine_actual_read_paths")
+                or data.get("China-Options-Engine实际读取路径")
+                or [],
+            },
+        )
+        normalized.setdefault(
+            "source_status",
+            {
+                "compatibility_adapter": "schema_version_1.1",
+                "errors": data.get("errors", []),
+            },
+        )
+        normalized.setdefault("dashboard", [])
+        normalized.setdefault("meaningful_changes", [])
+        normalized.setdefault("top_opportunities", [])
+        normalized.setdefault("top_trade_cards", data.get("trade_cards", []))
+        normalized.setdefault("gold_tracking", {})
+        normalized.setdefault("ai_tracking", {})
+        normalized.setdefault("event_calendar", [])
+        normalized.setdefault("action_list", {"A": "", "B": "", "C": "", "D": ""})
+        normalized.setdefault("risk_budget", {})
+        normalized["sources"] = _compat_sources(data.get("sources"))
 
-    errors = data.get("errors")
-    error_text = "; ".join(str(item) for item in errors) if isinstance(errors, list) and errors else None
-    normalized.setdefault(
-        "archive",
-        {
-            "markdown_path": markdown_path,
-            "json_path": json_path,
-            "latest_markdown_path": f"latest/{data.get('edition')}.md",
-            "latest_json_path": f"latest/{data.get('edition')}.json",
-            "archive_status": data.get("archive_status"),
-            "commit_sha": data.get("archive_verification_source_commit_sha")
-            or data.get("publication_commit_sha"),
-            "error": error_text,
-        },
-    )
+        if "reports" in path.parts:
+            json_path = path.relative_to(ROOT).as_posix()
+            markdown_path = path.with_suffix(".md").relative_to(ROOT).as_posix()
+        else:
+            json_path = None
+            markdown_path = None
+
+        errors = data.get("errors")
+        error_text = "; ".join(str(item) for item in errors) if isinstance(errors, list) and errors else None
+        normalized.setdefault(
+            "archive",
+            {
+                "markdown_path": markdown_path,
+                "json_path": json_path,
+                "latest_markdown_path": f"latest/{data.get('edition')}.md",
+                "latest_json_path": f"latest/{data.get('edition')}.json",
+                "archive_status": data.get("archive_status"),
+                "commit_sha": data.get("archive_verification_source_commit_sha")
+                or data.get("publication_commit_sha"),
+                "error": error_text,
+            },
+        )
+
+    # Apply harmless descriptive-label normalization to every schema version.
+    normalized["china_tracking"] = _compat_china_tracking(normalized.get("china_tracking", {}))
     return normalized
 
 
