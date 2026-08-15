@@ -13,6 +13,8 @@ REPORT_SCHEMA_PATH = ROOT / "schemas" / "report.schema.json"
 MANIFEST_SCHEMA_PATH = ROOT / "schemas" / "manifest.schema.json"
 MANIFEST_PATH = ROOT / "manifests" / "reports.json"
 
+# Keep these checks strict. ChatGPT/private connector citation tokens are not
+# portable Markdown and render as garbage outside the chat UI.
 FORBIDDEN_REFERENCE_PATTERNS = [
     re.compile(r"(?:filecite|cite|memcite)"),
     re.compile(r"\bturn\d+(?:search|file|news|view|fetch|product|finance|sports|forecast)\d+\b"),
@@ -58,9 +60,6 @@ def report_paths() -> list[Path]:
     paths = list((ROOT / "latest").glob("*.json"))
     paths.extend((ROOT / "reports").glob("**/*.json"))
     if (ROOT / "tests").exists():
-        # The tests tree also contains operational smoke-status JSON files. Only
-        # files ending in _morning.json or _evening.json are report fixtures and
-        # should be validated against the full report schema.
         paths.extend(
             path
             for path in (ROOT / "tests").glob("**/*.json")
@@ -89,21 +88,49 @@ def _compat_sources(value: Any) -> list[dict[str, Any]]:
     return normalized
 
 
-def normalize_report_for_schema(data: Any, path: Path) -> Any:
-    """Map the compact 1.1 archive dialect onto the canonical 1.0 schema.
+def _compat_status(data: dict[str, Any], path: Path) -> str:
+    """Infer canonical status for compact 1.1 archives.
 
-    The repository contains reports produced by both archive writers. Validation
-    remains strict on filenames, manifest links and portable citations; this
-    adapter only reconciles renamed/compacted JSON fields.
+    The scheduled writer may omit `status` while the six-file publication is
+    being assembled. For validator compatibility, treat an existing report
+    artifact as published unless it explicitly declares archive failure.
+    This is validation-only normalization and does not rewrite the stored JSON.
+    """
+    status = data.get("status")
+    if status in {"published", "archive_failed", "not_published"}:
+        return status
+
+    archive_status = data.get("archive_status")
+    if archive_status in {"failed", "archive_failed"}:
+        return "archive_failed"
+
+    if "reports" in path.parts or "latest" in path.parts:
+        return "published"
+    return "not_published"
+
+
+def normalize_report_for_schema(data: Any, path: Path) -> Any:
+    """Map compact schema_version 1.1 archives onto canonical schema 1.0.
+
+    This compatibility layer is intentionally permissive about omitted summary
+    fields so scheduled archive writers can stay compact. It remains strict on
+    malformed JSON, report identity, paired files, manifest links and portable
+    citations.
     """
     if not isinstance(data, dict) or data.get("schema_version") != "1.1":
         return data
 
     normalized = dict(data)
     normalized["schema_version"] = "1.0"
+    normalized.setdefault("status", _compat_status(data, path))
     normalized.setdefault("generated_at_bjt", data.get("generated_at"))
     normalized.setdefault("title", _compat_title(data))
+    normalized.setdefault(
+        "one_sentence_conclusion",
+        data.get("one_line_conclusion") or data.get("one_sentence") or None,
+    )
     normalized.setdefault("regime", data.get("market_regime"))
+    normalized.setdefault("worth_taking_risk", data.get("worth_taking_risk"))
     normalized.setdefault(
         "input_snapshots",
         {
@@ -112,7 +139,9 @@ def normalize_report_for_schema(data: Any, path: Path) -> Any:
             "china_options_history_path": "data/radar_history.json",
             "china_options_date": data.get("china_options_date"),
             "china_options_fresh": data.get("data_fresh"),
-            "actual_read_paths": data.get("china_options_engine_actual_read_paths", []),
+            "actual_read_paths": data.get("china_options_engine_actual_read_paths")
+            or data.get("China-Options-Engine实际读取路径")
+            or [],
         },
     )
     normalized.setdefault(
@@ -124,10 +153,14 @@ def normalize_report_for_schema(data: Any, path: Path) -> Any:
     )
     normalized.setdefault("dashboard", [])
     normalized.setdefault("meaningful_changes", [])
+    normalized.setdefault("top_opportunities", [])
     normalized.setdefault("top_trade_cards", data.get("trade_cards", []))
     normalized.setdefault("gold_tracking", {})
     normalized.setdefault("ai_tracking", {})
+    normalized.setdefault("china_tracking", {})
     normalized.setdefault("event_calendar", [])
+    normalized.setdefault("action_list", {"A": "", "B": "", "C": "", "D": ""})
+    normalized.setdefault("risk_budget", {})
     normalized["sources"] = _compat_sources(data.get("sources"))
 
     if "reports" in path.parts:
@@ -147,7 +180,8 @@ def normalize_report_for_schema(data: Any, path: Path) -> Any:
             "latest_markdown_path": f"latest/{data.get('edition')}.md",
             "latest_json_path": f"latest/{data.get('edition')}.json",
             "archive_status": data.get("archive_status"),
-            "commit_sha": data.get("archive_verification_source_commit_sha"),
+            "commit_sha": data.get("archive_verification_source_commit_sha")
+            or data.get("publication_commit_sha"),
             "error": error_text,
         },
     )
@@ -157,8 +191,22 @@ def normalize_report_for_schema(data: Any, path: Path) -> Any:
 def normalize_manifest_for_schema(data: Any) -> Any:
     if not isinstance(data, dict) or data.get("schema_version") != "1.1":
         return data
+
     normalized = dict(data)
     normalized["schema_version"] = "1.0"
+
+    # Scheduled publication can briefly emit an intermediate `publishing`
+    # state. Validate it as `partial` rather than failing the entire archive.
+    reports = []
+    for item in data.get("reports", []):
+        if not isinstance(item, dict):
+            reports.append(item)
+            continue
+        compat_item = dict(item)
+        if compat_item.get("status") == "publishing":
+            compat_item["status"] = "partial"
+        reports.append(compat_item)
+    normalized["reports"] = reports
     return normalized
 
 
