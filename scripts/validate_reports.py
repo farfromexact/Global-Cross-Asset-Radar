@@ -89,13 +89,6 @@ def _compat_sources(value: Any) -> list[dict[str, Any]]:
 
 
 def _compat_status(data: dict[str, Any], path: Path) -> str:
-    """Infer canonical status for compact 1.1 archives.
-
-    The scheduled writer may omit `status` while the six-file publication is
-    being assembled. For validator compatibility, treat an existing report
-    artifact as published unless it explicitly declares archive failure.
-    This is validation-only normalization and does not rewrite the stored JSON.
-    """
     status = data.get("status")
     if status in {"published", "archive_failed", "not_published"}:
         return status
@@ -109,13 +102,30 @@ def _compat_status(data: dict[str, Any], path: Path) -> str:
     return "not_published"
 
 
+def _compat_china_tracking(value: Any) -> dict[str, Any]:
+    if not isinstance(value, dict):
+        return {}
+
+    normalized = dict(value)
+    preferred = normalized.get("preferred_future")
+    if isinstance(preferred, str):
+        upper = preferred.upper().strip()
+        match = re.match(r"^(IH|IF|IC|IM)\b", upper)
+        if not match:
+            match = re.search(r"\b(IH|IF|IC|IM)\b", upper)
+        if match:
+            normalized["preferred_future"] = match.group(1)
+        else:
+            normalized["preferred_future"] = None
+    return normalized
+
+
 def normalize_report_for_schema(data: Any, path: Path) -> Any:
     """Map compact schema_version 1.1 archives onto canonical schema 1.0.
 
-    This compatibility layer is intentionally permissive about omitted summary
-    fields so scheduled archive writers can stay compact. It remains strict on
-    malformed JSON, report identity, paired files, manifest links and portable
-    citations.
+    The compatibility layer is permissive about compact/renamed summary fields,
+    while remaining strict on malformed JSON, report identity, paired files,
+    manifest links and non-portable citation tokens.
     """
     if not isinstance(data, dict) or data.get("schema_version") != "1.1":
         return data
@@ -157,7 +167,7 @@ def normalize_report_for_schema(data: Any, path: Path) -> Any:
     normalized.setdefault("top_trade_cards", data.get("trade_cards", []))
     normalized.setdefault("gold_tracking", {})
     normalized.setdefault("ai_tracking", {})
-    normalized.setdefault("china_tracking", {})
+    normalized["china_tracking"] = _compat_china_tracking(data.get("china_tracking", {}))
     normalized.setdefault("event_calendar", [])
     normalized.setdefault("action_list", {"A": "", "B": "", "C": "", "D": ""})
     normalized.setdefault("risk_budget", {})
@@ -195,8 +205,6 @@ def normalize_manifest_for_schema(data: Any) -> Any:
     normalized = dict(data)
     normalized["schema_version"] = "1.0"
 
-    # Scheduled publication can briefly emit an intermediate `publishing`
-    # state. Validate it as `partial` rather than failing the entire archive.
     reports = []
     for item in data.get("reports", []):
         if not isinstance(item, dict):
