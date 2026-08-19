@@ -14,6 +14,22 @@
       "latest_markdown": "latest/evening.md",
       "latest_json": "latest/evening.json",
       "status_path": "status/evening_latest.json"
+    },
+    "commodities_morning": {
+      "scheduled_time": "07:00",
+      "timing_semantics": "best_effort target start, not a fixed report-completion SLA; wait for required inputs and record actual generated_at",
+      "target_window": "07:00 through China cash-market open, subject to source readiness",
+      "latest_markdown": "latest/commodities_morning.md",
+      "latest_json": "latest/commodities_morning.json",
+      "status_path": "status/commodities_morning_latest.json"
+    },
+    "commodities_evening": {
+      "scheduled_time": "19:30",
+      "timing_semantics": "best_effort target start, not a fixed report-completion SLA; wait for required inputs and record actual generated_at",
+      "target_window": "after the China day-session data is ready and before the relevant night-session decision window",
+      "latest_markdown": "latest/commodities_evening.md",
+      "latest_json": "latest/commodities_evening.json",
+      "status_path": "status/commodities_evening_latest.json"
     }
   },
   "historical_path_template": "reports/{YYYY}/{MM}/{YYYY-MM-DD}_{edition}.{ext}",
@@ -69,6 +85,27 @@
       "source_status",
       "previous_date",
       "errors"
+    ]
+  },
+  "commodity_input_data": {
+    "repository": "farfromexact/China-Commodities-Engine",
+    "branch": "main",
+    "priority": [
+      "data/last_run_status.json",
+      "data/radar_latest.json",
+      "data/radar_history.json"
+    ],
+    "required_health_fields": [
+      "run_date",
+      "generated_at",
+      "data_fresh",
+      "official_complete",
+      "module_quality",
+      "quality_metrics.source_date_match_pct",
+      "quality_metrics.critical_module_errors",
+      "quality_metrics.full_market_ready",
+      "coverage_scope",
+      "validation_errors"
     ]
   },
   "idempotency": {

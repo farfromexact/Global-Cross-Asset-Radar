@@ -9,6 +9,8 @@ on:
       - "manifests/reports.json"
       - "tests/**/*_morning.json"
       - "tests/**/*_evening.json"
+      - "tests/test_*.py"
+      - "config/archive-policy.json"
       - "schemas/**"
       - "scripts/validate_reports.py"
       - "scripts/validate_markdown_reports.py"
@@ -20,6 +22,9 @@ on:
       - "tests/**"
       - "manifests/**"
       - "status/**"
+      - "config/archive-policy.json"
+      - "prompts/**"
+      - "templates/**"
       - "schemas/**"
       - "scripts/validate_reports.py"
       - "scripts/validate_markdown_reports.py"
@@ -54,3 +59,6 @@ jobs:
 
       - name: Validate full Markdown archives
         run: python scripts/validate_markdown_reports.py
+
+      - name: Run archive validator tests
+        run: python -m unittest discover -s tests -p "test_*.py"

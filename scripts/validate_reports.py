@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REPORT_SCHEMA_PATH = ROOT / "schemas" / "report.schema.json"
 MANIFEST_SCHEMA_PATH = ROOT / "schemas" / "manifest.schema.json"
 MANIFEST_PATH = ROOT / "manifests" / "reports.json"
+ARCHIVE_POLICY_PATH = ROOT / "config" / "archive-policy.json"
 
 # Keep these checks strict. ChatGPT/private connector citation tokens are not
 # portable Markdown and render as garbage outside the chat UI.
@@ -20,9 +21,6 @@ FORBIDDEN_REFERENCE_PATTERNS = [
     re.compile(r"\bturn\d+(?:search|file|news|view|fetch|product|finance|sports|forecast)\d+\b"),
     re.compile(r"\bconnector_[A-Za-z0-9_-]+\b"),
 ]
-
-REPORT_TEST_NAME = re.compile(r"_(morning|evening)\.json$")
-
 
 class ValidationFailure(Exception):
     pass
@@ -33,6 +31,26 @@ def load_json(path: Path) -> Any:
         return json.loads(path.read_text(encoding="utf-8"))
     except Exception as exc:
         raise ValidationFailure(f"Invalid JSON: {path.relative_to(ROOT)}: {exc}") from exc
+
+
+def configured_editions(policy: Any) -> tuple[str, ...]:
+    editions = policy.get("editions") if isinstance(policy, dict) else None
+    if not isinstance(editions, dict) or not editions:
+        raise ValidationFailure("config/archive-policy.json must define a non-empty editions object")
+
+    invalid = [edition for edition, value in editions.items() if not isinstance(edition, str) or not isinstance(value, dict)]
+    if invalid:
+        raise ValidationFailure("config/archive-policy.json has an invalid editions object")
+    return tuple(editions)
+
+
+def historical_report_pattern(allowed_editions: tuple[str, ...]) -> re.Pattern[str]:
+    choices = "|".join(re.escape(edition) for edition in allowed_editions)
+    return re.compile(rf"^(\d{{4}}-\d{{2}}-\d{{2}})_({choices})\.json$")
+
+
+def is_report_test_name(path: Path, allowed_editions: tuple[str, ...]) -> bool:
+    return any(path.name.endswith(f"_{edition}.json") for edition in allowed_editions)
 
 
 def validate_json_schema(data: Any, schema: dict[str, Any], path: Path) -> list[str]:
@@ -56,21 +74,28 @@ def scan_forbidden_tokens(path: Path) -> list[str]:
     return messages
 
 
-def report_paths() -> list[Path]:
+def report_paths(allowed_editions: tuple[str, ...]) -> list[Path]:
     paths = list((ROOT / "latest").glob("*.json"))
     paths.extend((ROOT / "reports").glob("**/*.json"))
     if (ROOT / "tests").exists():
         paths.extend(
             path
             for path in (ROOT / "tests").glob("**/*.json")
-            if REPORT_TEST_NAME.search(path.name)
+            if is_report_test_name(path, allowed_editions)
         )
     return sorted(set(paths))
 
 
 def _compat_title(data: dict[str, Any]) -> str:
-    edition_label = "晨间版" if data.get("edition") == "morning" else "晚间版"
-    return f"全球跨资产高风险机会雷达｜{edition_label}｜{data.get('report_date') or 'undated'}"
+    edition = data.get("edition")
+    labels = {
+        "morning": ("全球跨资产高风险机会雷达", "晨间版"),
+        "evening": ("全球跨资产高风险机会雷达", "晚间版"),
+        "commodities_morning": ("全球商品期货期权高风险机会雷达", "晨间版"),
+        "commodities_evening": ("全球商品期货期权高风险机会雷达", "晚间版"),
+    }
+    title, edition_label = labels.get(edition, ("全球跨资产高风险机会雷达", "未分类版"))
+    return f"{title}｜{edition_label}｜{data.get('report_date') or 'undated'}"
 
 
 def _compat_sources(value: Any) -> list[dict[str, Any]]:
@@ -219,7 +244,127 @@ def normalize_manifest_for_schema(data: Any) -> Any:
     return normalized
 
 
-def validate_report_file(path: Path, schema: dict[str, Any]) -> list[str]:
+def _contains_unavailable_option_metric(value: Any, path: tuple[str, ...] = ()) -> list[str]:
+    """Find machine-readable IV/skew/Gamma/strike fields behind a closed gate.
+
+    Textual research priorities are allowed (they describe future collection),
+    but a structured result with one of these field names would be interpreted
+    as a collected metric or executable option instruction.
+    """
+    blocked = re.compile(
+        r"(?:^|_)(?:atm_?iv|iv|skew|rr(?:_?25|_?10)?|bf(?:_?25)?|pcr|gamma(?:_.*)?|strike)(?:_|$)",
+        re.IGNORECASE,
+    )
+    allowed_field_names = {
+        "options_chain_status",
+        "options_surface_status",
+        "available_metrics",
+        "tradeable_structures",
+        "research_priority_when_ready",
+    }
+    found: list[str] = []
+    if isinstance(value, dict):
+        for key, nested in value.items():
+            key_text = str(key)
+            next_path = (*path, key_text)
+            if key_text not in allowed_field_names and blocked.search(key_text):
+                found.append(".".join(next_path))
+            found.extend(_contains_unavailable_option_metric(nested, next_path))
+    elif isinstance(value, list):
+        for index, nested in enumerate(value):
+            found.extend(_contains_unavailable_option_metric(nested, (*path, str(index))))
+    return found
+
+
+def validate_commodity_contract(
+    data: Any,
+    path: Path,
+    allowed_editions: tuple[str, ...],
+) -> list[str]:
+    if not isinstance(data, dict):
+        return []
+    edition = data.get("edition")
+    if edition not in allowed_editions or not isinstance(edition, str) or not edition.startswith("commodities_"):
+        return []
+    if data.get("status") != "published":
+        return []
+
+    messages: list[str] = []
+    tracking = data.get("commodities_tracking")
+    if not isinstance(tracking, dict):
+        return messages
+
+    quality = tracking.get("data_quality")
+    if isinstance(quality, dict) and quality.get("history_comparison_status") == "insufficient_history":
+        if quality.get("available_horizons"):
+            messages.append(
+                f"{path.relative_to(ROOT)} declares comparison horizons despite insufficient commodity history"
+            )
+        if quality.get("comparative_metrics"):
+            messages.append(
+                f"{path.relative_to(ROOT)} declares comparative metrics despite insufficient commodity history"
+            )
+
+    options_surface = tracking.get("options_surface")
+    options_fields = options_surface if isinstance(options_surface, dict) else {}
+    chain_ready = isinstance(quality, dict) and quality.get("options_chain_status") == "ready"
+    surface_ready = isinstance(options_surface, dict) and options_surface.get("status") == "ready"
+    if not chain_ready or not surface_ready:
+        if options_fields.get("available_metrics"):
+            messages.append(
+                f"{path.relative_to(ROOT)} exposes commodity option metrics while the commodity option gate is not ready"
+            )
+        if options_fields.get("tradeable_structures"):
+            messages.append(
+                f"{path.relative_to(ROOT)} exposes commodity option trade structures while the commodity option gate is not ready"
+            )
+        metric_paths = _contains_unavailable_option_metric(data.get("commodities_tracking"), ("commodities_tracking",))
+        if metric_paths:
+            messages.append(
+                f"{path.relative_to(ROOT)} exposes commodity IV/skew/Gamma/strike fields while the commodity option gate is not ready: "
+                + ", ".join(metric_paths)
+            )
+    return messages
+
+
+def validate_markdown_pairs(allowed_editions: tuple[str, ...], policy: dict[str, Any]) -> list[str]:
+    """Require the Markdown/JSON side of every configured archive pair."""
+    messages: list[str] = []
+    choices = "|".join(re.escape(edition) for edition in allowed_editions)
+    markdown_pattern = re.compile(rf"^\d{{4}}-\d{{2}}-\d{{2}}_(?:{choices})\.md$")
+
+    for markdown_path in sorted((ROOT / "reports").glob("**/*.md")):
+        if markdown_pattern.fullmatch(markdown_path.name) and not markdown_path.with_suffix(".json").exists():
+            messages.append(
+                f"Missing JSON pair for {markdown_path.relative_to(ROOT)}: "
+                f"{markdown_path.with_suffix('.json').relative_to(ROOT)}"
+            )
+
+    editions = policy.get("editions", {})
+    if isinstance(editions, dict):
+        for edition in allowed_editions:
+            configured = editions.get(edition, {})
+            markdown_rel = configured.get("latest_markdown") if isinstance(configured, dict) else None
+            json_rel = configured.get("latest_json") if isinstance(configured, dict) else None
+            if not isinstance(markdown_rel, str) or not isinstance(json_rel, str):
+                continue
+            markdown_path = ROOT / markdown_rel
+            json_path = ROOT / json_rel
+            if markdown_path.exists() != json_path.exists():
+                missing = json_path if markdown_path.exists() else markdown_path
+                present = markdown_path if markdown_path.exists() else json_path
+                messages.append(
+                    f"Missing latest pair for edition {edition}: {missing.relative_to(ROOT)} "
+                    f"(paired with {present.relative_to(ROOT)})"
+                )
+    return messages
+
+
+def validate_report_file(
+    path: Path,
+    schema: dict[str, Any],
+    allowed_editions: tuple[str, ...],
+) -> list[str]:
     original_data = load_json(path)
     data = normalize_report_for_schema(original_data, path)
     messages = validate_json_schema(data, schema, path)
@@ -229,7 +374,7 @@ def validate_report_file(path: Path, schema: dict[str, Any]) -> list[str]:
     report_date = data.get("report_date") if isinstance(data, dict) else None
 
     if "reports" in path.parts:
-        pattern = re.compile(r"^(\d{4}-\d{2}-\d{2})_(morning|evening)\.json$")
+        pattern = historical_report_pattern(allowed_editions)
         match = pattern.fullmatch(path.name)
         if not match:
             messages.append(f"Historical report filename is invalid: {path.relative_to(ROOT)}")
@@ -243,6 +388,10 @@ def validate_report_file(path: Path, schema: dict[str, Any]) -> list[str]:
                 messages.append(
                     f"{path.relative_to(ROOT)} edition={edition!r} does not match filename edition {filename_edition}"
                 )
+        if edition not in allowed_editions:
+            messages.append(
+                f"{path.relative_to(ROOT)} edition={edition!r} is not configured in archive-policy.json"
+            )
         if status not in {"published", "archive_failed"}:
             messages.append(
                 f"Historical report must be published or archive_failed: {path.relative_to(ROOT)}"
@@ -275,10 +424,11 @@ def validate_report_file(path: Path, schema: dict[str, Any]) -> list[str]:
     messages.extend(scan_forbidden_tokens(path))
     if markdown_path.exists():
         messages.extend(scan_forbidden_tokens(markdown_path))
+    messages.extend(validate_commodity_contract(data, path, allowed_editions))
     return messages
 
 
-def validate_manifest(schema: dict[str, Any]) -> list[str]:
+def validate_manifest(schema: dict[str, Any], allowed_editions: tuple[str, ...]) -> list[str]:
     if not MANIFEST_PATH.exists():
         return ["Missing manifests/reports.json"]
 
@@ -294,6 +444,11 @@ def validate_manifest(schema: dict[str, Any]) -> list[str]:
             messages.append(f"Duplicate manifest key at index {index}: {key}")
         keys.add(key)
 
+        if entry.get("edition") not in allowed_editions:
+            messages.append(
+                f"Manifest entry {key} uses an edition not configured in archive-policy.json"
+            )
+
         for field in ("markdown_path", "json_path"):
             value = entry.get(field)
             if value and not (ROOT / value).exists():
@@ -306,11 +461,14 @@ def validate_manifest(schema: dict[str, Any]) -> list[str]:
 def main() -> int:
     report_schema = load_json(REPORT_SCHEMA_PATH)
     manifest_schema = load_json(MANIFEST_SCHEMA_PATH)
+    archive_policy = load_json(ARCHIVE_POLICY_PATH)
+    allowed_editions = configured_editions(archive_policy)
 
     errors: list[str] = []
-    for path in report_paths():
-        errors.extend(validate_report_file(path, report_schema))
-    errors.extend(validate_manifest(manifest_schema))
+    for path in report_paths(allowed_editions):
+        errors.extend(validate_report_file(path, report_schema, allowed_editions))
+    errors.extend(validate_markdown_pairs(allowed_editions, archive_policy))
+    errors.extend(validate_manifest(manifest_schema, allowed_editions))
 
     for path in sorted((ROOT / "status").glob("*.json")):
         try:
