@@ -1,20 +1,21 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.0",
   "status": "published",
   "report_date": "2026-08-19",
   "edition": "commodities_evening",
-  "revision": 1,
-  "generated_at": "2026-08-19T19:30:00+08:00",
-  "generated_at_bjt": "2026-08-19T19:30:00+08:00",
-  "market_regime": "能源供应冲击 / 黑色原料—终端分裂 / 贵金属日盘—外盘时差",
+  "revision": 2,
+  "generated_at_bjt": "2026-08-19T23:50:09+08:00",
+  "weekend_mode": false,
+  "title": "全球商品期货期权高风险机会雷达｜晚间版｜2026-08-19｜Revision 2",
+  "one_sentence_conclusion": "值得承担有限新增风险但不值得追价：FU是真实但延伸的强趋势，JM是价仓极强而曲线不确认的背离，FG/SA弱势仍缺Physical layer。",
+  "regime": "能源供应风险溢价 / 黑色原料与终端裂化 / 贵金属宏观反转 / 高波动趋势延伸",
   "worth_taking_risk": true,
-  "one_sentence_conclusion": "有值得冒险的机会，但只适合条件单：能源供应冲击最强，FU/SC 获海外油价与 Hormuz 风险确认；黑色则是焦煤强、玻璃纯碱弱，并非需求全面复苏。",
-  "previous_date": null,
   "data_cutoff": {
     "china_market_date": "2026-08-19",
     "china_day_session": "complete",
-    "overnight_market_observation_bjt": "2026-08-19T19:03:00+08:00",
-    "night_session_window_bjt": "2026-08-19T21:00:00+08:00"
+    "manual_rerun_bjt": "2026-08-19T23:50:09+08:00",
+    "night_session_note": "21:00 window has passed; no unverified Chinese night quote is treated as fact",
+    "external_market_cutoff": "2026-08-19 US session after EIA release"
   },
   "input_snapshots": {
     "china_commodities": {
@@ -24,112 +25,69 @@
       "radar_latest_path": "data/radar_latest.json",
       "radar_history_path": "data/radar_history.json",
       "trade_date": "2026-08-19",
-      "generated_at": "2026-08-19T18:30:00+08:00",
+      "generated_at": "2026-08-19T23:28:39.224464+08:00",
       "data_fresh": true,
       "official_complete": false,
       "source_date_match_pct": 100.0,
       "full_market_ready": true,
       "critical_module_errors": 0,
-      "history_record_count": 1,
+      "history_record_count": 20,
       "module_quality": {
         "futures": "verified_vendor_primary",
         "contract_meta": "unavailable",
         "warehouse": "unavailable",
         "basis": "unavailable",
         "member_rankings": "unavailable",
-        "options_chain": "not_collected",
+        "options_chain": "full_chain_verified_chain_only_64_of_64",
         "options_surface": "not_ready"
       },
-      "included_exchanges": [
-        "SHFE",
-        "INE",
-        "DCE",
-        "CZCE",
-        "GFEX"
-      ],
+      "included_exchanges": ["SHFE", "INE", "DCE", "CZCE", "GFEX"],
       "actual_read_paths": [
-        "farfromexact/China-Commodities-Engine:data/last_run_status.json@main",
-        "farfromexact/China-Commodities-Engine:data/radar_latest.json@main",
-        "farfromexact/China-Commodities-Engine:data/radar_history.json@main"
+        "data/last_run_status.json",
+        "data/radar_latest.json",
+        "data/radar_history.json",
+        "data/market_state_latest.json",
+        "data/options/last_run_status.json",
+        "data/options/quality_latest.json"
       ]
     }
   },
   "source_status": {
-    "china_commodities": "five exchanges covered; iFinD vendor-primary; official_complete=false",
-    "data_quality": "degraded",
-    "unavailable_modules": [
-      "contract meta",
-      "warehouse",
-      "spot basis",
-      "member rankings",
-      "commodity options chain",
-      "commodity options surface"
-    ],
-    "errors": []
+    "china_commodities_core": "fresh five-exchange iFinD vendor-primary futures; no critical errors",
+    "history": "20 trading days available with exact-contract continuity",
+    "options_chain": "64/64 products; 22578 contracts; full_chain_verified; IV coverage about 98.6%",
+    "options_surface": "not_ready because expiry/bid-ask/exercise-style/model-greeks are incomplete",
+    "physical_layer": "unavailable: basis, warehouse/social inventory, member rankings and validated physical economics remain missing",
+    "data_quality": "degraded"
   },
   "dashboard": [
-    {"asset": "JM2701", "latest": 1586.5, "change_1d": "+3.46%", "signal": "价格很强，近月仍 Contango -1.90%", "data_time": "2026-08-19 China day session"},
-    {"asset": "SA701", "latest": 1012, "change_1d": "-2.50%", "signal": "明确偏弱，Contango -2.51%", "data_time": "2026-08-19 China day session"},
-    {"asset": "FG701", "latest": 902, "change_1d": "-1.74%", "signal": "弱势且曲线弱，Contango -3.09%", "data_time": "2026-08-19 China day session"},
-    {"asset": "FU2611", "latest": 3825, "change_1d": "+3.29%", "signal": "强，Backwardation +6.52%", "data_time": "2026-08-19 China day session"},
-    {"asset": "BU2610", "latest": 4394, "change_1d": "+2.59%", "signal": "强，Backwardation +3.33%", "data_time": "2026-08-19 China day session"},
-    {"asset": "SC2610", "latest": 585.8, "change_1d": "+1.81%", "signal": "强，Backwardation +3.52%", "data_time": "2026-08-19 China day session"},
-    {"asset": "MA610", "latest": 2843, "change_1d": "+2.86%", "signal": "强，但 Backwardation 仅 +0.25%", "data_time": "2026-08-19 China day session"},
-    {"asset": "C2611", "latest": 2265, "change_1d": "+2.30%", "signal": "偏强，Backwardation +0.67%", "data_time": "2026-08-19 China day session"},
-    {"asset": "RM611", "latest": 2272, "change_1d": "+1.84%", "signal": "偏强，Backwardation +4.07%", "data_time": "2026-08-19 China day session"},
-    {"asset": "JD2610", "latest": 3813, "change_1d": "-1.90%", "signal": "价格/曲线严重背离，Backwardation +9.34%", "data_time": "2026-08-19 China day session"},
-    {"asset": "AG2610", "latest": 15432, "change_1d": "-4.12%", "signal": "极弱，但存在夜盘反抽风险", "data_time": "2026-08-19 China day session"},
-    {"asset": "SI2611", "latest": 8825, "change_1d": "+1.61%", "signal": "价格强，Contango -0.63%，现货紧张未确认", "data_time": "2026-08-19 China day session"},
-    {"asset": "SR701", "latest": 5379, "change_1d": "+1.59%", "signal": "价格强，Contango -0.83%", "data_time": "2026-08-19 China day session"}
+    {"asset":"FU2611","latest":3825,"change_1d":"+3.29% close / +2.62% settlement","change_1w":"+9.83% 5D settlement","signal":"trend confirmed but extended; curve z +2.02; volume z +2.32","data_time":"2026-08-19 China day close","data_attribute":"futures EOD vendor-primary"},
+    {"asset":"JM2701","latest":1586.5,"change_1d":"+3.46% close / +2.41% settlement","change_1w":"+6.62% 5D settlement","signal":"OI +11.68%, OI-change z +3.10, but curve contango and z -1.69","data_time":"2026-08-19 China day close","data_attribute":"futures EOD vendor-primary"},
+    {"asset":"FG701","latest":902,"change_1d":"-1.74% close / -0.65% settlement","change_1w":"-5.39% 5D settlement","signal":"OI +19.52%, OI-change z +2.74, volume z +2.98; physical confirmation missing","data_time":"2026-08-19 China day close","data_attribute":"futures EOD vendor-primary"},
+    {"asset":"SA701","latest":1012,"change_1d":"-2.50% close / -1.45% settlement","change_1w":"-2.39% 5D settlement","signal":"20D -4.84%, OI +8.78%, volume z +2.87","data_time":"2026-08-19 China day close","data_attribute":"futures EOD vendor-primary"},
+    {"asset":"AG2610","latest":15432,"change_1d":"-4.12% close / -2.93% settlement","change_1w":"-1.88% 5D; +7.83% 20D","signal":"price-down/OI-down; overseas silver later +3.69%; do not chase short","data_time":"China day close plus US-session external confirmation","data_attribute":"China futures EOD + Reuters external"},
+    {"asset":"Brent","latest":91.89,"change_1d":"about +1%","signal":"near three-week high despite +4.4m bbl US crude build","data_time":"2026-08-19 US session","data_attribute":"Reuters market quote"},
+    {"asset":"WTI","latest":86.11,"change_1d":"about +1%","signal":"Hormuz risk premium dominates bearish inventory surprise","data_time":"2026-08-19 US session","data_attribute":"Reuters market quote"}
   ],
   "meaningful_changes": [
-    {"change": "能源链出现价格与 Backwardation 共振", "detail": "FU、SC、BU 同步上行；FU2611 近月 Backwardation +6.52%。"},
-    {"change": "黑色内部而非全面复苏", "detail": "JM2701 强，而 SA701、FG701 偏弱并维持 Contango。"},
-    {"change": "贵金属内外盘时差扩大", "detail": "AG2610 日盘 -4.12%，但晚间海外金银出现反弹，不能追空。"},
-    {"change": "农产局部近月偏紧", "detail": "C、RM 为 Backwardation，但缺少实体供需与跨市场确认。"}
+    {"change":"FU is a multi-day trend, not a one-day anomaly","detail":"5D settlement +9.83%; curve z +2.02 and volume z +2.32 confirm strength but worsen chase risk."},
+    {"change":"JM has an extreme positioning/activity impulse but curve disagreement","detail":"OI-change z +3.10 and volume z +3.02 while near curve remains contango with z -1.69."},
+    {"change":"FG short-state strengthened","detail":"5D -5.39%, 20D -7.51%, OI +19.52%; still capped by missing physical layer."},
+    {"change":"AG day selloff looks more like de-risking than fresh persistent shorting","detail":"20D remains +7.83%, OI fell and volume was below normal; overseas silver later rose 3.69%."},
+    {"change":"EIA inventory surprise failed to break oil","detail":"US crude stocks +4.4m barrels but Brent/WTI stayed higher, supporting a supply-risk-dominant interpretation."}
   ],
   "top_opportunities": [
-    {"rank": 1, "name": "FU2611 条件做多", "score": 79, "direction": "long", "holding_period": "1-5D", "stage": "conditional trial", "instruments": ["FU2611 futures"]},
-    {"rank": 2, "name": "JM2701 条件做多", "score": 73, "direction": "long", "holding_period": "2-10D", "stage": "conditional", "instruments": ["JM2701 futures"]},
-    {"rank": 3, "name": "AG2610 反转观察", "score": 66, "direction": "conditional rebound long", "holding_period": "intraday-3D", "stage": "observe", "instruments": ["AG2610 futures"]},
-    {"rank": 4, "name": "SA701 条件做空", "score": 65, "direction": "short", "holding_period": "1-5D", "stage": "conditional", "instruments": ["SA701 futures"]},
-    {"rank": 5, "name": "RM611 条件做多", "score": 63, "direction": "long", "holding_period": "1-5D", "stage": "observe", "instruments": ["RM611 futures"]}
+    {"rank":1,"name":"FU2611 条件做多","score":81,"direction":"long","holding_period":"1-5D","stage":"conditional pullback trial","instruments":["FU2611 futures"],"max_loss_limited":false,"fresh_evidence_layers":3,"score_components":{"logic":23,"odds_convexity":16,"catalyst":19,"price_curve":15,"crowding_technical":8}},
+    {"rank":2,"name":"JM2701 条件做多","score":76,"direction":"long","holding_period":"2-10D","stage":"conditional; require curve non-deterioration","instruments":["JM2701 futures"],"max_loss_limited":false,"fresh_evidence_layers":3,"score_components":{"logic":21,"odds_convexity":16,"catalyst":16,"price_curve":11,"crowding_technical":12}},
+    {"rank":3,"name":"AG2610 反转多观察","score":69,"direction":"conditional rebound long","holding_period":"intraday-3D","stage":"observe; realtime domestic confirmation required","instruments":["AG2610 futures"],"max_loss_limited":false,"fresh_evidence_layers":2,"score_components":{"logic":18,"odds_convexity":18,"catalyst":15,"price_curve":8,"crowding_technical":10}},
+    {"rank":4,"name":"FG701 条件做空","score":69,"direction":"short","holding_period":"1-5D","stage":"observe/conditional","instruments":["FG701 futures"],"max_loss_limited":false,"fresh_evidence_layers":2,"score_components":{"logic":18,"odds_convexity":17,"catalyst":10,"price_curve":12,"crowding_technical":12}},
+    {"rank":5,"name":"SA701 条件做空","score":67,"direction":"short","holding_period":"1-5D","stage":"observe","instruments":["SA701 futures"],"max_loss_limited":false,"fresh_evidence_layers":2,"score_components":{"logic":17,"odds_convexity":16,"catalyst":9,"price_curve":12,"crowding_technical":13}}
   ],
-  "trade_cards": [
-    {
-      "rank": 1,
-      "name": "FU2611 条件多",
-      "expression": "FU2611 futures, light trial only",
-      "entry": "21:00 后前 15-30 分钟守住 3800 结算价、重新站稳 3825，且 Brent 未明显回吐日内涨幅",
-      "invalidation": "FU 持续跌破 3800 且 SC 跌回 585.3 结算价下方，或 Hormuz 风险出现可信缓解",
-      "tp1": "+1R",
-      "tp2": "+2R",
-      "max_loss": "0.25%-0.5% NAV trial risk; futures gap risk remains"
-    },
-    {
-      "rank": 2,
-      "name": "JM2701 条件多",
-      "expression": "JM2701 futures, no contract-size recommendation",
-      "entry": "21:00 后守住 1570.5 结算，且 Contango 不继续扩大，再观察是否突破 1586.5",
-      "invalidation": "跌回 1533.5 前结算附近，或近月曲线继续明显走弱",
-      "tp1": "+1R reduce half",
-      "tp2": "+2R exit core",
-      "max_loss": "defined only at portfolio risk level; current contract parameters unverified"
-    },
-    {
-      "rank": 3,
-      "name": "AG2610 反转观察",
-      "expression": "AG2610 futures only after confirmation; no options structure without surface",
-      "entry": "21:00 后快速收复 15624，且海外白银未转跌",
-      "invalidation": "重新失守 15432 并创新低",
-      "tp1": "+1R",
-      "tp2": "+2R",
-      "max_loss": "trial risk only; reduce Delta before FOMC minutes"
-    }
+  "top_trade_cards": [
+    {"rank":1,"name":"FU2611 条件多","facts":"3825 close, 3800 settle; 5D +9.83%; volume z +2.32; curve +6.52%, z +2.02; OI +4.04%","mispricing":"Hormuz/refined-product supply disruption may persist longer than priced, but trend is already extended","expression":"FU2611 futures only; no precise option structure while surface/execution not ready","entry":"next China trading window: hold 3800 on pullback and reclaim/hold above 3825 while Brent remains firm; do not chase auction/opening spike","initial_stop":"sustained break below 3800 with SC confirmation","logic_invalidation":"credible sustained Hormuz normalization or sharp curve normalization with no new price high","tp1":"+1R","tp2":"+2R","time_stop":"2-3 trading days if backwardation fails to confirm","max_loss":"trial risk 0.25%-0.50% NAV; futures gap/limit risk remains","risk_notes":"FU contract unit 10t; SHFE June 23 notice: general margin 16%, daily limit 14% for FU2611; broker margin can be higher"},
+    {"rank":2,"name":"JM2701 条件多","facts":"1570.5 settle; 5D +6.62%; OI +11.68%, OI-change z +3.10; volume z +3.02; curve contango -1.90%, z -1.69","mispricing":"supply/freight risk is being aggressively priced by participants, but physical tightness is not confirmed by the curve","expression":"JM2701 futures; no option execution recommendation while surface not ready","entry":"hold 1570.5, reclaim/hold above 1586.5 and do not allow near contango to widen","initial_stop":"near 1533.5 prior settlement","logic_invalidation":"price makes highs while curve deteriorates further or supply normalization becomes dominant","tp1":"+1R reduce half","tp2":"+2R exit core","time_stop":"2-3D without curve improvement","max_loss":"0.25%-0.50% NAV trial risk","risk_notes":"DCE factsheet unit 60t and tick 0.5 CNY/t; current live margin/limit must be confirmed from DCE/broker"},
+    {"rank":3,"name":"AG2610 反转观察","facts":"15432 close, 15624 settle; 20D +7.83%; OI -2.47%; volume z -0.68; overseas silver later +3.69% to about $65.64","mispricing":"China day-session liquidation may have overshot a macro reversal driven by lower US yields and dollar","expression":"AG2610 only after verified live domestic price confirmation; no option strikes","entry":"only if trusted live domestic quote confirms reclaim of 15624 and COMEX silver remains firm","initial_stop":"re-break below 15432 with rising selling activity","logic_invalidation":"US yields/dollar surge again or silver gives back the macro rebound","tp1":"+1R","tp2":"+2R","time_stop":"reduce before/around FOMC minutes if no follow-through","max_loss":"<=0.25% NAV observation trial","risk_notes":"do not infer Chinese night price from overseas percentage move"}
   ],
-  "gold_tracking": {},
-  "ai_tracking": {},
-  "china_tracking": {},
   "commodities_tracking": {
     "data_quality": {
       "status": "degraded",
@@ -138,97 +96,87 @@
       "basis_status": "unavailable",
       "warehouse_status": "unavailable",
       "member_rankings_status": "unavailable",
-      "options_chain_status": "not_collected",
-      "options_surface_status": "not_ready",
-      "history_comparison_status": "insufficient_history",
-      "available_horizons": [],
-      "comparative_metrics": []
+      "options_chain_status": "full_chain_verified_chain_only_64_of_64; 22578 contracts; IV coverage ~98.6%",
+      "options_surface_status": "not_ready; expiry ~44.7%, bid_ask 0%, exercise_style/model_greeks incomplete",
+      "history_comparison_status": "available",
+      "available_horizons": ["1D","3D","5D","20D"],
+      "comparative_metrics": [
+        {"product":"FU","contract":"FU2611","ret_5d_pct":9.8266,"ret_20d_pct":5.9972,"rv20_pct":37.6409,"volume_z":2.3158,"oi_change_1d_pct":4.0418,"curve_pct":6.5234,"curve_z":2.0161},
+        {"product":"JM","contract":"JM2701","ret_5d_pct":6.6191,"ret_20d_pct":6.4746,"rv20_pct":28.3109,"volume_z":3.0245,"oi_change_1d_pct":11.6766,"oi_change_z":3.0980,"curve_pct":-1.9027,"curve_z":-1.6877},
+        {"product":"FG","contract":"FG701","ret_5d_pct":-5.3942,"ret_20d_pct":-7.5051,"rv20_pct":15.7100,"volume_z":2.9813,"oi_change_1d_pct":19.5192,"oi_change_z":2.7424,"curve_pct":-3.0905},
+        {"product":"SA","contract":"SA701","ret_5d_pct":-2.3855,"ret_20d_pct":-4.8372,"rv20_pct":19.7814,"volume_z":2.8663,"oi_change_1d_pct":8.7797,"oi_change_z":1.8275,"curve_pct":-2.5100},
+        {"product":"AG","contract":"AG2610","ret_5d_pct":-1.8778,"ret_20d_pct":7.8261,"rv20_pct":33.0900,"volume_z":-0.6764,"oi_change_1d_pct":-2.4664}
+      ]
     },
     "market_dashboard": [
-      {"product": "焦煤", "main_contract": "JM2701", "close": 1586.5, "change_pct": 3.46, "near_next_curve_pct": -1.9, "curve_label": "contango"},
-      {"product": "纯碱", "main_contract": "SA701", "close": 1012, "change_pct": -2.5, "near_next_curve_pct": -2.51, "curve_label": "contango"},
-      {"product": "玻璃", "main_contract": "FG701", "close": 902, "change_pct": -1.74, "near_next_curve_pct": -3.09, "curve_label": "contango"},
-      {"product": "燃料油", "main_contract": "FU2611", "close": 3825, "change_pct": 3.29, "near_next_curve_pct": 6.52, "curve_label": "backwardation"},
-      {"product": "沥青", "main_contract": "BU2610", "close": 4394, "change_pct": 2.59, "near_next_curve_pct": 3.33, "curve_label": "backwardation"},
-      {"product": "原油", "main_contract": "SC2610", "close": 585.8, "change_pct": 1.81, "near_next_curve_pct": 3.52, "curve_label": "backwardation"},
-      {"product": "白银", "main_contract": "AG2610", "close": 15432, "change_pct": -4.12, "near_next_curve_pct": -0.34, "curve_label": "contango"}
+      {"product":"燃料油","main_contract":"FU2611","state":"strong_but_extended"},
+      {"product":"焦煤","main_contract":"JM2701","state":"price_oi_strong_curve_divergence"},
+      {"product":"玻璃","main_contract":"FG701","state":"bearish_price_oi_expansion_missing_physical"},
+      {"product":"纯碱","main_contract":"SA701","state":"bearish_missing_physical"},
+      {"product":"白银","main_contract":"AG2610","state":"day_liquidation_vs_overseas_macro_rebound"}
     ],
     "supply_chain_map": [
-      {"chain": "原油/燃料油/沥青", "direction": "strong", "strongest": "FU", "weakest": null, "evidence": "global oil, Hormuz supply risk and domestic backwardation"},
-      {"chain": "黑色", "direction": "split", "strongest": "JM", "weakest": "SA/FG", "evidence": "raw-material supply risk stronger than end demand"},
-      {"chain": "粮食/饲料", "direction": "selectively firm", "strongest": "C/RM", "weakest": "JD", "evidence": "some near-month tightness without physical confirmation"},
-      {"chain": "贵金属", "direction": "China weak / overseas rebound", "strongest": null, "weakest": "AG", "evidence": "rates and USD move after China close"},
-      {"chain": "新能源材料", "direction": "price firm", "strongest": "SI", "weakest": null, "evidence": "contango remains; no shortage confirmation"}
+      {"chain":"原油/燃料油/沥青","direction":"strong_supply_risk_but_extended","strongest":"FU","weakest":null,"missing":"domestic basis/cracks/inventory detail"},
+      {"chain":"黑色原料","direction":"strong_positioning_with_curve_divergence","strongest":"JM","weakest":null,"missing":"mine/port/mill inventory and coking margin"},
+      {"chain":"建材","direction":"weak","strongest":null,"weakest":"FG/SA","missing":"glass/soda physical inventory and production-sales"},
+      {"chain":"贵金属","direction":"China day de-risking / overseas rebound","strongest":"overseas silver/gold","weakest":"AG China day","missing":"verified live China night mapping and option surface"}
     ],
     "options_surface": {
       "status": "not_ready",
       "available_metrics": [],
       "tradeable_structures": [],
-      "research_priority_when_ready": [
-        "FU/SC geopolitics convexity",
-        "AG/AU Fed-minutes IV",
-        "SA/FG downside put skew",
-        "JM supply-shock call skew"
-      ]
+      "research_priority_when_ready": ["FU/SC geopolitics convexity","AG/AU macro reversal surface","FG/SA downside skew","JM supply-shock call skew"],
+      "chain_quality": {"product_coverage":1.0,"contract_count":22578,"iv_coverage":0.985827,"expiry_coverage":0.44725,"bid_ask_coverage":0.0,"open_interest_coverage":0.67393,"full_chain_verified":true,"execution_ready":false}
     },
     "night_session_risk_map": [
-      {"product": "FU", "bias": "high-open/strong-open risk", "confidence": "high", "action": "do not chase first jump; wait 15-30 minutes"},
-      {"product": "SC", "bias": "upside gap risk", "confidence": "medium_high", "action": "confirm with Brent/WTI"},
-      {"product": "BU", "bias": "upside gap risk", "confidence": "medium", "action": "confirm oil-led move"},
-      {"product": "AG/AU", "bias": "rebound-open risk", "confidence": "medium", "action": "do not chase short"},
-      {"product": "JM", "bias": "firm but unconfirmed gap", "confidence": "medium", "action": "wait for domestic order flow"},
-      {"product": "SA/FG", "bias": "weak continuation", "confidence": "medium_low", "action": "consider short only after failed rebound below settlement"},
-      {"product": "MA", "bias": "firm", "confidence": "medium", "action": "require oil and coal-chemical confirmation"},
-      {"product": "C/RM", "bias": "no reliable overseas confirmation", "confidence": "low", "action": "no opening direction forecast"}
+      {"product":"FU","confidence":"high","action":"21:00-23:00 standard window already passed at rerun time; next session wait for pullback confirmation, do not chase"},
+      {"product":"SC","confidence":"medium_high","action":"use Brent/WTI resilience after EIA as external confirmation, but require next domestic quote"},
+      {"product":"JM","confidence":"medium_high","action":"require price strength plus non-worsening contango; no inferred night close"},
+      {"product":"FG/SA","confidence":"medium","action":"only short failed rebound; physical layer still missing"},
+      {"product":"AG","confidence":"medium","action":"do not chase short; only act on trusted live China quote reclaiming settlement"}
     ]
   },
   "event_calendar": [
-    {"datetime_bjt": "2026-08-19T22:30:00+08:00", "event": "EIA weekly petroleum status report", "positioning_note": "reduce energy Delta before data"},
-    {"datetime_bjt": "2026-08-20T02:00:00+08:00", "event": "FOMC July minutes", "positioning_note": "avoid naked Vega in gold and USD-sensitive commodities"},
-    {"datetime_bjt": "2026-08-20T09:00:00+08:00", "event": "China August LPR", "positioning_note": "SA/FG shorts must allow for policy rebound"},
-    {"datetime_bjt": "2026-08-22T03:30:00+08:00", "event": "CFTC COT release", "positioning_note": "use for next-week crowding update"}
+    {"datetime_bjt":"2026-08-19T22:30:00+08:00","event":"EIA weekly petroleum data - already released","result":"US commercial crude +4.4m bbl; refinery utilization 97.2%","positioning_note":"oil resilience after bearish inventory surprise supports supply-risk interpretation, but avoid chasing extended FU"},
+    {"datetime_bjt":"2026-08-20T02:00:00+08:00","event":"FOMC July minutes","positioning_note":"keep precious-metals reversal Delta small; no naked Vega"},
+    {"datetime_bjt":"2026-08-20T09:30:00+08:00","event":"China August LPR","consensus":"1Y 3.00%, 5Y 3.50% unchanged in Reuters poll","positioning_note":"unexpected easing could squeeze FG/SA shorts"},
+    {"event":"Hormuz / Middle East shipping","window":"continuous","positioning_note":"credible reopening invalidates part of FU/SC thesis; renewed attacks extend energy convexity"}
   ],
   "action_list": {
-    "A": "今天没有应立即建立的新仓位。",
-    "B": "只挂条件单：FU2611 多、JM2701 多；均等待 21:00 后 15-30 分钟确认。",
-    "C": "继续观察：AG2610 反转、SA701/FG701 弱势延续、RM611 多头。",
-    "D": "避免 21:00 追涨能源首跳、继续追空 AG，以及在无期权曲面时臆造期权结构或裸卖波动率。"
+    "A": "今天没有应立即无条件建立的新仓位；FU/JM都只接受下一窗口的价格确认。",
+    "B": "条件单：FU2611回撤守住3800并重站3825后试多；JM2701守1570.5且Contango不恶化后试多；AG仅真实夜盘价收复15624后考虑极小反转多。",
+    "C": "继续观察：FG701/SA701空头等待Physical layer；同时观察FU Backwardation是否从历史极值回落。",
+    "D": "必须避免：追涨已5日+9.8%的FU、把JM价涨仓增直接叫新多、追空AG、以及在surface/bid-ask未ready时硬做商品期权执行结构。"
   },
   "risk_budget": {
-    "single_trial_max_loss_nav": "0.25%-0.50%",
-    "energy_cluster_instruction": "event risk before EIA; no full position at 21:00",
-    "options_instruction": "no naked commodity option selling while surface is not ready"
+    "single_trial_max_loss_nav":"0.25%-0.75%",
+    "single_confirmed_trade_max_loss_nav":"0.75%-1.50%",
+    "high_conviction_theme_total_max_nav":"2.5%-3.0%",
+    "factor_aggregation":"FU/SC/BU energy risk must be aggregated; FG/SA China construction demand risk must be aggregated; AG/AU real-rate/dollar risk must be aggregated",
+    "stress_tests":["one/two limit moves","overnight gap","margin increase","liquidity loss","cross-leg correlation break","IV jump/crush"]
   },
   "sources": [
-    {"title": "Oil hits three-week high on uncertainty over Hormuz", "publisher": "Reuters", "url": "https://www.reuters.com/business/energy/oil-edges-up-uncertainty-over-exports-through-hormuz-2026-08-19/", "source_date": "2026-08-19", "source_type": "news", "supported_claims": ["overseas oil move", "Hormuz disruption", "EIA timing"]},
-    {"title": "Indian steel mills face margin squeeze as global coking coal prices rise", "publisher": "Reuters", "url": "https://www.reuters.com/world/india/indian-steel-mills-face-margin-squeeze-global-coking-coal-prices-rise-2026-08-19/", "source_date": "2026-08-19", "source_type": "news", "supported_claims": ["coking-coal supply and freight risks"]},
-    {"title": "Gold rises as dollar weakens, bond yields ease", "publisher": "Reuters", "url": "https://www.reuters.com/world/india/gold-inches-higher-focus-fed-minutes-2026-08-19/", "source_date": "2026-08-19", "source_type": "news", "supported_claims": ["overseas gold and silver rebound"]},
-    {"title": "Shanghai Futures Exchange fuel-oil futures contract", "publisher": "SHFE", "url": "https://www.shfe.com.cn/products/futures/energyandchemical/fu_f/standard_fu/202312/t20231205_327331.html", "source_date": "2026-08-19", "source_type": "exchange rule", "supported_claims": ["FU contract unit reference"]},
-    {"title": "SHFE night trading schedule", "publisher": "SHFE", "url": "https://tsite.shfe.com.cn/eng/circularnews/news/911401651.html", "source_date": "2026-08-19", "source_type": "exchange schedule", "supported_claims": ["AG night-session timing"]},
-    {"title": "China seen holding loan rates steady in August", "publisher": "Reuters", "url": "https://www.reuters.com/world/china/china-seen-holding-loan-rates-steady-august-despite-economic-weakness-2026-08-19/", "source_date": "2026-08-19", "source_type": "news", "supported_claims": ["LPR event context"]},
-    {"title": "CFTC release schedule", "publisher": "CFTC", "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm", "source_date": "2026-08-19", "source_type": "official schedule", "supported_claims": ["COT release timing"]},
-    {"title": "China-Commodities-Engine data snapshot", "publisher": "GitHub/farfromexact", "url": "https://github.com/farfromexact/China-Commodities-Engine/tree/main/data", "source_date": "2026-08-19", "source_type": "structured data", "supported_claims": ["five-exchange coverage", "data quality and limitation flags"]}
+    {"title":"China-Commodities-Engine core and market state","publisher":"GitHub/farfromexact","url":"https://github.com/farfromexact/China-Commodities-Engine/tree/main/data","source_date":"2026-08-19","supported_claims":["five-exchange EOD futures","20D market state","quality flags"]},
+    {"title":"China-Commodities-Engine options quality","publisher":"GitHub/farfromexact","url":"https://github.com/farfromexact/China-Commodities-Engine/tree/main/data/options","source_date":"2026-08-19","supported_claims":["64/64 option product coverage","22578 contracts","surface/execution limitations"]},
+    {"title":"Oil prices up 1%, near 3-week high as Middle East crisis escalates","publisher":"Reuters","url":"https://www.reuters.com/business/energy/oil-edges-up-uncertainty-over-exports-through-hormuz-2026-08-19/","source_date":"2026-08-19","supported_claims":["Brent/WTI","Hormuz","EIA crude build","refinery utilization"]},
+    {"title":"Indian steel mills face margin squeeze as global coking coal prices rise","publisher":"Reuters","url":"https://www.reuters.com/world/india/indian-steel-mills-face-margin-squeeze-global-coking-coal-prices-rise-2026-08-19/","source_date":"2026-08-19","supported_claims":["coking-coal supply disruptions","freight/insurance"]},
+    {"title":"Surge in China's coal imports may start to taper off","publisher":"Reuters","url":"https://www.reuters.com/commentary/reuters-open-interest/surge-chinas-coal-imports-may-start-taper-off-2026-08-11/","source_date":"2026-08-11","supported_claims":["China coal production/import normalization counterpoint"]},
+    {"title":"Gold surges over 3% as US Treasury announcement hurts yields, dollar","publisher":"Reuters","url":"https://www.reuters.com/world/india/gold-inches-higher-focus-fed-minutes-2026-08-19/","source_date":"2026-08-19","supported_claims":["gold/silver rally","Treasury buyback","Fed minutes"]},
+    {"title":"China seen holding loan rates steady in August despite economic weakness","publisher":"Reuters","url":"https://www.reuters.com/world/china/china-seen-holding-loan-rates-steady-august-despite-economic-weakness-2026-08-19/","source_date":"2026-08-19","supported_claims":["LPR consensus"]},
+    {"title":"SHFE FU risk-parameter adjustment","publisher":"SHFE","url":"https://www.shfe.com.cn/publicnotice/notice/202606/t20260623_832251.html","source_date":"2026-06-23","supported_claims":["FU2611 margin and limit"]},
+    {"title":"DCE coking coal/coke factsheet","publisher":"DCE","url":"https://www.dce.com.cn/dce/file/2026-01-15/17684624156122c9a882b9ae6dcbb289019bc092f6fc1681.pdf","source_date":"2026-01-15","supported_claims":["JM contract unit/tick"]}
   ],
-  "errors": [],
-  "archive_status": "success",
+  "errors": ["physical layer unavailable: basis/warehouse/social inventory/member rankings not validated","options surface/execution not ready despite full chain coverage","trusted 23:50 China night quotes were not available for all highlighted contracts; no price was inferred"],
+  "archive_status": "pending_verification",
   "ci_validation_status": "pending_or_unverified",
   "archive": {
-    "repository": "farfromexact/Global-Cross-Asset-Radar",
-    "markdown_path": "reports/2026/08/2026-08-19_commodities_evening.md",
-    "json_path": "reports/2026/08/2026-08-19_commodities_evening.json",
-    "latest_markdown_path": "latest/commodities_evening.md",
-    "latest_json_path": "latest/commodities_evening.json",
-    "archive_status": "success",
-    "commit_sha": null,
-    "error": null,
-    "archive_write_mode": "bootstrap_pull_request",
-    "paths": [
-      "reports/2026/08/2026-08-19_commodities_evening.md",
-      "reports/2026/08/2026-08-19_commodities_evening.json",
-      "latest/commodities_evening.md",
-      "latest/commodities_evening.json",
-      "status/commodities_evening_latest.json",
-      "manifests/reports.json"
-    ]
+    "repository":"farfromexact/Global-Cross-Asset-Radar",
+    "markdown_path":"reports/2026/08/2026-08-19_commodities_evening.md",
+    "json_path":"reports/2026/08/2026-08-19_commodities_evening.json",
+    "latest_markdown_path":"latest/commodities_evening.md",
+    "latest_json_path":"latest/commodities_evening.json",
+    "status_path":"status/commodities_evening_latest.json",
+    "manifest_path":"manifests/reports.json",
+    "write_mode":"direct_to_main"
   }
 }
