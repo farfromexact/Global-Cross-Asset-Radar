@@ -1,6 +1,6 @@
 # Scheduled Task GitHub Archive Instructions
 
-把本文件中的通用规则和对应版本规则加入08:00晨间版、20:00晚间版的 Scheduled Task prompt。
+把本文件中的通用规则和对应版本规则加入已配置的 Scheduled Task prompt。当前版本包括 08:00 全球晨间版、20:00 全球晚间版，以及以 07:00 / 19:30 为**最佳努力开始窗口**的商品晨间/晚间版。商品版的实际完成时间由输入数据就绪情况决定，不是硬性 SLA。
 
 ## 通用归档规则
 
@@ -27,7 +27,7 @@ farfromexact/Global-Cross-Asset-Radar
 5. `status/{edition}_latest.json`
 6. `manifests/reports.json`
 
-其中 `{edition}` 只能是 `morning` 或 `evening`。
+其中 `{edition}` 必须是 `config/archive-policy.json` 中已配置的版本之一：`morning`、`evening`、`commodities_morning` 或 `commodities_evening`。
 
 ## 正式归档模式：Direct-to-Main
 
@@ -82,7 +82,7 @@ ci_validation_status = pending_or_unverified
 
 - Markdown必须保存完整中文报告。
 - JSON必须符合 `schemas/report.schema.json`。
-- JSON中至少记录：报告日期、edition、生成时间、市场状态、机会榜、交易卡、行动清单、风险预算、来源、China-Options-Engine输入路径、数据日期、新鲜度、previous_date、errors、archive_status、ci_validation_status。
+- JSON中至少记录：报告日期、edition、生成时间、市场状态、机会榜、交易卡、行动清单、风险预算、来源、对应底层数据引擎的输入路径/数据日期/新鲜度、previous_date（如适用）、errors、archive_status、ci_validation_status。
 - 正式历史JSON的 `archive.markdown_path` 和 `archive.json_path` 应与实际历史路径一致，或在 `archive.paths` 中完整列出实际路径。
 - GitHub Markdown不得包含ChatGPT专用引用标记、内部turn ID、connector ID或私有file引用；关键来源转换为普通Markdown链接/脚注，并在JSON `sources` 数组结构化保存。
 - 不得将API key、访问令牌、券商凭证、私人邮件、账户信息或未经批准的非公开公司信息写入仓库。
@@ -122,6 +122,20 @@ farfromexact/China-Options-Engine/data/snapshots/YYYY-MM-DD.json
 
 归档JSON必须记录实际读取的路径、`date`、`generated_at`、`data_fresh`、官方EOD覆盖率、`previous_date`和错误状态。
 
+## 中国商品期货/期权数据来源记录
+
+商品版本优先读取：
+
+```text
+farfromexact/China-Commodities-Engine/data/last_run_status.json
+farfromexact/China-Commodities-Engine/data/radar_latest.json
+farfromexact/China-Commodities-Engine/data/radar_history.json
+```
+
+归档 JSON 必须在 `input_snapshots.china_commodities` 中记录实际读取路径、交易日、生成时间、`data_fresh`、`official_complete`、五所覆盖、`source_date_match_pct`、`full_market_ready`、`critical_module_errors`、模块质量和历史记录数。
+
+商品报告必须明确：近月—次近月曲线不等于现货基差；未采集仓单/基差/会员排名时不得推断；`options_surface != ready` 时不得输出商品 ATM IV、偏度、PCR、Gamma 或具体期权执行价；历史不足时不得生成伪造的 1/3/5/20 日变化。
+
 ## 晨间版专用规则
 
 - `edition = morning`
@@ -140,6 +154,25 @@ farfromexact/China-Options-Engine/data/snapshots/YYYY-MM-DD.json
 - Commit message可使用：`radar: publish YYYY-MM-DD evening report`
 - 正常中国交易日晚间版应验证 China-Options-Engine `date` 为当日交易日且 `data_fresh=true`；否则必须标明数据降级或滞后。
 - 如北京时间20:30有美国关键宏观数据，先完成数据公布后的市场反应更新，再形成最终报告和GitHub归档。
+
+## 商品晨间版专用规则
+
+- `edition = commodities_morning`
+- 目标开始窗口：北京时间 07:00 左右；不要求在 07:00 整点产出。前一交易日数据、隔夜外盘或关键事件尚未就绪时，等待并记录实际生成时间；仍应尽量在中国现金市场开盘前完成。
+- 历史路径：`reports/YYYY/MM/YYYY-MM-DD_commodities_morning.md/json`
+- Latest 路径：`latest/commodities_morning.md/json`
+- 状态路径：`status/commodities_morning_latest.json`
+- 使用最近完整中国交易日数据与隔夜外盘；必须标明开盘前属性，不得把尚未发生的中国日盘写成事实。
+
+## 商品晚间版专用规则
+
+- `edition = commodities_evening`
+- 目标开始窗口：北京时间 19:30 左右；不要求在 19:30 整点产出。当日日盘或所需外盘/事件信息尚未就绪时，等待并记录实际生成时间；应在相关夜盘决策窗口前完成，而不是为赶时点降低数据质量。
+- 历史路径：`reports/YYYY/MM/YYYY-MM-DD_commodities_evening.md/json`
+- Latest 路径：`latest/commodities_evening.md/json`
+- 状态路径：`status/commodities_evening_latest.json`
+- 正常交易日应验证商品引擎交易日与报告日期相符；若不满足当日完整覆盖条件，仍可归档研究报告，但必须在 `commodities_tracking.data_quality` 标明 `degraded` 或 `stale_or_partial`，不得将数据降级误写为 GitHub 归档失败。
+- 夜盘前报告必须把 21:00 风险地图与当日中国日盘事实分开描述。
 
 ## 手工测试规则
 
