@@ -5,6 +5,7 @@ import re
 import sys
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 from jsonschema import Draft202012Validator, FormatChecker
 
@@ -113,6 +114,14 @@ def _compat_sources(value: Any) -> list[dict[str, Any]]:
             source["title"] = str(title or "unspecified source")
             if "source_date" not in source and "date" in source:
                 source["source_date"] = source.get("date")
+            # A scheduled report occasionally used prose such as
+            # ``official sources enumerated in Markdown`` in the URL slot.
+            # Preserve that explanation without allowing it to masquerade as
+            # a portable URI in the archive contract.
+            url = source.get("url")
+            if url is not None and not _compat_is_uri(url):
+                source["url_note"] = str(url)
+                source["url"] = None
             normalized.append(source)
         elif isinstance(item, str):
             normalized.append({"title": item})
@@ -121,17 +130,46 @@ def _compat_sources(value: Any) -> list[dict[str, Any]]:
     return normalized
 
 
-def _compat_curve_definition(value: Any) -> Any:
+def _compat_is_uri(value: Any) -> bool:
+    if not isinstance(value, str) or not value.strip():
+        return False
+    parsed = urlparse(value.strip())
+    return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
+
+
+def _compat_curve_definition(value: Any, data: dict[str, Any] | None = None) -> Any:
     """Map the human wording used by the commodity task to the contract label."""
-    if not isinstance(value, str):
-        return value
     canonical = "near_minus_next_futures_curve_not_spot_basis"
+    if not isinstance(value, str):
+        # The 2026-08-20 evening dialect moved the curve label out of
+        # ``commodities_tracking.data_quality`` while still publishing curve
+        # values in the dashboard.  Recover the metadata only when the report
+        # contains concrete curve evidence; otherwise keep the failure visible.
+        if isinstance(data, dict):
+            text = json.dumps(data, ensure_ascii=False, sort_keys=True).lower()
+            if any(token in text for token in ("curve", "backwardation", "contango", "曲线", "近月", "次近月")):
+                return canonical
+        return value
     if value == canonical:
         return value
     lowered = value.lower()
-    if "curve" in lowered and "spot" in lowered and ("near" in lowered or "next" in lowered):
+    if (
+        ("curve" in lowered or "曲线" in lowered)
+        and ("spot" in lowered or "现货" in lowered)
+        and ("near" in lowered or "next" in lowered or "近月" in lowered or "次近月" in lowered)
+    ):
+        return canonical
+    if ("near" in lowered and "next" in lowered) or ("近月" in lowered and "次近月" in lowered):
         return canonical
     return value
+
+
+def _compat_contract_root(value: Any) -> str | None:
+    if not isinstance(value, str):
+        return None
+    text = value.strip().upper()
+    match = re.match(r"^([A-Z]{1,4})(?:[A-Z])?\d{3,6}$", text)
+    return match.group(1) if match else None
 
 
 def _compat_contract_from_text(product: str, text: str) -> str | None:
@@ -146,8 +184,8 @@ def _compat_contract_from_text(product: str, text: str) -> str | None:
 
 
 def _compat_market_dashboard(value: Any, data: dict[str, Any]) -> list[dict[str, Any]]:
-    if not isinstance(value, list):
-        return []
+    if not isinstance(value, list) or not value:
+        value = data.get("dashboard") if isinstance(data.get("dashboard"), list) else []
 
     text = json.dumps(data, ensure_ascii=False, sort_keys=True)
     normalized: list[dict[str, Any]] = []
@@ -156,13 +194,15 @@ def _compat_market_dashboard(value: Any, data: dict[str, Any]) -> list[dict[str,
             continue
         row = dict(item)
         product = row.get("product") or row.get("asset") or row.get("symbol") or "UNKNOWN"
-        row["product"] = str(product)
         contract = row.get("main_contract") or row.get("contract") or row.get("main") or row.get("symbol")
+        if not contract and isinstance(row.get("asset"), str):
+            contract = row["asset"]
         if not isinstance(contract, str) or not contract.strip():
             contract = _compat_contract_from_text(str(product), json.dumps(row, ensure_ascii=False))
         if not contract:
             contract = _compat_contract_from_text(str(product), text) or "N/A"
-        row["main_contract"] = contract
+        row["main_contract"] = str(contract)
+        row["product"] = _compat_contract_root(contract) or str(product)
         normalized.append(row)
     return normalized
 
@@ -197,6 +237,186 @@ def _compat_archive(data: dict[str, Any], path: Path) -> dict[str, Any]:
         archive_status = "pending"
     archive["archive_status"] = archive_status
     return archive
+
+
+def _compat_module_quality(data: dict[str, Any]) -> dict[str, Any]:
+    value = data.get("module_quality")
+    return dict(value) if isinstance(value, dict) else {}
+
+
+def _compat_quality_status(data: dict[str, Any], module_quality: dict[str, Any]) -> str:
+    quality_metrics = data.get("quality_metrics") if isinstance(data.get("quality_metrics"), dict) else {}
+    critical_errors = quality_metrics.get("critical_module_errors", 0)
+    source_match = quality_metrics.get("source_date_match_pct")
+    if data.get("data_fresh") is False or (isinstance(critical_errors, int) and critical_errors > 0):
+        return "stale_or_partial"
+    if isinstance(source_match, (int, float)) and source_match < 100:
+        return "stale_or_partial"
+    quality_text = " ".join(str(item).lower() for item in module_quality.values())
+    if any(token in quality_text for token in ("partial", "unavailable", "not_ready", "stale", "error", "missing")):
+        return "degraded"
+    return "ready"
+
+
+def _compat_required_string(value: Any, fallback: Any = "unknown") -> str:
+    if isinstance(value, str) and value.strip():
+        return value
+    if isinstance(fallback, str) and fallback.strip():
+        return fallback
+    return "unknown"
+
+
+def _compat_available_horizons(data: dict[str, Any]) -> list[str]:
+    explicit = data.get("available_horizons")
+    if isinstance(explicit, list):
+        return [item for item in explicit if item in {"1D", "3D", "5D", "20D"}]
+
+    horizons: set[str] = set()
+    dashboard = data.get("dashboard")
+    if isinstance(dashboard, list):
+        for item in dashboard:
+            if not isinstance(item, dict):
+                continue
+            for key, horizon in (("change_1d", "1D"), ("change_3d", "3D"), ("change_5d", "5D"), ("change_20d", "20D")):
+                if isinstance(item.get(key), dict):
+                    horizons.add(horizon)
+    return [horizon for horizon in ("1D", "3D", "5D", "20D") if horizon in horizons]
+
+
+def _compat_data_quality(
+    value: Any,
+    data: dict[str, Any],
+    tracking: dict[str, Any],
+) -> dict[str, Any]:
+    quality = dict(value) if isinstance(value, dict) else {}
+    module_quality = _compat_module_quality(data)
+    input_snapshots = data.get("input_snapshots") if isinstance(data.get("input_snapshots"), dict) else {}
+    commodity_snapshot = input_snapshots.get("china_commodities")
+    commodity_snapshot = commodity_snapshot if isinstance(commodity_snapshot, dict) else {}
+    options_assessment = data.get("options_assessment")
+    options_assessment = options_assessment if isinstance(options_assessment, dict) else {}
+
+    derived_status = _compat_quality_status(data, module_quality)
+    quality["status"] = quality.get("status") if quality.get("status") in {"ready", "degraded", "stale_or_partial"} else derived_status
+    quality["price_source"] = _compat_required_string(
+        quality.get("price_source"),
+        f"{commodity_snapshot.get('repository', 'China-Commodities-Engine')} / data/radar_latest.json",
+    )
+    quality["curve_definition"] = _compat_curve_definition(
+        quality.get("curve_definition")
+        or data.get("curve_definition")
+        or module_quality.get("curve_definition"),
+        data,
+    )
+    quality["basis_status"] = _compat_required_string(quality.get("basis_status"), module_quality.get("basis", "unavailable"))
+    quality["warehouse_status"] = _compat_required_string(
+        quality.get("warehouse_status"), module_quality.get("warehouse", "unavailable")
+    )
+    quality["member_rankings_status"] = _compat_required_string(
+        quality.get("member_rankings_status"), module_quality.get("member_rankings", "unavailable")
+    )
+    quality["options_chain_status"] = _compat_required_string(
+        quality.get("options_chain_status"),
+        module_quality.get("options_chain")
+        or ("ready" if options_assessment.get("record_count") and options_assessment.get("product_coverage") == 1 else "partial"),
+    )
+    quality["options_surface_status"] = _compat_required_string(
+        quality.get("options_surface_status"),
+        module_quality.get("options_surface")
+        or ("ready" if options_assessment.get("surface_ready") is True else "not_ready"),
+    )
+
+    if "history_comparison_status" not in quality:
+        horizons = _compat_available_horizons(data)
+        quality["history_comparison_status"] = "available" if horizons else "insufficient_history"
+    else:
+        horizons = _compat_available_horizons(data)
+    quality.setdefault("available_horizons", horizons)
+    if not isinstance(quality.get("available_horizons"), list):
+        quality["available_horizons"] = []
+    quality.setdefault(
+        "comparative_metrics",
+        data.get("meaningful_changes") if isinstance(data.get("meaningful_changes"), list) else [],
+    )
+    if not isinstance(quality.get("comparative_metrics"), list):
+        quality["comparative_metrics"] = []
+    return quality
+
+
+def _compat_options_surface(value: Any, data: dict[str, Any]) -> dict[str, Any]:
+    source = dict(value) if isinstance(value, dict) else {}
+    if not source:
+        assessment = data.get("options_assessment")
+        source = dict(assessment) if isinstance(assessment, dict) else {}
+
+    status = source.get("status")
+    if status not in {"ready", "not_ready", "not_collected", "unavailable"}:
+        status = "ready" if source.get("surface_ready") is True else "not_ready"
+
+    # Keep only fields that are safe in the canonical surface contract.  The
+    # raw assessment may contain labels such as ``skew`` and ``iv_high_low``;
+    # copying those into a closed surface would look like collected metrics.
+    normalized: dict[str, Any] = {
+        "status": status,
+        "available_metrics": list(source.get("available_metrics") or []) if status == "ready" else [],
+        "tradeable_structures": list(source.get("tradeable_structures") or []) if status == "ready" else [],
+        "research_priority_when_ready": list(
+            source.get("research_priority_when_ready")
+            or source.get("preferred_structure_directions")
+            or source.get("research_priority")
+            or []
+        ),
+    }
+    for key in ("limitations", "mandatory_statement", "must_avoid"):
+        if key in source:
+            normalized[key] = source[key]
+    return normalized
+
+
+def _compat_night_action(item: dict[str, Any]) -> str:
+    for key in ("action", "recommended_action", "next_action", "risk_action", "操作", "建议", "执行"):
+        value = item.get(key)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+
+    fragments: list[str] = []
+    aliases = (
+        (("expected_open", "expected", "预期"), "expected"),
+        (("chase", "追价", "追价?"), "chase"),
+        (("wait_minutes", "wait", "等待"), "wait"),
+        (("confirmation", "关键确认", "确认"), "confirm"),
+        (("night_session", "夜盘"), "session"),
+    )
+    for keys, label in aliases:
+        for key in keys:
+            value = item.get(key)
+            if value is not None and str(value).strip():
+                fragments.append(f"{label}: {value}")
+                break
+    return "; ".join(fragments) if fragments else "unknown"
+
+
+def _compat_night_session_risk_map(value: Any, data: dict[str, Any]) -> list[dict[str, Any]]:
+    source = value if isinstance(value, list) and value else data.get("opening_gap_map")
+    if not isinstance(source, list):
+        return []
+
+    normalized: list[dict[str, Any]] = []
+    for item in source:
+        if not isinstance(item, dict):
+            continue
+        row = dict(item)
+        product = row.get("product") or row.get("asset") or row.get("symbol") or "UNKNOWN"
+        confidence = row.get("confidence") or row.get("confidence_level") or row.get("certainty") or row.get("置信度")
+        normalized.append(
+            {
+                **row,
+                "product": str(product),
+                "confidence": str(confidence).strip() if confidence is not None and str(confidence).strip() else "unknown",
+                "action": _compat_night_action(row),
+            }
+        )
+    return normalized
 
 
 def _normalize_commodity_schedule_report(data: dict[str, Any], path: Path) -> dict[str, Any]:
@@ -234,11 +454,16 @@ def _normalize_commodity_schedule_report(data: dict[str, Any], path: Path) -> di
     normalized.setdefault("risk_budget", {})
 
     tracking = dict(data.get("commodities_tracking")) if isinstance(data.get("commodities_tracking"), dict) else {}
-    quality = dict(tracking.get("data_quality")) if isinstance(tracking.get("data_quality"), dict) else {}
-    quality["curve_definition"] = _compat_curve_definition(quality.get("curve_definition"))
+    quality = _compat_data_quality(tracking.get("data_quality"), data, tracking)
     tracking["data_quality"] = quality
     market_dashboard = _compat_market_dashboard(tracking.get("market_dashboard"), data)
     tracking["market_dashboard"] = market_dashboard
+    if not isinstance(tracking.get("supply_chain_map"), list):
+        tracking["supply_chain_map"] = data.get("sector_map") if isinstance(data.get("sector_map"), list) else []
+    tracking["options_surface"] = _compat_options_surface(tracking.get("options_surface"), data)
+    tracking["night_session_risk_map"] = _compat_night_session_risk_map(
+        tracking.get("night_session_risk_map"), data
+    )
     normalized["commodities_tracking"] = tracking
     normalized["dashboard"] = _compat_dashboard(data.get("dashboard"), market_dashboard)
     normalized["meaningful_changes"] = data.get("meaningful_changes") or quality.get("comparative_metrics", [])

@@ -5,6 +5,7 @@ import importlib.util
 import json
 import unittest
 from pathlib import Path
+from typing import Any
 from unittest.mock import patch
 
 
@@ -68,7 +69,10 @@ class ArchiveValidatorTests(unittest.TestCase):
         self.assertTrue(any("not configured in archive-policy.json" in error for error in errors))
 
     def test_rejects_missing_markdown_and_json_pairs(self) -> None:
-        json_path = REPO_ROOT / "reports" / "2026" / "08" / "2026-08-20_commodities_evening.json"
+        # Use a date that is not already present in the live archive.  The
+        # report validator only needs a path for its filename/pair checks; a
+        # fixed existing date would make this test depend on today's archive.
+        json_path = REPO_ROOT / "reports" / "2026" / "08" / "2026-08-21_commodities_evening.json"
         report = {
             "schema_version": "1.0",
             "status": "archive_failed",
@@ -148,6 +152,91 @@ class ArchiveValidatorTests(unittest.TestCase):
             pending, REPO_ROOT / "latest" / "commodities_evening.json"
         )
         self.assertEqual(normalized_pending["archive"]["archive_status"], "pending")
+
+    def test_current_evening_top_level_dialect_materializes_safe_tracking(self) -> None:
+        path = REPO_ROOT / "latest" / "commodities_evening.json"
+        raw = json.loads(path.read_text(encoding="utf-8"))
+        self.assertNotIn("commodities_tracking", raw)
+
+        normalized = VALIDATOR.normalize_report_for_schema(raw, path)
+        tracking = normalized["commodities_tracking"]
+        quality = tracking["data_quality"]
+
+        self.assertEqual(
+            set(tracking),
+            {"data_quality", "market_dashboard", "supply_chain_map", "options_surface", "night_session_risk_map"},
+        )
+        self.assertEqual(quality["curve_definition"], "near_minus_next_futures_curve_not_spot_basis")
+        self.assertIn("1D", quality["available_horizons"])
+        self.assertEqual(tracking["options_surface"]["status"], "not_ready")
+        self.assertEqual(tracking["options_surface"]["available_metrics"], [])
+        self.assertEqual(tracking["options_surface"]["tradeable_structures"], [])
+        self.assertTrue(tracking["options_surface"]["research_priority_when_ready"])
+        self.assertTrue(tracking["market_dashboard"])
+        self.assertTrue(tracking["supply_chain_map"])
+        self.assertTrue(tracking["night_session_risk_map"])
+        self.assertTrue(all("confidence" in row and "action" in row for row in tracking["night_session_risk_map"]))
+        self.assertEqual(
+            VALIDATOR.validate_commodity_contract(normalized, path, self.allowed_editions),
+            [],
+        )
+
+    def test_missing_night_fields_and_non_uri_source_are_explicitly_normalized(self) -> None:
+        report = copy.deepcopy(self.commodity_report)
+        report["commodities_tracking"]["night_session_risk_map"] = [
+            {"product": "FU", "expected_open": "higher", "wait_minutes": 30},
+        ]
+        report["sources"] = [{"publisher": "official", "url": "official sources enumerated in Markdown"}]
+        normalized = VALIDATOR.normalize_report_for_schema(report, REPO_ROOT / "fixture.json")
+
+        night_row = normalized["commodities_tracking"]["night_session_risk_map"][0]
+        self.assertEqual(night_row["confidence"], "unknown")
+        self.assertIn("expected: higher", night_row["action"])
+        self.assertEqual(normalized["sources"][0]["url"], None)
+        self.assertEqual(normalized["sources"][0]["url_note"], "official sources enumerated in Markdown")
+
+    def test_global_evening_heading_alias_is_accepted(self) -> None:
+        markdown_path = REPO_ROOT / "latest" / "evening.md"
+        errors = MARKDOWN_VALIDATOR.validate_full_markdown(markdown_path, "2026-08-20", "evening")
+        self.assertEqual(errors, [])
+
+    def test_pending_archive_defers_latest_markdown_identity_check(self) -> None:
+        virtual_root = REPO_ROOT / "_pending_archive_virtual_root"
+        latest_json = virtual_root / "latest" / "commodities_evening.json"
+        latest_md = latest_json.with_suffix(".md")
+        status_path = virtual_root / "status" / "commodities_evening_latest.json"
+        historical_md = virtual_root / "reports" / "2026" / "08" / "2026-08-20_commodities_evening.md"
+        latest_report = {
+            "status": "published",
+            "report_date": "2026-08-20",
+            "edition": "commodities_evening",
+        }
+        pending_status = {
+            "edition": "commodities_evening",
+            "report_date": "2026-08-20",
+            "archive_status": "pending",
+        }
+        editions = {
+            "commodities_evening": {
+                "latest_json": "latest/commodities_evening.json",
+                "latest_markdown": "latest/commodities_evening.md",
+                "status_path": "status/commodities_evening_latest.json",
+            }
+        }
+
+        def fake_exists(path: Path) -> bool:
+            return path in {latest_json, latest_md, status_path, historical_md}
+
+        def fake_load_json(path: Path) -> dict[str, Any]:
+            return pending_status if path == status_path else latest_report
+
+        with patch.object(MARKDOWN_VALIDATOR, "ROOT", virtual_root), patch.object(
+            Path, "exists", fake_exists
+        ), patch.object(MARKDOWN_VALIDATOR, "load_json", fake_load_json), patch.object(
+            MARKDOWN_VALIDATOR, "validate_full_markdown", return_value=[]
+        ):
+            errors = MARKDOWN_VALIDATOR.validate_latest_consistency(editions)
+        self.assertEqual(errors, [])
 
     def test_commodity_markdown_alias_headings_are_accepted(self) -> None:
         for filename in (
