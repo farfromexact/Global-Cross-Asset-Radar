@@ -4,7 +4,7 @@
   "edition": "commodities_morning",
   "generated_at_bjt": "2026-08-21T07:30:56+08:00",
   "status": "published",
-  "archive_status": "pending",
+  "archive_status": "success",
   "ci_validation_status": "pending_or_unverified",
   "archive_write_mode": "direct_to_main",
   "china_commodities_date": "2026-08-20",
@@ -33,6 +33,15 @@
     "status/commodities_morning_latest.json",
     "manifests/reports.json"
   ],
+  "verification": {
+    "historical_markdown_exists": true,
+    "historical_json_exists": true,
+    "latest_markdown_date_matches": true,
+    "latest_json_report_date_matches": true,
+    "latest_json_edition_matches": true,
+    "manifest_unique_key_verified": true,
+    "status_matches_run": true
+  },
   "errors": [
     "China-Commodities-Engine has no unified session/night layer",
     "DCE contract_info failed in root metadata module",
@@ -44,7 +53,7 @@
     "BU tick size was not used because current-source/version confirmation was inconsistent"
   ],
   "notes": [
-    "archive_status remains pending until all six required main paths are re-read and verified",
-    "CI validation is independent post-write validation and is not awaited"
+    "all six required main paths were re-read before archive_status was promoted to success",
+    "CI validation is independent post-write validation and was not awaited"
   ]
 }
