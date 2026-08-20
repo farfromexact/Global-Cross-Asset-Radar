@@ -104,12 +104,146 @@ def _compat_sources(value: Any) -> list[dict[str, Any]]:
 
     normalized: list[dict[str, Any]] = []
     for item in value:
-        if isinstance(item, dict) and isinstance(item.get("title"), str):
-            normalized.append(item)
+        if isinstance(item, dict):
+            source = dict(item)
+            # The commodity Scheduled Tasks historically used ``name`` or
+            # ``publisher`` and ``date``.  Keep those fields, but expose the
+            # canonical archive keys to the schema validator as well.
+            title = source.get("title") or source.get("name") or source.get("publisher") or source.get("url")
+            source["title"] = str(title or "unspecified source")
+            if "source_date" not in source and "date" in source:
+                source["source_date"] = source.get("date")
+            normalized.append(source)
         elif isinstance(item, str):
             normalized.append({"title": item})
         else:
             normalized.append({"title": str(item)})
+    return normalized
+
+
+def _compat_curve_definition(value: Any) -> Any:
+    """Map the human wording used by the commodity task to the contract label."""
+    if not isinstance(value, str):
+        return value
+    canonical = "near_minus_next_futures_curve_not_spot_basis"
+    if value == canonical:
+        return value
+    lowered = value.lower()
+    if "curve" in lowered and "spot" in lowered and ("near" in lowered or "next" in lowered):
+        return canonical
+    return value
+
+
+def _compat_contract_from_text(product: str, text: str) -> str | None:
+    product = product.strip().upper()
+    if not product:
+        return None
+    # Chinese reports commonly write FU2611/JM2701/FG701 inline in cards.
+    # This is only a best-effort identity recovery; if no symbol is present we
+    # retain an explicit N/A sentinel rather than inventing a contract.
+    match = re.search(rf"\b{re.escape(product)}[A-Z]?\d{{3,6}}\b", text.upper())
+    return match.group(0) if match else None
+
+
+def _compat_market_dashboard(value: Any, data: dict[str, Any]) -> list[dict[str, Any]]:
+    if not isinstance(value, list):
+        return []
+
+    text = json.dumps(data, ensure_ascii=False, sort_keys=True)
+    normalized: list[dict[str, Any]] = []
+    for item in value:
+        if not isinstance(item, dict):
+            continue
+        row = dict(item)
+        product = row.get("product") or row.get("asset") or row.get("symbol") or "UNKNOWN"
+        row["product"] = str(product)
+        contract = row.get("main_contract") or row.get("contract") or row.get("main") or row.get("symbol")
+        if not isinstance(contract, str) or not contract.strip():
+            contract = _compat_contract_from_text(str(product), json.dumps(row, ensure_ascii=False))
+        if not contract:
+            contract = _compat_contract_from_text(str(product), text) or "N/A"
+        row["main_contract"] = contract
+        normalized.append(row)
+    return normalized
+
+
+def _compat_dashboard(value: Any, market_dashboard: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Build the generic dashboard required by the shared report schema."""
+    source = value if isinstance(value, list) and value else market_dashboard
+    normalized: list[dict[str, Any]] = []
+    for item in source:
+        if not isinstance(item, dict):
+            continue
+        row = dict(item)
+        row.setdefault("asset", row.get("product") or row.get("symbol") or "UNKNOWN")
+        normalized.append(row)
+    return normalized
+
+
+def _compat_archive(data: dict[str, Any], path: Path) -> dict[str, Any]:
+    archive = dict(data.get("archive")) if isinstance(data.get("archive"), dict) else {}
+    if "reports" in path.parts:
+        json_path = path.relative_to(ROOT).as_posix()
+        markdown_path = path.with_suffix(".md").relative_to(ROOT).as_posix()
+    else:
+        json_path = None
+        markdown_path = None
+    archive.setdefault("json_path", json_path)
+    archive.setdefault("markdown_path", markdown_path)
+    archive.setdefault("latest_json_path", f"latest/{data.get('edition')}.json")
+    archive.setdefault("latest_markdown_path", f"latest/{data.get('edition')}.md")
+    archive_status = archive.get("archive_status", data.get("archive_status"))
+    if archive_status == "pending_verification":
+        archive_status = "pending"
+    archive["archive_status"] = archive_status
+    return archive
+
+
+def _normalize_commodity_schedule_report(data: dict[str, Any], path: Path) -> dict[str, Any]:
+    """Adapt the existing commodity task dialect without changing its prompt.
+
+    The external Scheduled Tasks already publish useful commodity content, but
+    their JSON uses a compact dialect (``name``/``date`` sources, no generic
+    dashboard, and descriptive curve labels).  Keep the raw fields and add a
+    canonical in-memory view for validation.  Missing contracts become an
+    explicit ``N/A`` rather than a fabricated symbol.
+    """
+    if data.get("edition") not in {"commodities_morning", "commodities_evening"}:
+        return data
+
+    normalized = dict(data)
+    normalized.setdefault("generated_at_bjt", data.get("generated_at"))
+    normalized.setdefault("title", _compat_title(data))
+    normalized.setdefault(
+        "one_sentence_conclusion",
+        data.get("one_sentence") or data.get("commodity_regime") or data.get("regime"),
+    )
+    normalized.setdefault("source_status", {
+        "compatibility_adapter": "commodity_schedule_dialect",
+        "data_fresh": data.get("data_fresh"),
+        "errors": data.get("errors", []),
+    })
+    normalized.setdefault("meaningful_changes", [])
+    normalized.setdefault("top_opportunities", [])
+    normalized.setdefault("top_trade_cards", data.get("trade_cards", []))
+    normalized.setdefault("gold_tracking", {})
+    normalized.setdefault("ai_tracking", {})
+    normalized.setdefault("china_tracking", {})
+    normalized.setdefault("event_calendar", [])
+    normalized.setdefault("action_list", {"A": "", "B": "", "C": "", "D": ""})
+    normalized.setdefault("risk_budget", {})
+
+    tracking = dict(data.get("commodities_tracking")) if isinstance(data.get("commodities_tracking"), dict) else {}
+    quality = dict(tracking.get("data_quality")) if isinstance(tracking.get("data_quality"), dict) else {}
+    quality["curve_definition"] = _compat_curve_definition(quality.get("curve_definition"))
+    tracking["data_quality"] = quality
+    market_dashboard = _compat_market_dashboard(tracking.get("market_dashboard"), data)
+    tracking["market_dashboard"] = market_dashboard
+    normalized["commodities_tracking"] = tracking
+    normalized["dashboard"] = _compat_dashboard(data.get("dashboard"), market_dashboard)
+    normalized["meaningful_changes"] = data.get("meaningful_changes") or quality.get("comparative_metrics", [])
+    normalized["sources"] = _compat_sources(data.get("sources"))
+    normalized["archive"] = _compat_archive(data, path)
     return normalized
 
 
@@ -153,6 +287,8 @@ def normalize_report_for_schema(data: Any, path: Path) -> Any:
         return data
 
     normalized = dict(data)
+
+    normalized = _normalize_commodity_schedule_report(normalized, path)
 
     if data.get("schema_version") == "1.1":
         normalized["schema_version"] = "1.0"
@@ -258,6 +394,14 @@ def _contains_unavailable_option_metric(value: Any, path: tuple[str, ...] = ()) 
     allowed_field_names = {
         "options_chain_status",
         "options_surface_status",
+        # Coverage metadata is not a tradable IV/skew/Gamma metric.  The
+        # commodity task may report how much of the chain had vendor Greeks
+        # even while the execution surface remains closed.
+        "iv_coverage",
+        "vendor_greeks_coverage",
+        "expiry_coverage",
+        "bid_ask_coverage",
+        "open_interest_coverage",
         "available_metrics",
         "tradeable_structures",
         "research_priority_when_ready",
