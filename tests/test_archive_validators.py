@@ -16,6 +16,13 @@ assert SPEC and SPEC.loader
 VALIDATOR = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(VALIDATOR)
 
+MARKDOWN_SPEC = importlib.util.spec_from_file_location(
+    "markdown_validator", REPO_ROOT / "scripts" / "validate_markdown_reports.py"
+)
+assert MARKDOWN_SPEC and MARKDOWN_SPEC.loader
+MARKDOWN_VALIDATOR = importlib.util.module_from_spec(MARKDOWN_SPEC)
+MARKDOWN_SPEC.loader.exec_module(MARKDOWN_VALIDATOR)
+
 
 class ArchiveValidatorTests(unittest.TestCase):
     @classmethod
@@ -121,9 +128,46 @@ class ArchiveValidatorTests(unittest.TestCase):
         errors = VALIDATOR.validate_json_schema(normalized, self.report_schema, REPO_ROOT / "fixture.json")
         self.assertTrue(any("china_commodities" in error for error in errors))
 
+    def test_commodity_schedule_dialect_is_normalized_for_validation(self) -> None:
+        for filename in ("latest/commodities_evening.json", "latest/commodities_morning.json"):
+            path = REPO_ROOT / filename
+            raw = json.loads(path.read_text(encoding="utf-8"))
+            normalized = VALIDATOR.normalize_report_for_schema(raw, path)
+            errors = VALIDATOR.validate_json_schema(normalized, self.report_schema, path)
+            self.assertEqual(errors, [], filename)
+            self.assertEqual(
+                VALIDATOR.validate_commodity_contract(normalized, path, self.allowed_editions),
+                [],
+                filename,
+            )
+
+        pending = copy.deepcopy(self.commodity_report)
+        pending.pop("archive", None)
+        pending["archive_status"] = "pending_verification"
+        normalized_pending = VALIDATOR.normalize_report_for_schema(
+            pending, REPO_ROOT / "latest" / "commodities_evening.json"
+        )
+        self.assertEqual(normalized_pending["archive"]["archive_status"], "pending")
+
+    def test_commodity_markdown_alias_headings_are_accepted(self) -> None:
+        for filename in (
+            "reports/2026/08/2026-08-19_commodities_evening.md",
+            "reports/2026/08/2026-08-20_commodities_morning.md",
+        ):
+            markdown_path = REPO_ROOT / filename
+            json_path = markdown_path.with_suffix(".json")
+            report = json.loads(json_path.read_text(encoding="utf-8"))
+            errors = MARKDOWN_VALIDATOR.validate_full_markdown(
+                markdown_path,
+                report["report_date"],
+                report["edition"],
+            )
+            self.assertEqual(errors, [], filename)
+
     def test_blocks_history_comparisons_and_option_metrics_behind_gates(self) -> None:
         report = copy.deepcopy(self.commodity_report)
         quality = report["commodities_tracking"]["data_quality"]
+        quality["history_comparison_status"] = "insufficient_history"
         quality["available_horizons"] = ["1D"]
         quality["comparative_metrics"] = [{"metric": "return_1d", "value": 1.0}]
         report["commodities_tracking"]["options_surface"]["status"] = "ready"
