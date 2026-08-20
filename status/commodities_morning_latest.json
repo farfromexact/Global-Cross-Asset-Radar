@@ -1,30 +1,50 @@
 {
   "schema_version": "1.0",
-  "report_date": "2026-08-20",
+  "report_date": "2026-08-21",
   "edition": "commodities_morning",
-  "generated_at_bjt": "2026-08-20T07:09:00+08:00",
+  "generated_at_bjt": "2026-08-21T07:30:56+08:00",
   "status": "published",
-  "archive_status": "success",
+  "archive_status": "pending",
   "ci_validation_status": "pending_or_unverified",
   "archive_write_mode": "direct_to_main",
-  "china_commodities_date": "2026-08-19",
+  "china_commodities_date": "2026-08-20",
   "data_fresh": true,
   "full_market_ready": true,
   "source_date_match_pct": 100.0,
   "critical_module_errors": 0,
+  "included_exchanges": ["SHFE", "INE", "DCE", "CZCE", "GFEX"],
+  "excluded_exchanges": [],
+  "module_status": {
+    "core_futures": "fresh_full_market_vendor_primary",
+    "contract_meta": "partial_error",
+    "warehouse": "partial_error",
+    "basis": "unavailable_root",
+    "physical": "4_of_20_verified",
+    "external": "5_fresh_1_stale_of_22",
+    "options_chain": "64_of_64_full_chain_verified",
+    "options_surface": "research_ready_execution_not_ready",
+    "session_layer": "unavailable"
+  },
   "required_paths": [
-    "reports/2026/08/2026-08-20_commodities_morning.md",
-    "reports/2026/08/2026-08-20_commodities_morning.json",
+    "reports/2026/08/2026-08-21_commodities_morning.md",
+    "reports/2026/08/2026-08-21_commodities_morning.json",
     "latest/commodities_morning.md",
     "latest/commodities_morning.json",
     "status/commodities_morning_latest.json",
     "manifests/reports.json"
   ],
-  "verification": "six required main paths were read and matched the current report before archive_status was finalized; a final re-read follows this write",
-  "errors": [],
+  "errors": [
+    "China-Commodities-Engine has no unified session/night layer",
+    "DCE contract_info failed in root metadata module",
+    "GFEX contract_info was nonfresh in root metadata module",
+    "physical coverage only 4/20",
+    "external repository layer only 5 fresh targets of 22 and BMD palm stale",
+    "options bid/ask coverage is zero and OI coverage is 67.61%, so execution/positioning are not ready",
+    "most China night prices could not be independently confirmed; only JM2701 commercial SMM quote used",
+    "BU tick size was not used because current-source/version confirmation was inconsistent"
+  ],
   "notes": [
-    "China night-session exact close unavailable from auditable engine layer",
-    "options_surface and execution_ready are false",
-    "External module degraded because BMD palm mapping is stale"
+    "archive_status remains pending until all six required main paths are re-read and verified",
+    "CI validation is independent post-write validation and is not awaited"
   ]
 }
