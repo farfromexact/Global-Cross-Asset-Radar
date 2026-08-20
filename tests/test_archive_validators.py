@@ -5,6 +5,7 @@ import importlib.util
 import json
 import unittest
 from pathlib import Path
+from typing import Any
 from unittest.mock import patch
 
 
@@ -197,6 +198,44 @@ class ArchiveValidatorTests(unittest.TestCase):
     def test_global_evening_heading_alias_is_accepted(self) -> None:
         markdown_path = REPO_ROOT / "latest" / "evening.md"
         errors = MARKDOWN_VALIDATOR.validate_full_markdown(markdown_path, "2026-08-20", "evening")
+        self.assertEqual(errors, [])
+
+    def test_pending_archive_defers_latest_markdown_identity_check(self) -> None:
+        virtual_root = REPO_ROOT / "_pending_archive_virtual_root"
+        latest_json = virtual_root / "latest" / "commodities_evening.json"
+        latest_md = latest_json.with_suffix(".md")
+        status_path = virtual_root / "status" / "commodities_evening_latest.json"
+        historical_md = virtual_root / "reports" / "2026" / "08" / "2026-08-20_commodities_evening.md"
+        latest_report = {
+            "status": "published",
+            "report_date": "2026-08-20",
+            "edition": "commodities_evening",
+        }
+        pending_status = {
+            "edition": "commodities_evening",
+            "report_date": "2026-08-20",
+            "archive_status": "pending",
+        }
+        editions = {
+            "commodities_evening": {
+                "latest_json": "latest/commodities_evening.json",
+                "latest_markdown": "latest/commodities_evening.md",
+                "status_path": "status/commodities_evening_latest.json",
+            }
+        }
+
+        def fake_exists(path: Path) -> bool:
+            return path in {latest_json, latest_md, status_path, historical_md}
+
+        def fake_load_json(path: Path) -> dict[str, Any]:
+            return pending_status if path == status_path else latest_report
+
+        with patch.object(MARKDOWN_VALIDATOR, "ROOT", virtual_root), patch.object(
+            Path, "exists", fake_exists
+        ), patch.object(MARKDOWN_VALIDATOR, "load_json", fake_load_json), patch.object(
+            MARKDOWN_VALIDATOR, "validate_full_markdown", return_value=[]
+        ):
+            errors = MARKDOWN_VALIDATOR.validate_latest_consistency(editions)
         self.assertEqual(errors, [])
 
     def test_commodity_markdown_alias_headings_are_accepted(self) -> None:

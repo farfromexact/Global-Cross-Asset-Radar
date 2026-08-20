@@ -208,6 +208,28 @@ def validate_latest_consistency(editions: dict[str, dict[str, Any]]) -> list[str
 
         errors.extend(validate_full_markdown(latest_md, report_date, edition))
 
+        # Formal archive writes are deliberately direct-to-main and happen in
+        # the policy-defined order.  During that short transaction, the
+        # edition status records ``pending``/``partial`` while the historical
+        # Markdown may already contain a newer revision than the latest copy.
+        # Validate each present report, but defer the identity comparison until
+        # the status says the six-file archive is final.  This prevents a
+        # legitimate intermediate write from producing a misleading red run.
+        status_rel = config.get("status_path")
+        status_path = ROOT / status_rel if isinstance(status_rel, str) else None
+        if status_path is not None and status_path.exists():
+            try:
+                status = load_json(status_path)
+            except ValidationFailure as exc:
+                errors.append(str(exc))
+                status = {}
+            if (
+                status.get("edition") == edition
+                and status.get("report_date") == report_date
+                and status.get("archive_status") in {"pending", "partial"}
+            ):
+                continue
+
         historical_md = (
             ROOT
             / "reports"
