@@ -4,7 +4,7 @@
   "edition": "commodities_morning",
   "generated_at_bjt": "2026-08-22T07:04:19+08:00",
   "status": "published",
-  "archive_status": "pending_verification",
+  "archive_status": "success",
   "ci_validation_status": "pending_or_unverified",
   "archive_write_mode": "direct_to_main",
   "data_protocol_version": "china_commodities_v2",
@@ -40,13 +40,13 @@
     "manifests/reports.json"
   ],
   "verification": {
-    "historical_markdown_exists": false,
-    "historical_json_exists": false,
-    "latest_markdown_date_matches": false,
-    "latest_json_report_date_matches": false,
-    "latest_json_edition_matches": false,
-    "manifest_unique_key_verified": false,
-    "status_matches_run": false
+    "historical_markdown_exists": true,
+    "historical_json_exists": true,
+    "latest_markdown_date_matches": true,
+    "latest_json_report_date_matches": true,
+    "latest_json_edition_matches": true,
+    "manifest_unique_key_verified": true,
+    "status_matches_run": true
   },
   "errors": [
     "China-Commodities-Engine has no unified China night/session product; Friday night closing prices were not auditable in this run",
@@ -58,7 +58,7 @@
     "AG current margin/limit parameter requires final pre-order recheck because repository metadata is missing"
   ],
   "notes": [
-    "archive_status remains pending_verification until all six required main paths are re-read and checked",
-    "CI validation is independent post-write validation and will not be awaited"
+    "all six required main paths were re-read for the current report_date/edition before archive_status was promoted to success",
+    "CI validation is independent post-write validation and was not awaited"
   ]
 }
