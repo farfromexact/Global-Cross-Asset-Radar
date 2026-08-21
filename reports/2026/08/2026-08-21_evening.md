@@ -166,4 +166,4 @@ D. **今天必须避免/退出：** 裸卖Gamma、追Brent/黄金现货、重新
 
 **数据缺口：** 精确同步USD/CNH、海外期权完整实时IV/skew/premium、同日黄金ETF流、足够新鲜的CFTC黄金仓位、CTA暴露、当前DR007/中国国债收益率、实时primary MOVE、同步当日HY OAS、中国成分股涨跌家数/行业贡献未全部取得；不猜。3/5/20D wing/RR/BF未逐日重建，已明确标注。
 
-**归档状态：** pending_verification；CI：pending_or_unverified。
+**归档状态：success；CI：pending_or_unverified。**
