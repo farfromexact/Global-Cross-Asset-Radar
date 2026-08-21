@@ -183,9 +183,34 @@ def _compat_contract_from_text(product: str, text: str) -> str | None:
     return match.group(0) if match else None
 
 
+def _compat_mapping_rows(value: Any) -> list[dict[str, Any]]:
+    """Turn a keyed summary map into the canonical row-array dialect.
+
+    Scheduled reports have used both ``[{"asset": ...}]`` and
+    ``{"UST2Y": {...}}`` for dashboards.  The latter is lossless to adapt in
+    memory: the map key becomes the required ``asset`` identity and the value
+    remains untouched.  Scalars are retained under ``value`` rather than
+    discarded, so this compatibility layer never invents market fields.
+    """
+    if not isinstance(value, dict):
+        return []
+
+    rows: list[dict[str, Any]] = []
+    for key, item in value.items():
+        if isinstance(item, dict):
+            row = dict(item)
+        else:
+            row = {"value": item}
+        row.setdefault("asset", str(key))
+        rows.append(row)
+    return rows
+
+
 def _compat_market_dashboard(value: Any, data: dict[str, Any]) -> list[dict[str, Any]]:
     if not isinstance(value, list) or not value:
-        value = data.get("dashboard") if isinstance(data.get("dashboard"), list) else []
+        value = value if isinstance(value, dict) else data.get("dashboard")
+        if not isinstance(value, list):
+            value = _compat_mapping_rows(value)
 
     text = json.dumps(data, ensure_ascii=False, sort_keys=True)
     normalized: list[dict[str, Any]] = []
@@ -209,7 +234,12 @@ def _compat_market_dashboard(value: Any, data: dict[str, Any]) -> list[dict[str,
 
 def _compat_dashboard(value: Any, market_dashboard: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Build the generic dashboard required by the shared report schema."""
-    source = value if isinstance(value, list) and value else market_dashboard
+    if isinstance(value, list) and value:
+        source = value
+    elif isinstance(value, dict):
+        source = _compat_mapping_rows(value)
+    else:
+        source = market_dashboard
     normalized: list[dict[str, Any]] = []
     for item in source:
         if not isinstance(item, dict):
@@ -217,6 +247,22 @@ def _compat_dashboard(value: Any, market_dashboard: list[dict[str, Any]]) -> lis
         row = dict(item)
         row.setdefault("asset", row.get("product") or row.get("symbol") or "UNKNOWN")
         normalized.append(row)
+    return normalized
+
+
+def _compat_meaningful_changes(value: Any) -> list[dict[str, Any]]:
+    """Normalize prose change summaries to the schema's object-array form."""
+    if not isinstance(value, list):
+        return []
+
+    normalized: list[dict[str, Any]] = []
+    for item in value:
+        if isinstance(item, dict):
+            normalized.append(dict(item))
+        elif isinstance(item, str) and item.strip():
+            normalized.append({"summary": item.strip()})
+        elif item is not None:
+            normalized.append({"summary": str(item)})
     return normalized
 
 
@@ -338,8 +384,7 @@ def _compat_data_quality(
         "comparative_metrics",
         data.get("meaningful_changes") if isinstance(data.get("meaningful_changes"), list) else [],
     )
-    if not isinstance(quality.get("comparative_metrics"), list):
-        quality["comparative_metrics"] = []
+    quality["comparative_metrics"] = _compat_meaningful_changes(quality.get("comparative_metrics"))
     return quality
 
 
@@ -350,6 +395,10 @@ def _compat_options_surface(value: Any, data: dict[str, Any]) -> dict[str, Any]:
         source = dict(assessment) if isinstance(assessment, dict) else {}
 
     status = source.get("status")
+    if isinstance(status, str) and status.strip().lower() in {"research_ready", "surface_ready"}:
+        # These labels mean the research surface is usable; execution readiness
+        # remains separately represented by the coverage counters.
+        status = "ready"
     if status not in {"ready", "not_ready", "not_collected", "unavailable"}:
         status = "ready" if source.get("surface_ready") is True else "not_ready"
 
@@ -367,6 +416,12 @@ def _compat_options_surface(value: Any, data: dict[str, Any]) -> dict[str, Any]:
             or []
         ),
     }
+    # Coverage counts describe the research/execution split; they are not
+    # executable prices or Greeks and are useful when a report has a partial
+    # chain but a usable research surface.
+    for key in ("surface_ready_count", "positioning_ready_count", "execution_ready_count"):
+        if key in source:
+            normalized[key] = source[key]
     for key in ("limitations", "mandatory_statement", "must_avoid"):
         if key in source:
             normalized[key] = source[key]
@@ -480,7 +535,9 @@ def _normalize_commodity_schedule_report(data: dict[str, Any], path: Path) -> di
     )
     normalized["commodities_tracking"] = tracking
     normalized["dashboard"] = _compat_dashboard(data.get("dashboard"), market_dashboard)
-    normalized["meaningful_changes"] = data.get("meaningful_changes") or quality.get("comparative_metrics", [])
+    normalized["meaningful_changes"] = _compat_meaningful_changes(
+        data.get("meaningful_changes") or quality.get("comparative_metrics", [])
+    )
     normalized["sources"] = _compat_sources(data.get("sources"))
     normalized["archive"] = _compat_archive(data, path)
     return normalized
@@ -594,6 +651,17 @@ def normalize_report_for_schema(data: Any, path: Path) -> Any:
             },
         )
 
+    # Apply harmless dialect normalization to every schema version.  These are
+    # in-memory adapters only; the archived source JSON remains unchanged.
+    if "dashboard" in data:
+        normalized["dashboard"] = _compat_dashboard(normalized.get("dashboard"), [])
+    if "meaningful_changes" in data:
+        normalized["meaningful_changes"] = _compat_meaningful_changes(
+            normalized.get("meaningful_changes")
+        )
+    if isinstance(normalized.get("archive"), dict) or "archive_status" in data:
+        normalized["archive"] = _compat_archive(normalized, path)
+
     # Apply harmless descriptive-label normalization to every schema version.
     normalized["china_tracking"] = _compat_china_tracking(normalized.get("china_tracking", {}))
     return normalized
@@ -659,6 +727,43 @@ def _contains_unavailable_option_metric(value: Any, path: tuple[str, ...] = ()) 
     return found
 
 
+def _compat_research_only_structure(value: Any) -> bool:
+    """Return whether a structure is explicitly non-executable research text."""
+    text = json.dumps(value, ensure_ascii=False, sort_keys=True).lower()
+    return any(
+        token in text
+        for token in (
+            "manual quote",
+            "manual confirmation",
+            "execution false",
+            "execution_ready=false",
+            "not executable",
+            "research only",
+            "仅研究",
+            "人工确认",
+            "执行前确认",
+            "不报权利金",
+        )
+    )
+
+
+def _compat_partial_surface_evidence(quality: Any, options_surface: Any) -> bool:
+    """Recognize a reported research surface when the full chain is partial."""
+    if not isinstance(options_surface, dict):
+        return False
+    count = options_surface.get("surface_ready_count")
+    if isinstance(count, (int, float)) and count > 0:
+        return True
+    text = " ".join(
+        str(value)
+        for value in (
+            quality.get("options_surface_status") if isinstance(quality, dict) else None,
+            quality.get("options_chain_status") if isinstance(quality, dict) else None,
+        )
+    ).lower()
+    return any(token in text for token in ("surface-ready", "surface_ready", "research_ready"))
+
+
 def validate_commodity_contract(
     data: Any,
     path: Path,
@@ -697,7 +802,15 @@ def validate_commodity_contract(
         options_surface.get("status") == "ready"
         or _compat_gate_ready(options_surface.get("status"), gate="surface")
     )
-    if not chain_ready or not surface_ready:
+    # A commodity task can have a useful research surface for most products
+    # while the complete chain or execution quote layer is still partial (for
+    # example, 360/368 surface-ready and 0/368 execution-ready).  Trust that
+    # explicit coverage evidence for research summaries, but keep the strict
+    # gate for reports that have neither a ready surface nor coverage evidence.
+    research_surface_ready = surface_ready and (
+        chain_ready or _compat_partial_surface_evidence(quality, options_fields)
+    )
+    if not research_surface_ready:
         if options_fields.get("available_metrics"):
             messages.append(
                 f"{path.relative_to(ROOT)} exposes commodity option metrics while the commodity option gate is not ready"
@@ -711,6 +824,17 @@ def validate_commodity_contract(
             messages.append(
                 f"{path.relative_to(ROOT)} exposes commodity IV/skew/Gamma/strike fields while the commodity option gate is not ready: "
                 + ", ".join(metric_paths)
+            )
+    elif not chain_ready and options_fields.get("tradeable_structures"):
+        # A partial chain may still describe a conditional structure, but only
+        # when it explicitly requires a manual quote/confirmation.  This keeps
+        # exact executable structures behind the complete-chain gate.
+        structures = options_fields.get("tradeable_structures")
+        if isinstance(structures, list) and not all(
+            _compat_research_only_structure(item) for item in structures
+        ):
+            messages.append(
+                f"{path.relative_to(ROOT)} exposes commodity option trade structures without an explicit manual-quote/confirmation disclaimer"
             )
     return messages
 

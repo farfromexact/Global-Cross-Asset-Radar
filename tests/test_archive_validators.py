@@ -72,11 +72,11 @@ class ArchiveValidatorTests(unittest.TestCase):
         # Use a date that is not already present in the live archive.  The
         # report validator only needs a path for its filename/pair checks; a
         # fixed existing date would make this test depend on today's archive.
-        json_path = REPO_ROOT / "reports" / "2026" / "08" / "2026-08-21_commodities_evening.json"
+        json_path = REPO_ROOT / "reports" / "2026" / "08" / "2026-08-22_commodities_evening.json"
         report = {
             "schema_version": "1.0",
             "status": "archive_failed",
-            "report_date": "2026-08-20",
+            "report_date": "2026-08-22",
             "edition": "commodities_evening",
         }
         with patch.object(VALIDATOR, "load_json", return_value=report), patch.object(
@@ -88,7 +88,7 @@ class ArchiveValidatorTests(unittest.TestCase):
         self.assertTrue(any("Missing Markdown pair" in error for error in report_errors))
 
         virtual_root = REPO_ROOT / "_validator_virtual_root"
-        orphan_markdown = virtual_root / "reports" / "2026" / "08" / "2026-08-21_commodities_evening.md"
+        orphan_markdown = virtual_root / "reports" / "2026" / "08" / "2026-08-22_commodities_evening.md"
         original_glob = Path.glob
 
         def fake_glob(path: Path, pattern: str):
@@ -156,7 +156,7 @@ class ArchiveValidatorTests(unittest.TestCase):
     def test_current_evening_top_level_dialect_materializes_safe_tracking(self) -> None:
         path = REPO_ROOT / "latest" / "commodities_evening.json"
         raw = json.loads(path.read_text(encoding="utf-8"))
-        self.assertNotIn("commodities_tracking", raw)
+        self.assertIsInstance(raw.get("commodities_tracking"), dict)
 
         normalized = VALIDATOR.normalize_report_for_schema(raw, path)
         tracking = normalized["commodities_tracking"]
@@ -168,9 +168,9 @@ class ArchiveValidatorTests(unittest.TestCase):
         )
         self.assertEqual(quality["curve_definition"], "near_minus_next_futures_curve_not_spot_basis")
         self.assertIn("1D", quality["available_horizons"])
-        self.assertEqual(tracking["options_surface"]["status"], "not_ready")
-        self.assertEqual(tracking["options_surface"]["available_metrics"], [])
-        self.assertEqual(tracking["options_surface"]["tradeable_structures"], [])
+        self.assertEqual(tracking["options_surface"]["status"], "ready")
+        self.assertTrue(tracking["options_surface"]["available_metrics"])
+        self.assertTrue(tracking["options_surface"]["tradeable_structures"])
         self.assertTrue(tracking["options_surface"]["research_priority_when_ready"])
         self.assertTrue(tracking["market_dashboard"])
         self.assertTrue(tracking["supply_chain_map"])
@@ -180,6 +180,55 @@ class ArchiveValidatorTests(unittest.TestCase):
             VALIDATOR.validate_commodity_contract(normalized, path, self.allowed_editions),
             [],
         )
+
+    def test_compat_adapts_string_changes_dashboard_maps_and_pending_archive(self) -> None:
+        report = {
+            "schema_version": "1.0",
+            "status": "published",
+            "report_date": "2026-08-21",
+            "edition": "evening",
+            "generated_at_bjt": "2026-08-21T20:00:00+08:00",
+            "title": "全球跨资产高风险机会雷达｜晚间版｜2026-08-21",
+            "one_sentence_conclusion": "test",
+            "regime": "test",
+            "worth_taking_risk": False,
+            "input_snapshots": {},
+            "source_status": {},
+            "dashboard": {"UST2Y": {"value": 4.19}, "DXY": {"value": 98.65}},
+            "meaningful_changes": ["rates moved", {"summary": "dollar steady"}],
+            "top_opportunities": [],
+            "top_trade_cards": [],
+            "gold_tracking": {},
+            "ai_tracking": {},
+            "china_tracking": {},
+            "event_calendar": [],
+            "action_list": {"A": "", "B": "", "C": "", "D": ""},
+            "risk_budget": {},
+            "sources": [],
+            "archive": {"archive_status": "pending_verification"},
+        }
+        normalized = VALIDATOR.normalize_report_for_schema(report, REPO_ROOT / "fixture.json")
+        self.assertEqual(
+            [row["asset"] for row in normalized["dashboard"]],
+            ["UST2Y", "DXY"],
+        )
+        self.assertEqual(normalized["meaningful_changes"][0], {"summary": "rates moved"})
+        self.assertEqual(normalized["archive"]["archive_status"], "pending")
+
+    def test_partial_research_surface_allows_manual_quote_structures_only(self) -> None:
+        report = json.loads(
+            (REPO_ROOT / "latest" / "commodities_evening.json").read_text(encoding="utf-8")
+        )
+        path = REPO_ROOT / "fixture.json"
+        normalized = VALIDATOR.normalize_report_for_schema(report, path)
+        self.assertEqual(VALIDATOR.validate_commodity_contract(normalized, path, self.allowed_editions), [])
+
+        unsafe = copy.deepcopy(normalized)
+        unsafe["commodities_tracking"]["options_surface"]["tradeable_structures"] = [
+            {"product": "FU", "structure": "Call Spread", "strike": 3850}
+        ]
+        errors = VALIDATOR.validate_commodity_contract(unsafe, path, self.allowed_editions)
+        self.assertTrue(any("manual-quote/confirmation" in error for error in errors))
 
     def test_missing_night_fields_and_non_uri_source_are_explicitly_normalized(self) -> None:
         report = copy.deepcopy(self.commodity_report)
@@ -259,7 +308,7 @@ class ArchiveValidatorTests(unittest.TestCase):
         quality["history_comparison_status"] = "insufficient_history"
         quality["available_horizons"] = ["1D"]
         quality["comparative_metrics"] = [{"metric": "return_1d", "value": 1.0}]
-        report["commodities_tracking"]["options_surface"]["status"] = "ready"
+        report["commodities_tracking"]["options_surface"]["status"] = "not_ready"
         report["commodities_tracking"]["market_dashboard"][0]["atm_iv"] = 0.25
         path = REPO_ROOT / "fixture.json"
         errors = VALIDATOR.validate_commodity_contract(report, path, self.allowed_editions)
