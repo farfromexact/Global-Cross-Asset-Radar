@@ -373,6 +373,20 @@ def _compat_options_surface(value: Any, data: dict[str, Any]) -> dict[str, Any]:
     return normalized
 
 
+def _compat_gate_ready(value: Any, *, gate: str) -> bool:
+    """Accept descriptive split-module states without weakening safety gates."""
+
+    text = str(value or "").strip().lower()
+    normalized = text.replace(" ", "_")
+    if text == "ready":
+        return True
+    if gate == "chain":
+        return "full_chain" in normalized or "chain_verified" in normalized
+    if gate == "surface":
+        return "research_ready" in normalized or "surface_ready" in normalized
+    return False
+
+
 def _compat_night_action(item: dict[str, Any]) -> str:
     for key in ("action", "recommended_action", "next_action", "risk_action", "操作", "建议", "执行"):
         value = item.get(key)
@@ -676,8 +690,13 @@ def validate_commodity_contract(
 
     options_surface = tracking.get("options_surface")
     options_fields = options_surface if isinstance(options_surface, dict) else {}
-    chain_ready = isinstance(quality, dict) and quality.get("options_chain_status") == "ready"
-    surface_ready = isinstance(options_surface, dict) and options_surface.get("status") == "ready"
+    chain_ready = isinstance(quality, dict) and _compat_gate_ready(
+        quality.get("options_chain_status"), gate="chain"
+    )
+    surface_ready = isinstance(options_surface, dict) and (
+        options_surface.get("status") == "ready"
+        or _compat_gate_ready(options_surface.get("status"), gate="surface")
+    )
     if not chain_ready or not surface_ready:
         if options_fields.get("available_metrics"):
             messages.append(

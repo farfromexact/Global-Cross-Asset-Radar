@@ -5,8 +5,8 @@
 本仓库与两个底层数据引擎分工如下：
 
 - **China-Options-Engine**：采集和计算中国股指期货/期权底层数据，包括 IH、IF、IC、IM 与 HO、IO、MO 的价格、成交、持仓、IV、偏度和 Gamma 等指标。
-- **China-Commodities-Engine**：采集中国五所商品期货的价格、成交、持仓、期货曲线、覆盖与数据质量状态；仓单、基差、会员排名和商品期权曲面是否可用必须以当次状态为准。
 - **Global-Cross-Asset-Radar**：保存全球晨报/晚报以及中国商品晨报/晚报的完整中文研究报告、结构化 JSON、最新版本、状态和历史清单。
+- **China-Commodities-Engine**：采集中国五所商品期货 EOD、Physical、海外日频序列和商品期权曲面；晨报优先读取其 `data/report_input_latest.json`，而不是自行拼接模块文件。仓单、基差、会员排名和商品期权曲面是否可用必须以当次状态为准。
 
 ## 当前部署状态
 
@@ -58,13 +58,12 @@
 
 ## 每日归档流程
 
-1. 全球版读取 `China-Options-Engine/data/radar_latest.json`；需要逐执行价或逐合约细节时再读取 `data/latest.json`，历史比较时读取 `data/radar_history.json` 或 `data/snapshots/YYYY-MM-DD.json`。
-2. 商品版读取 `China-Commodities-Engine` 的 `data/last_run_status.json`、`data/radar_latest.json` 和 `data/radar_history.json`。
-3. 联网完成研究，并在 ChatGPT 对话中发布报告。
-4. 将完整报告写入当日历史 Markdown 和 JSON。
-5. 覆盖相应 edition 的 `latest/*` 文件。
-6. 更新对应状态文件和 `manifests/reports.json`。
-7. GitHub 归档失败不得阻止对话中的报告发布；失败原因应写入报告和状态文件。
+1. 全球版读取 `China-Options-Engine/data/radar_latest.json`；商品版先读取 `China-Commodities-Engine/data/report_input_latest.json`，需要逐执行价或逐合约细节时再读取对应仓库的原始 `data/latest.json`，历史比较时读取对应的 `radar_history.json` 或 snapshots。
+2. 联网完成研究，并在 ChatGPT 对话中发布报告。
+3. 将完整报告写入当日历史 Markdown 和 JSON。
+4. 覆盖相应 edition 的 `latest/*` 文件。
+5. 更新对应状态文件和 `manifests/reports.json`。
+6. GitHub 归档失败不得阻止对话中的报告发布；失败原因应写入报告和状态文件。
 
 ## 命名和覆盖规则
 

@@ -82,7 +82,7 @@ ci_validation_status = pending_or_unverified
 
 - Markdown必须保存完整中文报告。
 - JSON必须符合 `schemas/report.schema.json`。
-- JSON中至少记录：报告日期、edition、生成时间、市场状态、机会榜、交易卡、行动清单、风险预算、来源、对应底层数据引擎的输入路径/数据日期/新鲜度、previous_date（如适用）、errors、archive_status、ci_validation_status。
+- JSON中至少记录：报告日期、edition、生成时间、市场状态、机会榜、交易卡、行动清单、风险预算、来源、China-Commodities-Engine与China-Options-Engine实际输入路径、各模块数据日期/生成时间/新鲜度、previous_date、errors、archive_status、ci_validation_status。
 - 正式历史JSON的 `archive.markdown_path` 和 `archive.json_path` 应与实际历史路径一致，或在 `archive.paths` 中完整列出实际路径。
 - GitHub Markdown不得包含ChatGPT专用引用标记、内部turn ID、connector ID或私有file引用；关键来源转换为普通Markdown链接/脚注，并在JSON `sources` 数组结构化保存。
 - 不得将API key、访问令牌、券商凭证、私人邮件、账户信息或未经批准的非公开公司信息写入仓库。
@@ -95,6 +95,14 @@ ci_validation_status = pending_or_unverified
 - 若状态文件可以写入，记录 `archive_status=partial` 或 `failed`；若状态文件也无法写入，则在对话中明确说明错误。
 
 ## 数据来源记录
+
+中国商品期货/期权晨报主输入优先读取：
+
+```text
+farfromexact/China-Commodities-Engine/data/report_input_latest.json
+```
+
+该汇总层只包含 EOD 数据和明确的质量状态；`surface_ready`、`positioning_ready`、`execution_ready` 必须按字段/到期日分别读取，不能把全局曲面状态写成全链路执行就绪。
 
 中国股指衍生品数据优先读取：
 
@@ -127,10 +135,10 @@ farfromexact/China-Options-Engine/data/snapshots/YYYY-MM-DD.json
 商品版本优先读取：
 
 ```text
-farfromexact/China-Commodities-Engine/data/last_run_status.json
-farfromexact/China-Commodities-Engine/data/radar_latest.json
-farfromexact/China-Commodities-Engine/data/radar_history.json
+farfromexact/China-Commodities-Engine/data/report_input_latest.json
 ```
+
+需要审计或逐合约细节时，再读取 `data/last_run_status.json`、`data/radar_latest.json`、`data/market_state_latest.json`、`data/options/surface_latest.json`、`data/physical/latest.json` 和 `data/external/latest.json`。
 
 归档 JSON 必须在 `input_snapshots.china_commodities` 中记录实际读取路径、交易日、生成时间、`data_fresh`、`official_complete`、五所覆盖、`source_date_match_pct`、`full_market_ready`、`critical_module_errors`、模块质量和历史记录数。
 

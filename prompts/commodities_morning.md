@@ -6,9 +6,12 @@
 
 必须优先通过 GitHub connector 读取 `farfromexact/China-Commodities-Engine` 的 `main` 分支：
 
-1. `data/last_run_status.json`：数据健康、五所覆盖、`source_date_match_pct`、模块错误和数据源属性；
-2. `data/radar_latest.json`：代表性品种、主力合约、价格、成交、持仓、近月—次近月曲线和证据层；
-3. `data/radar_history.json`：1/3/5/20 个交易日比较，仅在历史记录数足够且数据交易日连续可比时使用。
+1. `data/report_input_latest.json`：晨报主输入，合并 Market、Physical、External、期权曲面、合约元数据和各模块独立时间戳；
+2. `data/last_run_status.json`：期货数据健康、五所覆盖、`source_date_match_pct`、模块错误和数据源属性；
+3. `data/radar_latest.json`：代表性品种、主力合约、价格、成交、持仓、近月—次近月曲线和证据层；
+4. `data/market_state_latest.json`：最近20个交易日、同一具体合约的 1/3/5/20D、RV20、量仓冲击和曲线特征；
+5. `data/options/surface_latest.json`、`data/physical/latest.json`、`data/external/latest.json`：按到期日隔离的EOD曲面、产业和海外日频数据；
+6. `data/radar_history.json`：1/3/5/20 个交易日比较，仅在历史记录数足够且数据交易日连续可比时使用。
 
 每次必须记录实际读取路径、交易日、生成时间、`data_fresh`、`official_complete`、`full_market_ready`、`critical_module_errors`、五所覆盖和模块质量。当前期货可为 vendor-primary 验证数据，不得把它误写为交易所全量官方复核。
 

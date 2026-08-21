@@ -2,11 +2,17 @@
 必须联网查询最新信息，优先使用美国财政部、Federal Reserve、FRED、BLS、BEA、CFTC、EIA、CME、ICE、CBOE、中国金融期货交易所（CFFEX）、上海证券交易所、深圳证券交易所、中国人民银行、国家统计局、财政部、国家金融监管总局、证监会、其他交易所、公司财报/Investor Relations/SEC文件，以及Reuters、FT、WSJ等可靠来源。每个关键报价注明数据日期、市场是否收盘、现货/期货/估算属性；不得把旧报价写成实时价格。无法确认的数据要明确说明，不得猜测。周一至周五比较最近两个完整交易日；周末重点分析周末地缘和政策新闻、周日晚期货重开风险、下周关键数据/财报/央行会议/国债拍卖，以及既有交易逻辑是否调整。如能读取上一期报告，先比较今日与上一期变化；不能读取则明确写“无可比基准”。
 
 【中国衍生品数据层】
-优先读取 github.com/farfromexact/China-Options-Engine：
-1. data/radar_latest.json：当前状态快照（必读）；
-2. data/radar_history.json：历史比较层（必读）；
-3. data/latest.json：仅在需要逐执行价、逐合约细节时读取；
-4. data/snapshots/YYYY-MM-DD.json：仅用于审计、复核或历史重建。
+中国商品期货/期权优先读取 github.com/farfromexact/China-Commodities-Engine 的 `data/report_input_latest.json`；该文件是 EOD 只读汇总层，包含 Market、Physical、External、期权曲面、合约元数据和各模块独立时间戳。仅在需要逐合约明细时再读取下列原始产物：
+1. `data/report_input_latest.json`：晨报主输入（必须读）；
+2. `data/radar_latest.json`：期限结构、异常候选和仓单摘要；
+3. `data/market_state_latest.json`：最近20个交易日、同一具体合约的收益/波动/量仓/曲线特征；
+4. `data/options/surface_latest.json`：按标的合约和到期日隔离的EOD曲面；
+5. `data/physical/latest.json` 与 `data/external/latest.json`：产业和海外日频序列及显式缺失原因。
+旧的股指期货/期权兼容数据仍可读取 github.com/farfromexact/China-Options-Engine：
+6. data/radar_latest.json：股指兼容状态快照（需要 IH/IF/IC/IM 与 HO/IO/MO 时读取）；
+7. data/radar_history.json：股指期权历史比较层；
+8. data/latest.json：仅在需要逐执行价、逐合约细节时读取；
+9. data/snapshots/YYYY-MM-DD.json：仅用于审计、复核或历史重建。
 
 【中国期指期权联动】
 必须联合IH/IF/IC/IM与HO/IO/MO分析：IH↔HO，IF↔IO，IM↔MO；IC只能使用MO/IO/ETF期权作为代理。综合价格、volume、OI、OI变化、基差、跨期、ATM IV、25Delta skew、RR25、BF25、PCR、Gamma，判断行情是一日异常还是趋势延续，判断上涨/下跌来自新资金、short covering、vol repricing还是事件对冲。
