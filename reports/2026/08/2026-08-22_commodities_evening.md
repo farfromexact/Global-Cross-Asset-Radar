@@ -8,7 +8,7 @@
 
 没有80分以上确认交易：FU2611 79、AG2610 76、FG701 74、BU2610 72、EC2610 69。
 
-## 二、数据质量与覆盖
+## 二、数据质量与覆盖说明
 
 第一读取层为`farfromexact/China-Commodities-Engine`的`data/report_input_latest.json`、`data/last_run_status.json`、`data/radar_latest.json`；并按需读取`data/market_state_latest.json`、`data/options/quality_latest.json`、`data/options/surface_latest.json`。report_input requested_date=`2026-08-21`，generated_at=`2026-08-21T19:02:52.405697+08:00`。周六无新中国交易日，因此8月21日是最近完整交易日而非错误滞后。
 
@@ -39,7 +39,7 @@ Contract Metadata总体partial：contract match约67.4%、effective match约73.3
 
 Curve均指近月—次近月期货结构，不是现货基差。
 
-## 四、真正变化
+## 四、真正发生了什么
 
 1. 周末没有新的中国K线，变化来自**事件分布**：Friday Brent/WTI分别结算94.39/87.06美元，周涨6.39%/5.66%；Saturday美国预告周一更严厉对伊制裁，同时伊朗又给予若干伊拉克油轮Hormuz特别通行。供应上行尾部仍在，但不是单向封锁路径。[Reuters 8/21](https://www.reuters.com/business/energy/oil-set-second-weekly-rise-unsettled-us-iran-war-crimps-supply-2026-08-21/) [Reuters 8/22](https://www.reuters.com/world/middle-east/us-iran-keep-up-hostile-rhetoric-ahead-new-sanctions-2026-08-22/) [Reuters通行许可](https://www.reuters.com/business/energy/iran-grants-permission-number-iraqi-oil-tankers-pass-through-hormuz-2026-08-22/)
 2. FU国内price/OI/curve组合没有被周末推翻，但Backwardation较前一日约8.16%收窄至7.47%，不能写成紧张持续加速。
@@ -109,7 +109,7 @@ Curve均指近月—次近月期货结构，不是现货基差。
 
 标准WTI正常Globex周日18:00 ET重开，约北京时间8月24日06:00；新10-Barrel WTI的24/7产品要到8月30日才计划上线，因此这个周末不能拿“WTI周末实时价”做FU依据。[CME](https://www.cmegroup.com/articles/faqs/faq-tuesday-and-thursday-weekly-wti-options.html)
 
-## 十、未来24h / 7d事件
+## 十、未来24h / 7d事件日历
 
 - 8月24日06:00左右：标准CME能源/贵金属周日Globex重开，先看真实周末repricing。
 - 8月25日02:00：美国财政部长Bessent计划就新一轮伊朗制裁举行发布会；能源中国夜盘已闭市，隔夜gap风险尤其重要。
