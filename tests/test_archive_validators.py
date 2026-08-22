@@ -181,6 +181,19 @@ class ArchiveValidatorTests(unittest.TestCase):
             [],
         )
 
+    def test_morning_research_ready_hyphen_and_top_level_coverage_are_accepted(self) -> None:
+        path = REPO_ROOT / "latest" / "commodities_morning.json"
+        raw = json.loads(path.read_text(encoding="utf-8"))
+        normalized = VALIDATOR.normalize_report_for_schema(raw, path)
+        surface = normalized["commodities_tracking"]["options_surface"]
+
+        self.assertEqual(surface["surface_ready_count"], 360)
+        self.assertEqual(surface["execution_ready_count"], 0)
+        self.assertEqual(
+            VALIDATOR.validate_commodity_contract(normalized, path, self.allowed_editions),
+            [],
+        )
+
     def test_compat_adapts_string_changes_dashboard_maps_and_pending_archive(self) -> None:
         report = {
             "schema_version": "1.0",
