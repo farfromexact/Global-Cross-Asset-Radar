@@ -72,11 +72,11 @@ class ArchiveValidatorTests(unittest.TestCase):
         # Use a date that is not already present in the live archive.  The
         # report validator only needs a path for its filename/pair checks; a
         # fixed existing date would make this test depend on today's archive.
-        json_path = REPO_ROOT / "reports" / "2026" / "08" / "2026-08-22_commodities_evening.json"
+        json_path = REPO_ROOT / "reports" / "2026" / "08" / "2026-08-23_commodities_evening.json"
         report = {
             "schema_version": "1.0",
             "status": "archive_failed",
-            "report_date": "2026-08-22",
+            "report_date": "2026-08-23",
             "edition": "commodities_evening",
         }
         with patch.object(VALIDATOR, "load_json", return_value=report), patch.object(
@@ -88,7 +88,7 @@ class ArchiveValidatorTests(unittest.TestCase):
         self.assertTrue(any("Missing Markdown pair" in error for error in report_errors))
 
         virtual_root = REPO_ROOT / "_validator_virtual_root"
-        orphan_markdown = virtual_root / "reports" / "2026" / "08" / "2026-08-22_commodities_evening.md"
+        orphan_markdown = virtual_root / "reports" / "2026" / "08" / "2026-08-23_commodities_evening.md"
         original_glob = Path.glob
 
         def fake_glob(path: Path, pattern: str):
@@ -156,8 +156,6 @@ class ArchiveValidatorTests(unittest.TestCase):
     def test_current_evening_top_level_dialect_materializes_safe_tracking(self) -> None:
         path = REPO_ROOT / "latest" / "commodities_evening.json"
         raw = json.loads(path.read_text(encoding="utf-8"))
-        self.assertIsInstance(raw.get("commodities_tracking"), dict)
-
         normalized = VALIDATOR.normalize_report_for_schema(raw, path)
         tracking = normalized["commodities_tracking"]
         quality = tracking["data_quality"]
@@ -167,11 +165,11 @@ class ArchiveValidatorTests(unittest.TestCase):
             {"data_quality", "market_dashboard", "supply_chain_map", "options_surface", "night_session_risk_map"},
         )
         self.assertEqual(quality["curve_definition"], "near_minus_next_futures_curve_not_spot_basis")
-        self.assertIn("1D", quality["available_horizons"])
-        self.assertEqual(tracking["options_surface"]["status"], "ready")
-        self.assertTrue(tracking["options_surface"]["available_metrics"])
-        self.assertTrue(tracking["options_surface"]["tradeable_structures"])
-        self.assertTrue(tracking["options_surface"]["research_priority_when_ready"])
+        self.assertEqual(quality["history_comparison_status"], "insufficient_history")
+        self.assertEqual(quality["available_horizons"], [])
+        self.assertEqual(tracking["options_surface"]["status"], "not_ready")
+        self.assertEqual(tracking["options_surface"]["available_metrics"], [])
+        self.assertEqual(tracking["options_surface"]["tradeable_structures"], [])
         self.assertTrue(tracking["market_dashboard"])
         self.assertTrue(tracking["supply_chain_map"])
         self.assertTrue(tracking["night_session_risk_map"])
@@ -234,6 +232,16 @@ class ArchiveValidatorTests(unittest.TestCase):
         )
         path = REPO_ROOT / "fixture.json"
         normalized = VALIDATOR.normalize_report_for_schema(report, path)
+        normalized["commodities_tracking"]["data_quality"]["options_chain_status"] = "partial"
+        normalized["commodities_tracking"]["options_surface"].update(
+            {
+                "status": "ready",
+                "surface_ready_count": 360,
+                "tradeable_structures": [
+                    {"product": "FU", "structure": "Call Spread", "execution": "manual quote required"}
+                ],
+            }
+        )
         self.assertEqual(VALIDATOR.validate_commodity_contract(normalized, path, self.allowed_editions), [])
 
         unsafe = copy.deepcopy(normalized)

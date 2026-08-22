@@ -380,11 +380,23 @@ def _compat_data_quality(
     quality.setdefault("available_horizons", horizons)
     if not isinstance(quality.get("available_horizons"), list):
         quality["available_horizons"] = []
-    quality.setdefault(
-        "comparative_metrics",
-        data.get("meaningful_changes") if isinstance(data.get("meaningful_changes"), list) else [],
-    )
-    quality["comparative_metrics"] = _compat_meaningful_changes(quality.get("comparative_metrics"))
+    explicit_metrics = quality.get("comparative_metrics")
+    if not isinstance(explicit_metrics, list):
+        explicit_metrics = data.get("comparative_metrics")
+    if isinstance(explicit_metrics, list):
+        # Preserve explicitly supplied metrics so the contract validator can
+        # reject them when history is insufficient.  Only compact schedule
+        # reports without an explicit metrics field may derive metrics from
+        # their meaningful-change narrative.
+        quality["comparative_metrics"] = _compat_meaningful_changes(explicit_metrics)
+    elif quality.get("history_comparison_status") == "insufficient_history":
+        # Weekend/event narratives remain in meaningful_changes, but they are
+        # not quantitative comparative metrics without a comparable candle.
+        quality["comparative_metrics"] = []
+    else:
+        quality["comparative_metrics"] = _compat_meaningful_changes(
+            data.get("meaningful_changes") if isinstance(data.get("meaningful_changes"), list) else []
+        )
     return quality
 
 
