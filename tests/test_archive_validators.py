@@ -266,7 +266,9 @@ class ArchiveValidatorTests(unittest.TestCase):
         self.assertEqual(normalized["sources"][0]["url_note"], "official sources enumerated in Markdown")
 
     def test_global_evening_heading_alias_is_accepted(self) -> None:
-        markdown_path = REPO_ROOT / "latest" / "evening.md"
+        # Use a stable historical report so this dialect regression test does
+        # not depend on the rolling latest/evening.md pointer or its date.
+        markdown_path = REPO_ROOT / "reports" / "2026" / "08" / "2026-08-20_evening.md"
         errors = MARKDOWN_VALIDATOR.validate_full_markdown(markdown_path, "2026-08-20", "evening")
         self.assertEqual(errors, [])
 
