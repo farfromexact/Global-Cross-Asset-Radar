@@ -418,10 +418,21 @@ def _compat_options_surface(value: Any, data: dict[str, Any]) -> dict[str, Any]:
     }
     # Coverage counts describe the research/execution split; they are not
     # executable prices or Greeks and are useful when a report has a partial
-    # chain but a usable research surface.
-    for key in ("surface_ready_count", "positioning_ready_count", "execution_ready_count"):
-        if key in source:
-            normalized[key] = source[key]
+    # chain but a usable research surface.  Some reports keep the counts in
+    # top-level ``options_*_ready`` objects instead of this nested object.
+    top_level_coverage = {
+        "surface_ready_count": "options_surface_ready",
+        "positioning_ready_count": "options_positioning_ready",
+        "execution_ready_count": "options_execution_ready",
+    }
+    for key, top_level_key in top_level_coverage.items():
+        coverage = source.get(key)
+        if coverage is None:
+            coverage = data.get(top_level_key)
+            if isinstance(coverage, dict):
+                coverage = coverage.get("series_ready")
+        if coverage is not None:
+            normalized[key] = coverage
     for key in ("limitations", "mandatory_statement", "must_avoid"):
         if key in source:
             normalized[key] = source[key]
@@ -761,7 +772,17 @@ def _compat_partial_surface_evidence(quality: Any, options_surface: Any) -> bool
             quality.get("options_chain_status") if isinstance(quality, dict) else None,
         )
     ).lower()
-    return any(token in text for token in ("surface-ready", "surface_ready", "research_ready"))
+    return any(
+        token in text
+        for token in (
+            "surface-ready",
+            "surface ready",
+            "surface_ready",
+            "research-ready",
+            "research ready",
+            "research_ready",
+        )
+    )
 
 
 def validate_commodity_contract(
