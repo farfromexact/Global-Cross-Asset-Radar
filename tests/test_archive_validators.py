@@ -192,6 +192,80 @@ class ArchiveValidatorTests(unittest.TestCase):
             [],
         )
 
+    def test_compact_commodity_dialect_derives_snapshot_and_surface_gate(self) -> None:
+        path = REPO_ROOT / "fixture.json"
+        report = copy.deepcopy(self.commodity_report)
+        report.pop("commodities_tracking", None)
+        report["schema_version"] = "1.0"
+        report["input_snapshots"] = {
+            "china_commodities": {
+                "repository": "farfromexact/China-Commodities-Engine",
+                "branch": "main",
+                "last_run_status_path": "data/last_run_status.json",
+                "radar_latest_path": "data/radar_latest.json",
+                "radar_history_path": "data/radar_history.json",
+                "trade_date": "2026-08-21",
+                "generated_at": "2026-08-21T19:02:52+08:00",
+                "data_fresh": True,
+                "full_market_ready": True,
+                "critical_module_errors": 0,
+                "actual_read_paths": ["data/report_input_latest.json"],
+            }
+        }
+        report["module_quality"] = {
+            "options": "21816 records;59/64;surface360/368;positioning70/368;execution0/368"
+        }
+        report["module_freshness"] = {"options": "2026-08-21 research-ready"}
+        report["quality_metrics"] = {
+            "source_date_match_pct": 100.0,
+            "critical_module_errors": 0,
+        }
+        report["options_surface_ready"] = {"series_count": 368, "ready_count": 360}
+        report["options_positioning_ready"] = {"series_count": 368, "ready_count": 70}
+        report["options_execution_ready"] = {"series_count": 368, "ready_count": 0}
+        report["dashboard"] = [
+            {"asset": "FU2611", "atm_iv_pct": 43.0},
+            {"asset": "AG2610", "rr25": 7.81},
+        ]
+
+        normalized = VALIDATOR.normalize_report_for_schema(report, path)
+        snapshot = normalized["input_snapshots"]["china_commodities"]
+        surface = normalized["commodities_tracking"]["options_surface"]
+
+        self.assertIsNone(snapshot["official_complete"])
+        self.assertIsNone(snapshot["history_record_count"])
+        self.assertEqual(snapshot["module_quality"], report["module_quality"])
+        self.assertEqual(surface["status"], "ready")
+        self.assertEqual(surface["surface_ready_count"], 360)
+        self.assertEqual(
+            VALIDATOR.validate_json_schema(normalized, self.report_schema, path),
+            [],
+        )
+        self.assertEqual(
+            VALIDATOR.validate_commodity_contract(normalized, path, self.allowed_editions),
+            [],
+        )
+
+    def test_ambiguous_max_loss_labels_are_preserved_as_null(self) -> None:
+        path = REPO_ROOT / "fixture.json"
+        report = copy.deepcopy(
+            json.loads((REPO_ROOT / "latest" / "morning.json").read_text(encoding="utf-8"))
+        )
+        report["top_opportunities"][3]["max_loss_limited"] = "designable"
+        report["top_opportunities"][4]["max_loss_limited"] = "with options"
+
+        normalized = VALIDATOR.normalize_report_for_schema(report, path)
+        opportunities = normalized["top_opportunities"]
+
+        self.assertIsNone(opportunities[3]["max_loss_limited"])
+        self.assertEqual(opportunities[3]["max_loss_limited_note"], "designable")
+        self.assertIsNone(opportunities[4]["max_loss_limited"])
+        self.assertEqual(opportunities[4]["max_loss_limited_note"], "with options")
+        self.assertEqual(
+            VALIDATOR.validate_json_schema(normalized, self.report_schema, path),
+            [],
+        )
+
     def test_compat_adapts_string_changes_dashboard_maps_and_pending_archive(self) -> None:
         report = {
             "schema_version": "1.0",
