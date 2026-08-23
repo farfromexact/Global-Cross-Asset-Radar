@@ -266,6 +266,71 @@ def _compat_meaningful_changes(value: Any) -> list[dict[str, Any]]:
     return normalized
 
 
+def _compat_top_opportunities(value: Any) -> Any:
+    """Keep ambiguous risk labels from violating the boolean contract.
+
+    Scheduled reports sometimes use prose such as ``designable`` or
+    ``with options`` instead of answering whether the opportunity itself has
+    a defined maximum loss.  Preserve that wording for auditability, but use
+    ``null`` for the canonical field rather than inventing a boolean.
+    """
+    if not isinstance(value, list):
+        return value
+
+    normalized: list[Any] = []
+    for item in value:
+        if not isinstance(item, dict):
+            normalized.append(item)
+            continue
+        row = dict(item)
+        risk_limit = row.get("max_loss_limited")
+        if risk_limit is not None and not isinstance(risk_limit, bool):
+            row.setdefault("max_loss_limited_note", str(risk_limit))
+            row["max_loss_limited"] = None
+        normalized.append(row)
+    return normalized
+
+
+def _compat_coverage_count(value: Any, *keys: str) -> int | float | None:
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        return value
+    if isinstance(value, dict):
+        for key in keys:
+            candidate = value.get(key)
+            if isinstance(candidate, (int, float)) and not isinstance(candidate, bool):
+                return candidate
+    return None
+
+
+def _compat_research_surface_declared(data: dict[str, Any]) -> bool:
+    assessment = data.get("options_assessment")
+    if isinstance(assessment, dict) and assessment.get("surface_ready") is True:
+        return True
+
+    values: list[str] = []
+    for container_name in ("module_freshness", "module_quality"):
+        container = data.get(container_name)
+        if not isinstance(container, dict):
+            continue
+        for key in ("options", "options_surface"):
+            value = container.get(key)
+            if value is not None:
+                values.append(str(value).lower())
+
+    text = " ".join(values)
+    return any(
+        token in text
+        for token in (
+            "research-ready",
+            "research ready",
+            "research_ready",
+            "surface-ready",
+            "surface ready",
+            "surface_ready",
+        )
+    )
+
+
 def _compat_archive(data: dict[str, Any], path: Path) -> dict[str, Any]:
     archive = dict(data.get("archive")) if isinstance(data.get("archive"), dict) else {}
     if "reports" in path.parts:
@@ -288,6 +353,47 @@ def _compat_archive(data: dict[str, Any], path: Path) -> dict[str, Any]:
 def _compat_module_quality(data: dict[str, Any]) -> dict[str, Any]:
     value = data.get("module_quality")
     return dict(value) if isinstance(value, dict) else {}
+
+
+def _compat_china_commodities_snapshot(data: dict[str, Any]) -> dict[str, Any]:
+    """Complete the required input snapshot without fabricating unavailable data."""
+    input_snapshots = data.get("input_snapshots")
+    input_snapshots = dict(input_snapshots) if isinstance(input_snapshots, dict) else {}
+    snapshot = input_snapshots.get("china_commodities")
+    snapshot = dict(snapshot) if isinstance(snapshot, dict) else {}
+    quality_metrics = data.get("quality_metrics")
+    quality_metrics = quality_metrics if isinstance(quality_metrics, dict) else {}
+    module_quality = _compat_module_quality(data)
+
+    snapshot.setdefault("repository", "farfromexact/China-Commodities-Engine")
+    snapshot.setdefault("branch", "main")
+    snapshot.setdefault("last_run_status_path", "data/last_run_status.json")
+    snapshot.setdefault("radar_latest_path", "data/radar_latest.json")
+    snapshot.setdefault("radar_history_path", "data/radar_history.json")
+    snapshot.setdefault("trade_date", data.get("china_commodities_date"))
+    snapshot.setdefault(
+        "generated_at",
+        data.get("report_input_generated_at") or data.get("generated_at_bjt"),
+    )
+    snapshot.setdefault("data_fresh", data.get("data_fresh"))
+    snapshot.setdefault("official_complete", data.get("official_complete"))
+    snapshot.setdefault(
+        "source_date_match_pct",
+        quality_metrics.get("source_date_match_pct"),
+    )
+    snapshot.setdefault("full_market_ready", data.get("full_market_ready"))
+    snapshot.setdefault(
+        "critical_module_errors",
+        quality_metrics.get("critical_module_errors"),
+    )
+    snapshot.setdefault("history_record_count", data.get("history_record_count"))
+    snapshot.setdefault("module_quality", module_quality)
+    snapshot.setdefault(
+        "actual_read_paths",
+        data.get("report_input_source_paths") or [],
+    )
+    input_snapshots["china_commodities"] = snapshot
+    return input_snapshots
 
 
 def _compat_quality_status(data: dict[str, Any], module_quality: dict[str, Any]) -> str:
@@ -364,11 +470,25 @@ def _compat_data_quality(
     quality["options_chain_status"] = _compat_required_string(
         quality.get("options_chain_status"),
         module_quality.get("options_chain")
+        or module_quality.get("options")
         or ("ready" if options_assessment.get("record_count") and options_assessment.get("product_coverage") == 1 else "partial"),
     )
+    surface_count = _compat_coverage_count(
+        data.get("options_surface_ready"),
+        "series_ready",
+        "ready_count",
+        "surface_ready_count",
+    )
+    surface_status = module_quality.get("options_surface")
+    if (
+        surface_status is None
+        and surface_count is not None
+        and _compat_research_surface_declared(data)
+    ):
+        surface_status = "research_ready" if surface_count > 0 else "not_ready"
     quality["options_surface_status"] = _compat_required_string(
         quality.get("options_surface_status"),
-        module_quality.get("options_surface")
+        surface_status
         or ("ready" if options_assessment.get("surface_ready") is True else "not_ready"),
     )
 
@@ -407,12 +527,25 @@ def _compat_options_surface(value: Any, data: dict[str, Any]) -> dict[str, Any]:
         source = dict(assessment) if isinstance(assessment, dict) else {}
 
     status = source.get("status")
+    surface_count = _compat_coverage_count(
+        data.get("options_surface_ready"),
+        "series_ready",
+        "ready_count",
+        "surface_ready_count",
+    )
     if isinstance(status, str) and status.strip().lower() in {"research_ready", "surface_ready"}:
         # These labels mean the research surface is usable; execution readiness
         # remains separately represented by the coverage counters.
         status = "ready"
     if status not in {"ready", "not_ready", "not_collected", "unavailable"}:
-        status = "ready" if source.get("surface_ready") is True else "not_ready"
+        status = "ready" if (
+            source.get("surface_ready") is True
+            or (
+                surface_count is not None
+                and surface_count > 0
+                and _compat_research_surface_declared(data)
+            )
+        ) else "not_ready"
 
     # Keep only fields that are safe in the canonical surface contract.  The
     # raw assessment may contain labels such as ``skew`` and ``iv_high_low``;
@@ -442,7 +575,14 @@ def _compat_options_surface(value: Any, data: dict[str, Any]) -> dict[str, Any]:
         if coverage is None:
             coverage = data.get(top_level_key)
             if isinstance(coverage, dict):
-                coverage = coverage.get("series_ready")
+                coverage = next(
+                    (
+                        coverage.get(candidate)
+                        for candidate in ("series_ready", "ready_count", key)
+                        if coverage.get(candidate) is not None
+                    ),
+                    None,
+                )
         if coverage is not None:
             normalized[key] = coverage
     for key in ("limitations", "mandatory_statement", "must_avoid"):
@@ -524,6 +664,7 @@ def _normalize_commodity_schedule_report(data: dict[str, Any], path: Path) -> di
         return data
 
     normalized = dict(data)
+    normalized["input_snapshots"] = _compat_china_commodities_snapshot(data)
     normalized.setdefault("generated_at_bjt", data.get("generated_at"))
     normalized.setdefault("title", _compat_title(data))
     normalized.setdefault(
@@ -678,6 +819,10 @@ def normalize_report_for_schema(data: Any, path: Path) -> Any:
     # in-memory adapters only; the archived source JSON remains unchanged.
     if "dashboard" in data:
         normalized["dashboard"] = _compat_dashboard(normalized.get("dashboard"), [])
+    if "top_opportunities" in data:
+        normalized["top_opportunities"] = _compat_top_opportunities(
+            normalized.get("top_opportunities")
+        )
     if "meaningful_changes" in data:
         normalized["meaningful_changes"] = _compat_meaningful_changes(
             normalized.get("meaningful_changes")
