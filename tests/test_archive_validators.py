@@ -399,6 +399,12 @@ class ArchiveValidatorTests(unittest.TestCase):
             )
             self.assertEqual(errors, [], filename)
 
+    def test_commodity_markdown_quality_heading_short_alias_is_accepted(self) -> None:
+        self.assertIn(
+            "数据质量与覆盖",
+            MARKDOWN_VALIDATOR.COMMODITY_REQUIRED_SECTION_GROUPS[1],
+        )
+
     def test_blocks_history_comparisons_and_option_metrics_behind_gates(self) -> None:
         report = copy.deepcopy(self.commodity_report)
         quality = report["commodities_tracking"]["data_quality"]
