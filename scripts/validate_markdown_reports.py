@@ -32,7 +32,7 @@ GLOBAL_REQUIRED_SECTION_GROUPS = (
 
 COMMODITY_REQUIRED_SECTION_GROUPS = (
     ("今日一句话结论",),
-    ("数据质量与覆盖说明",),
+    ("数据质量与覆盖说明", "数据质量与覆盖"),
     ("商品市场仪表盘", "商品仪表盘",),
     # The task prompt uses the canonical wording, while existing reports use
     # edition-specific comparisons such as “相比19:30版本” or “相比上一交易日”.
