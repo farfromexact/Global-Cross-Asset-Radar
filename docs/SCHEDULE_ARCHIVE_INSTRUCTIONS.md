@@ -154,6 +154,7 @@ research only; manual quote and manual confirmation required before execution; n
 
 不得只写“fresh quotes required”或“only after live quotes”来替代该句；这些可以保留为补充条件。若无法提供上述明确免责声明，则省略 `tradeable_structures`，不得把结构呈现为可直接执行的交易建议。该固定文本也记录在 `config/archive-policy.json` 的 `commodity_input_data.partial_option_trade_structure_disclaimer` 中。
 
+完整商品 Markdown 的变化段落标题建议固定为 `相比上一交易日真正变化`；若需标注时段，可使用 `相比上一交易日/今晨真正变化`，两者均为当前校验器认可的标题。
 ## 晨间版专用规则
 
 - `edition = morning`
