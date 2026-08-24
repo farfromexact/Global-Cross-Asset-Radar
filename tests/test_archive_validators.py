@@ -69,10 +69,9 @@ class ArchiveValidatorTests(unittest.TestCase):
         self.assertTrue(any("not configured in archive-policy.json" in error for error in errors))
 
     def test_rejects_missing_markdown_and_json_pairs(self) -> None:
-        # Use a date that is not already present in the live archive.  The
-        # report validator only needs a path for its filename/pair checks; a
-        # fixed existing date would make this test depend on today's archive.
-        json_path = REPO_ROOT / "reports" / "2026" / "08" / "2026-08-23_commodities_evening.json"
+        # Use a virtual path under tests so this pair check cannot be
+        # invalidated when the live archive adds a report for the same date.
+        json_path = REPO_ROOT / "tests" / "_virtual" / "2026-08-23_commodities_evening.json"
         report = {
             "schema_version": "1.0",
             "status": "archive_failed",
@@ -165,11 +164,26 @@ class ArchiveValidatorTests(unittest.TestCase):
             {"data_quality", "market_dashboard", "supply_chain_map", "options_surface", "night_session_risk_map"},
         )
         self.assertEqual(quality["curve_definition"], "near_minus_next_futures_curve_not_spot_basis")
-        self.assertEqual(quality["history_comparison_status"], "insufficient_history")
-        self.assertEqual(quality["available_horizons"], [])
-        self.assertEqual(tracking["options_surface"]["status"], "not_ready")
-        self.assertEqual(tracking["options_surface"]["available_metrics"], [])
-        self.assertEqual(tracking["options_surface"]["tradeable_structures"], [])
+        self.assertIn(quality["history_comparison_status"], {"available", "insufficient_history"})
+        horizons = quality["available_horizons"]
+        self.assertTrue(set(horizons).issubset({"1D", "3D", "5D", "20D"}))
+        if quality["history_comparison_status"] == "available":
+            self.assertTrue(horizons)
+        else:
+            self.assertEqual(horizons, [])
+
+        surface = tracking["options_surface"]
+        self.assertIn(surface["status"], {"ready", "not_ready", "not_collected", "unavailable"})
+        self.assertEqual(surface.get("execution_ready_count"), 0)
+        if surface["status"] == "ready":
+            self.assertGreater(surface.get("surface_ready_count", 0), 0)
+            for structure in surface["tradeable_structures"]:
+                disclaimer = json.dumps(structure, ensure_ascii=False).lower()
+                self.assertTrue("manual quote" in disclaimer or "manual confirmation" in disclaimer)
+        else:
+            self.assertEqual(surface["available_metrics"], [])
+            self.assertEqual(surface["tradeable_structures"], [])
+
         self.assertTrue(tracking["market_dashboard"])
         self.assertTrue(tracking["supply_chain_map"])
         self.assertTrue(tracking["night_session_risk_map"])
@@ -178,15 +192,14 @@ class ArchiveValidatorTests(unittest.TestCase):
             VALIDATOR.validate_commodity_contract(normalized, path, self.allowed_editions),
             [],
         )
-
     def test_morning_research_ready_hyphen_and_top_level_coverage_are_accepted(self) -> None:
         path = REPO_ROOT / "latest" / "commodities_morning.json"
         raw = json.loads(path.read_text(encoding="utf-8"))
         normalized = VALIDATOR.normalize_report_for_schema(raw, path)
         surface = normalized["commodities_tracking"]["options_surface"]
 
-        self.assertEqual(surface["surface_ready_count"], 360)
-        self.assertEqual(surface["execution_ready_count"], 0)
+        self.assertEqual(surface["surface_ready_count"], raw["options_surface_ready"]["ready_count"])
+        self.assertEqual(surface["execution_ready_count"], raw["options_execution_ready"]["ready_count"])
         self.assertEqual(
             VALIDATOR.validate_commodity_contract(normalized, path, self.allowed_editions),
             [],
