@@ -144,6 +144,16 @@ farfromexact/China-Commodities-Engine/data/report_input_latest.json
 
 商品报告必须明确：近月—次近月曲线不等于现货基差；未采集仓单/基差/会员排名时不得推断；`options_surface != ready` 时不得输出商品 ATM IV、偏度、PCR、Gamma 或具体期权执行价；历史不足时不得生成伪造的 1/3/5/20 日变化。
 
+### 商品期权研究结构的固定免责声明（必填）
+
+当商品期权链不完整、`options_execution_ready=0`、`execution_ready=false` 或 bid/ask 覆盖不足时，`commodities_tracking.options_surface.tradeable_structures` 里的每个结构只能作为研究观察；每个对象的 `condition` 或 `execution_condition` 必须包含下列固定英文句，以便通过归档校验：
+
+```text
+research only; manual quote and manual confirmation required before execution; no premium quoted
+```
+
+不得只写“fresh quotes required”或“only after live quotes”来替代该句；这些可以保留为补充条件。若无法提供上述明确免责声明，则省略 `tradeable_structures`，不得把结构呈现为可直接执行的交易建议。该固定文本也记录在 `config/archive-policy.json` 的 `commodity_input_data.partial_option_trade_structure_disclaimer` 中。
+
 ## 晨间版专用规则
 
 - `edition = morning`
