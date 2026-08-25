@@ -156,6 +156,7 @@ research only; manual quote and manual confirmation required before execution; n
 
 完整商品 Markdown 的变化段落标题建议固定为 `相比上一交易日真正变化`；若需标注时段，可使用 `相比上一交易日/今晨真正变化`，两者均为当前校验器认可的标题。
 全球版完整 Markdown 的变化段落标题也必须包含 `真正发生了什么变化`；可按需要前置“相比昨天”或“相比 HH:MM revision N”等比较对象。
+完整商品 Markdown 的事件段落标题建议固定为 `未来24h / 7d事件` 或 `未来24小时与7天事件`；两者均为当前校验器认可的标题。
 ## 晨间版专用规则
 
 - `edition = morning`

@@ -412,10 +412,14 @@ class ArchiveValidatorTests(unittest.TestCase):
             )
             self.assertEqual(errors, [], filename)
 
-    def test_commodity_markdown_quality_heading_short_alias_is_accepted(self) -> None:
+    def test_commodity_markdown_short_heading_aliases_are_accepted(self) -> None:
         self.assertIn(
             "数据质量与覆盖",
             MARKDOWN_VALIDATOR.COMMODITY_REQUIRED_SECTION_GROUPS[1],
+        )
+        self.assertIn(
+            "未来24h / 7d事件",
+            MARKDOWN_VALIDATOR.COMMODITY_REQUIRED_SECTION_GROUPS[9],
         )
 
     def test_blocks_history_comparisons_and_option_metrics_behind_gates(self) -> None:
