@@ -343,7 +343,11 @@ class ArchiveValidatorTests(unittest.TestCase):
         report["commodities_tracking"]["night_session_risk_map"] = [
             {"product": "FU", "expected_open": "higher", "wait_minutes": 30},
         ]
-        report["sources"] = [{"publisher": "official", "url": "official sources enumerated in Markdown"}]
+        report["sources"] = [{
+            "publisher": "official",
+            "url": "official sources enumerated in Markdown",
+            "supported_claims": "source normalization is lossless",
+        }]
         normalized = VALIDATOR.normalize_report_for_schema(report, REPO_ROOT / "fixture.json")
 
         night_row = normalized["commodities_tracking"]["night_session_risk_map"][0]
@@ -351,6 +355,10 @@ class ArchiveValidatorTests(unittest.TestCase):
         self.assertIn("expected: higher", night_row["action"])
         self.assertEqual(normalized["sources"][0]["url"], None)
         self.assertEqual(normalized["sources"][0]["url_note"], "official sources enumerated in Markdown")
+        self.assertEqual(
+            normalized["sources"][0]["supported_claims"],
+            ["source normalization is lossless"],
+        )
 
     def test_global_evening_heading_alias_is_accepted(self) -> None:
         # Use a stable historical report so this dialect regression test does

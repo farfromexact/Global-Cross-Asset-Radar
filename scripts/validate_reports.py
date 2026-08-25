@@ -114,6 +114,11 @@ def _compat_sources(value: Any) -> list[dict[str, Any]]:
             source["title"] = str(title or "unspecified source")
             if "source_date" not in source and "date" in source:
                 source["source_date"] = source.get("date")
+            # Some scheduled reports supply one prose claim as a scalar.
+            # The archive schema represents claims consistently as a list, so
+            # preserve that claim while normalizing the one-item dialect.
+            if isinstance(source.get("supported_claims"), str):
+                source["supported_claims"] = [source["supported_claims"]]
             # A scheduled report occasionally used prose such as
             # ``official sources enumerated in Markdown`` in the URL slot.
             # Preserve that explanation without allowing it to masquerade as

@@ -85,6 +85,7 @@ ci_validation_status = pending_or_unverified
 - JSON中至少记录：报告日期、edition、生成时间、市场状态、机会榜、交易卡、行动清单、风险预算、来源、China-Commodities-Engine与China-Options-Engine实际输入路径、各模块数据日期/生成时间/新鲜度、previous_date、errors、archive_status、ci_validation_status。
 - 正式历史JSON的 `archive.markdown_path` 和 `archive.json_path` 应与实际历史路径一致，或在 `archive.paths` 中完整列出实际路径。
 - GitHub Markdown不得包含ChatGPT专用引用标记、内部turn ID、connector ID或私有file引用；关键来源转换为普通Markdown链接/脚注，并在JSON `sources` 数组结构化保存。
+- 每个 JSON `sources` 对象的 `supported_claims` 必须是字符串数组；即使只有一条，也写成 `["claim"]`，不能写成裸字符串。
 - 不得将API key、访问令牌、券商凭证、私人邮件、账户信息或未经批准的非公开公司信息写入仓库。
 
 ## GitHub失败处理
