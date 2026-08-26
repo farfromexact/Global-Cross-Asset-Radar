@@ -29,6 +29,12 @@ farfromexact/Global-Cross-Asset-Radar
 
 其中 `{edition}` 必须是 `config/archive-policy.json` 中已配置的版本之一：`morning`、`evening`、`commodities_morning` 或 `commodities_evening`。
 
+### Manifest 只能作为最终一次提交
+
+同一个 `report_date + edition` 的正式归档中，`manifests/reports.json` **只能在其余五个目标文件已经完整写入并复核后更新一次**。不得用 manifest 记录“开始归档”“pending”“revision N”或“成功确认”等中间状态；这会让 GitHub Actions 对同一份尚未完成的报告重复运行全库校验。
+
+若需要修订报告，先完成历史 Markdown/JSON、`latest` Markdown/JSON 与状态文件的替换和复核，再以一次最终 manifest 更新收尾。这样每份正式归档只会触发一次 `Validate Radar Reports` 工作流。
+
 ## 正式归档模式：Direct-to-Main
 
 正式晨间版和晚间版归档必须**直接写入 `main` 分支**。
@@ -158,6 +164,7 @@ research only; manual quote and manual confirmation required before execution; n
 完整商品 Markdown 的变化段落标题建议固定为 `相比上一交易日真正变化`；若需标注时段，可使用 `相比上一交易日/今晨真正变化`，两者均为当前校验器认可的标题。
 全球版完整 Markdown 的变化段落标题也必须包含 `真正发生了什么变化`；可按需要前置“相比昨天”或“相比 HH:MM revision N”等比较对象。
 完整商品 Markdown 的事件段落标题建议固定为 `未来24h / 7d事件` 或 `未来24小时与7天事件`；两者均为当前校验器认可的标题。
+商品晨间版如沿用既有版式，`相比上一交易日/上一revision真正变化`、`9:00后风险地图` 与 `未来24小时 / 7日事件` 也均为当前校验器认可的标题；新报告仍优先采用上面的规范标题。
 ## 晨间版专用规则
 
 - `edition = morning`

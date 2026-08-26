@@ -202,8 +202,20 @@ class ArchiveValidatorTests(unittest.TestCase):
         normalized = VALIDATOR.normalize_report_for_schema(raw, path)
         surface = normalized["commodities_tracking"]["options_surface"]
 
-        self.assertEqual(surface["surface_ready_count"], raw["options_surface_ready"]["ready_count"])
-        self.assertEqual(surface["execution_ready_count"], raw["options_execution_ready"]["ready_count"])
+        raw_surface_coverage = raw.get("options_surface_ready")
+        raw_execution_coverage = raw.get("options_execution_ready")
+        self.assertEqual(
+            surface.get("surface_ready_count"),
+            raw_surface_coverage.get("ready_count")
+            if isinstance(raw_surface_coverage, dict)
+            else None,
+        )
+        self.assertEqual(
+            surface.get("execution_ready_count"),
+            raw_execution_coverage.get("ready_count")
+            if isinstance(raw_execution_coverage, dict)
+            else None,
+        )
         self.assertEqual(
             VALIDATOR.validate_commodity_contract(normalized, path, self.allowed_editions),
             [],
@@ -431,6 +443,18 @@ class ArchiveValidatorTests(unittest.TestCase):
         )
         self.assertIn(
             "未来24h / 7d事件",
+            MARKDOWN_VALIDATOR.COMMODITY_REQUIRED_SECTION_GROUPS[9],
+        )
+        self.assertIn(
+            "相比上一交易日/上一revision真正变化",
+            MARKDOWN_VALIDATOR.COMMODITY_REQUIRED_SECTION_GROUPS[3],
+        )
+        self.assertIn(
+            "9:00后风险地图",
+            MARKDOWN_VALIDATOR.COMMODITY_REQUIRED_SECTION_GROUPS[8],
+        )
+        self.assertIn(
+            "未来24小时 / 7日事件",
             MARKDOWN_VALIDATOR.COMMODITY_REQUIRED_SECTION_GROUPS[9],
         )
 
