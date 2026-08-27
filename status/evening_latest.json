@@ -1,22 +1,23 @@
 {
   "report_date": "2026-08-27",
   "edition": "evening",
-  "revision": 1,
-  "generated_at": "2026-08-27T20:00:41+08:00",
-  "generated_at_bjt": "2026-08-27T20:00:41+08:00",
-  "archive_status": "success",
-  "verified_main": true,
+  "revision": 2,
+  "generated_at": "2026-08-27T20:28:23+08:00",
+  "generated_at_bjt": "2026-08-27T20:28:23+08:00",
+  "archive_status": "pending_verification",
+  "verified_main": false,
   "china_options_date": "2026-08-26",
   "data_fresh": false,
   "previous_date": "2026-08-26",
   "ci_validation_status": "pending_or_unverified",
   "errors": [
-    "China-Options-Engine radar_latest/history latest date is 2026-08-26; 2026-08-27 option IV/skew/PCR/OI/Gamma unavailable.",
-    "IF2609 exact 2026-08-27 final close and synchronized OI change not independently verified; final point value not guessed.",
-    "2026-08-27 IH/IF/IC/IM full synchronized OI/term-structure dataset unavailable, so new-money versus short-covering cannot be definitively classified.",
-    "Live full Gold/ULSD/FX option-chain IV/skew/premium unavailable; no exact premiums fabricated.",
+    "China-Options-Engine latest date is 2026-08-26; 2026-08-27 option IV/skew/PCR/OI/Gamma unavailable.",
+    "IF2609 exact 2026-08-27 final close and synchronized OI change not independently verified; final basis not guessed.",
+    "2026-08-27 IH/IF/IC/IM synchronized full OI dataset unavailable, so new-money versus short-covering cannot be definitively classified.",
+    "Cboe page returned an 8/27 11:26 ET VIX time stamp later than this 08:28 ET cutoff; it was rejected and only 8/26 prev close 15.21 is used.",
+    "Live full Gold/Oil/FX option-chain IV/skew/premium unavailable; no exact premiums fabricated.",
     "USD/CNH, DR007, CTA and same-day term-premium series not independently verified at cutoff.",
-    "MOVE and HY OAS are lagged."
+    "MOVE, HY OAS and CFTC positions are lagged."
   ],
   "target_paths": [
     "reports/2026/08/2026-08-27_evening.md",
@@ -26,5 +27,5 @@
     "status/evening_latest.json",
     "manifests/reports.json"
   ],
-  "run_note": "All six required archive paths were read back from main and verified for report_date=2026-08-27 and edition=evening. China option engine itself remained one session stale at cutoff."
+  "run_note": "Revision 2 updates data-quality controls and China option multi-period diagnostics; final archive status will be promoted only after main readback verification."
 }
