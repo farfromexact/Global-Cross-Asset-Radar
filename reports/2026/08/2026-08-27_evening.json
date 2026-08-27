@@ -3,13 +3,20 @@
   "status": "published",
   "report_date": "2026-08-27",
   "edition": "evening",
-  "revision": 1,
-  "generated_at": "2026-08-27T20:00:41+08:00",
-  "generated_at_bjt": "2026-08-27T20:00:41+08:00",
-  "market_regime": "Risk-on与政策信用并存：NVIDIA基本面确认推动AI风险偏好，A股IM/IC相对IH/IF出现风格反转；美元与实际利率仍高，Warsh前事件风险大",
+  "revision": 2,
+  "generated_at": "2026-08-27T20:28:23+08:00",
+  "generated_at_bjt": "2026-08-27T20:28:23+08:00",
+  "market_regime": "Risk-on与政策信用并存：NVIDIA财报确认AI需求，A股IM/IC重新领导；但美元、真实利率与Warsh/7Y拍卖让会前追价赔率偏差",
   "worth_taking_risk": true,
-  "one_sentence_conclusion": "Risk-on与政策信用并存：NVIDIA把AI capex见顶风险向后推，A股IM/IC强势反杀IH/IF；但美元、实际利率仍高，Warsh前不宜裸追。",
+  "one_sentence_conclusion": "Risk-on与政策信用并存：NVIDIA延后AI capex见顶风险，A股IM/IC重新领导；但美元与真实利率高，Warsh前只做定义风险。",
   "previous_date": "2026-08-26",
+  "previous_report": {
+    "report_date": "2026-08-27",
+    "edition": "evening",
+    "revision": 1,
+    "generated_at": "2026-08-27T20:00:41+08:00",
+    "comparison": "thesis_unchanged_data_quality_revised"
+  },
   "China-Options-Engine实际读取路径": [
     "farfromexact/China-Options-Engine:data/radar_latest.json@main",
     "farfromexact/China-Options-Engine:data/radar_history.json@main"
@@ -18,163 +25,146 @@
   "data_fresh": false,
   "data_quality": {
     "china_options_stale_sessions": 1,
-    "china_options_note": "2026-08-27 China-Options-Engine snapshot unavailable at cutoff; all HO/IO/MO analytics are 2026-08-26 EOD and were explicitly treated as stale.",
-    "global_market_cutoff": "2026-08-27T20:00:41+08:00",
     "us_cash_market_open": false,
-    "china_cash_market": "2026-08-27 closed",
-    "china_futures_note": "IH2609 and IM2609 final public prices verified; IF2609 exact final point value and synchronized OI changes were not independently verified."
-  },
-  "key_market_snapshot": {
-    "rates": {"UST2Y_pct": 4.222, "UST10Y_pct": 4.663, "UST30Y_pct": 5.185, "curve_2s30s_bp_est": 96.3, "real10Y_pct_asof_2026_08_26": 2.34},
-    "fx": {"DXY": 99.158, "EURUSD": 1.1652, "USDJPY": 159.35, "asof": "2026-08-27 Reuters intraday"},
-    "risk_assets": {"Nasdaq_2026_08_26_close": 26130.20, "QQQ_2026_08_26_close": 711.37, "SOXX_2026_08_26_close": 515.40, "Nasdaq100_futures_day_pct_approx": 0.97},
-    "commodities": {"WTI": 82.51, "Brent": 88.55, "GoldSpot": 4590.21, "GoldCOMEX": 4643.20, "asof": "2026-08-27 intraday"},
-    "risk": {"VIX": 14.93, "MOVE_2026_08_26": 69.44, "US_HY_OAS_2026_08_25_pct": 2.70},
-    "china": {"SSE50": 2930.31, "CSI300": 4630.28, "CSI1000": 7732.95, "IH2609": 2914.0, "IM2609": 7686.6, "IH_basis_pct": -0.557, "IM_basis_pct": -0.599}
+    "china_cash_market_closed": true,
+    "vix_live_rejected_due_future_timestamp": true,
+    "if_final_verified": false
   },
   "top_opportunities": [
     {
       "rank": 1,
-      "name": "NVIDIA后质量AI/半导体多头：等首个回撤做Call Spread",
-      "score": 93,
-      "score_components": {"logic": 25, "convexity": 23, "catalyst": 20, "price_vol": 12, "crowding_technical": 13},
-      "direction": "long quality AI/semiconductor upside",
-      "holding_period": "5-30D",
-      "stage": "确认后条件加仓",
+      "name": "NVIDIA后质量AI/半导体回撤Call Spread",
+      "score": 92,
+      "score_breakdown": {"logic": 25, "payoff_convexity": 23, "catalyst": 20, "price_volatility": 11, "crowding_technical": 13},
+      "direction": "long",
+      "holding": "5-30D",
+      "stage": "条件确认",
       "tool": "NVDA/SOXX/QQQ 30-60D Call Spread",
       "max_loss_limited": true
     },
     {
       "rank": 2,
-      "name": "Long IM / Short IH 小盘风格延续",
-      "score": 89,
-      "score_components": {"logic": 24, "convexity": 20, "catalyst": 18, "price_vol": 13, "crowding_technical": 14},
-      "direction": "long small-cap / short large-cap",
-      "holding_period": "3-10D",
-      "stage": "观察到次日确认试仓",
-      "tool": "IM2609 vs IH2609 dollar-neutral futures",
+      "name": "Long IM2609 / Short IH2609",
+      "score": 87,
+      "score_breakdown": {"logic": 24, "payoff_convexity": 20, "catalyst": 18, "price_volatility": 12, "crowding_technical": 13},
+      "direction": "long IM / short IH",
+      "holding": "3-10D",
+      "stage": "下一交易日确认试仓",
+      "tool": "IM2609 vs IH2609 Dollar-neutral",
       "max_loss_limited": false
     },
     {
       "rank": 3,
-      "name": "黄金3-6M政策信用Call Spread",
-      "score": 86,
-      "score_components": {"logic": 24, "convexity": 23, "catalyst": 18, "price_vol": 9, "crowding_technical": 12},
-      "direction": "long policy-credit convexity",
-      "holding_period": "10-60D",
-      "stage": "Warsh前只挂条件单",
-      "tool": "Dec-2026/Feb-2027 Call Spread or Call Fly",
+      "name": "黄金3-6个月政策信用Call Spread",
+      "score": 84,
+      "score_breakdown": {"logic": 24, "payoff_convexity": 23, "catalyst": 18, "price_volatility": 8, "crowding_technical": 11},
+      "direction": "long convexity",
+      "holding": "10-60D",
+      "stage": "Warsh后确认",
+      "tool": "Dec-26/Feb-27 Call Spread或Fly",
       "max_loss_limited": true
     },
     {
       "rank": 4,
-      "name": "Long refined-product scarcity / neutral crude beta",
-      "score": 82,
-      "score_components": {"logic": 23, "convexity": 21, "catalyst": 16, "price_vol": 10, "crowding_technical": 12},
-      "direction": "long refined-product scarcity with reduced crude beta",
-      "holding_period": "2-20D",
-      "stage": "降级为条件试仓",
-      "tool": "Oct/Nov ULSD or Gasoil Call Spread plus Brent hedge",
+      "name": "成品油稀缺/中性原油Beta",
+      "score": 80,
+      "score_breakdown": {"logic": 22, "payoff_convexity": 20, "catalyst": 16, "price_volatility": 10, "crowding_technical": 12},
+      "direction": "long refined products / hedge crude",
+      "holding": "2-20D",
+      "stage": "条件试仓",
+      "tool": "ULSD/Gasoil Call Spread + Brent hedge",
       "max_loss_limited": true
     }
   ],
   "trade_cards": [
     {
+      "rank": 1,
       "name": "NVIDIA后质量AI/半导体多头",
-      "structure": "NVDA or SOXX 30-60D buy 30-40Delta call / sell 10-20Delta call; QQQ 45-75D if broader expression preferred",
-      "entry": "Wait at least 30 minutes after US cash open; enter on the first 1-2% pullback only if NVDA holds opening-range support and SOXX/QQQ relative strength remains positive. Do not chase an unchecked +9% or larger gap.",
-      "invalidation": "NVDA closes back below pre-earnings close, or earnings/call interpretation turns into peak data-center/margin expectations, or SOXX materially underperforms on a rate shock.",
-      "tp1": "1.5x net debit",
-      "tp2": "2.2x net debit or two consecutive high-volume failed breakouts",
-      "max_loss": "net option premium",
-      "max_loss_limited": true,
-      "greeks": "+Delta +Gamma +Vega -Theta near the long strike",
-      "risk_budget": "starter 0.35-0.50% NAV; confirmed 0.75-1.00% NAV"
+      "structure": "NVDA或SOXX 30-60D买30-40Delta Call/卖10-20Delta Call；QQQ 45-75D可替代",
+      "entry": "美股现金盘开盘至少30分钟后，首次1%-2%回撤且NVDA守住opening range、SOXX/QQQ相对强度不转负；+9%以上无回撤不追",
+      "scale": "1/3试仓；回撤确认1/3；突破日高且宽度同步最后1/3",
+      "invalidation": "NVDA日收回财报前收盘下方，或后续信息重新指向毛利率恶化/capex峰值，或真实利率冲击导致SOXX显著弱于QQQ",
+      "take_profit": ["净权利金1.5x", "净权利金2.2x或连续两次放量突破失败"],
+      "max_loss": "净权利金；试仓0.35%-0.50% NAV，确认后0.75%-1.00%",
+      "greeks": {"delta": "+", "gamma": "+", "theta": "-", "vega": "+"},
+      "catalysts": "1-20D卖方上调、hyperscaler capex read-through、半导体/网络链指引、利率路径",
+      "gap_risk": "好消息追价后获利回吐；避免开盘gap追入"
     },
     {
+      "rank": 2,
       "name": "Long IM2609 / Short IH2609",
-      "structure": "approximately long 4 IM2609 / short 7 IH2609, dollar-neutral",
-      "contract_multipliers_cny_per_point": {"IH": 300, "IM": 200},
-      "notional_per_contract_cny": {"IH": 874200, "IM": 1537320},
-      "example_notional_cny": {"long_4_IM": 6149280, "short_7_IH": 6119400, "mismatch_pct_approx": 0.49},
-      "entry": "Next trading day 09:30-10:15 BJT: require IM to outperform IH by at least another 0.35pct, breadth/technology turnover to stay supportive, and preferably fresh OI showing IM is not rising merely on a large OI collapse. At least two of three conditions required.",
-      "invalidation": "IM-IH gives back more than 60% of the 2026-08-27 relative gain; IM discount widens below about -0.8% while IH basis stays stable; or small-cap/technology breadth collapses.",
-      "tp1": "+1.5pct relative return",
-      "tp2": "+3.0pct relative return",
-      "time_stop": "3-7 trading days",
-      "max_loss_limited": false,
-      "margin_and_gap_note": "Actual broker margin must be used. Product spread has style-gap, basis, limit and margin-call risk; size so a plausible 3% adverse style gap keeps starter loss <=0.5% NAV."
+      "structure": "约4张IM2609多/7张IH2609空，Dollar-neutral近似；IH乘数300元/点，IM200元/点",
+      "entry": "8/28 09:30-10:15，以下至少2/3：IM相对IH再赢>=0.35pct；科技/小盘宽度与成交保持正；更新OI不显示IM大幅减仓上涨",
+      "scale": "1/3开盘确认；价差突破/不回吐再1/3；午前仍维持风格优势最后1/3",
+      "invalidation": "IM-IH回吐8/27相对涨幅60%以上；或IM贴水重新扩大至约-0.8%以下而IH稳定；或小盘/科技宽度塌陷",
+      "take_profit": ["相对收益+1.5pct减半", "+3.0pct再减；3-7D time stop"],
+      "max_loss": "非有限损失。按3%隔夜反向风格gap压力测试，试仓损失<=0.5% NAV；实际保证金以当日交易所/券商为准",
+      "greeks": {"delta": "市场Beta近似中性，但暴露size/style/basis/roll", "gamma": "0近似", "theta": "0", "vega": "0"},
+      "catalysts": "8/28开盘结构、CFFEX OI/期权更新、人民币/资金面、科技宽度",
+      "gap_risk": "隔夜风格反转与保证金风险"
     },
     {
-      "name": "Gold Dec-2026 / Feb-2027 Policy-Credit Call Spread",
-      "structure": "buy 30-35Delta call / sell 10-15Delta call; at GC around 4643 the static moneyness map is roughly buy 4780-4880 / sell 5110-5340, but Delta overrides static strikes and this is not a live option quote",
-      "entry": "After Warsh: either DXY >=99 and real10Y >=2.30% while spot reclaims 4630-4650, or a hawkish shock to 4550-4570 holds 4500 and reclaims 4590 within four hours.",
-      "invalidation": "daily close below 4500; stronger invalidation if DXY >100 and real10Y >2.50% while gold stays below 4550",
-      "tp1": "4800-4850 or 1.5x net debit",
-      "tp2": "around 5000 or 2.2x net debit",
-      "max_loss": "net option premium",
-      "max_loss_limited": true,
-      "greeks": "+Delta +Gamma +Vega -Theta",
-      "risk_budget": "<=0.25% NAV before Warsh; 0.75-1.00% only after confirmation"
+      "rank": 3,
+      "name": "黄金3-6M政策信用Call Spread",
+      "structure": "Dec-26或Feb-27买30-35Delta Call/卖10-15Delta Call；IV贵则Call Fly；按GC约4643静态映射买4780-4880/卖5110-5340但Delta优先且非实时期权报价",
+      "entry": "A: Warsh后DXY>=99且10Y real>=2.30%，现货重站4630-4650；B: 鹰派冲击4550-4570、4500不破，4小时内收复4590",
+      "scale": "会前不超过0.25% NAV；确认后增至0.75%-1.0%",
+      "invalidation": "日收<4500；更强失效=DXY>100、10Y real>2.50%且黄金持续<4550",
+      "take_profit": ["4800-4850或1.5x净权利金", "约5000或2.2x净权利金"],
+      "max_loss": "净权利金",
+      "greeks": {"delta": "+", "gamma": "+", "theta": "-", "vega": "+"},
+      "catalysts": "Warsh、长端拍卖/财政、美元/真实利率背离、地缘",
+      "gap_risk": "鹰派美元+真实利率共同上行，政策信用担忧暂时消退"
     }
   ],
-  "china_tracking": {
-    "qualified_trade": true,
-    "score": 89,
-    "statement": "今日中国股指有合格条件交易：Long IM / Short IH，但只在下一交易日开盘30-45分钟并取得OI/期权更新后确认。",
-    "multi_period_price_pct": {
-      "IH": {"1d": 0.8723, "3d_approx": 1.85, "5d_approx": 0.08, "20d_approx": 1.23},
-      "IF": {"1d_approx": 0.82, "3d": null, "5d": null, "20d": null},
-      "IM": {"1d": 2.6002, "3d": null, "5d_approx": -1.54, "20d_approx": 9.07}
-    },
-    "stale_options_asof_2026_08_26": {
-      "HO2609": {"atm_iv_pct": 14.6908, "rr25_vol": -0.4289, "bf25_vol": 0.5078, "pcr_oi": 0.6377, "gamma_peaks": [2900, 3000, 2850, 2950, 2800]},
-      "IO2609": {"atm_iv_pct": 18.6887, "rr25_vol": -2.8391, "bf25_vol": 0.3069, "pcr_oi": 0.7271, "gamma_peaks": [4600, 4700, 4500, 4550, 4650]},
-      "MO2609": {"atm_iv_pct": 28.8198, "rr25_vol": -3.5639, "bf25_vol": 0.6249, "pcr_oi": 0.7185, "gamma_peaks": [8000, 7600, 7800, 7500, 7400]}
-    }
+  "china_options_multi_period": {
+    "as_of": "2026-08-26",
+    "HO2609": {"atm_iv": 14.6908, "atm_iv_change_vol": {"1d": -0.78, "3d": -0.01, "5d": -1.23, "20d": -4.32}, "rr25": -0.43, "rr25_change_vol": {"1d": -0.14, "3d": -0.20, "5d": -0.58, "20d": -0.78}, "bf25": 0.51, "pcr_oi": 0.638, "wing10_call_minus_put_vol": 0.34, "gamma_peaks": [2900, 3000, 2850]},
+    "IO2609": {"atm_iv": 18.6887, "atm_iv_change_vol": {"1d": -0.97, "3d": 1.14, "5d": -0.06, "20d": -2.63}, "rr25": -2.84, "rr25_change_vol": {"1d": -0.65, "3d": 0.04, "5d": -1.47, "20d": -1.60}, "bf25": 0.31, "pcr_oi": 0.727, "wing10_call_minus_put_vol": -5.34, "gamma_peaks": [4600, 4700, 4500]},
+    "MO2609": {"atm_iv": 28.8198, "atm_iv_change_vol": {"1d": -1.02, "3d": 2.20, "5d": -1.77, "20d": -4.65}, "rr25": -3.56, "rr25_change_vol": {"1d": 0.37, "3d": 0.71, "5d": 0.51, "20d": 0.22}, "bf25": 0.62, "pcr_oi": 0.718, "wing10_call_minus_put_vol": -6.47, "gamma_peaks": [8000, 7600, 7800]}
+  },
+  "china_index_opportunity": {
+    "qualified": true,
+    "score": 87,
+    "statement": "今日中国股指有合格条件交易：Long IM / Short IH，但必须在8/28开盘30-45分钟并取得OI/期权更新后确认",
+    "closest_trigger": "IM相对IH再赢>=0.35pct且更新OI不显示大幅减仓"
   },
   "action_list": {
-    "A": "今天可以立即建立的仓位：无；美股尚未完成NVIDIA财报后现金盘价格发现，且7Y拍卖/Warsh在前。",
-    "B": "今天只应挂条件单的仓位：NVDA/SOXX 30-60D Call Spread；Gold 3-6M Call Spread；8/28开盘确认后的Long IM/Short IH。",
-    "C": "今天应继续观察的机会：ULSD相对Brent、7Y拍卖后的2s30s、MO/IO当日IV与RR25是否补涨、USDJPY 159附近干预凸性。",
-    "D": "今天必须避免或退出的交易：昨日Long IH/Short IM防御RV；开盘追NVDA 7%+ gap；裸卖黄金/AI波动率；裸多原油地缘headline。"
+    "A": "今天可以立即建立的仓位：无；20:28截止时初请、美国现金盘、7Y拍卖与Warsh均在前。",
+    "B": "只挂条件单：NVDA/SOXX 30-60D Call Spread；Warsh后Gold 3-6M Call Spread；8/28确认后的Long IM/Short IH。",
+    "C": "继续观察：ULSD/Gasoil相对Brent、7Y拍卖后曲线、MO/IO当日IV与RR25、USD/JPY 159附近干预凸性。",
+    "D": "避免/退出：追NVDA无回撤gap、裸卖黄金/AI波、裸多原油headline、把多个小盘多头当独立风险预算。"
   },
   "risk_budget": {
-    "starter_max_loss_nav_pct": "0.25-0.75; tonight prefer 0.25-0.50",
-    "confirmed_trade_max_loss_nav_pct": "0.75-1.50",
-    "high_conviction_theme_total_nav_pct": "2.5-3.0",
+    "starter_max_loss_nav": "0.25%-0.75%（今晚偏0.25%-0.50%）",
+    "confirmed_trade_max_loss_nav": "0.75%-1.50%",
+    "high_conviction_theme_total_nav": "2.5%-3.0%",
     "factor_aggregation": [
-      "NVDA/SOXX call spreads and Long IM/Short IH share a global risk-on/growth factor.",
-      "Gold long + long-end Treasury puts + USD short + breakeven long = US policy-credit/real-yield factor.",
-      "ULSD scarcity can correlate with gold/short-duration themes if energy inflation reaccelerates."
+      "NVDA/SOXX与Long IM/Short IH共享growth/risk-on",
+      "Gold+长债Put+空美元+多BEI共享美国政策信用/真实利率",
+      "Long IM+Short IH+1000ETF Call共享A股小盘/高Beta风格"
     ]
   },
   "sources": [
-    "https://www.reuters.com/business/nasdaq-futures-take-lead-after-nvidia-forecast-refuels-ai-trade-2026-08-27/",
-    "https://www.reuters.com/business/nvidia-rises-after-signaling-longer-ai-spending-runway-2026-08-27/",
-    "https://www.stats.gov.cn/sj/zxfbhjd/202608/t20260827_1965126.html",
-    "https://www.reuters.com/world/asia-pacific/chinas-industrial-profits-grow-176-january-july-2026-08-27/",
-    "https://www.reuters.com/business/energy/oil-prices-extend-losses-expectations-talks-ease-middle-east-supply-woes-2026-08-27/",
-    "https://www.reuters.com/world/india/gold-drifts-higher-eyes-fed-chair-warshs-comments-2026-08-27/",
-    "https://www.reuters.com/world/china/dollar-near-eight-day-high-us-data-lifts-fed-hike-bets-2026-08-27/",
-    "https://www.cboe.com/tradable-products/vix",
-    "https://fred.stlouisfed.org/data/BAMLH0A0HYM2",
-    "https://www.cftc.gov/dea/futures/deacmxsf.htm",
-    "https://www.federalreserve.gov/newsevents/2026-august.htm",
-    "https://www.kansascityfed.org/newsroom/2026-news-releases/kansas-city-fed-to-host-annual-jackson-hole-economic-policy-symposium-2026/",
-    "https://www.bls.gov/schedule/2026/09_sched_list.htm",
-    "https://www.ismworld.org/supply-management-news-and-reports/reports/rob-report-calendar/",
-    "https://github.com/farfromexact/China-Options-Engine/blob/main/data/radar_latest.json",
-    "https://github.com/farfromexact/China-Options-Engine/blob/main/data/radar_history.json"
+    {"name": "U.S. Treasury Daily Treasury Rates", "date": "2026-08-26"},
+    {"name": "FRED ICE BofA US HY OAS", "date": "2026-08-25"},
+    {"name": "Reuters NVIDIA results/premarket", "date": "2026-08-27"},
+    {"name": "Reuters dollar/gold/oil/Iran-Hormuz", "date": "2026-08-27"},
+    {"name": "EIA Weekly Petroleum Status Report", "date": "2026-08-26"},
+    {"name": "Federal Reserve/Kansas City Fed Jackson Hole schedule", "date": "2026-08-27"},
+    {"name": "Treasury 7Y auction schedule", "date": "2026-08-27"},
+    {"name": "China NBS industrial profits", "date": "2026-08-27"},
+    {"name": "China-Options-Engine radar_latest/history", "date": "2026-08-26"}
   ],
   "errors": [
-    "China-Options-Engine radar_latest/history latest date is 2026-08-26; 2026-08-27 option IV/skew/PCR/OI/Gamma unavailable.",
-    "IF2609 exact 2026-08-27 final close and synchronized OI change not independently verified; final point value not guessed.",
-    "2026-08-27 IH/IF/IC/IM full synchronized OI/term-structure dataset unavailable, so new-money versus short-covering cannot be definitively classified.",
-    "Live full Gold/ULSD/FX option-chain IV/skew/premium unavailable; no exact premiums fabricated.",
+    "China-Options-Engine latest date is 2026-08-26; 2026-08-27 option IV/skew/PCR/OI/Gamma unavailable.",
+    "IF2609 exact 2026-08-27 final close and synchronized OI change not independently verified; final basis not guessed.",
+    "2026-08-27 IH/IF/IC/IM synchronized full OI dataset unavailable, so new-money versus short-covering cannot be definitively classified.",
+    "Cboe page returned an 8/27 11:26 ET VIX time stamp later than this 08:28 ET cutoff; it was rejected and only 8/26 prev close 15.21 is used.",
+    "Live full Gold/Oil/FX option-chain IV/skew/premium unavailable; no exact premiums fabricated.",
     "USD/CNH, DR007, CTA and same-day term-premium series not independently verified at cutoff.",
-    "MOVE and HY OAS are lagged."
+    "MOVE, HY OAS and CFTC positions are lagged."
   ],
-  "archive_status": "success",
+  "archive_status": "pending_verification",
   "ci_validation_status": "pending_or_unverified"
 }
