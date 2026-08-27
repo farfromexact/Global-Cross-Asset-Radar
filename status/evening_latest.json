@@ -1,22 +1,23 @@
 {
   "report_date": "2026-08-27",
   "edition": "evening",
-  "revision": 3,
-  "generated_at": "2026-08-27T21:05:24+08:00",
-  "generated_at_bjt": "2026-08-27T21:05:24+08:00",
-  "archive_status": "success",
-  "verified_main": true,
+  "revision": 4,
+  "generated_at": "2026-08-27T21:46:00+08:00",
+  "generated_at_bjt": "2026-08-27T21:46:00+08:00",
+  "archive_status": "pending_verification",
+  "verified_main": false,
   "china_options_date": "2026-08-27",
   "data_fresh": true,
   "previous_date": "2026-08-26",
   "ci_validation_status": "pending_or_unverified",
   "errors": [
-    "China-Options-Engine data/radar_history.json returned empty content via GitHub connector at cutoff; current 3/5/20D rolling metrics cannot be recomputed. 8/26 last-verified baselines are explicitly labeled stale.",
-    "Cboe VIX page returned 8/27 11:26 ET timestamp later than the report's ~09:05 ET cutoff; current value rejected, only 8/26 close 15.21 used.",
-    "U.S. cash equity market had not opened at cutoff; U.S. stock references are previous close or premarket/futures.",
-    "Live full option-chain IV/skew/premium for COMEX gold, crude/refined products and NVDA/SOXX unavailable; exact premiums not fabricated.",
-    "MOVE, HY OAS and CFTC positions are lagged.",
-    "USD/CNH, DR007, current CTA exposure, dealer net gamma and same-day term premium were not independently verified at cutoff."
+    "China-Options-Engine data/radar_history.json通过GitHub connector读取仍为空；3/5/20D由同一Sep合约的归档报告与7/30审计快照重建，并非history直接输出。",
+    "USD/CNH同步高质量实时报价未确认，不猜。",
+    "MOVE最新可靠值仍滞后至8/21；HY OAS至8/25。",
+    "Cboe当前VIX网页的8/27时间戳晚于本报告21:46 BJT截止时刻，故拒绝使用8/27数值，只用8/26收盘15.21。",
+    "美股现金市场仅刚开盘，缺乏同步可靠现金tick；精确美股价格使用8/26收盘与8/27 08:35 ET期货/盘前并明确标记。",
+    "完整实时COMEX黄金、ULSD、FX及AI单股期权IV/skew/premium未同步；不虚构。",
+    "当前CTA暴露、dealer net gamma、同步ACM期限溢价、DR007未可靠确认。"
   ],
   "target_paths": [
     "reports/2026/08/2026-08-27_evening.md",
@@ -26,5 +27,5 @@
     "status/evening_latest.json",
     "manifests/reports.json"
   ],
-  "run_note": "Main verified after six target writes: historical Markdown/JSON exist; latest/evening.md and latest/evening.json correspond to report_date=2026-08-27 and edition=evening; status corresponds to this revision; manifest contains exactly one 2026-08-27 + evening record. GitHub Actions CI was not awaited."
+  "run_note": "Revision 4 rerun after remote database refresh. Main verification pending."
 }
