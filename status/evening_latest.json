@@ -1,16 +1,16 @@
 {
-  "report_date": "2026-08-27",
-  "edition": "evening",
-  "revision": 2,
-  "generated_at": "2026-08-27T20:28:23+08:00",
-  "generated_at_bjt": "2026-08-27T20:28:23+08:00",
-  "archive_status": "pending_verification",
-  "verified_main": false,
-  "china_options_date": "2026-08-26",
-  "data_fresh": false,
-  "previous_date": "2026-08-26",
-  "ci_validation_status": "pending_or_unverified",
-  "errors": [
+  "report_date":"2026-08-27",
+  "edition":"evening",
+  "revision":2,
+  "generated_at":"2026-08-27T20:28:23+08:00",
+  "generated_at_bjt":"2026-08-27T20:28:23+08:00",
+  "archive_status":"success",
+  "verified_main":true,
+  "china_options_date":"2026-08-26",
+  "data_fresh":false,
+  "previous_date":"2026-08-26",
+  "ci_validation_status":"pending_or_unverified",
+  "errors":[
     "China-Options-Engine latest date is 2026-08-26; 2026-08-27 option IV/skew/PCR/OI/Gamma unavailable.",
     "IF2609 exact 2026-08-27 final close and synchronized OI change not independently verified; final basis not guessed.",
     "2026-08-27 IH/IF/IC/IM synchronized full OI dataset unavailable, so new-money versus short-covering cannot be definitively classified.",
@@ -19,13 +19,6 @@
     "USD/CNH, DR007, CTA and same-day term-premium series not independently verified at cutoff.",
     "MOVE, HY OAS and CFTC positions are lagged."
   ],
-  "target_paths": [
-    "reports/2026/08/2026-08-27_evening.md",
-    "reports/2026/08/2026-08-27_evening.json",
-    "latest/evening.md",
-    "latest/evening.json",
-    "status/evening_latest.json",
-    "manifests/reports.json"
-  ],
-  "run_note": "Revision 2 updates data-quality controls and China option multi-period diagnostics; final archive status will be promoted only after main readback verification."
+  "target_paths":["reports/2026/08/2026-08-27_evening.md","reports/2026/08/2026-08-27_evening.json","latest/evening.md","latest/evening.json","status/evening_latest.json","manifests/reports.json"],
+  "run_note":"All six required archive paths were read back from main and verified for report_date=2026-08-27 and edition=evening; the manifest contains a single 2026-08-27 + evening entry. China option engine remained one session stale at cutoff."
 }
