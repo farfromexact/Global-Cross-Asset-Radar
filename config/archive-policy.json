@@ -34,6 +34,8 @@
   },
   "historical_path_template": "reports/{YYYY}/{MM}/{YYYY-MM-DD}_{edition}.{ext}",
   "manual_test_path_template": "tests/{YYYY-MM-DDTHH-MM-SS}_{edition}.{ext}",
+  "report_schema_path": "schemas/report.schema.json",
+  "report_template_path": "templates/report.json",
   "manifest_path": "manifests/reports.json",
   "write_order": [
     "historical_markdown",
@@ -62,7 +64,13 @@
   "failure_condition": "if formal archive cannot be written to main, archive_status=failed",
   "historical_file_policy": "upsert_same_date_and_edition; rely_on_git_history_for_revisions",
   "latest_file_policy": "overwrite_only_after_report_generation_succeeds",
-  "manifest_policy": "report_date+edition is the unique key; update an existing entry instead of appending a duplicate",
+  "manifest_policy": "report_date+edition is the unique key; update an existing entry instead of appending a duplicate; write the manifest exactly once after the other five paths are final and re-read",
+  "manifest_final_entry_requirements": {
+    "status": "published",
+    "archive_status": "success",
+    "revision": "integer >= 1",
+    "pending_entries_forbidden": true
+  },
   "chat_delivery_policy": "publish_report_in_chat_even_when_github_archive_fails",
   "github_failure_policy": "report the failing main path and error; never suppress the research report",
   "archive_status_semantics": "archive_status=success means all required files are confirmed present on main for the current report; success does not imply CI validation passed",

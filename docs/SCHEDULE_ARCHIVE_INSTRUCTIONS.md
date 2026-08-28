@@ -14,9 +14,10 @@ farfromexact/Global-Cross-Asset-Radar
 
 1. `config/archive-policy.json`
 2. `schemas/report.schema.json`
-3. `manifests/reports.json`
-4. 对应版本的 `status/*_latest.json`
-5. 对应版本的 `latest/*.json` 和 `latest/*.md`
+3. `templates/report.json`
+4. `manifests/reports.json`
+5. 对应版本的 `status/*_latest.json`
+6. 对应版本的 `latest/*.json` 和 `latest/*.md`
 
 正式归档固定更新6个路径：
 
@@ -74,6 +75,7 @@ farfromexact/Global-Cross-Asset-Radar
 - `archive_status=partial`：部分 main 写入或复核失败。
 - `archive_status=failed`：无法完成正式 main 归档。
 - GitHub Actions `Validate Radar Reports` 仅作为**push后的独立事后校验**，不得阻塞 Scheduled Task。
+- 最终 Manifest 写入触发一次 Actions run：`Validate current publication` 只校验本次变更条目的六文件包，`Validate full archive` 同时扫描完整历史、Markdown 和单元测试。
 - 如果任务结束时无法取得 Actions 最终结果，记录：
 
 ```text
@@ -87,8 +89,9 @@ ci_validation_status = pending_or_unverified
 ## 写入内容规则
 
 - Markdown必须保存完整中文报告。
-- JSON必须符合 `schemas/report.schema.json`。
+- JSON必须以 `templates/report.json` 为字段骨架并符合 `schemas/report.schema.json`；必须写入 `schema_version=1.0` 和 `status=published`，精简字段可作为附加字段保留，不得取代标准字段。
 - JSON中至少记录：报告日期、edition、生成时间、市场状态、机会榜、交易卡、行动清单、风险预算、来源、China-Commodities-Engine与China-Options-Engine实际输入路径、各模块数据日期/生成时间/新鲜度、previous_date、errors、archive_status、ci_validation_status。
+- `input_snapshots.china_commodities.trade_date` 必须是实际使用的商品 EOD 日期：优先已写快照值，其次顶层 `china_commodities_date`，再其次 `source_status.last_good_eod.date`；不得用报告日期猜测。
 - 正式历史JSON的 `archive.markdown_path` 和 `archive.json_path` 应与实际历史路径一致，或在 `archive.paths` 中完整列出实际路径。
 - GitHub Markdown不得包含ChatGPT专用引用标记、内部turn ID、connector ID或私有file引用；关键来源转换为普通Markdown链接/脚注，并在JSON `sources` 数组结构化保存。
 - 每个 JSON `sources` 对象的 `supported_claims` 必须是字符串数组；即使只有一条，也写成 `["claim"]`，不能写成裸字符串。

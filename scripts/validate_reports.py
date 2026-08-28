@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import argparse
+import importlib.util
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 from typing import Any
@@ -271,6 +274,22 @@ def _compat_meaningful_changes(value: Any) -> list[dict[str, Any]]:
     return normalized
 
 
+def _compat_event_calendar(value: Any) -> list[dict[str, Any]]:
+    """Preserve compact prose events as object rows required by the schema."""
+    if not isinstance(value, list):
+        return []
+
+    normalized: list[dict[str, Any]] = []
+    for item in value:
+        if isinstance(item, dict):
+            normalized.append(dict(item))
+        elif isinstance(item, str) and item.strip():
+            normalized.append({"event": item.strip()})
+        elif item is not None:
+            normalized.append({"event": str(item)})
+    return normalized
+
+
 def _compat_top_opportunities(value: Any) -> Any:
     """Keep ambiguous risk labels from violating the boolean contract.
 
@@ -288,6 +307,16 @@ def _compat_top_opportunities(value: Any) -> Any:
             normalized.append(item)
             continue
         row = dict(item)
+        if "max_loss_limited" not in row and isinstance(row.get("max_loss_finite"), bool):
+            row["max_loss_limited"] = row["max_loss_finite"]
+        if "holding_period" not in row and row.get("horizon") is not None:
+            row["holding_period"] = str(row["horizon"])
+        if "instruments" not in row and row.get("tool") is not None:
+            tool = row["tool"]
+            if isinstance(tool, list):
+                row["instruments"] = [str(part) for part in tool]
+            else:
+                row["instruments"] = [str(tool)]
         risk_limit = row.get("max_loss_limited")
         if risk_limit is not None and not isinstance(risk_limit, bool):
             row.setdefault("max_loss_limited_note", str(risk_limit))
@@ -369,13 +398,25 @@ def _compat_china_commodities_snapshot(data: dict[str, Any]) -> dict[str, Any]:
     quality_metrics = data.get("quality_metrics")
     quality_metrics = quality_metrics if isinstance(quality_metrics, dict) else {}
     module_quality = _compat_module_quality(data)
+    source_status = data.get("source_status")
+    source_status = source_status if isinstance(source_status, dict) else {}
+    last_good_eod = source_status.get("last_good_eod")
+    last_good_eod = last_good_eod if isinstance(last_good_eod, dict) else {}
+    options_status = source_status.get("options")
+    options_status = options_status if isinstance(options_status, dict) else {}
 
     snapshot.setdefault("repository", "farfromexact/China-Commodities-Engine")
     snapshot.setdefault("branch", "main")
     snapshot.setdefault("last_run_status_path", "data/last_run_status.json")
     snapshot.setdefault("radar_latest_path", "data/radar_latest.json")
     snapshot.setdefault("radar_history_path", "data/radar_history.json")
-    snapshot.setdefault("trade_date", data.get("china_commodities_date"))
+    trade_date = (
+        snapshot.get("trade_date")
+        or data.get("china_commodities_date")
+        or last_good_eod.get("date")
+        or options_status.get("trade_date")
+    )
+    snapshot["trade_date"] = trade_date
     snapshot.setdefault(
         "generated_at",
         data.get("report_input_generated_at") or data.get("generated_at_bjt"),
@@ -669,6 +710,9 @@ def _normalize_commodity_schedule_report(data: dict[str, Any], path: Path) -> di
         return data
 
     normalized = dict(data)
+    if data.get("schema_version") == "1.1":
+        normalized["schema_version"] = "1.0"
+    normalized.setdefault("status", _compat_status(data, path))
     normalized["input_snapshots"] = _compat_china_commodities_snapshot(data)
     normalized.setdefault("generated_at_bjt", data.get("generated_at"))
     normalized.setdefault("title", _compat_title(data))
@@ -676,6 +720,11 @@ def _normalize_commodity_schedule_report(data: dict[str, Any], path: Path) -> di
         "one_sentence_conclusion",
         data.get("one_sentence") or data.get("commodity_regime") or data.get("regime"),
     )
+    normalized.setdefault(
+        "regime",
+        data.get("commodity_regime") or data.get("market_regime") or data.get("regime"),
+    )
+    normalized.setdefault("worth_taking_risk", data.get("worth_taking_risk"))
     normalized.setdefault("source_status", {
         "compatibility_adapter": "commodity_schedule_dialect",
         "data_fresh": data.get("data_fresh"),
@@ -687,7 +736,7 @@ def _normalize_commodity_schedule_report(data: dict[str, Any], path: Path) -> di
     normalized.setdefault("gold_tracking", {})
     normalized.setdefault("ai_tracking", {})
     normalized.setdefault("china_tracking", {})
-    normalized.setdefault("event_calendar", [])
+    normalized["event_calendar"] = _compat_event_calendar(data.get("event_calendar"))
     normalized.setdefault("action_list", {"A": "", "B": "", "C": "", "D": ""})
     normalized.setdefault("risk_budget", {})
 
@@ -707,6 +756,93 @@ def _normalize_commodity_schedule_report(data: dict[str, Any], path: Path) -> di
     normalized["meaningful_changes"] = _compat_meaningful_changes(
         data.get("meaningful_changes") or quality.get("comparative_metrics", [])
     )
+    normalized["sources"] = _compat_sources(data.get("sources"))
+    normalized["archive"] = _compat_archive(data, path)
+    return normalized
+
+
+def _normalize_global_schedule_report(data: dict[str, Any], path: Path) -> dict[str, Any]:
+    """Adapt compact global morning/evening task output for validation.
+
+    Scheduled reports have appeared both with schema version 1.1 and without a
+    schema marker.  Detect the dialect from the edition and its compact field
+    names, then add a canonical in-memory view while preserving every raw key.
+    """
+    if data.get("edition") not in {"morning", "evening"}:
+        return data
+
+    compact_markers = {
+        "generated_at",
+        "market_regime",
+        "one_line_conclusion",
+        "trade_cards",
+        "global_snapshot",
+        "events",
+    }
+    if not compact_markers.intersection(data):
+        return data
+
+    normalized = dict(data)
+    if data.get("schema_version") in {None, "1.1"}:
+        normalized["schema_version"] = "1.0"
+    normalized.setdefault("status", _compat_status(data, path))
+    normalized.setdefault("generated_at_bjt", data.get("generated_at"))
+    normalized.setdefault("title", _compat_title(data))
+    normalized.setdefault(
+        "one_sentence_conclusion",
+        data.get("one_line_conclusion") or data.get("one_line") or data.get("one_sentence"),
+    )
+    normalized.setdefault("regime", data.get("market_regime"))
+    normalized.setdefault("worth_taking_risk", data.get("worth_taking_risk"))
+
+    if not isinstance(normalized.get("input_snapshots"), dict):
+        normalized["input_snapshots"] = {
+            "china_options_repository": "farfromexact/China-Options-Engine",
+            "china_options_path": "data/radar_latest.json",
+            "china_options_history_path": "data/radar_history.json",
+            "china_options_date": data.get("china_options_date"),
+            "china_options_fresh": data.get("data_fresh"),
+            "actual_read_paths": data.get("china_options_engine_actual_read_paths")
+            or data.get("china_options_engine_paths")
+            or data.get("China-Options-Engine实际读取路径")
+            or [],
+        }
+    if not isinstance(normalized.get("source_status"), dict):
+        normalized["source_status"] = {
+            "compatibility_adapter": "global_schedule_dialect",
+            "data_fresh": data.get("data_fresh"),
+            "errors": data.get("errors", []),
+        }
+
+    normalized["dashboard"] = _compat_dashboard(
+        data.get("dashboard") or data.get("global_snapshot"),
+        [],
+    )
+    normalized["meaningful_changes"] = _compat_meaningful_changes(
+        data.get("meaningful_changes")
+    )
+    normalized["top_opportunities"] = _compat_top_opportunities(
+        data.get("top_opportunities", [])
+    )
+    normalized.setdefault("top_trade_cards", data.get("trade_cards", []))
+    normalized.setdefault(
+        "gold_tracking",
+        data.get("gold") if isinstance(data.get("gold"), dict) else {},
+    )
+    normalized.setdefault(
+        "ai_tracking",
+        data.get("ai") if isinstance(data.get("ai"), dict) else {},
+    )
+
+    china = dict(data.get("china")) if isinstance(data.get("china"), dict) else {}
+    china.setdefault("score", china.get("china_opportunity_score"))
+    china.setdefault("preferred_future", china.get("preference"))
+    normalized["china_tracking"] = _compat_china_tracking(china)
+    normalized["event_calendar"] = _compat_event_calendar(
+        data.get("event_calendar") or data.get("events")
+    )
+    normalized.setdefault("action_list", {"A": "", "B": "", "C": "", "D": ""})
+    normalized.setdefault("risk_budget", {})
     normalized["sources"] = _compat_sources(data.get("sources"))
     normalized["archive"] = _compat_archive(data, path)
     return normalized
@@ -754,71 +890,9 @@ def normalize_report_for_schema(data: Any, path: Path) -> Any:
     normalized = dict(data)
 
     normalized = _normalize_commodity_schedule_report(normalized, path)
-
+    normalized = _normalize_global_schedule_report(normalized, path)
     if data.get("schema_version") == "1.1":
         normalized["schema_version"] = "1.0"
-        normalized.setdefault("status", _compat_status(data, path))
-        normalized.setdefault("generated_at_bjt", data.get("generated_at"))
-        normalized.setdefault("title", _compat_title(data))
-        normalized.setdefault(
-            "one_sentence_conclusion",
-            data.get("one_line_conclusion") or data.get("one_sentence") or None,
-        )
-        normalized.setdefault("regime", data.get("market_regime"))
-        normalized.setdefault("worth_taking_risk", data.get("worth_taking_risk"))
-        normalized.setdefault(
-            "input_snapshots",
-            {
-                "china_options_repository": "farfromexact/China-Options-Engine",
-                "china_options_path": "data/radar_latest.json",
-                "china_options_history_path": "data/radar_history.json",
-                "china_options_date": data.get("china_options_date"),
-                "china_options_fresh": data.get("data_fresh"),
-                "actual_read_paths": data.get("china_options_engine_actual_read_paths")
-                or data.get("China-Options-Engine实际读取路径")
-                or [],
-            },
-        )
-        normalized.setdefault(
-            "source_status",
-            {
-                "compatibility_adapter": "schema_version_1.1",
-                "errors": data.get("errors", []),
-            },
-        )
-        normalized.setdefault("dashboard", [])
-        normalized.setdefault("meaningful_changes", [])
-        normalized.setdefault("top_opportunities", [])
-        normalized.setdefault("top_trade_cards", data.get("trade_cards", []))
-        normalized.setdefault("gold_tracking", {})
-        normalized.setdefault("ai_tracking", {})
-        normalized.setdefault("event_calendar", [])
-        normalized.setdefault("action_list", {"A": "", "B": "", "C": "", "D": ""})
-        normalized.setdefault("risk_budget", {})
-        normalized["sources"] = _compat_sources(data.get("sources"))
-
-        if "reports" in path.parts:
-            json_path = path.relative_to(ROOT).as_posix()
-            markdown_path = path.with_suffix(".md").relative_to(ROOT).as_posix()
-        else:
-            json_path = None
-            markdown_path = None
-
-        errors = data.get("errors")
-        error_text = "; ".join(str(item) for item in errors) if isinstance(errors, list) and errors else None
-        normalized.setdefault(
-            "archive",
-            {
-                "markdown_path": markdown_path,
-                "json_path": json_path,
-                "latest_markdown_path": f"latest/{data.get('edition')}.md",
-                "latest_json_path": f"latest/{data.get('edition')}.json",
-                "archive_status": data.get("archive_status"),
-                "commit_sha": data.get("archive_verification_source_commit_sha")
-                or data.get("publication_commit_sha"),
-                "error": error_text,
-            },
-        )
 
     # Apply harmless dialect normalization to every schema version.  These are
     # in-memory adapters only; the archived source JSON remains unchanged.
@@ -1153,12 +1227,12 @@ def validate_manifest(schema: dict[str, Any], allowed_editions: tuple[str, ...])
     return messages
 
 
-def main() -> int:
-    report_schema = load_json(REPORT_SCHEMA_PATH)
-    manifest_schema = load_json(MANIFEST_SCHEMA_PATH)
-    archive_policy = load_json(ARCHIVE_POLICY_PATH)
-    allowed_editions = configured_editions(archive_policy)
-
+def collect_full_validation_errors(
+    report_schema: dict[str, Any],
+    manifest_schema: dict[str, Any],
+    archive_policy: dict[str, Any],
+    allowed_editions: tuple[str, ...],
+) -> list[str]:
     errors: list[str] = []
     for path in report_paths(allowed_editions):
         errors.extend(validate_report_file(path, report_schema, allowed_editions))
@@ -1171,15 +1245,361 @@ def main() -> int:
         except ValidationFailure as exc:
             errors.append(str(exc))
         errors.extend(scan_forbidden_tokens(path))
+    return errors
+
+
+def load_manifest_at_ref(base_ref: str | None) -> dict[str, Any] | None:
+    """Read the manifest from a Git ref, returning None for unavailable bases."""
+    if not base_ref or re.fullmatch(r"0+", base_ref):
+        return None
+
+    try:
+        result = subprocess.run(
+            ["git", "show", f"{base_ref}:manifests/reports.json"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            check=False,
+        )
+    except OSError:
+        return None
+    if result.returncode != 0:
+        return None
+
+    try:
+        data = json.loads(result.stdout)
+    except json.JSONDecodeError:
+        return None
+    return data if isinstance(data, dict) else None
+
+
+def manifest_entries_by_key(data: Any) -> dict[tuple[str, str], dict[str, Any]]:
+    if not isinstance(data, dict) or not isinstance(data.get("reports"), list):
+        return {}
+
+    entries: dict[tuple[str, str], dict[str, Any]] = {}
+    for item in data["reports"]:
+        if not isinstance(item, dict):
+            continue
+        report_date = item.get("report_date")
+        edition = item.get("edition")
+        if isinstance(report_date, str) and isinstance(edition, str):
+            entries[(report_date, edition)] = item
+    return entries
+
+
+def changed_manifest_entries(base_manifest: Any, current_manifest: Any) -> list[dict[str, Any]]:
+    base_entries = manifest_entries_by_key(base_manifest)
+    current_entries = manifest_entries_by_key(current_manifest)
+    return [
+        entry
+        for key, entry in current_entries.items()
+        if base_entries.get(key) != entry
+    ]
+
+
+def _load_markdown_validator() -> Any:
+    path = ROOT / "scripts" / "validate_markdown_reports.py"
+    spec = importlib.util.spec_from_file_location("publication_markdown_validator", path)
+    if spec is None or spec.loader is None:
+        raise ValidationFailure(f"Unable to load Markdown validator: {path.relative_to(ROOT)}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _publication_identity_errors(
+    data: dict[str, Any],
+    path: Path,
+    *,
+    report_date: str,
+    edition: str,
+    revision: int,
+) -> list[str]:
+    normalized = normalize_report_for_schema(data, path)
+    errors: list[str] = []
+    rel = path.relative_to(ROOT)
+    expected = {
+        "report_date": report_date,
+        "edition": edition,
+        "revision": revision,
+    }
+    for field, value in expected.items():
+        if normalized.get(field) != value:
+            errors.append(
+                f"{rel} {field}={normalized.get(field)!r}; expected {value!r} from manifest"
+            )
+    if normalized.get("status") != "published":
+        errors.append(f"{rel} status must be 'published' for a final publication")
+    archive = normalized.get("archive")
+    archive_status = archive.get("archive_status") if isinstance(archive, dict) else None
+    if archive_status != "success":
+        errors.append(f"{rel} archive.archive_status={archive_status!r}; expected 'success'")
+    return errors
+
+
+def publication_manifest_state_errors(entry: dict[str, Any]) -> list[str]:
+    key = (entry.get("report_date"), entry.get("edition"))
+    errors: list[str] = []
+    if entry.get("status") != "published":
+        errors.append(f"Manifest entry {key} status must be 'published' before CI runs")
+    if entry.get("archive_status") != "success":
+        errors.append(
+            f"Manifest entry {key} archive_status must be 'success'; pending entries must not be committed"
+        )
+    revision = entry.get("revision")
+    if not isinstance(revision, int) or isinstance(revision, bool) or revision < 1:
+        errors.append(f"Manifest entry {key} revision must be an integer >= 1")
+    return errors
+
+
+def publication_status_identity_errors(
+    status_data: Any,
+    path: Path,
+    *,
+    report_date: str,
+    edition: str,
+    revision: int,
+) -> list[str]:
+    errors: list[str] = []
+    for field, value in {
+        "report_date": report_date,
+        "edition": edition,
+        "revision": revision,
+        "archive_status": "success",
+    }.items():
+        if not isinstance(status_data, dict) or status_data.get(field) != value:
+            actual = status_data.get(field) if isinstance(status_data, dict) else None
+            errors.append(f"{path.relative_to(ROOT)} {field}={actual!r}; expected {value!r}")
+    return errors
+
+
+def publication_json_identity_errors(
+    historical_data: Any,
+    latest_data: Any,
+    historical_path: Path,
+    latest_path: Path,
+) -> list[str]:
+    if historical_data == latest_data:
+        return []
+    return [
+        f"{latest_path.relative_to(ROOT)} is not identical to "
+        f"{historical_path.relative_to(ROOT)}"
+    ]
+
+
+def validate_publication_bundle(
+    entry: dict[str, Any],
+    report_schema: dict[str, Any],
+    archive_policy: dict[str, Any],
+    allowed_editions: tuple[str, ...],
+    markdown_validator: Any,
+) -> list[str]:
+    errors: list[str] = []
+    report_date = entry.get("report_date")
+    edition = entry.get("edition")
+    revision = entry.get("revision")
+    key = (report_date, edition)
+
+    errors.extend(publication_manifest_state_errors(entry))
+    if not isinstance(report_date, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", report_date):
+        errors.append(f"Manifest entry {key} has invalid report_date")
+        return errors
+    if edition not in allowed_editions:
+        errors.append(f"Manifest entry {key} has an unconfigured edition")
+        return errors
+    if not isinstance(revision, int) or isinstance(revision, bool) or revision < 1:
+        return errors
+
+    expected_json_rel = f"reports/{report_date[:4]}/{report_date[5:7]}/{report_date}_{edition}.json"
+    expected_markdown_rel = f"reports/{report_date[:4]}/{report_date[5:7]}/{report_date}_{edition}.md"
+    if entry.get("json_path") != expected_json_rel:
+        errors.append(
+            f"Manifest entry {key} json_path={entry.get('json_path')!r}; expected {expected_json_rel!r}"
+        )
+    if entry.get("markdown_path") != expected_markdown_rel:
+        errors.append(
+            f"Manifest entry {key} markdown_path={entry.get('markdown_path')!r}; expected {expected_markdown_rel!r}"
+        )
+
+    config = archive_policy.get("editions", {}).get(edition, {})
+    latest_json_rel = config.get("latest_json") if isinstance(config, dict) else None
+    latest_markdown_rel = config.get("latest_markdown") if isinstance(config, dict) else None
+    status_rel = config.get("status_path") if isinstance(config, dict) else None
+    configured_paths = {
+        "latest_json": latest_json_rel,
+        "latest_markdown": latest_markdown_rel,
+        "status": status_rel,
+    }
+    for label, value in configured_paths.items():
+        if not isinstance(value, str):
+            errors.append(f"Archive policy is missing {label} for edition {edition}")
+    if errors and any(not isinstance(value, str) for value in configured_paths.values()):
+        return errors
+
+    historical_json = ROOT / expected_json_rel
+    historical_markdown = ROOT / expected_markdown_rel
+    latest_json = ROOT / str(latest_json_rel)
+    latest_markdown = ROOT / str(latest_markdown_rel)
+    status_path = ROOT / str(status_rel)
+    for path in (
+        historical_json,
+        historical_markdown,
+        latest_json,
+        latest_markdown,
+        status_path,
+        MANIFEST_PATH,
+    ):
+        if not path.exists():
+            errors.append(f"Publication bundle is missing {path.relative_to(ROOT)}")
+    if errors and any(
+        not path.exists()
+        for path in (historical_json, historical_markdown, latest_json, latest_markdown, status_path)
+    ):
+        return errors
+
+    errors.extend(validate_report_file(historical_json, report_schema, allowed_editions))
+    errors.extend(validate_report_file(latest_json, report_schema, allowed_editions))
+
+    historical_data = load_json(historical_json)
+    latest_data = load_json(latest_json)
+    errors.extend(
+        publication_json_identity_errors(
+            historical_data,
+            latest_data,
+            historical_json,
+            latest_json,
+        )
+    )
+    errors.extend(
+        _publication_identity_errors(
+            historical_data,
+            historical_json,
+            report_date=report_date,
+            edition=edition,
+            revision=revision,
+        )
+    )
+    errors.extend(
+        _publication_identity_errors(
+            latest_data,
+            latest_json,
+            report_date=report_date,
+            edition=edition,
+            revision=revision,
+        )
+    )
+
+    status_data = load_json(status_path)
+    errors.extend(
+        publication_status_identity_errors(
+            status_data,
+            status_path,
+            report_date=report_date,
+            edition=edition,
+            revision=revision,
+        )
+    )
+    errors.extend(scan_forbidden_tokens(status_path))
+
+    errors.extend(markdown_validator.validate_full_markdown(historical_markdown, report_date, edition))
+    errors.extend(markdown_validator.validate_full_markdown(latest_markdown, report_date, edition))
+    if (
+        historical_markdown.exists()
+        and latest_markdown.exists()
+        and markdown_validator.normalized_markdown(historical_markdown)
+        != markdown_validator.normalized_markdown(latest_markdown)
+    ):
+        errors.append(
+            f"{latest_markdown.relative_to(ROOT)} is not identical to {historical_markdown.relative_to(ROOT)}"
+        )
+    return errors
+
+
+def collect_publication_validation_errors(
+    base_manifest: dict[str, Any],
+    current_manifest: dict[str, Any],
+    report_schema: dict[str, Any],
+    manifest_schema: dict[str, Any],
+    archive_policy: dict[str, Any],
+    allowed_editions: tuple[str, ...],
+) -> list[str]:
+    errors = validate_manifest(manifest_schema, allowed_editions)
+    changed_entries = changed_manifest_entries(base_manifest, current_manifest)
+    if not changed_entries:
+        errors.append("Manifest changed without adding or revising a report entry")
+        return errors
+
+    markdown_validator = _load_markdown_validator()
+    for entry in changed_entries:
+        errors.extend(
+            validate_publication_bundle(
+                entry,
+                report_schema,
+                archive_policy,
+                allowed_editions,
+                markdown_validator,
+            )
+        )
+    return errors
+
+
+def _print_result(errors: list[str], *, scope: str) -> int:
+    label = "Publication validation" if scope == "publication" else "Report archive validation"
 
     if errors:
-        print("Report archive validation failed:")
+        print(f"{label} failed:")
         for error in errors:
             print(f"- {error}")
         return 1
 
-    print("Report archive validation passed.")
+    print(f"{label} passed.")
     return 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
+    parser = argparse.ArgumentParser(description="Validate the Radar report archive")
+    parser.add_argument("--scope", choices=("full", "publication"), default="full")
+    parser.add_argument("--base-ref", help="Git ref containing the manifest before publication")
+    args = parser.parse_args(argv)
+
+    report_schema = load_json(REPORT_SCHEMA_PATH)
+    manifest_schema = load_json(MANIFEST_SCHEMA_PATH)
+    archive_policy = load_json(ARCHIVE_POLICY_PATH)
+    allowed_editions = configured_editions(archive_policy)
+
+    if args.scope == "publication":
+        base_manifest = load_manifest_at_ref(args.base_ref)
+        if base_manifest is None:
+            print("Publication base ref is unavailable; falling back to full archive validation.")
+            errors = collect_full_validation_errors(
+                report_schema,
+                manifest_schema,
+                archive_policy,
+                allowed_editions,
+            )
+            return _print_result(errors, scope="full")
+        current_manifest = load_json(MANIFEST_PATH)
+        errors = collect_publication_validation_errors(
+            base_manifest,
+            current_manifest,
+            report_schema,
+            manifest_schema,
+            archive_policy,
+            allowed_editions,
+        )
+        return _print_result(errors, scope="publication")
+
+    errors = collect_full_validation_errors(
+        report_schema,
+        manifest_schema,
+        archive_policy,
+        allowed_editions,
+    )
+    return _print_result(errors, scope="full")
 
 
 if __name__ == "__main__":
