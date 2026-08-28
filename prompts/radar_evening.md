@@ -69,8 +69,8 @@ HO/IO/MO或ETF期权的IV、偏度、期限结构是否提供比裸期货更优�
 【自动归档】
 报告完成后归档至 github.com/farfromexact/Global-Cross-Asset-Radar，edition=evening：
 reports/YYYY/MM/YYYY-MM-DD_evening.md/json；latest/evening.md/json；status/evening_latest.json；manifests/reports.json。
-JSON记录日期、生成时间、机会列表、行动清单、来源、China-Options-Engine路径、data_fresh。归档失败必须明确说明。
+JSON 生成前必须读取 `schemas/report.schema.json` 和 `templates/report.json`，写入 `schema_version=1.0`、`status=published` 及模板中的标准字段。精简字段可额外保留，不得替代标准字段。归档失败必须明确说明。
 
 上述 GitHub 仓库必须优先通过已连接的 GitHub connector 读取/写入；不要用普通网页搜索替代仓库文件读取。
 
-归档前必须通过 GitHub connector 读取并严格执行 farfromexact/Global-Cross-Asset-Radar/config/archive-policy.json 与 docs/SCHEDULE_ARCHIVE_INSTRUCTIONS.md。若原子单提交不可用而使用 staging branch，创建 staging branch 不是完成状态；必须继续创建 PR、等待 Validate Radar Reports、校验失败则在同一 staging branch 修复、校验通过后 merge 到 main，并重新读取 main 确认当日报告存在。只有 main 中六个必需归档路径均存在时才能标记 archive_status=success。完成 main 验证后立即结束本次 Scheduled Task，不继续等待或重复检查。
+归档前必须通过 GitHub connector 读取并严格执行 farfromexact/Global-Cross-Asset-Radar/config/archive-policy.json 与 docs/SCHEDULE_ARCHIVE_INSTRUCTIONS.md。先准备并写入历史 Markdown/JSON、latest Markdown/JSON 和 status 五个最终文件，重新读取确认后，才最后更新 Manifest 一次；Manifest 条目必须是 `status=published`、`archive_status=success` 和有效 revision，不得写入 pending 中间状态。修订报告也必须先替换前五个文件，再以一次最终 Manifest 更新收尾。正式归档直接写入 `main`，不创建 branch/PR，不等待 CI。重新读取六个 main 路径成功后立即结束本次 Scheduled Task。

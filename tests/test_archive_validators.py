@@ -37,6 +37,16 @@ class ArchiveValidatorTests(unittest.TestCase):
                 encoding="utf-8"
             )
         )
+        fixture_root = REPO_ROOT / "tests" / "fixtures"
+        cls.global_compact = json.loads(
+            (fixture_root / "global_compact_missing_schema.json").read_text(encoding="utf-8")
+        )
+        cls.commodity_compact = json.loads(
+            (fixture_root / "commodity_compact_research_ready.json").read_text(encoding="utf-8")
+        )
+        cls.commodity_mixed_dates = json.loads(
+            (fixture_root / "commodity_mixed_dates.json").read_text(encoding="utf-8")
+        )
 
     def test_policy_is_the_validator_edition_source(self) -> None:
         self.assertEqual(
@@ -124,6 +134,94 @@ class ArchiveValidatorTests(unittest.TestCase):
             errors = VALIDATOR.validate_manifest(self.manifest_schema, self.allowed_editions)
         self.assertTrue(any("Duplicate manifest key" in error for error in errors))
 
+    def test_manifest_delta_detects_added_and_revised_entries(self) -> None:
+        base_entry = {
+            "report_date": "2026-08-20",
+            "edition": "morning",
+            "revision": 1,
+            "status": "published",
+            "archive_status": "success",
+        }
+        added_entry = {
+            "report_date": "2026-08-20",
+            "edition": "evening",
+            "revision": 1,
+            "status": "published",
+            "archive_status": "success",
+        }
+        revised_entry = dict(base_entry, revision=2)
+        base = {"reports": [base_entry]}
+        current = {"reports": [revised_entry, added_entry]}
+
+        changed = VALIDATOR.changed_manifest_entries(base, current)
+
+        self.assertEqual(changed, [revised_entry, added_entry])
+
+    def test_publication_rejects_pending_manifest_and_identity_mismatches(self) -> None:
+        pending = {
+            "report_date": "2026-08-20",
+            "edition": "morning",
+            "revision": 1,
+            "status": "published",
+            "archive_status": "pending_verification",
+        }
+        self.assertTrue(
+            any(
+                "pending entries must not be committed" in error
+                for error in VALIDATOR.publication_manifest_state_errors(pending)
+            )
+        )
+
+        path = REPO_ROOT / "reports" / "2026" / "08" / "2026-08-20_morning.json"
+        identity_errors = VALIDATOR._publication_identity_errors(
+            self.global_compact,
+            path,
+            report_date="2026-08-20",
+            edition="morning",
+            revision=2,
+        )
+        self.assertTrue(any("revision=1; expected 2" in error for error in identity_errors))
+
+        status_errors = VALIDATOR.publication_status_identity_errors(
+            {
+                "report_date": "2026-08-20",
+                "edition": "morning",
+                "revision": 1,
+                "archive_status": "pending",
+            },
+            REPO_ROOT / "status" / "morning_latest.json",
+            report_date="2026-08-20",
+            edition="morning",
+            revision=2,
+        )
+        self.assertTrue(any("revision=1; expected 2" in error for error in status_errors))
+        self.assertTrue(any("archive_status='pending'" in error for error in status_errors))
+
+        json_identity_errors = VALIDATOR.publication_json_identity_errors(
+            {"report_date": "2026-08-20", "revision": 2},
+            {"report_date": "2026-08-20", "revision": 2, "unexpected": True},
+            path,
+            REPO_ROOT / "latest" / "morning.json",
+        )
+        self.assertTrue(any("is not identical" in error for error in json_identity_errors))
+
+    def test_publication_missing_base_falls_back_to_full_validation(self) -> None:
+        with patch.object(VALIDATOR, "load_manifest_at_ref", return_value=None), patch.object(
+            VALIDATOR, "collect_full_validation_errors", return_value=[]
+        ), patch("builtins.print") as mocked_print:
+            result = VALIDATOR.main(
+                ["--scope", "publication", "--base-ref", "0" * 40]
+            )
+
+        self.assertEqual(result, 0)
+        self.assertTrue(
+            any(
+                "falling back to full archive validation" in str(call.args[0])
+                for call in mocked_print.call_args_list
+                if call.args
+            )
+        )
+
     def test_published_commodity_requires_input_metadata(self) -> None:
         report = copy.deepcopy(self.commodity_report)
         del report["input_snapshots"]["china_commodities"]
@@ -132,16 +230,17 @@ class ArchiveValidatorTests(unittest.TestCase):
         self.assertTrue(any("china_commodities" in error for error in errors))
 
     def test_commodity_schedule_dialect_is_normalized_for_validation(self) -> None:
-        for filename in ("latest/commodities_evening.json", "latest/commodities_morning.json"):
-            path = REPO_ROOT / filename
-            raw = json.loads(path.read_text(encoding="utf-8"))
+        for edition in ("commodities_evening", "commodities_morning"):
+            raw = copy.deepcopy(self.commodity_compact)
+            raw["edition"] = edition
+            path = REPO_ROOT / "reports" / "2026" / "08" / f"2026-08-21_{edition}.json"
             normalized = VALIDATOR.normalize_report_for_schema(raw, path)
             errors = VALIDATOR.validate_json_schema(normalized, self.report_schema, path)
-            self.assertEqual(errors, [], filename)
+            self.assertEqual(errors, [], edition)
             self.assertEqual(
                 VALIDATOR.validate_commodity_contract(normalized, path, self.allowed_editions),
                 [],
-                filename,
+                edition,
             )
 
         pending = copy.deepcopy(self.commodity_report)
@@ -153,8 +252,8 @@ class ArchiveValidatorTests(unittest.TestCase):
         self.assertEqual(normalized_pending["archive"]["archive_status"], "pending")
 
     def test_current_evening_top_level_dialect_materializes_safe_tracking(self) -> None:
-        path = REPO_ROOT / "latest" / "commodities_evening.json"
-        raw = json.loads(path.read_text(encoding="utf-8"))
+        path = REPO_ROOT / "reports" / "2026" / "08" / "2026-08-21_commodities_evening.json"
+        raw = copy.deepcopy(self.commodity_compact)
         normalized = VALIDATOR.normalize_report_for_schema(raw, path)
         tracking = normalized["commodities_tracking"]
         quality = tracking["data_quality"]
@@ -197,8 +296,9 @@ class ArchiveValidatorTests(unittest.TestCase):
             [],
         )
     def test_morning_research_ready_hyphen_and_top_level_coverage_are_accepted(self) -> None:
-        path = REPO_ROOT / "latest" / "commodities_morning.json"
-        raw = json.loads(path.read_text(encoding="utf-8"))
+        path = REPO_ROOT / "reports" / "2026" / "08" / "2026-08-21_commodities_morning.json"
+        raw = copy.deepcopy(self.commodity_compact)
+        raw["edition"] = "commodities_morning"
         normalized = VALIDATOR.normalize_report_for_schema(raw, path)
         surface = normalized["commodities_tracking"]["options_surface"]
 
@@ -275,11 +375,50 @@ class ArchiveValidatorTests(unittest.TestCase):
             [],
         )
 
-    def test_ambiguous_max_loss_labels_are_preserved_as_null(self) -> None:
-        path = REPO_ROOT / "fixture.json"
-        report = copy.deepcopy(
-            json.loads((REPO_ROOT / "latest" / "morning.json").read_text(encoding="utf-8"))
+    def test_global_compact_missing_schema_is_normalized_losslessly(self) -> None:
+        path = REPO_ROOT / "reports" / "2026" / "08" / "2026-08-20_morning.json"
+        normalized = VALIDATOR.normalize_report_for_schema(
+            copy.deepcopy(self.global_compact),
+            path,
         )
+
+        self.assertEqual(normalized["schema_version"], "1.0")
+        self.assertEqual(normalized["status"], "published")
+        self.assertEqual(normalized["dashboard"][0]["asset"], "US10Y")
+        self.assertEqual(normalized["event_calendar"][0]["event"], "2026-08-20 22:00 BJT policy speech")
+        self.assertEqual(normalized["top_opportunities"][0]["holding_period"], "1-5D")
+        self.assertEqual(normalized["top_opportunities"][0]["instruments"], ["futures pair"])
+        self.assertFalse(normalized["top_opportunities"][0]["max_loss_limited"])
+        self.assertEqual(
+            VALIDATOR.validate_json_schema(normalized, self.report_schema, path),
+            [],
+        )
+
+    def test_commodity_trade_date_uses_explicit_evidence_precedence(self) -> None:
+        path = REPO_ROOT / "reports" / "2026" / "08" / "2026-08-27_commodities_morning.json"
+        normalized = VALIDATOR.normalize_report_for_schema(
+            copy.deepcopy(self.commodity_mixed_dates),
+            path,
+        )
+        snapshot = normalized["input_snapshots"]["china_commodities"]
+        self.assertEqual(snapshot["trade_date"], "2026-08-26")
+
+        no_evidence = copy.deepcopy(self.commodity_mixed_dates)
+        no_evidence["source_status"] = {}
+        normalized_without_date = VALIDATOR.normalize_report_for_schema(no_evidence, path)
+        self.assertIsNone(
+            normalized_without_date["input_snapshots"]["china_commodities"]["trade_date"]
+        )
+        errors = VALIDATOR.validate_json_schema(
+            normalized_without_date,
+            self.report_schema,
+            path,
+        )
+        self.assertTrue(any("trade_date" in error for error in errors))
+
+    def test_ambiguous_max_loss_labels_are_preserved_as_null(self) -> None:
+        path = REPO_ROOT / "reports" / "2026" / "08" / "2026-08-20_morning.json"
+        report = copy.deepcopy(self.global_compact)
         report["top_opportunities"][3]["max_loss_limited"] = "designable"
         report["top_opportunities"][4]["max_loss_limited"] = "with options"
 
@@ -330,10 +469,8 @@ class ArchiveValidatorTests(unittest.TestCase):
         self.assertEqual(normalized["archive"]["archive_status"], "pending")
 
     def test_partial_research_surface_allows_manual_quote_structures_only(self) -> None:
-        report = json.loads(
-            (REPO_ROOT / "latest" / "commodities_evening.json").read_text(encoding="utf-8")
-        )
-        path = REPO_ROOT / "fixture.json"
+        report = copy.deepcopy(self.commodity_compact)
+        path = REPO_ROOT / "reports" / "2026" / "08" / "2026-08-21_commodities_evening.json"
         normalized = VALIDATOR.normalize_report_for_schema(report, path)
         normalized["commodities_tracking"]["data_quality"]["options_chain_status"] = "partial"
         normalized["commodities_tracking"]["options_surface"].update(

@@ -86,4 +86,4 @@ GitHub Markdown 不保留 ChatGPT 专用的引用标记。归档报告应把关�
 
 ## 校验
 
-每次向报告目录、最新文件、清单或 schema 推送变更时，GitHub Actions 会运行 `scripts/validate_reports.py`，检查 JSON schema、Markdown 配对、文件命名和不可渲染的 ChatGPT 引用标记。
+正式报告的前五个路径先完成写入，最后一次 Manifest 更新才触发 GitHub Actions。同一次运行会分别校验当前六文件发布包与完整历史归档，检查 JSON schema、Markdown 配对、文件命名和不可渲染的 ChatGPT 引用标记。

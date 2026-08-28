@@ -66,4 +66,4 @@
 
 `reports/YYYY/MM/YYYY-MM-DD_commodities_evening.md/json`；`latest/commodities_evening.md/json`；`status/commodities_evening_latest.json`；`manifests/reports.json`。
 
-归档前必须通过 GitHub connector 读取并严格执行 `config/archive-policy.json` 与 `docs/SCHEDULE_ARCHIVE_INSTRUCTIONS.md`。准备完整 Markdown、JSON、latest、status、Manifest 六个最终文件后，直接写入 `main`，并重新读取六个路径验证日期和 edition；不得为正式归档创建 branch、PR 或等待 CI。JSON 必须包含 `input_snapshots.china_commodities`、`commodities_tracking`、来源、数据质量、归档路径、`archive_status` 和 `ci_validation_status`。
+归档前必须通过 GitHub connector 读取并严格执行 `config/archive-policy.json` 与 `docs/SCHEDULE_ARCHIVE_INSTRUCTIONS.md`，并读取 `schemas/report.schema.json` 和 `templates/report.json`。JSON 必须写入 `schema_version=1.0`、`status=published`、模板标准字段、`input_snapshots.china_commodities`、`commodities_tracking`、来源、数据质量、归档路径、`archive_status` 和 `ci_validation_status`。`trade_date` 必须是实际使用的 EOD 日期，不得用报告日期猜测。先写入并重读历史 Markdown/JSON、latest Markdown/JSON 和 status，再最后更新 Manifest 一次；Manifest 只能写入 `status=published`、`archive_status=success` 和有效 revision，不得写 pending。修订也遵守同一顺序。六个路径直接写入 `main` 并重读验证；不创建 branch/PR，不等待 CI。
