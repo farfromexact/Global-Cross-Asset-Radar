@@ -1,4 +1,4 @@
-# 全球商品期货期权高风险机会雷达｜晚间版｜2026-08-31｜Revision 2
+# 全球商品期货期权高风险机会雷达｜晚间版｜2026-08-31｜Revision 3
 
 ## 一、今日一句话结论
 
@@ -16,7 +16,7 @@
 4. 按需钻取 `data/latest.json`、`data/market_state_latest.json`、`data/physical/latest.json`、`data/external/latest.json`、`data/options/quality_latest.json`、`data/options/surface_latest.json`
 5. 根目录失败后检查 `data/scoped/*`，当前只有 `data/scoped/ex-dce/*`
 
-**关键修正：上一版19:44附近看到的“关键文件为空”只是中间态，不是最终根因。** 到20:06复核时，`report_input_latest.json` 已于 **19:44:56** 重建，但 `requested_date=2026-08-28`；`data/latest.json` 与 `market_state_latest.json` 也都是 **2026-08-28**。因此真正的问题不是文件永久为空，而是**8/31采集失败后系统重新发布了8/28 last-good/stale状态**。
+**关键修正：19:44附近看到的“关键文件为空”只是中间态，不是最终根因。** 到本次复核时，`report_input_latest.json` 已于 **19:44:56** 重建，但 `requested_date=2026-08-28`；`data/latest.json` 与 `market_state_latest.json` 也都是 **2026-08-28**。因此真正的问题不是文件永久为空，而是**8/31采集失败后系统重新发布了8/28 last-good/stale状态**。
 
 `data/last_run_status.json` 对8/31给出硬性失败证据：run date 2026-08-31、generated 19:44:17，`data_fresh=false`、`source_date_match_pct=0%`、`critical_module_errors=15`、`full_market_ready=false`。SHFE、INE、DCE、CZCE、GFEX 五所期货接口全部返回 iFinD HTTP 401，错误码 `-1303`，信息为 **`Device exceed limit.`**。因此今日没有任何交易所可以被当成fresh核心期货层。
 
@@ -26,7 +26,7 @@
 
 Physical 最近请求日为8/28，20个目标仅4个已验证映射：铁矿港口库存（8/26周度）、焦煤主焦煤旬度现货（8/20，basis质量C）、浮法玻璃企业库存（8/28周度）、PTA周度加工费（8/28）。这些都是 native-frequency context，不是8/31新增变化；C级JM basis不计方向评分。
 
-External 仓库层也停留在8/28请求，22个目标映射6个，其中5 fresh/1 stale；均属EOD/context，不能冒充19:30实时。本次另用公开实时/延迟来源补充海外：Reuters在 **17:20 BJT左右**记录 Brent约90.97美元/桶、+3.26%，WTI约86.31、+3.49%，原因是美伊重新互袭及Hormuz航运风险；这只能计入海外/宏观层，不能写成“中国SC已经上涨”。
+External 仓库层也停留在8/28请求，22个目标映射6个，其中5 fresh/1 stale；均属EOD/context，不能冒充19:30实时。本次另用公开实时/延迟来源补充海外：Reuters在 **19:20 BJT左右（11:20 GMT）**记录 Brent约90.97美元/桶、+3.26%，WTI约86.31、+3.49%，原因是美伊重新互袭及Hormuz航运风险；这只能计入海外/宏观层，不能写成“中国SC已经上涨”。
 
 Options 最近完整日期为8/28：21,806条合约、370个series、IV coverage 98.59%、OI coverage 68.16%、bid/ask coverage 0；series-level surface有 **363/370 surface-ready、74/370 positioning-ready、0 execution-ready**。由于是T-1/last-good背景，**不计8/31 fresh证据**；execution-ready为0，禁止给bid/ask、净权利金、精确滑点或dealer-gamma方向。
 
@@ -54,7 +54,7 @@ Options 最近完整日期为8/28：21,806条合约、370个series、IV coverage
 
 1. **数据问题从“暂时看不到文件”升级为“明确上游失败”。** 8/31五所期货都因 iFinD `Device exceed limit` 返回401，source-date match=0%、critical errors=15。这是本次No-Trade最重要的新信息。
 2. **19:44:56后的统一输入已经恢复可读，但它是8/28 stale rebuild。** 因此不能把“report_input有数据”误认为T日修复完成；相反，它证明系统是在降级回last-good。
-3. **SC旧的“溢价回吐空”逻辑不再是今晚主方向。** Reuters 17:20 BJT附近显示Brent约90.97、+3.26%，WTI约86.31、+3.49%；Hormuz可见商品船通行降至约5艘/日，并有油轮受袭报告。海外层偏多，但没有8/31 SC日盘状态，不足以把它升级为中国夜盘多单。
+3. **SC旧的“溢价回吐空”逻辑不再是今晚主方向。** Reuters 19:20 BJT附近显示Brent约90.97、+3.26%，WTI约86.31、+3.49%；Hormuz可见商品船通行降至约5艘/日，并有油轮受袭报告。海外层偏多，但没有8/31 SC日盘状态，不足以把它升级为中国夜盘多单。
 4. **中国PMI属于“less bad”，不是工业品全面确认。** 国家统计局8月制造业PMI 49.8，较7月上升0.6个百分点；生产50.4、新订单50.6，但总指数仍低于50，且化学原料、黑色冶炼相关产需指数仍低于临界点。宏观层略正，不替代品种层price/curve/OI。
 5. **贵金属驱动仍冲突。** Reuters 18:30 BJT附近：现货黄金约4448.19美元/盎司、-0.1%，白银约67美元、+1%；9月加息概率升至约62%。地缘与油价带来避险/通胀溢价，鹰派利率又压制duration，AG不具备干净方向。
 6. **人民币不构成额外单边商品beta。** Reuters当晚报道美元/人民币约6.72附近，政策信号倾向放缓人民币进一步快速升值；不能把FX简单包装成进口商品单边利多。
