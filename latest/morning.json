@@ -1,37 +1,55 @@
 {
   "report_date": "2026-09-04",
   "edition": "morning",
-  "generated_at": "2026-09-04T08:35:00+08:00",
-  "market_regime": "政策路径再分歧 + NFP前低vol relief rally + 油价地缘通胀尾部 + AI现金流强但预期门槛极高 + 中国小盘risk-on反抽/尾部保险正常化 + JPY carry unwind",
+  "generated_at": "2026-09-04T08:55:07+08:00",
+  "market_regime": "政策路径再分歧 + NFP前低vol risk-on + 服务业通胀黏性 + 油价地缘尾部 + JPY/BOJ再定价 + 中国仓位去杠杆与小盘尾部保险正常化",
   "worth_taking_risk": true,
+  "one_line_conclusion": "今天值得冒险，但不在非农前押单边：实际利率回落、VIX仅约14.5，而服务价格与油价仍高；首选非农后2s30s牛陡，中国股指今日无合格交易。",
   "top_opportunities": [
-    {"rank":1,"name":"NFP后QQQ/NDX 7-14D Put Spread","score":94,"logic":24,"payoff_convexity":24,"catalyst":20,"price_vol":15,"crowding_technical":11,"horizon":"1-7D","stage":"等数据→条件试仓","finite_max_loss":true},
-    {"rank":2,"name":"2s30s DV01-neutral Bull Steepener","score":92,"logic":24,"payoff_convexity":21,"catalyst":20,"price_vol":13,"crowding_technical":14,"horizon":"2-15D","stage":"NFP后确认","finite_max_loss":false},
-    {"rank":3,"name":"Long AI cash-flow quality / Short financing-duration Beta","score":90,"logic":24,"payoff_convexity":22,"catalyst":18,"price_vol":13,"crowding_technical":13,"horizon":"3-20D","stage":"NFP后现金盘确认","finite_max_loss":true},
-    {"rank":4,"name":"Gold 3-6M Call Spread","score":88,"logic":22,"payoff_convexity":22,"catalyst":18,"price_vol":13,"crowding_technical":13,"horizon":"10-60D","stage":"条件试仓","finite_max_loss":true},
-    {"rank":5,"name":"Brent/WTI 30-45D Call Spread","score":85,"logic":21,"payoff_convexity":16,"catalyst":17,"price_vol":14,"crowding_technical":17,"horizon":"2-20D","stage":"持有/减仓，不追","finite_max_loss":true}
+    {"rank":1,"name":"NFP后2s30s DV01-neutral Bull Steepener","score":95,"logic":25,"payoff_convexity":22,"catalyst":20,"price_vol":14,"crowding_technical":14,"horizon":"2-15D","stage":"等数据→确认试仓","tool":"IRS / Treasury pair","finite_max_loss":false},
+    {"rank":2,"name":"NFP后QQQ/NDX 7-14D Failed-Rally Put Spread","score":94,"logic":24,"payoff_convexity":24,"catalyst":20,"price_vol":15,"crowding_technical":11,"horizon":"1-7D","stage":"等数据→条件试仓","tool":"Put Spread","finite_max_loss":true},
+    {"rank":3,"name":"黄金3-6M Call Spread：只买real-yield breakdown","score":91,"logic":23,"payoff_convexity":23,"catalyst":19,"price_vol":13,"crowding_technical":13,"horizon":"10-60D","stage":"NFP后条件试仓","tool":"Call Spread / Butterfly","finite_max_loss":true},
+    {"rank":4,"name":"Long AI monetization/software / Short high-hurdle Capex hardware Beta","score":89,"logic":23,"payoff_convexity":21,"catalyst":18,"price_vol":13,"crowding_technical":14,"horizon":"3-20D","stage":"NFP后现金盘确认","tool":"双边有限风险价差","finite_max_loss":true},
+    {"rank":5,"name":"Brent/WTI 30-45D Call Spread","score":86,"logic":22,"payoff_convexity":16,"catalyst":17,"price_vol":14,"crowding_technical":17,"horizon":"2-20D","stage":"已有仓持有/减仓，不追","tool":"Call Spread","finite_max_loss":true}
   ],
-  "china_index_score": 83,
-  "china_index_trade_status": "今日中国股指无合格交易",
-  "china_closest_trigger": "Long 4 IM2609 / Short 7 IH2609，09:30-10:15后仅在IM相对IH继续领先、IM OI正增、MO ATM IV<=28.5且RR25改善、IM基差不恶化时试仓",
   "trade_cards": [
-    {"name":"NFP后QQQ/NDX 7-14D Put Spread","structure":"buy 35-40d put / sell 15-20d put","entry":"NFP后先涨0.7-1.2%，但2Y>=4.38%或10Y>=4.80%/Brent>=95且VIX<=16；现金盘首小时跌回VWAP再加","invalidation":"2Y<4.20%、10Y<4.60%、Brent<90且SOXX/SMH持续跑赢Nasdaq","tp1":"QQQ -3%或1.5x debit","tp2":"QQQ -5%至-6%或最大理论价值80%","max_loss":"net debit","greeks":"-Delta,+Gamma,+Vega,-Theta"},
-    {"name":"2s30s DV01-neutral Bull Steepener","structure":"Receive 2Y fixed / Pay 30Y fixed，PV01-neutral；或long TU/short US或UB","entry":"NFP后2Y<=4.25%、30Y>=5.20%、2s30s>=95bp且前端领涨；>100bp加仓","invalidation":"2s30s<88bp或30Y<5.05%且长端领涨","tp1":"105bp","tp2":"115bp","max_loss":"non-limited; margin/basis/gap risk","greeks":"curve/PV01 exposure"},
-    {"name":"Long AI cash-flow quality / Short financing-duration Beta","structure":"30-45D quality call spreads + financing-duration basket put spreads，beta/dollar neutral","entry":"NFP后首个现金盘60分钟，quality相对跑赢>=1.5ppt且AVGO/NVDA守VWAP","invalidation":"relative spread -2.5%至-3%或高融资beta持续跑赢","tp1":"relative +4-5%或1.5x debit","tp2":"relative +8-10%或最大理论价值75-85%","max_loss":"sum of debits if both sides defined-risk","greeks":"low net market Delta,+dispersion Gamma/+Vega,-Theta"}
+    {"name":"NFP后2s30s DV01-neutral Bull Steepener","structure":"Receive 2Y fixed / Pay 30Y fixed，PV01-neutral；或long TU / short US/UB按实时CTD DV01配平","entry":"NFP后10-15分钟；非农明显偏弱（参考<=25k或失业率>=4.2%），2Y<=4.25%、30Y>=5.15%-5.20%、2s30s>=94-95bp且由前端下行主导；>100bp加仓","invalidation":"2s30s<87-88bp，或30Y<5.05%且长端涨幅追上前端","tp1":"100-102bp","tp2":"108-112bp","max_loss":"non-limited; margin/basis/CTD/gap risk","greeks":"curve/PV01 exposure; approximately DV01-neutral at inception","catalysts":"2026-09-04 NFP; 2026-09-08 3Y auction; 2026-09-09 10Y reopening; 2026-09-10 30Y reopening","abandon_if":"NFP>=100k with hot wages and 2Y>4.42%, or broad recession rally makes 30Y lead front-end"},
+    {"name":"NFP后QQQ/NDX 7-14D Failed-Rally Put Spread","structure":"buy 35-40d put / sell 15-20d put; debit <= 35%-40% of width","entry":"hot-jobs path: index rallies 0.7%-1.2% but 2Y>=4.40%/10Y>=4.80% then QQQ loses VWAP; weak-jobs path: yields fall but Nasdaq fails to rally and loses VWAP; add below first-hour low if VIX<18","invalidation":"2Y<4.20%、10Y<4.60%、Brent<90且SOXX/SMH持续跑赢Nasdaq、QQQ收复数据后高点","tp1":"QQQ -3% or 1.5x debit","tp2":"QQQ -5% to -6% or 80% of max spread value","max_loss":"net debit","greeks":"-Delta,+Gamma,+Vega,-Theta","catalysts":"2026-09-04 NFP; 2026-09-10 PPI","abandon_if":"immediate >1.5% gap-down with VIX>20, or soft-landing rally is confirmed by lower yields and semiconductor leadership"},
+    {"name":"黄金3-6M Call Spread：只买real-yield breakdown","structure":"buy 30-35d call / sell 10-15d call; indicative strikes only 4750-4900 / 5200-5500 based on spot~4489 and futures~4540, recalc with live forward/IV/skew","entry":"NFP后10Y real<=2.35%、DXY<=98.6且gold>=4480或breaks 4520；real<=2.30%且gold>4550加仓","invalidation":"gold<4380 or 10Y real>2.50% with DXY>99.5","tp1":"4700-4800 or 1.5-1.8x debit","tp2":"5000-5150 or 80%-90% of max spread value","max_loss":"net debit","greeks":"+Delta,+Gamma,+Vega,-Theta","catalysts":"2026-09-04 NFP; 2026-09-10 PPI; 2026-09-11 CPI just outside 7-day morning window","abandon_if":"real-yield/USD jointly re-strengthen or gold fails to hold 4380"}
   ],
-  "action_list": {
-    "A": "08:00无无条件新仓；已有USD/JPY Put实现大部分利润，已有油Call继续减仓。",
-    "B": "NFP后QQQ/NDX 7-14D Put Spread；确认后的2s30s bull steepener；09:30-10:15确认后的Long IM/Short IH（仅83分，不满足则不做）。",
-    "C": "观察黄金是否升级为政策信用背离、AI quality/financing-beta分化、MO skew与IM基差同步正常化。",
-    "D": "撤销Long IH/Short IM旧逻辑；不在155附近追JPY Put、不追高油Call、不在NFP前裸卖vol或押单向就业数字。"
+  "china_index_score": 79,
+  "china_index_trade_status": "今日中国股指无合格交易",
+  "china_closest_trigger": "Long 4 IM2609 / Short 7 IH2609; 09:30-10:15 only if IM leads IH >=0.40ppt, IM OI rebuilds/is materially more stable, IH OI fails to rebuild, MO ATM IV<=28.5 and RR25>-3.5vol, IM basis not worse than -0.70%",
+  "china_futures_2026_09_03": {
+    "IH2609":{"close":2907.6,"change_pct":0.0025515481690918185,"volume":30183,"open_interest":60885,"oi_change":-6604,"cash_index":"SSE50","cash_close":2919.5,"cash_change_pct":0.0017,"basis_pct":-0.004076040417879805,"next_minus_main_points":-19.8},
+    "IF2609":{"close":4536.8,"change_pct":0.0014126787921597533,"volume":59047,"open_interest":131612,"oi_change":-7755,"cash_index":"CSI300","cash_close":4552.58,"cash_change_pct":0.001,"basis_pct":-0.0034661664374925306,"next_minus_main_points":-27.2},
+    "IC2609":{"close":7706.2,"change_pct":0.004143646408839803,"volume":99447,"open_interest":144535,"oi_change":-4447,"cash_index":"CSI500","cash_close":7755.36,"cash_change_pct":0.0034,"basis_pct":-0.006338841781683875,"next_minus_main_points":-64.6,"option_proxy":"MO/IO/ETF only"},
+    "IM2609":{"close":7559.4,"change_pct":0.0018288804071245855,"volume":163322,"open_interest":222689,"oi_change":-1589,"cash_index":"CSI1000","cash_close":7600.1,"cash_change_pct":0.0022,"basis_pct":-0.005355192694833058,"next_minus_main_points":-69.4}
   },
-  "risk_budget": {"probe_max_loss_nav":"0.25%-0.75%","confirmed_max_loss_nav":"0.75%-1.50%","high_conviction_theme_total":"<=2.5%-3.0% NAV","shared_factor_rule":"QQQ Put、曲线、黄金、油与AI相对价值需按Fed/real-rate/energy共同因子合并压力；中国IM/IH与MO方向敞口合并计算。"},
-  "sources": ["U.S. Treasury Daily Treasury Par Yield Curve Rates 2026-09-03","U.S. Treasury Daily Treasury Real Yield Curve Rates latest 2026-09-02","Cboe VIX delayed quotes and term structure 2026-09-03","BLS Employment Situation calendar; Productivity and Costs Q2 2026 revision","Reuters 2026-09-03: Wall Street/Waller; FX yen; gold; oil; AI/company news","EIA Weekly Petroleum Status Report schedule","farfromexact/China-Options-Engine data/radar_latest.json and data/radar_history.json"],
+  "china_options_2026_09_03": {
+    "HO2609":{"atm_iv":0.14451651260134873,"call25_iv":0.14283497069391304,"put25_iv":0.15107493076731177,"call10_iv":0.16403460871003078,"put10_iv":0.16645171930810598,"rr25":-0.008239960073398722,"bf25":0.0024384381292636703,"pcr_oi":0.6479870381458913,"pcr_volume":0.5322723253757736,"call_oi_change":15,"put_oi_change":-405,"gamma_peak":2900},
+    "IO2609":{"atm_iv":0.1795153930718636,"call25_iv":0.17243487677341224,"put25_iv":0.20162585828548374,"call10_iv":0.1744736968927499,"put10_iv":0.22071287431944558,"rr25":-0.0291909815120715,"bf25":0.007514974457584395,"pcr_oi":0.7422106504790126,"pcr_volume":0.540054553639999,"call_oi_change":10,"put_oi_change":-371,"gamma_peak":4600},
+    "MO2609":{"atm_iv":0.2846206338068642,"call25_iv":0.2711353200250665,"put25_iv":0.3100736001373223,"call10_iv":0.26793385733596253,"put10_iv":0.3542074515748888,"rr25":-0.03893828011225581,"bf25":0.005983826274330251,"pcr_oi":0.7496521289706993,"pcr_volume":0.8642415224371525,"call_oi_change":3076,"put_oi_change":1235,"gamma_peak":8000}
+  },
+  "china_multi_period_reference": {
+    "as_of":"2026-09-02_one_session_lag",
+    "futures":{"IH":{"3d":-0.0043,"5d":0.0035,"20d":0.0019},"IF":{"3d":-0.0134,"5d":-0.0076,"20d":-0.0192},"IM":{"3d":-0.0165,"5d":0.0065,"20d":0.0143}},
+    "atm_iv_change_vol_points":{"HO":{"3d":0.49,"5d":-0.25,"20d":-2.53},"IO":{"3d":0.84,"5d":-1.00,"20d":-1.48},"MO":{"3d":2.67,"5d":0.32,"20d":0.35}},
+    "note":"radar_history.json was read via GitHub connector and confirmed 40 sessions through 2026-09-03, but the connector did not stably expose the complete long body for exact 2026-09-03 rolling recomputation; these multi-period values are the prior fully verified windows through 2026-09-02."
+  },
+  "action_list": {
+    "A":"08:55无无条件新裸方向仓；USD/JPY Put/JPY Call达到旧TP2区，已有仓实现70%-90%利润；已有油Call继续减仓。",
+    "B":"NFP后2s30s bull steepener；NFP后QQQ/NDX 7-14D failed-rally Put Spread；NFP后real-yield下破确认的黄金3-6M Call Spread；中国IM/IH仅79分、满足全部盘中条件才试。",
+    "C":"观察AI monetization/software相对high-hurdle hardware分化、MO skew继续正常化、Brent 95上方实际航运/保险变化、黄金真正政策信用背离。",
+    "D":"撤销Long IH/Short IM旧逻辑；不在155附近追JPY Put、不追高油Call、不追买MO Put、不在NFP前裸卖vol或押单向就业数字。"
+  },
+  "risk_budget": {"probe_max_loss_nav":"0.25%-0.75%","confirmed_max_loss_nav":"0.75%-1.50%","high_conviction_theme_total":"<=2.5%-3.0% NAV","shared_factor_rule":"QQQ Put、bull steepener、gold call和oil call按Fed/real-rate/energy共同因子合并压力；中国IM/IH与MO方向敞口合并计算。"},
+  "sources": ["U.S. Treasury Daily Treasury Par Yield Curve Rates 2026-09-03","U.S. Treasury Daily Treasury Real Yield Curve Rates 2026-09-03","BLS September 2026 Release Calendar / Employment Situation August 2026","Reuters 2026-09-03: Waller/Treasuries; U.S. services and labor; Wall Street; FX yen; oil; gold; Nvidia-Hugging Face and AI company news","National Bureau of Statistics of China 2026 release calendar and August PMI","farfromexact/China-Options-Engine data/radar_latest.json and data/radar_history.json"],
   "China-Options-Engine_actual_paths": ["data/radar_latest.json","data/radar_history.json"],
   "china_options_date": "2026-09-03",
   "data_fresh": true,
   "previous_date": "2026-09-03",
-  "errors": ["radar_history.json已通过connector必读，但正文体量过大，本轮未稳定暴露全部9月3日rolling区间；1D用9月3日精确EOD，3/5/20D使用截至9月2日已验证窗口的一日滞后参考。","10Y real官方最新为9月2日，因此未计算混合日期9月3日BEI。","MOVE数据最新可靠值滞后至9月1日。","GitHub归档部分完成：历史Markdown/JSON、latest Markdown/JSON及status已写入main；manifests/reports.json未能在本轮安全完成保留历史记录的原子追加，因此未修改manifest。"],
+  "errors": ["radar_history.json已通过GitHub connector必读并确认40个交易会话、最新至2026-09-03，但连接器无法稳定暴露完整长正文用于精确重算9月3日3/5/20D；多周期采用截至9月2日上一期已验证窗口并明确标记一日滞后。","MOVE最新可靠值滞后至2026-09-01。","DR007同步收盘值和A股全市场涨跌家数本轮未取得足够可靠来源，因此未猜测。","早先同日归档版部分中国期指字段与当前China-Options-Engine verified EOD不一致，本版已按radar_latest.json直接复核值纠正。","manifests/reports.json为超长单行历史文件，GitHub connector响应无法完整暴露其全部旧内容，无法在不破坏历史记录的前提下安全追加2026-09-04+morning唯一键；该文件保持不变，因此本次archive_status为partial。"],
   "archive_status": "partial",
   "ci_validation_status": "pending_or_unverified"
 }
