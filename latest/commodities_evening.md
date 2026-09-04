@@ -1,114 +1,123 @@
-# 全球商品期货期权高风险机会雷达｜晚间版｜2026-09-03
+# 全球商品期货期权高风险机会雷达｜晚间版｜2026-09-04
 
-> revision: 2  
-> generated_at_bjt: 2026-09-03T21:32:49+08:00  
+> revision: 1  
+> generated_at_bjt: 2026-09-04T19:40:20+08:00  
 > data_protocol_version: china_commodities_v2  
-> 正式决策切点仍冻结在北京时间19:30：本次只用9月3日中国日盘EOD、今天凌晨已完成Night Session，以及15:00–19:30海外增量；不把19:30后的海外行情倒灌进正式评分。
+> 正式决策切点冻结在北京时间19:30：使用9月4日中国T日EOD、今天凌晨已完成且属于9月4日交易日的Night Session，以及15:00–19:30海外增量；今晚21:00后的连续交易尚未发生。
 
 ## 一、今晚一句话结论
 
-**今晚值得冒险，但只值得做条件交易，不值得追价。** 9月3日T日EOD补齐后，AU2610的“隔夜修复→日盘继续确认”最干净；SC多周期趋势仍强但日盘对凌晨夜盘明显回吐且OI下降，贵金属优于追油。
+**今日商品期货期权无合格交易。** 国内SF/V/SA出现强烈价仓信号，但均缺第三个fresh独立证据层；原油外盘转弱且20:30美国非农在即，今晚应保留风险预算，等21:00后确认。
 
 ## 二、数据质量与覆盖
 
-China-Commodities-Engine统一输入已升级为 `requested_date=2026-09-03`，generated_at=`2026-09-03T21:10:10+08:00`。核心Futures为9月3日五所SHFE/INE/DCE/CZCE/GFEX共802合约，`source_date_match_pct=100%`、`full_market_ready=true`、critical errors=0；5条OHLC placeholder排除。`official_complete=false`主要来自合约元数据/部分辅助官方源，DCE contract-info仍失败，因此动态保证金、限幅等下单前必须复核。
+第一读取层已读取 `data/report_input_latest.json`、`data/last_run_status.json`、`data/night_session/last_run_status.json`、`data/radar_latest.json`，并按需下钻 `data/physical/latest.json`、`data/options/quality_latest.json`、`data/options/surface_latest.json`、`data/contract_meta.json`。
 
-Market State为T日同合约历史，1D/3D/5D/20D、RV20、Volume/OI z-score、ΔOI和near-next curve均可使用。Night Session的`trading_date=2026-09-03`仍指今天凌晨已完成的连续交易阶段，不是今晚21:00后的未来行情，因此可以计算“Night close→T日EOD”的day follow-through。
+统一输入层 `schema_version=2`，requested_date=`2026-09-04`，generated_at=`2026-09-04T19:14:12.880361+08:00`。核心Futures为9月4日五所SHFE/INE/DCE/CZCE/GFEX共802合约，`source_date_match_pct=100%`、`full_market_ready=true`、critical errors=0；6条OHLC placeholder排除。root `official_complete=false`主要来自辅助官方源/合约元数据：DCE contract-info失败，basis与member rankings未映射，仓单有5条carry-forward，因此动态保证金、限幅和部分交割参数下单前必须复核。
 
-Physical为9月3日fresh；多数100ppi spot/basis为C级，因地区/品质/税口径/交割地不完整，只作context，不计高质量basis。仓单为独立交易所数据：例如SF仓单6025、日增1406，RM仓单6806、日增800，SA仓单6263、日减191；仓单变化属于结构/库存证据，不等同社会库存。
+Market State为T日fresh，同合约1D/3D/5D/20D、RV20、Volume/OI z-score、ΔOI与near-next curve可用。Physical为9月4日fresh，但多数100ppi spot/basis因地区、品级、税口径、交割地不完整为C级，只作context，不计方向证据；仓单与社会库存严格分开。
 
-Options为9月3日完整64/64品种、24,200合约、402 series；IV coverage约98.18%，全链验证通过，`surface_ready=true`。但全市场OI coverage约67.43%，`positioning_ready=false`（逐series可单独ready），bid/ask coverage=0，因此`execution_ready=false`。可以使用ready series的ATM IV/RR25/BF25，但禁止臆测权利金、bid/ask、滑点和可成交净成本；dealer gamma方向未知。
+Night Session `trading_date=2026-09-04`、`night_session_date=2026-09-03`，fresh/validated/published=true；它是**今天凌晨已经完成、属于9月4日交易日的连续交易阶段**，不是今晚21:00未来行情。本期仅在具体合约完全一致时计算 overnight_return 和 day_follow_through。
+
+Options模块以module-specific文件为准：9月4日22,016张合约、364个series，55/64品种成功，IV coverage约97.98%、OI coverage约67.55%、bid/ask coverage=0；`surface_ready=false`、`positioning_ready=false`、`execution_ready=false`、dealer gamma方向未知。虽然统一输入中仍可看到部分旧的per-series ready字段，但按优先级必须被当前quality/surface状态覆盖，因此今晚**禁止使用ATM IV、RR25、BF25、term structure、Dealer Gamma方向及任何权利金/净成本**。
+
+15:00–19:30海外正式增量：Reuters在18:15左右显示Brent约95.38美元/桶、日跌0.15%，WTI约90.93、日跌0.41%，但两者周涨幅仍约6.6%/8.8%，霍尔木兹通航仍显著低于近期均值；17:10左右国际现货黄金约4474.78美元/盎司、基本持平，市场等待20:30美国8月非农。海外变化只作为21:00潜在gap证据，不冒充中国期货已交易的信息。
 
 ## 三、商品仪表盘
 
-| 板块 | 合约 | 9/3 EOD close/settle | 结构/量仓 | 凌晨Night→日盘 | Options | 19:30风险信号 |
-|---|---|---:|---|---|---|---|
-| 贵金属 | AU2610 | 958.38 / 952.06 | 1D settle +1.25%；curve +0.41%，z 1.88；价涨仓减 | Night 948.32 → EOD 958.38，day +1.06% | ATM IV 24.70，RR25 +3.21，BF25 +1.66；surface+positioning ready，execution false | 最干净条件多；15–30m确认 |
-| 贵金属 | AG2610 | 16045 / 15960 | 1D settle +1.53%；curve +0.11%，z 1.38；价涨仓减 | Night 15886 → EOD 16045，day +1.00% | ATM IV 42.72，RR25 +4.87，BF25 +2.55；execution false | 条件多，假突破风险高于AU |
-| 原油 | SC2610 | 681.7 / 690.9 | 5D +20.43%；ΔOI -2368/-6.01%；Back +6.67% | Night 694.7 → EOD 681.7，day -1.87% | ATM IV 60.86 vs RV20 35.82；RR25 +3.72；execution false | 外盘强但内盘日间消化；必须重夺 |
-| 硅铁 | SF611 | 6364 / 6248 | V z 2.97；ΔOI +2.16万；Back +3.82%，z1.81 | 无可靠exact Night分解用于本卡 | ATM IV 23.19 vs RV20 9.75；positioning ready，execution false | 趋势强但仓单+1406；不追 |
-| PTA | TA701 | 5942 / 6012 | 5D +8.76%；ΔOI +4.64万；Back +3.32%，z2.62 | 不作exact Night分解 | T日surface可用，execution false | 价跌仓增，先重夺6010附近 |
-| 甲醇 | MA610 | 3158 / 3188 | 5D +13.98%；V z2.01；ΔOI -1.23万；Back +3.73%，z1.90 | Night 3250 → EOD3158，day -2.83% | surface ready，execution false | 多日趋势强但日盘完整回吐；观察reclaim |
-| 燃料油 | FU2611 | 3813 / 3864 | 1D -2.69%；ΔOI -1.22万；Back +8.36% | Night3929 → EOD3813，day -2.95% | ATM IV45.10；RR25+8.01；BF25+13.76；execution false | 与海外油强势背离，优先观察failed-gap/RV |
-| 碳酸锂 | LC2701 | 149880 / 153300 | close -3.71%；OI 39.4万；curve仍back | 无夜盘结论写入本卡 | surface可用，execution false | 弱势，暂不接刀 |
-| 纯碱 | SA701 | 1056 / 1061 | close -1.03%；OI119.7万；contango；仓单-191 | 不作exact Night分解 | surface ready，execution false | 结构偏弱，观察而非交易 |
+| 板块 | 合约 | 9/4 EOD close/settle | 1D / 5D settle | Volume / OI / ΔOI | Curve / Physical | 早前Night→日盘 | 15:00–19:30海外 | Options | 21:00信号 |
+|---|---|---:|---:|---|---|---|---|---|---|
+| 黑色合金 | SF611 | 6624 / 6564 | +5.06% / +8.42% | 133.5万 / 48.3万 / +2.08万；V z=3.69 | 近-次近+2.74%，back；仓单属于层2，未获实体层3 | exact分解未写入本卡 | 无高质量直接海外锚 | not ready | **69分观察**；不追首跳，等15–30m |
+| 能化 | V2701 | 5128 / 5040 | +3.07% / +11.50% | 266.8万 / 113.5万 / +9.12万 | curve -2.03%，z=-3.55，深contango反证 | Night4931，overnight +1.32%；day +4.00% | 原油周强但当日晚间回落，映射不纯 | not ready | **68分观察**；日盘强但结构不确认 |
+| 黑色建材 | SA701 | 1093 / 1080 | +1.79% / +5.16% | 238.9万 / 121.8万 / +2.12万 | curve -5.17%，z=-2.00；100ppi basis为C级 | Night1060，overnight +0.38%；day +3.11% | 无直接海外锚 | not ready | **67分观察**；更像日盘挤压，勿追 |
+| 原油 | SC2610 | 685.2 / 683.1 | -1.13% / +15.33% | ΔOI -1266/-3.42%；V/OI 4.52 | back +5.40%，仅4 obs | Night678.6，overnight -0.46%；day +0.97% | Brent/WTI日内小跌、周线仍大涨 | not ready | **67分观察**；21:00先看低开承接/失败反抽 |
+| 贵金属 | AU2610 | 965.96 / 970.82 | +1.97% / -2.31% | ΔOI -5012/-3.07% | curve近乎平；无实体确认 | Night971.38，overnight +1.36%；day -0.56% | 现货金基本持平；20:30 NFP前等待 | not ready | 65分；等NFP后15–30m |
+| 贵金属 | AG2610 | 16250 / 16318 | +2.24% / — | 价涨仓减 | curve -0.29%，无明显确认 | Night16419，overnight +2.33%；day -1.03% | 银约66.95美元，金价稳定 | not ready | 63分；比AU更容易假突破 |
+| 新能源 | LC2701 | 141940 / 147040 | -4.08% / — | 31.2万 / 39.3万 / — | 仍back；相关warehouse为stale carry-forward不计 | 无夜盘 | 海外无exact parity | not ready | 弱势，不接刀；下一窗口周一9:00 |
+| 能化 | EG2610 | 5898 / 5844 | +0.57%附近 / 多日仍高波动 | 179.2万 / 39.3万 / — | backwardation | 早前Night已完成，未用于新增层 | 油价当日晚间回吐 | not ready | 化工链分化，只观察 |
 
-## 四、相比revision 1真正变化
+注：Curve是近月减次近月的期货期限结构，不是现货基差；C级spot/basis不计入fresh证据层。表中未下钻的指标用“—”，不以连续主力替代具体合约。
 
-1. **数据否决被解除。** revision 1因统一输入停在9月2日，所有机会被压在69分以下；现在9月3日五所EOD、Market State、Physical与Options均已落库，因此可以重新恢复70+条件交易。
-2. **贵金属从“疑似reversal”升级为日盘确认。** AU凌晨Night收948.32，T日收958.38，日盘继续+1.06%；AG对应+1.00%。这不是只靠海外映射，而是中国价格自己给出了follow-through。
-3. **原油反而没有想象中干净。** SC多周期趋势和backwardation很强，但凌晨Night 694.7之后日盘收681.7，回吐约1.87%，同时OI下降6.0%；这更像高位换手/减仓线索，而不是新增长仓确认。
-4. **能化内部出现明显分裂。** FU从Night3929继续跌到EOD3813（约-2.95%），MA从3250回到3158（约-2.83%）；因此19:30海外油价走强只能作为未来gap催化，不能覆盖中国日盘已经出现的弱弹性。
-5. **期权研究层大幅改善，但仍不可直接执行。** 64/64品种、surface ready；AU/SC/AG/SF等可读ATM IV与skew。但bid/ask覆盖仍为0，所以本报告不报任何具体权利金和净成本。
+## 四、相比上一期真正变化
+
+1. **最强变化从贵金属/原油切到国内材料挤压。** SF611 1D settlement +5.06%、ΔOI +2.08万、volume z=3.69；V2701日盘从Night4931推到5128，day follow-through约+4.00%，并增仓9.12万，说明今天最强的信息是在中国日盘形成。
+2. **但最强价格并没有得到足够的独立证据层确认。** SF虽backwardation，但缺fresh实体供需/海外/期权；V与SA反而处于显著contango，价格与期限结构冲突，因此按硬上限都不得越过69分。
+3. **SC出现“夜盘弱—日盘修复—海外再转弱”的三段路径。** 凌晨678.6较前收681.7约-0.46%，日盘收685.2又+0.97%，但18:15左右Brent/WTI再次小幅下跌；这不是单向追油环境。
+4. **贵金属的大部分涨幅在早前Night已经发生，日盘反而回吐。** AU overnight约+1.36%、day -0.56%；AG overnight约+2.33%、day -1.03%。20:30非农尚未公布，19:30提前押方向赔率不够。
+5. **Options从昨日“surface ready但不可执行”进一步降级为“surface not ready”。** 只有55/64品种成功，bid/ask仍为0，因此今晚没有任何期权结构可以被称为可执行优于裸期货。
 
 ## 五、产业链地图
 
-**贵金属：今晚最强的“价格路径确认”。** AU/AG都完成“凌晨反弹→日盘继续抬升”，且19:30前美元/美债收益率回落仍提供外部支撑。最大风险是美国数据重新推高收益率。AU优于AG，因为AG工业beta更高、IV更贵、假突破概率更大。
+**1）硅铁—锰硅—钢材：价格最强，证据仍不足。** SF是今天最干净的价涨仓增与高成交活跃度，期限结构也back；但仓单只属于层2，缺失独立实体供需层与可靠外盘映射。最大风险是单日short squeeze/资金驱动。方向偏多，置信度中等，但评分受证据层硬上限约束。
 
-**原油—炼化：趋势仍强，但边际价格弹性下降。** SC 5D涨幅仍超过20%，curve深back；然而T日价格相对Night回落、OI减少，说明追涨赔率明显下降。FU更弱，形成“油价强—内盘燃料油弱”的相对价值线索。优先等SC重夺，不做首跳。
+**2）PVC—纯碱—玻璃：日盘挤压强、curve最不配合。** V/SA的主要涨幅发生在日盘而非凌晨Night，说明中国日间信息弹性很高；然而V与SA都是明显contango，尤其V curve z约-3.55、SA约-2.00。若周一近月结构不跟强，今天更应被解释成仓位/流动性挤压而不是供需短缺确认。置信度中等偏低。
 
-**黑色/合金：SF611是非能源独立候选。** 量、价、OI和curve同时偏强，且不依赖19:30海外油价；但仓单单日增加1406，是对多头最重要的反证。只有价格继续吸收仓单增加，才值得试仓。
+**3）原油—燃料油—化工：地缘风险仍在，但边际海外价格转弱。** SC 5D仍+15%以上且backwardation明显；霍尔木兹流量偏低是中期多头证据，但19:30前Brent/WTI当日转跌，SC自身又价跌仓减。今晚最重要不是方向预测，而是21:00低开后的承接强度。置信度中等。
 
-**聚酯/甲醇：中期结构强、T日弹性弱。** TA curve z约2.62、MA curve z约1.90，但两者日盘表现均没有把凌晨/中期强势完全延续。更适合reclaim而不是顺势追价。
+**4）贵金属：事件前而非趋势确认。** AU/AG早前Night已完成主要上涨，白天回吐；20:30非农将直接重定价美元、实际利率和金银。没有ready options surface时，提前做事件Vega也缺乏可执行定价依据。置信度中等偏低。
+
+**5）碳酸锂：当日最弱之一。** LC2701收141940，较前收跌7.41%，settlement 1D -4.08%；但缺fresh实体与期权确认，不做“跌得多就抄底”的逆向交易，也不在接近极端波动后机械追空。置信度中等偏低。
 
 ## 六、机会排行榜
 
-1. **AU2610 开盘确认多｜82分｜确认交易但需触发**  
-   fresh层=1/2/4/5。夜盘→日盘follow-through、curve与19:30前海外金价同向；价涨仓减使其仍必须等开盘确认。评分：逻辑22 / 赔率凸性18 / 催化17 / price-curve-vol14 / 持仓技术11。
-2. **SC2610 回踩后重夺确认多｜79分｜条件试仓**  
-   fresh层=1/2/4/5。多周期趋势+backwardation+海外油价支持，但day follow-through -1.87%、ΔOI -6.0%是核心扣分。评分：22 / 16 / 19 / 13 / 9。
-3. **AG2610 开盘确认多｜76分｜条件试仓**  
-   fresh层=1/2/4/5。与AU相同的价格路径确认，但工业beta和更高IV降低赔率。评分：20 / 17 / 16 / 12 / 11。
-4. **SF611 回撤确认多｜75分｜条件试仓**  
-   fresh层=1/2/5。价涨仓增、volume z≈2.97、curve z≈1.81；仓单+1406是明确反证，不能追6412高点。评分：21 / 14 / 11 / 15 / 14。
-5. **TA701 重夺确认多｜72分｜条件试仓**  
-   fresh层=1/2/4/5。中期趋势和curve强，但T日价跌仓增，必须先重夺6010附近并观察链内扩散。评分：19 / 14 / 14 / 14 / 11。
+**今日商品期货期权无合格交易，保留现金和观察仓。** 最接近触发的只有三项：
 
-## 七、前三名交易卡
+1. **SF611 回撤后再确认多｜69分｜观察**。fresh层=1/2。评分：逻辑21 / 赔率16 / 催化10 / price-curve-vol13 / 持仓技术9。缺：独立实体供需或高质量外部/期权确认。
+2. **V2701 强日盘后的二次确认多｜68分｜观察**。fresh层=1/2。评分：逻辑20 / 赔率15 / 催化11 / price-curve-vol11 / 持仓技术11。缺：contango必须收敛、需要实体或成本端确认。
+3. **SC2610 21:00低开后的方向确认｜67分｜观察**。fresh层=1/2/4，但层间冲突。评分：逻辑18 / 赔率14 / 催化15 / price-curve-vol11 / 持仓技术9。缺：海外油与国内承接必须重新同向。
 
-### 1）AU2610｜条件多｜82
-- **事实**：T日close/settle=958.38/952.06；凌晨Night close=948.32；day follow-through=+1.06%。AU2610 9/23期权ATM IV=24.70%，RR25=+3.21，BF25=+1.66，surface/positioning ready、execution false。
-- **入场**：今晚21:00后等15–30分钟；若开盘区间能守住约952结算锚，国际金仍强且美元/收益率没有急反转，再突破15/30m high开1/3。若相对952高开>约1.5%，必须先回撤再reclaim，禁止首跳追。
-- **止损/失效**：opening-range low；或跌回948附近且国际金同步转弱、收益率急升。TP1=1.5R，TP2=3R；时间止损同一夜盘至1–3D；试仓最大损失0.35%–0.50% NAV。
-- **合约**：上期所黄金1000克/手，tick 0.02元/克，tick value 20元/手；按952.06结算名义约95.21万元/手。最后交易日规则为交割月15日（节假日可调整）；黄金连续交易通常21:00–02:30。当前动态保证金/涨跌停参数**下单前复核**。
-- **期权表达**：只把Bull Call Spread作为研究备选；`research only; manual quote and manual confirmation required before execution; no premium quoted`。
+## 七、前三名观察卡（均未达到交易阈值）
 
-### 2）SC2610｜条件多｜79
-- **事实**：T日close/settle=681.7/690.9；5D settle +20.43%；凌晨Night close=694.7，day follow-through=-1.87%；ΔOI=-2368/-6.01%；SC2610-SC2611 back约6.67%。SC2610 9/11 ATM IV=60.86%，显著高于RV20 35.82%，RR25=+3.72，execution false。
-- **入场**：等30分钟。只有价格先重夺690.9，再对694.7夜盘锚形成接受，同时19:30外盘油价的供应风险逻辑未逆转，才开1/3；若首跳超过约701且无回撤，不追。
-- **止损/失效**：opening-range low；硬失效参考T日日内低点671.1，同时海外油价快速回吐/地缘明显降级。TP1=1.5R，TP2=3R；1夜盘–3D；试仓最大损失0.35%–0.50% NAV。
-- **合约**：INE原油1000桶/手，tick 0.1元/桶，tick value 100元/手；按690.9结算名义69.09万元/手。标准合约最低保证金5%、基准限幅±4%，但当前临时/券商参数**下单前复核**；连续交易21:00–02:30；实物交割。
-- **期权表达**：IV过贵，优先期货；Call Spread仅研究，不报权利金。`research only; manual quote and manual confirmation required before execution; no premium quoted`。
+### 1）SF611｜偏多观察｜69
+- **事实**：close/settle=6624/6564；1D settle +5.06%，5D +8.42%；ΔOI +20,817（+4.51%），volume z=3.69；near-next back约+2.74%。
+- **市场定价**：价格、成交、OI、curve同向偏强，但这仍主要集中在层1+层2。
+- **推断**：如果下一交易窗口回撤后仍守住6560附近结算锚、OI不快速回吐且近月back不塌，才可能升级为趋势延续；若高开直接冲，不追。
+- **入场/失效**：当前不下单。观察触发=开盘后15–30分钟回踩6560附近不破并重夺opening-range high；失效=跌破opening-range low且OI同步下降，或curve快速转弱。
+- **退出框架**：若未来升级为试仓，TP1=1.5R、TP2=3R，时间止损1–3D；单次最大损失0.25%–0.50% NAV。
+- **合约参数**：repo metadata为official_partial；multiplier/tick/tick value/margin/price limit/night-session字段未完整给出，**参数未确认，下单前复核交易所/券商参数**。不做交割月持仓，roll在流动性向下一主力迁移时执行；1/2涨跌停压力损失按实际限幅×名义本金重算。
 
-### 3）AG2610｜条件多｜76
-- **事实**：T日close/settle=16045/15960；凌晨Night close=15886，day follow-through=+1.00%；1D settle +1.53%，curve轻微近强。AG2610 9/23 ATM IV=42.72%，RR25=+4.87，BF25=+2.55，surface ready、positioning/execution false。
-- **入场**：等15–30分钟；15960–16000区域不失守且海外gold/silver仍同向，再突破opening-range high试1/3。若高开至约16200以上但无回撤确认，不追。
-- **止损/失效**：跌破15886/开盘区间低点，或美元与真实利率反向急升。TP1=1.5R、TP2=3R；同夜–2D；最大损失0.25%–0.40% NAV。
-- **合约**：上期所白银15千克/手，tick 1元/千克，tick value 15元/手；按15960结算名义约23.94万元/手。最后交易日规则为交割月15日；黄金/白银连续交易21:00–02:30。当前动态保证金/限幅**下单前复核**。
-- **期权表达**：IV偏贵，优先期货；有限风险Call Spread仅研究。`research only; manual quote and manual confirmation required before execution; no premium quoted`。
+### 2）V2701｜偏多观察｜68
+- **事实**：close/settle=5128/5040；1D settle +3.07%，5D +11.50%；ΔOI +91,245（+8.74%）；Night4931较前收4867约+1.32%，day follow-through约+4.00%。
+- **市场定价**：今天最有价值的信息是**日盘继续加速而非隔夜gap**；但near-next curve约-2.03%、z=-3.55，深contango与“现货紧缺型上涨”不一致。
+- **推断**：只有下一窗口curve收敛、价格回踩5040–5120区间后继续获得增仓，才值得升级；若价格涨而curve继续走弱，优先解释为挤压。
+- **入场/失效**：当前不下单。等待30–45分钟；触发=守住5040结算锚并重新突破opening range，且curve不再恶化；失效=跌回4931早前Night锚下方。
+- **退出框架**：若未来试仓，TP1=1.5R、TP2=2.5–3R，时间止损1–3D；最大损失0.25%–0.50% NAV。
+- **合约参数**：DCE contract-info本次源失败，动态margin/limit/LTD/夜盘参数**必须下单前人工复核**；不得基于缺失参数给出精确涨跌停压力金额。
+
+### 3）SC2610｜双向观察，优先看低开承接是否失败｜67
+- **事实**：close/settle=685.2/683.1；1D settle -1.13%、5D +15.33%；ΔOI -1266/-3.42%；SC2610-SC2611 back约+5.40%。凌晨Night678.6，overnight -0.46%，随后日盘+0.97%。
+- **海外**：18:15左右Brent约95.38、WTI约90.93，当日分别约-0.15%/-0.41%，但周涨幅仍高；霍尔木兹航运偏低使中期供应尾部仍在。
+- **推断**：21:00最有信息量的是“外盘转弱后的中国承接”。若低开后30分钟不能重夺683–685且Brent继续走弱，才偏向短；若快速收复685并站上早前Night 678.6之上形成更高低点，则放弃空头。
+- **当前不下单**：20:30非农可能先改变美元/利率/风险资产，再叠加油价地缘beta。
+- **交易时段/参数**：上期能源官方交易时间确认SC夜盘21:00–02:30。repo动态参数不完整；上期能源2026-06-23公告曾将SC2610涨跌停板调整为14%、一般持仓保证金16%，但**今晚下单前仍需复核是否有后续调整**。极端压力测试至少覆盖1个/2个涨跌停、保证金上调、流动性消失和周末地缘gap。
 
 ## 八、商品期权专项
 
-T日期权链已从revision 1的T-1/not-ready升级为64/64全品种与surface-ready。代表性series：AU2610 IV24.70/RR+3.21；SC2610 IV60.86/RR+3.72；AG2610 IV42.72/RR+4.87；SF611 IV23.19/RR+2.59。SC的IV-RV溢价约25 vol points、SF约13 vol points，裸买Gamma的赔率明显受限。全市场execution仍false，dealer gamma方向未知，因此任何结构都必须先手工核报价。
+今晚期权层明确降级：9月4日chain有22,016张合约、364 series、55/64品种；IV字段覆盖约97.98%，但`surface_ready=false`、`positioning_ready=false`、`execution_ready=false`，bid/ask=0。**因此不能把单点vendor IV称为ATM IV，也不能计算/引用RR25、BF25、term structure或可成交Call Spread成本。**
 
-## 九、21:00夜盘风险地图
+20:30非农具备很强event convexity，理论上有限损失期权结构比裸期货更适合事件尾部，但当前数据无法判断vol是否“值得买”。结论是：**期权在风险形态上可能更优，在可验证定价上不具备下单条件。** 今晚只做研究观察，不建立基于臆测IV的Vega仓位。
 
-- **AU/AG**：正式19:30地图偏高开/偏强，但不追首跳；等15–30m，确认美元、收益率和opening range。
-- **SC**：外盘供应风险偏多，但中国T日日盘已经相对Night回吐；最关键是能否重夺690.9/694.7。等30m。
-- **FU**：国内显著弱于SC和海外油价；若高开后仍不能重夺3864/3929，优先观察failed-gap或SC-FU相对价值，而不是机械追多FU。
-- **MA/TA**：等30–45m；必须看到链内EG/PF/PX等同步扩散才做reclaim。
-- **SF**：连续交易安排/动态参数未在本次官方核验中完整确认；若无夜盘则下一决策窗口为次日9:00，参数未确认前不下单。
+## 九、21:00夜盘开盘风险地图
 
-## 十、未来24h / 7d事件
+必须区分四层：9月4日中国完整EOD；今天凌晨已完成的9月4日Night Session；15:00–19:30海外增量；以及21:00后尚未发生、属于下一中国交易日的Night Session。
 
-- **9月3日22:00北京**：美国ISM Services；贵金属和美元/利率敏感仓位在数据前不加满Delta。
-- **9月4日20:30北京**：美国8月Employment Situation/NFP；AU/AG与油价都需预留隔夜gap预算。
-- **9月5日约03:30北京**：CFTC COT常规发布时间；仅作为拥挤度背景，不把会员/持仓结构机械解释成机构方向。
-- **未来7日**：持续跟踪美伊冲突、霍尔木兹运输与OPEC+相关正式公告；未独立确认的会议具体时点不作为硬入场锚。
+- **SC**：可能偏低/平开；海外油当日小跌但供应尾部仍强。禁止首跳追空，等30分钟；核心看Brent/WTI是否继续下行、683–685能否重夺、OI是否重新增加。SC官方夜盘21:00–02:30。
+- **AU/AG**：20:30非农先于21:00开盘，方向完全取决于美元/实际利率的第一轮反应。禁止在20:30前加满Delta；21:00后等15–30分钟，AU优先于AG观察。
+- **V/SA**：今天主要涨幅来自日盘，21:00若高开更不适合追。V等30–45分钟看5040/5128锚与contango；SA等30分钟看1080结算锚和近月结构是否改善。
+- **SF**：价格最强但证据层不足；即使今晚有连续交易窗口，也只观察回撤吸收，交易时段与动态参数下单前复核。
+- **LC**：无夜盘，下一交易窗口为周一9:00；不在周末前用其他品种机械代理LC方向。
 
-## 十一、最终四行
+## 十、未来24h/7d事件日历（北京时间）
 
-A. 今晚没有应立即建立的新仓位。  
-B. 今晚只应挂条件单的仓位：AU2610开盘确认多、SC2610回踩/重夺确认多、AG2610开盘确认多、TA701重夺确认多；SF611仅在确认交易窗口和参数后做回撤多。  
-C. 今晚应继续观察的机会：MA610日盘反转后的reclaim、FU2611“海外油强/内盘弱”的failed-gap与SC-FU相对价值、RM611/SF611仓单增加后价格能否继续吸收。  
-D. 今晚必须避免或退出的交易：21:00首跳追多SC/贵金属、把价涨仓减写成新增多头、在execution_ready=false时臆测期权成本、把C级spot/basis当可执行套利、忽略FU日盘弱弹性而机械追油价映射。
+- **9月4日20:30**：美国8月Employment Situation / NFP（BLS官方日历确认）。贵金属、美元、实际利率和风险资产的首要催化；事件前不加满Delta。
+- **9月5日凌晨约03:30**：CFTC常规COT发布窗口，仅作拥挤度背景；不把会员/交易商分类机械等同最终方向。
+- **未来7日**：美国—伊朗/霍尔木兹与俄乌炼厂/航运扰动持续为油品跳空源；周末持仓必须预留gap预算。
+- **9月10日20:30**：美国8月PPI；**9月11日20:30**：美国8月CPI（BLS日历）。对黄金、原油通胀溢价和美元敏感品种构成二次宏观重定价。
+- **交易所参数**：SC等能源品种在高波动期存在保证金/限幅临时调整风险；DCE contract-info本期失败，所有DCE重点合约参数在下单前人工复核。
+
+## 十一、行动清单
+
+A. 今晚没有应立即建立的新仓位。
+B. 今晚没有达到70分的条件单；若21:00后出现新确认，只优先重评SF611、V2701、SC2610。
+C. 今晚应继续观察的机会：SF611回撤吸收、V2701日盘强势能否获得curve确认、SC2610低开承接/失败反抽、AU/AG非农后的第二段价格发现。
+D. 今晚必须避免或退出的交易：追SF/V/SA首跳、20:30前重仓赌贵金属方向、把C级basis当套利、在surface/execution not ready时臆测期权成本、周末持有未预算地缘gap的油品高杠杆仓位。
