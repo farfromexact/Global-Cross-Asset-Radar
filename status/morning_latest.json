@@ -1,24 +1,25 @@
 {
   "report_date": "2026-09-04",
   "edition": "morning",
-  "generated_at": "2026-09-04T08:35:00+08:00",
+  "generated_at": "2026-09-04T08:55:07+08:00",
   "archive_status": "partial",
   "ci_validation_status": "pending_or_unverified",
   "china_options_date": "2026-09-03",
   "data_fresh": true,
   "previous_date": "2026-09-03",
   "verification": {
-    "historical_markdown": "written_pending_reread",
-    "historical_json": "written_pending_reread",
-    "latest_markdown": "written_pending_reread",
-    "latest_json": "written_pending_reread",
-    "status": "written_pending_reread",
+    "historical_markdown": "updated_pending_final_reread",
+    "historical_json": "updated_pending_final_reread",
+    "latest_markdown": "updated_pending_final_reread",
+    "latest_json": "updated_pending_final_reread",
+    "status": "updated_pending_final_reread",
     "manifest_unique_key": "failed_not_updated"
   },
   "errors": [
-    "radar_history.json已通过GitHub connector必读，但正文体量过大，本轮未稳定暴露全部9月3日rolling区间；1D用9月3日精确EOD，3/5/20D使用截至9月2日已验证窗口的一日滞后参考。",
-    "10Y real官方最新为9月2日，因此未计算混合日期9月3日BEI。",
-    "MOVE最新可靠值滞后至9月1日。",
-    "manifests/reports.json未能在本轮安全完成保留全量历史记录的追加，因此保持原文件不变；本次归档按partial处理。"
+    "radar_history.json已通过GitHub connector必读并确认40个交易会话、最新至2026-09-03，但连接器无法稳定暴露完整长正文用于精确重算9月3日3/5/20D；多周期采用截至9月2日上一期已验证窗口并明确标记一日滞后。",
+    "MOVE最新可靠值滞后至2026-09-01。",
+    "DR007同步收盘值和A股全市场涨跌家数本轮未取得足够可靠来源，因此未猜测。",
+    "早先同日归档版部分中国期指字段与当前China-Options-Engine verified EOD不一致，本版已按radar_latest.json直接复核值纠正。",
+    "manifests/reports.json为超长单行历史文件，GitHub connector响应无法完整暴露其全部旧内容，无法在不破坏历史记录的前提下安全追加2026-09-04+morning唯一键；该文件保持不变，因此本次archive_status为partial。"
   ]
 }
