@@ -192,7 +192,7 @@
 | **美国9/10拍卖日** | **30Y Treasury reopening** | 长端仓位事件前降gross |
 | **9/10 20:30** | **美国8月PPI** | QQQ/rates/gold降低裸Delta，保留有限Gamma |
 | **9/11 00:00起** | **EIA WPSR**（Labor Day顺延至周四12:00 ET起分批发布） | 油仓提前锁部分PnL/Vega |
-| **9/11 04:00** | **Oracle Q1 FY27财报电话会**（9/10美股收盘后，16:00 CT） | AI Capex-Beta关键验证；不裸卖event vol |
+| **9/11 05:00** | **Oracle Q1 FY27财报电话会**（9/10美股收盘后，16:00 CT） | AI Capex-Beta关键验证；不裸卖event vol |
 | **9/11 20:30** | **美国8月CPI** | 本周最大Fed催化；盈利仓提前实现部分 |
 
 美国财政部tentative schedule确认3Y/10Y/30Y拍卖日为9月8/9/10；EIA因9月7 Labor Day把周报推迟到9月10日12:00 ET开始发布。中国国家统计局确认CPI/PPI在9月9日09:30发布。
