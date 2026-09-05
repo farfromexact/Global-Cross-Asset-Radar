@@ -1,0 +1,214 @@
+{
+  "schema_version": "1.0",
+  "status": "published",
+  "report_date": "2026-09-06",
+  "edition": "commodities_morning",
+  "revision": 1,
+  "generated_at_bjt": "2026-09-06T07:00:42+08:00",
+  "weekend_mode": true,
+  "title": "全球商品期货期权高风险机会雷达｜晨间版｜2026-09-06",
+  "one_sentence_conclusion": "今日商品期货期权无合格交易。周日休市且Night Session当前状态落在周日、802合约全失败，数据质量闸门触发；周一只观察SC2610、SA701、V2701。",
+  "regime": "weekend geopolitical supply shock unpriced / Friday China construction-chemical squeeze awaiting validation / precious-metals hawkish-macro pressure / China commodity data-quality veto",
+  "worth_taking_risk": false,
+  "data_protocol_version": "china_commodities_v2",
+  "report_input_requested_date": "2026-09-04",
+  "report_input_generated_at": "2026-09-06T06:21:10.293111+08:00",
+  "data_cutoff": {
+    "beijing_time": "2026-09-06T07:00:42+08:00",
+    "china_cash_market": "closed-weekend",
+    "china_eod": "last-good retained snapshot 2026-09-04; current rerun degraded",
+    "china_night": "invalid/unavailable: Sunday trading_date, 802 query errors, empty latest file",
+    "overseas": "Friday settlements plus Saturday geopolitical news; major futures markets closed at cutoff",
+    "notes": [
+      "Current report_input marks futures and market_state not fresh.",
+      "Stale/carried-forward evidence receives zero fresh-layer score.",
+      "No current valid Night Session curve can be computed."
+    ]
+  },
+  "input_snapshots": {
+    "china_commodities": {
+      "repository": "farfromexact/China-Commodities-Engine",
+      "branch": "main",
+      "last_run_status_path": "data/last_run_status.json",
+      "radar_latest_path": "data/radar_latest.json",
+      "radar_history_path": "data/radar_history.json",
+      "trade_date": "2026-09-04",
+      "generated_at": "2026-09-06T06:21:10.293111+08:00",
+      "data_fresh": false,
+      "official_complete": false,
+      "source_date_match_pct": 0.0,
+      "full_market_ready": false,
+      "critical_module_errors": 15,
+      "history_record_count": null,
+      "module_quality": {
+        "futures": "partial_or_fallback_current_rerun_failed",
+        "market_state": "retained_history_currently_not_fresh",
+        "contract_meta": "partial_error",
+        "warehouse": "partial_error_with_carry_forward",
+        "basis": "unavailable_or_context_only",
+        "member_rankings": "unavailable",
+        "options_chain": "partial_error_not_fresh",
+        "options_surface": "not_ready",
+        "night_session": "failed_unpublished"
+      },
+      "included_exchanges": ["SHFE", "INE", "DCE", "CZCE", "GFEX"],
+      "actual_read_paths": [
+        "data/report_input_latest.json",
+        "data/night_session/last_run_status.json",
+        "data/last_run_status.json",
+        "data/radar_latest.json",
+        "data/night_session/latest.json",
+        "data/latest.json",
+        "data/market_state_latest.json"
+      ]
+    }
+  },
+  "module_freshness": {
+    "futures": {"requested_date": "2026-09-04", "source_date": "2026-09-04", "generated_at": "2026-09-05T06:02:25.561594+08:00", "fresh": false},
+    "market_state": {"source_date_max": "2026-09-04", "generated_at": "2026-09-06T06:20:15.693630+08:00", "fresh": false},
+    "physical": {"requested_date": "2026-09-04", "source_date": "2026-09-04", "generated_at": "2026-09-05T06:19:25.732697+08:00", "fresh": true},
+    "external": {"requested_date": "2026-09-04", "source_date": "2026-09-04", "generated_at": "2026-09-06T06:20:43.072906+08:00", "fresh": true},
+    "night_session": {"trading_date": "2026-09-06", "night_session_date": "2026-09-05", "generated_at": "2026-09-06T06:02:04.847609+08:00", "fresh": false, "validation_passed": false, "published": false},
+    "options": {"requested_date": "2026-09-04", "source_date": "2026-09-04", "generated_at": "2026-09-04T22:03:12+00:00", "fresh": false}
+  },
+  "night_session_trading_date": "2026-09-06",
+  "night_session_date": "2026-09-05",
+  "night_session_generated_at": "2026-09-06T06:02:04.847609+08:00",
+  "night_session_data_fresh": false,
+  "night_session_validation_passed": false,
+  "night_session_coverage_complete": false,
+  "night_session_contract_count": 0,
+  "night_session_product_count": 0,
+  "night_session_fallback_used": false,
+  "physical_coverage": {"targets": 20, "fresh": 18, "unavailable": 2, "stale": 0, "carried_forward": 0, "basis_scoring": "mostly ineligible/context only"},
+  "external_coverage": {"targets": 22, "fresh": 17, "unavailable": 5, "usage": "mostly context_only", "import_parity_ready": false},
+  "options_surface_ready": false,
+  "options_positioning_ready": false,
+  "options_execution_ready": false,
+  "contract_metadata_quality": "partial_error",
+  "source_status": {
+    "futures": {"contract_count_retained": 802, "current_full_market_ready": false, "source_date_match_pct": 0.0, "critical_module_errors": 15, "failure": "iFinD HTTP 401 Device exceed limit on current rerun"},
+    "night_session": {"selected_contract_count": 802, "request_contract_count": 802, "night_session_contract_count": 0, "outside_night_window_count": 0, "no_night_trade_count": 0, "missing_timestamp_count": 0, "missing_price_count": 0, "missing_quote_count": 0, "query_error_count": 802, "unresolved_contract_count": 802, "coverage_complete": false, "validation_passed": false, "published": false, "latest_file_empty": true, "calendar_semantic_valid": false},
+    "options": {"trade_date": "2026-09-04", "record_count": 19394, "series_count": 352, "surface_ready_count": 341, "positioning_ready_count": 74, "execution_ready_count": 0, "iv_coverage": 0.9771063215427451, "open_interest_coverage": 0.6821181808806848, "bid_ask_coverage": 0.0, "surface_ready": false, "positioning_ready": false, "execution_ready": false, "dealer_gamma_direction_known": false},
+    "physical": {"targets": 20, "fresh": 18, "unavailable": 2},
+    "external": {"targets": 22, "fresh": 17, "unavailable": 5, "usage": "context_only_or_daily"}
+  },
+  "dashboard": [
+    {"asset": "SA701", "latest": "EOD close 1093 / settle 1080; current Night unavailable", "change_1d": 1.790763430725728, "change_1w": 5.160662122687443, "signal": "Friday strong but contango conflicts; Monday confirmation only", "data_time": "2026-09-04 EOD", "data_attribute": "retained last-good snapshot, not current fresh layer"},
+    {"asset": "SF611", "latest": "EOD close 6624 / settle 6564; current Night unavailable", "change_1d": 5.057618437900135, "change_1w": 8.42418235877107, "signal": "strongest Friday price+curve aligned watch", "data_time": "2026-09-04 EOD", "data_attribute": "retained last-good snapshot"},
+    {"asset": "V2701", "latest": "EOD close 5128 / settle 5040; current Night unavailable", "change_1d": 3.0674846625766916, "change_1w": 11.50442477876108, "signal": "Friday squeeze; tactical failure-short only after 30m confirmation", "data_time": "2026-09-04 EOD", "data_attribute": "retained last-good snapshot"},
+    {"asset": "SC2610", "latest": "EOD close 685.2 / settle 683.1; no post-Saturday-event price", "change_1d": -1.1289622231871355, "change_1w": 15.330069221678212, "signal": "largest unpriced weekend gap risk", "data_time": "2026-09-04 EOD + 2026-09-05 news", "data_attribute": "external geopolitical layer fresh; China price layers stale"},
+    {"asset": "AG2610", "latest": "EOD close 16250 / settle 16318; current Night unavailable", "change_1d": 2.243107769423558, "change_1w": -2.973005113568772, "signal": "Friday international gold/silver weakness invalidates chase-long", "data_time": "2026-09-04 EOD/US close", "data_attribute": "options stale/non-executable"},
+    {"asset": "EG2610", "latest": "EOD close 5898 / settle 5844; current Night unavailable", "change_1d": 0.5678884873515644, "change_1w": null, "signal": "trend high but no current session confirmation", "data_time": "2026-09-04 EOD", "data_attribute": "retained last-good snapshot"},
+    {"asset": "TA701", "latest": "EOD close 5922 / settle 5958; current Night unavailable", "change_1d": -0.8982035928143728, "change_1w": 6.468906361686955, "signal": "price/curve divergence; no chase", "data_time": "2026-09-04 EOD", "data_attribute": "retained last-good snapshot"},
+    {"asset": "FG701", "latest": "EOD close 978 / settle 971; current Night unavailable", "change_1d": 0.6217616580310947, "change_1w": 5.7734204793028265, "signal": "construction-theme follower, evidence insufficient", "data_time": "2026-09-04 EOD", "data_attribute": "retained last-good snapshot"},
+    {"asset": "LC2701", "latest": "EOD close 141940 / settle 147040", "change_1d": -4.083496412263532, "change_1w": null, "signal": "weakest watch; backwardation conflicts with price weakness", "data_time": "2026-09-04 EOD", "data_attribute": "no valid current Night"},
+    {"asset": "BZ2610", "latest": "Friday trend strong; current Night unavailable", "change_1d": 1.2668817975379554, "change_1w": 12.493361656930425, "signal": "trend watch, but no fresh session confirmation", "data_time": "2026-09-04 EOD", "data_attribute": "retained last-good snapshot"}
+  ],
+  "meaningful_changes": [
+    {"change": "Night pipeline deteriorated further", "detail": "Current Sunday-labelled run has 0 valid contracts, 802 query errors and 802 unresolved contracts; latest night-session file is empty."},
+    {"change": "Current China EOD rerun failed", "detail": "Five exchanges and options hit iFinD HTTP 401 Device exceed limit; retained Friday EOD is context, not a fresh scoring layer."},
+    {"change": "Weekend oil supply tail escalated", "detail": "US and Iranian forces attacked vessels; three Iranian crude tankers were struck, but post-event oil price discovery has not yet occurred."},
+    {"change": "Friday domestic leadership remains construction/basic chemicals", "detail": "SA/SF/V showed the strongest activity, but only SF has directionally confirming backwardation; SA/V remain contango."},
+    {"change": "Precious-metals macro layer weakened", "detail": "Friday strong US employment repricing coincided with lower international gold and silver."},
+    {"change": "OPEC+ Sunday meeting adds a second binary energy catalyst", "detail": "The September 6 meeting can reinforce or offset the geopolitical supply premium before China reopens."}
+  ],
+  "top_opportunities": [],
+  "top_trade_cards": [
+    {"contract": "SC2610", "classification": "observation_not_trade", "score": 59, "direction_prior": "long", "fresh_evidence_layers": 1, "previous_day_close": 685.2, "previous_day_settlement": 683.1, "current_night_ohlc": null, "current_return_vs_close_pct": null, "current_return_vs_settlement_pct": null, "current_night_delta_oi": null, "entry": "Monday: wait 15-30m; only after overseas oil reopens and SC accepts 685-695 then reclaims 699", "initial_stop": "30m acceptance below 676", "logic_invalidation": "below 665.4 with Brent/WTI giving back weekend premium", "tp1": 715, "tp2": 735, "time_stop": "1-2 sessions", "max_loss_plan": "0.25%-0.50% NAV only after trigger; zero today", "abandon": "large gap with no controllable stop distance", "contract_params": {"multiplier_bbl_per_lot": 1000, "tick_cny_per_bbl": 0.1, "tick_value_cny_per_lot": 100, "notional_at_eod_close_cny": 685200, "margin": "unconfirmed current dynamic", "price_limit": "unconfirmed current dynamic", "night_session": "exists by contract convention but current data invalid", "last_trading_day": "unconfirmed exact date", "delivery_risk": "physical delivery; roll/exit before delivery window", "one_limit_stress": "685200 * L", "two_limit_stress": "685200 * ((1+L)^2-1)"}},
+    {"contract": "SA701", "classification": "observation_not_trade", "score": 56, "direction_prior": "long", "fresh_evidence_layers": 0, "previous_day_close": 1093, "previous_day_settlement": 1080, "current_night_ohlc": null, "entry": "Monday: 15-30m hold 1080-1095 and reclaim 1108 with successful retest", "initial_stop": "acceptance below 1060", "logic_invalidation": "near 1060 with contango widening", "tp1": 1140, "tp2": 1180, "time_stop": "2 sessions", "max_loss_plan": "0.25%-0.40% NAV only after trigger", "contract_params": {"multiplier_t_per_lot": 20, "tick_cny_per_t": 1, "tick_value_cny_per_lot": 20, "notional_at_eod_close_cny": 21860, "margin": "unconfirmed current dynamic", "price_limit": "unconfirmed current dynamic", "last_trading_day": "unconfirmed exact date", "delivery_risk": "physical delivery; roll early", "one_limit_stress": "21860 * L", "two_limit_stress": "21860 * ((1+L)^2-1)"}},
+    {"contract": "V2701", "classification": "observation_not_trade", "score": 55, "direction_prior": "short_tactical", "fresh_evidence_layers": 0, "previous_day_close": 5128, "previous_day_settlement": 5040, "current_night_ohlc": null, "entry": "Monday: 30m close below 5040 and failed retest of 5040-5080", "initial_stop": "above 5155", "logic_invalidation": "reclaim 5128 with OI expansion", "tp1": 4920, "tp2": 4800, "time_stop": "1-2 sessions", "max_loss_plan": "0.25%-0.35% NAV only after trigger", "contract_params": {"multiplier_t_per_lot": 5, "tick_cny_per_t": 1, "tick_value_cny_per_lot": 5, "notional_at_eod_close_cny": 25640, "margin": "unconfirmed current dynamic", "price_limit": "unconfirmed current dynamic", "last_trading_day": "unconfirmed exact date", "delivery_risk": "physical delivery; roll early", "one_limit_stress": "25640 * L", "two_limit_stress": "25640 * ((1+L)^2-1)"}}
+  ],
+  "commodities_tracking": {
+    "data_quality": {
+      "status": "stale_or_partial",
+      "price_source": "retained 2026-09-04 exact-contract EOD last-good snapshot; current iFinD rerun failed",
+      "curve_definition": "near_minus_next_futures_curve_not_spot_basis",
+      "basis_status": "unavailable_or_context_only; A/B scoreable basis not established",
+      "warehouse_status": "partial_error_with_carry_forward; warehouse is not social inventory",
+      "member_rankings_status": "unavailable",
+      "options_chain_status": "T-1 partial and current rerun failed",
+      "options_surface_status": "not_ready",
+      "history_comparison_status": "stale_or_partial",
+      "available_horizons": ["1D", "3D", "5D", "20D"],
+      "comparative_metrics": []
+    },
+    "market_dashboard": [
+      {"product": "SA", "main_contract": "SA701", "signal": "Friday strong, contango conflict"},
+      {"product": "SF", "main_contract": "SF611", "signal": "Friday price+backwardation aligned"},
+      {"product": "V", "main_contract": "V2701", "signal": "Friday squeeze, Monday failure-watch"},
+      {"product": "SC", "main_contract": "SC2610", "signal": "unpriced weekend supply shock"},
+      {"product": "AG", "main_contract": "AG2610", "signal": "Friday international macro headwind"},
+      {"product": "EG", "main_contract": "EG2610", "signal": "high trend, no current confirmation"},
+      {"product": "TA", "main_contract": "TA701", "signal": "price/curve divergence"},
+      {"product": "FG", "main_contract": "FG701", "signal": "construction follower"},
+      {"product": "LC", "main_contract": "LC2701", "signal": "weak price, backwardation conflict"},
+      {"product": "BZ", "main_contract": "BZ2610", "signal": "strong trend, stale confirmation"}
+    ],
+    "supply_chain_map": [
+      {"chain": "SC/FU/LU energy", "direction": "bullish prior, low execution confidence", "max_missing": "post-weekend oil price discovery and valid China Night"},
+      {"chain": "SF/SA/FG/V construction-basic chemicals", "direction": "Friday strong but curve split", "max_missing": "fresh session and high-quality physical confirmation"},
+      {"chain": "BZ/EG/TA aromatics-polyester", "direction": "trend strong, elasticity unknown", "max_missing": "valid Night and exact downstream fundamentals"},
+      {"chain": "AU/AG precious metals", "direction": "short-term neutral-to-bearish", "max_missing": "Sunday night international reopen and current options"},
+      {"chain": "LC new energy", "direction": "weak but no-chase", "max_missing": "physical and curve-direction reconciliation"}
+    ],
+    "options_surface": {
+      "status": "not_ready",
+      "available_metrics": [],
+      "tradeable_structures": [],
+      "research_priority_when_ready": ["SC limited-loss call spread after live IV/skew refresh", "AG event convexity after live bid/ask", "compare live ATM IV with RV20 only on surface-ready exact series"]
+    },
+    "night_session_risk_map": [
+      {"product": "SC2610", "confidence": "low", "action": "No current Night data; wait for overseas reopen and Monday 15-30m China acceptance."},
+      {"product": "SA701", "confidence": "low", "action": "Do not reuse retained Friday raw quote; wait for valid Monday Night/day-session data."},
+      {"product": "V2701", "confidence": "low", "action": "Prior raw dual-anchor divergence is audit-only; tactical short only after day-session failure trigger."}
+    ]
+  },
+  "event_calendar": [
+    {"event": "OPEC+ seven-country monthly meeting", "time_bjt": "2026-09-06, exact meeting time not specified in cited OPEC release", "impact": "SC/FU/LU delta and weekend gap; no pre-positioning"},
+    {"event": "US Labor Day / EIA holiday week", "time_bjt": "2026-09-07", "impact": "US market liquidity and WPSR timing altered; verify exchange sessions"},
+    {"event": "EIA Weekly Petroleum Status Report", "time_bjt": "2026-09-11T00:00:00+08:00 and 02:00:00+08:00", "impact": "crude/product inventory and refinery confirmation"},
+    {"event": "IEA Oil Market Report", "time_bjt": "2026-09-11T16:00:00+08:00 approximately", "impact": "oil supply/demand, refining and OECD stock reassessment"},
+    {"event": "US August CPI", "time_bjt": "2026-09-11T20:30:00+08:00", "impact": "USD/real-yield reset; AU/AG delta/vega"},
+    {"event": "USDA September WASDE", "time_bjt": "2026-09-12T00:00:00+08:00", "impact": "corn/soy/meal/oil/cotton event convexity"},
+    {"event": "CFTC Commitments of Traders", "time_bjt": "2026-09-12T03:30:00+08:00", "impact": "positioning context only; lagged Tuesday data"}
+  ],
+  "action_list": {
+    "A": "今天没有应立即建立的新仓位。",
+    "B": "今天只应挂条件单的仓位：无；周日休市，周一条件必须等外盘重开与首15–30分钟确认。",
+    "C": "今天应继续观察的机会：SC2610供给冲击确认多、SA701回撤确认多、V2701高位失败空。",
+    "D": "今天必须避免或退出的交易：任何基于当前失效Night数据的交易、周一无确认追油价gap、用T-1且无bid/ask的商品期权直接执行。"
+  },
+  "risk_budget": {
+    "today_new_nav_risk": 0.0,
+    "conditional_trial_max_loss_nav_pct": "0.25%-0.50%",
+    "confirmed_trade_requires_fresh_layers": 4,
+    "theme_limit_nav_pct": "2.5%-3.0% only after confirmation; not applicable today",
+    "stress_tests": ["1/2 price-limit moves", "weekend gap", "margin increase", "liquidity disappearance", "correlation break", "option IV jump/collapse", "delivery squeeze", "RMB shock"]
+  },
+  "sources": [
+    {"title": "China-Commodities-Engine report_input_latest.json", "publisher": "farfromexact/China-Commodities-Engine", "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/report_input_latest.json", "source_date": "2026-09-06", "accessed_at_bjt": "2026-09-06T07:00:42+08:00", "supported_claims": ["module freshness", "market state", "physical/external/options summaries"]},
+    {"title": "China-Commodities-Engine night_session last_run_status", "publisher": "farfromexact/China-Commodities-Engine", "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/night_session/last_run_status.json", "source_date": "2026-09-06", "accessed_at_bjt": "2026-09-06T07:00:42+08:00", "supported_claims": ["Sunday trading_date", "802 query errors", "validation failure"]},
+    {"title": "US, Iranian forces fire at vessels in waters near Iran", "publisher": "Reuters", "url": "https://www.reuters.com/world/middle-east/explosions-heard-near-irans-kharg-island-gulf-origin-unknown-fars-news-says-2026-09-05/", "source_date": "2026-09-05", "accessed_at_bjt": "2026-09-06T07:00:42+08:00", "supported_claims": ["weekend US-Iran maritime escalation", "oil supply tail risk"]},
+    {"title": "US military strikes three Iranian crude oil carriers", "publisher": "Reuters", "url": "https://www.reuters.com/world/middle-east/us-military-strikes-three-iranian-crude-oil-carriers-central-command-says-2026-09-05/", "source_date": "2026-09-05", "accessed_at_bjt": "2026-09-06T07:00:42+08:00", "supported_claims": ["three Iranian crude tankers struck"]},
+    {"title": "OPEC+ August 2 2026 press release", "publisher": "OPEC", "url": "https://www.opec.org/pr-detail/611-2-august-2026.html", "source_date": "2026-08-02", "accessed_at_bjt": "2026-09-06T07:00:42+08:00", "supported_claims": ["next seven-country meeting on September 6 2026"]},
+    {"title": "Weekly Petroleum Status Report", "publisher": "U.S. EIA", "url": "https://www.eia.gov/petroleum/supply/weekly/index.php", "source_date": "2026-09-03", "accessed_at_bjt": "2026-09-06T07:00:42+08:00", "supported_claims": ["September 10 holiday-delayed WPSR release"]},
+    {"title": "CPI release schedule", "publisher": "U.S. BLS", "url": "https://www.bls.gov/schedule/news_release/cpi.htm", "source_date": "2026-09-05", "accessed_at_bjt": "2026-09-06T07:00:42+08:00", "supported_claims": ["August 2026 CPI release September 11 at 08:30 ET"]},
+    {"title": "Oil Market Report release schedule", "publisher": "IEA", "url": "https://www.iea.org/data-and-statistics/data-product/oil-market-report-omr", "source_date": "2026-09-06", "accessed_at_bjt": "2026-09-06T07:00:42+08:00", "supported_claims": ["September OMR release September 11 2026 at 10:00 Paris time"]},
+    {"title": "WASDE Report 2026 release dates", "publisher": "USDA", "url": "https://www.usda.gov/about-usda/general-information/staff-offices/office-chief-economist/commodity-markets/wasde-report", "source_date": "2026-09-05", "accessed_at_bjt": "2026-09-06T07:00:42+08:00", "supported_claims": ["September 11 2026 WASDE at 12:00 ET"]},
+    {"title": "COT release schedule", "publisher": "CFTC", "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm", "source_date": "2026-08-01", "accessed_at_bjt": "2026-09-06T07:00:42+08:00", "supported_claims": ["September 11 COT at 15:30 ET"]}
+  ],
+  "archive_status": "partial",
+  "ci_validation_status": "pending_or_unverified",
+  "archive": {
+    "markdown_path": "reports/2026/09/2026-09-06_commodities_morning.md",
+    "json_path": "reports/2026/09/2026-09-06_commodities_morning.json",
+    "latest_markdown_path": "latest/commodities_morning.md",
+    "latest_json_path": "latest/commodities_morning.json",
+    "status_path": "status/commodities_morning_latest.json",
+    "manifest_path": "manifests/reports.json",
+    "archive_status": "partial",
+    "commit_sha": null,
+    "error": "Manifest not safely mutable through current connector because the repository manifest is a very large minified single-line file and connector reads are truncated; five other paths are written/verified separately."
+  }
+}
