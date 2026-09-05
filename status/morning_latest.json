@@ -2,23 +2,24 @@
   "report_date": "2026-09-05",
   "edition": "morning",
   "generated_at": "2026-09-05T08:00:00+08:00",
-  "archive_status": "pending_verification",
+  "archive_status": "success",
   "ci_validation_status": "pending_or_unverified",
   "china_options_date": "2026-09-04",
   "data_fresh": true,
   "previous_date": "2026-09-04",
   "verification": {
-    "historical_markdown": "pending",
-    "historical_json": "pending",
-    "latest_markdown": "pending",
-    "latest_json": "pending",
-    "status": "pending",
-    "manifest_unique_key": "pending"
+    "historical_markdown": "ok",
+    "historical_json": "ok",
+    "latest_markdown": "ok",
+    "latest_json": "ok",
+    "status": "ok",
+    "manifest_unique_key": "ok_count_1"
   },
   "errors": [
-    "data/radar_history.json已通过GitHub connector必读，但因长文件体量返回空正文；9月4日1/3/5D由当前快照与已验证历史点计算，20D沿用截至9月2日最后一次完整验证并显式标记滞后。",
-    "9月4日Treasury官方日表在本轮未稳定显示5Y及real-yield同步值；2Y/10Y使用Reuters市场口径，30Y使用可确认盘中口径，10Y real/BEI只保留9月3日同日数据。",
-    "Cboe 9月4日精确VIX EOD未稳定取得，使用可靠二手收盘附近约14.2并明确标记。",
-    "MOVE最新可靠值为9月3日74.68；HY OAS最新可靠FRED/ICE值为9月3日2.65%。"
+    "data/radar_history.json已通过GitHub connector必读，但文件超过连接器单次正文暴露上限；9月4日1/3/5D由当前快照与已验证历史点重建，20D沿用截至9月2日最后一次完整验证并显式标记滞后。",
+    "9月4日5Y nominal没有取得稳定官方同日行；2Y/10Y/30Y部分使用Reuters市场口径；10Y real使用Treasury 9月4日正式值；BEI仅作同日混合收盘口径代理。",
+    "Cboe 9月4日精确官方EOD在本轮未稳定取得，VIX使用Cboe延迟/收盘附近约14.2-14.3。",
+    "MOVE最新可靠值为9月3日74.68；HY OAS最新可靠ICE/FRED源值为9月2日2.66%，均有滞后。",
+    "QQQ/NDX、FX、油、黄金期权完整同步surface未可靠取得，因此不提供虚构精确权利金。"
   ]
 }
