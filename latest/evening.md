@@ -181,13 +181,6 @@ Oracle 9月10日盘后财报是关键实验：巨额RPO是否转成现金流、C
 | 9/11 05:00 | Oracle财报电话会 | AI quality/Capex Beta关键验证 |
 | 9/11 20:30 | 美国CPI/Real Earnings | 本周最大Fed路径催化，裸Gamma降至零 |
 
-## 十、今日行动清单
-
-**A. 今天可以立即建立的仓位：周日主要市场关闭，没有可立即成交的新仓；若此前已按条件建立IH/IM或有限风险油凸性，仅保留原风险预算。**  
-**B. 今天只应挂条件单的仓位：OPEC+结果+重开45–60分钟确认后的WTI/Brent Call Spread；周一09:30–10:15确认后的Long 12 IH2609/Short 7 IM2609；周二QQQ Failed-Rally Put Spread。**  
-**C. 今天应继续观察的机会：EG/PG价量仓延续与MA/EB回补分化、2s30s通胀确认flattener、AI现金流/Duration、Gold能否在高real yield下重上4525、USDJPY 157.5–159失败。**  
-**D. 今天必须避免或退出的交易：退出旧软NFP bull-steepener；避免追>5%油gap、追MO深左尾Put、追空IM、裸卖Gamma，以及把油Call/QQQ Put/前端鹰派仓当成三个独立风险因子。**
-
 ## 风险预算
 
 试仓最大损失NAV 0.25%–0.75%；确认交易0.75%–1.50%；单一高确信主题≤2.5%–3.0%。油Call、QQQ Put与rates flattener需按“地缘通胀/Fed”合并；IH/IM与MO/小盘ETF需按“小盘Beta”合并；Gold/空美元/长债Put需按“政策信用/real-rate”合并。
@@ -205,3 +198,10 @@ Oracle 9月10日盘后财报是关键实验：巨额RPO是否转成现金流、C
 - [ICE BofA US HY OAS via FRED](https://fred.stlouisfed.org/series/BAMLH0A0HYM2)，最新2026-09-03。
 - [China-Options-Engine radar_latest](https://github.com/farfromexact/China-Options-Engine/blob/ddf1ba3f220c5b803a8017fbddc843544035c92a/data/radar_latest.json)，2026-09-04。
 - [China-Commodities-Engine report_input_latest](https://github.com/farfromexact/China-Commodities-Engine/blob/8f55b9943ce7d45caec1c0c6ebaddefa1554be0f/data/report_input_latest.json)，生成2026-09-06 19:04。
+
+## 十、今日行动清单
+
+**A. 今天可以立即建立的仓位：周日主要市场关闭，没有可立即成交的新仓；若此前已按条件建立IH/IM或有限风险油凸性，仅保留原风险预算。**  
+**B. 今天只应挂条件单的仓位：OPEC+结果+重开45–60分钟确认后的WTI/Brent Call Spread；周一09:30–10:15确认后的Long 12 IH2609/Short 7 IM2609；周二QQQ Failed-Rally Put Spread。**  
+**C. 今天应继续观察的机会：EG/PG价量仓延续与MA/EB回补分化、2s30s通胀确认flattener、AI现金流/Duration、Gold能否在高real yield下重上4525、USDJPY 157.5–159失败。**  
+**D. 今天必须避免或退出的交易：退出旧软NFP bull-steepener；避免追>5%油gap、追MO深左尾Put、追空IM、裸卖Gamma，以及把油Call/QQQ Put/前端鹰派仓当成三个独立风险因子。**
