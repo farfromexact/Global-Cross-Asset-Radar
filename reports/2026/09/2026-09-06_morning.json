@@ -1,0 +1,127 @@
+{
+  "report_date": "2026-09-06",
+  "edition": "morning",
+  "generated_at": "2026-09-06T08:00:40+08:00",
+  "market_regime": "地缘供给冲击升级 + 加息尾部 + 低股指vol + AI真实需求强/估值门槛高 + 中国大盘相对强势/小盘左尾溢价",
+  "worth_taking_risk": true,
+  "one_line_conclusion": "值得冒险但只做条件凸性：美伊直接打击油轮使周一油价跳空风险升至第一优先；中国多IH/空IM仍是第二优先，VIX仅14.53低估PPI/CPI与地缘尾部。",
+  "top_opportunities": [
+    {"rank":1,"name":"Brent/WTI 30-45D supply-shock Call Spread","score":98,"logic":25,"payoff_convexity":25,"catalyst":20,"price_vol":14,"crowding_technical":14,"horizon":"2-20D","stage":"OPEC+后/重开确认","tool":"Call Spread / Butterfly","finite_max_loss":true},
+    {"rank":2,"name":"Long IH2609 / Short IM2609 Dollar-neutral","score":96,"logic":25,"payoff_convexity":23,"catalyst":18,"price_vol":15,"crowding_technical":15,"horizon":"1-10D","stage":"周一09:30-10:15确认","tool":"股指期货pair","finite_max_loss":false},
+    {"rank":3,"name":"QQQ/NDX 10-21D PPI/CPI Failed-Rally Put Spread","score":94,"logic":24,"payoff_convexity":24,"catalyst":20,"price_vol":15,"crowding_technical":11,"horizon":"2-10D","stage":"周二起/数据后条件试仓","tool":"Put Spread","finite_max_loss":true},
+    {"rank":4,"name":"2s30s DV01-neutral Flattener at 92-95bp plus hot inflation","score":89,"logic":23,"payoff_convexity":19,"catalyst":19,"price_vol":14,"crowding_technical":14,"horizon":"2-15D","stage":"观察","tool":"IRS / Treasury pair","finite_max_loss":false},
+    {"rank":5,"name":"Long AI cash-flow quality / Short high-duration Capex beta","score":88,"logic":23,"payoff_convexity":21,"catalyst":18,"price_vol":13,"crowding_technical":13,"horizon":"3-20D","stage":"Oracle前后确认","tool":"paired debit spreads","finite_max_loss":true}
+  ],
+  "trade_cards": [
+    {
+      "name":"Brent/WTI 30-45D supply-shock Call Spread",
+      "structure":"prefer WTI 30-45D buy 35-40d call / sell 15-20d call; Brent equivalent acceptable; use call butterfly if debit >40% of width",
+      "entry":"after Sep6 OPEC+ outcome and North American Sunday-evening futures reopen; if policy broadly unchanged, no credible US-Iran de-escalation, and after 45-60m WTI holds 92-94 / Brent holds around 95 or higher without fast reversal, enter half; add only with new shipping/insurance/mining/Kharg/military disruption and WTI >96-98; do not chase if WTI opens above 100 without pullback",
+      "invalidation":"WTI<87 or Brent<88 plus verified Hormuz normalization/de-escalation; or OPEC+ unexpectedly adds material deliverable supply",
+      "tp1":"WTI 98-102 or 1.5x debit",
+      "tp2":"WTI 108-115 or 75%-85% maximum spread value",
+      "max_loss":"net debit",
+      "greeks":"+Delta,+Gamma,+Vega,-Theta",
+      "iv_skew":"live OVX/Brent-WTI option surface unavailable during weekend; reject trade if reopen skew/Vega makes debit >40% of width",
+      "catalysts":"Sep6 OPEC+; US-Iran/Kharq/Hormuz shipping; Sep10 US EIA holiday-delayed WPSR",
+      "worst_case":"OPEC+ supply increase + US-Iran de-escalation + shipping normalization produce downside gap and IV crush",
+      "abandon_if":"reopen gap is already extreme and no favorable risk-defined pricing remains"
+    },
+    {
+      "name":"Long IH2609 / Short IM2609",
+      "structure":"Long 12 IH2609 / Short 7 IM2609 reference basket; multipliers 300 and 200 CNY/pt; notionals about CNY10.497m vs CNY10.455m",
+      "entry":"Monday 09:30-10:15 only if IH leads IM >=0.35ppt; IH main OI stays positive or all-maturity OI does not reverse; IM main OI does not rebuild >1.5%-2% as aggressive longs; IM basis <=-0.55% to -0.60% and at least ~20bp deeper than IH; MO ATM IV >=28% and RR25 <=-3.5vol without CSI1000 panic >2.5%; do not chase opening relative gap >1ppt; add at >=0.65-0.75ppt lead",
+      "invalidation":"pair relative PnL -0.65ppt; or IM beats IH >=0.55ppt with material positive IM main OI and MO RR25 >-2.5vol; or policy/liquidity catalyst reignites small-cap beta",
+      "tp1":"+1.5ppt relative",
+      "tp2":"+3.0ppt relative",
+      "max_loss":"non-limited; about CNY105k per 1ppt adverse move on matched notional before basis/slippage/roll/margin/gap",
+      "greeks":"near-linear relative Delta; Gamma/Theta/Vega approximately zero",
+      "iv_skew":"MO2609 ATM 28.87%, RR25 -3.82vol, 10d put IV 37.09%; futures pair preferred to chasing rich MO puts",
+      "catalysts":"Monday style follow-through; Sep9 China CPI/PPI; liquidity/style flow",
+      "worst_case":"small-cap policy/liquidity catalyst triggers overnight relative gap",
+      "abandon_if":"IH OI reverses, IM aggressive longs rebuild, skew normalizes and IM relative strength returns"
+    },
+    {
+      "name":"QQQ/NDX 10-21D PPI/CPI Failed-Rally Put Spread",
+      "structure":"buy 35-40d put / sell 15-20d put; debit <=35%-40% of width",
+      "entry":"after Labor Day, enter half if QQQ first rallies 0.5%-1.0% then loses VWAP with 2Y>=4.40% or DXY>=99.3; alternative hot PPI/CPI path with 2Y>4.45% and QQQ failing event high; add below first-hour low if VIX<18",
+      "invalidation":"2Y<4.25%, WTI<87-88, QQQ makes new closing high with persistent SOXX/SMH leadership; or benign PPI/CPI collapses hike odds and real yields",
+      "tp1":"QQQ -3% or 1.5x debit",
+      "tp2":"QQQ -5% to -6% or 80% maximum spread value",
+      "max_loss":"net debit",
+      "greeks":"-Delta,+Gamma,+Vega,-Theta",
+      "iv_skew":"VIX 14.53 on Sep4; live QQQ/NDX surface required before entry",
+      "catalysts":"Sep10 PPI; Sep11 CPI; Sep8-10 Treasury supply window; Oracle Sep10 after close",
+      "worst_case":"soft inflation plus persistent semiconductor leadership drives upside gap and IV crush",
+      "abandon_if":"US reopen immediately gaps down >1.5% with VIX>20 or macro shifts decisively soft-landing risk-on"
+    }
+  ],
+  "us_rates": {
+    "date":"2026-09-04",
+    "2y":4.37,
+    "5y":4.54,
+    "10y":4.78,
+    "30y":5.24,
+    "10y_real":2.43,
+    "10y_breakeven_proxy":2.35,
+    "2s10s_bp":41,
+    "2s30s_bp":87,
+    "5s30s_bp":70
+  },
+  "risk_indicators": {"vix":14.53,"vix_date":"2026-09-04","move":73.10,"move_date":"2026-09-04","hy_oas_pct":2.65,"hy_oas_date":"2026-09-03"},
+  "china_index_score": 96,
+  "china_index_trade_status": "合格候选：周一确认后的Long IH2609 / Short IM2609",
+  "china_futures": {
+    "IH2609":{"close":2915.8,"change_pct":0.0026823,"volume":38129,"open_interest":66084,"oi_change":5199,"total_oi_change_all_maturities":9000,"cash_close":2923.81,"basis_pct":-0.0027396,"next_minus_main_points":-19.8,"return_3d":-0.0044,"return_5d":0.0015},
+    "IF2609":{"close":4537.4,"change_pct":-0.0008368,"volume":70771,"open_interest":134178,"oi_change":2566,"total_oi_change_all_maturities":9948,"cash_close":4548.05,"basis_pct":-0.0023417,"next_minus_main_points":-27.0,"return_3d":-0.0130,"return_5d":-0.0122},
+    "IC2609":{"close":7608.0,"change_pct":-0.0145588,"volume":108155,"open_interest":147105,"oi_change":2570,"total_oi_change_all_maturities":15244,"cash_close":7652.69,"basis_pct":-0.0058398,"next_minus_main_points":-57.6,"option_proxy":"MO/IO/ETF only"},
+    "IM2609":{"close":7468.2,"change_pct":-0.0148013,"volume":167832,"open_interest":220708,"oi_change":-1981,"total_oi_change_all_maturities":9193,"cash_close":7508.09,"basis_pct":-0.0053129,"next_minus_main_points":-64.2,"return_3d":-0.0231,"return_5d":-0.0259}
+  },
+  "china_options": {
+    "HO2609":{"atm_iv":0.144293,"atm_iv_change_1d":-0.000223,"call25_iv":0.147343,"put25_iv":0.153775,"call10_iv":0.161691,"put10_iv":0.167461,"rr25":-0.006432,"bf25":0.006266,"pcr_oi":0.6497,"pcr_volume":0.5413,"call_oi_change":-350,"put_oi_change":-179,"gamma_peak":2900,"atm_iv_change_3d_volpts":0.20,"atm_iv_change_5d_volpts":0.48},
+    "IO2609":{"atm_iv":0.186322,"atm_iv_change_1d":0.006806,"call25_iv":0.175733,"put25_iv":0.206276,"call10_iv":0.174914,"put10_iv":0.224709,"rr25":-0.030543,"bf25":0.004683,"pcr_oi":0.7351,"pcr_volume":0.5647,"call_oi_change":-1107,"put_oi_change":-1306,"gamma_peak":4600,"atm_iv_change_3d_volpts":1.31,"atm_iv_change_5d_volpts":1.78},
+    "MO2609":{"atm_iv":0.288677,"atm_iv_change_1d":0.004056,"call25_iv":0.281250,"put25_iv":0.319450,"call10_iv":0.284537,"put10_iv":0.370879,"rr25":-0.038200,"bf25":0.011673,"pcr_oi":0.7272,"pcr_volume":0.7689,"call_oi_change":4363,"put_oi_change":-216,"gamma_peak":7600,"gamma_peak_change_1d":-400,"atm_iv_change_3d_volpts":0.52,"atm_iv_change_5d_volpts":2.40}
+  },
+  "china_etf_creation_redemption_estimates_cny": {"510050":267863400,"510300":756100800,"510500":-30692000,"512100":140024000,"method":"daily share change times market close; not secondary-market active flow and not evidence of policy-fund trading"},
+  "china_multi_period_reference": {"exact_through":"2026-09-04_for_1d_3d_5d","stale_20d_as_of":"2026-09-02","futures_20d":{"IH":0.0019,"IF":-0.0192,"IM":0.0143},"atm_iv_change_20d_volpts":{"HO":-2.53,"IO":-1.48,"MO":0.35}},
+  "action_list": {
+    "A":"周日主要市场关闭，无新增裸方向仓；已有有限风险油Call可保留核心仓但不在周末追加。",
+    "B":"第一优先OPEC+后/重开确认的WTI/Brent 30-45D Call Spread；第二周一09:30-10:15确认后的Long 12 IH2609/Short 7 IM2609；第三周二起QQQ/NDX PPI/CPI Failed-Rally Put Spread。",
+    "C":"观察2s30s 92-95bp hot-inflation flattener、Oracle前AI quality/Capex分化、USDJPY 157.5-159反抽失败、黄金政策信用背离。",
+    "D":"不裸空油、不追重开首个gap、不追MO Put、不在156附近追JPY Put、不把AI需求强机械等同于QQQ无宏观风险。"
+  },
+  "risk_budget": {"probe_max_loss_nav":"0.25%-0.75%","confirmed_max_loss_nav":"0.75%-1.50%","high_conviction_theme_total":"<=2.5%-3.0% NAV","shared_factor_rule":"oil calls and QQQ puts share energy/geopolitical stagflation; QQQ puts and rates trades share Fed/inflation; IH/IM pair and MO directional trades share China size-style. Prefer <=1.5%-2.0% NAV combined stress on correlated global top trades."},
+  "sources": [
+    "U.S. Treasury Daily Treasury Par Yield Curve Rates 2026-09-04",
+    "U.S. Treasury Daily Treasury Par Real Yield Curve Rates 2026-09-04",
+    "BLS August 2026 Employment Situation and September 2026 PPI/CPI calendar",
+    "Cboe VIX trade data 2026-09-04",
+    "ICE/FRED BofA US High Yield OAS through 2026-09-03",
+    "Reuters 2026-09-05 US/Iranian forces fire at vessels near Iran",
+    "Reuters 2026-09-05 US military strikes three Iranian crude oil carriers",
+    "Reuters 2026-09-04 Hormuz shipping traffic below 10-day average",
+    "Reuters 2026-09-02 OPEC+ likely to keep October output policy unchanged",
+    "Reuters 2026-09-05 Foxconn AI demand / August revenue",
+    "Reuters 2026-09-05 South Korea chip-led exports",
+    "EIA Weekly Petroleum Status Report holiday schedule",
+    "ECB 2026-09-10 monetary-policy meeting calendar",
+    "National Bureau of Statistics China 2026 release calendar and August PMI",
+    "PBOC/Xinhua 2026-09-04 announcement of Sep7 CNY500bn 3M outright reverse repo",
+    "Oracle Investor Relations FY27 Q1 earnings schedule",
+    "farfromexact/China-Options-Engine data/radar_latest.json and data/radar_history.json"
+  ],
+  "China-Options-Engine_actual_paths": ["data/radar_latest.json","data/radar_history.json"],
+  "china_options_date": "2026-09-04",
+  "data_fresh": true,
+  "previous_date": "2026-09-05",
+  "errors": [
+    "data/radar_history.json已通过GitHub connector必读，但连接器因文件体量未返回可完整解析正文；本次不伪造新的20D滚动值，1D使用9月4日精确EOD，3D/5D及20D采用上一期已验证窗口并明确标记。",
+    "周日08:00 OPEC+ 9月6日会议结果尚未公开，能源期货也尚未完成周日晚重开后的价格发现，因此油交易只能给条件结构，不能给实时期权权利金。",
+    "Reuters不同页面对9月4日Brent存在活跃合约/时点口径差异（油市收盘口径约96.28美元，另一全球市场wrap引用不同数值）；因此不跨源硬算Brent 1D，WTI 91.48美元作为更干净基准。",
+    "MOVE使用ICE二手市场数据73.10；HY OAS最新可靠值为9月3日2.65%，存在数据滞后。",
+    "QQQ/NDX、FX、油、黄金完整同步期权surface在周末不可可靠取得，因此不提供虚构精确权利金或合约代码。",
+    "美国9月8-10月初3Y/10Y/30Y供给窗口的精确auction hour本轮未可靠抓取正式announcement，因此仅列日期窗口，不编小时。"
+  ],
+  "archive_status": "pending_verification",
+  "ci_validation_status": "pending_or_unverified"
+}
