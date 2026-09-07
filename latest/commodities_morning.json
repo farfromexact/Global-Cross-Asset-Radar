@@ -1,41 +1,40 @@
 {
   "schema_version": "1.0",
   "status": "published",
-  "report_date": "2026-09-07",
+  "report_date": "2026-09-08",
   "edition": "commodities_morning",
-  "generated_at_bjt": "2026-09-07T07:02:39+08:00",
+  "generated_at_bjt": "2026-09-08T07:11:40+08:00",
   "weekend_mode": false,
-  "title": "全球商品期货期权高风险机会雷达｜晨间版｜2026-09-07",
-  "prompt_version": "radar_2026-09-06_coverage_v1",
-  "data_protocol_version": "china_commodities_v2",
-  "one_sentence_conclusion": "截至本报告时点，无可立即执行的合格新交易；SC2610、BR2611与V2701存在待验证优势，但周末事件与夜盘语义异常令9:00首跳赔率不合格。",
-  "regime": "geopolitical supply right-tail / Monday price-discovery vacuum / rubber-chain night squeeze / materials curve divergence / high-real-yield precious-metal pressure",
+  "title": "全球商品期货期权高风险机会雷达｜晨间版",
+  "one_sentence_conclusion": "截至本报告时点，无可立即执行的合格新交易；PG2610、MA610存在待验证多头优势，FG701出现失败挤压空头线索，均应等开盘确认。",
+  "regime": "oil geopolitical premium largely pre-traded / LPG-methanol catch-up / glass-soda failed squeeze / rubber divergence / real-yield pressure on precious metals",
   "worth_taking_risk": true,
-  "data_cutoff": "2026-09-07T07:02:39+08:00",
+  "data_cutoff": {
+    "beijing_time": "2026-09-08T07:00:00+08:00",
+    "china_cash_market": "closed",
+    "us_cash_market": "closed",
+    "notes": [
+      "China EOD 2026-09-07",
+      "Night Session trading_date 2026-09-08 complete",
+      "09:00 China day session not yet occurred"
+    ]
+  },
   "input_snapshots": {
     "china_commodities": {
       "repository": "farfromexact/China-Commodities-Engine",
-      "branch": "main",
-      "last_run_status_path": "data/last_run_status.json",
-      "radar_latest_path": "data/radar_latest.json",
-      "radar_history_path": "data/radar_history.json",
-      "trade_date": "2026-09-04",
-      "generated_at": "2026-09-07T06:12:06.557521+08:00",
+      "paths": [
+        "data/report_input_latest.json",
+        "data/night_session/last_run_status.json",
+        "data/last_run_status.json",
+        "data/radar_latest.json",
+        "data/night_session/latest.json",
+        "data/options/surface_latest.json",
+        "data/contract_meta.json"
+      ],
+      "trade_date": "2026-09-07",
+      "generated_at": "2026-09-08T06:15:25+08:00",
       "data_fresh": true,
       "official_complete": false,
-      "source_date_match_pct": 100,
-      "full_market_ready": true,
-      "critical_module_errors": 0,
-      "history_record_count": 20,
-      "module_quality": {
-        "futures": "fresh",
-        "market_state": "fresh",
-        "physical": "fresh",
-        "external": "fresh",
-        "night_session": "semantic_error_fallback",
-        "options": "partial",
-        "contract_metadata": "partial"
-      },
       "included_exchanges": [
         "SHFE",
         "INE",
@@ -43,533 +42,499 @@
         "CZCE",
         "GFEX"
       ],
-      "actual_read_paths": [
-        "data/report_input_latest.json",
-        "data/night_session/last_run_status.json",
-        "data/last_run_status.json",
-        "data/radar_latest.json",
-        "data/latest.json",
-        "data/night_session/latest.json",
-        "data/contract_meta.json"
-      ]
-    },
-    "china_options_repository": "farfromexact/China-Commodities-Engine",
-    "china_options_path": "data/options/quality_latest.json",
-    "china_options_date": "2026-09-04",
-    "china_options_generated_at": "2026-09-06T21:59:25+00:00",
-    "china_options_fresh": true,
-    "china_options_official_coverage": 0.8125
-  },
-  "report_input_requested_date": "2026-09-04",
-  "report_input_generated_at": "2026-09-07T06:12:06.557521+08:00",
-  "module_freshness": {
-    "futures": "2026-09-04 latest-valid",
-    "market_state": "2026-09-04 latest-valid",
-    "physical": "2026-09-04 native-frequency-valid",
-    "external": "2026-09-04 repo EOD plus 2026-09-07 07:00 web",
-    "night_session": "raw exact-contract 2026-09-04/05 with invalid trading-date label",
-    "options": "2026-09-04 latest-valid T-1",
-    "metadata": "2026-09-04 partial"
-  },
-  "night_session_trading_date": "2026-09-05",
-  "night_session_semantic_target": "2026-09-07",
-  "night_session_date": "2026-09-04",
-  "night_session_generated_at": "2026-09-05T06:02:00+08:00",
-  "night_session_data_fresh": false,
-  "night_session_validation_passed": false,
-  "night_session_coverage_complete": true,
-  "night_session_contract_count": 611,
-  "night_session_product_count": 55,
-  "night_session_fallback_used": true,
-  "physical_coverage": {
-    "targets": 20,
-    "fresh": 18,
-    "unavailable": [
-      "SC",
-      "LU"
-    ],
-    "basis_grade": "mostly C/context-only"
-  },
-  "external_coverage": {
-    "repo_series_valid": 17,
-    "repo_series_target": 22,
-    "usage": "context_only",
-    "web_cutoff": "2026-09-07T07:00:00+08:00"
-  },
-  "options_surface_ready": false,
-  "options_positioning_ready": false,
-  "options_execution_ready": false,
-  "contract_metadata_quality": "partial",
-  "source_status": {
-    "futures": {
-      "status": "ok",
-      "source_date": "2026-09-04",
-      "contracts": 802,
-      "full_market_ready": true,
       "source_date_match_pct": 100,
-      "critical_errors": 0,
-      "placeholder_excluded": 6
-    },
-    "physical": {
-      "status": "ok",
-      "fresh_targets": 18,
-      "target_count": 20,
-      "unavailable": [
-        "SC",
-        "LU"
-      ]
-    },
-    "external": {
-      "status": "ok",
-      "valid_series": 17,
-      "target_series": 22
-    },
-    "night_session": {
-      "status": "parseable_but_semantically_invalid_label",
-      "module_current_status": "empty/non-session",
-      "raw_label_trading_date": "2026-09-05",
-      "calendar_verified_trading_date": "2026-09-07",
-      "fallback_used": true
-    },
-    "options": {
-      "status": "partial",
-      "contracts": 19394,
-      "series": 352,
-      "products_success": 52,
-      "products_target": 64,
-      "iv_coverage": 0.9771,
-      "oi_coverage": 0.6821,
-      "bid_ask_coverage": 0,
-      "surface_ready": false,
-      "positioning_ready": false,
-      "execution_ready": false
-    },
-    "metadata": {
-      "status": "partial",
-      "effective_match_coverage": 0.7332,
-      "parameter_coverage": 0.298
+      "full_market_ready": true,
+      "critical_module_errors": 0
     }
+  },
+  "source_status": {
+    "futures": "ok",
+    "market_state": "ok",
+    "physical": "ok_partial_coverage",
+    "external": "ok_daily_plus_web_refresh",
+    "night_session": "ok",
+    "options": "partial_no_execution",
+    "contract_metadata": "partial"
   },
   "dashboard": [
     {
-      "asset": "SC2610",
-      "latest": 685.2,
-      "change_1d": -1.12896,
-      "change_1w": 15.3301,
-      "signal": "gap acceptance/failed-gap",
-      "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-      "data_attribute": "same-contract futures"
+      "asset": "PG2610",
+      "close": 6587,
+      "settlement": 6549,
+      "change_1d": 0.3986,
+      "change_5d": 8.0158,
+      "volume": 162098,
+      "open_interest": 105332,
+      "delta_open_interest": -2999,
+      "curve_pct": 3.7055,
+      "night_close": 6702,
+      "night_return_vs_close_pct": 1.7459,
+      "night_return_vs_settlement_pct": 2.3362,
+      "night_delta_open_interest": 4722,
+      "signal": "conditional long; wait 30m"
     },
     {
-      "asset": "BR2611",
-      "latest": 14810,
-      "change_1d": -0.13441,
-      "change_1w": 3.8072,
-      "signal": "rubber squeeze verification",
-      "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-      "data_attribute": "same-contract futures"
+      "asset": "MA610",
+      "close": 3212,
+      "settlement": 3168,
+      "change_1d": -1.1853,
+      "change_5d": 8.8286,
+      "volume": 2486683,
+      "open_interest": 620732,
+      "delta_open_interest": 14234,
+      "curve_pct": 3.8194,
+      "night_close": 3245,
+      "night_return_vs_close_pct": 1.0274,
+      "night_return_vs_settlement_pct": 2.4306,
+      "night_delta_open_interest": 46551,
+      "signal": "settlement reclaim long; wait 30m"
+    },
+    {
+      "asset": "FG701",
+      "close": 976,
+      "settlement": 978,
+      "change_1d": 0.7209,
+      "change_5d": 4.0426,
+      "volume": 1611473,
+      "open_interest": 1181422,
+      "delta_open_interest": -27835,
+      "curve_pct": -4.7518,
+      "night_close": 964,
+      "night_return_vs_close_pct": -1.2295,
+      "night_return_vs_settlement_pct": -1.4315,
+      "night_delta_open_interest": 20518,
+      "signal": "failed squeeze short"
     },
     {
       "asset": "RU2701",
-      "latest": 18700,
-      "change_1d": 0.26709,
-      "change_1w": -0.213,
-      "signal": "wait 30-45m",
-      "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-      "data_attribute": "same-contract futures"
+      "close": 19180,
+      "settlement": 19110,
+      "change_1d": 1.8114,
+      "change_5d": 1.245,
+      "volume": 492743,
+      "open_interest": 164125,
+      "delta_open_interest": 11338,
+      "curve_pct": -1.0248,
+      "night_close": 19390,
+      "night_return_vs_close_pct": 1.0949,
+      "night_return_vs_settlement_pct": 1.4652,
+      "night_delta_open_interest": 6031,
+      "signal": "rubber breadth; do not chase"
     },
     {
       "asset": "NR2611",
-      "latest": 15845,
-      "change_1d": 0,
-      "change_1w": -0.439,
-      "signal": "price/curve conflict",
-      "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-      "data_attribute": "same-contract futures"
+      "close": 16345,
+      "settlement": 16260,
+      "change_1d": 2.4252,
+      "change_5d": 1.4981,
+      "volume": 134532,
+      "open_interest": 78961,
+      "delta_open_interest": 5754,
+      "curve_pct": -0.1869,
+      "night_close": 16580,
+      "night_return_vs_close_pct": 1.4377,
+      "night_return_vs_settlement_pct": 1.968,
+      "night_delta_open_interest": 1609,
+      "signal": "confirm three-rubber breadth"
     },
     {
-      "asset": "V2701",
-      "latest": 5128,
-      "change_1d": 3.0675,
-      "change_1w": 11.5044,
-      "signal": "failed-squeeze short watch",
-      "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-      "data_attribute": "same-contract futures"
+      "asset": "BR2611",
+      "close": 15455,
+      "settlement": 15425,
+      "change_1d": 3.8022,
+      "change_5d": 5.6507,
+      "volume": 180672,
+      "open_interest": 97144,
+      "delta_open_interest": 14756,
+      "curve_pct": 1.5399,
+      "night_close": 15410,
+      "night_return_vs_close_pct": -0.2912,
+      "night_return_vs_settlement_pct": -0.0972,
+      "night_delta_open_interest": -2683,
+      "signal": "prior long downgraded"
     },
     {
-      "asset": "SF611",
-      "latest": 6624,
-      "change_1d": 5.0576,
-      "change_1w": 8.4242,
-      "signal": "pullback absorption",
-      "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-      "data_attribute": "same-contract futures"
-    },
-    {
-      "asset": "SA701",
-      "latest": 1093,
-      "change_1d": 1.7908,
-      "change_1w": 5.1607,
-      "signal": "price strong/curve weak",
-      "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-      "data_attribute": "same-contract futures"
-    },
-    {
-      "asset": "AU2610",
-      "latest": 965.96,
-      "change_1d": 1.9705,
-      "change_1w": -2.3084,
-      "signal": "safe-haven elasticity test",
-      "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-      "data_attribute": "same-contract futures"
-    },
-    {
-      "asset": "AG2610",
-      "latest": 16250,
-      "change_1d": 2.2431,
-      "change_1w": -2.973,
-      "signal": "avoid first bounce",
-      "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-      "data_attribute": "same-contract futures"
+      "asset": "SC2610",
+      "close": 699.3,
+      "settlement": 688.5,
+      "change_1d": 0.7905,
+      "change_5d": 11.3537,
+      "volume": 195677,
+      "open_interest": 38974,
+      "delta_open_interest": 3181,
+      "curve_pct": 6.1681,
+      "night_close": 700.4,
+      "night_return_vs_close_pct": 0.1573,
+      "night_return_vs_settlement_pct": 1.7284,
+      "night_delta_open_interest": -224,
+      "signal": "headline strong; marginal elasticity weak"
     },
     {
       "asset": "FU2611",
-      "latest": 3841,
-      "change_1d": 0.207,
-      "change_1w": 5.504,
-      "signal": "SC-FU divergence",
-      "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-      "data_attribute": "same-contract futures"
+      "close": 3880,
+      "settlement": 3799,
+      "change_1d": -1.8853,
+      "change_5d": 1.6319,
+      "volume": 990485,
+      "open_interest": 203033,
+      "delta_open_interest": -2910,
+      "curve_pct": 4.5802,
+      "night_close": 3877,
+      "night_return_vs_close_pct": -0.0773,
+      "night_return_vs_settlement_pct": 2.0532,
+      "night_delta_open_interest": 1652,
+      "signal": "SC-FU watch only"
     },
     {
-      "asset": "EG2610",
-      "latest": 5898,
-      "change_1d": 0.5679,
-      "change_1w": 16.183,
-      "signal": "trend strong/elasticity weak",
-      "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-      "data_attribute": "same-contract futures"
+      "asset": "V2701",
+      "close": 5051,
+      "settlement": 5057,
+      "change_1d": 0.3373,
+      "change_5d": 7.6874,
+      "volume": 2191975,
+      "open_interest": 1097510,
+      "delta_open_interest": -37484,
+      "curve_pct": -1.1934,
+      "night_close": 5011,
+      "night_return_vs_close_pct": -0.7919,
+      "night_return_vs_settlement_pct": -0.9096,
+      "night_delta_open_interest": -1808,
+      "signal": "failed squeeze short watch"
     },
     {
-      "asset": "M2701",
-      "latest": 3423,
-      "change_1d": 0.4725,
-      "change_1w": 1.734,
-      "signal": "no directional edge",
-      "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-      "data_attribute": "same-contract futures"
+      "asset": "SA701",
+      "close": 1079,
+      "settlement": 1091,
+      "change_1d": 1.0185,
+      "change_5d": 3.4123,
+      "volume": 2431804,
+      "open_interest": 1255644,
+      "delta_open_interest": 37247,
+      "curve_pct": -6.1611,
+      "night_close": 1064,
+      "night_return_vs_close_pct": -1.3902,
+      "night_return_vs_settlement_pct": -2.4748,
+      "night_delta_open_interest": 30192,
+      "signal": "reversal; do not chase first drop"
     },
     {
-      "asset": "EC2610",
-      "latest": 1860.5,
-      "change_1d": 0.5416,
-      "change_1w": -0.536,
-      "signal": "no exact overseas mapping",
-      "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-      "data_attribute": "same-contract futures"
+      "asset": "AU2610",
+      "close": 950.78,
+      "settlement": 954.52,
+      "change_1d": -1.679,
+      "change_5d": -2.4248,
+      "volume": 307857,
+      "open_interest": 154549,
+      "delta_open_interest": -3835,
+      "curve_pct": -0.4505,
+      "night_close": 954.1,
+      "night_return_vs_close_pct": 0.3492,
+      "night_return_vs_settlement_pct": -0.044,
+      "night_delta_open_interest": 1047,
+      "signal": "settlement repair only"
+    },
+    {
+      "asset": "AG2610",
+      "close": 15990,
+      "settlement": 16025,
+      "change_1d": -1.7956,
+      "change_5d": -3.8635,
+      "volume": 513715,
+      "open_interest": 199514,
+      "delta_open_interest": -8318,
+      "curve_pct": -0.1498,
+      "night_close": 16143,
+      "night_return_vs_close_pct": 0.9568,
+      "night_return_vs_settlement_pct": 0.7363,
+      "night_delta_open_interest": 3419,
+      "signal": "China beta exceeds overseas"
+    },
+    {
+      "asset": "P2701",
+      "close": 10354,
+      "settlement": 10264,
+      "change_1d": 0.5092,
+      "change_5d": 0.2246,
+      "volume": 750269,
+      "open_interest": 618083,
+      "delta_open_interest": 31139,
+      "curve_pct": -0.0714,
+      "night_close": 10455,
+      "night_return_vs_close_pct": 0.9755,
+      "night_return_vs_settlement_pct": 1.8609,
+      "night_delta_open_interest": 17407,
+      "signal": "direction confirmed; odds average"
     }
   ],
   "meaningful_changes": [
-    {
-      "item": "SC event upgrade",
-      "reason": "OPEC+ unchanged October output, tanker/exclusion-zone escalation, live oil reopen higher"
-    },
-    {
-      "item": "Rubber anomaly",
-      "change": "BR +5.27%, RU +2.43%, NR +3.12% vs close"
-    },
-    {
-      "item": "V squeeze failure",
-      "change": "Night -1.09% vs close; delta OI -32897"
-    },
-    {
-      "item": "Gold-credit test",
-      "change": "not confirmed"
-    },
-    {
-      "item": "EB correction",
-      "change": "Night 9660; +0.50% vs close / -0.18% vs settle"
-    }
+    "SC Night marginal elasticity fell to +0.16% vs close and curve narrowed",
+    "PG/MA replaced SC as strongest energy breadth",
+    "SA/FG reversed the day-session squeeze",
+    "BR stalled while RU/NR retained breadth",
+    "AU only repaired toward settlement; gold-credit long thesis not confirmed",
+    "Options product coverage fell from 58/64 to 52/64"
   ],
   "top_opportunities": [
     {
       "rank": 1,
-      "name": "SC2610 gap接受多/failed-gap空",
-      "score": 78,
-      "direction": "two-way conditional, long bias",
+      "idea_id": "COM-M-PG2610-OIL-BREADTH-20260908",
+      "name": "PG2610回撤确认多",
+      "score": 76,
+      "score_components": {
+        "logic": 21,
+        "odds_convexity": 18,
+        "catalyst": 17,
+        "price_curve_vol": 12,
+        "crowding_positioning_technical": 8
+      },
+      "direction": "conditional_long",
       "holding_period": "intraday-3D",
       "stage": "waiting_trigger",
       "instruments": [
-        "SC2610 futures"
+        "PG2610 futures"
       ],
       "max_loss_limited": false,
-      "score_components": {
-        "logic": 22,
-        "odds_convexity": 18,
-        "catalyst": 19,
-        "price_curve_vol": 11,
-        "crowding_positioning_technical": 8
-      },
-      "idea_id": "COM-E-SC2610-GAP-20260905",
       "independent_support_layers": [
         1,
         2,
         4
       ],
-      "evidence_sufficiency": "partial",
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
       "execution_status": "wait 30m after 09:00"
     },
     {
       "rank": 2,
-      "name": "BR2611夜盘挤压验真多",
-      "score": 68,
-      "direction": "long conditional",
-      "holding_period": "intraday-2D",
-      "stage": "research_watch",
-      "instruments": [
-        "BR2611 futures"
-      ],
-      "max_loss_limited": false,
+      "idea_id": "COM-M-MA610-SETTLE-RECLAIM-20260908",
+      "name": "MA610 settlement-reclaim多",
+      "score": 73,
       "score_components": {
-        "logic": 18,
-        "odds_convexity": 14,
-        "catalyst": 12,
+        "logic": 21,
+        "odds_convexity": 17,
+        "catalyst": 14,
         "price_curve_vol": 12,
-        "crowding_positioning_technical": 12
+        "crowding_positioning_technical": 9
       },
-      "idea_id": "COM-M-BR2611-NIGHT-SQUEEZE-20260907",
-      "independent_support_layers": [
-        1,
-        2
-      ],
-      "evidence_sufficiency": "partial",
-      "execution_status": "wait at least 45m"
-    },
-    {
-      "rank": 3,
-      "name": "V2701 failed-squeeze空",
-      "score": 67,
-      "direction": "short conditional",
+      "direction": "conditional_long",
       "holding_period": "intraday-2D",
       "stage": "waiting_trigger",
       "instruments": [
-        "V2701 futures"
+        "MA610 futures"
       ],
       "max_loss_limited": false,
+      "independent_support_layers": [
+        1,
+        2,
+        4
+      ],
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "wait 30m after 09:00"
+    },
+    {
+      "rank": 3,
+      "idea_id": "COM-M-FG701-FAILED-SQUEEZE-20260908",
+      "name": "FG701 failed-squeeze空",
+      "score": 69,
       "score_components": {
         "logic": 19,
-        "odds_convexity": 17,
+        "odds_convexity": 18,
         "catalyst": 10,
-        "price_curve_vol": 11,
+        "price_curve_vol": 12,
         "crowding_positioning_technical": 10
       },
-      "idea_id": "COM-E-V2701-SQUEEZE-20260904",
+      "direction": "conditional_short",
+      "holding_period": "intraday-2D",
+      "stage": "waiting_trigger",
+      "instruments": [
+        "FG701 futures"
+      ],
+      "max_loss_limited": false,
       "independent_support_layers": [
         1,
         2
       ],
-      "evidence_sufficiency": "partial",
-      "execution_status": "wait 30-45m"
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "wait 30m after 09:00"
     },
     {
       "rank": 4,
-      "name": "SF611回撤吸收多",
-      "score": 66,
-      "direction": "long conditional",
-      "holding_period": "1-3D",
-      "stage": "research_watch",
-      "instruments": [
-        "SF611 futures"
-      ],
-      "max_loss_limited": false,
+      "idea_id": "COM-M-RU2701-RUBBER-BREADTH-20260908",
+      "name": "RU2701橡胶breadth多",
+      "score": 69,
       "score_components": {
-        "logic": 19,
+        "logic": 20,
         "odds_convexity": 16,
-        "catalyst": 8,
-        "price_curve_vol": 13,
+        "catalyst": 12,
+        "price_curve_vol": 11,
         "crowding_positioning_technical": 10
       },
-      "idea_id": "COM-E-SF611-PULLBACK-20260904",
-      "independent_support_layers": [
-        1,
-        2
-      ],
-      "evidence_sufficiency": "partial",
-      "execution_status": "wait day-session pullback"
-    },
-    {
-      "rank": 5,
-      "name": "AU2610地缘避险失败空",
-      "score": 65,
-      "direction": "short conditional",
-      "holding_period": "intraday-2D",
+      "direction": "conditional_long",
+      "holding_period": "intraday-3D",
       "stage": "research_watch",
       "instruments": [
-        "AU2610 futures"
+        "RU2701 futures"
       ],
       "max_loss_limited": false,
-      "score_components": {
-        "logic": 18,
-        "odds_convexity": 17,
-        "catalyst": 12,
-        "price_curve_vol": 9,
-        "crowding_positioning_technical": 9
-      },
-      "idea_id": "COM-E-AU2610-RATE-GEO-20260905",
       "independent_support_layers": [
         1,
         4
       ],
-      "evidence_sufficiency": "partial",
-      "execution_status": "wait 15-30m"
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "wait 30-45m"
+    },
+    {
+      "rank": 5,
+      "idea_id": "COM-E-V2701-SQUEEZE-20260904",
+      "name": "V2701 failed-squeeze空",
+      "score": 68,
+      "score_components": {
+        "logic": 19,
+        "odds_convexity": 18,
+        "catalyst": 9,
+        "price_curve_vol": 11,
+        "crowding_positioning_technical": 11
+      },
+      "direction": "conditional_short",
+      "holding_period": "intraday-2D",
+      "stage": "research_watch",
+      "instruments": [
+        "V2701 futures"
+      ],
+      "max_loss_limited": false,
+      "independent_support_layers": [
+        1,
+        2
+      ],
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "wait 30-45m"
     }
   ],
   "top_trade_cards": [
     {
-      "contract": "SC2610",
-      "idea_id": "COM-E-SC2610-GAP-20260905",
-      "classification": "conditional_candidate_not_immediate",
-      "score": 78,
-      "direction": "gap acceptance long / failed-gap short",
-      "fresh_evidence_layers": 3,
-      "previous_day_close": 685.2,
-      "previous_day_settlement": 683.1,
-      "current_night_ohlc": {
-        "open": 678,
-        "high": 696,
-        "low": 666.7,
-        "close": 690.7
-      },
-      "current_return_vs_close_pct": 0.8027,
-      "current_return_vs_settlement_pct": 1.1126,
-      "current_night_delta_oi": 2486,
-      "night_session_fallback": true,
-      "entry": "wait 30m; long if <=~701 gap holds 690.7 and breaks opening-range high; short if gap fails below 690.7 and retest fails with overseas oil fading",
-      "initial_stop": "long: 30m acceptance below 690.7; short: reclaim opening-range high",
-      "logic_invalidation": "long below 665.4 plus backwardation narrowing; short accepted above 699 plus external oil expansion",
-      "tp1": "1.5R",
-      "tp2": "3R",
+      "idea_id": "COM-M-PG2610-OIL-BREADTH-20260908",
+      "asset": "PG2610",
+      "direction": "conditional_long",
+      "status": "waiting_trigger",
+      "entry": "wait 30m; 6640-6680 holds then reclaim 6705/VWAP, or break/retest 6735",
+      "bad_fill": "above 6800 without pullback: abandon",
+      "stop": "30m acceptance below 6550",
+      "invalidation": "below 6549 with backwardation collapse and Brent below about 95.5",
+      "take_profit": [
+        "6820 or 1.5R",
+        "7050 or 3R"
+      ],
       "time_stop": "1-3D",
-      "max_loss_plan": "0.25%-0.50% NAV initial",
-      "abandon": "direct gap above ~725 or uncontrollable stop distance",
-      "contract_params": {
-        "multiplier": 1000,
-        "tick": 0.1,
-        "tick_value": 100,
-        "notional": 683100,
-        "margin": "unconfirmed dynamic",
-        "price_limit": "unconfirmed dynamic",
-        "last_trading_day": "rule: final trading day of month before delivery; repo key window 2026-09-30",
-        "delivery_risk": "physical; roll early",
-        "one_limit_stress": "683100*L",
-        "two_limit_stress": "683100*((1+L)^2-1)"
+      "risk_budget_nav_pct": "0.30-0.50",
+      "max_loss_limited": false,
+      "contract": {
+        "multiplier": 20,
+        "tick_size": 1,
+        "tick_value": 20,
+        "notional_at_night_close": 134040,
+        "margin_rate_percent": null,
+        "price_limit_percent": null,
+        "last_trading_day": "unconfirmed exact date; rule is fourth-last trading day of contract month",
+        "delivery": "physical",
+        "roll_plan": "exit/roll before delivery risk window"
+      },
+      "night": {
+        "open": 6600,
+        "high": 6731,
+        "low": 6553,
+        "close": 6702,
+        "return_vs_close_pct": 1.7459,
+        "return_vs_settlement_pct": 2.3362,
+        "delta_open_interest": 4722
       }
     },
     {
-      "contract": "BR2611",
-      "idea_id": "COM-M-BR2611-NIGHT-SQUEEZE-20260907",
-      "classification": "low-score research card",
-      "score": 68,
-      "direction": "long conditional",
-      "fresh_evidence_layers": 2,
-      "previous_day_close": 14810,
-      "previous_day_settlement": 14860,
-      "current_night_ohlc": {
-        "open": 14760,
-        "high": 15595,
-        "low": 14660,
-        "close": 15590
-      },
-      "current_return_vs_close_pct": 5.2667,
-      "current_return_vs_settlement_pct": 4.9125,
-      "current_night_delta_oi": 10293,
-      "night_session_fallback": true,
-      "entry": "wait 45m; pullback 15250-15450 holds then reclaim 15590/VWAP",
-      "initial_stop": "45m acceptance below 15150",
-      "logic_invalidation": "below 14860 with RU/NR reversal and curve deterioration",
-      "tp1": "1.5R",
-      "tp2": "3R",
+      "idea_id": "COM-M-MA610-SETTLE-RECLAIM-20260908",
+      "asset": "MA610",
+      "direction": "conditional_long",
+      "status": "waiting_trigger",
+      "entry": "wait 30m; 3210-3230 holds then reclaim 3246; or break/retest 3260",
+      "bad_fill": "above 3300 without pullback: abandon",
+      "stop": "30m acceptance below 3188",
+      "invalidation": "below 3168 and curve flattens further",
+      "take_profit": [
+        "3310 or 1.5R",
+        "3400 or 3R"
+      ],
       "time_stop": "1-2D",
-      "max_loss_plan": "0.25%-0.35% NAV; aggregate with RU/NR",
-      "abandon": "direct gap above 16000",
-      "contract_params": {
-        "multiplier": 5,
-        "tick": 5,
-        "tick_value": 25,
-        "notional": 77950,
-        "margin": "unconfirmed dynamic",
-        "price_limit": "unconfirmed dynamic",
-        "last_trading_day": "15th of contract month, holiday adjusted; exact date unconfirmed",
-        "delivery_risk": "physical; roll early",
-        "one_limit_stress": "77950*L",
-        "two_limit_stress": "77950*((1+L)^2-1)"
+      "risk_budget_nav_pct": "0.25-0.45",
+      "max_loss_limited": false,
+      "contract": {
+        "multiplier": 10,
+        "tick_size": 1,
+        "tick_value": 10,
+        "notional_at_night_close": 32450,
+        "margin_rate_percent": 7,
+        "price_limit_percent": 6,
+        "last_trading_day": "2026-10-21",
+        "last_delivery_day": "2026-10-26",
+        "delivery": "physical",
+        "roll_plan": "exit/roll before October delivery window"
+      },
+      "night": {
+        "open": 3217,
+        "high": 3246,
+        "low": 3189,
+        "close": 3245,
+        "return_vs_close_pct": 1.0274,
+        "return_vs_settlement_pct": 2.4306,
+        "delta_open_interest": 46551
       }
     },
     {
-      "contract": "V2701",
-      "idea_id": "COM-E-V2701-SQUEEZE-20260904",
-      "classification": "conditional_candidate",
-      "score": 67,
-      "direction": "short conditional",
-      "fresh_evidence_layers": 2,
-      "previous_day_close": 5128,
-      "previous_day_settlement": 5040,
-      "current_night_ohlc": {
-        "open": 5115,
-        "high": 5144,
-        "low": 5053,
-        "close": 5072
-      },
-      "current_return_vs_close_pct": -1.092,
-      "current_return_vs_settlement_pct": 0.6349,
-      "current_night_delta_oi": -32897,
-      "night_session_fallback": true,
-      "entry": "wait 30-45m; failed reclaim 5072-5100 then break 5040, or break/retest below 5040",
-      "initial_stop": "30m acceptance above 5128",
-      "logic_invalidation": "above 5154 with OI expansion and contango narrowing",
-      "tp1": 4920,
-      "tp2": 4800,
+      "idea_id": "COM-M-FG701-FAILED-SQUEEZE-20260908",
+      "asset": "FG701",
+      "direction": "conditional_short",
+      "status": "waiting_trigger",
+      "entry": "wait 30m; rebound to 968-975 fails then break 963, or break/retest 959",
+      "bad_fill": "below 950 without rebound: abandon",
+      "stop": "30m acceptance above 980",
+      "invalidation": "above 991 with OI decline and contango narrowing",
+      "take_profit": [
+        "940 or 1.5R",
+        "915 or 3R"
+      ],
       "time_stop": "1-2D",
-      "max_loss_plan": "0.25%-0.35% NAV",
-      "abandon": "direct low open below 4950",
-      "contract_params": {
-        "multiplier": 5,
-        "tick": 1,
-        "tick_value": 5,
-        "notional": 25360,
-        "margin": "unconfirmed dynamic",
-        "price_limit": "unconfirmed dynamic",
-        "last_trading_day": "10th trading day of contract month; exact date unconfirmed",
-        "delivery_risk": "physical; roll early",
-        "one_limit_stress": "25360*L",
-        "two_limit_stress": "25360*((1+L)^2-1)"
+      "risk_budget_nav_pct": "0.25-0.40",
+      "max_loss_limited": false,
+      "contract": {
+        "multiplier": 20,
+        "tick_size": 1,
+        "tick_value": 20,
+        "notional_at_night_close": 19280,
+        "margin_rate_percent": 9,
+        "price_limit_percent": 8,
+        "last_trading_day": "2027-01-14",
+        "last_delivery_day": "2027-01-19",
+        "delivery": "physical",
+        "roll_plan": "exit/roll before January delivery window"
+      },
+      "night": {
+        "open": 975,
+        "high": 975,
+        "low": 959,
+        "close": 964,
+        "return_vs_close_pct": -1.2295,
+        "return_vs_settlement_pct": -1.4315,
+        "delta_open_interest": 20518
       }
     }
   ],
-  "gold_tracking": {
-    "thesis": "gold-credit/safe-haven transmission",
-    "current_result": "not confirmed",
-    "facts": [
-      "AU Night -0.82% vs close",
-      "international gold nearly flat after weekend escalation"
-    ],
-    "counter_explanation": "higher real-rate expectations and already-priced geopolitical premium"
-  },
-  "ai_tracking": {
-    "applicability": "indirect only",
-    "coverage_boundary": "industrial metals and power commodities scanned; no identifiable model for precise AI attribution",
-    "status": "no directional score"
-  },
-  "china_tracking": {
-    "qualified_trade": false,
-    "score": null,
-    "preferred_future": null,
-    "futures_option_linkage": {
-      "scope": "IC/proxy boundary checked; no commodity execution expression"
-    }
-  },
   "commodities_tracking": {
     "data_quality": {
+      "futures_contracts": 802,
+      "full_market_ready": true,
+      "source_date_match_pct": 100,
+      "critical_errors": 0,
+      "placeholder_excluded": 7,
       "mandatory_products": 63,
       "mandatory_analyzed": 63,
       "dynamic_eligible_analyzed": [
@@ -590,214 +555,284 @@
         "WH",
         "ZC"
       ],
-      "futures_contracts": 802,
-      "full_market_ready": true,
-      "source_date_match_pct": 100,
-      "critical_errors": 0,
-      "placeholder_excluded": 6,
-      "physical": "18/20",
-      "options": "52/64; execution 0",
-      "night": "semantic-label error; exact records fallback only"
+      "total_product_scans": 71
     },
     "market_dashboard": [
       {
-        "asset": "SC2610",
-        "latest": 685.2,
-        "change_1d": -1.12896,
-        "change_1w": 15.3301,
-        "signal": "gap acceptance/failed-gap",
-        "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-        "data_attribute": "same-contract futures"
+        "asset": "PG2610",
+        "close": 6587,
+        "settlement": 6549,
+        "change_1d": 0.3986,
+        "change_5d": 8.0158,
+        "volume": 162098,
+        "open_interest": 105332,
+        "delta_open_interest": -2999,
+        "curve_pct": 3.7055,
+        "night_close": 6702,
+        "night_return_vs_close_pct": 1.7459,
+        "night_return_vs_settlement_pct": 2.3362,
+        "night_delta_open_interest": 4722,
+        "signal": "conditional long; wait 30m"
       },
       {
-        "asset": "BR2611",
-        "latest": 14810,
-        "change_1d": -0.13441,
-        "change_1w": 3.8072,
-        "signal": "rubber squeeze verification",
-        "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-        "data_attribute": "same-contract futures"
+        "asset": "MA610",
+        "close": 3212,
+        "settlement": 3168,
+        "change_1d": -1.1853,
+        "change_5d": 8.8286,
+        "volume": 2486683,
+        "open_interest": 620732,
+        "delta_open_interest": 14234,
+        "curve_pct": 3.8194,
+        "night_close": 3245,
+        "night_return_vs_close_pct": 1.0274,
+        "night_return_vs_settlement_pct": 2.4306,
+        "night_delta_open_interest": 46551,
+        "signal": "settlement reclaim long; wait 30m"
+      },
+      {
+        "asset": "FG701",
+        "close": 976,
+        "settlement": 978,
+        "change_1d": 0.7209,
+        "change_5d": 4.0426,
+        "volume": 1611473,
+        "open_interest": 1181422,
+        "delta_open_interest": -27835,
+        "curve_pct": -4.7518,
+        "night_close": 964,
+        "night_return_vs_close_pct": -1.2295,
+        "night_return_vs_settlement_pct": -1.4315,
+        "night_delta_open_interest": 20518,
+        "signal": "failed squeeze short"
       },
       {
         "asset": "RU2701",
-        "latest": 18700,
-        "change_1d": 0.26709,
-        "change_1w": -0.213,
-        "signal": "wait 30-45m",
-        "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-        "data_attribute": "same-contract futures"
+        "close": 19180,
+        "settlement": 19110,
+        "change_1d": 1.8114,
+        "change_5d": 1.245,
+        "volume": 492743,
+        "open_interest": 164125,
+        "delta_open_interest": 11338,
+        "curve_pct": -1.0248,
+        "night_close": 19390,
+        "night_return_vs_close_pct": 1.0949,
+        "night_return_vs_settlement_pct": 1.4652,
+        "night_delta_open_interest": 6031,
+        "signal": "rubber breadth; do not chase"
       },
       {
         "asset": "NR2611",
-        "latest": 15845,
-        "change_1d": 0,
-        "change_1w": -0.439,
-        "signal": "price/curve conflict",
-        "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-        "data_attribute": "same-contract futures"
+        "close": 16345,
+        "settlement": 16260,
+        "change_1d": 2.4252,
+        "change_5d": 1.4981,
+        "volume": 134532,
+        "open_interest": 78961,
+        "delta_open_interest": 5754,
+        "curve_pct": -0.1869,
+        "night_close": 16580,
+        "night_return_vs_close_pct": 1.4377,
+        "night_return_vs_settlement_pct": 1.968,
+        "night_delta_open_interest": 1609,
+        "signal": "confirm three-rubber breadth"
       },
       {
-        "asset": "V2701",
-        "latest": 5128,
-        "change_1d": 3.0675,
-        "change_1w": 11.5044,
-        "signal": "failed-squeeze short watch",
-        "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-        "data_attribute": "same-contract futures"
+        "asset": "BR2611",
+        "close": 15455,
+        "settlement": 15425,
+        "change_1d": 3.8022,
+        "change_5d": 5.6507,
+        "volume": 180672,
+        "open_interest": 97144,
+        "delta_open_interest": 14756,
+        "curve_pct": 1.5399,
+        "night_close": 15410,
+        "night_return_vs_close_pct": -0.2912,
+        "night_return_vs_settlement_pct": -0.0972,
+        "night_delta_open_interest": -2683,
+        "signal": "prior long downgraded"
       },
       {
-        "asset": "SF611",
-        "latest": 6624,
-        "change_1d": 5.0576,
-        "change_1w": 8.4242,
-        "signal": "pullback absorption",
-        "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-        "data_attribute": "same-contract futures"
-      },
-      {
-        "asset": "SA701",
-        "latest": 1093,
-        "change_1d": 1.7908,
-        "change_1w": 5.1607,
-        "signal": "price strong/curve weak",
-        "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-        "data_attribute": "same-contract futures"
-      },
-      {
-        "asset": "AU2610",
-        "latest": 965.96,
-        "change_1d": 1.9705,
-        "change_1w": -2.3084,
-        "signal": "safe-haven elasticity test",
-        "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-        "data_attribute": "same-contract futures"
-      },
-      {
-        "asset": "AG2610",
-        "latest": 16250,
-        "change_1d": 2.2431,
-        "change_1w": -2.973,
-        "signal": "avoid first bounce",
-        "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-        "data_attribute": "same-contract futures"
+        "asset": "SC2610",
+        "close": 699.3,
+        "settlement": 688.5,
+        "change_1d": 0.7905,
+        "change_5d": 11.3537,
+        "volume": 195677,
+        "open_interest": 38974,
+        "delta_open_interest": 3181,
+        "curve_pct": 6.1681,
+        "night_close": 700.4,
+        "night_return_vs_close_pct": 0.1573,
+        "night_return_vs_settlement_pct": 1.7284,
+        "night_delta_open_interest": -224,
+        "signal": "headline strong; marginal elasticity weak"
       },
       {
         "asset": "FU2611",
-        "latest": 3841,
-        "change_1d": 0.207,
-        "change_1w": 5.504,
-        "signal": "SC-FU divergence",
-        "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-        "data_attribute": "same-contract futures"
+        "close": 3880,
+        "settlement": 3799,
+        "change_1d": -1.8853,
+        "change_5d": 1.6319,
+        "volume": 990485,
+        "open_interest": 203033,
+        "delta_open_interest": -2910,
+        "curve_pct": 4.5802,
+        "night_close": 3877,
+        "night_return_vs_close_pct": -0.0773,
+        "night_return_vs_settlement_pct": 2.0532,
+        "night_delta_open_interest": 1652,
+        "signal": "SC-FU watch only"
       },
       {
-        "asset": "EG2610",
-        "latest": 5898,
-        "change_1d": 0.5679,
-        "change_1w": 16.183,
-        "signal": "trend strong/elasticity weak",
-        "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-        "data_attribute": "same-contract futures"
+        "asset": "V2701",
+        "close": 5051,
+        "settlement": 5057,
+        "change_1d": 0.3373,
+        "change_5d": 7.6874,
+        "volume": 2191975,
+        "open_interest": 1097510,
+        "delta_open_interest": -37484,
+        "curve_pct": -1.1934,
+        "night_close": 5011,
+        "night_return_vs_close_pct": -0.7919,
+        "night_return_vs_settlement_pct": -0.9096,
+        "night_delta_open_interest": -1808,
+        "signal": "failed squeeze short watch"
       },
       {
-        "asset": "M2701",
-        "latest": 3423,
-        "change_1d": 0.4725,
-        "change_1w": 1.734,
-        "signal": "no directional edge",
-        "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-        "data_attribute": "same-contract futures"
+        "asset": "SA701",
+        "close": 1079,
+        "settlement": 1091,
+        "change_1d": 1.0185,
+        "change_5d": 3.4123,
+        "volume": 2431804,
+        "open_interest": 1255644,
+        "delta_open_interest": 37247,
+        "curve_pct": -6.1611,
+        "night_close": 1064,
+        "night_return_vs_close_pct": -1.3902,
+        "night_return_vs_settlement_pct": -2.4748,
+        "night_delta_open_interest": 30192,
+        "signal": "reversal; do not chase first drop"
       },
       {
-        "asset": "EC2610",
-        "latest": 1860.5,
-        "change_1d": 0.5416,
-        "change_1w": -0.536,
-        "signal": "no exact overseas mapping",
-        "data_time": "2026-09-04 EOD; Night fallback through 2026-09-05 early BJT",
-        "data_attribute": "same-contract futures"
+        "asset": "AU2610",
+        "close": 950.78,
+        "settlement": 954.52,
+        "change_1d": -1.679,
+        "change_5d": -2.4248,
+        "volume": 307857,
+        "open_interest": 154549,
+        "delta_open_interest": -3835,
+        "curve_pct": -0.4505,
+        "night_close": 954.1,
+        "night_return_vs_close_pct": 0.3492,
+        "night_return_vs_settlement_pct": -0.044,
+        "night_delta_open_interest": 1047,
+        "signal": "settlement repair only"
+      },
+      {
+        "asset": "AG2610",
+        "close": 15990,
+        "settlement": 16025,
+        "change_1d": -1.7956,
+        "change_5d": -3.8635,
+        "volume": 513715,
+        "open_interest": 199514,
+        "delta_open_interest": -8318,
+        "curve_pct": -0.1498,
+        "night_close": 16143,
+        "night_return_vs_close_pct": 0.9568,
+        "night_return_vs_settlement_pct": 0.7363,
+        "night_delta_open_interest": 3419,
+        "signal": "China beta exceeds overseas"
+      },
+      {
+        "asset": "P2701",
+        "close": 10354,
+        "settlement": 10264,
+        "change_1d": 0.5092,
+        "change_5d": 0.2246,
+        "volume": 750269,
+        "open_interest": 618083,
+        "delta_open_interest": 31139,
+        "curve_pct": -0.0714,
+        "night_close": 10455,
+        "night_return_vs_close_pct": 0.9755,
+        "night_return_vs_settlement_pct": 1.8609,
+        "night_delta_open_interest": 17407,
+        "signal": "direction confirmed; odds average"
       }
     ],
     "supply_chain_map": [
       {
-        "chain": "SC-FU-LU",
-        "direction": "right-tail, internally divergent",
+        "chain": "PG-MA-SC-FU-LU",
+        "direction": "PG/MA catch-up; SC elasticity weak",
         "confidence": "medium-high"
       },
       {
-        "chain": "BR-RU-NR",
-        "direction": "conditional long/squeeze verification",
+        "chain": "SA-FG-V",
+        "direction": "failed squeeze / conditional short",
         "confidence": "medium"
       },
       {
-        "chain": "SF-SA-V",
-        "direction": "divergent",
+        "chain": "RU-NR-BR",
+        "direction": "RU/NR stronger than BR",
+        "confidence": "medium"
+      },
+      {
+        "chain": "AU-AG",
+        "direction": "rate pressure with partial China repair",
         "confidence": "medium-low"
       },
       {
-        "chain": "EG-MA-FU",
-        "direction": "trend strong, elasticity weak",
+        "chain": "P-Y-M",
+        "direction": "palm supported; CBOT stale by holiday",
         "confidence": "medium-low"
-      },
-      {
-        "chain": "agriculture/EC",
-        "direction": "no identified edge",
-        "confidence": "low"
       }
     ],
     "options_surface": {
-      "source_date": "2026-09-04",
-      "sample_contracts": 19394,
-      "series": 352,
+      "source_date": "2026-09-07",
       "products_success": 52,
       "products_target": 64,
+      "record_count": 19560,
+      "series_count": 354,
+      "iv_coverage": 0.9391601189,
+      "open_interest_coverage": 0.6867588573,
+      "bid_ask_coverage": 0,
       "global_surface_ready": false,
       "global_positioning_ready": false,
       "global_execution_ready": false,
-      "iv_coverage": 0.9771,
-      "oi_coverage": 0.6821,
-      "bid_ask_coverage": 0,
-      "available_metrics": [],
-      "tradeable_structures": [],
+      "surface_ready_count": 338,
+      "positioning_ready_count": 76,
+      "execution_ready_count": 0,
       "dealer_gamma_direction_known": false,
-      "series_research": [
-        {
-          "product": "BR",
-          "atm_iv_pct": 36.595,
-          "rv20_pct": 27.731,
-          "rr25": -3.92,
-          "warning": "T-1 moneyness stale after Night move; no quotes"
-        },
-        {
-          "product": "V",
-          "atm_iv_pct": 22.235,
-          "rv20_pct": 25.337,
-          "rr25": 3.71,
-          "warning": "no quotes"
-        },
-        {
-          "product": "SF",
-          "atm_iv_pct": 32.205,
-          "rv20_pct": 19.539,
-          "warning": "no quotes"
-        }
-      ]
+      "tradeable_structures": []
     },
     "night_session_risk_map": {
-      "previous_china_eod": "2026-09-04",
-      "raw_snapshot_label": "trading_date=2026-09-05/night_session_date=2026-09-04",
-      "calendar_verified_semantics": "belongs to 2026-09-07 under exchange convention",
-      "current_query": "2026-09-06 no session; 802 outside-window",
-      "fallback_used": true,
+      "previous_china_eod": "2026-09-07",
+      "trading_date": "2026-09-08",
+      "night_session_date": "2026-09-07",
+      "generated_at": "2026-09-08T06:02:17+08:00",
+      "data_fresh": true,
+      "validation_passed": true,
+      "published": true,
+      "coverage_complete": true,
+      "contract_count": 610,
+      "product_count": 55,
+      "fallback_used": false,
       "priority_waits": {
-        "SC": "30m",
+        "PG": "30m",
+        "MA": "30m",
+        "FG": "30m",
+        "SA": "45m",
+        "RU_NR": "30-45m",
         "BR": "45m",
-        "RU": "30-45m",
-        "NR": "45m",
-        "V": "30-45m",
-        "SF": "30m",
-        "SA": "30-45m",
-        "AU/AG": "15-30m"
+        "SC": "45m",
+        "AU_AG": "15-30m"
       }
     }
   },
@@ -806,6 +841,20 @@
     "required_analyzed": 63,
     "dynamic_eligible_analyzed": 8,
     "total_product_scans": 71,
+    "not_applicable_or_illiquid": [
+      "JR",
+      "PM",
+      "RI",
+      "RS",
+      "WH",
+      "ZC"
+    ],
+    "horizons_scanned": [
+      "1D",
+      "3D",
+      "5D",
+      "20D"
+    ],
     "strategies_scanned": [
       "directional",
       "calendar/curve",
@@ -815,313 +864,283 @@
       "factor-neutral/basket",
       "volatility/skew/event-convexity"
     ],
-    "horizons_scanned": [
-      "1D",
-      "3D",
-      "5D",
-      "20D"
-    ],
     "data_insufficient": [
       "SC/LU physical",
       "A/B exact basis",
       "exact import parity",
-      "11 failed option products",
+      "12 failed option products",
       "all option execution quotes",
       "partial metadata",
-      "Night trading-date label"
-    ],
-    "not_applicable_or_illiquid": [
-      "JR",
-      "PM",
-      "RI",
-      "RS",
-      "WH",
-      "ZC"
+      "SHFE/DCE warehouse receipts"
     ]
   },
-  "idea_ledger": [
-    {
-      "idea_id": "COM-E-SC2610-GAP-20260905",
-      "first_proposed": "2026-09-05",
-      "current_status": "wait 30m trigger",
-      "change_reason": "new data"
-    },
-    {
-      "idea_id": "COM-E-V2701-SQUEEZE-20260904",
-      "first_proposed": "2026-09-04",
-      "current_status": "wait break/retest below 5040",
-      "change_reason": "price and curve"
-    },
-    {
-      "idea_id": "COM-E-SF611-PULLBACK-20260904",
-      "first_proposed": "2026-09-04",
-      "current_status": "wait day-session absorption",
-      "change_reason": "no new session"
-    },
-    {
-      "idea_id": "COM-E-AU2610-RATE-GEO-20260905",
-      "first_proposed": "2026-09-05",
-      "current_status": "safe-haven failure watch",
-      "change_reason": "thesis revision"
-    },
-    {
-      "idea_id": "COM-M-BR2611-NIGHT-SQUEEZE-20260907",
-      "first_proposed": "2026-09-07",
-      "current_status": "new research watch",
-      "change_reason": "new Night anomaly"
+  "report_input_requested_date": "2026-09-07",
+  "report_input_generated_at": "2026-09-08T06:15:25+08:00",
+  "data_protocol_version": "china_commodities_v2",
+  "module_freshness": {
+    "futures": "2026-09-07 fresh",
+    "market_state": "2026-09-07 fresh",
+    "physical": "18/20 fresh",
+    "external": "17/22 latest by native calendar",
+    "night_session": "2026-09-08 fresh/validated",
+    "options": "2026-09-07 partial/no execution",
+    "contract_metadata": "partial"
+  },
+  "night_session_trading_date": "2026-09-08",
+  "night_session_date": "2026-09-07",
+  "night_session_generated_at": "2026-09-08T06:02:17+08:00",
+  "night_session_data_fresh": true,
+  "night_session_validation_passed": true,
+  "night_session_coverage_complete": true,
+  "night_session_contract_count": 610,
+  "night_session_product_count": 55,
+  "night_session_fallback_used": false,
+  "physical_coverage": "18/20",
+  "external_coverage": "17/22 plus web refresh",
+  "options_surface_ready": false,
+  "options_positioning_ready": false,
+  "options_execution_ready": false,
+  "contract_metadata_quality": "partial",
+  "gold_tracking": {
+    "thesis": "gold credit / geopolitical hedge",
+    "status": "not confirmed",
+    "evidence": "AU Night +0.35% vs close but -0.04% vs settlement; international gold -0.4%"
+  },
+  "ai_tracking": {
+    "applicability": "indirect only",
+    "coverage_boundary": "industrial metals and power commodities scanned; no identifiable model for precise AI attribution",
+    "status": "no directional score"
+  },
+  "china_tracking": {
+    "qualified_trade": false,
+    "score": null,
+    "preferred_future": null,
+    "futures_option_linkage": {
+      "scope": "IC/proxy boundary checked; no commodity execution expression"
     }
-  ],
+  },
   "event_calendar": [
     {
+      "time_bjt": "2026-09-08T09:00:00+08:00",
       "event": "China day session",
-      "time_bjt": "2026-09-07 09:00"
+      "handling": "delay 15-45m"
     },
     {
+      "time_bjt": "2026-09-09T04:00:00+08:00",
+      "event": "USDA Crop Progress",
+      "handling": "reduce agriculture delta"
+    },
+    {
+      "time_bjt": "2026-09-09T09:30:00+08:00",
       "event": "China CPI/PPI",
-      "time_bjt": "2026-09-09 time unconfirmed"
+      "handling": "reduce industrial delta"
     },
     {
-      "event": "HC/SS and LU options listing",
-      "time_bjt": "2026-09-10 09:00"
-    },
-    {
+      "time_bjt": "2026-09-10T20:30:00+08:00",
       "event": "US PPI",
-      "time_bjt": "2026-09-10 20:30"
+      "handling": "reduce metals/oil delta and vega"
     },
     {
-      "event": "EIA WPSR",
-      "time_bjt": "2026-09-11 00:00/02:00"
+      "time_bjt": "2026-09-11T00:00:00+08:00",
+      "event": "EIA petroleum data window",
+      "handling": "reduce energy delta"
     },
     {
+      "time_bjt": "2026-09-11T20:30:00+08:00",
       "event": "US CPI",
-      "time_bjt": "2026-09-11 20:30"
+      "handling": "reduce precious-metals delta/vega"
     },
     {
+      "time_bjt": "2026-09-12T00:00:00+08:00",
       "event": "USDA WASDE",
-      "time_bjt": "2026-09-12 00:00"
-    },
-    {
-      "event": "CFTC COT",
-      "time_bjt": "2026-09-12 ~03:30 tentative"
+      "handling": "avoid unprotected agriculture add"
     }
   ],
   "action_list": {
     "A": "今天没有应立即建立的新仓位。",
-    "B": "09:30后SC2610守住690.7并突破opening-range high的1/3多；或跌破690.7、反抽失败且外油回吐的1/3 failed-gap空。",
-    "C": "观察BR2611等待45分钟验真、V2701跌破5040后的failed-squeeze空、SF611回撤吸收、AU避险弹性。",
-    "D": "避免9:00首跳追SC/BR/RU/NR、把Night ΔOI当已知新多、把C级basis当套利、execution=false期权和同因子叠仓。"
+    "B": "PG2610在6640—6680承接并重上6705，或MA610在3210—3230承接并重上3246；均等待30分钟、先1/3仓。",
+    "C": "观察FG701反抽失败空、RU/NR橡胶breadth、V2701 failed-squeeze、SC-FU相对价值及P/Y油脂联动。",
+    "D": "避免09:00首跳追PG/MA/SC/RU、低开追空SA/FG/V、继续追BR挤压、C级basis套利及无报价期权。"
   },
   "risk_budget": {
-    "single_trial_max_loss_nav": "0.25%-0.75%",
-    "confirmed_trade_max_loss_nav": "0.75%-1.50%",
-    "single_theme_total_risk_nav": "<=2.5%-3.0%",
+    "trial_max_loss_nav_pct": "0.25-0.50",
+    "confirmed_max_loss_nav_pct": "0.75-1.00",
+    "single_theme_max_loss_nav_pct": "2.5-3.0 hard cap; not recommended now",
     "factor_aggregation": [
-      "SC energy",
-      "BR/RU/NR rubber",
-      "SF/SA/V materials"
+      "PG/MA/SC/FU/LU energy factor",
+      "FG/SA/V materials-squeeze factor"
     ],
     "stress_tests": [
-      "1/2 price limits",
-      "gap stop-through",
+      "one/two price limits",
+      "gap and stop slippage",
       "margin increase",
+      "liquidity disappearance",
       "correlation break",
-      "liquidity loss",
-      "CNY move",
-      "IV jump/crush",
+      "RMB shock",
+      "IV jump/collapse",
       "delivery squeeze"
     ]
   },
   "sources": [
     {
-      "title": "China-Commodities-Engine report input",
-      "publisher": "GitHub",
+      "title": "China-Commodities-Engine unified report input",
+      "publisher": "GitHub/farfromexact",
       "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/report_input_latest.json",
+      "source_date": "2026-09-08",
+      "accessed_at_bjt": "2026-09-08T07:02:00+08:00",
+      "supported_claims": [
+        "EOD futures, market state, physical, external, options and metadata module status"
+      ]
+    },
+    {
+      "title": "China-Commodities-Engine Night Session status",
+      "publisher": "GitHub/farfromexact",
+      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/night_session/last_run_status.json",
+      "source_date": "2026-09-08",
+      "accessed_at_bjt": "2026-09-08T07:02:00+08:00",
+      "supported_claims": [
+        "Night trading-date semantics, validation and coverage"
+      ]
+    },
+    {
+      "title": "China-Commodities-Engine Options quality",
+      "publisher": "GitHub/farfromexact",
+      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/options/quality_latest.json",
       "source_date": "2026-09-07",
-      "accessed_at_bjt": "2026-09-07T07:02:39+08:00",
-      "source_type": "repository/market/news",
+      "accessed_at_bjt": "2026-09-08T07:02:00+08:00",
       "supported_claims": [
-        "unified input",
-        "module freshness"
+        "Options product coverage, IV/OI/bid-ask readiness"
       ]
     },
     {
-      "title": "Root run status",
-      "publisher": "GitHub",
-      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/last_run_status.json",
-      "source_date": "2026-09-07",
-      "accessed_at_bjt": "2026-09-07T07:02:39+08:00",
-      "source_type": "repository/market/news",
-      "supported_claims": [
-        "five exchanges",
-        "802 contracts",
-        "quality gate"
-      ]
-    },
-    {
-      "title": "Night exact contracts",
-      "publisher": "GitHub",
-      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/night_session/latest.json",
-      "source_date": "2026-09-05",
-      "accessed_at_bjt": "2026-09-07T07:02:39+08:00",
-      "source_type": "repository/market/news",
-      "supported_claims": [
-        "Night OHLC/returns/OI",
-        "raw label anomaly"
-      ]
-    },
-    {
-      "title": "SHFE Trading Hours",
-      "publisher": "Shanghai Futures Exchange",
-      "url": "https://www.shfe.com.cn/eng/reports/CalendarHolidays/TradingHours/",
-      "source_date": "2026-09-07",
-      "accessed_at_bjt": "2026-09-07T07:02:39+08:00",
-      "source_type": "official",
-      "supported_claims": [
-        "night-session date convention"
-      ]
-    },
-    {
-      "title": "OPEC September 6 statement",
-      "publisher": "OPEC",
-      "url": "https://www.opec.org/pr-detail/613-6-september-2026.html",
-      "source_date": "2026-09-06",
-      "accessed_at_bjt": "2026-09-07T07:02:39+08:00",
-      "source_type": "official",
-      "supported_claims": [
-        "October output requirements unchanged"
-      ]
-    },
-    {
-      "title": "Hormuz exclusion zone",
-      "publisher": "Associated Press",
-      "url": "https://apnews.com/article/a52beec77dc90af3d040d0553837ad20",
-      "source_date": "2026-09-07",
-      "accessed_at_bjt": "2026-09-07T07:02:39+08:00",
-      "source_type": "repository/market/news",
-      "supported_claims": [
-        "shipping-risk escalation"
-      ]
-    },
-    {
-      "title": "Iran Hormuz leverage wanes",
+      "title": "Oil prices rise to six-week highs on worsening Middle East conflict",
       "publisher": "Reuters",
-      "url": "https://www.reuters.com/business/energy/irans-hormuz-leverage-wanes-us-economic-squeeze-bites-2026-09-06/",
-      "source_date": "2026-09-06",
-      "accessed_at_bjt": "2026-09-07T07:02:39+08:00",
-      "source_type": "repository/market/news",
-      "supported_claims": [
-        "diversified supply counter-explanation"
-      ]
-    },
-    {
-      "title": "Brent futures",
-      "publisher": "Oilprice.com",
-      "url": "https://oilprice.com/futures/brent",
+      "url": "https://www.reuters.com/business/energy/oil-extends-gains-after-us-iran-strike-ships-2026-09-07/",
       "source_date": "2026-09-07",
-      "accessed_at_bjt": "2026-09-07T07:02:39+08:00",
-      "source_type": "repository/market/news",
+      "accessed_at_bjt": "2026-09-08T07:04:00+08:00",
       "supported_claims": [
-        "Brent around 96.90"
+        "Brent and WTI latest levels, Middle East supply risk, OPEC+ context"
       ]
     },
     {
-      "title": "Oil price dashboard",
-      "publisher": "Business Insider",
-      "url": "https://markets.businessinsider.com/commodities/oil-price",
+      "title": "Gold eases as robust US payrolls boost rate hike bets",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/india/gold-eases-robust-us-payrolls-boost-rate-hike-bets-inflation-data-focus-2026-09-07/",
       "source_date": "2026-09-07",
-      "accessed_at_bjt": "2026-09-07T07:02:39+08:00",
-      "source_type": "repository/market/news",
+      "accessed_at_bjt": "2026-09-08T07:04:00+08:00",
       "supported_claims": [
-        "WTI around 92.14",
-        "Friday anchors"
+        "Gold and silver Monday moves, rate-hike probability context"
       ]
     },
     {
-      "title": "USD/CNH",
-      "publisher": "Investing.com",
-      "url": "https://www.investing.com/currencies/usd-cnh",
+      "title": "Rupee ends flat; DXY near 98.9",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/india/rupee-may-withstand-oil-fed-pressures-with-rbi-support-2026-09-07/",
       "source_date": "2026-09-07",
-      "accessed_at_bjt": "2026-09-07T07:02:39+08:00",
-      "source_type": "repository/market/news",
+      "accessed_at_bjt": "2026-09-08T07:04:00+08:00",
       "supported_claims": [
-        "USD/CNH near 6.7076"
+        "DXY move and broad dollar context"
       ]
     },
     {
-      "title": "LME Official Prices",
-      "publisher": "London Metal Exchange",
-      "url": "https://www.lme.com/market-data/reports-and-data/lme-official-prices",
-      "source_date": "2026-09-04",
-      "accessed_at_bjt": "2026-09-07T07:02:39+08:00",
-      "source_type": "official",
-      "supported_claims": [
-        "official LME copper/aluminium"
-      ]
-    },
-    {
-      "title": "Rubber price",
+      "title": "Rubber benchmark",
       "publisher": "Trading Economics",
       "url": "https://tradingeconomics.com/commodity/rubber",
-      "source_date": "2026-09-04",
-      "accessed_at_bjt": "2026-09-07T07:02:39+08:00",
-      "source_type": "repository/market/news",
-      "supported_claims": [
-        "international rubber -0.04%"
-      ]
-    },
-    {
-      "title": "JPX Rubber Weekly",
-      "publisher": "Japan Exchange Group",
-      "url": "https://www.jpx.co.jp/derivatives/products/rubber/RubberFuturesInformation/nlsgeu0000057mti-att/JPX-The_Weekly_Rubber_Futures_Report_EN_31082026.pdf",
-      "source_date": "2026-08-31",
-      "accessed_at_bjt": "2026-09-07T07:02:39+08:00",
-      "source_type": "official",
-      "supported_claims": [
-        "trend and retracement risk"
-      ]
-    },
-    {
-      "title": "EIA WPSR",
-      "publisher": "U.S. EIA",
-      "url": "https://www.eia.gov/petroleum/supply/weekly/",
       "source_date": "2026-09-07",
-      "accessed_at_bjt": "2026-09-07T07:02:39+08:00",
-      "source_type": "official",
+      "accessed_at_bjt": "2026-09-08T07:04:00+08:00",
       "supported_claims": [
-        "September 10 delayed release"
+        "Overseas rubber proxy move; context only"
       ]
     },
     {
-      "title": "SHFE BR rules",
-      "publisher": "Shanghai Futures Exchange",
-      "url": "https://www.shfe.com.cn/regulation/exchangerules/productrules/202512/t20251231_829967.html",
-      "source_date": "2026-01-01",
-      "accessed_at_bjt": "2026-09-07T07:02:39+08:00",
-      "source_type": "official",
+      "title": "Palm oil benchmark",
+      "publisher": "Trading Economics",
+      "url": "https://tradingeconomics.com/commodity/palm-oil",
+      "source_date": "2026-09-07",
+      "accessed_at_bjt": "2026-09-08T07:04:00+08:00",
       "supported_claims": [
-        "BR multiplier/tick/LTD rule"
+        "BMD palm oil move; context only"
       ]
     },
     {
-      "title": "DCE PVC contract",
+      "title": "DCE LPG Futures Contract",
       "publisher": "Dalian Commodity Exchange",
-      "url": "https://www.dce.com.cn/dce/channel/list/2160.html",
-      "source_date": "2026-09-07",
-      "accessed_at_bjt": "2026-09-07T07:02:39+08:00",
-      "source_type": "official",
+      "url": "https://www.dce.com.cn/dalianshangpin/sspz/yhsyq/hyygz7622/6210766/index.html",
+      "source_date": "accessed 2026-09-08",
+      "accessed_at_bjt": "2026-09-08T07:08:00+08:00",
       "supported_claims": [
-        "V multiplier/tick/LTD rule"
+        "PG contract multiplier, tick, trading and last-trading-day rule"
+      ]
+    },
+    {
+      "title": "National Bureau of Statistics release calendar",
+      "publisher": "National Bureau of Statistics of China",
+      "url": "https://www.stats.gov.cn/sj/fbrc/",
+      "source_date": "2026-09",
+      "accessed_at_bjt": "2026-09-08T07:05:00+08:00",
+      "supported_claims": [
+        "China CPI/PPI release window"
+      ]
+    },
+    {
+      "title": "USDA Crop Progress release schedule",
+      "publisher": "USDA NASS",
+      "url": "https://esmis.nal.usda.gov/publication/crop-progress",
+      "source_date": "2026-09",
+      "accessed_at_bjt": "2026-09-08T07:05:00+08:00",
+      "supported_claims": [
+        "September 8 16:00 ET Crop Progress release"
+      ]
+    },
+    {
+      "title": "BLS 2026 release calendar",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "url": "https://www.bls.gov/schedule/2026/home.htm",
+      "source_date": "2026",
+      "accessed_at_bjt": "2026-09-08T07:05:00+08:00",
+      "supported_claims": [
+        "PPI and CPI event timing"
+      ]
+    },
+    {
+      "title": "Weekly Petroleum Status Report schedule",
+      "publisher": "U.S. Energy Information Administration",
+      "url": "https://www.eia.gov/petroleum/supply/weekly/schedule.php",
+      "source_date": "2026",
+      "accessed_at_bjt": "2026-09-08T07:05:00+08:00",
+      "supported_claims": [
+        "Holiday-delayed EIA release"
+      ]
+    },
+    {
+      "title": "WASDE report calendar",
+      "publisher": "USDA",
+      "url": "https://www.usda.gov/about-usda/general-information/staff-offices/office-chief-economist/commodity-markets/wasde-report",
+      "source_date": "2026",
+      "accessed_at_bjt": "2026-09-08T07:05:00+08:00",
+      "supported_claims": [
+        "WASDE event window"
+      ]
+    },
+    {
+      "title": "CFTC COT release schedule",
+      "publisher": "CFTC",
+      "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm",
+      "source_date": "2026",
+      "accessed_at_bjt": "2026-09-08T07:05:00+08:00",
+      "supported_claims": [
+        "COT timing and holiday-delay rule"
       ]
     }
   ],
   "archive": {
-    "markdown_path": "reports/2026/09/2026-09-07_commodities_morning.md",
-    "json_path": "reports/2026/09/2026-09-07_commodities_morning.json",
+    "markdown_path": "reports/2026/09/2026-09-08_commodities_morning.md",
+    "json_path": "reports/2026/09/2026-09-08_commodities_morning.json",
     "latest_markdown_path": "latest/commodities_morning.md",
     "latest_json_path": "latest/commodities_morning.json",
     "archive_status": "success",
+    "ci_validation_status": "pending_or_unverified",
     "commit_sha": null,
-    "error": null,
-    "ci_validation_status": "pending_or_unverified"
+    "error": null
   }
 }
