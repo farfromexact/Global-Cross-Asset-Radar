@@ -1,29 +1,30 @@
 {
-  "report_date": "2026-09-06",
+  "report_date": "2026-09-07",
   "edition": "evening",
   "revision": 1,
-  "generated_at": "2026-09-06T20:12:00+08:00",
+  "generated_at": "2026-09-07T20:10:10+08:00",
   "prompt_version": "radar_2026-09-06_coverage_v1",
-  "archive_status": "success",
-  "verified_main": true,
-  "china_options_date": "2026-09-04",
+  "archive_status": "pending",
+  "verified_main": false,
+  "china_options_date": "2026-09-07",
   "data_fresh": true,
-  "previous_date": "2026-09-06",
+  "previous_date": "2026-09-07",
   "ci_validation_status": "pending_or_unverified",
   "errors": [
-    "China-Options-Engine radar_history.json is empty; exact rolling20D option history unavailable.",
-    "China commodity options surfaces are not execution-ready; no premium/Greeks/strike fabricated.",
-    "Synchronized EURUSD, USDCNH, gold ETF/CFTC, CTA and dealer net-gamma data were not fully verified.",
-    "OPEC+ post-meeting official decision was not independently confirmed at the cutoff.",
-    "Weekend uses Sep4 last-good market closes; no prices are represented as real time."
+    "China-Options-Engine data/radar_history.json is genuinely empty (0 bytes); fixed dated snapshots were used for 1/3/5/20D comparison.",
+    "U.S. cash equity and Treasury markets were closed for Labor Day on 2026-09-07; VIX, MOVE, HY OAS and U.S. cash prices are last-good, not real time.",
+    "Live oil, gold, QQQ and FX option surfaces, bid/ask, position and executable Greeks were unavailable; structures remain conditional and price-gated.",
+    "USDCNH synchronized quote, FX option skew, gold ETF flow/CFTC detail, CTA positioning and dealer net-gamma were not fully verified.",
+    "China ETF option strike-level data were not read; IC has no direct CFFEX index option and MO/IO/ETF options remain imperfect proxies.",
+    "China August CPI/PPI exact 2026-09-09 release time should be rechecked against the NBS page before the event."
   ],
   "target_paths": [
-    "reports/2026/09/2026-09-06_evening.md",
-    "reports/2026/09/2026-09-06_evening.json",
+    "reports/2026/09/2026-09-07_evening.md",
+    "reports/2026/09/2026-09-07_evening.json",
     "latest/evening.md",
     "latest/evening.json",
     "status/evening_latest.json",
     "manifests/reports.json"
   ],
-  "run_note": "Six target paths prepared before writes; direct-to-main verification required after all writes."
+  "run_note": "All six target contents generated before direct-to-main writes; final success is gated on main reread verification."
 }
