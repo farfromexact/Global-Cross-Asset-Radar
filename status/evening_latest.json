@@ -1,30 +1,31 @@
 {
-  "report_date": "2026-09-07",
+  "schema_version": "1.0",
+  "status": "published",
+  "report_date": "2026-09-08",
   "edition": "evening",
   "revision": 1,
-  "generated_at": "2026-09-07T20:10:10+08:00",
+  "generated_at_bjt": "2026-09-08T20:16:32+08:00",
   "prompt_version": "radar_2026-09-06_coverage_v1",
   "archive_status": "success",
   "verified_main": true,
-  "china_options_date": "2026-09-07",
-  "data_fresh": true,
-  "previous_date": "2026-09-07",
   "ci_validation_status": "pending_or_unverified",
+  "data_status": "partial_fresh",
+  "china_options_date": "2026-09-08",
+  "data_fresh": true,
+  "previous_date": "2026-09-08",
   "errors": [
-    "China-Options-Engine data/radar_history.json is genuinely empty (0 bytes); fixed dated snapshots were used for 1/3/5/20D comparison.",
-    "U.S. cash equity and Treasury markets were closed for Labor Day on 2026-09-07; VIX, MOVE, HY OAS and U.S. cash prices are last-good, not real time.",
-    "Live oil, gold, QQQ and FX option surfaces, bid/ask, position and executable Greeks were unavailable; structures remain conditional and price-gated.",
-    "USDCNH synchronized quote, FX option skew, gold ETF flow/CFTC detail, CTA positioning and dealer net-gamma were not fully verified.",
-    "China ETF option strike-level data were not read; IC has no direct CFFEX index option and MO/IO/ETF options remain imperfect proxies.",
-    "China August CPI/PPI exact 2026-09-09 release time should be rechecked against the NBS page before the event."
+    "data/radar_history.json is empty (0 bytes); fixed dated snapshots were used",
+    "live option bid/ask and verifiable Greeks unavailable",
+    "US official 2026-09-08 Treasury EOD unavailable at cutoff",
+    "China breadth, margin financing and synchronized DR007 unavailable"
   ],
   "target_paths": [
-    "reports/2026/09/2026-09-07_evening.md",
-    "reports/2026/09/2026-09-07_evening.json",
+    "reports/2026/09/2026-09-08_evening.md",
+    "reports/2026/09/2026-09-08_evening.json",
     "latest/evening.md",
     "latest/evening.json",
     "status/evening_latest.json",
     "manifests/reports.json"
   ],
-  "run_note": "All six target paths were read back from main; report_date/edition/status and manifest uniqueness verified. CI was not awaited."
+  "run_note": "Six-file direct-to-main archive prepared and verified; GitHub Actions not awaited."
 }
