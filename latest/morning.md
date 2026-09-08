@@ -233,7 +233,7 @@ GXR-AI-QUALITY-20260903继续“论点受挑战、暂停新增”。只有Oracle
 
 单一试仓最大损失0.25%–0.75% NAV；单一确认交易0.75%–1.50%；高确信主题总风险≤2.5%–3.0%。油Call、QQQ Put与rates flattener共享滞胀/Fed因子，全球相关宏观仓合并压力≤1.5%–2.0%；黄金Put也受real yield因子，应与QQQ/rates合并。IM/IH与任何小盘ETF或MO结构共享A股小盘Beta，合并≤1.25%–1.50%。期货pair止损不是最大损失有限；所有期权成本门槛均需包含权利金、bid/ask、手续费与滑点。
 
-归档状态：**六文件已生成，等待main写入与复核；archive_status=pending_verification**。
+归档状态：**已在main完成六文件复核；archive_status=success，ci_validation_status=pending_or_unverified**。
 
 ## 十四、今日行动清单
 
