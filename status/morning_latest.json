@@ -1,36 +1,41 @@
 {
-  "report_date": "2026-09-07",
+  "report_date": "2026-09-08",
   "edition": "morning",
-  "generated_at": "2026-09-07T08:06:45+08:00",
-  "archive_status": "success",
+  "generated_at": "2026-09-08T08:07:55+08:00",
+  "archive_status": "pending",
   "ci_validation_status": "pending_or_unverified",
   "prompt_version": "radar_2026-09-06_coverage_v1",
-  "china_options_date": "2026-09-04",
+  "china_options_date": "2026-09-07",
   "data_fresh": true,
-  "previous_date": "2026-09-06",
+  "previous_date": "2026-09-07",
   "china_options_paths": [
     "data/radar_latest.json",
     "data/radar_history.json",
-    "data/latest.json"
+    "data/latest.json",
+    "data/snapshots/2026-09-07.json",
+    "data/snapshots/2026-09-04.json",
+    "data/snapshots/2026-09-02.json",
+    "data/snapshots/2026-08-31.json",
+    "data/snapshots/2026-08-10.json"
   ],
-  "china_options_commit": "ddf1ba3f220c5b803a8017fbddc843544035c92a",
-  "china_commodities_date": "2026-09-04",
-  "china_commodities_commit": "0318eab6fd62f152d2a1e224f4ad915bfd482649",
+  "china_options_commit": "91fc920ceb5296f497d8218ec3355456d99481d6",
+  "china_commodities_date": "2026-09-07",
+  "china_commodities_commit": "57f20886538e12122ee42e6ca39a2040a29352f8",
   "verification": {
-    "historical_markdown": "ok",
-    "historical_json": "ok",
-    "latest_markdown": "ok",
-    "latest_json": "ok",
-    "status": "ok",
-    "manifest_unique_key": "ok_count_1"
+    "historical_markdown": "pending",
+    "historical_json": "pending",
+    "latest_markdown": "pending",
+    "latest_json": "pending",
+    "status": "pending",
+    "manifest_unique_key": "pending"
   },
   "errors": [
-    "data/radar_history.json在commit ddf1ba3f下正文为空，状态为empty；本期未新算3D/5D/20D，相关值沿用并标注。",
-    "美国Labor Day现金市场休市，CME为假日交易；WTI/Brent重开价为延迟指示而非正式结算。",
-    "WTI/Brent、QQQ、FX、黄金未取得可执行完整期权链与同步IV/skew，不能给精确权利金或局部Greeks。",
-    "China-Commodities商品期权bid/ask执行覆盖0%，basis与会员持仓模块跳过，仓单与合约元数据部分缺失。",
-    "MOVE使用ICE二手数据，HY OAS与期限溢价按原生发布频率滞后。",
-    "GLD最新官方持仓本轮未取得，黄金ETF流向标missing。",
-    "美国国债拍卖精确小时以最终announcement为准，本期仅使用官方暂定日期窗口。"
+    "China-Options data/radar_history.json在commit 91fc920c下正文为空，读取状态为empty；多周期比较改由固定日期snapshots计算。",
+    "美国9月7日Labor Day导致美股、国债、VIX无新完整现金收盘；WTI为假日电子盘、黄金为薄量指示，均未冒充正常结算。",
+    "WTI/Brent、QQQ、黄金与FX未取得同步可执行完整期权链、bid/ask和IV/skew，精确权利金及局部Greeks待报价。",
+    "China-Commodities期权52/64品种成功但bid/ask覆盖0%、surface与positioning未ready；basis和会员持仓不可用，5个仓单序列沿用。",
+    "MOVE使用二手ICE last-good；HY OAS与ACM期限溢价按原生频率滞后。",
+    "GLD最新持仓、最新央行月度购金、CTA实时仓位和已知dealer净Gamma未可靠取得。",
+    "中国市场宽度、涨跌家数、融资融券当日完整可比截面未在固定引擎快照中取得；ETF仅为份额变化×收盘价估算。"
   ]
 }
