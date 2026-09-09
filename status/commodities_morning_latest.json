@@ -1,24 +1,24 @@
 {
-  "report_date": "2026-09-09",
+  "report_date": "2026-09-10",
   "edition": "commodities_morning",
-  "generated_at": "2026-09-09T07:18:45+08:00",
-  "generated_at_bjt": "2026-09-09T07:18:45+08:00",
-  "previous_date": "2026-09-08",
+  "generated_at": "2026-09-10T07:17:00+08:00",
+  "generated_at_bjt": "2026-09-10T07:17:00+08:00",
+  "previous_date": "2026-09-09",
   "revision": 1,
   "prompt_version": "radar_2026-09-06_coverage_v1",
   "data_protocol": "china_commodities_v2",
   "worth_taking_risk": true,
   "immediate_new_position": false,
   "weekend_mode": false,
-  "data_fresh": true,
+  "data_fresh": false,
   "report_input": {
     "used": true,
     "schema_version": 2,
-    "requested_date": "2026-09-08",
-    "generated_at": "2026-09-09T06:15:29.464830+08:00"
+    "requested_date": "2026-09-09",
+    "generated_at": "2026-09-10T06:00:44.369636+08:00"
   },
   "eod_snapshot": {
-    "date": "2026-09-08",
+    "date": "2026-09-09",
     "contract_count": 802,
     "included_exchanges": [
       "SHFE",
@@ -32,33 +32,41 @@
     "critical_module_errors": 0,
     "placeholder_excluded": 7,
     "official_complete": false,
-    "retained_last_good": false
+    "retained_last_good": true,
+    "current_refresh_critical_errors": 15,
+    "current_refresh_error": "iFinD HTTP 401 Device exceed limit"
   },
   "night_session": {
-    "trading_date": "2026-09-09",
-    "night_session_date": "2026-09-08",
-    "generated_at": "2026-09-09T06:03:03+08:00",
+    "trading_date": "2026-09-10",
+    "night_session_date": "2026-09-09",
+    "generated_at": "2026-09-10T05:59:18.029624+08:00",
     "data_fresh": true,
     "validation_passed": true,
     "published": true,
-    "coverage_complete": true,
-    "contract_count": 594,
+    "coverage_complete": false,
+    "contract_count": 588,
     "product_count": 55,
-    "outside_night_window_count": 193,
-    "no_night_trade_count": 15,
+    "outside_night_window_count": 192,
+    "no_night_trade_count": 20,
     "missing_timestamp_count": 0,
     "missing_price_count": 0,
     "missing_quote_count": 0,
-    "query_error_count": 0,
-    "unresolved_contract_count": 0,
+    "query_error_count": 2,
+    "unresolved_contract_count": 2,
+    "unresolved_contracts": [
+      "ZN2707",
+      "ZN2708"
+    ],
     "fallback_used": false
   },
   "physical": {
-    "requested_date": "2026-09-08",
+    "requested_date": "2026-09-09",
     "targets": 20,
     "fresh": 18,
-    "stale": 5,
-    "carried_forward": 5,
+    "carried_forward": [
+      "GFEX:LC warehouse from 2026-09-01",
+      "GFEX:SI warehouse from 2026-09-01"
+    ],
     "unavailable": [
       "SC",
       "LU"
@@ -66,29 +74,30 @@
     "basis_note": "all C/context only"
   },
   "external": {
-    "requested_date": "2026-09-08",
+    "requested_date": "2026-09-09",
     "targets": 22,
     "fresh": 17,
     "usage": "context only",
     "import_parity_ready": false,
-    "web_refresh_at": "2026-09-09T07:00:00+08:00"
+    "web_refresh_at": "2026-09-10T07:00:00+08:00"
   },
   "options": {
-    "trade_date": "2026-09-08",
+    "trade_date": "2026-09-09",
     "products_target": 64,
-    "products_success": 52,
-    "record_count": 18886,
-    "series_count": 350,
-    "iv_coverage": 0.9764,
-    "open_interest_coverage": 0.8494,
+    "products_success": 57,
+    "record_count": 22302,
+    "series_count": 375,
+    "iv_coverage": 0.979822,
+    "open_interest_coverage": 0.687651,
     "bid_ask_coverage": 0,
     "surface_ready": false,
-    "surface_ready_count": 339,
+    "surface_ready_count": 364,
     "positioning_ready": false,
-    "positioning_ready_count": 248,
+    "positioning_ready_count": 70,
     "execution_ready": false,
     "execution_ready_count": 0,
-    "dealer_gamma_direction_known": false
+    "dealer_gamma_direction_known": false,
+    "refresh_error": "iFinD HTTP 401"
   },
   "contract_metadata_quality": "partial",
   "coverage": {
@@ -99,40 +108,41 @@
   },
   "top_scores": [
     {
-      "asset": "CU2610",
+      "asset": "SC2610回撤接受多",
       "score": 79
     },
     {
-      "asset": "MA610",
+      "asset": "FU2611产品链延续多",
       "score": 78
     },
     {
-      "asset": "AL2610跟随LME的",
-      "score": 69
+      "asset": "CU2610全球共振多",
+      "score": 76
     },
     {
-      "asset": "AU2610",
-      "score": 68
+      "asset": "EB2610油价扩散多",
+      "score": 75
     },
     {
-      "asset": "FG701",
-      "score": 67
+      "asset": "AG2610银强金弱多",
+      "score": 72
     }
   ],
   "errors": [
-    "Contract metadata partial; CU/AL dynamic margin and price limit unconfirmed.",
-    "Options execution-ready count and bid/ask coverage are zero; 12 products failed.",
+    "Current Futures/Options refresh failed with HTTP 401; verified last-good EOD retained.",
+    "Night coverage incomplete for ZN2707/ZN2708 only; top candidate contracts fresh.",
+    "Options execution-ready count and bid/ask coverage are zero; 7 products failed.",
     "SC/LU physical unavailable; basis all C/context only.",
-    "SHFE/DCE warehouse modules unavailable; GFEX five records carried from 2026-09-01.",
-    "MA option surface underlying settlement conflicts with futures EOD settlement."
+    "SHFE/DCE warehouse incomplete; GFEX LC/SI carried from 2026-09-01.",
+    "Contract metadata partial; dynamic margin/limit unconfirmed."
   ],
   "archive_status": "success",
   "ci_validation_status": "pending_or_unverified",
   "failed_paths": [],
   "verified_main": true,
   "target_paths": [
-    "reports/2026/09/2026-09-09_commodities_morning.md",
-    "reports/2026/09/2026-09-09_commodities_morning.json",
+    "reports/2026/09/2026-09-10_commodities_morning.md",
+    "reports/2026/09/2026-09-10_commodities_morning.json",
     "latest/commodities_morning.md",
     "latest/commodities_morning.json",
     "status/commodities_morning_latest.json",
