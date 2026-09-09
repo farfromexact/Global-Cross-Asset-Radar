@@ -1,26 +1,27 @@
 {
-  "report_date": "2026-09-08",
+  "report_date": "2026-09-09",
   "edition": "morning",
-  "generated_at": "2026-09-08T08:07:55+08:00",
+  "generated_at": "2026-09-09T08:17:33+08:00",
   "archive_status": "success",
   "ci_validation_status": "pending_or_unverified",
   "prompt_version": "radar_2026-09-06_coverage_v1",
-  "china_options_date": "2026-09-07",
+  "china_options_date": "2026-09-08",
   "data_fresh": true,
-  "previous_date": "2026-09-07",
+  "previous_date": "2026-09-08",
   "china_options_paths": [
     "data/radar_latest.json",
     "data/radar_history.json",
     "data/latest.json",
+    "data/snapshots/2026-09-08.json",
     "data/snapshots/2026-09-07.json",
     "data/snapshots/2026-09-04.json",
-    "data/snapshots/2026-09-02.json",
-    "data/snapshots/2026-08-31.json",
-    "data/snapshots/2026-08-10.json"
+    "data/snapshots/2026-09-03.json",
+    "data/snapshots/2026-09-01.json",
+    "data/snapshots/2026-08-11.json"
   ],
-  "china_options_commit": "91fc920ceb5296f497d8218ec3355456d99481d6",
-  "china_commodities_date": "2026-09-07",
-  "china_commodities_commit": "57f20886538e12122ee42e6ca39a2040a29352f8",
+  "china_options_commit": "34eed8ff53be68a9f25ffdbd4af3c9cd85478db3",
+  "china_commodities_date": "2026-09-08",
+  "china_commodities_commit": "b38ac543caabaf92d2cf7d70120b79cb2b5d254b",
   "verification": {
     "historical_markdown": "ok",
     "historical_json": "ok",
@@ -30,12 +31,11 @@
     "manifest_unique_key": "ok_count_1"
   },
   "errors": [
-    "China-Options data/radar_history.json在commit 91fc920c下正文为空，读取状态为empty；多周期比较改由固定日期snapshots计算。",
-    "美国9月7日Labor Day导致美股、国债、VIX无新完整现金收盘；WTI为假日电子盘、黄金为薄量指示，均未冒充正常结算。",
-    "WTI/Brent、QQQ、黄金与FX未取得同步可执行完整期权链、bid/ask和IV/skew，精确权利金及局部Greeks待报价。",
-    "China-Commodities期权52/64品种成功但bid/ask覆盖0%、surface与positioning未ready；basis和会员持仓不可用，5个仓单序列沿用。",
-    "MOVE使用二手ICE last-good；HY OAS与ACM期限溢价按原生频率滞后。",
-    "GLD最新持仓、最新央行月度购金、CTA实时仓位和已知dealer净Gamma未可靠取得。",
-    "中国市场宽度、涨跌家数、融资融券当日完整可比截面未在固定引擎快照中取得；ETF仅为份额变化×收盘价估算。"
+    "China-Options data/radar_history.json在固定commit下正文为空，状态为empty；1/3/5/20D由固定日期snapshots计算。",
+    "MOVE仅取得2026-09-04 last-good；HY OAS截至2026-09-07。",
+    "全球油、黄金、QQQ与FX未取得同步完整期权surface、bid/ask及局部Greeks。",
+    "中国当日涨跌家数、融资融券及官方DR007完整截面未在固定快照中取得。",
+    "中国商品official_complete=false；basis、会员排名缺失，商品期权执行bid/ask覆盖0%。",
+    "VIX 2026-09期货纠正为Cboe 2026-09-08正式结算约16.63；旧值12.88不再作为证据。"
   ]
 }
