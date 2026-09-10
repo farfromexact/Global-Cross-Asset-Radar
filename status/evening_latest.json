@@ -1,32 +1,54 @@
 {
   "schema_version": "1.0",
-  "status": "published",
-  "report_date": "2026-09-09",
   "edition": "evening",
-  "revision": 1,
-  "generated_at_bjt": "2026-09-09T20:08:03+08:00",
-  "prompt_version": "radar_2026-09-06_coverage_v1",
+  "report_date": "2026-09-10",
+  "generated_at_bjt": "2026-09-10T20:39:00+08:00",
+  "status": "published",
   "archive_status": "success",
   "verified_main": true,
-  "ci_validation_status": "pending_or_unverified",
-  "data_status": "partial_fresh",
-  "china_options_date": "2026-09-09",
-  "data_fresh": true,
-  "previous_date": "2026-09-09",
+  "data_fresh": false,
+  "source_status": {
+    "china_options": "ok",
+    "china_options_history": "empty",
+    "china_commodities": "stale",
+    "us_rates": "ok_last_complete_session",
+    "us_ppi": "ok_new",
+    "ecb": "ok_new",
+    "global_options_surface": "missing",
+    "move": "stale",
+    "tool_truncation": "none_misclassified_as_empty"
+  },
+  "china_options_date": "2026-09-10",
+  "china_options_path": "data/radar_latest.json",
+  "china_options_commit": "085a98197724c1361c55cb394c289698d07eea5f",
   "errors": [
-    "China-Options-Engine data/radar_history.json is empty; fixed snapshots were used",
-    "live option bid/ask and verifiable Greeks unavailable",
-    "Gold ETF/CFTC/central-bank flow and full IV/skew unavailable",
-    "China breadth margin financing synchronized DR007 unavailable",
-    "US September 9 quotes are delayed/indicative before cash open"
+    {
+      "component": "China-Commodities-Engine",
+      "status": "stale",
+      "detail": "2026-09-10 refresh failed with 15 iFinD 401 device-limit errors; using audited 2026-09-09 last-good compact layer"
+    },
+    {
+      "component": "China-Options-Engine radar_history",
+      "status": "empty",
+      "detail": "file is exactly empty; fixed daily snapshots used for multi-period comparison"
+    },
+    {
+      "component": "global_options_surfaces",
+      "status": "missing",
+      "detail": "live bid/ask, IV, skew and dealer net gamma unavailable; all option trades remain quote-dependent"
+    },
+    {
+      "component": "MOVE",
+      "status": "stale",
+      "detail": "latest available delayed observation used as background"
+    }
   ],
-  "target_paths": [
-    "reports/2026/09/2026-09-09_evening.md",
-    "reports/2026/09/2026-09-09_evening.json",
-    "latest/evening.md",
-    "latest/evening.json",
-    "status/evening_latest.json",
-    "manifests/reports.json"
-  ],
-  "run_note": "Six-file direct-to-main archive written and verified from main; GitHub Actions not awaited."
+  "ci_validation_status": "pending_or_unverified",
+  "paths": {
+    "markdown": "reports/2026/09/2026-09-10_evening.md",
+    "json": "reports/2026/09/2026-09-10_evening.json",
+    "latest_markdown": "latest/evening.md",
+    "latest_json": "latest/evening.json",
+    "manifest": "manifests/reports.json"
+  }
 }
