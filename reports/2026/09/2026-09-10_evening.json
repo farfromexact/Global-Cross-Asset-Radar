@@ -1,0 +1,2590 @@
+{
+  "schema_version": "1.0",
+  "status": "published",
+  "title": "全球跨资产高风险机会雷达｜晚间版",
+  "report_date": "2026-09-10",
+  "edition": "evening",
+  "prompt_version": "radar_2026-09-06_coverage_v1",
+  "generated_at": "2026-09-10T20:39:00+08:00",
+  "generated_at_bjt": "2026-09-10T20:39:00+08:00",
+  "weekend_mode": false,
+  "market_regime": "inflation_repricing_geopolitical_supply_shock_with_resilient_credit",
+  "regime": "mixed_inflation_repricing",
+  "worth_taking_risk": true,
+  "one_sentence_conclusion": "通胀再定价：PPI符合预期却仍高、油价破百而HY稳定，黄金未提供信用对冲；中国IH仅一日占优。",
+  "data_cutoff": {
+    "research_cutoff_bjt": "2026-09-10T20:37:00+08:00",
+    "latest_complete_us_session": "2026-09-09",
+    "latest_complete_china_session": "2026-09-10",
+    "ecb_decision": "published_at_2026-09-10T20:15:00+08:00",
+    "us_ppi": "published_at_2026-09-10T20:30:00+08:00",
+    "next_windows": [
+      "2026-09-10T20:45:00+08:00 ECB press conference",
+      "2026-09-10T21:30:00+08:00 US cash open",
+      "2026-09-11T09:30:00+08:00 China open"
+    ]
+  },
+  "input_snapshots": {
+    "china_options_repository": "farfromexact/China-Options-Engine",
+    "china_options_path": "data/radar_latest.json",
+    "china_options_date": "2026-09-10",
+    "china_options_generated_at": "2026-09-10T17:19:49+08:00",
+    "china_options_fresh": true,
+    "china_options_official_coverage": 1,
+    "china_options_commit": "085a98197724c1361c55cb394c289698d07eea5f",
+    "china_options_history_path": "data/radar_history.json",
+    "china_options_history_status": "empty",
+    "china_options_snapshot_paths": [
+      "data/snapshots/2026-09-10.json",
+      "data/snapshots/2026-09-09.json",
+      "data/snapshots/2026-09-07.json",
+      "data/snapshots/2026-09-03.json",
+      "data/snapshots/2026-08-13.json"
+    ],
+    "china_commodities": {
+      "repository": "farfromexact/China-Commodities-Engine",
+      "branch": "main",
+      "last_run_status_path": "data/last_run_status.json",
+      "radar_latest_path": "data/radar_latest.json",
+      "radar_history_path": "data/radar_history.json",
+      "trade_date": "2026-09-09",
+      "generated_at": "2026-09-10T06:00:00+08:00",
+      "data_fresh": false,
+      "official_complete": false,
+      "source_date_match_pct": null,
+      "full_market_ready": false,
+      "critical_module_errors": 15,
+      "history_record_count": 0,
+      "module_quality": {
+        "prices": "stale_last_good",
+        "open_interest": "stale_last_good",
+        "curve": "stale_last_good",
+        "options": "missing"
+      },
+      "included_exchanges": [
+        "SHFE",
+        "INE",
+        "DCE",
+        "CZCE",
+        "GFEX"
+      ],
+      "actual_read_paths": [
+        "data/report_input_latest.json"
+      ],
+      "commit": "6d88d2b1e2c97b54778c191a44df1100c172ac35"
+    }
+  },
+  "source_status": {
+    "china_options": "ok",
+    "china_options_history": "empty",
+    "china_commodities": "stale",
+    "us_rates": "ok_last_complete_session",
+    "us_ppi": "ok_new",
+    "ecb": "ok_new",
+    "global_options_surface": "missing",
+    "move": "stale",
+    "tool_truncation": "none_misclassified_as_empty"
+  },
+  "dashboard": [
+    {
+      "asset": "UST 2Y",
+      "change_1d": "+4bp",
+      "change_1w": "+6bp",
+      "data_attribute": "yield",
+      "data_time": "2026-09-09 official close",
+      "latest": "4.43%",
+      "signal": "前端重新计入通胀/加息尾部"
+    },
+    {
+      "asset": "UST 5Y",
+      "change_1d": "+4bp",
+      "change_1w": "+7bp",
+      "data_attribute": "yield",
+      "data_time": "2026-09-09 official close",
+      "latest": "4.61%",
+      "signal": "前端重定价"
+    },
+    {
+      "asset": "UST 10Y",
+      "change_1d": "+3bp",
+      "change_1w": "+5bp",
+      "data_attribute": "yield",
+      "data_time": "2026-09-09 official close",
+      "latest": "4.83%",
+      "signal": "油价与供给共同抬升"
+    },
+    {
+      "asset": "UST 30Y",
+      "change_1d": "+3bp",
+      "change_1w": "+4bp",
+      "data_attribute": "yield",
+      "data_time": "2026-09-09 official close",
+      "latest": "5.28%",
+      "signal": "高位等待30Y拍卖"
+    },
+    {
+      "asset": "10Y real / BEI",
+      "change_1d": "+3bp / 0bp",
+      "change_1w": "+4bp / +1bp",
+      "data_attribute": "yield/derived",
+      "data_time": "2026-09-09 official close",
+      "latest": "2.46% / 2.37%",
+      "signal": "实际利率压金，油冲击尚未全进BEI"
+    },
+    {
+      "asset": "2s30s / 5s30s",
+      "change_1d": "-1bp / -1bp",
+      "change_1w": "-2bp / -3bp",
+      "data_attribute": "derived",
+      "data_time": "2026-09-09 official close",
+      "latest": "85bp / 67bp",
+      "signal": "温和bear flatten"
+    },
+    {
+      "asset": "DXY",
+      "change_1d": "小幅反弹",
+      "change_1w": "仍偏弱",
+      "data_attribute": "spot indicative",
+      "data_time": "2026-09-10 19:xx BJT indicative",
+      "latest": "约98.8",
+      "signal": "油冲击未形成强美元避险"
+    },
+    {
+      "asset": "EUR/USD",
+      "change_1d": "韧性",
+      "change_1w": "偏强",
+      "data_attribute": "spot qualitative",
+      "data_time": "2026-09-10 Europe",
+      "latest": "接近两周高位",
+      "signal": "ECB加息预期支撑"
+    },
+    {
+      "asset": "USD/JPY",
+      "change_1d": "日元偏强",
+      "change_1w": "日元走强",
+      "data_attribute": "spot indicative",
+      "data_time": "2026-09-10 indicative",
+      "latest": "约153.6",
+      "signal": "前期做多日元已部分兑现"
+    },
+    {
+      "asset": "USD/CNH",
+      "change_1d": "人民币偏强",
+      "change_1w": "人民币偏强",
+      "data_attribute": "spot qualitative",
+      "data_time": "2026-09-10 indicative",
+      "latest": "离岸人民币近四年强位附近",
+      "signal": "国内通胀与政策预期抵消油冲击"
+    },
+    {
+      "asset": "Nasdaq Composite",
+      "change_1d": "-0.60%",
+      "change_1w": "-0.96%",
+      "data_attribute": "cash close",
+      "data_time": "2026-09-09 close",
+      "latest": "26,253.34",
+      "signal": "高油价/高收益率压估值"
+    },
+    {
+      "asset": "QQQ",
+      "change_1d": "约-0.6%",
+      "change_1w": "未同步核验",
+      "data_attribute": "ETF close+indicative",
+      "data_time": "2026-09-09 close / 2026-09-10 19:48 indicative",
+      "latest": "716.31",
+      "signal": "盘前约-0.28%，等待PPI"
+    },
+    {
+      "asset": "SOXX",
+      "change_1d": "相对QQQ偏强",
+      "change_1w": "+2.34%",
+      "data_attribute": "ETF indicative",
+      "data_time": "2026-09-10 19:48 indicative",
+      "latest": "532.00",
+      "signal": "硬件未确认基本面反转"
+    },
+    {
+      "asset": "WTI",
+      "change_1d": "约+1.5%",
+      "change_1w": "+6.6%",
+      "data_attribute": "front future intraday",
+      "data_time": "2026-09-10 Europe/US premarket",
+      "latest": "$97.50",
+      "signal": "物理供应/油运溢价已显著进入价格"
+    },
+    {
+      "asset": "Brent",
+      "change_1d": "约+0.9%",
+      "change_1w": "+6.1%",
+      "data_attribute": "front future intraday",
+      "data_time": "2026-09-10 Europe/US premarket",
+      "latest": "$102.15",
+      "signal": ">100且通航受限，右尾仍高但追价赔率差"
+    },
+    {
+      "asset": "Gold spot / US futures",
+      "change_1d": "-0.4% / -0.7%",
+      "change_1w": "约-0.8% / -1.1%",
+      "data_attribute": "spot/future intraday",
+      "data_time": "2026-09-10 intraday",
+      "latest": "$4,385.40 / $4,427.80",
+      "signal": "冲突升级仍不抗高实际利率"
+    },
+    {
+      "asset": "VIX",
+      "change_1d": "上升",
+      "change_1w": "+13.4%",
+      "data_attribute": "index close",
+      "data_time": "2026-09-09 close",
+      "latest": "16.47",
+      "signal": "事件保险抬升但未恐慌"
+    },
+    {
+      "asset": "MOVE",
+      "change_1d": "小幅上升",
+      "change_1w": "+4.2%",
+      "data_attribute": "delayed",
+      "data_time": "2026-09-08/09 delayed",
+      "latest": "76.14",
+      "signal": "债券波动抬升，延迟参考"
+    },
+    {
+      "asset": "US HY OAS",
+      "change_1d": "约持平",
+      "change_1w": "+2bp",
+      "data_attribute": "native lag",
+      "data_time": "2026-09-08 FRED",
+      "latest": "267bp",
+      "signal": "信用尚未确认全面Risk-off"
+    },
+    {
+      "asset": "IH2609 / SSE50",
+      "change_1d": "-0.23% / -0.21%",
+      "change_1w": "期货-0.36%",
+      "data_attribute": "future/cash",
+      "data_time": "2026-09-10 close",
+      "latest": "2897.0 / 2904.29",
+      "signal": "四指数中当日最强"
+    },
+    {
+      "asset": "IF2609 / CSI300",
+      "change_1d": "-0.47% / -0.53%",
+      "change_1w": "期货+0.12%",
+      "data_attribute": "future/cash",
+      "data_time": "2026-09-10 close",
+      "latest": "4542.2 / 4548.39",
+      "signal": "5D较强、当日落后IH"
+    },
+    {
+      "asset": "IC2609 / CSI500",
+      "change_1d": "-0.52% / -0.65%",
+      "change_1w": "期货-0.01%",
+      "data_attribute": "future/cash",
+      "data_time": "2026-09-10 close",
+      "latest": "7705.8 / 7717.80",
+      "signal": "无直接中金所指数期权"
+    },
+    {
+      "asset": "IM2609 / CSI1000",
+      "change_1d": "-0.66% / -0.80%",
+      "change_1w": "期货+0.19%",
+      "data_attribute": "future/cash",
+      "data_time": "2026-09-10 close",
+      "latest": "7574.0 / 7587.75",
+      "signal": "当日最弱但5D不弱"
+    },
+    {
+      "asset": "HO/IO/MO 2609 ATM IV",
+      "change_1d": "+0.28 / +0.57 / +0.54 vol",
+      "change_1w": "+0.06 / +1.07 / +0.06 vol",
+      "data_attribute": "model-derived from official EOD",
+      "data_time": "2026-09-10 close",
+      "latest": "14.51% / 19.02% / 28.52%",
+      "signal": "IO事件波动持续抬升；MO左尾仍贵"
+    }
+  ],
+  "meaningful_changes": [
+    {
+      "change": "美国PPI符合预期但同比仍高",
+      "support": "headline +0.4% m/m, +5.4% y/y; core +0.3% m/m, +4.7% y/y",
+      "implication": "不追事件空头；保留CPI凸性"
+    },
+    {
+      "change": "ECB加息25bp至2.50%",
+      "support": "年内第二次加息，能源通胀高但工资放缓",
+      "implication": "等记者会，不追EUR首波"
+    },
+    {
+      "change": "黄金未提供信用对冲",
+      "support": "油破百且地缘升级，黄金仍随实际利率/美元下跌",
+      "implication": "失败反弹Put优于政策信用Call"
+    },
+    {
+      "change": "油价物理溢价强化但高价",
+      "support": "Brent约102.15；OPEC 8月产量减少64万桶/日",
+      "implication": "只等回撤或新中断"
+    },
+    {
+      "change": "中国IH一日占优但多周期未确认",
+      "support": "IH当日跑赢IM约0.43pct；5日IM仍略强",
+      "implication": "今日中国股指无合格交易"
+    },
+    {
+      "change": "AI分化是兑现与融资问题",
+      "support": "SOXX相对QQQ韧性；BIS警告AI融资风险",
+      "implication": "质量/Capex假设继续观察"
+    }
+  ],
+  "top_opportunities": [
+    {
+      "rank": 1,
+      "idea_id": "GXR-GOLD-FAILHEDGE-20260907",
+      "name": "GC Dec-26 30–45D失败反弹Put Spread",
+      "score": 89,
+      "score_components": {
+        "logic": 24,
+        "payoff_convexity": 21,
+        "catalyst": 18,
+        "price_volatility": 13,
+        "crowding_technical": 13
+      },
+      "direction": "bearish_gold_failed_hedge",
+      "holding_period": "1-15 trading days",
+      "stage": "等待美股开盘确认",
+      "instruments": [
+        "COMEX Gold Dec-26 30–45D 35-40Δ/15-20Δ Put Spread"
+      ],
+      "max_loss_limited": true,
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "等待触发及实时报价",
+      "change_vs_prior": "PPI符合预期，催化分下降；黄金价格反证仍在"
+    },
+    {
+      "rank": 2,
+      "idea_id": "GXR-OIL-RIGHTTAIL-20260831",
+      "name": "CL Nov-26 30–45D供应冲击Call Spread/Butterfly",
+      "score": 88,
+      "score_components": {
+        "logic": 25,
+        "payoff_convexity": 18,
+        "catalyst": 19,
+        "price_volatility": 11,
+        "crowding_technical": 15
+      },
+      "direction": "bullish_oil_right_tail_only_on_pullback",
+      "holding_period": "3-20 trading days",
+      "stage": "已涨后等待回撤",
+      "instruments": [
+        "CL Nov-26 30–45D Call Spread or Call Butterfly"
+      ],
+      "max_loss_limited": true,
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "充分",
+      "execution_status": "等待回撤或新物理中断及报价",
+      "change_vs_prior": "OPEC实际产量下降提高逻辑；高价限制执行"
+    },
+    {
+      "rank": 3,
+      "idea_id": "GXR-US-EVENTVOL-20260905",
+      "name": "QQQ 2026-09-18 CPI事件Put Spread",
+      "score": 86,
+      "score_components": {
+        "logic": 23,
+        "payoff_convexity": 20,
+        "catalyst": 18,
+        "price_volatility": 13,
+        "crowding_technical": 12
+      },
+      "direction": "bearish_qqq_event_convexity",
+      "holding_period": "1-6 trading days",
+      "stage": "等待现金盘failed rally",
+      "instruments": [
+        "QQQ 2026-09-18 35-40Δ/15-20Δ Put Spread"
+      ],
+      "max_loss_limited": true,
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "等待触发及实时报价",
+      "change_vs_prior": "PPI符合预期降低即时尾部；CPI仍在"
+    },
+    {
+      "rank": 4,
+      "idea_id": "GXR-RATES-FLAT-20260905",
+      "name": "2s30s DV01中性Bear Flattener",
+      "score": 82,
+      "score_components": {
+        "logic": 22,
+        "payoff_convexity": 16,
+        "catalyst": 18,
+        "price_volatility": 13,
+        "crowding_technical": 13
+      },
+      "direction": "short_2Y_duration_long_30Y_duration_DV01_neutral",
+      "holding_period": "1-10 trading days",
+      "stage": "等待30Y拍卖/CPI",
+      "instruments": [
+        "Dec-26 ZT short / ZB long, DV01 neutral"
+      ],
+      "max_loss_limited": false,
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "待CTD/DV01参数和曲线触发",
+      "change_vs_prior": "PPI未超预期，未触发"
+    }
+  ],
+  "trade_cards": [
+    {
+      "rank": 1,
+      "idea_id": "GXR-GOLD-FAILHEDGE-20260907",
+      "structure": "GC Dec-26，买30–45D 35–40Δ Put、卖15–20Δ Put；具体到期、行权价、Greeks待现金盘链条",
+      "market_implied": "黄金仍保留地缘与政策信用溢价",
+      "disagreement": "PPI虽未超预期，但同比5.4%、高real yield与油价压力仍令黄金更像高持有成本资产；错价待验证",
+      "evidence": {
+        "support": [
+          "10Y real 2.46%",
+          "油破百而黄金跌"
+        ],
+        "against": [
+          "PPI符合预期",
+          "若美元急跌或real yield回落"
+        ],
+        "missing": [
+          "GC IV/skew",
+          "ETF流",
+          "央行购金",
+          "新CFTC"
+        ]
+      },
+      "entry": "21:30后GC反弹4450–4475失败且10Y>=4.83%，或跌破4400并在美股首小时低点下停留30分钟；分1/3进入，日收<4400再加1/3",
+      "invalidation": "GC日收>4500；或10Y real<=2.40%且黄金重新领涨；高real yield下突破4500并维持两日则放弃",
+      "exit": "4375或1.5x净支出；4280–4300或最大价值75%–85%；5日无延续减半、10日退出",
+      "execution_cost": "净支出/宽度<=25%好，25%–30%中，30%–38%坏且半仓，>38%放弃；执行门槛非报价",
+      "max_loss": "净权利金；NAV 0.25%–0.50%",
+      "greeks": "-Delta、+Gamma、+Vega、-Theta；局部数值待报价",
+      "catalysts": [
+        "美国CPI",
+        "Fed会议",
+        "美元/实际利率",
+        "地缘升级"
+      ],
+      "worst_case": "数据偏软导致real yield急跌、黄金跳升；有限损失为净权利金"
+    },
+    {
+      "rank": 2,
+      "idea_id": "GXR-OIL-RIGHTTAIL-20260831",
+      "structure": "CL Nov-26买35–40Δ Call、卖15–20Δ Call；若call skew/OVX过贵改有限损失Call Butterfly",
+      "market_implied": "Brent>102、WTI约97.5计入严重但非永久物流受限",
+      "disagreement": "OPEC实际产量下降说明补偿能力弱于名义配额；但高价已兑现，优势只在回撤或新增中断",
+      "evidence": {
+        "support": [
+          "霍尔木兹通航受限",
+          "OPEC 8月产量减少64万桶/日",
+          "EIA上调价格与供给缺口"
+        ],
+        "against": [
+          "中国需求弹性",
+          "停火/通航恢复"
+        ],
+        "missing": [
+          "同步OVX",
+          "call skew",
+          "裂解价差",
+          "bid-ask"
+        ]
+      },
+      "entry": "WTI回踩95–97并守首小时VWAP/低点，或可信新增港口/保险/管线中断后突破99；先1/3，物理数据确认再加",
+      "invalidation": "WTI<92且通航/出口恢复，或中国进口和成品油需求确认转弱；直接跳至102以上不追",
+      "exit": "101–103或1.5x净支出；108–112或最大价值75%–85%；EIA/停火前兑现一部分",
+      "execution_cost": "净支出/宽度<=25%好，25%–33%中，33%–40%坏且半仓，>40%放弃",
+      "max_loss": "净支出；NAV 0.25%–0.50%",
+      "greeks": "+Delta、+Gamma、+Vega、-Theta；接近短腿时Gamma/Vega收敛",
+      "catalysts": [
+        "EIA WPSR",
+        "新增物理中断",
+        "停火/通航消息",
+        "中国进口数据"
+      ],
+      "worst_case": "油价已高位，停火跳空下跌；最大损失限于净支出"
+    },
+    {
+      "rank": 3,
+      "idea_id": "GXR-US-EVENTVOL-20260905",
+      "structure": "QQQ 2026-09-18买35–40Δ Put、卖15–20Δ Put",
+      "market_implied": "VIX16.47与HY OAS267bp暗示冲击可控；符合预期PPI降低即时尾部",
+      "disagreement": "油价、CPI、Oracle与Fed路径仍集中；只有failed rally时凸性优于裸空",
+      "evidence": {
+        "support": [
+          "油价破百",
+          "收益率高位",
+          "事件密集"
+        ],
+        "against": [
+          "PPI符合预期",
+          "SOXX相对韧性"
+        ],
+        "missing": [
+          "QQQ完整IV/RV",
+          "skew",
+          "bid-ask",
+          "dealer net gamma"
+        ]
+      },
+      "entry": "21:30后QQQ先反弹0.5%–1%再失守VWAP且2Y>=4.43%，或跌破首小时低点；1/3触发，第二个30分钟低点加1/3，SOXX同步转弱才加最后1/3",
+      "invalidation": "QQQ日收>725，同时2Y<4.30%、WTI<95且SOXX继续领涨",
+      "exit": "约695或1.5x净支出；674–680或最大价值80%；9月16日前未兑现减仓",
+      "execution_cost": "净支出/宽度<=25%好，25%–30%中，30%–35%坏且半仓，>35%放弃",
+      "max_loss": "净支出；NAV 0.25%–0.50%",
+      "greeks": "-Delta、+Gamma、+Vega、-Theta",
+      "catalysts": [
+        "美国CPI",
+        "Oracle财报",
+        "FOMC"
+      ],
+      "worst_case": "PPI/CPI温和、收益率回落、AI硬件继续领涨"
+    }
+  ],
+  "top_trade_cards": [
+    {
+      "rank": 1,
+      "idea_id": "GXR-GOLD-FAILHEDGE-20260907",
+      "structure": "GC Dec-26，买30–45D 35–40Δ Put、卖15–20Δ Put；具体到期、行权价、Greeks待现金盘链条",
+      "market_implied": "黄金仍保留地缘与政策信用溢价",
+      "disagreement": "PPI虽未超预期，但同比5.4%、高real yield与油价压力仍令黄金更像高持有成本资产；错价待验证",
+      "evidence": {
+        "support": [
+          "10Y real 2.46%",
+          "油破百而黄金跌"
+        ],
+        "against": [
+          "PPI符合预期",
+          "若美元急跌或real yield回落"
+        ],
+        "missing": [
+          "GC IV/skew",
+          "ETF流",
+          "央行购金",
+          "新CFTC"
+        ]
+      },
+      "entry": "21:30后GC反弹4450–4475失败且10Y>=4.83%，或跌破4400并在美股首小时低点下停留30分钟；分1/3进入，日收<4400再加1/3",
+      "invalidation": "GC日收>4500；或10Y real<=2.40%且黄金重新领涨；高real yield下突破4500并维持两日则放弃",
+      "exit": "4375或1.5x净支出；4280–4300或最大价值75%–85%；5日无延续减半、10日退出",
+      "execution_cost": "净支出/宽度<=25%好，25%–30%中，30%–38%坏且半仓，>38%放弃；执行门槛非报价",
+      "max_loss": "净权利金；NAV 0.25%–0.50%",
+      "greeks": "-Delta、+Gamma、+Vega、-Theta；局部数值待报价",
+      "catalysts": [
+        "美国CPI",
+        "Fed会议",
+        "美元/实际利率",
+        "地缘升级"
+      ],
+      "worst_case": "数据偏软导致real yield急跌、黄金跳升；有限损失为净权利金"
+    },
+    {
+      "rank": 2,
+      "idea_id": "GXR-OIL-RIGHTTAIL-20260831",
+      "structure": "CL Nov-26买35–40Δ Call、卖15–20Δ Call；若call skew/OVX过贵改有限损失Call Butterfly",
+      "market_implied": "Brent>102、WTI约97.5计入严重但非永久物流受限",
+      "disagreement": "OPEC实际产量下降说明补偿能力弱于名义配额；但高价已兑现，优势只在回撤或新增中断",
+      "evidence": {
+        "support": [
+          "霍尔木兹通航受限",
+          "OPEC 8月产量减少64万桶/日",
+          "EIA上调价格与供给缺口"
+        ],
+        "against": [
+          "中国需求弹性",
+          "停火/通航恢复"
+        ],
+        "missing": [
+          "同步OVX",
+          "call skew",
+          "裂解价差",
+          "bid-ask"
+        ]
+      },
+      "entry": "WTI回踩95–97并守首小时VWAP/低点，或可信新增港口/保险/管线中断后突破99；先1/3，物理数据确认再加",
+      "invalidation": "WTI<92且通航/出口恢复，或中国进口和成品油需求确认转弱；直接跳至102以上不追",
+      "exit": "101–103或1.5x净支出；108–112或最大价值75%–85%；EIA/停火前兑现一部分",
+      "execution_cost": "净支出/宽度<=25%好，25%–33%中，33%–40%坏且半仓，>40%放弃",
+      "max_loss": "净支出；NAV 0.25%–0.50%",
+      "greeks": "+Delta、+Gamma、+Vega、-Theta；接近短腿时Gamma/Vega收敛",
+      "catalysts": [
+        "EIA WPSR",
+        "新增物理中断",
+        "停火/通航消息",
+        "中国进口数据"
+      ],
+      "worst_case": "油价已高位，停火跳空下跌；最大损失限于净支出"
+    },
+    {
+      "rank": 3,
+      "idea_id": "GXR-US-EVENTVOL-20260905",
+      "structure": "QQQ 2026-09-18买35–40Δ Put、卖15–20Δ Put",
+      "market_implied": "VIX16.47与HY OAS267bp暗示冲击可控；符合预期PPI降低即时尾部",
+      "disagreement": "油价、CPI、Oracle与Fed路径仍集中；只有failed rally时凸性优于裸空",
+      "evidence": {
+        "support": [
+          "油价破百",
+          "收益率高位",
+          "事件密集"
+        ],
+        "against": [
+          "PPI符合预期",
+          "SOXX相对韧性"
+        ],
+        "missing": [
+          "QQQ完整IV/RV",
+          "skew",
+          "bid-ask",
+          "dealer net gamma"
+        ]
+      },
+      "entry": "21:30后QQQ先反弹0.5%–1%再失守VWAP且2Y>=4.43%，或跌破首小时低点；1/3触发，第二个30分钟低点加1/3，SOXX同步转弱才加最后1/3",
+      "invalidation": "QQQ日收>725，同时2Y<4.30%、WTI<95且SOXX继续领涨",
+      "exit": "约695或1.5x净支出；674–680或最大价值80%；9月16日前未兑现减仓",
+      "execution_cost": "净支出/宽度<=25%好，25%–30%中，30%–35%坏且半仓，>35%放弃",
+      "max_loss": "净支出；NAV 0.25%–0.50%",
+      "greeks": "-Delta、+Gamma、+Vega、-Theta",
+      "catalysts": [
+        "美国CPI",
+        "Oracle财报",
+        "FOMC"
+      ],
+      "worst_case": "PPI/CPI温和、收益率回落、AI硬件继续领涨"
+    }
+  ],
+  "action_list": {
+    "A": "20:37没有无条件立即新仓；PPI符合预期且ECB记者会尚未开始，等待21:30现金盘确认。",
+    "B": "仅挂条件单：GC失败反弹Put Spread；WTI回踩95–97守住或新增物理中断后的有限风险Call结构；QQQ现金盘failed-rally Put Spread；2s30s等30Y拍卖/CPI。",
+    "C": "继续观察：下一A股交易日IH/IM首45分钟是否再扩>=0.35pct、MO 7600 Gamma节点、Oracle现金流/Capex、SC/AO/AP的9月10日刷新、黄金在高real yield下能否独立走强。",
+    "D": "避免/退出：追Brent>102或WTI>98、PPI后无价格确认就追空、裸卖Gamma、无CTD/DV01做曲线、把油Call/QQQ Put/前端鹰派仓拆成独立风险；若此前建立黄金政策信用多头且GC日收<4380则退出。"
+  },
+  "risk_budget": {
+    "trial_max_loss_nav": "0.25%-0.75%",
+    "confirmation_max_loss_nav": "0.75%-1.50%",
+    "high_conviction_theme_total_risk_nav": "2.5%-3.0%",
+    "factor_clusters": {
+      "geopolitical_inflation_fed": [
+        "Gold Put",
+        "QQQ Put",
+        "Oil Call",
+        "2s30s flattener"
+      ],
+      "china_small_cap_style": [
+        "IH/IM",
+        "MO options"
+      ]
+    },
+    "current_caps": {
+      "geopolitical_inflation_fed_before_cpi": "<=1.5% NAV",
+      "china_small_cap_style": "<=1.25% NAV"
+    }
+  },
+  "gold_tracking": {
+    "rating": "减弱",
+    "research_judgment": "存在待验证的失败对冲优势",
+    "evidence_sufficiency": "部分",
+    "execution_status": "等待触发及报价",
+    "facts": [
+      "10Y real 2.46% at 2026-09-09 official close",
+      "spot gold 4385.40 and futures 4427.80 intraday 2026-09-10"
+    ],
+    "market_pricing": "黄金仍含部分地缘/信用溢价",
+    "inference": "当前主导解释是real yield、美元和持有成本；坏的利率上升未带来黄金独立上涨",
+    "falsifier": "DXY不跌、10Y real>=2.45%而Gold>4500维持两日；或可核验ETF/央行流入加速",
+    "missing": [
+      "ETF高频流",
+      "央行购金",
+      "新CFTC",
+      "GC IV/skew"
+    ]
+  },
+  "ai_tracking": {
+    "classification": "需求未反转、估值与融资条件恶化、龙头现金流与远期Capex Beta分化",
+    "research_judgment": "证据不足以定义可执行篮子",
+    "evidence_sufficiency": "部分",
+    "execution_status": "观察",
+    "chain_status": {
+      "chips": "相对韧性",
+      "equipment": "看订单与估值",
+      "networking": "看定价权",
+      "cloud": "Oracle检验RPO到现金流",
+      "software": "关注消费与利润率",
+      "power_infrastructure": "融资久期敏感"
+    },
+    "falsifier": "Oracle证明订单快速变现且Capex不压FCF，同时半导体持续领涨，则反向多Capex兑现链更合理"
+  },
+  "china_tracking": {
+    "qualified_trade": false,
+    "conclusion": "今日中国股指无合格交易",
+    "score": 78,
+    "score_components": {
+      "logic": 21,
+      "payoff_convexity": 16,
+      "catalyst": 17,
+      "price_volatility": 12,
+      "crowding_technical": 12
+    },
+    "preferred_future": "IH",
+    "research_judgment": "存在待验证优势",
+    "evidence_sufficiency": "部分",
+    "execution_status": "等待2026-09-11首45分钟确认",
+    "futures": [
+      {
+        "symbol": "IH2609",
+        "close": 2897,
+        "change_1d_pct": -0.2342,
+        "change_3d_pct": -0.06,
+        "change_5d_pct": -0.36,
+        "change_20d_pct": -0.19,
+        "volume": 25477,
+        "oi": 51750,
+        "oi_change": 1077,
+        "total_oi_change": 3046,
+        "basis_pct": -0.251,
+        "next_minus_main_points": -21
+      },
+      {
+        "symbol": "IF2609",
+        "close": 4542.2,
+        "change_1d_pct": -0.4689,
+        "change_3d_pct": -0.29,
+        "change_5d_pct": 0.12,
+        "change_20d_pct": -1.77,
+        "volume": 55798,
+        "oi": 107146,
+        "oi_change": -3294,
+        "total_oi_change": 9164,
+        "basis_pct": -0.1361,
+        "next_minus_main_points": -27.8
+      },
+      {
+        "symbol": "IC2609",
+        "close": 7705.8,
+        "change_1d_pct": -0.5215,
+        "change_3d_pct": -0.13,
+        "change_5d_pct": -0.01,
+        "change_20d_pct": -2.04,
+        "volume": 77566,
+        "oi": 116839,
+        "oi_change": -4325,
+        "total_oi_change": 2996,
+        "basis_pct": -0.1555,
+        "next_minus_main_points": -69
+      },
+      {
+        "symbol": "IM2609",
+        "close": 7574,
+        "change_1d_pct": -0.661,
+        "change_3d_pct": -0.39,
+        "change_5d_pct": 0.19,
+        "change_20d_pct": -0.79,
+        "volume": 120784,
+        "oi": 180503,
+        "oi_change": -5506,
+        "total_oi_change": 4530,
+        "basis_pct": -0.1812,
+        "next_minus_main_points": -73.6
+      }
+    ],
+    "options": [
+      {
+        "symbol": "HO2609",
+        "atm_iv_pct": 14.5105,
+        "change_1d_vol": 0.2756,
+        "change_3d_vol": -0.316,
+        "change_5d_vol": 0.059,
+        "change_20d_vol": -1.205,
+        "rr25_vol": -0.0499,
+        "bf25_vol": 0.6484,
+        "iv_10d_call_pct": 16.2256,
+        "iv_10d_put_pct": 17.0396,
+        "pcr_oi": 0.6603,
+        "pcr_volume": 0.5718,
+        "call_oi_change": -605,
+        "put_oi_change": -45,
+        "gamma_peak": 2900
+      },
+      {
+        "symbol": "IO2609",
+        "atm_iv_pct": 19.0178,
+        "change_1d_vol": 0.5733,
+        "change_3d_vol": 0.195,
+        "change_5d_vol": 1.066,
+        "change_20d_vol": 1.763,
+        "rr25_vol": -2.3497,
+        "bf25_vol": 0.2626,
+        "iv_10d_call_pct": 18.3391,
+        "iv_10d_put_pct": 23.2607,
+        "pcr_oi": 0.7655,
+        "pcr_volume": 0.5912,
+        "call_oi_change": -284,
+        "put_oi_change": -795,
+        "gamma_peak": 4600
+      },
+      {
+        "symbol": "MO2609",
+        "atm_iv_pct": 28.5248,
+        "change_1d_vol": 0.5383,
+        "change_3d_vol": -0.015,
+        "change_5d_vol": 0.062,
+        "change_20d_vol": 2.598,
+        "rr25_vol": -2.913,
+        "bf25_vol": 0.9705,
+        "iv_10d_call_pct": 28.4173,
+        "iv_10d_put_pct": 35.6396,
+        "pcr_oi": 0.7894,
+        "pcr_volume": 0.8905,
+        "call_oi_change": 516,
+        "put_oi_change": -749,
+        "gamma_peak": 7600,
+        "gamma_peak_change": "from_7800"
+      }
+    ],
+    "futures_option_forward_difference_points": {
+      "IH_HO": -0.8,
+      "IF_IO": -1.85,
+      "IM_MO": -5.56
+    },
+    "relative_value": {
+      "preferred": "IH over IM conditional",
+      "closest_trigger": "first 45 minutes IH outperforms IM by >=0.35pct, ETF redemptions narrow and total OI supports large caps",
+      "IF_IH": "IH stronger today",
+      "IM_IF": "IM weaker today but stronger 5D",
+      "IM_IH": "conditional IH outperformance",
+      "IC_IF": "no standalone trade",
+      "IM_IC": "no standalone trade"
+    },
+    "ic_option_boundary": "No one-to-one CFFEX CSI500 index option. MO/IO/500ETF options are proxies with beta, basis, tenor and tracking error; cannot fully hedge IC.",
+    "gamma_caveat": "Absolute gamma node is not dealer net gamma."
+  },
+  "event_calendar": [
+    {
+      "time_bjt": "2026-09-10T20:15:00+08:00",
+      "event": "ECB rate decision",
+      "status": "published_25bp_hike_to_2.50",
+      "risk_action": "等20:45记者会，不追首波"
+    },
+    {
+      "time_bjt": "2026-09-10T20:30:00+08:00",
+      "event": "US August PPI",
+      "status": "published_headline_0.4_mom_5.4_yoy_core_0.3_mom_4.7_yoy",
+      "risk_action": "符合预期；等价格确认"
+    },
+    {
+      "time_bjt": "2026-09-10T20:45:00+08:00",
+      "event": "ECB press conference",
+      "status": "upcoming",
+      "risk_action": "EUR/DXY降Delta"
+    },
+    {
+      "time_bjt": "2026-09-11T00:00:00+08:00",
+      "event": "EIA WPSR",
+      "status": "scheduled",
+      "risk_action": "油多盈利先兑现部分"
+    },
+    {
+      "time_bjt": "2026-09-11T01:00:00+08:00",
+      "event": "US 30Y auction",
+      "status": "scheduled_approx",
+      "risk_action": "曲线等拍卖确认"
+    },
+    {
+      "time_bjt": "2026-09-11T04:00:00+08:00",
+      "event": "Oracle earnings",
+      "status": "scheduled_window",
+      "risk_action": "AI不裸卖Vega"
+    },
+    {
+      "time_bjt": "2026-09-11T09:30:00+08:00",
+      "event": "China cash and futures open",
+      "status": "scheduled",
+      "risk_action": "IH/IM等30–45分钟"
+    },
+    {
+      "time_bjt": "2026-09-11T20:30:00+08:00",
+      "event": "US CPI and real earnings",
+      "status": "scheduled",
+      "risk_action": "降方向Delta、留有限凸性"
+    },
+    {
+      "time_bjt": "2026-09-10/2026-09-15",
+      "event": "China social financing/credit window",
+      "status": "exact_time_unconfirmed",
+      "risk_action": "不据未确认时点下单"
+    },
+    {
+      "time_bjt": "2026-09-15T20:30:00+08:00",
+      "event": "US retail sales",
+      "status": "scheduled",
+      "risk_action": "增长敏感仓减Delta"
+    },
+    {
+      "time_bjt": "2026-09-17T02:00:00+08:00",
+      "event": "FOMC",
+      "status": "scheduled_approx",
+      "risk_action": "跨事件仅有限风险"
+    },
+    {
+      "time_bjt": "2026-09-18",
+      "event": "CFFEX September expiry",
+      "status": "just_beyond_7d",
+      "risk_action": "预先移仓"
+    }
+  ],
+  "coverage_check": {
+    "global_rates": {
+      "should_cover": [
+        "2Y",
+        "5Y",
+        "10Y",
+        "30Y",
+        "2s10s",
+        "2s30s",
+        "5s30s",
+        "real yields",
+        "BEI",
+        "term premium",
+        "Treasury supply",
+        "Fed path"
+      ],
+      "analyzed": [
+        "2Y",
+        "5Y",
+        "10Y",
+        "30Y",
+        "2s30s",
+        "5s30s",
+        "10Y real",
+        "10Y BEI",
+        "auction"
+      ],
+      "insufficient": [
+        "ACM term premium",
+        "swaptions",
+        "CTD/DV01 live"
+      ],
+      "status": "partial"
+    },
+    "fx": {
+      "should_cover": [
+        "DXY",
+        "EURUSD",
+        "USDJPY",
+        "USDCNH",
+        "skew",
+        "carry"
+      ],
+      "analyzed": [
+        "four directional FX pairs",
+        "ECB decision"
+      ],
+      "insufficient": [
+        "synchronized exact quotes",
+        "option skew",
+        "crowding"
+      ],
+      "status": "partial"
+    },
+    "ai": {
+      "should_cover": [
+        "Nasdaq",
+        "QQQ",
+        "SOXX",
+        "SMH",
+        "chips",
+        "equipment",
+        "networking",
+        "cloud",
+        "software",
+        "power"
+      ],
+      "analyzed": [
+        "index relative performance",
+        "sector chain",
+        "BIS",
+        "Oracle catalyst"
+      ],
+      "insufficient": [
+        "beta-calibrated basket",
+        "options surface"
+      ],
+      "status": "partial"
+    },
+    "oil_gold_risk": {
+      "should_cover": [
+        "WTI",
+        "Brent",
+        "curve",
+        "inventory",
+        "cracks",
+        "OPEC+",
+        "geopolitics",
+        "OVX",
+        "gold spot/futures",
+        "ETF",
+        "central bank",
+        "CFTC",
+        "gold IV/skew",
+        "VIX",
+        "MOVE",
+        "HY",
+        "CTA",
+        "gamma"
+      ],
+      "analyzed": [
+        "WTI",
+        "Brent",
+        "OPEC output",
+        "geopolitics",
+        "gold spot/futures",
+        "real yields",
+        "DXY",
+        "VIX",
+        "MOVE",
+        "HY"
+      ],
+      "insufficient": [
+        "OVX",
+        "cracks",
+        "gold ETF/central bank flow",
+        "new CFTC",
+        "gold IV/skew",
+        "CTA",
+        "dealer net gamma"
+      ],
+      "status": "partial"
+    },
+    "china_index": {
+      "should_cover": [
+        "IH",
+        "IF",
+        "IC",
+        "IM",
+        "HO",
+        "IO",
+        "MO",
+        "ETF options",
+        "basis",
+        "calendar",
+        "1/3/5/20D",
+        "wings",
+        "PCR",
+        "OI",
+        "gamma"
+      ],
+      "analyzed": [
+        "686/686 official EOD",
+        "fixed-date snapshots"
+      ],
+      "insufficient": [
+        "full ETF chain",
+        "breadth",
+        "margin financing",
+        "DR007"
+      ],
+      "not_applicable": [
+        "direct IC index option"
+      ],
+      "status": "partial"
+    },
+    "china_commodities": {
+      "should_cover_count": 77,
+      "analyzed_count": 77,
+      "actual_valid_count": 72,
+      "insufficient_count": 72,
+      "not_applicable_count": 5,
+      "status": "stale_last_good",
+      "not_applicable_symbols": [
+        "JR",
+        "PM",
+        "RI",
+        "WH",
+        "ZC"
+      ],
+      "commodity_products": [
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 1.2191854233654986,
+          "change_20d_pct": 0.4654255319149092,
+          "change_3d_pct": 2.136001081519545,
+          "change_5d_pct": 2.3296762833536766,
+          "contract": "AP701",
+          "curve_zscore": -2.453822276039899,
+          "date": "2026-09-09",
+          "name": "苹果",
+          "oi_change_pct_1d": 14.526018077174108,
+          "product": "AP",
+          "sector": "软商品与特色农产品",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_down",
+          "change_1d_pct": -0.35724918130396466,
+          "change_20d_pct": -0.20870602265947724,
+          "change_3d_pct": -0.5349182763744409,
+          "change_5d_pct": -1.1809861234130525,
+          "contract": "CF701",
+          "curve_zscore": 0.2729410681362714,
+          "date": "2026-09-09",
+          "name": "棉花",
+          "oi_change_pct_1d": -1.586488969059399,
+          "product": "CF",
+          "sector": "软商品与特色农产品",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_up",
+          "change_1d_pct": -0.5034612964128438,
+          "change_20d_pct": -5.04504504504506,
+          "change_3d_pct": 0.4447268106734237,
+          "change_5d_pct": 0.8290816326530726,
+          "contract": "CJ701",
+          "curve_zscore": -1.4082432360218033,
+          "date": "2026-09-09",
+          "name": "红枣",
+          "oi_change_pct_1d": 1.0048034014901575,
+          "product": "CJ",
+          "sector": "软商品与特色农产品",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_down",
+          "change_1d_pct": -0.17493986442160825,
+          "change_20d_pct": 0.28558875219681923,
+          "change_3d_pct": 0.13160780872998323,
+          "change_5d_pct": 0.2195389681668658,
+          "contract": "CY611",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "棉纱",
+          "oi_change_pct_1d": -8.88379617147479,
+          "product": "CY",
+          "sector": "软商品与特色农产品",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 0.31023784901758056,
+          "change_20d_pct": 0.6224066390041472,
+          "change_3d_pct": -0.1029866117404854,
+          "change_5d_pct": 0.5181347150258864,
+          "contract": "FG701",
+          "curve_zscore": -1.838399457843719,
+          "date": "2026-09-09",
+          "name": "玻璃",
+          "oi_change_pct_1d": -0.45838198882560366,
+          "product": "FG",
+          "sector": "黑色与建材",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "mixed_or_flat",
+          "change_1d_pct": 0,
+          "change_20d_pct": 0,
+          "change_3d_pct": 0,
+          "change_5d_pct": 0,
+          "contract": "JR609",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "粳稻",
+          "oi_change_pct_1d": null,
+          "product": "JR",
+          "sector": "软商品与特色农产品",
+          "status": "not_applicable_or_low_liquidity"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 3.751143641354071,
+          "change_20d_pct": 30.795847750865057,
+          "change_3d_pct": 6.113537117903944,
+          "change_5d_pct": 7.760532150776056,
+          "contract": "MA610",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "甲醇",
+          "oi_change_pct_1d": -20.41661451879318,
+          "product": "MA",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 0.14455044810639528,
+          "change_20d_pct": 4.59989934574736,
+          "change_3d_pct": 2.3640661938534313,
+          "change_5d_pct": 1.0993287284755127,
+          "contract": "OI701",
+          "curve_zscore": 0.6180794382312456,
+          "date": "2026-09-09",
+          "name": "菜籽油",
+          "oi_change_pct_1d": 3.704719125480983,
+          "product": "OI",
+          "sector": "农产品、油脂油料、饲料和畜牧",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 1.5609264853977844,
+          "change_20d_pct": 11.313465783664455,
+          "change_3d_pct": 1.6376921138825828,
+          "change_5d_pct": 0.9256942707030369,
+          "contract": "PF611",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "短纤",
+          "oi_change_pct_1d": 0.19772430516694647,
+          "product": "PF",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_down",
+          "change_1d_pct": -0.07414730598122032,
+          "change_20d_pct": -1.3902439024390367,
+          "change_3d_pct": 0.923614578132792,
+          "change_5d_pct": 1.2268402603905715,
+          "contract": "PK611",
+          "curve_zscore": -1.4359253892702286,
+          "date": "2026-09-09",
+          "name": "花生",
+          "oi_change_pct_1d": -2.5443053544901453,
+          "product": "PK",
+          "sector": "软商品与特色农产品",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 2.1459719990819304,
+          "change_20d_pct": 21.16798257555135,
+          "change_3d_pct": 3.247883076209246,
+          "change_5d_pct": 3.6204889406286522,
+          "contract": "PL611",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "丙烯",
+          "oi_change_pct_1d": -4.8071149804863404,
+          "product": "PL",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "mixed_or_flat",
+          "change_1d_pct": 0,
+          "change_20d_pct": 0,
+          "change_3d_pct": 0,
+          "change_5d_pct": 0,
+          "contract": "PM609",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "普麦",
+          "oi_change_pct_1d": null,
+          "product": "PM",
+          "sector": "软商品与特色农产品",
+          "status": "not_applicable_or_low_liquidity"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 0.6617459913464074,
+          "change_20d_pct": 12.838801711840219,
+          "change_3d_pct": 1.8804739824832772,
+          "change_5d_pct": 0.7386653082017247,
+          "contract": "PR611",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "瓶片",
+          "oi_change_pct_1d": -4.580384874003394,
+          "product": "PR",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 2.075344010827873,
+          "change_20d_pct": 14.354308819812879,
+          "change_3d_pct": 4.094778007821476,
+          "change_5d_pct": 2.654264972776743,
+          "contract": "PX611",
+          "curve_zscore": -0.6273778838814477,
+          "date": "2026-09-09",
+          "name": "对二甲苯",
+          "oi_change_pct_1d": -6.17290226379287,
+          "product": "PX",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "mixed_or_flat",
+          "change_1d_pct": 0,
+          "change_20d_pct": 0,
+          "change_3d_pct": 0,
+          "change_5d_pct": 0,
+          "contract": "RI609",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "早籼稻",
+          "oi_change_pct_1d": null,
+          "product": "RI",
+          "sector": "软商品与特色农产品",
+          "status": "not_applicable_or_low_liquidity"
+        },
+        {
+          "attribution_clue": "price_down_oi_down",
+          "change_1d_pct": -0.7620660457239636,
+          "change_20d_pct": 7.67110702802023,
+          "change_3d_pct": -0.6358626536668188,
+          "change_5d_pct": 0.3424657534246478,
+          "contract": "RM611",
+          "curve_zscore": -1.9550812662053494,
+          "date": "2026-09-09",
+          "name": "菜籽粕",
+          "oi_change_pct_1d": -0.29366272502323437,
+          "product": "RM",
+          "sector": "农产品、油脂油料、饲料和畜牧",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "mixed_or_flat",
+          "change_1d_pct": -0.9607993850883956,
+          "change_20d_pct": -13.100657561962581,
+          "change_3d_pct": 0.213882947695887,
+          "change_5d_pct": 7.285595337218975,
+          "contract": "RS609",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "油菜籽",
+          "oi_change_pct_1d": 0,
+          "product": "RS",
+          "sector": "农产品、油脂油料、饲料和畜牧",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 0.37348272642390157,
+          "change_20d_pct": 2.57633587786259,
+          "change_3d_pct": -0.4629629629629761,
+          "change_5d_pct": 0.7497656982192957,
+          "contract": "SA701",
+          "curve_zscore": -1.77825717715263,
+          "date": "2026-09-09",
+          "name": "纯碱",
+          "oi_change_pct_1d": 0.3680776178907369,
+          "product": "SA",
+          "sector": "黑色与建材",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_down",
+          "change_1d_pct": -1.2314493211240896,
+          "change_20d_pct": 5.568680391495118,
+          "change_3d_pct": -4.6922608165752555,
+          "change_5d_pct": 0.7407407407407751,
+          "contract": "SF611",
+          "curve_zscore": -0.6989886103876823,
+          "date": "2026-09-09",
+          "name": "硅铁",
+          "oi_change_pct_1d": -0.4725493860185794,
+          "product": "SF",
+          "sector": "黑色与建材",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 1.2833675564681624,
+          "change_20d_pct": 3.3525405971712274,
+          "change_3d_pct": 2.9212310902451577,
+          "change_5d_pct": 2.9749478079331926,
+          "contract": "SH611",
+          "curve_zscore": -1.529616232654477,
+          "date": "2026-09-09",
+          "name": "烧碱",
+          "oi_change_pct_1d": 5.432740676110008,
+          "product": "SH",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 1.0183299389002087,
+          "change_20d_pct": 2.3383768913342484,
+          "change_3d_pct": -3.53322528363047,
+          "change_5d_pct": -2.2980958634274518,
+          "contract": "SM611",
+          "curve_zscore": -0.359038025679561,
+          "date": "2026-09-09",
+          "name": "锰硅",
+          "oi_change_pct_1d": -6.155080991234113,
+          "product": "SM",
+          "sector": "黑色与建材",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 0.09122422915526229,
+          "change_20d_pct": 2.734082397003723,
+          "change_3d_pct": 1.273767768137346,
+          "change_5d_pct": 1.4798372179060548,
+          "contract": "SR701",
+          "curve_zscore": -0.6092966680943268,
+          "date": "2026-09-09",
+          "name": "白糖",
+          "oi_change_pct_1d": -0.768881904380201,
+          "product": "SR",
+          "sector": "软商品与特色农产品",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 1.5867768595041243,
+          "change_20d_pct": 10.30150753768837,
+          "change_3d_pct": 3.1554212823095007,
+          "change_5d_pct": 1.7549668874172086,
+          "contract": "TA701",
+          "curve_zscore": 3.2856406731469736,
+          "date": "2026-09-09",
+          "name": "PTA",
+          "oi_change_pct_1d": 0.06722001402852468,
+          "product": "TA",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_down",
+          "change_1d_pct": -0.8776741634668128,
+          "change_20d_pct": 4.089861751152091,
+          "change_3d_pct": 0.2774694783573617,
+          "change_5d_pct": 1.4598540145985384,
+          "contract": "UR701",
+          "curve_zscore": -1.109422139395042,
+          "date": "2026-09-09",
+          "name": "尿素",
+          "oi_change_pct_1d": -2.348106518352431,
+          "product": "UR",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "mixed_or_flat",
+          "change_1d_pct": 0,
+          "change_20d_pct": 0,
+          "change_3d_pct": 0,
+          "change_5d_pct": 0,
+          "contract": "WH609",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "强麦",
+          "oi_change_pct_1d": null,
+          "product": "WH",
+          "sector": "软商品与特色农产品",
+          "status": "not_applicable_or_low_liquidity"
+        },
+        {
+          "attribution_clue": "mixed_or_flat",
+          "change_1d_pct": 0,
+          "change_20d_pct": 0,
+          "change_3d_pct": 0,
+          "change_5d_pct": 0,
+          "contract": "ZC610",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "动力煤",
+          "oi_change_pct_1d": null,
+          "product": "ZC",
+          "sector": "能源与化工",
+          "status": "not_applicable_or_low_liquidity"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 0.646678424456204,
+          "change_20d_pct": 4.966278356836273,
+          "change_3d_pct": 2.905229412943333,
+          "change_5d_pct": 2.4740622505985854,
+          "contract": "A2611",
+          "curve_zscore": -0.29487366331146664,
+          "date": "2026-09-09",
+          "name": "豆一",
+          "oi_change_pct_1d": 0.14035289474578352,
+          "product": "A",
+          "sector": "农产品、油脂油料、饲料和畜牧",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_up",
+          "change_1d_pct": -0.837320574162681,
+          "change_20d_pct": 8.083441981747018,
+          "change_3d_pct": -0.45629202689722037,
+          "change_5d_pct": 0.2660861151427163,
+          "contract": "B2611",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "豆二",
+          "oi_change_pct_1d": 1.0875847212735774,
+          "product": "B",
+          "sector": "农产品、油脂油料、饲料和畜牧",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 1.9320843091334972,
+          "change_20d_pct": 23.68570616652461,
+          "change_3d_pct": 2.7381092883276503,
+          "change_5d_pct": 5.196374622356514,
+          "contract": "BZ2610",
+          "curve_zscore": -0.8845371027116388,
+          "date": "2026-09-09",
+          "name": "纯苯",
+          "oi_change_pct_1d": -2.010564542753384,
+          "product": "BZ",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_down",
+          "change_1d_pct": -0.21834061135370675,
+          "change_20d_pct": 2.742805755395694,
+          "change_3d_pct": -0.5224205485415689,
+          "change_5d_pct": -0.47909407665504,
+          "contract": "C2611",
+          "curve_zscore": -0.5626733096625197,
+          "date": "2026-09-09",
+          "name": "玉米",
+          "oi_change_pct_1d": -0.8080332238269385,
+          "product": "C",
+          "sector": "农产品、油脂油料、饲料和畜牧",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 0.11760094080752737,
+          "change_20d_pct": 1.75298804780879,
+          "change_3d_pct": -0.8155339805825168,
+          "change_5d_pct": -1.0461061604029487,
+          "contract": "CS2611",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "玉米淀粉",
+          "oi_change_pct_1d": -0.17945282270744745,
+          "product": "CS",
+          "sector": "农产品、油脂油料、饲料和畜牧",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 1.2624172185430549,
+          "change_20d_pct": 19.225146198830423,
+          "change_3d_pct": 1.1263821432262233,
+          "change_5d_pct": 3.8082104593189836,
+          "contract": "EB2610",
+          "curve_zscore": 1.4313611980688352,
+          "date": "2026-09-09",
+          "name": "苯乙烯",
+          "oi_change_pct_1d": 0.5278282999544445,
+          "product": "EB",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 0.051715221513526366,
+          "change_20d_pct": 25.059254471019223,
+          "change_3d_pct": -0.6844626967830281,
+          "change_5d_pct": 1.362207474676902,
+          "contract": "EG2610",
+          "curve_zscore": 0.4697391377748721,
+          "date": "2026-09-09",
+          "name": "乙二醇",
+          "oi_change_pct_1d": -5.739985368773415,
+          "product": "EG",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_up",
+          "change_1d_pct": -0.33783783783783994,
+          "change_20d_pct": 4.387827317763637,
+          "change_3d_pct": 1.5840220385674897,
+          "change_5d_pct": 2.8591352859135277,
+          "contract": "I2701",
+          "curve_zscore": -0.4039405840477722,
+          "date": "2026-09-09",
+          "name": "铁矿石",
+          "oi_change_pct_1d": 3.6461658028456148,
+          "product": "I",
+          "sector": "黑色与建材",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 0.11566042100392693,
+          "change_20d_pct": 10.80389144905276,
+          "change_3d_pct": -0.4370830457786967,
+          "change_5d_pct": -2.7634239496742263,
+          "contract": "J2701",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "焦炭",
+          "oi_change_pct_1d": -4.030339083878644,
+          "product": "J",
+          "sector": "黑色与建材",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_up",
+          "change_1d_pct": -0.10462987182840999,
+          "change_20d_pct": 0.42072048382857385,
+          "change_3d_pct": 2.331189710610926,
+          "change_5d_pct": 4.003267973856195,
+          "contract": "JD2611",
+          "curve_zscore": -0.40373703669075295,
+          "date": "2026-09-09",
+          "name": "鸡蛋",
+          "oi_change_pct_1d": 3.661289455701354,
+          "product": "JD",
+          "sector": "农产品、油脂油料、饲料和畜牧",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 0.727272727272732,
+          "change_20d_pct": 12.830957230142603,
+          "change_3d_pct": -0.5088296917090562,
+          "change_5d_pct": -2.4075161479741425,
+          "contract": "JM2701",
+          "curve_zscore": 0.8808946512331093,
+          "date": "2026-09-09",
+          "name": "焦煤",
+          "oi_change_pct_1d": -3.760874764833768,
+          "product": "JM",
+          "sector": "黑色与建材",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 0.5487295717523599,
+          "change_20d_pct": 14.540019024323957,
+          "change_3d_pct": 0.8494855228523557,
+          "change_5d_pct": 1.1520460818432499,
+          "contract": "L2701",
+          "curve_zscore": -1.6339962347573038,
+          "date": "2026-09-09",
+          "name": "聚乙烯",
+          "oi_change_pct_1d": -0.9124595135343675,
+          "product": "L",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_down",
+          "change_1d_pct": -0.17889087656529634,
+          "change_20d_pct": 1.6393442622950838,
+          "change_3d_pct": -0.357142857142867,
+          "change_5d_pct": -0.11933174224344478,
+          "contract": "LG2611",
+          "curve_zscore": -1.4243008526575087,
+          "date": "2026-09-09",
+          "name": "原木",
+          "oi_change_pct_1d": -0.6912303900943679,
+          "product": "LG",
+          "sector": "农产品、油脂油料、饲料和畜牧",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_up",
+          "change_1d_pct": -0.21204410517388084,
+          "change_20d_pct": -2.365145228215737,
+          "change_3d_pct": -0.5073995771670226,
+          "change_5d_pct": 0.29838022165389333,
+          "contract": "LH2611",
+          "curve_zscore": -0.6755054964899353,
+          "date": "2026-09-09",
+          "name": "生猪",
+          "oi_change_pct_1d": 2.3681672980865462,
+          "product": "LH",
+          "sector": "农产品、油脂油料、饲料和畜牧",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_down",
+          "change_1d_pct": -0.5270863836017603,
+          "change_20d_pct": 8.49568827850533,
+          "change_3d_pct": -0.14697236919458678,
+          "change_5d_pct": 0.622037914691953,
+          "contract": "M2701",
+          "curve_zscore": 1.008786730997728,
+          "date": "2026-09-09",
+          "name": "豆粕",
+          "oi_change_pct_1d": -0.07133582369251702,
+          "product": "M",
+          "sector": "农产品、油脂油料、饲料和畜牧",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_down",
+          "change_1d_pct": -1.103540926974378,
+          "change_20d_pct": 6.291254125412582,
+          "change_3d_pct": 0.920485703094398,
+          "change_5d_pct": 0.42876632235431256,
+          "contract": "P2701",
+          "curve_zscore": 3.1655418213147084,
+          "date": "2026-09-09",
+          "name": "棕榈油",
+          "oi_change_pct_1d": -4.594581342342813,
+          "product": "P",
+          "sector": "农产品、油脂油料、饲料和畜牧",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 1.3778643103190102,
+          "change_20d_pct": 25.677682881544726,
+          "change_3d_pct": 3.7712708876284085,
+          "change_5d_pct": 6.297110552763829,
+          "contract": "PG2610",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "液化石油气",
+          "oi_change_pct_1d": -8.502584672749357,
+          "product": "PG",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 1.0405827263267442,
+          "change_20d_pct": 16.07119139327937,
+          "change_3d_pct": 1.8412772404148736,
+          "change_5d_pct": 1.8887722980063026,
+          "contract": "PP2701",
+          "curve_zscore": 0.5381997002968443,
+          "date": "2026-09-09",
+          "name": "聚丙烯",
+          "oi_change_pct_1d": 1.4088400844861715,
+          "product": "PP",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 0.05564830272677401,
+          "change_20d_pct": -0.24965325936200378,
+          "change_3d_pct": 0.4749930148086001,
+          "change_5d_pct": 0.4749930148086001,
+          "contract": "RR2610",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "粳米",
+          "oi_change_pct_1d": 0.718816067653277,
+          "product": "RR",
+          "sector": "农产品、油脂油料、饲料和畜牧",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 0.8538522637013601,
+          "change_20d_pct": 8.664955070603341,
+          "change_3d_pct": 0.7738095238095433,
+          "change_5d_pct": 3.6319118547235574,
+          "contract": "V2701",
+          "curve_zscore": 0.2937929388866015,
+          "date": "2026-09-09",
+          "name": "PVC",
+          "oi_change_pct_1d": 4.6997142258462885,
+          "product": "V",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_down",
+          "change_1d_pct": -0.9554831704668865,
+          "change_20d_pct": 8.042165107189403,
+          "change_3d_pct": -0.24059492563428542,
+          "change_5d_pct": -0.14230979748222072,
+          "contract": "Y2701",
+          "curve_zscore": 3.1661812047635647,
+          "date": "2026-09-09",
+          "name": "豆油",
+          "oi_change_pct_1d": -4.03888978020215,
+          "product": "Y",
+          "sector": "农产品、油脂油料、饲料和畜牧",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_up",
+          "change_1d_pct": -0.6574346062386383,
+          "change_20d_pct": -4.478816408876973,
+          "change_3d_pct": -3.4004352557127415,
+          "change_5d_pct": -8.749839393550051,
+          "contract": "LC2701",
+          "curve_zscore": -0.0071671092581765405,
+          "date": "2026-09-09",
+          "name": "碳酸锂",
+          "oi_change_pct_1d": 1.7211272128778452,
+          "product": "LC",
+          "sector": "新能源与材料",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_down",
+          "change_1d_pct": -2.7786353812905173,
+          "change_20d_pct": -3.523284313725472,
+          "change_3d_pct": -3.7444597279535308,
+          "change_5d_pct": 3.602566211547975,
+          "contract": "PD2610",
+          "curve_zscore": -0.42015737749873416,
+          "date": "2026-09-09",
+          "name": "钯",
+          "oi_change_pct_1d": -7.659507264687303,
+          "product": "PD",
+          "sector": "有色与贵金属",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 0.3214142225793415,
+          "change_20d_pct": -1.3563339478535608,
+          "change_3d_pct": -0.8602435150873555,
+          "change_5d_pct": -0.47827819848544895,
+          "contract": "PS2611",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "多晶硅",
+          "oi_change_pct_1d": 2.0832970743338497,
+          "product": "PS",
+          "sector": "新能源与材料",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 0.35567411359340717,
+          "change_20d_pct": 3.413125644256132,
+          "change_3d_pct": 1.2787436904094118,
+          "change_5d_pct": 5.5036223416686125,
+          "contract": "PT2612",
+          "curve_zscore": -1.5439090897989032,
+          "date": "2026-09-09",
+          "name": "铂",
+          "oi_change_pct_1d": 7.463962863425361,
+          "product": "PT",
+          "sector": "有色与贵金属",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 0.567536889897835,
+          "change_20d_pct": 2.427745664739911,
+          "change_3d_pct": 0.16958733747880483,
+          "change_5d_pct": 1.8976423231742645,
+          "contract": "SI2611",
+          "curve_zscore": 0.10491383694250303,
+          "date": "2026-09-09",
+          "name": "工业硅",
+          "oi_change_pct_1d": -1.8317605940111485,
+          "product": "SI",
+          "sector": "新能源与材料",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 0.832064941653976,
+          "change_20d_pct": 3.295218295218283,
+          "change_3d_pct": 2.1904566022213023,
+          "change_5d_pct": 3.0167945262285167,
+          "contract": "BC2610",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "国际铜",
+          "oi_change_pct_1d": 0.03639230909201189,
+          "product": "BC",
+          "sector": "有色与贵金属",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 1.2048192771084265,
+          "change_20d_pct": 20.599250936329593,
+          "change_3d_pct": 4.066792351198489,
+          "change_5d_pct": -1.9040365575019091,
+          "contract": "EC2610",
+          "curve_zscore": -0.5043515815970097,
+          "date": "2026-09-09",
+          "name": "集运指数（欧线）",
+          "oi_change_pct_1d": -3.290668868703551,
+          "product": "EC",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 0.9574052364204721,
+          "change_20d_pct": 15.386333184457367,
+          "change_3d_pct": 4.383838383838379,
+          "change_5d_pct": 2.3168316831682967,
+          "contract": "LU2611",
+          "curve_zscore": -0.9992116891130405,
+          "date": "2026-09-09",
+          "name": "低硫燃料油",
+          "oi_change_pct_1d": -7.535066939927071,
+          "product": "LU",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 0.9927797833934937,
+          "change_20d_pct": 10.828656322218588,
+          "change_3d_pct": 5.732283464566934,
+          "change_5d_pct": 6.503807106598969,
+          "contract": "NR2611",
+          "curve_zscore": -2.166765857887839,
+          "date": "2026-09-09",
+          "name": "20号胶",
+          "oi_change_pct_1d": 2.8392555819128904,
+          "product": "NR",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 2.7299872031850025,
+          "change_20d_pct": 31.819011129356056,
+          "change_3d_pct": 5.767823159127516,
+          "change_5d_pct": 6.673556769526101,
+          "contract": "SC2610",
+          "curve_zscore": 0.1766831180373369,
+          "date": "2026-09-09",
+          "name": "原油",
+          "oi_change_pct_1d": 1.2281335466226329,
+          "product": "SC",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 0.6771053745239008,
+          "change_20d_pct": 0.295109612141653,
+          "change_3d_pct": 0.5282062117050401,
+          "change_5d_pct": 1.6449476607562241,
+          "contract": "AD2611",
+          "curve_zscore": 1.2305368760593127,
+          "date": "2026-09-09",
+          "name": "铸造铝合金",
+          "oi_change_pct_1d": 2.4641771602257925,
+          "product": "AD",
+          "sector": "有色与贵金属",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_down",
+          "change_1d_pct": -0.3518952957155208,
+          "change_20d_pct": 1.3690887395591655,
+          "change_3d_pct": -1.0846917514401144,
+          "change_5d_pct": 2.6781170483460626,
+          "contract": "AG2610",
+          "curve_zscore": -0.0573178675424766,
+          "date": "2026-09-09",
+          "name": "白银",
+          "oi_change_pct_1d": -0.9692032166309653,
+          "product": "AG",
+          "sector": "有色与贵金属",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 0.44989775051125225,
+          "change_20d_pct": 0.8210180623974273,
+          "change_3d_pct": 0.7589743589743625,
+          "change_5d_pct": 2.0781379883624274,
+          "contract": "AL2610",
+          "curve_zscore": 0.528979749933167,
+          "date": "2026-09-09",
+          "name": "铝",
+          "oi_change_pct_1d": -4.3832117494533565,
+          "product": "AL",
+          "sector": "有色与贵金属",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 1.1598405219282348,
+          "change_20d_pct": 0.7945106536655588,
+          "change_3d_pct": 0.4679625629949502,
+          "change_5d_pct": 1.527828301200418,
+          "contract": "AO2701",
+          "curve_zscore": -3.249729701735966,
+          "date": "2026-09-09",
+          "name": "氧化铝",
+          "oi_change_pct_1d": 19.235754587505717,
+          "product": "AO",
+          "sector": "有色与贵金属",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_down",
+          "change_1d_pct": -0.6025734909509306,
+          "change_20d_pct": -0.5547182449970434,
+          "change_3d_pct": -2.130158010753791,
+          "change_5d_pct": 1.048623814183025,
+          "contract": "AU2610",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "黄金",
+          "oi_change_pct_1d": -1.0479418501502735,
+          "product": "AU",
+          "sector": "有色与贵金属",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 1.484349790254913,
+          "change_20d_pct": 19.354838709677445,
+          "change_3d_pct": 5.820995962314934,
+          "change_5d_pct": 5.0434201736806905,
+          "contract": "BR2611",
+          "curve_zscore": 2.7328225799986208,
+          "date": "2026-09-09",
+          "name": "丁二烯橡胶",
+          "oi_change_pct_1d": 2.408264284945658,
+          "product": "BR",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 0.28380295965944047,
+          "change_20d_pct": 25.050556117290213,
+          "change_3d_pct": 3.5370447886144962,
+          "change_5d_pct": 2.1474292793723038,
+          "contract": "BU2611",
+          "curve_zscore": 1.394570264478581,
+          "date": "2026-09-09",
+          "name": "沥青",
+          "oi_change_pct_1d": 3.025696621181055,
+          "product": "BU",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 0.7799746054779622,
+          "change_20d_pct": 2.869838918718748,
+          "change_3d_pct": 1.842177618916696,
+          "change_5d_pct": 2.784201276477649,
+          "contract": "CU2610",
+          "curve_zscore": -0.09701584606798777,
+          "date": "2026-09-09",
+          "name": "铜",
+          "oi_change_pct_1d": -0.5884220460386976,
+          "product": "CU",
+          "sector": "有色与贵金属",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 1.0531723606473253,
+          "change_20d_pct": 13.699421965317903,
+          "change_3d_pct": 1.6012396694214948,
+          "change_5d_pct": -0.9317552253840344,
+          "contract": "FU2611",
+          "curve_zscore": -0.3487166129443979,
+          "date": "2026-09-09",
+          "name": "燃料油",
+          "oi_change_pct_1d": -0.7545486732174306,
+          "product": "FU",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 0.02958579881657819,
+          "change_20d_pct": 3.7116564417178033,
+          "change_3d_pct": 0.029585798816555986,
+          "change_5d_pct": -0.11816838995568624,
+          "contract": "HC2701",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "热轧卷板",
+          "oi_change_pct_1d": 0.8778167983611356,
+          "product": "HC",
+          "sector": "黑色与建材",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 0.34662045060658286,
+          "change_20d_pct": -1.1024844720496585,
+          "change_3d_pct": -0.5154639175257603,
+          "change_5d_pct": 0.6081668114683136,
+          "contract": "NI2610",
+          "curve_zscore": 2.7797380787008525,
+          "date": "2026-09-09",
+          "name": "镍",
+          "oi_change_pct_1d": -1.320160321891424,
+          "product": "NI",
+          "sector": "有色与贵金属",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 0.05173305742369738,
+          "change_20d_pct": -0.15487867836860847,
+          "change_3d_pct": 0.5197505197505281,
+          "change_5d_pct": 0.46753246753248323,
+          "contract": "OP2611",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "胶版印刷纸",
+          "oi_change_pct_1d": -0.23414536940168387,
+          "product": "OP",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 0.5600497822028538,
+          "change_20d_pct": 1.7311929493232459,
+          "change_3d_pct": 0.2792429413589703,
+          "change_5d_pct": -0.06184291898579941,
+          "contract": "PB2610",
+          "curve_zscore": -0.24104649349499832,
+          "date": "2026-09-09",
+          "name": "铅",
+          "oi_change_pct_1d": -1.563067401360974,
+          "product": "PB",
+          "sector": "有色与贵金属",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 0.03161555485298173,
+          "change_20d_pct": 4.010519395134748,
+          "change_3d_pct": 0.12658227848101333,
+          "change_5d_pct": 0.18999366687775243,
+          "contract": "RB2701",
+          "curve_zscore": -0.8962093974455309,
+          "date": "2026-09-09",
+          "name": "螺纹钢",
+          "oi_change_pct_1d": 1.7517678209030947,
+          "product": "RB",
+          "sector": "黑色与建材",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_up",
+          "change_1d_pct": 0.7963010531723658,
+          "change_20d_pct": 9.364548494983316,
+          "change_3d_pct": 4.5285029302077895,
+          "change_5d_pct": 5.144694533762073,
+          "contract": "RU2701",
+          "curve_zscore": 2.0300579280231106,
+          "date": "2026-09-09",
+          "name": "天然橡胶",
+          "oi_change_pct_1d": 0.9327847961315326,
+          "product": "RU",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_down",
+          "change_1d_pct": -0.21487405992598463,
+          "change_20d_pct": -2.6347668079951703,
+          "change_3d_pct": -0.07411657820493023,
+          "change_5d_pct": 0.5122408734548722,
+          "contract": "SN2610",
+          "curve_zscore": 0.462293899532355,
+          "date": "2026-09-09",
+          "name": "锡",
+          "oi_change_pct_1d": -1.9812801255464634,
+          "product": "SN",
+          "sector": "有色与贵金属",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 0.5360824742268067,
+          "change_20d_pct": 6.0461070030448205,
+          "change_3d_pct": 0.8271298593879095,
+          "change_5d_pct": 0.9105960264900625,
+          "contract": "SP2611",
+          "curve_zscore": -1.1440495801068238,
+          "date": "2026-09-09",
+          "name": "纸浆",
+          "oi_change_pct_1d": -4.330464415221286,
+          "product": "SP",
+          "sector": "能源与化工",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_down_oi_up",
+          "change_1d_pct": -0.21707670043414895,
+          "change_20d_pct": -5.060240963855422,
+          "change_3d_pct": -0.3252620166244946,
+          "change_5d_pct": 0.2909090909090972,
+          "contract": "SS2610",
+          "curve_zscore": -1.84579500841583,
+          "date": "2026-09-09",
+          "name": "不锈钢",
+          "oi_change_pct_1d": 1.2011918803153516,
+          "product": "SS",
+          "sector": "有色与贵金属",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 0.05858230814295151,
+          "change_20d_pct": 3.264812575574405,
+          "change_3d_pct": 0.47058823529413374,
+          "change_5d_pct": 0.6185567010309256,
+          "contract": "WR2701",
+          "curve_zscore": null,
+          "date": "2026-09-09",
+          "name": "线材",
+          "oi_change_pct_1d": -2.564102564102564,
+          "product": "WR",
+          "sector": "黑色与建材",
+          "status": "analyzed_last_good_stale"
+        },
+        {
+          "attribution_clue": "price_up_oi_down",
+          "change_1d_pct": 0.2005103900838412,
+          "change_20d_pct": 6.82083171395258,
+          "change_3d_pct": 2.7668723125817696,
+          "change_5d_pct": 3.152561456183145,
+          "contract": "ZN2610",
+          "curve_zscore": -0.6143307461279415,
+          "date": "2026-09-09",
+          "name": "锌",
+          "oi_change_pct_1d": -1.9139830561343532,
+          "product": "ZN",
+          "sector": "有色与贵金属",
+          "status": "analyzed_last_good_stale"
+        }
+      ]
+    }
+  },
+  "previous_date": {
+    "latest_global_report": "2026-09-10_morning",
+    "latest_same_edition": "2026-09-09_evening"
+  },
+  "idea_ledger": [
+    {
+      "idea_id": "GXR-GOLD-FAILHEDGE-20260907",
+      "first_proposed": "2026-09-07",
+      "prior_status": "morning downgraded",
+      "current_status": "rank_1_conditional",
+      "reason_type": "price_change_and_new_data",
+      "reason": "high real yield and gold weakness; PPI in line so no chase"
+    },
+    {
+      "idea_id": "GXR-GOLD-CREDIT-20260831",
+      "first_proposed": "2026-08-31",
+      "prior_status": "conditional_call",
+      "current_status": "watch_downgraded",
+      "reason_type": "price_change_and_view_revision",
+      "reason": "GC failed 4475 and gold not independent"
+    },
+    {
+      "idea_id": "GXR-US-EVENTVOL-20260905",
+      "first_proposed": "2026-09-05",
+      "prior_status": "wait",
+      "current_status": "rank_3_conditional",
+      "reason_type": "catalyst_update",
+      "reason": "PPI in line reduces immediate tail; CPI remains"
+    },
+    {
+      "idea_id": "GXR-RATES-FLAT-20260905",
+      "first_proposed": "2026-09-05",
+      "prior_status": "wait",
+      "current_status": "rank_4_conditional",
+      "reason_type": "catalyst_update",
+      "reason": "PPI no upside surprise; wait auction/CPI"
+    },
+    {
+      "idea_id": "GXR-OIL-RIGHTTAIL-20260831",
+      "first_proposed": "2026-08-31",
+      "prior_status": "rank_1_morning",
+      "current_status": "rank_2_no_chase",
+      "reason_type": "new_data_and_price_change",
+      "reason": "OPEC output decline supports thesis; price already high"
+    },
+    {
+      "idea_id": "GXR-CN-IFIM-20260910",
+      "first_proposed": "2026-09-10",
+      "prior_status": "morning_conditional",
+      "current_status": "not_triggered_watch",
+      "reason_type": "price_path_unavailable",
+      "reason": "IF only outperformed IM about 0.19pct; intraday trigger unknown"
+    },
+    {
+      "idea_id": "GXR-AI-QUALITY-20260903",
+      "first_proposed": "2026-09-03",
+      "prior_status": "watch",
+      "current_status": "watch",
+      "reason_type": "new_data",
+      "reason": "BIS supports financing concern; SOXX rejects broad short"
+    }
+  ],
+  "sources": [
+    {
+      "accessed_at_bjt": "2026-09-10T20:01:02+08:00",
+      "publisher": "U.S. Treasury",
+      "source_date": "2026-09-09",
+      "source_type": "official",
+      "supported_claims": [
+        "美国2Y/5Y/10Y/30Y名义收益率及曲线"
+      ],
+      "title": "Daily Treasury Par Yield Curve Rates",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve"
+    },
+    {
+      "accessed_at_bjt": "2026-09-10T20:01:02+08:00",
+      "publisher": "U.S. Treasury",
+      "source_date": "2026-09-09",
+      "source_type": "official",
+      "supported_claims": [
+        "10年实际收益率及10年盈亏平衡通胀代理"
+      ],
+      "title": "Daily Treasury Par Real Yield Curve Rates",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_real_yield_curve"
+    },
+    {
+      "accessed_at_bjt": "2026-09-10T20:01:02+08:00",
+      "publisher": "Cboe",
+      "source_date": "2026-09-09",
+      "source_type": "official",
+      "supported_claims": [
+        "VIX收盘"
+      ],
+      "title": "VIX Index",
+      "url": "https://www.cboe.com/tradable-products/vix/"
+    },
+    {
+      "accessed_at_bjt": "2026-09-10T20:01:02+08:00",
+      "publisher": "FRED",
+      "source_date": "2026-09-08",
+      "source_type": "official",
+      "supported_claims": [
+        "美国高收益债利差"
+      ],
+      "title": "ICE BofA US High Yield OAS",
+      "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2"
+    },
+    {
+      "accessed_at_bjt": "2026-09-10T20:01:02+08:00",
+      "publisher": "Reuters",
+      "source_date": "2026-09-10",
+      "source_type": "newswire",
+      "supported_claims": [
+        "Brent和WTI盘中报价；霍尔木兹通航与油运风险"
+      ],
+      "title": "Brent holds above $100 as tanker attacks dampen hopes for Hormuz traffic recovery",
+      "url": "https://www.reuters.com/business/energy/brent-holds-above-100-tanker-attacks-deepen-supply-fear-2026-09-10/"
+    },
+    {
+      "accessed_at_bjt": "2026-09-10T20:01:02+08:00",
+      "publisher": "Reuters",
+      "source_date": "2026-09-10",
+      "source_type": "newswire",
+      "supported_claims": [
+        "黄金现货及期货盘中报价；黄金与美元和收益率关系"
+      ],
+      "title": "Gold falls as dollar, yields rise ahead of inflation data",
+      "url": "https://www.reuters.com/world/india/gold-edges-higher-weaker-dollar-us-inflation-data-focus-2026-09-10/"
+    },
+    {
+      "accessed_at_bjt": "2026-09-10T20:01:02+08:00",
+      "publisher": "Reuters",
+      "source_date": "2026-09-10",
+      "source_type": "newswire",
+      "supported_claims": [
+        "美元反弹有限；欧元、日元和人民币背景"
+      ],
+      "title": "Dollar crawls higher ahead of ECB, US inflation data",
+      "url": "https://www.reuters.com/world/asia-pacific/currency-markets-subdued-oil-shock-lifts-global-yields-ecb-us-inflation-eyed-2026-09-10/"
+    },
+    {
+      "accessed_at_bjt": "2026-09-10T20:01:02+08:00",
+      "publisher": "Reuters",
+      "source_date": "2026-09-10",
+      "source_type": "newswire",
+      "supported_claims": [
+        "AI资本开支规模及债务/不透明融资风险"
+      ],
+      "title": "AI boom poses new financial stability risks, BIS head says",
+      "url": "https://www.reuters.com/business/finance/ai-boom-poses-new-financial-stability-risks-bis-head-says-2026-09-10/"
+    },
+    {
+      "accessed_at_bjt": "2026-09-10T20:01:02+08:00",
+      "publisher": "BLS",
+      "source_date": "2026-02-18",
+      "source_type": "official",
+      "supported_claims": [
+        "PPI和CPI发布时间"
+      ],
+      "title": "Schedule of Selected Releases for September 2026",
+      "url": "https://www.bls.gov/schedule/2026/09_sched.htm"
+    },
+    {
+      "accessed_at_bjt": "2026-09-10T20:01:02+08:00",
+      "publisher": "EIA",
+      "source_date": "2026-09-10",
+      "source_type": "official",
+      "supported_claims": [
+        "EIA库存发布时间"
+      ],
+      "title": "Weekly Petroleum Status Report schedule",
+      "url": "https://www.eia.gov/petroleum/supply/weekly/schedule.php"
+    },
+    {
+      "accessed_at_bjt": "2026-09-10T20:01:02+08:00",
+      "publisher": "ECB",
+      "source_date": "2026-09-10",
+      "source_type": "official",
+      "supported_claims": [
+        "ECB决议和记者会时间"
+      ],
+      "title": "Monetary policy decisions calendar",
+      "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html"
+    },
+    {
+      "accessed_at_bjt": "2026-09-10T20:01:02+08:00",
+      "publisher": "TreasuryDirect",
+      "source_date": "2026-09-10",
+      "source_type": "official",
+      "supported_claims": [
+        "美国30年期国债拍卖窗口"
+      ],
+      "title": "Upcoming Treasury auctions",
+      "url": "https://www.treasurydirect.gov/auctions/upcoming/"
+    },
+    {
+      "accessed_at_bjt": "2026-09-10T20:01:02+08:00",
+      "publisher": "Oracle Investor Relations",
+      "source_date": "2026",
+      "source_type": "official",
+      "supported_claims": [
+        "Oracle财报及电话会时间"
+      ],
+      "title": "Oracle FY2027 Q1 earnings date",
+      "url": "https://investor.oracle.com/investor-news/news-details/2026/Oracle-Sets-the-Date-for-its-First-Quarter-Fiscal-Year-2027-Earnings-Announcement/default.aspx"
+    },
+    {
+      "accessed_at_bjt": "2026-09-10T20:01:02+08:00",
+      "publisher": "farfromexact",
+      "source_date": "2026-09-10",
+      "source_type": "repository_snapshot",
+      "supported_claims": [
+        "IH/IF/IC/IM与HO/IO/MO EOD指标及Gamma"
+      ],
+      "title": "China-Options-Engine radar snapshot",
+      "url": "https://github.com/farfromexact/China-Options-Engine/blob/085a98197724c1361c55cb394c289698d07eea5f/data/radar_latest.json"
+    },
+    {
+      "accessed_at_bjt": "2026-09-10T20:01:02+08:00",
+      "publisher": "farfromexact",
+      "source_date": "2026-09-09",
+      "source_type": "repository_snapshot",
+      "supported_claims": [
+        "77个中国商品代码扫描及数据状态"
+      ],
+      "title": "China-Commodities-Engine report input",
+      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/6d88d2b1e2c97b54778c191a44df1100c172ac35/data/report_input_latest.json"
+    },
+    {
+      "accessed_at_bjt": "2026-09-10T20:01:02+08:00",
+      "publisher": "CFTC",
+      "source_date": "2026-09-01",
+      "source_type": "official",
+      "supported_claims": [
+        "黄金仓位仅作滞后背景"
+      ],
+      "title": "COMEX Commitments of Traders",
+      "url": "https://www.cftc.gov/dea/futures/deacmxlf.htm"
+    },
+    {
+      "title": "U.S. Producer Price Indexes — August 2026",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "url": "https://www.bls.gov/news.release/ppi.nr0.htm",
+      "source_date": "2026-09-10",
+      "accessed_at_bjt": "2026-09-10T20:37:00+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "8月PPI环比0.4%、同比5.4%",
+        "核心口径环比0.3%、同比4.7%",
+        "货物、能源及柴油分项"
+      ]
+    },
+    {
+      "title": "ECB raises interest rates to fight inflation jump",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/ecb-raises-interest-rates-fight-off-inflation-jump-2026-09-10/",
+      "source_date": "2026-09-10",
+      "accessed_at_bjt": "2026-09-10T20:37:00+08:00",
+      "source_type": "reliable_media",
+      "supported_claims": [
+        "ECB加息25bp至2.50%",
+        "通胀与增长预测及工资放缓"
+      ]
+    },
+    {
+      "title": "OPEC oil output falls in August, Reuters survey shows",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/energy/opec-oil-output-falls-august-reuters-survey-shows-2026-09-10/",
+      "source_date": "2026-09-10",
+      "accessed_at_bjt": "2026-09-10T20:37:00+08:00",
+      "source_type": "reliable_media",
+      "supported_claims": [
+        "OPEC 8月产量减少64万桶/日至1971万桶/日"
+      ]
+    }
+  ],
+  "China-Options-Engine实际读取路径": [
+    "data/radar_latest.json",
+    "data/radar_history.json",
+    "data/snapshots/2026-09-10.json",
+    "data/snapshots/2026-09-09.json",
+    "data/snapshots/2026-09-07.json",
+    "data/snapshots/2026-09-03.json",
+    "data/snapshots/2026-08-13.json"
+  ],
+  "china_options_date": "2026-09-10",
+  "data_fresh": false,
+  "errors": [
+    {
+      "component": "China-Commodities-Engine",
+      "status": "stale",
+      "detail": "2026-09-10 refresh failed with 15 iFinD 401 device-limit errors; using audited 2026-09-09 last-good compact layer"
+    },
+    {
+      "component": "China-Options-Engine radar_history",
+      "status": "empty",
+      "detail": "file is exactly empty; fixed daily snapshots used for multi-period comparison"
+    },
+    {
+      "component": "global_options_surfaces",
+      "status": "missing",
+      "detail": "live bid/ask, IV, skew and dealer net gamma unavailable; all option trades remain quote-dependent"
+    },
+    {
+      "component": "MOVE",
+      "status": "stale",
+      "detail": "latest available delayed observation used as background"
+    }
+  ],
+  "archive_status": "success",
+  "ci_validation_status": "pending_or_unverified",
+  "archive": {
+    "status": "success",
+    "branch": "main",
+    "verified_main": true,
+    "markdown_path": "reports/2026/09/2026-09-10_evening.md",
+    "json_path": "reports/2026/09/2026-09-10_evening.json",
+    "latest_markdown_path": "latest/evening.md",
+    "latest_json_path": "latest/evening.json",
+    "status_path": "status/evening_latest.json",
+    "manifest_path": "manifests/reports.json",
+    "ci_validation_status": "pending_or_unverified",
+    "notes": "Set to success only after six-path main reread verification in this run."
+  }
+}
