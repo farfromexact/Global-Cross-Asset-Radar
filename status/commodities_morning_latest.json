@@ -1,105 +1,91 @@
 {
-  "report_date": "2026-09-10",
+  "report_date": "2026-09-11",
   "edition": "commodities_morning",
-  "generated_at": "2026-09-10T07:17:00+08:00",
-  "generated_at_bjt": "2026-09-10T07:17:00+08:00",
-  "previous_date": "2026-09-09",
+  "generated_at": "2026-09-11T07:14:00+08:00",
+  "generated_at_bjt": "2026-09-11T07:14:00+08:00",
+  "previous_date": "2026-09-10",
   "revision": 1,
   "prompt_version": "radar_2026-09-06_coverage_v1",
   "data_protocol": "china_commodities_v2",
   "worth_taking_risk": true,
   "immediate_new_position": false,
   "weekend_mode": false,
-  "data_fresh": false,
+  "data_fresh": true,
   "report_input": {
     "used": true,
     "schema_version": 2,
-    "requested_date": "2026-09-09",
-    "generated_at": "2026-09-10T06:00:44.369636+08:00"
+    "requested_date": "2026-09-10",
+    "generated_at": "2026-09-11T06:18:48.845156+08:00"
   },
   "eod_snapshot": {
-    "date": "2026-09-09",
+    "date": "2026-09-10",
     "contract_count": 802,
-    "included_exchanges": [
-      "SHFE",
-      "INE",
-      "DCE",
-      "CZCE",
-      "GFEX"
-    ],
+    "included_exchanges": ["SHFE", "INE", "DCE", "CZCE", "GFEX"],
     "source_date_match_pct": 100,
     "full_market_ready": true,
     "critical_module_errors": 0,
     "placeholder_excluded": 7,
     "official_complete": false,
-    "retained_last_good": true,
-    "current_refresh_critical_errors": 15,
-    "current_refresh_error": "iFinD HTTP 401 Device exceed limit"
+    "retained_last_good": false
   },
   "night_session": {
-    "trading_date": "2026-09-10",
-    "night_session_date": "2026-09-09",
-    "generated_at": "2026-09-10T05:59:18.029624+08:00",
+    "trading_date": "2026-09-11",
+    "night_session_date": "2026-09-10",
+    "generated_at": "2026-09-11T06:00:37.558645+08:00",
     "data_fresh": true,
     "validation_passed": true,
     "published": true,
-    "coverage_complete": false,
-    "contract_count": 588,
+    "coverage_complete": true,
+    "contract_count": 598,
     "product_count": 55,
-    "outside_night_window_count": 192,
-    "no_night_trade_count": 20,
+    "outside_night_window_count": 191,
+    "no_night_trade_count": 13,
     "missing_timestamp_count": 0,
     "missing_price_count": 0,
     "missing_quote_count": 0,
-    "query_error_count": 2,
-    "unresolved_contract_count": 2,
-    "unresolved_contracts": [
-      "ZN2707",
-      "ZN2708"
-    ],
+    "query_error_count": 0,
+    "unresolved_contract_count": 0,
+    "coverage_warnings": [],
     "fallback_used": false
   },
   "physical": {
-    "requested_date": "2026-09-09",
+    "requested_date": "2026-09-10",
     "targets": 20,
     "fresh": 18,
-    "carried_forward": [
-      "GFEX:LC warehouse from 2026-09-01",
-      "GFEX:SI warehouse from 2026-09-01"
-    ],
-    "unavailable": [
-      "SC",
-      "LU"
-    ],
+    "carried_forward_target_count": 0,
+    "warehouse_carried_forward_count": 5,
+    "unavailable": ["SC", "LU"],
     "basis_note": "all C/context only"
   },
   "external": {
-    "requested_date": "2026-09-09",
+    "requested_date": "2026-09-10",
     "targets": 22,
     "fresh": 17,
+    "unavailable": 5,
     "usage": "context only",
     "import_parity_ready": false,
-    "web_refresh_at": "2026-09-10T07:00:00+08:00"
+    "web_refresh_at": "2026-09-11T07:00:00+08:00"
   },
   "options": {
-    "trade_date": "2026-09-09",
+    "trade_date": "2026-09-10",
     "products_target": 64,
-    "products_success": 57,
-    "record_count": 22302,
-    "series_count": 375,
-    "iv_coverage": 0.979822,
-    "open_interest_coverage": 0.687651,
+    "products_success": 52,
+    "failed_products": ["INE:BC", "INE:SC", "SHFE:AD", "SHFE:AG", "SHFE:AL", "SHFE:AO", "SHFE:AU", "SHFE:CU", "SHFE:NI", "SHFE:PB", "SHFE:SN", "SHFE:ZN"],
+    "new_listing_gap": ["HC", "SS", "LU"],
+    "record_count": 19238,
+    "series_count": 353,
+    "iv_coverage": 0.97671,
+    "open_interest_coverage": 0.69732,
     "bid_ask_coverage": 0,
     "surface_ready": false,
-    "surface_ready_count": 364,
+    "surface_ready_count": 342,
     "positioning_ready": false,
-    "positioning_ready_count": 70,
+    "positioning_ready_count": 84,
     "execution_ready": false,
     "execution_ready_count": 0,
-    "dealer_gamma_direction_known": false,
-    "refresh_error": "iFinD HTTP 401"
+    "dealer_gamma_direction_known": false
   },
-  "contract_metadata_quality": "partial",
+  "contract_metadata_quality": "partial; effective contract match 73.32%; dynamic margin/limit incomplete",
   "coverage": {
     "required_products": 63,
     "required_analyzed": 63,
@@ -107,42 +93,27 @@
     "total_product_scans": 71
   },
   "top_scores": [
-    {
-      "asset": "SC2610回撤接受多",
-      "score": 79
-    },
-    {
-      "asset": "FU2611产品链延续多",
-      "score": 78
-    },
-    {
-      "asset": "CU2610全球共振多",
-      "score": 76
-    },
-    {
-      "asset": "EB2610油价扩散多",
-      "score": 75
-    },
-    {
-      "asset": "AG2610银强金弱多",
-      "score": 72
-    }
+    {"asset": "SC2610回撤接受多", "score": 75},
+    {"asset": "FU2611产品链延续多", "score": 74},
+    {"asset": "CU2610关税溢价回吐空", "score": 69},
+    {"asset": "AG2610通胀重定价空", "score": 69},
+    {"asset": "M2701采购/WASDE观察多", "score": 68}
   ],
   "errors": [
-    "Current Futures/Options refresh failed with HTTP 401; verified last-good EOD retained.",
-    "Night coverage incomplete for ZN2707/ZN2708 only; top candidate contracts fresh.",
-    "Options execution-ready count and bid/ask coverage are zero; 7 products failed.",
+    "Options execution-ready count and bid/ask coverage are zero; 12 products failed.",
+    "HC/SS/LU new listings are not represented in the current expected-64 readiness coverage.",
     "SC/LU physical unavailable; basis all C/context only.",
-    "SHFE/DCE warehouse incomplete; GFEX LC/SI carried from 2026-09-01.",
-    "Contract metadata partial; dynamic margin/limit unconfirmed."
+    "Warehouse coverage is partial with 5 carried-forward records.",
+    "Contract metadata partial; dynamic margin/limit unconfirmed.",
+    "Current Night near-next second legs were unavailable from the compact layer, so Night curves were not fabricated."
   ],
   "archive_status": "success",
   "ci_validation_status": "pending_or_unverified",
   "failed_paths": [],
   "verified_main": true,
   "target_paths": [
-    "reports/2026/09/2026-09-10_commodities_morning.md",
-    "reports/2026/09/2026-09-10_commodities_morning.json",
+    "reports/2026/09/2026-09-11_commodities_morning.md",
+    "reports/2026/09/2026-09-11_commodities_morning.json",
     "latest/commodities_morning.md",
     "latest/commodities_morning.json",
     "status/commodities_morning_latest.json",
