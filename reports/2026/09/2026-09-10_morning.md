@@ -223,7 +223,7 @@ China-Options固定commit `3046347aec3ce24d7c60e7eaf803f1c645e67609`，官方匹
 
 单一试仓最大损失0.25%—0.75% NAV；确认交易0.75%—1.50%；主题总风险≤2.5%—3.0%。油Call、黄金Call、QQQ Put、flattener共享滞胀/信用/real因子，合并压力损失≤1.5%—2.0%；IF/IM与小盘ETF、IC/IM风格仓共享中国风格因子，合并≤1.25%—1.50%。期货计划止损不等于最大损失有限。
 
-**归档写入中。** 六文件将直接写入`main`并复核；当前`archive_status=partial`，`ci_validation_status=pending_or_unverified`。[完整归档报告](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/main/reports/2026/09/2026-09-10_morning.md)
+**归档复核成功。** 六文件已从`main`重读：历史MD/JSON存在，latest日期/edition正确，status对应本次，manifest中`2026-09-10 + morning`恰好一条；`archive_status=success`，`ci_validation_status=pending_or_unverified`。[完整归档报告](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/main/reports/2026/09/2026-09-10_morning.md)
 
 ## 十四、今日行动清单
 
