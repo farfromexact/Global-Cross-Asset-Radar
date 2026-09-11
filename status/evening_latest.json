@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "edition": "evening",
-  "report_date": "2026-09-10",
-  "generated_at_bjt": "2026-09-10T20:39:00+08:00",
+  "report_date": "2026-09-11",
+  "generated_at_bjt": "2026-09-11T20:10:00+08:00",
   "status": "published",
   "archive_status": "success",
   "verified_main": true,
@@ -10,43 +10,56 @@
   "source_status": {
     "china_options": "ok",
     "china_options_history": "empty",
-    "china_commodities": "stale",
-    "us_rates": "ok_last_complete_session",
-    "us_ppi": "ok_new",
-    "ecb": "ok_new",
+    "china_options_snapshots": "ok",
+    "china_commodities": "ok_partial",
+    "us_nominal_rates": "ok_last_complete_session",
+    "us_real_rates": "ok_last_complete_session",
+    "us_cpi": "not_yet_released_at_cutoff",
+    "global_intraday_prices": "ok_delayed",
     "global_options_surface": "missing",
-    "move": "stale",
-    "tool_truncation": "none_misclassified_as_empty"
+    "move": "missing",
+    "hy_oas": "ok_delayed",
+    "fx": "partial_last_good"
   },
-  "china_options_date": "2026-09-10",
+  "china_options_date": "2026-09-11",
   "china_options_path": "data/radar_latest.json",
-  "china_options_commit": "085a98197724c1361c55cb394c289698d07eea5f",
+  "china_options_commit": "b816bfd3db64afe5b93204addfd8e1624939510d",
   "errors": [
-    {
-      "component": "China-Commodities-Engine",
-      "status": "stale",
-      "detail": "2026-09-10 refresh failed with 15 iFinD 401 device-limit errors; using audited 2026-09-09 last-good compact layer"
-    },
     {
       "component": "China-Options-Engine radar_history",
       "status": "empty",
-      "detail": "file is exactly empty; fixed daily snapshots used for multi-period comparison"
+      "detail": "file is exactly empty; fixed snapshots used, 20D option comparison is front-month regime proxy"
     },
     {
       "component": "global_options_surfaces",
       "status": "missing",
-      "detail": "live bid/ask, IV, skew and dealer net gamma unavailable; all option trades remain quote-dependent"
+      "detail": "live bid/ask, IV, skew, Greeks and dealer net gamma unavailable; all option structures quote-dependent"
     },
     {
       "component": "MOVE",
-      "status": "stale",
-      "detail": "latest available delayed observation used as background"
+      "status": "missing",
+      "detail": "refresh failed; no old observation treated as current"
+    },
+    {
+      "component": "FX",
+      "status": "partial",
+      "detail": "synchronized USDJPY and USDCNH plus option skew unavailable"
+    },
+    {
+      "component": "China commodities",
+      "status": "partial",
+      "detail": "official_complete=false; 5 option products failed and physical/member layers incomplete"
+    },
+    {
+      "component": "US CPI",
+      "status": "not_yet_released",
+      "detail": "scheduled 20:30 BJT, after report cutoff"
     }
   ],
   "ci_validation_status": "pending_or_unverified",
   "paths": {
-    "markdown": "reports/2026/09/2026-09-10_evening.md",
-    "json": "reports/2026/09/2026-09-10_evening.json",
+    "markdown": "reports/2026/09/2026-09-11_evening.md",
+    "json": "reports/2026/09/2026-09-11_evening.json",
     "latest_markdown": "latest/evening.md",
     "latest_json": "latest/evening.json",
     "manifest": "manifests/reports.json"
