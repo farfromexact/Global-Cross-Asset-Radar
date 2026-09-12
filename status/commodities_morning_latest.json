@@ -1,9 +1,9 @@
 {
-  "report_date": "2026-09-12",
+  "report_date": "2026-09-13",
   "edition": "commodities_morning",
-  "generated_at": "2026-09-12T07:16:00+08:00",
-  "generated_at_bjt": "2026-09-12T07:16:00+08:00",
-  "previous_date": "2026-09-11",
+  "generated_at": "2026-09-13T07:02:10+08:00",
+  "generated_at_bjt": "2026-09-13T07:02:10+08:00",
+  "previous_date": "2026-09-12",
   "revision": 1,
   "prompt_version": "radar_2026-09-06_coverage_v1",
   "data_protocol": "china_commodities_v2",
@@ -15,10 +15,11 @@
     "used": true,
     "schema_version": 2,
     "requested_date": "2026-09-11",
-    "generated_at": "2026-09-12T06:16:51.006801+08:00"
+    "generated_at": "2026-09-13T06:20:44.625459+08:00"
   },
   "eod_snapshot": {
     "date": "2026-09-11",
+    "generated_at": "2026-09-13T06:03:51+08:00",
     "contract_count": 802,
     "product_count": 77,
     "included_exchanges": [
@@ -33,31 +34,35 @@
     "critical_module_errors": 0,
     "placeholder_excluded": 4,
     "official_complete": false,
-    "retained_last_good": false
+    "retained_last_good": true
   },
   "night_session": {
-    "reported_trading_date": "2026-09-12",
-    "night_session_date": "2026-09-11",
-    "generated_at": "2026-09-12T06:00:26.497326+08:00",
-    "raw_data_fresh": true,
-    "validation_passed": true,
-    "published": true,
+    "reported_trading_date": "2026-09-13",
+    "night_session_date": "2026-09-12",
+    "generated_at": "2026-09-13T06:03:38+08:00",
+    "raw_data_fresh": false,
+    "validation_passed": false,
+    "published": false,
     "coverage_complete": true,
-    "contract_count": 596,
-    "product_count": 55,
-    "outside_night_window_count": 196,
-    "no_night_trade_count": 10,
+    "contract_count": 0,
+    "product_count": 0,
+    "requested_contract_count": 802,
+    "outside_night_window_count": 802,
+    "no_night_trade_count": 0,
     "missing_timestamp_count": 0,
     "missing_price_count": 0,
     "missing_quote_count": 0,
     "query_error_count": 0,
     "unresolved_contract_count": 0,
-    "coverage_warnings": [],
-    "calendar_semantic_valid": false,
-    "state": "parse_ok_calendar_semantic_invalid",
-    "usage": "fully isolated",
+    "coverage_warnings": [
+      "no concrete contract has a quote in the completed night-session window"
+    ],
+    "calendar_semantic_valid": true,
+    "state": "no_session_weekend",
+    "usage": "not applicable; no price/OI used",
     "fallback_used": false,
     "overnight_day_decomposition_used": false,
+    "previous_invalid_snapshot_isolated": true,
     "next_valid_night_session": "2026-09-14T21:00:00+08:00"
   },
   "physical": {
@@ -78,7 +83,7 @@
     "unavailable": 5,
     "usage": "context only",
     "import_parity_ready": false,
-    "web_refresh_at": "2026-09-12T07:00:00+08:00"
+    "weekend_news_refresh_at": "2026-09-13T07:00:00+08:00"
   },
   "options": {
     "trade_date": "2026-09-11",
@@ -104,7 +109,7 @@
     "execution_ready_count": 0,
     "dealer_gamma_direction_known": false
   },
-  "contract_metadata_quality": "partial; effective contract match 73.32%; dynamic margin/limit incomplete",
+  "contract_metadata_quality": "partial; DCE interface failed; dynamic margin/limit incomplete",
   "coverage": {
     "required_products": 63,
     "required_analyzed": 63,
@@ -115,40 +120,39 @@
   "top_scores": [
     {
       "asset": "FU2611产品链延续多",
-      "score": 75
+      "score": 77
     },
     {
       "asset": "EC2610航运冲击多",
-      "score": 73
+      "score": 77
     },
     {
       "asset": "SC2610高位接受多",
-      "score": 70
+      "score": 73
     },
     {
-      "asset": "CU2610关税溢价回吐空",
-      "score": 68
+      "asset": "CU2610关税回吐空",
+      "score": 67
     },
     {
       "asset": "C2611 WASDE玉米减产多",
-      "score": 58
+      "score": 56
     }
   ],
   "errors": [
-    "Night trading_date 2026-09-12 is a Saturday and calendar-semantic invalid; all 596 records isolated.",
-    "Previous valid Night snapshot unavailable from current latest layer; no overnight/day decomposition.",
+    "No current Night session on Sunday; zero valid contracts are expected and no fallback is required.",
+    "Older calendar-invalid 2026-09-12 Night snapshot remains isolated.",
     "Options execution-ready and bid/ask coverage are zero; five products failed.",
-    "SC/LU Physical unavailable and all basis is C/context only.",
-    "Five GFEX warehouse records are stale carry-forwards.",
-    "Contract metadata is partial."
+    "SC/LU Physical unavailable and all basis C/context only.",
+    "Contract metadata partial."
   ],
   "archive_status": "success",
   "ci_validation_status": "pending_or_unverified",
   "failed_paths": [],
   "verified_main": true,
   "target_paths": [
-    "reports/2026/09/2026-09-12_commodities_morning.md",
-    "reports/2026/09/2026-09-12_commodities_morning.json",
+    "reports/2026/09/2026-09-13_commodities_morning.md",
+    "reports/2026/09/2026-09-13_commodities_morning.json",
     "latest/commodities_morning.md",
     "latest/commodities_morning.json",
     "status/commodities_morning_latest.json",
@@ -156,4 +160,3 @@
   ],
   "run_note": "Six-path direct-to-main archive; manifest written last; CI not polled."
 }
-
