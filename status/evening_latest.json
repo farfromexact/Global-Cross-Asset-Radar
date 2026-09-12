@@ -1,65 +1,71 @@
 {
   "schema_version": "1.0",
   "edition": "evening",
-  "report_date": "2026-09-11",
-  "generated_at_bjt": "2026-09-11T20:10:00+08:00",
+  "report_date": "2026-09-12",
+  "generated_at_bjt": "2026-09-12T20:12:00+08:00",
   "status": "published",
   "archive_status": "success",
   "verified_main": true,
   "data_fresh": false,
+  "data_fresh_detail": "all last complete sessions current; Saturday commodity refresh missing as expected; live global option surfaces missing",
   "source_status": {
+    "us_nominal_rates": "ok_last_complete_session",
+    "us_real_rates": "ok_last_complete_session",
+    "us_cpi": "ok_official",
+    "global_cash_prices": "ok_last_complete_session",
+    "global_options_surfaces": "missing",
+    "move": "ok_delayed_secondary",
+    "hy_oas": "ok_delayed",
+    "fx": "partial",
     "china_options": "ok",
     "china_options_history": "empty",
     "china_options_snapshots": "ok",
-    "china_commodities": "ok_partial",
-    "us_nominal_rates": "ok_last_complete_session",
-    "us_real_rates": "ok_last_complete_session",
-    "us_cpi": "not_yet_released_at_cutoff",
-    "global_intraday_prices": "ok_delayed",
-    "global_options_surface": "missing",
-    "move": "missing",
-    "hy_oas": "ok_delayed",
-    "fx": "partial_last_good"
+    "china_commodities_refresh": "missing_weekend_sessions",
+    "china_commodities_last_good": "ok_verified",
+    "china_commodity_options_execution": "missing"
   },
   "china_options_date": "2026-09-11",
   "china_options_path": "data/radar_latest.json",
-  "china_options_commit": "b816bfd3db64afe5b93204addfd8e1624939510d",
+  "china_options_commit": "0a355f6e53886212452852e20073acd3609a00e5",
+  "china_commodities_path": "data/report_input_latest.json",
+  "china_commodities_commit": "c139b10b4c16faa9f3cfc6f045d3068fb4b3f61d",
+  "china_commodities_last_good_date": "2026-09-11",
   "errors": [
     {
       "component": "China-Options-Engine radar_history",
       "status": "empty",
-      "detail": "file is exactly empty; fixed snapshots used, 20D option comparison is front-month regime proxy"
+      "detail": "file is exactly empty; fixed date snapshots used"
     },
     {
-      "component": "global_options_surfaces",
+      "component": "China commodities Saturday refresh",
       "status": "missing",
-      "detail": "live bid/ask, IV, skew, Greeks and dealer net gamma unavailable; all option structures quote-dependent"
+      "detail": "no Saturday sessions; verified 2026-09-11 last-good remains valid"
     },
     {
-      "component": "MOVE",
+      "component": "global options surfaces",
       "status": "missing",
-      "detail": "refresh failed; no old observation treated as current"
+      "detail": "live bid/ask, full IV/skew, Greeks and dealer net gamma unavailable; all structures quote-dependent"
     },
     {
       "component": "FX",
       "status": "partial",
-      "detail": "synchronized USDJPY and USDCNH plus option skew unavailable"
+      "detail": "synchronized USDCNH and FX option skew/carry unavailable"
     },
     {
-      "component": "China commodities",
+      "component": "China market breadth/flows",
       "status": "partial",
-      "detail": "official_complete=false; 5 option products failed and physical/member layers incomplete"
+      "detail": "ETF subscription/redemption, margin financing and detailed breadth unavailable"
     },
     {
-      "component": "US CPI",
-      "status": "not_yet_released",
-      "detail": "scheduled 20:30 BJT, after report cutoff"
+      "component": "commodity options execution",
+      "status": "missing",
+      "detail": "59 research surfaces analyzed but execution_ready=0; no premium or contract recommendation asserted"
     }
   ],
   "ci_validation_status": "pending_or_unverified",
   "paths": {
-    "markdown": "reports/2026/09/2026-09-11_evening.md",
-    "json": "reports/2026/09/2026-09-11_evening.json",
+    "markdown": "reports/2026/09/2026-09-12_evening.md",
+    "json": "reports/2026/09/2026-09-12_evening.json",
     "latest_markdown": "latest/evening.md",
     "latest_json": "latest/evening.json",
     "manifest": "manifests/reports.json"
