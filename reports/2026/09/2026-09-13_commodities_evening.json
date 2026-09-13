@@ -1,0 +1,781 @@
+{
+  "schema_version": "1.0",
+  "status": "published",
+  "report_date": "2026-09-13",
+  "edition": "commodities_evening",
+  "generated_at_bjt": "2026-09-13T19:38:00+08:00",
+  "weekend_mode": true,
+  "prompt_version": "radar_2026-09-06_coverage_v1",
+  "title": "全球商品期货期权高风险机会雷达｜晚间版｜2026-09-13",
+  "one_sentence_conclusion": "截至本报告时点，无可立即执行的合格新交易；霍尔木兹再现船舶遇袭，SC/FU/EC周一上跳风险增加，但国际期货尚未开盘，必须等待价格确认。",
+  "regime": "dual-chokepoint and alternative-pipeline disruption / weekend event risk without commodity price confirmation / deep China energy and freight backwardation / hot inflation / post-WASDE repricing pending",
+  "worth_taking_risk": false,
+  "data_protocol_version": "china_commodities_v2",
+  "report_input_requested_date": "2026-09-11",
+  "report_input_generated_at": "2026-09-13T19:09:05.557186+08:00",
+  "module_freshness": [
+    {
+      "module": "futures",
+      "requested_date": "2026-09-11",
+      "source_date": "2026-09-11",
+      "generated_at": "2026-09-13T06:03:51.297901+08:00",
+      "state": "ok_validated_last_good",
+      "data_fresh_native_frequency": true,
+      "note": "19:01 Sunday refresh failed; retained snapshot remains valid"
+    },
+    {
+      "module": "market_state",
+      "requested_date": "2026-09-11",
+      "source_date_max": "2026-09-11",
+      "generated_at": "2026-09-13T19:01:02.842067+08:00",
+      "state": "ok_carried_same_contract"
+    },
+    {
+      "module": "physical",
+      "requested_date": "2026-09-11",
+      "source_date": "2026-09-11",
+      "generated_at": "2026-09-12T06:16:17.449462+08:00",
+      "state": "partial_latest_native_frequency",
+      "fresh_series": 18,
+      "total_targets": 20
+    },
+    {
+      "module": "external",
+      "requested_date": "2026-09-13",
+      "source_date": "2026-09-11",
+      "generated_at": "2026-09-13T19:08:32.455257+08:00",
+      "state": "fresh_wrapper_last_market_session",
+      "fresh_series": 17,
+      "total_targets": 22
+    },
+    {
+      "module": "night_session",
+      "requested_date": "2026-09-13",
+      "source_date": null,
+      "generated_at": "2026-09-13T06:03:38.413231+08:00",
+      "state": "not_applicable_weekend_zero_valid_contracts",
+      "data_fresh": false,
+      "validation_passed": false,
+      "published": false
+    },
+    {
+      "module": "options",
+      "requested_date": "2026-09-11",
+      "source_date": "2026-09-11",
+      "generated_at": "2026-09-11T11:01:23+00:00",
+      "state": "latest_valid_weekend_research_only",
+      "execution_ready": false
+    }
+  ],
+  "prior_night_session_trading_date": "2026-09-13 (weekend no session)",
+  "prior_night_session_generated_at": "2026-09-13T06:03:38.413231+08:00",
+  "prior_night_session_data_fresh": false,
+  "overnight_day_decomposition_used": false,
+  "night_session_fallback_used": false,
+  "physical_coverage": {
+    "requested_date": "2026-09-11",
+    "targets": 20,
+    "fresh_native_frequency": 18,
+    "unavailable": [
+      "SC",
+      "LU"
+    ],
+    "basis_quality": "C/context only",
+    "warehouse_carried_forward_count": 5
+  },
+  "external_coverage": {
+    "requested_date": "2026-09-13",
+    "source_date": "2026-09-11",
+    "targets": 22,
+    "available": 17,
+    "unavailable": 5,
+    "usage": "context only",
+    "weekend_event_refresh": "2026-09-13T19:30:00+08:00"
+  },
+  "options_surface_ready": true,
+  "options_positioning_ready": "partial",
+  "options_execution_ready": false,
+  "contract_metadata_quality": "partial; effective contract match 73.32%; trading parameters about 29.8%; dynamic margin/limit incomplete",
+  "data_cutoff": {
+    "beijing_time": "2026-09-13T19:30:00+08:00",
+    "china_eod": "2026-09-11 validated last-good",
+    "current_night_session": "none; Sunday",
+    "next_china_day": "2026-09-14T09:00:00+08:00",
+    "next_china_night": "2026-09-14T21:00:00+08:00; trading date 2026-09-15",
+    "international_prices": "last regular session close 2026-09-11; Sunday Saudi equities are proxy only"
+  },
+  "input_snapshots": {
+    "china_commodities": {
+      "repository": "farfromexact/China-Commodities-Engine",
+      "branch": "main",
+      "trade_date": "2026-09-11",
+      "report_input_generated_at": "2026-09-13T19:09:05.557186+08:00",
+      "validated_snapshot_generated_at": "2026-09-13T06:03:51.297901+08:00",
+      "data_fresh_native_frequency": true,
+      "official_complete": false,
+      "source_date_match_pct": 100,
+      "full_market_ready": true,
+      "critical_module_errors": 0,
+      "weekend_refresh_status": "19:01 run_failure with 15 errors and zero new contracts; validated last-good retained",
+      "history_record_count": 20,
+      "included_exchanges": [
+        "SHFE",
+        "INE",
+        "DCE",
+        "CZCE",
+        "GFEX"
+      ],
+      "actual_read_paths": [
+        "data/report_input_latest.json",
+        "data/last_run_status.json",
+        "data/night_session/last_run_status.json",
+        "data/radar_latest.json",
+        "data/latest.json"
+      ]
+    }
+  },
+  "source_status": {
+    "futures": "ok_validated_last_good_despite_sunday_refresh_failure",
+    "market_state": "ok_carried_same_contract_to_2026-09-11",
+    "physical": "partial_latest_native_frequency_18_of_20_basis_C",
+    "external": "fresh_wrapper_last_market_session_plus_weekend_web_events",
+    "night_session": "not_applicable_weekend_zero_valid_contracts_old_invalid_snapshot_isolated",
+    "options": "latest_valid_2026-09-11_research_only_zero_execution_ready",
+    "contract_metadata": "partial"
+  },
+  "dashboard": [
+    {
+      "asset": "FU2611",
+      "latest": "4289/4292",
+      "change_1d": 4.6574,
+      "change_1w": 10.8471,
+      "curve": "back 8.69%",
+      "signal": "wait 30-45m",
+      "data_time": "2026-09-11 EOD",
+      "night_status": "calendar-invalid snapshot isolated"
+    },
+    {
+      "asset": "SC2610",
+      "latest": "812.9/809.9",
+      "change_1d": 5.4008,
+      "change_1w": 18.5624,
+      "curve": "back 7.03%",
+      "signal": "wait 45m",
+      "data_time": "2026-09-11 EOD",
+      "night_status": "calendar-invalid snapshot isolated"
+    },
+    {
+      "asset": "EC2610",
+      "latest": "2032/2044",
+      "change_1d": 4.1794,
+      "change_1w": 10.0996,
+      "curve": "back 22.36%",
+      "signal": "shipping-risk confirmation",
+      "data_time": "2026-09-11 EOD",
+      "night_status": "calendar-invalid snapshot isolated"
+    },
+    {
+      "asset": "LU2611",
+      "latest": "5453/5487",
+      "change_1d": 4.5342,
+      "change_1w": 10.8485,
+      "curve": "back 1.88%",
+      "signal": "prefer FU",
+      "data_time": "2026-09-11 EOD",
+      "night_status": "calendar-invalid snapshot isolated"
+    },
+    {
+      "asset": "CU2610",
+      "latest": "108990/108660",
+      "change_1d": -2.7477,
+      "change_1w": -0.4124,
+      "curve": "back 0.65%",
+      "signal": "failed rebound short only",
+      "data_time": "2026-09-11 EOD",
+      "night_status": "calendar-invalid snapshot isolated"
+    },
+    {
+      "asset": "AG2612",
+      "latest": "15623/15676",
+      "change_1d": -4.7631,
+      "change_1w": -4.0871,
+      "curve": "contango 0.76%; roll",
+      "signal": "do not chase lower",
+      "data_time": "2026-09-11 EOD",
+      "night_status": "calendar-invalid snapshot isolated"
+    },
+    {
+      "asset": "AU2612",
+      "latest": "944.94/944.54",
+      "change_1d": -1.3638,
+      "change_1w": -2.929,
+      "curve": "light contango",
+      "signal": "rates conflict",
+      "data_time": "2026-09-11 EOD",
+      "night_status": "calendar-invalid snapshot isolated"
+    },
+    {
+      "asset": "LC2701",
+      "latest": "134820/133960",
+      "change_1d": -5.5955,
+      "change_1w": -8.8955,
+      "curve": "back 1.68%",
+      "signal": "single-day shock",
+      "data_time": "2026-09-11 EOD",
+      "night_status": "calendar-invalid snapshot isolated"
+    },
+    {
+      "asset": "FG701",
+      "latest": "973/984",
+      "change_1d": 2.2869,
+      "change_1w": 1.3388,
+      "curve": "contango 7.37%",
+      "signal": "squeeze reversal",
+      "data_time": "2026-09-11 EOD",
+      "night_status": "calendar-invalid snapshot isolated"
+    },
+    {
+      "asset": "JM2701",
+      "latest": "1585/1612.5",
+      "change_1d": -1.7667,
+      "change_1w": -3.472,
+      "curve": "back 1.67%",
+      "signal": "price/curve conflict",
+      "data_time": "2026-09-11 EOD",
+      "night_status": "calendar-invalid snapshot isolated"
+    },
+    {
+      "asset": "CJ701",
+      "latest": "7580/7630",
+      "change_1d": -2.4297,
+      "change_1w": -3.0496,
+      "curve": "contango 15.38%",
+      "signal": "weak no chase",
+      "data_time": "2026-09-11 EOD",
+      "night_status": "calendar-invalid snapshot isolated"
+    },
+    {
+      "asset": "M2701",
+      "latest": "3402/3422",
+      "change_1d": 0.6767,
+      "change_1w": 0.5879,
+      "curve": "contango 0.82%",
+      "signal": "post-WASDE watch",
+      "data_time": "2026-09-11 EOD",
+      "night_status": "calendar-invalid snapshot isolated"
+    },
+    {
+      "asset": "C2611",
+      "latest": "2255/2260",
+      "change_1d": -0.3967,
+      "change_1w": -1.6108,
+      "curve": "back 0.22%",
+      "signal": "one-layer watch",
+      "data_time": "2026-09-11 EOD",
+      "night_status": "calendar-invalid snapshot isolated"
+    },
+    {
+      "asset": "P2701",
+      "latest": "10035/10151",
+      "change_1d": -0.2555,
+      "change_1w": -0.5973,
+      "curve": "contango 1.52%",
+      "signal": "no edge",
+      "data_time": "2026-09-11 EOD",
+      "night_status": "calendar-invalid snapshot isolated"
+    },
+    {
+      "asset": "EB2610",
+      "latest": "10036/10303",
+      "change_1d": 0.2042,
+      "change_1w": 6.4689,
+      "curve": "contango 0.68%",
+      "signal": "elasticity decay",
+      "data_time": "2026-09-11 EOD",
+      "night_status": "calendar-invalid snapshot isolated"
+    }
+  ],
+  "meaningful_changes": [
+    {
+      "order": 1,
+      "change": "UKMTO reported a projectile hit a vessel in the Strait of Hormuz, causing fire and crew evacuation.",
+      "cause": "new_weekend_event"
+    },
+    {
+      "order": 2,
+      "change": "Saudi equities provided the first traded regional proxy: TASI -1.0%, Aramco -1.1%, Petro Rabigh -7.3%.",
+      "cause": "new_proxy_price"
+    },
+    {
+      "order": 3,
+      "change": "No authoritative East-West pipeline restart was confirmed by cutoff.",
+      "cause": "catalyst_persistence"
+    },
+    {
+      "order": 4,
+      "change": "Monday Oman talks are still not expected to yield a signed agreement; Saudi restraint remains counterevidence.",
+      "cause": "mixed_diplomatic_update"
+    },
+    {
+      "order": 5,
+      "change": "The 19:01 Sunday futures refresh failed with 15 errors, while the validated 2026-09-11 last-good remains intact.",
+      "cause": "data_status_conflict"
+    },
+    {
+      "order": 6,
+      "change": "No new options or physical observation is expected over the weekend; latest valid 2026-09-11 data remain research-usable.",
+      "cause": "no_new_session"
+    }
+  ],
+  "top_opportunities": [
+    {
+      "rank": 1,
+      "idea_id": "COM-E-FU2611-PRODUCT-TIGHT-20260908",
+      "name": "FU2611产品链延续多",
+      "score": 77,
+      "score_components": {
+        "logic": 23,
+        "odds_convexity": 14,
+        "catalyst": 20,
+        "price_curve_vol": 12,
+        "crowding_positioning_technical": 8
+      },
+      "independent_support_layers": [
+        1,
+        2,
+        4
+      ],
+      "direction": "conditional_long",
+      "holding_period": "1-3D",
+      "stage": "weekend_closed",
+      "instruments": [
+        "FU2611 futures"
+      ],
+      "max_loss_limited": false,
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "休市；周一等30-45m"
+    },
+    {
+      "rank": 2,
+      "idea_id": "COM-E-EC2610-HORMUZ-FREIGHT-20260911",
+      "name": "EC2610航运冲击多",
+      "score": 77,
+      "score_components": {
+        "logic": 23,
+        "odds_convexity": 15,
+        "catalyst": 20,
+        "price_curve_vol": 11,
+        "crowding_positioning_technical": 8
+      },
+      "independent_support_layers": [
+        1,
+        2,
+        4
+      ],
+      "direction": "conditional_long",
+      "holding_period": "1-5D",
+      "stage": "weekend_closed",
+      "instruments": [
+        "EC2610 futures"
+      ],
+      "max_loss_limited": false,
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "休市；周一等30m；参数不完整"
+    },
+    {
+      "rank": 3,
+      "idea_id": "COM-E-SC2610-GAP-20260905",
+      "name": "SC2610高位接受多",
+      "score": 74,
+      "score_components": {
+        "logic": 24,
+        "odds_convexity": 10,
+        "catalyst": 20,
+        "price_curve_vol": 12,
+        "crowding_positioning_technical": 8
+      },
+      "independent_support_layers": [
+        1,
+        2,
+        4
+      ],
+      "direction": "conditional_long",
+      "holding_period": "1-2D",
+      "stage": "weekend_closed",
+      "instruments": [
+        "SC2610 futures"
+      ],
+      "max_loss_limited": false,
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "休市；周一等45m"
+    },
+    {
+      "rank": 4,
+      "idea_id": "COM-M-CU2610-TARIFF-UNWIND-20260911",
+      "name": "CU2610关税回吐空",
+      "score": 67,
+      "score_components": {
+        "logic": 19,
+        "odds_convexity": 15,
+        "catalyst": 14,
+        "price_curve_vol": 9,
+        "crowding_positioning_technical": 10
+      },
+      "independent_support_layers": [
+        1,
+        4
+      ],
+      "direction": "conditional_short",
+      "holding_period": "1-3D",
+      "stage": "weekend_closed",
+      "instruments": [
+        "CU2610 futures"
+      ],
+      "max_loss_limited": false,
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "等待反抽失败；不追低开"
+    },
+    {
+      "rank": 5,
+      "idea_id": "COM-M-C2611-WASDE-CORN-20260912",
+      "name": "C2611 WASDE玉米减产多",
+      "score": 56,
+      "score_components": {
+        "logic": 16,
+        "odds_convexity": 13,
+        "catalyst": 14,
+        "price_curve_vol": 5,
+        "crowding_positioning_technical": 8
+      },
+      "independent_support_layers": [
+        3
+      ],
+      "direction": "research_watch_long",
+      "holding_period": "1-5D",
+      "stage": "weekend_closed",
+      "instruments": [
+        "C2611 futures"
+      ],
+      "max_loss_limited": false,
+      "research_judgment": "证据不足",
+      "evidence_sufficiency": "不足",
+      "execution_status": "等待中国价格确认"
+    }
+  ],
+  "top_trade_cards": [
+    {
+      "idea_id": "COM-E-FU2611-PRODUCT-TIGHT-20260908",
+      "contract": "FU2611",
+      "direction": "conditional_long",
+      "entry": "Sep14 after 09:30; accept 4210-4260 and reclaim 4295/VWAP",
+      "medium_fill": "break 4418 and successful retest; half size",
+      "bad_fill": "directly above 4450 or slippage over 20% of 1R",
+      "stop": "30m acceptance below 4190",
+      "invalidation": "below 4100 plus backwardation compression and Brent below 100, or pipeline restart",
+      "take_profit": [
+        "4420/1.5R",
+        "4600/3R"
+      ],
+      "time_stop": "1-3D",
+      "risk_nav": "0.25%-0.35%",
+      "max_loss_limited": false,
+      "contract_specs": {
+        "multiplier": "10 t",
+        "tick": "1 CNY/t",
+        "tick_value": "10 CNY",
+        "notional_cny": 42920,
+        "last_trading_day": "2026-10-30",
+        "margin": "unconfirmed",
+        "price_limit": "unconfirmed"
+      },
+      "night_session": "none; Sunday"
+    },
+    {
+      "idea_id": "COM-E-EC2610-HORMUZ-FREIGHT-20260911",
+      "contract": "EC2610",
+      "direction": "conditional_long",
+      "entry": "Sep14 after 09:30; accept 1990-2035 and reclaim 2045/VWAP",
+      "medium_fill": "break 2110 and successful retest; half size",
+      "bad_fill": "directly above 2160",
+      "stop": "30m acceptance below 1970",
+      "invalidation": "below 1962 plus backwardation compression and confirmed transit/pipeline normalization",
+      "take_profit": [
+        "2150/1.5R",
+        "2300/3R"
+      ],
+      "time_stop": "1-5D",
+      "risk_nav": "0.25%-0.35%",
+      "max_loss_limited": false,
+      "contract_specs": {
+        "multiplier": "unconfirmed",
+        "tick": "unconfirmed",
+        "margin": "unconfirmed",
+        "price_limit": "unconfirmed",
+        "last_trading_day": "unconfirmed"
+      },
+      "night_session": "not applicable by contract regime"
+    },
+    {
+      "idea_id": "COM-E-SC2610-GAP-20260905",
+      "contract": "SC2610",
+      "direction": "conditional_long",
+      "entry": "Sep14 after 09:45; accept 790-810 and reclaim 813/VWAP",
+      "medium_fill": "break 838.5 and successful retest; half size",
+      "bad_fill": "directly above 850, near limit, or stop distance over 1R",
+      "stop": "45m acceptance below 786",
+      "invalidation": "below 768.4 plus backwardation compression, Brent below 100 and pipeline restart",
+      "take_profit": [
+        "840/1.5R",
+        "875/3R"
+      ],
+      "time_stop": "1-2D",
+      "risk_nav": "0.20%-0.35%",
+      "max_loss_limited": false,
+      "contract_specs": {
+        "multiplier": "1000 bbl",
+        "tick": "0.1 CNY/bbl",
+        "tick_value": "100 CNY",
+        "notional_cny": 809900,
+        "last_trading_day": "2026-09-30",
+        "price_limit": "16% stress assumption for covered contracts from Sep14 night"
+      },
+      "stress_loss_cny": {
+        "one_16pct_limit": 129584,
+        "two_compounded_16pct_limits": 238435
+      },
+      "night_session": "none; Sunday"
+    }
+  ],
+  "commodities_tracking": {
+    "data_quality": "degraded Sunday wrapper; validated 2026-09-11 last-good retained; no current Night",
+    "coverage": {
+      "mandatory_codes": 63,
+      "unified_products": 77,
+      "valid_analyzed": 70,
+      "inapplicable_or_illiquid": [
+        "JR",
+        "PM",
+        "RI",
+        "WH",
+        "ZC",
+        "RS",
+        "WR"
+      ],
+      "options_target": 64,
+      "options_actual": 59,
+      "options_missing": [
+        "CJ",
+        "MA",
+        "PL",
+        "PR",
+        "ZC"
+      ]
+    },
+    "options_surface": {
+      "date": "2026-09-11",
+      "surface_ready_series": 373,
+      "positioning_ready_series": 78,
+      "execution_ready_series": 0,
+      "bid_ask_coverage_pct": 0,
+      "tradeable_structures": [
+        {
+          "name": "FU/SC limited-loss call-spread comparison after live repricing",
+          "condition": "research only; manual quote and manual confirmation required before execution; no premium quoted"
+        }
+      ]
+    },
+    "ledger": [
+      {
+        "idea_id": "COM-E-FU2611-PRODUCT-TIGHT-20260908",
+        "previous_score": 77,
+        "current_score": 77,
+        "change_reason": "new event but catalyst already max; no commodity price confirmation"
+      },
+      {
+        "idea_id": "COM-E-EC2610-HORMUZ-FREIGHT-20260911",
+        "previous_score": 77,
+        "current_score": 77,
+        "change_reason": "ship attack increases event risk but EC mapping remains impure"
+      },
+      {
+        "idea_id": "COM-E-SC2610-GAP-20260905",
+        "previous_score": 73,
+        "current_score": 74,
+        "change_reason": "direct Hormuz vessel attack strengthens logic; odds unchanged"
+      },
+      {
+        "idea_id": "COM-M-CU2610-TARIFF-UNWIND-20260911",
+        "previous_score": 67,
+        "current_score": 67,
+        "change_reason": "no new LME or China price"
+      },
+      {
+        "idea_id": "COM-M-C2611-WASDE-CORN-20260912",
+        "previous_score": 56,
+        "current_score": 56,
+        "change_reason": "one physical layer only"
+      }
+    ]
+  },
+  "event_calendar": [
+    {
+      "time_bjt": "2026-09-14T06:00:00+08:00",
+      "event": "International electronic markets and weekend-event repricing",
+      "handling": "refresh Brent/WTI, metals, FX, rates and CBOT before China open"
+    },
+    {
+      "time_bjt": "2026-09-14",
+      "event": "Oman hosts Iran and Gulf states on Strait of Hormuz",
+      "handling": "no signed agreement expected; trade verified transit arrangements only"
+    },
+    {
+      "time_bjt": "2026-09-14T09:00:00+08:00",
+      "event": "China commodity day session reopens",
+      "handling": "wait 30-45m; revalidate all old triggers"
+    },
+    {
+      "time_bjt": "2026-09-14T09:30:00+08:00",
+      "event": "China market-price survey release window",
+      "handling": "context until grade and region align"
+    },
+    {
+      "time_bjt": "2026-09-14T21:00:00+08:00",
+      "event": "Next legal China night session; energy risk controls take effect",
+      "handling": "recompute margin, limits and stress loss"
+    },
+    {
+      "time_bjt": "2026-09-15T10:00:00+08:00",
+      "event": "China industrial, investment, retail, property and energy data",
+      "handling": "reduce correlated industrial Delta"
+    },
+    {
+      "time_bjt": "2026-09-16T22:30:00+08:00",
+      "event": "EIA Weekly Petroleum Status Report",
+      "handling": "reduce SC/FU/LU Delta"
+    },
+    {
+      "time_bjt": "2026-09-17T02:00:00+08:00",
+      "event": "FOMC decision/SEP window",
+      "handling": "reduce metals Delta/Vega"
+    }
+  ],
+  "action_list": {
+    "A": "今晚没有应立即建立的新仓位。",
+    "B": "今晚只应挂条件单的仓位：无；周日无中国21:00夜盘，FU2611、EC2610、SC2610全部移至9月14日09:00后30—45分钟验证。",
+    "C": "今晚应继续观察的机会：Hormuz遇袭后管道与通航状态、FU相对SC强度、EC航运back、CU关税回吐，以及WASDE后C/M/P/Y/OI的中国价格确认。",
+    "D": "今晚必须避免或退出的交易：把周末事件倒推成油价、周一首跳追FU/SC/EC/C、把油轮费率或沙特股票当EC exact套利、追空CU/AG/LC，以及在execution-ready=false时臆测期权成本。"
+  },
+  "risk_budget": {
+    "immediate_new_risk": "0% while market closed",
+    "trial_trade_max_loss_nav": "0.20%-0.35%",
+    "confirmed_trade_max_loss_nav": "0.75%-1.00% only after new price plus non-price confirmation",
+    "theme_max_initial_risk_nav": "0.75% for SC/FU/LU/EC combined",
+    "stress_tests": [
+      "16% one-limit assumption",
+      "two compounded limits",
+      "weekend gap",
+      "liquidity disappearance",
+      "margin increase",
+      "correlation break",
+      "pipeline sudden restoration",
+      "CNY shock"
+    ]
+  },
+  "sources": [
+    {
+      "title": "China-Commodities-Engine unified report input",
+      "publisher": "GitHub / farfromexact",
+      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/report_input_latest.json",
+      "source_date": "2026-09-13",
+      "accessed_at_bjt": "2026-09-13T19:30:00+08:00",
+      "supported_claims": [
+        "module dates, freshness, validated 2026-09-11 last-good and options readiness"
+      ]
+    },
+    {
+      "title": "China-Commodities-Engine core status",
+      "publisher": "GitHub / farfromexact",
+      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/last_run_status.json",
+      "source_date": "2026-09-13",
+      "accessed_at_bjt": "2026-09-13T19:30:00+08:00",
+      "supported_claims": [
+        "19:01 Sunday refresh failure and 15 validation errors"
+      ]
+    },
+    {
+      "title": "China-Commodities-Engine Night status",
+      "publisher": "GitHub / farfromexact",
+      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/night_session/last_run_status.json",
+      "source_date": "2026-09-13",
+      "accessed_at_bjt": "2026-09-13T19:30:00+08:00",
+      "supported_claims": [
+        "zero valid Night contracts and 802 outside-window requests on Sunday"
+      ]
+    },
+    {
+      "title": "New Hormuz vessel attack",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/energy/new-report-attack-strait-hormuz-shipping-fans-fears-threats-oil-supplies-2026-09-13/",
+      "source_date": "2026-09-13",
+      "accessed_at_bjt": "2026-09-13T19:30:00+08:00",
+      "supported_claims": [
+        "projectile hit a vessel, fire and crew evacuation; pipeline remains temporarily closed; Oman talks unlikely to reopen immediately"
+      ]
+    },
+    {
+      "title": "Saudi equities react to pipeline attack",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/saudi-shares-drop-after-drone-attacks-target-key-oil-pipeline-2026-09-13/",
+      "source_date": "2026-09-13",
+      "accessed_at_bjt": "2026-09-13T19:30:00+08:00",
+      "supported_claims": [
+        "TASI -1.0%, Aramco -1.1% and Petro Rabigh -7.3% as regional proxy reaction"
+      ]
+    },
+    {
+      "title": "Friday oil settlements",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/energy/oil-prices-set-end-week-over-100-first-time-nearly-4-months-2026-09-11/",
+      "source_date": "2026-09-11",
+      "accessed_at_bjt": "2026-09-13T19:30:00+08:00",
+      "supported_claims": [
+        "Brent 104.61 and WTI 100.05 are the last regular-session settlements"
+      ]
+    },
+    {
+      "title": "No signed Hormuz deal expected from Oman meeting",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/middle-east/no-signed-hormuz-deal-expected-yet-oman-meeting-monday-iranian-official-says-2026-09-12/",
+      "source_date": "2026-09-12",
+      "accessed_at_bjt": "2026-09-13T19:30:00+08:00",
+      "supported_claims": [
+        "Monday meeting is not expected to produce a signed agreement"
+      ]
+    },
+    {
+      "title": "INE crude oil futures contract",
+      "publisher": "Shanghai International Energy Exchange",
+      "url": "https://www.ine.cn/eng/market/futures/energy/sc/contract/",
+      "source_date": "2026-09-13",
+      "accessed_at_bjt": "2026-09-13T19:30:00+08:00",
+      "supported_claims": [
+        "SC multiplier, tick and physical-delivery design"
+      ]
+    }
+  ],
+  "archive": {
+    "markdown_path": "reports/2026/09/2026-09-13_commodities_evening.md",
+    "json_path": "reports/2026/09/2026-09-13_commodities_evening.json",
+    "latest_markdown_path": "latest/commodities_evening.md",
+    "latest_json_path": "latest/commodities_evening.json",
+    "status_path": "status/commodities_evening_latest.json",
+    "archive_status": "success",
+    "ci_validation_status": "pending_or_unverified",
+    "commit_sha": null,
+    "error": null
+  }
+}
