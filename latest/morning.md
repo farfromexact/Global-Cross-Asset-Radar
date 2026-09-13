@@ -243,7 +243,7 @@ China-Options固定commit `0a355f6e53886212452852e20073acd3609a00e5`，读取 `d
 
 单一试仓最大损失0.25%—0.75% NAV；确认交易0.75%—1.50%；高确信主题≤2.5%—3.0%。油蝶、QQQ Put、黄金Call和rates都暴露于地缘/通胀/real因子，合并压力损失≤1.5%—2.0%；IF/IM与任何小盘ETF或IC/IM仓共享中国风格因子，合并≤1.25%—1.50%；ORCL与QQQ Put共享科技折现率，不能分别满额。
 
-**归档状态：六文件已生成，正在直接写入main并等待回读复核；archive_status=pending，ci_validation_status=pending_or_unverified。**
+**归档状态：六个目标文件已从main逐项回读：历史MD/JSON存在，latest日期与edition正确，status对应本次，manifest中2026-09-13 + morning恰好一条；archive_status=success，ci_validation_status=pending_or_unverified。[完整归档报告](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/main/reports/2026/09/2026-09-13_morning.md)**
 
 ## 十四、今日行动清单
 
