@@ -1,149 +1,150 @@
 {
-  "report_date": "2026-09-13",
+  "report_date": "2026-09-14",
   "edition": "commodities_morning",
-  "generated_at": "2026-09-13T07:02:10+08:00",
-  "generated_at_bjt": "2026-09-13T07:02:10+08:00",
-  "previous_date": "2026-09-12",
+  "generated_at": "2026-09-14T07:09:00+08:00",
+  "generated_at_bjt": "2026-09-14T07:09:00+08:00",
   "revision": 1,
   "prompt_version": "radar_2026-09-06_coverage_v1",
   "data_protocol": "china_commodities_v2",
   "worth_taking_risk": false,
   "immediate_new_position": false,
-  "weekend_mode": true,
+  "weekend_mode": false,
   "data_fresh": true,
   "report_input": {
-    "used": true,
-    "schema_version": 2,
     "requested_date": "2026-09-11",
-    "generated_at": "2026-09-13T06:20:44.625459+08:00"
+    "generated_at": "2026-09-14T06:16:14.971630+08:00",
+    "schema_version": 2
   },
   "eod_snapshot": {
-    "date": "2026-09-11",
-    "generated_at": "2026-09-13T06:03:51+08:00",
+    "trade_date": "2026-09-11",
     "contract_count": 802,
     "product_count": 77,
-    "included_exchanges": [
-      "SHFE",
-      "INE",
-      "DCE",
-      "CZCE",
-      "GFEX"
-    ],
+    "five_exchange_complete": true,
     "source_date_match_pct": 100,
     "full_market_ready": true,
-    "critical_module_errors": 0,
-    "placeholder_excluded": 4,
-    "official_complete": false,
-    "retained_last_good": true
+    "critical_errors": 0
   },
   "night_session": {
-    "reported_trading_date": "2026-09-13",
-    "night_session_date": "2026-09-12",
-    "generated_at": "2026-09-13T06:03:38+08:00",
-    "raw_data_fresh": false,
+    "trading_date": "2026-09-14",
+    "night_session_date": "2026-09-13",
+    "generated_at": "2026-09-14T06:02:03.581300+08:00",
+    "data_fresh": false,
     "validation_passed": false,
     "published": false,
     "coverage_complete": true,
     "contract_count": 0,
     "product_count": 0,
-    "requested_contract_count": 802,
+    "request_contract_count": 802,
     "outside_night_window_count": 802,
-    "no_night_trade_count": 0,
     "missing_timestamp_count": 0,
     "missing_price_count": 0,
     "missing_quote_count": 0,
     "query_error_count": 0,
     "unresolved_contract_count": 0,
-    "coverage_warnings": [
-      "no concrete contract has a quote in the completed night-session window"
-    ],
-    "calendar_semantic_valid": true,
-    "state": "no_session_weekend",
-    "usage": "not applicable; no price/OI used",
+    "coverage_warnings": [],
     "fallback_used": false,
-    "overnight_day_decomposition_used": false,
-    "previous_invalid_snapshot_isolated": true,
-    "next_valid_night_session": "2026-09-14T21:00:00+08:00"
+    "semantic_state": "no_legal_session_not_missing"
   },
   "physical": {
-    "requested_date": "2026-09-11",
-    "targets": 20,
-    "fresh": 18,
-    "unavailable": [
-      "SC",
-      "LU"
-    ],
-    "basis_note": "all C/context only",
-    "warehouse_carried_forward_count": 5
+    "target_count": 20,
+    "fresh_count": 18,
+    "unavailable_count": 2,
+    "basis_quality": "C_or_unavailable_context_only"
   },
   "external": {
-    "requested_date": "2026-09-11",
-    "targets": 22,
-    "fresh": 17,
-    "unavailable": 5,
-    "usage": "context only",
-    "import_parity_ready": false,
-    "weekend_news_refresh_at": "2026-09-13T07:00:00+08:00"
+    "target_count": 22,
+    "fresh_count": 17,
+    "unavailable_count": 5,
+    "web_refresh_at": "2026-09-14T07:00:00+08:00",
+    "brent": 108.23,
+    "wti": 103.2,
+    "usage": "context_only_plus_web_market_update"
   },
   "options": {
     "trade_date": "2026-09-11",
-    "products_target": 64,
-    "products_success": 59,
-    "failed_products": [
+    "record_count": 23272,
+    "series_count": 384,
+    "expected_products": 64,
+    "successful_products": 59,
+    "surface_ready_count": 373,
+    "positioning_ready_count": 78,
+    "execution_ready_count": 0,
+    "iv_coverage": 0.9807,
+    "open_interest_coverage": 0.6935,
+    "bid_ask_coverage": 0
+  },
+  "contract_metadata_quality": {
+    "state": "partial",
+    "effective_contract_match_coverage": 0.7332,
+    "trading_parameter_coverage": 0.298
+  },
+  "coverage": {
+    "mandatory_product_codes": 63,
+    "engine_products": 77,
+    "analyzed_products": 70,
+    "data_insufficient_products": [
       "CJ",
       "MA",
       "PL",
       "PR",
       "ZC"
     ],
-    "record_count": 23272,
-    "series_count": 384,
-    "iv_coverage": 0.9807,
-    "open_interest_coverage": 0.6935,
-    "bid_ask_coverage": 0,
-    "surface_ready": false,
-    "surface_ready_count": 373,
-    "positioning_ready": false,
-    "positioning_ready_count": 78,
-    "execution_ready": false,
-    "execution_ready_count": 0,
-    "dealer_gamma_direction_known": false
-  },
-  "contract_metadata_quality": "partial; DCE interface failed; dynamic margin/limit incomplete",
-  "coverage": {
-    "required_products": 63,
-    "required_analyzed": 63,
-    "dynamic_eligible_analyzed": 7,
-    "total_product_scans": 70,
-    "low_liquidity_or_placeholder": 7
+    "inapplicable_or_illiquid": [
+      "JR",
+      "PM",
+      "RI",
+      "WH",
+      "ZC",
+      "RS",
+      "WR"
+    ],
+    "strategy_categories": [
+      "directional",
+      "basis/calendar",
+      "curve",
+      "cross-commodity",
+      "cross-market",
+      "style/neutral",
+      "volatility/skew/event convexity"
+    ],
+    "horizons": [
+      "1D",
+      "3D",
+      "5D",
+      "20D"
+    ]
   },
   "top_scores": [
     {
-      "asset": "FU2611产品链延续多",
-      "score": 77
+      "idea_id": "COM-E-FU2611-PRODUCT-TIGHT-20260908",
+      "score": 78,
+      "status": "waiting_trigger"
     },
     {
-      "asset": "EC2610航运冲击多",
-      "score": 77
+      "idea_id": "COM-E-EC2610-HORMUZ-FREIGHT-20260911",
+      "score": 78,
+      "status": "waiting_trigger"
     },
     {
-      "asset": "SC2610高位接受多",
-      "score": 73
+      "idea_id": "COM-E-SC2610-GAP-20260905",
+      "score": 75,
+      "status": "waiting_trigger"
     },
     {
-      "asset": "CU2610关税回吐空",
-      "score": 67
+      "idea_id": "COM-M-CU2610-TARIFF-UNWIND-20260911",
+      "score": 66,
+      "status": "observation"
     },
     {
-      "asset": "C2611 WASDE玉米减产多",
-      "score": 56
+      "idea_id": "COM-M-C2611-WASDE-CORN-20260912",
+      "score": 55,
+      "status": "research_watch"
     }
   ],
   "errors": [
-    "No current Night session on Sunday; zero valid contracts are expected and no fallback is required.",
-    "Older calendar-invalid 2026-09-12 Night snapshot remains isolated.",
-    "Options execution-ready and bid/ask coverage are zero; five products failed.",
-    "SC/LU Physical unavailable and all basis C/context only.",
+    "No legal Current Night; zero records is a calendar result.",
+    "Options execution_ready=0.",
+    "SC/LU physical unavailable.",
     "Contract metadata partial."
   ],
   "archive_status": "success",
@@ -151,12 +152,12 @@
   "failed_paths": [],
   "verified_main": true,
   "target_paths": [
-    "reports/2026/09/2026-09-13_commodities_morning.md",
-    "reports/2026/09/2026-09-13_commodities_morning.json",
+    "reports/2026/09/2026-09-14_commodities_morning.md",
+    "reports/2026/09/2026-09-14_commodities_morning.json",
     "latest/commodities_morning.md",
     "latest/commodities_morning.json",
     "status/commodities_morning_latest.json",
     "manifests/reports.json"
   ],
-  "run_note": "Six-path direct-to-main archive; manifest written last; CI not polled."
+  "run_note": "Six-path main verification required; CI is post-push and not polled."
 }
