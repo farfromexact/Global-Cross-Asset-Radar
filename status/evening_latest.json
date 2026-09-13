@@ -1,21 +1,21 @@
 {
   "schema_version": "1.0",
   "edition": "evening",
-  "report_date": "2026-09-12",
-  "generated_at_bjt": "2026-09-12T20:12:00+08:00",
+  "report_date": "2026-09-13",
+  "generated_at_bjt": "2026-09-13T20:06:33+08:00",
   "status": "published",
-  "archive_status": "success",
-  "verified_main": true,
+  "archive_status": "pending_verification",
+  "verified_main": false,
   "data_fresh": false,
-  "data_fresh_detail": "all last complete sessions current; Saturday commodity refresh missing as expected; live global option surfaces missing",
+  "data_fresh_detail": "last complete sessions current; Sunday commodity refresh missing as expected; live global option surfaces missing",
   "source_status": {
     "us_nominal_rates": "ok_last_complete_session",
     "us_real_rates": "ok_last_complete_session",
     "us_cpi": "ok_official",
     "global_cash_prices": "ok_last_complete_session",
     "global_options_surfaces": "missing",
-    "move": "ok_delayed_secondary",
-    "hy_oas": "ok_delayed",
+    "move": "stale_delayed_secondary",
+    "hy_oas": "stale_native_release_lag",
     "fx": "partial",
     "china_options": "ok",
     "china_options_history": "empty",
@@ -28,18 +28,30 @@
   "china_options_path": "data/radar_latest.json",
   "china_options_commit": "0a355f6e53886212452852e20073acd3609a00e5",
   "china_commodities_path": "data/report_input_latest.json",
-  "china_commodities_commit": "c139b10b4c16faa9f3cfc6f045d3068fb4b3f61d",
+  "china_commodities_blob_sha": "c396d24291fadd127d7e3a3e16fff6adf9f4eb87",
+  "china_commodities_commit": null,
+  "china_commodities_commit_limitation": "connector returned blob SHA but not commit SHA",
   "china_commodities_last_good_date": "2026-09-11",
   "errors": [
     {
-      "component": "China-Options-Engine radar_history",
-      "status": "empty",
-      "detail": "file is exactly empty; fixed date snapshots used"
+      "component": "schemas/status.schema.json",
+      "status": "missing",
+      "detail": "repository path returned 404; current published status shape and report schema used without changing schema"
     },
     {
-      "component": "China commodities Saturday refresh",
+      "component": "templates/status.json",
       "status": "missing",
-      "detail": "no Saturday sessions; verified 2026-09-11 last-good remains valid"
+      "detail": "repository path returned 404; current status/evening_latest.json shape used"
+    },
+    {
+      "component": "China-Options-Engine radar_history",
+      "status": "empty",
+      "detail": "file is exactly empty; fixed snapshots used for multi-period comparison"
+    },
+    {
+      "component": "China commodities Sunday refresh",
+      "status": "missing",
+      "detail": "no Sunday session and refresh returned 0 contracts/15 critical errors; verified 2026-09-11 last-good remains valid"
     },
     {
       "component": "global options surfaces",
@@ -54,18 +66,28 @@
     {
       "component": "China market breadth/flows",
       "status": "partial",
-      "detail": "ETF subscription/redemption, margin financing and detailed breadth unavailable"
+      "detail": "ETF subscriptions/redemptions, margin financing and detailed breadth unavailable"
     },
     {
       "component": "commodity options execution",
       "status": "missing",
-      "detail": "59 research surfaces analyzed but execution_ready=0; no premium or contract recommendation asserted"
+      "detail": "59 research surfaces readable but execution_ready=0; no option premium or contract recommendation asserted"
+    },
+    {
+      "component": "MOVE",
+      "status": "stale",
+      "detail": "delayed secondary observation retained and labeled"
+    },
+    {
+      "component": "HY OAS",
+      "status": "stale",
+      "detail": "latest native-frequency FRED observation is 2026-09-10"
     }
   ],
   "ci_validation_status": "pending_or_unverified",
   "paths": {
-    "markdown": "reports/2026/09/2026-09-12_evening.md",
-    "json": "reports/2026/09/2026-09-12_evening.json",
+    "markdown": "reports/2026/09/2026-09-13_evening.md",
+    "json": "reports/2026/09/2026-09-13_evening.json",
     "latest_markdown": "latest/evening.md",
     "latest_json": "latest/evening.json",
     "manifest": "manifests/reports.json"
