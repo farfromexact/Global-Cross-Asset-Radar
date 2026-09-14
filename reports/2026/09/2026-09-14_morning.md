@@ -252,7 +252,7 @@ China-Options固定commit 0a355f6e53886212452852e20073acd3609a00e5，实际读�
 
 单一试仓最大损失0.25%—0.75% NAV；确认交易0.75%—1.50%；高确信主题总风险≤2.5%—3.0%。油蝶、QQQ Put、黄金Put和rates共享油价/通胀/real因子，合并压力损失≤1.5%—2.0%；IF/IM与其他A股大小盘表达合并≤1.25%—1.50%；ORCL与QQQ Put共享科技折现率因子。期货计划止损不等于最大损失有限。
 
-归档采用仓库现行report schema/template；status schema与模板实际不存在，按最近已发布status对象兼容。archive_status=pending_write_verification；ci_validation_status=pending_or_unverified，不等待GitHub Actions。
+归档采用仓库现行report schema/template；status schema与模板实际不存在，按最近已发布status对象兼容。archive_status在六文件写入并从main复核后确认；ci_validation_status=pending_or_unverified，不等待GitHub Actions。
 
 ## 十四、今日行动清单
 
