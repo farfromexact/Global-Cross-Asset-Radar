@@ -1,42 +1,40 @@
 {
   "schema_version": "1.0",
   "edition": "evening",
-  "report_date": "2026-09-13",
-  "generated_at_bjt": "2026-09-13T20:06:33+08:00",
+  "report_date": "2026-09-14",
+  "generated_at_bjt": "2026-09-14T20:17:30+08:00",
   "status": "published",
-  "archive_status": "success",
-  "verified_main": true,
+  "archive_status": "partial",
+  "verified_main": false,
   "data_fresh": false,
-  "data_fresh_detail": "last complete sessions current; Sunday commodity refresh missing as expected; live global option surfaces missing",
+  "data_fresh_detail": "China options and commodities are current 2026-09-14; US cash/rates are last complete 2026-09-11; live global option surfaces, CTD/DV01, several flow/position inputs are missing; delayed/native-frequency data labeled",
   "source_status": {
     "us_nominal_rates": "ok_last_complete_session",
     "us_real_rates": "ok_last_complete_session",
-    "us_cpi": "ok_official",
     "global_cash_prices": "ok_last_complete_session",
+    "global_intraday_prices": "partial_delayed",
     "global_options_surfaces": "missing",
+    "vix": "ok_last_complete_session",
     "move": "stale_delayed_secondary",
     "hy_oas": "stale_native_release_lag",
     "fx": "partial",
     "china_options": "ok",
     "china_options_history": "empty",
     "china_options_snapshots": "ok",
-    "china_commodities_refresh": "missing_weekend_sessions",
-    "china_commodities_last_good": "ok_verified",
+    "china_commodities": "ok",
     "china_commodity_options_execution": "missing"
   },
-  "china_options_date": "2026-09-11",
+  "china_options_date": "2026-09-14",
   "china_options_path": "data/radar_latest.json",
-  "china_options_commit": "0a355f6e53886212452852e20073acd3609a00e5",
+  "china_options_commit": "7ca1e0d44b98543079d9891348c43dfe8d6b69bb",
   "china_commodities_path": "data/report_input_latest.json",
-  "china_commodities_blob_sha": "c396d24291fadd127d7e3a3e16fff6adf9f4eb87",
-  "china_commodities_commit": null,
-  "china_commodities_commit_limitation": "connector returned blob SHA but not commit SHA",
-  "china_commodities_last_good_date": "2026-09-11",
+  "china_commodities_commit": "61509de211406df3f468d29d704780f91f2634e5",
+  "china_commodities_last_good_date": "2026-09-14",
   "errors": [
     {
       "component": "schemas/status.schema.json",
       "status": "missing",
-      "detail": "repository path returned 404; current published status shape and report schema used without changing schema"
+      "detail": "repository path returned 404; current published status shape used without schema change"
     },
     {
       "component": "templates/status.json",
@@ -46,17 +44,12 @@
     {
       "component": "China-Options-Engine radar_history",
       "status": "empty",
-      "detail": "file is exactly empty; fixed snapshots used for multi-period comparison"
-    },
-    {
-      "component": "China commodities Sunday refresh",
-      "status": "missing",
-      "detail": "no Sunday session and refresh returned 0 contracts/15 critical errors; verified 2026-09-11 last-good remains valid"
+      "detail": "file is exactly empty; fixed same-commit snapshots used"
     },
     {
       "component": "global options surfaces",
       "status": "missing",
-      "detail": "live bid/ask, full IV/skew, Greeks and dealer net gamma unavailable; all structures quote-dependent"
+      "detail": "live bid/ask, IV/skew, Greeks and dealer net gamma unavailable; all option structures quote-dependent"
     },
     {
       "component": "FX",
@@ -64,14 +57,14 @@
       "detail": "synchronized USDCNH and FX option skew/carry unavailable"
     },
     {
-      "component": "China market breadth/flows",
+      "component": "China breadth/margin",
       "status": "partial",
-      "detail": "ETF subscriptions/redemptions, margin financing and detailed breadth unavailable"
+      "detail": "full breadth and margin-financing detail unavailable; ETF share change estimates used with limitation"
     },
     {
-      "component": "commodity options execution",
+      "component": "commodity option execution",
       "status": "missing",
-      "detail": "59 research surfaces readable but execution_ready=0; no option premium or contract recommendation asserted"
+      "detail": "22758 fresh records but execution_ready=false"
     },
     {
       "component": "MOVE",
@@ -82,15 +75,24 @@
       "component": "HY OAS",
       "status": "stale",
       "detail": "latest native-frequency FRED observation is 2026-09-10"
+    },
+    {
+      "component": "China August activity calendar",
+      "status": "partial",
+      "detail": "official NBS page did not expose exact 2026 release entry; expected window labeled unconfirmed"
+    },
+    {
+      "component": "US Treasury auction exact schedule",
+      "status": "partial",
+      "detail": "current page did not expose exact next-7-day long-bond auction date/size; no guessed catalyst used"
     }
   ],
   "ci_validation_status": "pending_or_unverified",
   "paths": {
-    "markdown": "reports/2026/09/2026-09-13_evening.md",
-    "json": "reports/2026/09/2026-09-13_evening.json",
+    "markdown": "reports/2026/09/2026-09-14_evening.md",
+    "json": "reports/2026/09/2026-09-14_evening.json",
     "latest_markdown": "latest/evening.md",
     "latest_json": "latest/evening.json",
     "manifest": "manifests/reports.json"
   }
 }
-
