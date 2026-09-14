@@ -1,8 +1,8 @@
 {
-  "report_date": "2026-09-14",
+  "report_date": "2026-09-15",
   "edition": "commodities_morning",
-  "generated_at": "2026-09-14T07:09:00+08:00",
-  "generated_at_bjt": "2026-09-14T07:09:00+08:00",
+  "generated_at": "2026-09-15T07:11:00+08:00",
+  "generated_at_bjt": "2026-09-15T07:11:00+08:00",
   "revision": 1,
   "prompt_version": "radar_2026-09-06_coverage_v1",
   "data_protocol": "china_commodities_v2",
@@ -11,31 +11,33 @@
   "weekend_mode": false,
   "data_fresh": true,
   "report_input": {
-    "requested_date": "2026-09-11",
-    "generated_at": "2026-09-14T06:16:14.971630+08:00",
+    "requested_date": "2026-09-14",
+    "generated_at": "2026-09-15T06:13:27.841013+08:00",
     "schema_version": 2
   },
   "eod_snapshot": {
-    "trade_date": "2026-09-11",
+    "trade_date": "2026-09-14",
     "contract_count": 802,
     "product_count": 77,
     "five_exchange_complete": true,
     "source_date_match_pct": 100,
     "full_market_ready": true,
-    "critical_errors": 0
+    "critical_errors": 0,
+    "placeholder_count": 7
   },
   "night_session": {
-    "trading_date": "2026-09-14",
-    "night_session_date": "2026-09-13",
-    "generated_at": "2026-09-14T06:02:03.581300+08:00",
-    "data_fresh": false,
-    "validation_passed": false,
-    "published": false,
+    "trading_date": "2026-09-15",
+    "night_session_date": "2026-09-14",
+    "generated_at": "2026-09-15T06:01:19.193475+08:00",
+    "data_fresh": true,
+    "validation_passed": true,
+    "published": true,
     "coverage_complete": true,
-    "contract_count": 0,
-    "product_count": 0,
+    "contract_count": 579,
+    "product_count": 55,
     "request_contract_count": 802,
-    "outside_night_window_count": 802,
+    "outside_night_window_count": 216,
+    "no_night_trade_count": 7,
     "missing_timestamp_count": 0,
     "missing_price_count": 0,
     "missing_quote_count": 0,
@@ -43,34 +45,33 @@
     "unresolved_contract_count": 0,
     "coverage_warnings": [],
     "fallback_used": false,
-    "semantic_state": "no_legal_session_not_missing"
+    "raw_detail_read_state": "truncated_or_empty_connector_payload_not_source_empty"
   },
   "physical": {
     "target_count": 20,
     "fresh_count": 18,
     "unavailable_count": 2,
-    "basis_quality": "C_or_unavailable_context_only"
+    "stale_count": 0
   },
   "external": {
     "target_count": 22,
     "fresh_count": 17,
     "unavailable_count": 5,
-    "web_refresh_at": "2026-09-14T07:00:00+08:00",
-    "brent": 108.23,
-    "wti": 103.2,
+    "web_refresh_at": "2026-09-15T07:00:00+08:00",
     "usage": "context_only_plus_web_market_update"
   },
   "options": {
-    "trade_date": "2026-09-11",
-    "record_count": 23272,
-    "series_count": 384,
+    "trade_date": "2026-09-14",
+    "record_count": 18862,
+    "series_count": 340,
     "expected_products": 64,
-    "successful_products": 59,
-    "surface_ready_count": 373,
-    "positioning_ready_count": 78,
+    "successful_products": 52,
+    "failed_products": 12,
+    "surface_ready_count": 330,
+    "positioning_ready_count": 80,
     "execution_ready_count": 0,
-    "iv_coverage": 0.9807,
-    "open_interest_coverage": 0.6935,
+    "iv_coverage": 0.977203,
+    "open_interest_coverage": 0.694359,
     "bid_ask_coverage": 0
   },
   "contract_metadata_quality": {
@@ -82,13 +83,6 @@
     "mandatory_product_codes": 63,
     "engine_products": 77,
     "analyzed_products": 70,
-    "data_insufficient_products": [
-      "CJ",
-      "MA",
-      "PL",
-      "PR",
-      "ZC"
-    ],
     "inapplicable_or_illiquid": [
       "JR",
       "PM",
@@ -117,43 +111,43 @@
   "top_scores": [
     {
       "idea_id": "COM-E-FU2611-PRODUCT-TIGHT-20260908",
+      "score": 84,
+      "status": "waiting_trigger"
+    },
+    {
+      "idea_id": "COM-M-LU2611-PRODUCT-RELATIVE-20260915",
       "score": 78,
+      "status": "waiting_trigger_parameters"
+    },
+    {
+      "idea_id": "COM-E-SC2610-GAP-20260905",
+      "score": 77,
       "status": "waiting_trigger"
     },
     {
       "idea_id": "COM-E-EC2610-HORMUZ-FREIGHT-20260911",
-      "score": 78,
-      "status": "waiting_trigger"
-    },
-    {
-      "idea_id": "COM-E-SC2610-GAP-20260905",
-      "score": 75,
-      "status": "waiting_trigger"
+      "score": 71,
+      "status": "waiting_trigger_parameters"
     },
     {
       "idea_id": "COM-M-CU2610-TARIFF-UNWIND-20260911",
-      "score": 66,
+      "score": 68,
       "status": "observation"
-    },
-    {
-      "idea_id": "COM-M-C2611-WASDE-CORN-20260912",
-      "score": 55,
-      "status": "research_watch"
     }
   ],
   "errors": [
-    "No legal Current Night; zero records is a calendar result.",
     "Options execution_ready=0.",
     "SC/LU physical unavailable.",
-    "Contract metadata partial."
+    "Contract metadata partial.",
+    "Raw Night detail payload unavailable through connector; compact layer used."
   ],
   "archive_status": "success",
   "ci_validation_status": "pending_or_unverified",
   "failed_paths": [],
   "verified_main": true,
   "target_paths": [
-    "reports/2026/09/2026-09-14_commodities_morning.md",
-    "reports/2026/09/2026-09-14_commodities_morning.json",
+    "reports/2026/09/2026-09-15_commodities_morning.md",
+    "reports/2026/09/2026-09-15_commodities_morning.json",
     "latest/commodities_morning.md",
     "latest/commodities_morning.json",
     "status/commodities_morning_latest.json",
