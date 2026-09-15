@@ -253,7 +253,7 @@ China-Commodities-Engine 9月15日19:16紧凑层实际扫描77个动态代码，
 
 ## 归档与数据审计
 
-本报告前序基准为2026-09-15晨报与2026-09-14晚报；通过`manifests/reports.json`定位，且均严格早于信息截点。China-Options-Engine必读路径：`data/radar_latest.json`（stale，数据日9/14）、`data/radar_history.json`（empty）；补充读取9/14、9/10、9/8、8/18固定快照。本期官方9/15 CFFEX surface为模型估计。归档初始状态：pending_verification；CI不等待，状态`pending_or_unverified`。
+本报告前序基准为2026-09-15晨报与2026-09-14晚报；通过`manifests/reports.json`定位，且均严格早于信息截点。China-Options-Engine必读路径：`data/radar_latest.json`（stale，数据日9/14）、`data/radar_history.json`（empty）；补充读取9/14、9/10、9/8、8/18固定快照。本期官方9/15 CFFEX surface为模型估计。归档状态：success（六个目标文件已从main回读验证）；CI不等待，状态`pending_or_unverified`。
 
 风险预算：单一试仓最大计划损失NAV 0.25%—0.75%；确认交易0.75%—1.50%；单一高确信主题累计≤2.5%—3.0%。QQQ Put、油多与空债属于“滞胀/Fed”共因子；SC、CL、FU/LU属于同一能源供给因子；IC/IM、IM/IF及MO属于同一A股风格因子；Gold、空美元与长端Put可能共同暴露于政策信用/实际利率，必须合并计算。
 
