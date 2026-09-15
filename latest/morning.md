@@ -232,7 +232,7 @@ China-Options固定commit `7ca1e0d44b98543079d9891348c43dfe8d6b69bb`，必读路
 
 单一试仓最大损失0.25%—0.75% NAV；确认交易0.75%—1.50%；高确信主题≤2.5%—3.0%。CL蝶式、FU/LU/SC/EC、QQQ Put、黄金与rates共同暴露于能源通胀/实际利率，合并压力损失≤1.5%—2.0%；QQQ Put、SOXX空腿与ORCL空头共享AI/折现率，合并≤1.0%—1.25%；所有中国大小盘pair合并≤1.25%。期货计划止损不等于最大损失有限。
 
-归档状态：partial（报告与状态文件写入后待六路径复核）。`ci_validation_status=pending_or_unverified`；不等待CI。
+归档状态：success；六个文件已从main逐项回读，manifest中2026-09-15 + morning恰好一条。`ci_validation_status=pending_or_unverified`；不等待CI。
 
 ## 十四、今日行动清单
 
