@@ -1,98 +1,42 @@
 {
-  "archive_status": "success",
-  "china_commodities_commit": "61509de211406df3f468d29d704780f91f2634e5",
-  "china_commodities_last_good_date": "2026-09-14",
-  "china_commodities_path": "data/report_input_latest.json",
-  "china_options_commit": "7ca1e0d44b98543079d9891348c43dfe8d6b69bb",
-  "china_options_date": "2026-09-14",
-  "china_options_path": "data/radar_latest.json",
-  "ci_validation_status": "pending_or_unverified",
-  "data_fresh": false,
-  "data_fresh_detail": "China options and commodities are current 2026-09-14; US cash/rates are last complete 2026-09-11; live global option surfaces, CTD/DV01, several flow/position inputs are missing; delayed/native-frequency data labeled",
-  "edition": "evening",
-  "errors": [
-    {
-      "component": "schemas/status.schema.json",
-      "detail": "repository path returned 404; current published status shape used without schema change",
-      "status": "missing"
-    },
-    {
-      "component": "templates/status.json",
-      "detail": "repository path returned 404; current status/evening_latest.json shape used",
-      "status": "missing"
-    },
-    {
-      "component": "China-Options-Engine radar_history",
-      "detail": "file is exactly empty; fixed same-commit snapshots used",
-      "status": "empty"
-    },
-    {
-      "component": "global options surfaces",
-      "detail": "live bid/ask, IV/skew, Greeks and dealer net gamma unavailable; all option structures quote-dependent",
-      "status": "missing"
-    },
-    {
-      "component": "FX",
-      "detail": "synchronized USDCNH and FX option skew/carry unavailable",
-      "status": "partial"
-    },
-    {
-      "component": "China breadth/margin",
-      "detail": "full breadth and margin-financing detail unavailable; ETF share change estimates used with limitation",
-      "status": "partial"
-    },
-    {
-      "component": "commodity option execution",
-      "detail": "22758 fresh records but execution_ready=false",
-      "status": "missing"
-    },
-    {
-      "component": "MOVE",
-      "detail": "delayed secondary observation retained and labeled",
-      "status": "stale"
-    },
-    {
-      "component": "HY OAS",
-      "detail": "latest native-frequency FRED observation is 2026-09-10",
-      "status": "stale"
-    },
-    {
-      "component": "China August activity calendar",
-      "detail": "official NBS page did not expose exact 2026 release entry; expected window labeled unconfirmed",
-      "status": "partial"
-    },
-    {
-      "component": "US Treasury auction exact schedule",
-      "detail": "current page did not expose exact next-7-day long-bond auction date/size; no guessed catalyst used",
-      "status": "partial"
-    }
-  ],
-  "generated_at_bjt": "2026-09-14T20:17:30+08:00",
-  "paths": {
-    "json": "reports/2026/09/2026-09-14_evening.json",
-    "latest_json": "latest/evening.json",
-    "latest_markdown": "latest/evening.md",
-    "manifest": "manifests/reports.json",
-    "markdown": "reports/2026/09/2026-09-14_evening.md"
-  },
-  "report_date": "2026-09-14",
   "schema_version": "1.0",
-  "source_status": {
-    "china_commodities": "ok",
-    "china_commodity_options_execution": "missing",
-    "china_options": "ok",
-    "china_options_history": "empty",
-    "china_options_snapshots": "ok",
-    "fx": "partial",
-    "global_cash_prices": "ok_last_complete_session",
-    "global_intraday_prices": "partial_delayed",
-    "global_options_surfaces": "missing",
-    "hy_oas": "stale_native_release_lag",
-    "move": "stale_delayed_secondary",
-    "us_nominal_rates": "ok_last_complete_session",
-    "us_real_rates": "ok_last_complete_session",
-    "vix": "ok_last_complete_session"
-  },
   "status": "published",
-  "verified_main": true
+  "report_date": "2026-09-15",
+  "edition": "evening",
+  "generated_at_bjt": "2026-09-15T20:19:00+08:00",
+  "data_cutoff_bjt": "2026-09-15T20:18:00+08:00",
+  "data_status": "partial_fresh",
+  "data_fresh": false,
+  "data_fresh_detail": {
+    "global_prices": "fresh_premarket_or_2026-09-14_EOD",
+    "china_indices": "fresh_2026-09-15_EOD",
+    "china_options_engine": "stale_2026-09-14",
+    "china_options_manual_official": "fresh_2026-09-15_model_estimate",
+    "china_commodities": "fresh_2026-09-15_EOD"
+  },
+  "china_options_path": "farfromexact/China-Options-Engine/data/radar_latest.json; data/radar_history.json; data/snapshots/2026-09-14.json; data/snapshots/2026-09-10.json; data/snapshots/2026-09-08.json; data/snapshots/2026-08-18.json; plus CFFEX official 2026-09-15 CSV",
+  "china_options_date": "2026-09-15 model_from_official_settlement; engine_last_good=2026-09-14",
+  "china_options_commit": "9d7795a5c3f189131e4601ca32301069b126286b",
+  "previous_date": "2026-09-15",
+  "previous_edition": "morning",
+  "previous_evening_date": "2026-09-14",
+  "archive_status": "pending_verification",
+  "ci_validation_status": "pending_or_unverified",
+  "verified_main": false,
+  "targets": {
+    "historical_markdown": false,
+    "historical_json": false,
+    "latest_markdown": false,
+    "latest_json": false,
+    "status": false,
+    "manifest": false
+  },
+  "errors": [
+    "schemas/status.schema.json missing (404)",
+    "templates/status.json missing (404)",
+    "China-Options-Engine radar_latest stale at 2026-09-14",
+    "China-Options-Engine radar_history empty",
+    "live CL/CO execution surface unavailable",
+    "Treasury exact next-7-day auction table not verified"
+  ]
 }
