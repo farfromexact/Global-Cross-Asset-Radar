@@ -1,32 +1,35 @@
 {
-  "report_date": "2026-09-15",
+  "report_date": "2026-09-16",
   "edition": "morning",
-  "generated_at": "2026-09-15T08:08:00+08:00",
-  "archive_status": "success",
+  "generated_at": "2026-09-16T08:05:00+08:00",
+  "status": "published",
+  "archive_status": "partial",
   "ci_validation_status": "pending_or_unverified",
+  "data_fresh": false,
+  "data_status": {
+    "global_eod": "ok",
+    "china_options": "stale_last_good_2026-09-14",
+    "china_options_history": "empty",
+    "china_commodities": "fresh_2026-09-15_plus_2026-09-16_night",
+    "global_option_surfaces": "missing",
+    "move_hy": "stale_or_native_lag"
+  },
+  "china_options_path": "data/radar_latest.json; data/radar_history.json; data/latest.json",
   "china_options_date": "2026-09-14",
-  "china_options_commit": "7ca1e0d44b98543079d9891348c43dfe8d6b69bb",
-  "china_commodities_commit": "202130b82e8c20a924c577cac266f985dd0f2d12",
-  "data_fresh": true,
-  "previous_date": "2026-09-14",
+  "china_options_commit": "9d7795a5c3f189131e4601ca32301069b126286b",
+  "previous_date": "2026-09-15",
   "errors": [
-    "China-Options data/radar_history.json is empty",
-    "global executable option surfaces/bid-ask unavailable",
-    "MOVE delayed/stale at 2026-09-11",
-    "China commodity official_complete=false; basis/member rankings unavailable",
-    "China commodity options execution_ready=0 and only52/64 products successful",
-    "China commodity raw night detail truncated/empty through connector; compact validated layer used",
-    "China activity exact official release page/time unconfirmed",
-    "status schema/template paths returned404; existing published status shape used"
+    "China-Options-Engine automatic latest is stale at 2026-09-14 and radar_history is empty.",
+    "Global live option surfaces and Greeks are missing.",
+    "MOVE and HY OAS are delayed last-good observations.",
+    "China commodity option execution-ready coverage is zero.",
+    "Status schema/template paths are absent in repository; current existing status shape is preserved."
   ],
-  "verification": {
-    "branch": "main",
-    "historical_markdown": true,
-    "historical_json": true,
-    "latest_markdown_report_date": "2026-09-15",
-    "latest_json_report_date": "2026-09-15",
-    "latest_json_edition": "morning",
-    "status_matches_run": true,
-    "manifest_unique_key_count": 1
+  "paths": {
+    "markdown": "reports/2026/09/2026-09-16_morning.md",
+    "json": "reports/2026/09/2026-09-16_morning.json",
+    "latest_markdown": "latest/morning.md",
+    "latest_json": "latest/morning.json",
+    "manifest": "manifests/reports.json"
   }
 }
