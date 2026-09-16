@@ -220,7 +220,7 @@ China-Options-Engine固定提交`9d7795a5c3f189131e4601ca32301069b126286b`，实
 
 单一试仓最大计划损失0.25%—0.75% NAV；确认交易0.75%—1.50%；高确信主题≤2.5%—3.0%。CL油蝶、SC/FU/LU与空债共享能源/滞胀因子，合并压力损失≤1.5%—2.0%；QQQ Put与Gold Put共享实际利率/美元因子；IC/IM与任何IM/IF、MO或小盘ETF仓共享A股风格因子，合并≤1.25%—1.50%。期货计划止损不等于最大损失有限。
 
-六个目标文件正在直接写入`main`并等待逐项回读；`archive_status=partial`，`ci_validation_status=pending_or_unverified`。
+六个目标文件已从`main`逐项回读验证：历史Markdown/JSON存在，latest日期与edition正确，status对应本次，manifest中`2026-09-16 + morning`恰好一条。`archive_status=success`，`ci_validation_status=pending_or_unverified`；CI只做独立事后校验，不等待。
 
 ## 十四、今日行动清单
 
