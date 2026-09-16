@@ -209,7 +209,7 @@ Nasdaq 9月15日跌0.78%，10Y收5.00%、real10Y 2.62%；SOXX盘前约+0.3%，�
 
 风险预算：单一试仓最大损失NAV 0.25%—0.75%；确认交易0.75%—1.50%；单一高确信主题累计≤2.5%—3.0%。QQQ Put、油价Call与利率空头按“滞胀/Fed”合并；IM/IF与MO Call按“小盘Beta”合并；Gold、空美元与长债Put按“政策信用/实际利率”合并。
 
-归档状态：pending；CI不等待，ci_validation_status=pending_or_unverified。
+归档状态：success；CI不等待，ci_validation_status=pending_or_unverified。
 
 ## 十、今日行动清单
 
