@@ -243,7 +243,7 @@ OI推导的绝对Gamma节点不等于已知做市商净Gamma。期货相对期�
 - IM/IF与MO Call均是中国小盘Beta，合并≤1.25%；QQQ Put、长美元、空久期与AI空头共享Fed/折现率因子，合并压力损失≤1.50%；SC/LU/FU与全球油方向合并≤0.40%。
 - 油多、黄金多、空长债与空美元可能共同暴露于政策信用/通胀，不得分开计预算。计划止损不是期货最大损失；保证金只是抵押品。
 - China-Options提交`5df9101040fbaa5a495681a212baa2a71a894ebc`，数据日9月16日、fresh=true。China-Commodities提交`5a910be03256a9f06524c344af1cfa3a67382beb`，EOD日9月16日、归属9月17日夜盘fresh=true，但official_complete=false。
-- 归档状态在六文件写入并从main精确回读后更新；CI仅作独立事后校验，不等待。
+- 六个目标文件已从main逐项精确回读：历史MD/JSON存在，latest日期与edition正确，status对应本次，manifest中`2026-09-17 + morning`恰好一条；`archive_status=success`，`ci_validation_status=pending_or_unverified`。[完整归档报告](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/main/reports/2026/09/2026-09-17_morning.md)
 
 ## 十四、今日行动清单
 
