@@ -1,23 +1,24 @@
 {
   "schema_version": "1.0",
   "status": "published",
-  "report_date": "2026-09-17",
+  "report_date": "2026-09-18",
   "edition": "commodities_evening",
-  "generated_at_bjt": "2026-09-17T19:39:00+08:00",
+  "generated_at_bjt": "2026-09-18T19:42:00+08:00",
   "weekend_mode": false,
   "prompt_version": "radar_2026-09-06_coverage_v1",
-  "title": "全球商品期货期权高风险机会雷达｜晚间版｜2026-09-17",
-  "one_sentence_conclusion": "截至本报告时点，无可立即执行的合格新交易；五所9月17日EOD均未取得，任何基于昨值的21:00条件单均作废，只保留SC、M与FU/LU的待核实研究问题。",
-  "regime": "Saudi rerouting and pipeline-repair expectations / Hormuz tail risk / missing China T-day EOD",
+  "title": "全球商品期货期权高风险机会雷达｜晚间版｜2026-09-18",
+  "one_sentence_conclusion": "截至本报告时点，无可立即执行的合格新交易；LU相对SC的价差获curve确认，但已快速扩张，今晚只等比价回撤，绝不在能源暴跌后追单边。",
+  "regime": "Saudi rerouting and pipeline-repair repricing / crude premium unwind / LU-SC curve divergence / precious-metals rebound",
   "worth_taking_risk": false,
   "data_cutoff": {
-    "beijing_time": "2026-09-17T19:30:00+08:00",
-    "china_cash_market": "closed",
-    "us_cash_market": "pre-market",
+    "beijing_time": "2026-09-18T19:30:00+08:00",
+    "china_day_session": "2026-09-18 complete",
+    "prior_night_session": "validated partial session belonging to 2026-09-18",
+    "next_trading_window": "2026-09-18 21:00 BJT normal Friday Night, belonging to 2026-09-21 trading date",
     "notes": [
-      "China 2026-09-17 EOD unavailable due all-five-exchange upstream authentication failure",
-      "Last-good full-market EOD is 2026-09-16",
-      "The validated Night session belongs to 2026-09-17 and is not the future 21:00 session"
+      "The prior Night session is not the future 21:00 session.",
+      "Friday Night positions carry weekend event-gap risk.",
+      "T-day options were not available by the cutoff."
     ]
   },
   "input_snapshots": {
@@ -30,124 +31,114 @@
     "china_commodities": {
       "repository": "farfromexact/China-Commodities-Engine",
       "branch": "main",
+      "report_input_path": "data/report_input_latest.json",
       "last_run_status_path": "data/last_run_status.json",
+      "night_status_path": "data/night_session/last_run_status.json",
       "radar_latest_path": "data/radar_latest.json",
-      "radar_history_path": "data/radar_history.json",
-      "trade_date": "2026-09-16",
-      "generated_at": "2026-09-17T19:02:19.776518+08:00",
-      "data_fresh": false,
-      "official_complete": false,
-      "source_date_match_pct": 0,
-      "full_market_ready": false,
-      "critical_module_errors": 15,
+      "trade_date": "2026-09-18",
+      "generated_at": "2026-09-18T19:12:31.451131+08:00",
+      "data_fresh": true,
+      "official_complete": true,
+      "source_date_match_pct": 100,
+      "full_market_ready": true,
+      "critical_module_errors": 0,
       "history_record_count": 20,
       "module_quality": {
-        "futures": "partial_or_fallback",
-        "contract_meta": "partial_error",
-        "warehouse": "partial_error_with_carry_forward",
-        "basis": "unavailable",
-        "member_rankings": "unavailable",
-        "options_chain": "partial_error",
-        "options_surface": "not_ready"
+        "futures": "ready",
+        "market_state": "ready",
+        "physical": "fresh_partial_18_of_20",
+        "external": "fresh_context_only_with_oil_quote_conflict",
+        "night_session": "validated_but_incomplete_due_DCE_security_denial",
+        "options_chain": "T_minus_1_partial",
+        "options_surface": "research_ready_partial_execution_not_ready",
+        "contract_meta": "partial"
       },
-      "included_exchanges": [
-        "SHFE",
-        "INE",
-        "DCE",
-        "CZCE",
-        "GFEX"
-      ],
+      "included_exchanges": ["SHFE", "INE", "DCE", "CZCE", "GFEX"],
       "actual_read_paths": [
         "data/report_input_latest.json",
         "data/last_run_status.json",
         "data/night_session/last_run_status.json",
         "data/radar_latest.json",
         "data/latest.json",
-        "data/contract_meta.json",
-        "data/scoped/ex-dce/last_run_status.json",
-        "data/snapshots/2026-09-16.json"
+        "data/night_session/latest.json",
+        "data/contract_meta.json"
       ]
     }
   },
   "source_status": {
-    "current_futures_run": {
-      "requested_date": "2026-09-17",
-      "generated_at": "2026-09-17T19:01:19.614709+08:00",
-      "state": "error",
-      "data_fresh": false,
-      "full_market_ready": false,
-      "source_date_match_pct": 0,
-      "critical_module_errors": 15,
-      "reason": "iFinD HTTP 401 Device exceed limit on all five exchanges"
-    },
-    "last_good_eod": {
-      "date": "2026-09-16",
+    "futures": {
+      "requested_date": "2026-09-18",
+      "generated_at": "2026-09-18T19:03:04.288558+08:00",
       "contract_count": 806,
       "product_count": 77,
+      "exchange_count": 5,
+      "data_fresh": true,
       "full_market_ready": true,
       "source_date_match_pct": 100,
-      "usage": "historical_context_only"
-    },
-    "scoped_fallback": {
-      "path": "data/scoped/ex-dce/",
-      "date": "2026-08-18",
-      "excluded_exchanges": [
-        "DCE"
-      ],
-      "state": "stale_not_used"
+      "critical_errors": 0,
+      "placeholder_count": 4
     },
     "physical": {
-      "requested_date": "2026-09-17",
-      "generated_at": "2026-09-17T19:01:49.733703+08:00",
+      "requested_date": "2026-09-18",
+      "generated_at": "2026-09-18T19:11:54.708286+08:00",
       "data_fresh": true,
       "validation_passed": true,
       "published": true,
       "fresh_targets": 18,
-      "unavailable_targets": 2,
-      "basis_quality": "C_or_missing"
+      "target_count": 20,
+      "unavailable_targets": ["SC", "LU"],
+      "basis_quality": "C_or_missing_context_only"
     },
     "external": {
-      "requested_date": "2026-09-17",
-      "generated_at": "2026-09-17T19:01:51.671528+08:00",
+      "requested_date": "2026-09-18",
+      "generated_at": "2026-09-18T19:11:57.121980+08:00",
       "data_fresh": true,
       "validation_passed": true,
       "published": true,
       "fresh_targets": 17,
+      "target_count": 22,
       "unavailable_targets": 5,
       "usage": "context_only",
       "conflicts": [
-        "repo WTI 96.04 conflicts with Reuters near-month approximately 101.34 and was isolated"
+        "repo WTI/Brent 95.75/98.62 conflict with Reuters near-month 101.30/103.17 around 18:08 BJT and were isolated"
       ]
     },
     "night_session": {
-      "trading_date": "2026-09-17",
-      "night_session_date": "2026-09-16",
-      "generated_at": "2026-09-17T06:01:11.615015+08:00",
+      "trading_date": "2026-09-18",
+      "night_session_date": "2026-09-17",
+      "generated_at": "2026-09-18T06:01:29.578885+08:00",
       "data_fresh": true,
       "validation_passed": true,
       "published": true,
-      "coverage_complete": true,
-      "night_session_contract_count": 610,
-      "product_count": 55,
-      "outside_night_window_count": 189,
-      "no_night_trade_count": 7,
-      "coverage_warnings": [],
-      "timing_semantics": "completed session belonging to 2026-09-17; not the future 21:00 session"
+      "coverage_complete": false,
+      "night_session_contract_count": 423,
+      "product_count": 37,
+      "outside_night_window_count": 165,
+      "no_night_trade_count": 4,
+      "missing_timestamp_count": 0,
+      "missing_price_count": 0,
+      "missing_quote_count": 0,
+      "query_error_count": 214,
+      "unresolved_contract_count": 214,
+      "coverage_warnings": ["DCE Night contracts failed due explicit vendor security denial"],
+      "raw_detail_read_state": "empty_connector_payload_source_not_empty",
+      "timing_semantics": "completed session belonging to 2026-09-18; not the future 21:00 session"
     },
     "options": {
-      "trade_date": "2026-09-16",
-      "generated_at": "2026-09-16T22:02:05+00:00",
-      "record_count": 18098,
-      "series_count": 337,
-      "successful_products": 52,
+      "trade_date": "2026-09-17",
+      "generated_at": "2026-09-17T13:49:51+00:00",
+      "record_count": 16016,
+      "series_count": 216,
+      "successful_products": 45,
       "expected_products": 64,
-      "surface_ready_count": 330,
-      "positioning_ready_count": 73,
+      "surface_ready_count": 212,
+      "positioning_ready_count": 54,
       "execution_ready_count": 0,
-      "iv_coverage": 0.9792242236711238,
-      "open_interest_coverage": 0.678085976350978,
+      "iv_coverage": 0.9911338661338661,
+      "open_interest_coverage": 0.6949925074925075,
       "bid_ask_coverage": 0,
-      "usage": "latest valid T-1 research surface; not current execution quotes"
+      "usage": "latest available T-1 research surface; not current execution quotes",
+      "DCE_status": "security denial; products failed or skipped"
     },
     "contract_metadata": {
       "quality_state": "partial",
@@ -157,566 +148,289 @@
     }
   },
   "dashboard": [
-    {
-      "asset": "SC2611",
-      "latest": 804.8,
-      "change_1d": 0.2631,
-      "change_1w": 22.5552,
-      "signal": "T-day EOD missing; no 21:00 condition",
-      "data_time": "2026-09-17 completed Night / 2026-09-16 EOD",
-      "data_attribute": "Night close; EOD returns are last-good"
-    },
-    {
-      "asset": "LU2611",
-      "latest": 5609,
-      "change_1d": 1.1202,
-      "change_1w": 10.0639,
-      "signal": "crude weakness versus product tightness; wait",
-      "data_time": "2026-09-17 completed Night / 2026-09-16 EOD",
-      "data_attribute": "Night close"
-    },
-    {
-      "asset": "FU2611",
-      "latest": 4405,
-      "change_1d": 0.2454,
-      "change_1w": 14.2095,
-      "signal": "deep old backwardation; T-day missing",
-      "data_time": "2026-09-17 completed Night / 2026-09-16 EOD",
-      "data_attribute": "Night close"
-    },
-    {
-      "asset": "M2701",
-      "latest": 3463,
-      "change_1d": 1.7783,
-      "change_1w": 1.0892,
-      "signal": "research relative strength; no current trigger",
-      "data_time": "2026-09-17 completed Night / 2026-09-16 EOD",
-      "data_attribute": "Night close"
-    },
-    {
-      "asset": "PR611",
-      "latest": 8584,
-      "change_1d": 3.1784,
-      "change_1w": 8.3439,
-      "signal": "old cost-pass-through thesis pending T-day",
-      "data_time": "2026-09-17 completed Night / 2026-09-16 EOD",
-      "data_attribute": "Night close"
-    },
-    {
-      "asset": "FG701",
-      "latest": 905,
-      "change_1d": -1.3015,
-      "change_1w": -6.1856,
-      "signal": "old weak trend; no chase",
-      "data_time": "2026-09-17 completed Night / 2026-09-16 EOD",
-      "data_attribute": "Night close"
-    },
-    {
-      "asset": "EC2610",
-      "latest": 2080,
-      "change_1d": -0.8944,
-      "change_1w": 6.1077,
-      "signal": "no Night; exact freight and T-day missing",
-      "data_time": "2026-09-16 EOD",
-      "data_attribute": "last-good close"
-    }
+    {"asset":"SC2611","latest":728,"change_1d":-6.286,"change_1w":-0.304,"signal":"rebound-failure short only","data_time":"2026-09-18 EOD","data_attribute":"close; prior Night exact"},
+    {"asset":"LU2611","latest":5440,"change_1d":-2.095,"change_1w":0.510,"signal":"relative strength versus SC","data_time":"2026-09-18 EOD","data_attribute":"close; prior Night exact"},
+    {"asset":"FU2611","latest":4200,"change_1d":-3.292,"change_1w":-0.769,"signal":"deep backwardation opposes chasing short","data_time":"2026-09-18 EOD","data_attribute":"close; prior Night exact"},
+    {"asset":"PX611","latest":9160,"change_1d":-3.469,"change_1w":-1.325,"signal":"cost unwind","data_time":"2026-09-18 EOD","data_attribute":"close; prior Night exact"},
+    {"asset":"TA701","latest":6238,"change_1d":-2.862,"change_1w":0,"signal":"short only after failed rebound","data_time":"2026-09-18 EOD","data_attribute":"close; prior Night exact"},
+    {"asset":"EB2611","latest":9470,"change_1d":-2.989,"change_1w":-5.059,"signal":"price down/OI up, curve opposes chase","data_time":"2026-09-18 EOD","data_attribute":"DCE Night unavailable"},
+    {"asset":"JM2701","latest":1487,"change_1d":-5.302,"change_1w":-5.302,"signal":"deleveraging; do not chase","data_time":"2026-09-18 EOD","data_attribute":"DCE Night unavailable"},
+    {"asset":"AG2612","latest":16304,"change_1d":2.789,"change_1w":2.730,"signal":"pullback-acceptance long","data_time":"2026-09-18 EOD","data_attribute":"formal prior Night unavailable"},
+    {"asset":"AU2612","latest":951.38,"change_1d":0.958,"change_1w":0.174,"signal":"strong but no chase","data_time":"2026-09-18 EOD","data_attribute":"formal prior Night unavailable"},
+    {"asset":"CU2610","latest":109620,"change_1d":1.313,"change_1w":0.801,"signal":"most gain completed in prior Night","data_time":"2026-09-18 EOD","data_attribute":"close; prior Night exact"},
+    {"asset":"M2701","latest":3397,"change_1d":-1.466,"change_1w":0.205,"signal":"prior long thesis failed","data_time":"2026-09-18 EOD","data_attribute":"DCE Night unavailable"},
+    {"asset":"FG701","latest":907,"change_1d":0.551,"change_1w":-7.317,"signal":"prior Night gain reversed; noise","data_time":"2026-09-18 EOD","data_attribute":"close; prior Night exact"},
+    {"asset":"EC2610","latest":2172.5,"change_1d":2.988,"change_1w":7.094,"signal":"event repricing with OI decline","data_time":"2026-09-18 EOD","data_attribute":"no Night session"}
   ],
   "meaningful_changes": [
+    {"title":"LU-SC relative trade gained a third support layer","detail":"LU outperformed SC, LU OI rose while SC OI fell, LU backwardation expanded to 4.79% while SC backwardation collapsed to 1.59%."},
+    {"title":"SC weakness continued in the day session","detail":"Prior Night return was -2.89% versus close and day follow-through was another -4.52%."},
+    {"title":"RM morning long invalidated","detail":"RM701 low 2343 and close 2357 broke the 2390 stop and 2396 thesis-invalidating level."},
+    {"title":"M and polyester strength reversed","detail":"M lost 1.47% on settlement and OI fell 196,992; PX/PR/TA weakened as crude risk premium unwound."},
+    {"title":"Precious metals became the strongest absolute sector","detail":"AG and AU rose with OI increases and overseas gold/silver gains, but curves and executable options did not confirm."},
+    {"title":"Core EOD recovered while Night and options remained partial","detail":"All five exchanges were complete for EOD; DCE Night had 214 query errors and T-day options were unavailable."}
+  ],
+  "top_opportunities": [
     {
-      "change": "All five 2026-09-17 EOD exchange pulls returned zero records after an upstream 401; morning entry windows are unknown and expired.",
-      "impact": "No immediate or conditional new trade."
+      "rank": 1,
+      "name": "多13手LU2611/空1手SC2611近似名义中性",
+      "score": 80,
+      "idea_id": "COM-M-LUSC-RELATIVE-20260918",
+      "direction": "long_LU_short_SC",
+      "holding_period": "1-3D",
+      "stage": "waiting_pullback_trigger",
+      "instruments": ["13 LU2611 futures long", "1 SC2611 futures short"],
+      "max_loss_limited": false,
+      "score_components": {"logic":23,"convexity":16,"catalyst":18,"price_curve_vol":14,"crowding_technical":9},
+      "effective_support_layers": [1,2,4],
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "充分但比价已扩张",
+      "execution_status": "等待21:45回撤"
     },
     {
-      "change": "Physical recovered to 18/20 fresh daily series.",
-      "impact": "Context improved, but all basis grades remain C and cannot replace current futures."
+      "rank": 2,
+      "name": "SC2611反弹失败空",
+      "score": 76,
+      "idea_id": "COM-M-SC2611-REVERSAL-20260917",
+      "direction": "short",
+      "holding_period": "1-2D",
+      "stage": "waiting_trigger",
+      "instruments": ["SC2611 futures short"],
+      "max_loss_limited": false,
+      "score_components": {"logic":22,"convexity":14,"catalyst":18,"price_curve_vol":13,"crowding_technical":9},
+      "effective_support_layers": [1,2,4],
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分，Hormuz尾部风险反对",
+      "execution_status": "等待21:45反抽失败"
     },
     {
-      "change": "Oil extended losses while identifiable Hormuz traffic fell sharply.",
-      "impact": "SC downside and supply-tail evidence conflict."
+      "rank": 3,
+      "name": "AG2612回撤接受多",
+      "score": 69,
+      "idea_id": "COM-E-AG2612-PRECIOUS-REBOUND-20260918",
+      "direction": "long",
+      "holding_period": "1-3D",
+      "stage": "waiting_trigger",
+      "instruments": ["AG2612 futures long"],
+      "max_loss_limited": false,
+      "score_components": {"logic":20,"convexity":15,"catalyst":14,"price_curve_vol":9,"crowding_technical":11},
+      "effective_support_layers": [1,4],
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分，curve与正式Night缺失",
+      "execution_status": "等待21:45回撤接受"
     },
     {
-      "change": "Gold rebounded more than 1% as the dollar eased from a seven-week high.",
-      "impact": "Gold credit thesis becomes conflicted, not confirmed."
+      "rank": 4,
+      "name": "TA701弱势延续空",
+      "score": 68,
+      "idea_id": "COM-E-TA701-COST-UNWIND-20260918",
+      "direction": "short",
+      "holding_period": "1-3D",
+      "stage": "waiting_trigger",
+      "instruments": ["TA701 futures short"],
+      "max_loss_limited": false,
+      "score_components": {"logic":19,"convexity":16,"catalyst":15,"price_curve_vol":8,"crowding_technical":10},
+      "effective_support_layers": [1,4],
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分，backwardation反对",
+      "execution_status": "等待反抽失败"
     },
     {
-      "change": "Validated prior Night remains usable, but T-day EOD is missing.",
-      "impact": "No overnight/day decomposition can be calculated."
-    },
-    {
-      "change": "The newest options surface remains 2026-09-16 with zero execution-ready series.",
-      "impact": "No premium, Greeks or executable option structure."
+      "rank": 5,
+      "name": "EC2610事件风险多",
+      "score": 66,
+      "idea_id": "COM-M-EC2610-FREIGHT-REPRICE-20260918",
+      "direction": "long",
+      "holding_period": "1-5D",
+      "stage": "research_watchlist",
+      "instruments": ["EC2610 futures long only after Monday confirmation"],
+      "max_loss_limited": false,
+      "score_components": {"logic":18,"convexity":15,"catalyst":15,"price_curve_vol":9,"crowding_technical":9},
+      "effective_support_layers": [1,2],
+      "research_judgment": "证据不足",
+      "evidence_sufficiency": "exact freight missing and OI declined",
+      "execution_status": "next window 2026-09-21 09:00"
     }
   ],
-  "top_opportunities": [],
   "top_trade_cards": [
     {
-      "idea_id": "COM-M-SC2611-REVERSAL-20260917",
-      "name": "SC2611 reversal research",
-      "direction": "provisional short",
-      "score_status": "pending_current_EOD",
-      "stage": "research_watchlist",
-      "execution_status": "data_insufficient",
-      "entry": "No numeric entry; confirm 2026-09-17 close/settlement, SC2610-SC2611 curve and live 21:00 quotes first.",
-      "invalidation": "Renewed Hormuz/Yanbu disruption, re-expanding backwardation and Brent above 108.",
-      "exit": "If later validated: 1-2D time stop and live 1.5R/3R exits.",
-      "max_loss_limited": false
+      "idea_id":"COM-M-LUSC-RELATIVE-20260918",
+      "name":"13 LU2611 long / 1 SC2611 short",
+      "direction":"long_LU_short_SC",
+      "score":80,
+      "legs":[{"instrument":"LU2611","side":"long","quantity":13},{"instrument":"SC2611","side":"short","quantity":1}],
+      "neutrality":"approximately dollar-neutral within 2.86% at 2026-09-18 EOD; not beta-neutral",
+      "pnl_formula_cny":"130*(LU_exit-LU_entry)-1000*(SC_exit-SC_entry)",
+      "entry":"After 21:45, LU/SC retraces to 7.30-7.45 and reclaims 7.40; LU holds 5380 while SC rebound to 735-750 fails.",
+      "stop":"45-minute acceptance below ratio 7.20.",
+      "invalidation":"LU backwardation below 3%, SC backwardation above 4%, or Brent above 106 with renewed supply disruption.",
+      "exit":"TP1 ratio 7.65 or +1.5R; TP2 7.90 or +3R; 1-3D time stop.",
+      "max_loss_limited":false,
+      "stress_loss_cny":{"one_16pct_adverse_limit":229632,"two_compounded_16pct_adverse_limits":459796},
+      "risk_budget_nav":"0.25% maximum initial loss; shared energy factor <=0.50%",
+      "execution_status":"waiting_trigger"
     },
     {
-      "idea_id": "COM-M-M2701-SOYMEAL-FOLLOWTHROUGH-20260916",
-      "name": "M2701 relative-strength research",
-      "direction": "provisional long",
-      "score_status": "pending_current_EOD",
-      "stage": "research_watchlist",
-      "execution_status": "data_insufficient",
-      "entry": "No numeric entry; confirm 2026-09-17 EOD, delta OI, near-next curve and live 21:00 quotes first.",
-      "invalidation": "Break of current T-day low or CBOT soybean below 1300 with no domestic basis improvement.",
-      "exit": "If later validated: 1-3D time stop; targets set from live risk unit.",
-      "max_loss_limited": false
+      "idea_id":"COM-M-SC2611-REVERSAL-20260917",
+      "name":"SC2611 rebound-failure short",
+      "direction":"short",
+      "score":76,
+      "entry":"After 21:45, rebound to 740-760 fails and price rebreaks 730/VWAP.",
+      "stop":"45-minute acceptance above 776.",
+      "invalidation":"Backwardation above 4%, Brent above 106, and Saudi/Hormuz supply restoration reverses.",
+      "exit":"TP1 705 or +1.5R; TP2 670 or +3R; 1-2D time stop.",
+      "max_loss_limited":false,
+      "stress_loss_cny":{"one_16pct_adverse_limit":116480,"two_compounded_16pct_adverse_limits":251597},
+      "execution_status":"waiting_trigger"
+    },
+    {
+      "idea_id":"COM-E-AG2612-PRECIOUS-REBOUND-20260918",
+      "name":"AG2612 pullback-acceptance long",
+      "direction":"long",
+      "score":69,
+      "entry":"After 21:45, 16020-16150 is accepted and 16280/VWAP is reclaimed.",
+      "stop":"45-minute acceptance below 15920.",
+      "invalidation":"Break below 15650 with spot gold below 4300 and silver below 64.",
+      "exit":"TP1 16650 or +1.5R; TP2 17200 or +3R; 1-3D time stop.",
+      "max_loss_limited":false,
+      "execution_status":"waiting_trigger; formal prior Night contract and dynamic margin/limit unavailable"
     }
   ],
   "commodities_tracking": {
     "data_protocol_version": "china_commodities_v2",
-    "report_input_requested_date": "2026-09-16",
-    "report_input_generated_at": "2026-09-17T19:02:19.776518+08:00",
-    "prior_night_session_trading_date": "2026-09-17",
-    "prior_night_session_generated_at": "2026-09-17T06:01:11.615015+08:00",
+    "report_input_requested_date": "2026-09-18",
+    "report_input_generated_at": "2026-09-18T19:12:31.451131+08:00",
+    "module_freshness": {
+      "futures":"fresh","market_state":"fresh","physical":"fresh_partial","external":"fresh_context_only","night_session":"fresh_but_incomplete","options":"T_minus_1_partial","contract_metadata":"partial"
+    },
+    "prior_night_session_trading_date": "2026-09-18",
+    "prior_night_session_generated_at": "2026-09-18T06:01:29.578885+08:00",
     "prior_night_session_data_fresh": true,
-    "overnight_day_decomposition_used": false,
-    "physical_coverage": {
-      "fresh": 18,
-      "target": 20,
-      "unavailable": 2
-    },
-    "external_coverage": {
-      "fresh": 17,
-      "target": 22,
-      "unavailable": 5
-    },
-    "options_surface_ready": 330,
-    "options_positioning_ready": 73,
+    "overnight_day_decomposition_used": true,
+    "physical_coverage": {"fresh":18,"target":20,"unavailable":2},
+    "external_coverage": {"fresh":17,"target":22,"unavailable":5,"oil_conflict_isolated":true},
+    "options_surface_ready": 212,
+    "options_positioning_ready": 54,
     "options_execution_ready": 0,
     "contract_metadata_quality": "partial",
     "data_quality": {
-      "status": "stale_or_partial",
-      "price_source": "China-Commodities-Engine v2 2026-09-16 last-good EOD plus validated 2026-09-17 prior Night; 2026-09-17 T-day EOD unavailable",
+      "status": "degraded",
+      "price_source": "China-Commodities-Engine v2 2026-09-18 complete five-exchange EOD plus validated partial prior Night and separately sourced 15:00-19:30 overseas data",
       "curve_definition": "near_minus_next_futures_curve_not_spot_basis",
       "basis_status": "C grade or unavailable; context only",
-      "warehouse_status": "partial; five carried-forward in current failed run",
+      "warehouse_status": "available for selected CZCE products; warehouse and social inventory not conflated",
       "member_rankings_status": "unavailable",
-      "options_chain_status": "2026-09-16 latest valid; 52/64 products",
-      "options_surface_status": "330 surface-ready, 73 positioning-ready, 0 execution-ready",
-      "history_comparison_status": "stale_or_partial",
-      "available_horizons": [
-        "1D",
-        "3D",
-        "5D",
-        "20D"
-      ],
+      "options_chain_status": "2026-09-17 latest available; 45/64 products; DCE security denial",
+      "options_surface_status": "212 surface-ready, 54 positioning-ready, 0 execution-ready",
+      "history_comparison_status": "available",
+      "available_horizons": ["1D","3D","5D","20D"],
       "comparative_metrics": [
-        {
-          "metric": "same-contract returns",
-          "cutoff": "2026-09-16",
-          "usage": "historical context"
-        },
-        {
-          "metric": "validated prior Night",
-          "cutoff": "2026-09-17",
-          "usage": "price discovery before missing T-day EOD"
-        }
+        {"metric":"same-contract returns","cutoff":"2026-09-18","usage":"ranking and regime"},
+        {"metric":"prior Night versus previous close","cutoff":"2026-09-18 completed session","usage":"overnight price discovery"},
+        {"metric":"day follow-through","cutoff":"2026-09-18 EOD","usage":"exact-contract only"}
       ]
     },
     "market_dashboard": [
-      {
-        "product": "SC",
-        "contract": "SC2611",
-        "last_good_eod": "2026-09-16",
-        "close": 827,
-        "settlement": 838.4,
-        "return_1d_pct": 0.2631,
-        "return_5d_pct": 22.5552,
-        "delta_oi": 1704,
-        "curve_pct": 6.3216,
-        "prior_night_close": 804.8,
-        "prior_night_return_vs_close_pct": -2.6844,
-        "t_day_eod_state": "missing"
-      },
-      {
-        "product": "M",
-        "contract": "M2701",
-        "last_good_eod": "2026-09-16",
-        "close": 3479,
-        "settlement": 3434,
-        "return_1d_pct": 1.7783,
-        "return_5d_pct": 1.0892,
-        "delta_oi": 174015,
-        "curve_pct": -1.1021,
-        "prior_night_close": 3463,
-        "prior_night_return_vs_close_pct": -0.4599,
-        "t_day_eod_state": "missing"
-      },
-      {
-        "product": "FU",
-        "contract": "FU2611",
-        "last_good_eod": "2026-09-16",
-        "close": 4488,
-        "settlement": 4493,
-        "return_1d_pct": 0.2454,
-        "return_5d_pct": 14.2095,
-        "delta_oi": 2116,
-        "curve_pct": 18.1393,
-        "prior_night_close": 4405,
-        "prior_night_return_vs_close_pct": -1.8494,
-        "t_day_eod_state": "missing"
-      },
-      {
-        "product": "FG",
-        "contract": "FG701",
-        "last_good_eod": "2026-09-16",
-        "close": 910,
-        "settlement": 910,
-        "return_1d_pct": -1.3015,
-        "return_5d_pct": -6.1856,
-        "delta_oi": 68443,
-        "curve_pct": 3.2658,
-        "prior_night_close": 905,
-        "prior_night_return_vs_close_pct": -0.5495,
-        "t_day_eod_state": "missing"
-      }
+      {"product":"SC","main_contract":"SC2611","close":728,"settlement":754.4,"return_1d_pct":-6.286,"return_5d_pct":-0.304,"delta_oi":-2115,"curve_pct":1.5907,"prior_night_close":762.5,"overnight_return_pct":-2.891,"day_follow_through_pct":-4.525},
+      {"product":"LU","main_contract":"LU2611","close":5440,"settlement":5515,"return_1d_pct":-2.095,"return_5d_pct":0.510,"delta_oi":1703,"curve_pct":4.787,"prior_night_close":5574,"overnight_return_pct":0.596,"day_follow_through_pct":-2.404},
+      {"product":"FU","main_contract":"FU2611","close":4200,"settlement":4259,"return_1d_pct":-3.292,"return_5d_pct":-0.769,"delta_oi":-12686,"curve_pct":12.796,"prior_night_close":4298,"overnight_return_pct":-0.255,"day_follow_through_pct":-2.280},
+      {"product":"PX","main_contract":"PX611","close":9160,"settlement":9238,"return_1d_pct":-3.469,"return_5d_pct":-1.325,"delta_oi":-10325,"curve_pct":0.649,"prior_night_close":9338,"day_follow_through_pct":-1.906},
+      {"product":"TA","main_contract":"TA701","close":6238,"settlement":6312,"return_1d_pct":-2.862,"return_5d_pct":0,"delta_oi":10883,"curve_pct":2.144,"prior_night_close":6398,"day_follow_through_pct":-2.501},
+      {"product":"AG","main_contract":"AG2612","close":16304,"settlement":16104,"return_1d_pct":2.789,"return_5d_pct":2.730,"delta_oi":8244,"curve_pct":-0.124,"prior_night_contract":"AG2610_mismatch"},
+      {"product":"AU","main_contract":"AU2612","close":951.38,"settlement":946.18,"return_1d_pct":0.958,"return_5d_pct":0.174,"delta_oi":13041,"curve_pct":-0.080,"prior_night_contract":"AU2610_mismatch"},
+      {"product":"M","main_contract":"M2701","close":3397,"settlement":3429,"return_1d_pct":-1.466,"return_5d_pct":0.205,"delta_oi":-196992,"curve_pct":-1.103,"prior_night_status":"missing_DCE"},
+      {"product":"FG","main_contract":"FG701","close":907,"settlement":912,"return_1d_pct":0.551,"return_5d_pct":-7.317,"delta_oi":-70452,"curve_pct":3.704,"prior_night_close":913,"day_follow_through_pct":-0.657},
+      {"product":"EC","main_contract":"EC2610","close":2172.5,"settlement":2189,"return_1d_pct":2.988,"return_5d_pct":7.094,"delta_oi":-1176,"curve_pct":21.288,"prior_night_status":"not_applicable"}
     ],
     "supply_chain_map": [
-      {
-        "chain": "SC-FU-LU energy",
-        "direction": "conflicted",
-        "confidence": "low",
-        "support": [
-          "prior Night and overseas crude weaker"
-        ],
-        "opposition": [
-          "old backwardation",
-          "diesel tightness",
-          "Hormuz traffic collapse"
-        ],
-        "missing": [
-          "2026-09-17 China EOD",
-          "SC/LU physical"
-        ]
-      },
-      {
-        "chain": "M-RM oilseed meal",
-        "direction": "research long",
-        "confidence": "low-medium",
-        "support": [
-          "M physical context",
-          "CBOT soy/meal elevated"
-        ],
-        "opposition": [
-          "prior Night OI reduction",
-          "old contango"
-        ],
-        "missing": [
-          "2026-09-17 China EOD and delta OI"
-        ]
-      },
-      {
-        "chain": "PR-PX-TA-EG polyester",
-        "direction": "unknown",
-        "confidence": "low",
-        "support": [
-          "2026-09-16 strength"
-        ],
-        "opposition": [
-          "crude decline and mixed prior Night"
-        ],
-        "missing": [
-          "current EOD",
-          "processing margins",
-          "orders"
-        ]
-      },
-      {
-        "chain": "FG-SA-LC domestic demand",
-        "direction": "old weak background",
-        "confidence": "low",
-        "support": [
-          "2026-09-16 weak trend"
-        ],
-        "opposition": [
-          "FG backwardation",
-          "LC lower OI"
-        ],
-        "missing": [
-          "current EOD",
-          "high-quality inventory"
-        ]
-      }
+      {"chain":"LU versus SC","direction":"long LU / short SC","confidence":"medium_high","support":"price/OI, curve divergence, external product-versus-crude divergence","missing":"exact cross-market crack and physical LU/SC series"},
+      {"chain":"SC-PX-TA-PR and coke","direction":"weak","confidence":"medium","support":"EOD downside and crude decline","counter":"backwardation and weekend supply tail"},
+      {"chain":"AG-AU precious metals","direction":"positive","confidence":"medium","support":"China price/OI and overseas gains","missing":"formal-contract Night and execution-ready options"},
+      {"chain":"M-RM agriculture","direction":"weakening","confidence":"medium_low","support":"China price and OI reversal","counter":"CBOT high and purchase expectations"},
+      {"chain":"EC and new energy","direction":"mixed","confidence":"low","support":"EC price and deep backwardation","missing":"exact freight, lithium inventory and A/B basis"}
     ],
     "options_surface": {
-      "trade_date": "2026-09-16",
-      "record_count": 18098,
-      "series_count": 337,
-      "surface_ready_count": 330,
-      "positioning_ready_count": 73,
-      "execution_ready_count": 0,
-      "bid_ask_coverage": 0,
-      "dealer_gamma_direction_known": false,
+      "status": "not_ready",
+      "available_metrics": [],
       "tradeable_structures": [],
-      "notes": [
-        "research only; manual quote and manual confirmation required before execution; no premium quoted",
-        "T-day underlying close is unavailable; moneyness and Delta are not current"
-      ]
+      "research_priority_when_ready": ["SC2611 limited-debit put spread", "AG2612 limited-debit call spread", "TA701 downside skew check"],
+      "research_snapshot": [
+        {"underlying":"SC2611","expiry":"2026-10-14","atm_iv_pct":65.565,"surface_ready":true,"positioning_ready":false,"execution_ready":false},
+        {"underlying":"FU2611","expiry":"2026-10-19","atm_iv_pct":60.62,"surface_ready":true,"positioning_ready":false,"execution_ready":false},
+        {"underlying":"TA701","expiry":"2026-12-11","atm_iv_pct":33.33,"surface_ready":true,"positioning_ready":true,"execution_ready":false},
+        {"underlying":"FG701","expiry":"2026-12-11","atm_iv_pct":23.28,"surface_ready":true,"positioning_ready":true,"execution_ready":false}
+      ],
+      "disclaimer": "research only; manual quote and manual confirmation required before execution; no premium quoted"
     },
     "night_session_risk_map": [
-      {
-        "product": "SC",
-        "future_session_trading_date": "2026-09-18",
-        "assessment": "unknown gap because 2026-09-17 EOD is missing",
-        "wait_minutes": 45,
-        "confirm": [
-          "broker-verified T-day settlement",
-          "live VWAP",
-          "SC2610-SC2611 curve",
-          "Brent"
-        ]
-      },
-      {
-        "product": "FU/LU",
-        "future_session_trading_date": "2026-09-18",
-        "assessment": "crude weakness versus product tightness",
-        "wait_minutes": 45,
-        "confirm": [
-          "broker-verified T-day settlement",
-          "backwardation",
-          "relative strength"
-        ]
-      },
-      {
-        "product": "M/RM",
-        "future_session_trading_date": "2026-09-18",
-        "assessment": "potential strength but unverified",
-        "wait_minutes": 45,
-        "confirm": [
-          "T-day delta OI",
-          "settlement",
-          "near-next curve",
-          "CBOT"
-        ]
-      },
-      {
-        "product": "EC/LC/AP/JD/SF/SM/SI/PS",
-        "next_window": "2026-09-18T09:00:00+08:00",
-        "assessment": "no institutional Night session"
-      }
+      {"product":"LU/SC","confidence":"medium_high","action":"wait 45 minutes; enter only on ratio pullback and re-acceptance"},
+      {"product":"SC","confidence":"medium","action":"do not chase low open; short only after failed rebound"},
+      {"product":"FU","confidence":"medium_low","action":"wait 45 minutes; deep backwardation conflicts with price weakness"},
+      {"product":"PX/TA/PR/PF","confidence":"medium","action":"wait 45 minutes; confirm chain breadth"},
+      {"product":"AG/AU","confidence":"medium","action":"wait 45 minutes; no first-jump chase"},
+      {"product":"M/RM","confidence":"low","action":"wait for DCE live quotes and OI response"},
+      {"product":"EC/LC/AP/JD/SF/SM/SI/PS","confidence":"not_applicable","action":"no Night; next decision window 2026-09-21 09:00"}
     ],
-    "coverage": {
-      "required_product_count": 77,
-      "current_t_day_futures_analyzed": 0,
-      "last_good_products_screened": 77,
-      "last_good_products_with_valid_metrics": 70,
-      "prior_night_products": 55,
-      "prior_night_contracts": 610,
-      "physical_fresh_targets": 18,
-      "external_fresh_targets": 17,
-      "options_expected_products": 64,
-      "options_successful_products": 52,
-      "options_execution_ready": 0,
-      "placeholders": [
-        "JR",
-        "PM",
-        "RI",
-        "WH",
-        "ZC"
-      ],
-      "low_liquidity": [
-        "RS",
-        "WR"
-      ],
-      "uncovered_reason": "2026-09-17 all-five-exchange upstream authentication failure"
+    "coverage_check": {
+      "required_products":77,
+      "analyzed_products":77,
+      "trend_curve_usable_products":70,
+      "night_products":37,
+      "night_contracts":423,
+      "options_expected_products":64,
+      "options_successful_products":45,
+      "options_execution_ready":0,
+      "insufficient_data":["DCE prior Night","T-day options","SC/LU physical","A/B basis","exact import parity","processing margins","current option bid/ask"],
+      "inapplicable_or_low_liquidity":["JR","PM","RI","WH","ZC","RS","WR"]
     }
   },
   "event_calendar": [
-    {
-      "time_bjt": "2026-09-17 21:00",
-      "event": "China Night session opens for 2026-09-18 trading date",
-      "handling": "Wait 30-45 minutes and verify broker settlement first."
-    },
-    {
-      "time_bjt": "2026-09-17 evening",
-      "event": "USDA weekly export sales regular window",
-      "handling": "Adjust M/RM/C/oilseed Delta only after actual release and China response."
-    },
-    {
-      "time_bjt": "next 24h",
-      "event": "East-West pipeline repair, Sohar rerouting, Hormuz/Perim traffic and Russian refinery disruptions",
-      "handling": "Keep energy risk at zero until exact China pricing is restored."
-    },
-    {
-      "time_bjt": "2026-09-18 around policy window",
-      "event": "BOJ decision window",
-      "handling": "Avoid naked high Delta/Vega in metals."
-    },
-    {
-      "time_bjt": "2026-09-19 around 03:30",
-      "event": "CFTC COT regular window",
-      "handling": "Use only as lagged positioning context."
-    },
-    {
-      "time_bjt": "2026-09-23 22:30",
-      "event": "Next EIA weekly petroleum report",
-      "handling": "Reduce energy Delta; options require live finite-cost quotes."
-    }
+    {"time_bjt":"2026-09-18 21:00","event":"Friday Night session belonging to 2026-09-21","handling":"wait 30-45 minutes; include weekend gap risk"},
+    {"time_bjt":"2026-09-19 around 03:30","event":"CFTC COT regular release window","handling":"lagged crowding context only"},
+    {"time_bjt":"2026-09-19 to 2026-09-20","event":"Saudi pipeline/Sohar/Hormuz weekend headlines","handling":"cap energy-factor risk and avoid naked optionality"},
+    {"time_bjt":"2026-09-21 09:00","event":"next China day session for products without Night","handling":"wait 30-45 minutes"},
+    {"time_bjt":"week of 2026-09-21","event":"US-China leaders meeting and commodity agenda","handling":"trade actual agreement and price response only"},
+    {"time_bjt":"2026-09-23 22:30","event":"EIA weekly petroleum report","handling":"reduce energy Delta beforehand"},
+    {"time_bjt":"2026-09-24 around 20:30","event":"USDA weekly export sales window","handling":"reassess grains only on realized sales and basis response"}
   ],
   "action_list": {
     "A": "今晚没有应立即建立的新仓位。",
-    "B": "今晚只应挂条件单的仓位：无；9月17五所EOD缺失，今晨SC/M/FG旧触发价全部过期，禁止平移到21:00。",
-    "C": "今晚应继续观察的机会：SC2611反转能否延续、M2701相对强势、FU/LU产品紧张、Hormuz船流与EC映射，以及金银对美元回吐的持续性。",
-    "D": "今晚必须避免或退出的交易：把9月16当9月17、追SC/FU/LU或FG第一跳、重启能源/EC旧多、用repo冲突WTI或C级basis构造套利，以及在execution-ready=false时臆测期权成本。"
+    "B": "今晚只应挂条件单的仓位：21:45后多13手LU2611/空1手SC2611，仅在比价回撤至7.30—7.45并重上7.40时试仓；或SC2611反抽740—760失败并重破730时试空，二者二选一、共享风险≤0.50%。",
+    "C": "今晚应继续观察的机会：AG2612回撤接受多、TA701反抽失败空、EC2610周一事件重估、FU深back以及DCE Night/期权数据恢复。",
+    "D": "今晚必须避免或退出的交易：若此前建立则按原规则退出RM701多头；避免低开追SC/JM/PX、追AG第一跳、把LU/SC称无风险或beta-neutral、恢复EC旧多，以及在execution-ready=false时臆测期权成本。"
   },
   "risk_budget": {
-    "new_risk_budget_nav_pct": 0,
-    "single_trial_after_data_restoration_nav_pct": "0.25%-0.75%",
-    "confirmed_trade_nav_pct": "0.75%-1.50%",
-    "theme_cap_nav_pct": "2.5%-3.0%",
-    "same_factor_aggregation": true,
-    "stress_tests": [
-      "one/two price limits",
-      "Hormuz reclosure",
-      "correlation break",
-      "liquidity disappearance",
-      "margin increase",
-      "IV shock/collapse",
-      "delivery squeeze",
-      "RMB shock"
-    ]
+    "single_trial_nav_pct":"0.15%-0.25%",
+    "LU_SC_pair_nav_pct":"<=0.25%",
+    "shared_energy_factor_nav_pct":"<=0.50% initial",
+    "precious_metals_factor_nav_pct":"<=0.40% initial",
+    "single_high_conviction_theme_nav_pct":"<=2.5% after confirmation",
+    "stress_tests":["one/two price limits","weekend geopolitical gap","correlation break","liquidity disappearance","margin increase","IV jump/collapse","delivery squeeze","RMB shock"]
   },
   "sources": [
-    {
-      "title": "China-Commodities-Engine unified report input",
-      "publisher": "GitHub / farfromexact",
-      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/report_input_latest.json",
-      "source_date": "2026-09-17",
-      "accessed_at_bjt": "2026-09-17T19:30:00+08:00",
-      "supported_claims": [
-        "2026-09-16 last-good futures and market state",
-        "2026-09-17 Physical and External modules",
-        "Night and Options readiness"
-      ]
-    },
-    {
-      "title": "China-Commodities-Engine current run status",
-      "publisher": "GitHub / farfromexact",
-      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/last_run_status.json",
-      "source_date": "2026-09-17",
-      "accessed_at_bjt": "2026-09-17T19:30:00+08:00",
-      "supported_claims": [
-        "all five futures exchanges returned zero records",
-        "full_market_ready=false and critical errors=15"
-      ]
-    },
-    {
-      "title": "China-Commodities-Engine Night status",
-      "publisher": "GitHub / farfromexact",
-      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/night_session/last_run_status.json",
-      "source_date": "2026-09-17",
-      "accessed_at_bjt": "2026-09-17T19:30:00+08:00",
-      "supported_claims": [
-        "validated completed prior Night has 610 contracts and 55 products",
-        "coverage_complete=true"
-      ]
-    },
-    {
-      "title": "Oil prices extend losses as supply disruption fears ease",
-      "publisher": "Reuters",
-      "url": "https://www.reuters.com/business/energy/oil-prices-extend-losses-fears-middle-east-supply-disruptions-ease-2026-09-17/",
-      "source_date": "2026-09-17",
-      "accessed_at_bjt": "2026-09-17T19:30:00+08:00",
-      "supported_claims": [
-        "Brent and WTI fell more than one dollar",
-        "Sohar rerouting and pipeline repair expectations eased crude disruption fears",
-        "diesel remained tight"
-      ]
-    },
-    {
-      "title": "Number of ships transiting Strait of Hormuz falls to three",
-      "publisher": "Reuters",
-      "url": "https://www.reuters.com/world/middle-east/number-ships-transiting-strait-hormuz-falls-three-wednesday-data-shows-2026-09-17/",
-      "source_date": "2026-09-17",
-      "accessed_at_bjt": "2026-09-17T19:30:00+08:00",
-      "supported_claims": [
-        "three identifiable commercial ships transited Wednesday versus twelve prior day and ten-day average seventeen",
-        "AIS-dark traffic may be undercounted"
-      ]
-    },
-    {
-      "title": "Dollar eases from seven-week peak as oil prices extend decline",
-      "publisher": "Reuters",
-      "url": "https://www.reuters.com/world/asia-pacific/hawkish-fed-lifts-dollar-seven-week-high-focus-turn-boj-2026-09-17/",
-      "source_date": "2026-09-17",
-      "accessed_at_bjt": "2026-09-17T19:30:00+08:00",
-      "supported_claims": [
-        "dollar eased after a seven-week high",
-        "markets retained hawkish Fed expectations"
-      ]
-    },
-    {
-      "title": "Gold rises as traders reassess positions after Fed rate hike",
-      "publisher": "Reuters",
-      "url": "https://www.reuters.com/world/india/gold-rises-over-1-investors-digest-fed-hike-oil-rally-stalls-2026-09-17/",
-      "source_date": "2026-09-17",
-      "accessed_at_bjt": "2026-09-17T19:30:00+08:00",
-      "supported_claims": [
-        "spot gold rebounded more than one percent to about 4308.57 dollars",
-        "silver and other precious metals also rose"
-      ]
-    },
-    {
-      "title": "INE crude oil futures contract",
-      "publisher": "Shanghai International Energy Exchange",
-      "url": "https://www.ine.cn/eng/market/futures/energy/sc/contract/",
-      "source_date": "2026-09-17",
-      "accessed_at_bjt": "2026-09-17T19:30:00+08:00",
-      "supported_claims": [
-        "SC contract multiplier and tick",
-        "physical delivery context"
-      ]
-    }
+    {"title":"China-Commodities-Engine unified report input","publisher":"GitHub / farfromexact","url":"https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/report_input_latest.json","source_date":"2026-09-18","accessed_at_bjt":"2026-09-18T19:33:00+08:00","source_type":"repository primary input","supported_claims":["five-exchange EOD","market state","physical/external/options summaries","prior Night compact records"]},
+    {"title":"China-Commodities-Engine core run status","publisher":"GitHub / farfromexact","url":"https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/last_run_status.json","source_date":"2026-09-18","accessed_at_bjt":"2026-09-18T19:33:00+08:00","source_type":"repository status","supported_claims":["full_market_ready","source-date match","critical error count"]},
+    {"title":"China-Commodities-Engine prior Night status","publisher":"GitHub / farfromexact","url":"https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/night_session/last_run_status.json","source_date":"2026-09-18","accessed_at_bjt":"2026-09-18T19:33:00+08:00","source_type":"repository status","supported_claims":["Night trading date and completeness","DCE query errors","coverage counts"]},
+    {"title":"Oil prices set for weekly fall on easing fears over Saudi supply disruption","publisher":"Reuters","url":"https://www.reuters.com/business/energy/oil-prices-fall-1-hopes-limited-supply-disruptions-2026-09-18/","source_date":"2026-09-18","accessed_at_bjt":"2026-09-18T19:34:00+08:00","source_type":"news and market quote","supported_claims":["Brent and WTI levels around 18:08 BJT","Saudi rerouting and inventory context","Hormuz vessel count"]},
+    {"title":"Aramco to boost Gulf exports to 60 million barrels in September, October","publisher":"Reuters","url":"https://www.reuters.com/business/energy/aramco-boost-exports-strait-hormuz-60-million-bbl-september-october-traders-say-2026-09-18/","source_date":"2026-09-18","accessed_at_bjt":"2026-09-18T19:35:00+08:00","source_type":"news","supported_claims":["Sohar ship-to-ship rerouting","Saudi export normalization evidence"]},
+    {"title":"Gold extends gains to scale one-week high as crude prices ease","publisher":"Reuters","url":"https://www.reuters.com/business/gold-extends-gains-scale-one-week-high-crude-prices-ease-2026-09-18/","source_date":"2026-09-18","accessed_at_bjt":"2026-09-18T19:34:00+08:00","source_type":"news and market quote","supported_claims":["gold and silver levels","BOJ hike context","precious-metals catalyst and rate counterargument"]},
+    {"title":"Shanghai exchange adjusts trading limits for oil contracts","publisher":"Reuters","url":"https://www.reuters.com/business/energy/shanghai-exchange-adjust-trading-limits-some-oil-futures-contracts-2026-09-11/","source_date":"2026-09-11","accessed_at_bjt":"2026-09-18T19:36:00+08:00","source_type":"exchange-rule news","supported_claims":["16% price limits for October/November SC and LU","17% hedge margin","intraday opening-position caps"]},
+    {"title":"EIA Weekly Petroleum Status Report","publisher":"U.S. Energy Information Administration","url":"https://www.eia.gov/petroleum/supply/weekly/","source_date":"2026-09-18","accessed_at_bjt":"2026-09-18T19:36:00+08:00","source_type":"official calendar","supported_claims":["next weekly petroleum report timing"]},
+    {"title":"CFTC Commitments of Traders release schedule","publisher":"U.S. Commodity Futures Trading Commission","url":"https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm","source_date":"2026-09-18","accessed_at_bjt":"2026-09-18T19:36:00+08:00","source_type":"official calendar","supported_claims":["COT release window"]},
+    {"title":"USDA Weekly Export Sales","publisher":"USDA Foreign Agricultural Service","url":"https://www.fas.usda.gov/data/export-sales-weekly-export-sales","source_date":"2026-09-18","accessed_at_bjt":"2026-09-18T19:36:00+08:00","source_type":"official calendar and data","supported_claims":["weekly export-sales monitoring window"]}
   ],
   "archive": {
-    "markdown_path": "reports/2026/09/2026-09-17_commodities_evening.md",
-    "json_path": "reports/2026/09/2026-09-17_commodities_evening.json",
-    "latest_markdown_path": "latest/commodities_evening.md",
-    "latest_json_path": "latest/commodities_evening.json",
     "archive_status": "success",
-    "commit_sha": null,
-    "error": null,
-    "ci_validation_status": "pending_or_unverified"
-  },
-  "gold_tracking": {
-    "thesis_status": "conflicted_not_confirmed",
-    "evidence": [
-      "gold rebounded after the Fed hike as the dollar eased"
-    ],
-    "counterevidence": [
-      "policy rate and real-yield pressure remain elevated",
-      "China AU T-day EOD unavailable"
+    "ci_validation_status": "pending_or_unverified",
+    "markdown_path": "reports/2026/09/2026-09-18_commodities_evening.md",
+    "json_path": "reports/2026/09/2026-09-18_commodities_evening.json",
+    "paths": [
+      "reports/2026/09/2026-09-18_commodities_evening.md",
+      "reports/2026/09/2026-09-18_commodities_evening.json",
+      "latest/commodities_evening.md",
+      "latest/commodities_evening.json",
+      "status/commodities_evening_latest.json",
+      "manifests/reports.json"
     ]
-  },
-  "ai_tracking": {
-    "thesis_status": "no_identifiable_commodity_edge",
-    "notes": [
-      "No defensible model maps AI cash flow or capex to a current commodity trade in this report."
-    ]
-  },
-  "china_tracking": {
-    "qualified_trade": false,
-    "score": null,
-    "preferred_future": null,
-    "futures_option_linkage": {
-      "IH_HO": {},
-      "IF_IO": {},
-      "IC_proxy": {
-        "boundary": "Global IC coverage is outside the commodity execution universe; no proxy option is treated as exact."
-      },
-      "IM_MO": {}
-    }
   }
 }
