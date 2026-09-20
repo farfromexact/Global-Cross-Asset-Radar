@@ -1,157 +1,123 @@
 {
   "schema_version": "1.0",
   "status": "published",
-  "report_date": "2026-09-19",
+  "report_date": "2026-09-20",
   "edition": "commodities_evening",
-  "generated_at_bjt": "2026-09-19T19:46:00+08:00",
+  "generated_at_bjt": "2026-09-20T19:44:00+08:00",
   "weekend_mode": true,
+  "title": "全球商品期货期权高风险机会雷达｜晚间版｜2026-09-20",
   "prompt_version": "radar_2026-09-06_coverage_v1",
-  "title": "全球商品期货期权高风险机会雷达｜晚间版｜2026-09-19",
-  "one_sentence_conclusion": "截至本报告时点，无可立即执行的合格新交易；原油溢价继续回吐、金银保持韧性，但周末无中国价格发现且周五夜盘日期异常，全部候选只等周一重报价。",
-  "regime": "crude risk-premium unwind / product tightness and shipping tail / precious-metal resilience / weekend price-discovery vacuum",
+  "data_protocol_version": "china_commodities_v2",
+  "one_sentence_conclusion": "截至本报告时点，无可立即执行的合格新交易；沙特及海湾股市已对袭击作出负面定价，但油设施损害未确认，周一只验证EC事件gap、AG回撤及LU/SC相对强弱。",
+  "regime": "weekend geopolitical tail / energy-shipping gap risk / precious-metal resilience / no China price discovery",
   "worth_taking_risk": false,
   "data_cutoff": {
-    "beijing_time": "2026-09-19T19:30:00+08:00",
-    "china_day_session": "2026-09-18 complete last-good",
-    "current_china_session": "weekend closed",
-    "prior_night_session": "validated 2026-09-18 historical session used only for Friday overnight-day decomposition",
-    "quarantined_night_session": "raw trading_date 2026-09-19 is calendar-invalid and incomplete",
-    "next_trading_window": "2026-09-21 09:00 BJT day session",
-    "notes": [
-      "No China 21:00 session on Saturday",
-      "Friday conditional entries expired and must be rebased Monday",
-      "Friday overseas close is the latest valid international market snapshot"
-    ]
+    "research_cutoff_bjt": "2026-09-20T19:30:00+08:00",
+    "last_complete_china_eod": "2026-09-18",
+    "next_trade_window_bjt": "2026-09-21T09:00:00+08:00",
+    "next_night_window_bjt": "2026-09-21T21:00:00+08:00"
   },
   "input_snapshots": {
-    "china_commodities": {
-      "repository": "farfromexact/China-Commodities-Engine",
-      "branch": "main",
-      "report_input_path": "data/report_input_latest.json",
-      "last_run_status_path": "data/last_run_status.json",
-      "night_status_path": "data/night_session/last_run_status.json",
-      "radar_latest_path": "data/radar_latest.json",
-      "trade_date": "2026-09-18",
-      "report_input_generated_at": "2026-09-19T19:08:21.119235+08:00",
-      "full_market_ready_last_good": true,
-      "source_date_match_pct_last_good": 100,
-      "last_good_contract_count": 806,
-      "actual_read_paths": [
-        "data/report_input_latest.json",
-        "data/last_run_status.json",
-        "data/night_session/last_run_status.json",
-        "data/radar_latest.json",
-        "data/latest.json",
-        "data/night_session/2026-09-18.json",
-        "data/contract_meta.json"
-      ]
-    }
+    "report_input_requested_date": "2026-09-18",
+    "report_input_generated_at": "2026-09-20T19:07:50.692515+08:00",
+    "source_ref": "main"
   },
   "source_status": {
     "futures": {
-      "requested_date": "2026-09-18",
+      "state": "valid_last_good",
       "source_date": "2026-09-18",
-      "generated_at": "2026-09-19T06:08:12+08:00",
       "contract_count": 806,
       "product_count": 77,
       "exchange_count": 5,
-      "data_fresh_assessment": "last-good valid; no Saturday EOD expected",
       "full_market_ready": true,
       "source_date_match_pct": 100,
       "critical_errors": 0,
-      "placeholder_count": 4,
-      "weekend_refresh": {
-        "requested_date": "2026-09-19",
-        "record_count": 0,
-        "critical_errors": 15,
-        "state": "failed weekend refresh; does not invalidate Friday last-good"
-      }
+      "weekend_run_state": "error_0_records_15_critical_module_errors"
     },
     "market_state": {
-      "source_date_max": "2026-09-18",
+      "state": "carried_last_good",
+      "source_date": "2026-09-18",
       "product_count": 77,
-      "usable_trend_curve_products": 70,
-      "data_fresh_assessment": "Friday last-good"
+      "usable_products": 70
     },
     "physical": {
-      "requested_date": "2026-09-18",
-      "generated_at": "2026-09-19T06:18:57+08:00",
-      "module_data_fresh_raw": false,
-      "validation_passed": false,
-      "published": false,
-      "fresh_series_by_native_frequency": 18,
-      "target_count": 20,
-      "unavailable_targets": [
+      "raw_state": "not_fresh_validation_failed_not_published",
+      "effective_state": "18_of_20_latest_expected_last_good",
+      "source_date": "2026-09-18",
+      "unavailable": [
         "SC",
         "LU"
       ],
-      "basis_quality": "C_or_missing_context_only"
+      "basis_quality": "C_context_only"
     },
     "external": {
-      "requested_date": "2026-09-19",
+      "state": "ok_native_frequency",
+      "requested_date": "2026-09-20",
       "source_date": "2026-09-18",
-      "generated_at": "2026-09-19T19:07:44+08:00",
-      "data_fresh": true,
-      "validation_passed": true,
-      "published": true,
-      "fresh_targets": 17,
-      "target_count": 22,
-      "unavailable_targets": 5,
+      "fresh_series": 17,
+      "total_series": 22,
       "usage": "context_only",
-      "conflicts": [
-        "repo WTI/Brent 95.47/99.03 conflict with reliable Friday near-month settlements 100.30/103.87 and were quarantined"
+      "quarantined": [
+        "repo WTI",
+        "repo Brent"
       ]
     },
     "night_session": {
-      "trading_date_raw": "2026-09-19",
-      "night_session_date_raw": "2026-09-18",
-      "generated_at": "2026-09-19T06:02:53+08:00",
-      "data_fresh_raw": true,
-      "validation_passed_raw": true,
-      "published_raw": true,
+      "state": "quarantined_calendar_invalid",
+      "raw_trading_date": "2026-09-20",
+      "raw_night_session_date": "2026-09-19",
+      "generated_at": "2026-09-20T05:58:26+08:00",
+      "data_fresh": false,
+      "validation_passed": false,
+      "published": false,
       "coverage_complete": false,
-      "night_session_contract_count": 423,
-      "product_count": 37,
-      "outside_night_window_count": 165,
-      "no_night_trade_count": 4,
-      "missing_timestamp_count": 0,
-      "missing_price_count": 0,
-      "missing_quote_count": 0,
+      "contract_count": 0,
+      "outside_window_count": 592,
       "query_error_count": 214,
-      "unresolved_contract_count": 214,
-      "coverage_warnings": [
-        "calendar-invalid Saturday trading_date",
-        "214 query errors and unresolved contracts"
-      ],
-      "assessment": "quarantined; Friday-night continuous session should belong to Monday 2026-09-21 under exchange calendar; raw record not relabeled",
+      "unresolved_count": 214,
+      "previous_valid_snapshot_retained": true,
       "fallback_used": false
     },
     "options": {
-      "trade_date": "2026-09-17",
-      "generated_at": "2026-09-17T13:49:51+00:00",
+      "state": "stale_research_only",
+      "source_date": "2026-09-17",
       "record_count": 16016,
+      "product_success": 45,
+      "product_total": 64,
       "series_count": 216,
-      "successful_products": 45,
-      "expected_products": 64,
-      "surface_ready_count": 212,
-      "positioning_ready_count": 54,
-      "execution_ready_count": 0,
-      "iv_coverage": 0.9911,
-      "open_interest_coverage": 0.695,
-      "bid_ask_coverage": 0,
-      "usage": "stale historical research surface only; not current quotes"
+      "surface_ready_series": 212,
+      "positioning_ready_series": 54,
+      "execution_ready_series": 0,
+      "bid_ask_coverage_pct": 0
     },
     "contract_metadata": {
-      "quality_state": "partial",
-      "effective_contract_match_coverage": 0.6749,
-      "multiplier_tick_margin_limit_coverage": 0.3015,
-      "last_trading_day_coverage": 0.6749
+      "state": "partial",
+      "effective_match_pct": 73.45,
+      "trading_parameter_coverage_pct": 30.15,
+      "last_trading_day_coverage_pct": 67.49
     }
   },
   "dashboard": [
     {
-      "asset": "SC2611",
-      "sector": "energy",
+      "product": "EC",
+      "contract": "EC2610",
+      "close": 2172.5,
+      "settlement": 2189,
+      "return_1d_pct": 2.9875,
+      "return_5d_pct": 7.094,
+      "volume": 25385,
+      "open_interest": 25286,
+      "delta_oi": -1176,
+      "curve_pct": 21.288,
+      "signal": "event_gap_acceptance",
+      "eod_date": "2026-09-18",
+      "basis_quality": "C_or_missing",
+      "night_state": "not_applicable_weekend",
+      "options_execution_ready": false
+    },
+    {
+      "product": "SC",
+      "contract": "SC2611",
       "close": 728,
       "settlement": 754.4,
       "return_1d_pct": -6.286,
@@ -160,21 +126,15 @@
       "open_interest": 42228,
       "delta_oi": -2115,
       "curve_pct": 1.5907,
-      "curve_state": "backwardation",
-      "basis_quality": "missing",
-      "physical": "unavailable",
-      "prior_night_close": 762.5,
-      "prior_night_return_vs_close_pct": -2.891,
-      "prior_night_return_vs_settlement_pct": -5.28,
-      "prior_night_delta_oi": -980,
-      "day_follow_through_pct": -4.525,
-      "overseas": "WTI 100.30 / Brent 103.87 Friday settle",
-      "options_readiness": "Y/N/N stale",
-      "signal": "Monday rebound-failure short only"
+      "signal": "two_sided_gap",
+      "eod_date": "2026-09-18",
+      "basis_quality": "C_or_missing",
+      "night_state": "not_applicable_weekend",
+      "options_execution_ready": false
     },
     {
-      "asset": "LU2611",
-      "sector": "energy",
+      "product": "LU",
+      "contract": "LU2611",
       "close": 5440,
       "settlement": 5515,
       "return_1d_pct": -2.095,
@@ -183,21 +143,15 @@
       "open_interest": 71404,
       "delta_oi": 1703,
       "curve_pct": 4.7869,
-      "curve_state": "backwardation",
-      "basis_quality": "missing",
-      "physical": "unavailable",
-      "prior_night_close": 5574,
-      "prior_night_return_vs_close_pct": 0.596,
-      "prior_night_return_vs_settlement_pct": -1.047,
-      "prior_night_delta_oi": 1334,
-      "day_follow_through_pct": -2.404,
-      "overseas": "crude weak; product tightness context",
-      "options_readiness": "not execution ready",
-      "signal": "relative strength versus SC"
+      "signal": "relative_to_SC",
+      "eod_date": "2026-09-18",
+      "basis_quality": "C_or_missing",
+      "night_state": "not_applicable_weekend",
+      "options_execution_ready": false
     },
     {
-      "asset": "FU2611",
-      "sector": "energy",
+      "product": "FU",
+      "contract": "FU2611",
       "close": 4200,
       "settlement": 4259,
       "return_1d_pct": -3.292,
@@ -206,19 +160,15 @@
       "open_interest": 190931,
       "delta_oi": -12686,
       "curve_pct": 12.796,
-      "curve_state": "deep backwardation",
-      "basis_quality": "C",
-      "prior_night_close": 4298,
-      "prior_night_return_vs_close_pct": -0.255,
-      "prior_night_return_vs_settlement_pct": -2.407,
-      "prior_night_delta_oi": -1990,
-      "day_follow_through_pct": -2.28,
-      "options_readiness": "Y/N/N stale",
-      "signal": "deep backwardation opposes chasing short"
+      "signal": "deep_back_rebound",
+      "eod_date": "2026-09-18",
+      "basis_quality": "C_or_missing",
+      "night_state": "not_applicable_weekend",
+      "options_execution_ready": false
     },
     {
-      "asset": "AG2612",
-      "sector": "precious metals",
+      "product": "AG",
+      "contract": "AG2612",
       "close": 16304,
       "settlement": 16104,
       "return_1d_pct": 2.789,
@@ -226,65 +176,49 @@
       "volume": 165934,
       "open_interest": 215014,
       "delta_oi": 8244,
-      "curve_pct": -0.1244,
-      "curve_state": "slight contango",
-      "basis_quality": "C",
-      "prior_night_close": 16032,
-      "prior_night_return_vs_close_pct": 2.815,
-      "prior_night_return_vs_settlement_pct": 2.33,
-      "prior_night_delta_oi": 1660,
-      "day_follow_through_pct": 1.697,
-      "overseas": "COMEX silver 66.556 Friday settle",
-      "options_readiness": "Y/N/N stale; skew anomaly quarantined",
-      "signal": "Monday pullback acceptance"
+      "curve_pct": -0.124,
+      "signal": "pullback_long",
+      "eod_date": "2026-09-18",
+      "basis_quality": "C_or_missing",
+      "night_state": "not_applicable_weekend",
+      "options_execution_ready": false
     },
     {
-      "asset": "AU2612",
-      "sector": "precious metals",
+      "product": "AU",
+      "contract": "AU2612",
       "close": 951.38,
       "settlement": 946.18,
       "return_1d_pct": 0.958,
-      "return_5d_pct": 0.174,
+      "return_5d_pct": 0.17,
       "volume": 119577,
       "open_interest": 197546,
       "delta_oi": 13041,
-      "curve_pct": -0.0805,
-      "curve_state": "slight contango",
-      "basis_quality": "C",
-      "prior_night_close": 944.52,
-      "prior_night_return_vs_close_pct": 1.018,
-      "prior_night_return_vs_settlement_pct": 0.781,
-      "prior_night_delta_oi": 4191,
-      "day_follow_through_pct": 0.726,
-      "overseas": "COMEX gold 4385.90 Friday settle",
-      "options_readiness": "N/N/N",
-      "signal": "strong but do not chase"
+      "signal": "watch",
+      "eod_date": "2026-09-18",
+      "basis_quality": "C_or_missing",
+      "night_state": "not_applicable_weekend",
+      "options_execution_ready": false
     },
     {
-      "asset": "CU2610",
-      "sector": "base metals",
+      "product": "CU",
+      "contract": "CU2610",
       "close": 109620,
       "settlement": 109530,
       "return_1d_pct": 1.313,
-      "return_5d_pct": 0.801,
+      "return_5d_pct": 0.8,
       "volume": 81021,
       "open_interest": 151882,
       "delta_oi": -7625,
-      "curve_pct": 0.3298,
-      "curve_state": "backwardation short history",
-      "basis_quality": "C",
-      "prior_night_close": 109650,
-      "prior_night_return_vs_close_pct": 1.06,
-      "prior_night_return_vs_settlement_pct": 1.424,
-      "prior_night_delta_oi": -776,
-      "day_follow_through_pct": -0.027,
-      "overseas": "repo LME copper 14562 context proxy",
-      "options_readiness": "N/N/N",
-      "signal": "most gain completed prior Night"
+      "curve_pct": 0.33,
+      "signal": "wait_LME_CNH",
+      "eod_date": "2026-09-18",
+      "basis_quality": "C_or_missing",
+      "night_state": "not_applicable_weekend",
+      "options_execution_ready": false
     },
     {
-      "asset": "TA701",
-      "sector": "polyester",
+      "product": "TA",
+      "contract": "TA701",
       "close": 6238,
       "settlement": 6312,
       "return_1d_pct": -2.862,
@@ -293,103 +227,66 @@
       "open_interest": 1171232,
       "delta_oi": 10883,
       "curve_pct": 2.144,
-      "curve_state": "backwardation",
-      "basis_quality": "C",
-      "prior_night_close": 6398,
-      "prior_night_return_vs_close_pct": 0.157,
-      "prior_night_return_vs_settlement_pct": -1.539,
-      "prior_night_delta_oi": -10146,
-      "day_follow_through_pct": -2.501,
-      "overseas": "crude weaker Friday",
-      "options_readiness": "Y/Y/N stale",
-      "signal": "short only after failed rebound"
+      "signal": "cost_unwind_watch",
+      "eod_date": "2026-09-18",
+      "basis_quality": "C_or_missing",
+      "night_state": "not_applicable_weekend",
+      "options_execution_ready": false
     },
     {
-      "asset": "PR611",
-      "sector": "polyester",
+      "product": "PR",
+      "contract": "PR611",
       "close": 8132,
       "settlement": 8244,
       "return_1d_pct": -3.057,
-      "return_5d_pct": 1.104,
+      "return_5d_pct": 1.1,
       "volume": 100957,
       "open_interest": 61553,
       "delta_oi": -1405,
       "curve_pct": 1.577,
-      "curve_state": "backwardation",
-      "basis_quality": "missing",
-      "prior_night_close": 8348,
-      "prior_night_return_vs_close_pct": -0.406,
-      "prior_night_return_vs_settlement_pct": -1.834,
-      "prior_night_delta_oi": 206,
-      "day_follow_through_pct": -2.588,
-      "overseas": "cost pressure lower",
-      "options_readiness": "Y/N/N stale",
-      "signal": "do not chase short"
+      "signal": "old_long_exit",
+      "eod_date": "2026-09-18",
+      "basis_quality": "C_or_missing",
+      "night_state": "not_applicable_weekend",
+      "options_execution_ready": false
     },
     {
-      "asset": "RM701",
-      "sector": "agriculture",
-      "close": 2357,
-      "settlement": 2389,
-      "return_1d_pct": -1.322,
-      "return_5d_pct": 0.844,
-      "volume": 606419,
-      "open_interest": 608227,
-      "delta_oi": 5568,
-      "curve_pct": -0.921,
-      "curve_state": "contango",
-      "basis_quality": "C",
-      "prior_night_close": 2404,
-      "prior_night_return_vs_close_pct": -0.866,
-      "prior_night_return_vs_settlement_pct": -0.702,
-      "prior_night_delta_oi": 13828,
-      "day_follow_through_pct": -1.955,
-      "overseas": "CBOT soybeans 1302.75 context",
-      "options_readiness": "Y/Y/N stale",
-      "signal": "old long invalidated"
-    },
-    {
-      "asset": "M2701",
-      "sector": "agriculture",
+      "product": "M",
+      "contract": "M2701",
       "close": 3397,
       "settlement": 3429,
       "return_1d_pct": -1.466,
-      "return_5d_pct": 0.205,
+      "return_5d_pct": 0.21,
       "volume": 2046376,
       "open_interest": 2731157,
       "delta_oi": -196992,
       "curve_pct": -1.103,
-      "curve_state": "contango",
-      "basis_quality": "C",
-      "prior_night_status": "query_error",
-      "overseas": "CBOT soymeal 351.1 context",
-      "options_readiness": "failed DCE product",
-      "signal": "wait for Monday OI"
+      "signal": "weak_watch",
+      "eod_date": "2026-09-18",
+      "basis_quality": "C_or_missing",
+      "night_state": "not_applicable_weekend",
+      "options_execution_ready": false
     },
     {
-      "asset": "FG701",
-      "sector": "building materials",
+      "product": "FG",
+      "contract": "FG701",
       "close": 907,
       "settlement": 912,
       "return_1d_pct": 0.551,
-      "return_5d_pct": -7.317,
+      "return_5d_pct": -7.32,
       "volume": 1086190,
       "open_interest": 1295160,
       "delta_oi": -70452,
       "curve_pct": 3.704,
-      "curve_state": "backwardation",
-      "basis_quality": "C",
-      "prior_night_close": 913,
-      "prior_night_return_vs_close_pct": 0.884,
-      "prior_night_return_vs_settlement_pct": 0.662,
-      "prior_night_delta_oi": -47960,
-      "day_follow_through_pct": -0.657,
-      "options_readiness": "partial Y/Y/N stale",
-      "signal": "single-day noise"
+      "signal": "noise",
+      "eod_date": "2026-09-18",
+      "basis_quality": "C_or_missing",
+      "night_state": "not_applicable_weekend",
+      "options_execution_ready": false
     },
     {
-      "asset": "LC2701",
-      "sector": "new energy",
+      "product": "LC",
+      "contract": "LC2701",
       "close": 127160,
       "settlement": 128460,
       "return_1d_pct": -1.276,
@@ -398,561 +295,1543 @@
       "open_interest": 425377,
       "delta_oi": 9528,
       "curve_pct": 1.253,
-      "curve_state": "backwardation",
-      "basis_quality": "C",
-      "prior_night_status": "not applicable",
-      "options_readiness": "Y/N/N stale",
-      "signal": "do not chase short"
-    },
-    {
-      "asset": "EC2610",
-      "sector": "shipping",
-      "close": 2172.5,
-      "settlement": 2189,
-      "return_1d_pct": 2.988,
-      "return_5d_pct": 7.094,
-      "volume": 25385,
-      "open_interest": 25286,
-      "delta_oi": -1176,
-      "curve_pct": 21.288,
-      "curve_state": "deep backwardation",
-      "basis_quality": "missing exact freight",
-      "prior_night_status": "not applicable",
-      "options_readiness": "N/N/N",
-      "signal": "Monday event repricing watch"
+      "signal": "do_not_chase_short",
+      "eod_date": "2026-09-18",
+      "basis_quality": "C_or_missing",
+      "night_state": "not_applicable_weekend",
+      "options_execution_ready": false
     }
   ],
   "meaningful_changes": [
-    {
-      "title": "No new China session",
-      "detail": "Saturday refresh returned zero records but Friday validated last-good remains the latest expected EOD."
-    },
-    {
-      "title": "Night calendar defect creates an execution veto",
-      "detail": "Raw trading_date 2026-09-19 is Saturday and the snapshot has 214 query errors; it was quarantined without relabeling."
-    },
-    {
-      "title": "Crude finished Friday lower",
-      "detail": "WTI/Brent settled 100.30/103.87 while Saudi delivery disruption and repair timing preserve right-tail risk."
-    },
-    {
-      "title": "Precious metals remained resilient",
-      "detail": "Gold and silver closed higher despite US 10-year yield near 5%, supporting research but not a chase."
-    },
-    {
-      "title": "Options fell further behind",
-      "detail": "Latest surface remains 2026-09-17 with zero execution-ready series."
-    },
-    {
-      "title": "Friday conditions expired",
-      "detail": "All Friday-night triggers are unknown/expired and must be rebased on Monday live quotes."
-    }
+    "Saudi TASI -0.5%, Aramco -0.6%, Qatar index -0.9%: weekend attack entered local asset pricing.",
+    "Oil facility damage remains unconfirmed; SC one-way short remains stopped.",
+    "EC score rises 74 to 75; LU/SC falls 68 to 65 due larger short-SC gap risk.",
+    "China LPR confirmed unchanged at 3.00%/3.50%; no longer a Monday catalyst.",
+    "No new China price or options surface; weekend failed runs do not invalidate Friday last-good."
   ],
   "top_opportunities": [
     {
       "rank": 1,
-      "name": "多13手LU2611/空1手SC2611近似名义中性",
-      "score": 79,
-      "idea_id": "COM-M-LUSC-RELATIVE-20260918",
-      "direction": "long_LU_short_SC",
+      "idea_id": "COM-M-EC2610-FREIGHT-REPRICE-20260918",
+      "name": "EC2610事件gap接受多",
+      "score": 75,
+      "direction": "long_conditional",
       "holding_period": "1-3D",
-      "stage": "weekend_waiting_requote",
+      "stage": "重点候选",
       "instruments": [
-        "13 LU2611 futures long",
-        "1 SC2611 futures short"
+        "EC2610 futures"
       ],
       "max_loss_limited": false,
       "score_components": {
-        "logic": 24,
-        "convexity": 18,
-        "catalyst": 17,
+        "logic": 21,
+        "convexity": 15,
+        "catalyst": 19,
         "price_curve_vol": 12,
         "crowding_technical": 8
       },
-      "effective_support_layers": [
+      "support_layers": [
         1,
         2,
         4
       ],
-      "research_judgment": "存在待验证优势",
-      "evidence_sufficiency": "部分充分；合法周五Night缺失",
-      "execution_status": "休市/周一重报价"
+      "evidence_sufficiency": "partial",
+      "execution": "closed_wait_2026-09-21_09:45"
     },
     {
       "rank": 2,
-      "name": "SC2611反弹失败空",
-      "score": 76,
-      "idea_id": "COM-M-SC2611-REVERSAL-20260917",
-      "direction": "short",
-      "holding_period": "1-2D",
-      "stage": "weekend_waiting_rebase",
-      "instruments": [
-        "SC2611 futures short"
-      ],
-      "max_loss_limited": false,
-      "score_components": {
-        "logic": 22,
-        "convexity": 16,
-        "catalyst": 18,
-        "price_curve_vol": 12,
-        "crowding_technical": 8
-      },
-      "effective_support_layers": [
-        1,
-        2,
-        4
-      ],
-      "research_judgment": "存在待验证优势",
-      "evidence_sufficiency": "部分；supply tail反对",
-      "execution_status": "休市/周一重设锚"
-    },
-    {
-      "rank": 3,
+      "idea_id": "COM-E-AG2612-PRECIOUS-REBOUND-20260918",
       "name": "AG2612回撤接受多",
       "score": 69,
-      "idea_id": "COM-E-AG2612-PRECIOUS-REBOUND-20260918",
-      "direction": "long",
-      "holding_period": "1-3D",
-      "stage": "weekend_waiting_requote",
-      "instruments": [
-        "AG2612 futures long"
-      ],
-      "max_loss_limited": false,
-      "score_components": {
-        "logic": 19,
-        "convexity": 16,
-        "catalyst": 15,
-        "price_curve_vol": 10,
-        "crowding_technical": 9
-      },
-      "effective_support_layers": [
-        1,
-        4
-      ],
-      "research_judgment": "存在待验证优势",
-      "evidence_sufficiency": "部分；curve和高利率反对",
-      "execution_status": "休市/待报价"
-    },
-    {
-      "rank": 4,
-      "name": "TA701弱势延续空",
-      "score": 68,
-      "idea_id": "COM-E-TA701-COST-UNWIND-20260918",
-      "direction": "short",
-      "holding_period": "1-3D",
-      "stage": "weekend_watch",
-      "instruments": [
-        "TA701 futures short after failed rebound"
-      ],
-      "max_loss_limited": false,
-      "score_components": {
-        "logic": 19,
-        "convexity": 16,
-        "catalyst": 14,
-        "price_curve_vol": 10,
-        "crowding_technical": 9
-      },
-      "effective_support_layers": [
-        1,
-        4
-      ],
-      "research_judgment": "存在待验证优势",
-      "evidence_sufficiency": "部分；backwardation反对",
-      "execution_status": "休市/反抽失败"
-    },
-    {
-      "rank": 5,
-      "name": "EC2610事件风险多",
-      "score": 66,
-      "idea_id": "COM-M-EC2610-FREIGHT-REPRICE-20260918",
-      "direction": "long",
+      "direction": "long_conditional",
       "holding_period": "1-5D",
-      "stage": "research_watchlist",
+      "stage": "观察优先级",
       "instruments": [
-        "EC2610 futures long only after Monday confirmation"
+        "AG2612 futures"
       ],
       "max_loss_limited": false,
       "score_components": {
         "logic": 20,
-        "convexity": 14,
-        "catalyst": 15,
+        "convexity": 15,
+        "catalyst": 16,
+        "price_curve_vol": 10,
+        "crowding_technical": 8
+      },
+      "support_layers": [
+        1,
+        4
+      ],
+      "evidence_sufficiency": "partial",
+      "execution": "closed_wait_2026-09-21_09:30"
+    },
+    {
+      "rank": 3,
+      "idea_id": "COM-M-LUSC-RELATIVE-20260918",
+      "name": "多13手LU2611/空1手SC2611",
+      "score": 65,
+      "direction": "long_LU_short_SC",
+      "holding_period": "1-5D",
+      "stage": "观察优先级/重新配比",
+      "instruments": [
+        "long 13 LU2611",
+        "short 1 SC2611"
+      ],
+      "max_loss_limited": false,
+      "score_components": {
+        "logic": 20,
+        "convexity": 15,
+        "catalyst": 13,
         "price_curve_vol": 9,
         "crowding_technical": 8
       },
-      "effective_support_layers": [
+      "support_layers": [
         1,
         2
       ],
-      "research_judgment": "证据不足",
-      "evidence_sufficiency": "exact freight missing and OI declined",
-      "execution_status": "next window 2026-09-21 09:00"
+      "evidence_sufficiency": "partial",
+      "execution": "closed_wait_requote"
+    },
+    {
+      "rank": 4,
+      "idea_id": "COM-M-FU-REBOUND-20260919",
+      "name": "FU2611深back反弹",
+      "score": 64,
+      "direction": "long_conditional",
+      "holding_period": "1-3D",
+      "stage": "观察优先级",
+      "instruments": [
+        "FU2611 futures"
+      ],
+      "max_loss_limited": false,
+      "score_components": {
+        "logic": 18,
+        "convexity": 14,
+        "catalyst": 16,
+        "price_curve_vol": 9,
+        "crowding_technical": 7
+      },
+      "support_layers": [
+        2,
+        4
+      ],
+      "evidence_sufficiency": "partial",
+      "execution": "closed_wait_trigger"
+    },
+    {
+      "rank": 5,
+      "idea_id": "COM-E-TA701-COST-UNWIND-20260918",
+      "name": "TA701成本回吐空",
+      "score": 54,
+      "direction": "short_conditional",
+      "holding_period": "1-3D",
+      "stage": "早期异常",
+      "instruments": [
+        "TA701 futures"
+      ],
+      "max_loss_limited": false,
+      "score_components": {
+        "logic": 16,
+        "convexity": 13,
+        "catalyst": 11,
+        "price_curve_vol": 7,
+        "crowding_technical": 7
+      },
+      "support_layers": [
+        1
+      ],
+      "evidence_sufficiency": "insufficient",
+      "execution": "closed_wait_failure"
     }
   ],
   "top_trade_cards": [
     {
-      "idea_id": "COM-M-LUSC-RELATIVE-20260918",
-      "name": "13 LU2611 long / 1 SC2611 short",
-      "direction": "long_LU_short_SC",
-      "score": 79,
-      "legs": [
-        {
-          "instrument": "LU2611",
-          "side": "long",
-          "quantity": 13
-        },
-        {
-          "instrument": "SC2611",
-          "side": "short",
-          "quantity": 1
-        }
+      "idea_id": "COM-M-EC2610-FREIGHT-REPRICE-20260918",
+      "name": "EC2610事件gap接受多",
+      "contracts": [
+        "EC2610"
       ],
-      "neutrality": "approximately dollar-neutral within -2.86% at 2026-09-18 EOD; not beta-neutral",
-      "pnl_formula_cny": "130*(LU_exit-LU_entry)-1000*(SC_exit-SC_entry)",
-      "entry": "Monday after 09:45 only if live ratio holds 7.35-7.50 and reclaims 7.45",
-      "stop": "45-minute acceptance below ratio 7.20",
-      "invalidation": "LU backwardation below 3%, SC backwardation above 4%, or Brent above 108 with renewed disruption",
-      "exit": "TP1 7.65 or +1.5R; TP2 7.90 or +3R; 1-3D time stop",
-      "max_loss_limited": false,
-      "risk_budget_nav": "0.15%-0.25%; shared energy <=0.50%",
-      "execution_status": "market closed; Monday live re-quote required"
-    },
-    {
-      "idea_id": "COM-M-SC2611-REVERSAL-20260917",
-      "name": "SC2611 rebound-failure short",
-      "direction": "short",
-      "score": 76,
-      "entry": "Monday after 09:45, rebound 735-755 fails and price rebreaks 728/VWAP",
-      "stop": "45-minute acceptance above 760",
-      "invalidation": "above 775.9, backwardation above 3%, Brent above 108 with renewed disruption",
-      "exit": "TP1 720 or +1.5R; TP2 690 or +3R; 1-2D time stop",
-      "max_loss_limited": false,
-      "execution_status": "market closed; Monday anchors must be refreshed"
+      "direction": "long",
+      "support_layers": [
+        1,
+        2,
+        4
+      ],
+      "next_valid_window": "2026-09-21 09:45 BJT",
+      "entry": "2180-2215 holds 2189 and reclaims 2220/VWAP; or 2264 breakout retest",
+      "stop": "45m acceptance below 2120",
+      "invalid": "no continuing damage, ship flow normalizes, back<15%, Friday low breaks",
+      "tp1": "2264 or +1.5R",
+      "tp2": "2380 or +3R",
+      "time_stop": "1-3D",
+      "risk": "0.25% NAV test; parameters unconfirmed"
     },
     {
       "idea_id": "COM-E-AG2612-PRECIOUS-REBOUND-20260918",
-      "name": "AG2612 pullback-acceptance long",
+      "name": "AG2612回撤接受多",
+      "contracts": [
+        "AG2612"
+      ],
       "direction": "long",
-      "score": 69,
-      "entry": "Monday after 09:30, 16050-16200 accepted and 16320/VWAP reclaimed",
-      "stop": "30-minute acceptance below 15880",
-      "invalidation": "spot silver below 64 and gold below 4300",
-      "exit": "TP1 16650 or +1.5R; TP2 17100 or +3R; 1-3D time stop",
-      "max_loss_limited": false,
-      "execution_status": "market closed; stale option skew quarantined"
+      "support_layers": [
+        1,
+        4
+      ],
+      "next_valid_window": "2026-09-21 09:30 BJT",
+      "entry": "16100-16250 acceptance then reclaim 16320/VWAP",
+      "stop": "15880",
+      "invalid": "silver<64, gold<4300 and yields rise",
+      "tp1": "16650",
+      "tp2": "17100",
+      "time_stop": "1-5D",
+      "risk": "0.25% NAV test; parameters unconfirmed"
+    },
+    {
+      "idea_id": "COM-M-LUSC-RELATIVE-20260918",
+      "name": "多13手LU2611/空1手SC2611",
+      "contracts": [
+        "long 13 LU2611",
+        "short 1 SC2611"
+      ],
+      "direction": "relative_value",
+      "support_layers": [
+        1,
+        2
+      ],
+      "next_valid_window": "2026-09-21 09:45 BJT",
+      "entry": "ratio 7.35-7.55 accepted and reclaims 7.50; no confirmed Yanbu damage",
+      "stop": "ratio acceptance below 7.20",
+      "invalid": "SC outperforms by >3pp, SC back>4%, or Brent>108 with confirmed damage",
+      "tp1": "7.70",
+      "tp2": "8.00",
+      "time_stop": "1-5D",
+      "risk": "0.25% NAV; dollar-neutral approximation, not beta-neutral",
+      "pnl_formula": "130*(LU_exit-LU_entry)-1000*(SC_exit-SC_entry)"
     }
   ],
+  "gold_tracking": {
+    "state": "conflicted_but_resilient",
+    "support": [
+      "Friday AU/AG price and OI",
+      "weekend geopolitical risk"
+    ],
+    "counter": [
+      "high real yields",
+      "no executable options"
+    ]
+  },
+  "ai_tracking": {
+    "state": "no_identifiable_commodity_edge",
+    "note": "CXMT mass production is an industrial milestone but does not provide a quantified marginal commodity-demand model."
+  },
+  "china_tracking": {
+    "LPR_1y_pct": 3,
+    "LPR_5y_pct": 3.5,
+    "state": "confirmed_unchanged_2026-09-20",
+    "commodity_implication": "neutral_to_weak_context"
+  },
   "commodities_tracking": {
-    "data_protocol_version": "china_commodities_v2",
-    "report_input_requested_date": "2026-09-18",
-    "report_input_generated_at": "2026-09-19T19:08:21.119235+08:00",
-    "module_freshness": {
-      "futures": "Friday last-good valid; Saturday refresh failed",
-      "market_state": "Friday last-good",
-      "physical": "18/20 native-frequency usable but module unpublished",
-      "external": "17/22 Friday context",
-      "night_session": "calendar-invalid and incomplete; quarantined",
-      "options": "2026-09-17 stale partial",
-      "contract_metadata": "partial"
-    },
-    "prior_night_session_trading_date": "2026-09-18",
-    "prior_night_session_generated_at": "2026-09-18T06:01:29.578885+08:00",
-    "prior_night_session_data_fresh": true,
-    "overnight_day_decomposition_used": true,
-    "quarantined_night_session_trading_date": "2026-09-19",
-    "night_session_fallback_used": false,
-    "physical_coverage": {
-      "usable": 18,
-      "target": 20,
-      "unavailable": 2
-    },
-    "external_coverage": {
-      "fresh": 17,
-      "target": 22,
-      "unavailable": 5,
-      "repo_oil_conflict_isolated": true
-    },
-    "options_surface_ready": 212,
-    "options_positioning_ready": 54,
-    "options_execution_ready": 0,
-    "contract_metadata_quality": "partial",
-    "coverage_check": {
-      "required_products": 77,
-      "analyzed_products": 77,
-      "trend_curve_usable_products": 70,
-      "raw_latest_night_products": 37,
-      "raw_latest_night_contracts": 423,
-      "raw_latest_night_quarantined": true,
-      "options_expected_products": 64,
-      "options_successful_products": 45,
-      "options_execution_ready": 0,
-      "insufficient_data": [
-        "legal Friday Night exact contracts",
-        "2026-09-18 options",
-        "SC/LU physical",
-        "A/B basis",
-        "exact import parity",
-        "processing margins",
-        "live option bid/ask",
-        "many dynamic trading parameters"
-      ],
-      "inapplicable_or_low_liquidity": [
-        "JR",
-        "PM",
-        "RI",
-        "WH",
-        "ZC",
-        "RS",
-        "WR"
-      ],
-      "strategy_categories": [
-        "directional",
-        "basis/calendar",
-        "curve",
-        "cross-commodity",
-        "cross-market",
-        "near-dollar-neutral style",
-        "volatility/skew/event convexity"
-      ],
-      "horizons": [
-        "1D",
-        "3D",
-        "5D",
-        "20D"
-      ]
-    },
-    "options_surface": {
-      "status": "not executable and stale",
-      "research_snapshot": [
-        {
-          "underlying": "SC2611",
-          "expiry": "2026-10-14",
-          "atm_iv_pct": 65.565,
-          "rv20_pct": 56.541,
-          "rr25": 0.73,
-          "bf25": 1.41,
-          "surface_ready": true,
-          "positioning_ready": false,
-          "execution_ready": false
-        },
-        {
-          "underlying": "FU2611",
-          "expiry": "2026-10-19",
-          "atm_iv_pct": 60.62,
-          "rv20_pct": 45.361,
-          "rr25": -0.5,
-          "bf25": 1.42,
-          "surface_ready": true,
-          "positioning_ready": false,
-          "execution_ready": false
-        },
-        {
-          "underlying": "TA701",
-          "expiry": "2026-12-11",
-          "atm_iv_pct": 31.865,
-          "rv20_pct": 28.165,
-          "rr25": 2.43,
-          "bf25": 0.72,
-          "surface_ready": true,
-          "positioning_ready": true,
-          "execution_ready": false
-        },
-        {
-          "underlying": "RM701",
-          "expiry": "2026-12-11",
-          "atm_iv_pct": 20.795,
-          "rv20_pct": 16.528,
-          "rr25": 6.39,
-          "bf25": 0.98,
-          "surface_ready": true,
-          "positioning_ready": true,
-          "execution_ready": false
-        },
-        {
-          "underlying": "PR611",
-          "expiry": "2026-10-13",
-          "atm_iv_pct": 27.805,
-          "rv20_pct": 30.82,
-          "rr25": 2.35,
-          "bf25": 0.95,
-          "surface_ready": true,
-          "positioning_ready": false,
-          "execution_ready": false
-        },
-        {
-          "underlying": "AG2612",
-          "expiry": "2026-11-24",
-          "atm_iv_pct": 44.135,
-          "rv20_pct": 31.141,
-          "rr25_status": "anomalous quarantined",
-          "bf25_status": "anomalous quarantined",
-          "surface_ready": true,
-          "positioning_ready": false,
-          "execution_ready": false
-        }
-      ],
-      "disclaimer": "research only; manual quote and manual confirmation required before execution; no premium quoted"
+    "required_codes": 63,
+    "dynamic_products": 77,
+    "scanned_products": 77,
+    "usable_products": 70,
+    "options_products_required": 64,
+    "options_products_available": 45,
+    "product_scan_status": {
+      "AP": {
+        "exchange": "CZCE",
+        "sector": "软商品与特色农产品",
+        "current_contract": "AP701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "CF": {
+        "exchange": "CZCE",
+        "sector": "软商品与特色农产品",
+        "current_contract": "CF701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "CJ": {
+        "exchange": "CZCE",
+        "sector": "软商品与特色农产品",
+        "current_contract": "CJ701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "CY": {
+        "exchange": "CZCE",
+        "sector": "软商品与特色农产品",
+        "current_contract": "CY611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "FG": {
+        "exchange": "CZCE",
+        "sector": "黑色与建材",
+        "current_contract": "FG701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "JR": {
+        "exchange": "CZCE",
+        "sector": "软商品与特色农产品",
+        "current_contract": "JR611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true,
+        "note": "placeholder"
+      },
+      "MA": {
+        "exchange": "CZCE",
+        "sector": "能源与化工",
+        "current_contract": "MA701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "OI": {
+        "exchange": "CZCE",
+        "sector": "农产品、油脂油料、饲料和畜牧",
+        "current_contract": "OI701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "PF": {
+        "exchange": "CZCE",
+        "sector": "能源与化工",
+        "current_contract": "PF611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "PK": {
+        "exchange": "CZCE",
+        "sector": "软商品与特色农产品",
+        "current_contract": "PK611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "PL": {
+        "exchange": "CZCE",
+        "sector": "能源与化工",
+        "current_contract": "PL611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "PM": {
+        "exchange": "CZCE",
+        "sector": "软商品与特色农产品",
+        "current_contract": "PM611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true,
+        "note": "placeholder"
+      },
+      "PR": {
+        "exchange": "CZCE",
+        "sector": "能源与化工",
+        "current_contract": "PR611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "PX": {
+        "exchange": "CZCE",
+        "sector": "能源与化工",
+        "current_contract": "PX611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "RI": {
+        "exchange": "CZCE",
+        "sector": "软商品与特色农产品",
+        "current_contract": "RI611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true,
+        "note": "placeholder"
+      },
+      "RM": {
+        "exchange": "CZCE",
+        "sector": "农产品、油脂油料、饲料和畜牧",
+        "current_contract": "RM701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "RS": {
+        "exchange": "CZCE",
+        "sector": "农产品、油脂油料、饲料和畜牧",
+        "current_contract": "RS701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "partial",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true,
+        "note": "illiquid_retained"
+      },
+      "SA": {
+        "exchange": "CZCE",
+        "sector": "黑色与建材",
+        "current_contract": "SA701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "SF": {
+        "exchange": "CZCE",
+        "sector": "黑色与建材",
+        "current_contract": "SF611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "SH": {
+        "exchange": "CZCE",
+        "sector": "能源与化工",
+        "current_contract": "SH611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "SM": {
+        "exchange": "CZCE",
+        "sector": "黑色与建材",
+        "current_contract": "SM611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "SR": {
+        "exchange": "CZCE",
+        "sector": "软商品与特色农产品",
+        "current_contract": "SR701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "TA": {
+        "exchange": "CZCE",
+        "sector": "能源与化工",
+        "current_contract": "TA701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "UR": {
+        "exchange": "CZCE",
+        "sector": "能源与化工",
+        "current_contract": "UR701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "WH": {
+        "exchange": "CZCE",
+        "sector": "软商品与特色农产品",
+        "current_contract": "WH611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true,
+        "note": "placeholder"
+      },
+      "ZC": {
+        "exchange": "CZCE",
+        "sector": "能源与化工",
+        "current_contract": "ZC610",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true,
+        "note": "placeholder"
+      },
+      "A": {
+        "exchange": "DCE",
+        "sector": "农产品、油脂油料、饲料和畜牧",
+        "current_contract": "A2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "B": {
+        "exchange": "DCE",
+        "sector": "农产品、油脂油料、饲料和畜牧",
+        "current_contract": "B2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "BZ": {
+        "exchange": "DCE",
+        "sector": "能源与化工",
+        "current_contract": "BZ2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "C": {
+        "exchange": "DCE",
+        "sector": "农产品、油脂油料、饲料和畜牧",
+        "current_contract": "C2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "CS": {
+        "exchange": "DCE",
+        "sector": "农产品、油脂油料、饲料和畜牧",
+        "current_contract": "CS2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "EB": {
+        "exchange": "DCE",
+        "sector": "能源与化工",
+        "current_contract": "EB2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "EG": {
+        "exchange": "DCE",
+        "sector": "能源与化工",
+        "current_contract": "EG2610",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "I": {
+        "exchange": "DCE",
+        "sector": "黑色与建材",
+        "current_contract": "I2701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "J": {
+        "exchange": "DCE",
+        "sector": "黑色与建材",
+        "current_contract": "J2701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "JD": {
+        "exchange": "DCE",
+        "sector": "农产品、油脂油料、饲料和畜牧",
+        "current_contract": "JD2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "JM": {
+        "exchange": "DCE",
+        "sector": "黑色与建材",
+        "current_contract": "JM2701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "L": {
+        "exchange": "DCE",
+        "sector": "能源与化工",
+        "current_contract": "L2701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "LG": {
+        "exchange": "DCE",
+        "sector": "农产品、油脂油料、饲料和畜牧",
+        "current_contract": "LG2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "LH": {
+        "exchange": "DCE",
+        "sector": "农产品、油脂油料、饲料和畜牧",
+        "current_contract": "LH2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "M": {
+        "exchange": "DCE",
+        "sector": "农产品、油脂油料、饲料和畜牧",
+        "current_contract": "M2701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "P": {
+        "exchange": "DCE",
+        "sector": "农产品、油脂油料、饲料和畜牧",
+        "current_contract": "P2701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "PG": {
+        "exchange": "DCE",
+        "sector": "能源与化工",
+        "current_contract": "PG2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "PP": {
+        "exchange": "DCE",
+        "sector": "能源与化工",
+        "current_contract": "PP2701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "RR": {
+        "exchange": "DCE",
+        "sector": "农产品、油脂油料、饲料和畜牧",
+        "current_contract": "RR2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "V": {
+        "exchange": "DCE",
+        "sector": "能源与化工",
+        "current_contract": "V2701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "Y": {
+        "exchange": "DCE",
+        "sector": "农产品、油脂油料、饲料和畜牧",
+        "current_contract": "Y2701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "LC": {
+        "exchange": "GFEX",
+        "sector": "新能源与材料",
+        "current_contract": "LC2701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "PD": {
+        "exchange": "GFEX",
+        "sector": "有色与贵金属",
+        "current_contract": "PD2612",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "PS": {
+        "exchange": "GFEX",
+        "sector": "新能源与材料",
+        "current_contract": "PS2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "PT": {
+        "exchange": "GFEX",
+        "sector": "有色与贵金属",
+        "current_contract": "PT2612",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "SI": {
+        "exchange": "GFEX",
+        "sector": "新能源与材料",
+        "current_contract": "SI2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "BC": {
+        "exchange": "INE",
+        "sector": "有色与贵金属",
+        "current_contract": "BC2610",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "EC": {
+        "exchange": "INE",
+        "sector": "能源与化工",
+        "current_contract": "EC2610",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "LU": {
+        "exchange": "INE",
+        "sector": "能源与化工",
+        "current_contract": "LU2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "NR": {
+        "exchange": "INE",
+        "sector": "能源与化工",
+        "current_contract": "NR2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "SC": {
+        "exchange": "INE",
+        "sector": "能源与化工",
+        "current_contract": "SC2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "AD": {
+        "exchange": "SHFE",
+        "sector": "有色与贵金属",
+        "current_contract": "AD2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "AG": {
+        "exchange": "SHFE",
+        "sector": "有色与贵金属",
+        "current_contract": "AG2612",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "AL": {
+        "exchange": "SHFE",
+        "sector": "有色与贵金属",
+        "current_contract": "AL2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "AO": {
+        "exchange": "SHFE",
+        "sector": "有色与贵金属",
+        "current_contract": "AO2701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "AU": {
+        "exchange": "SHFE",
+        "sector": "有色与贵金属",
+        "current_contract": "AU2612",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "BR": {
+        "exchange": "SHFE",
+        "sector": "能源与化工",
+        "current_contract": "BR2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "BU": {
+        "exchange": "SHFE",
+        "sector": "能源与化工",
+        "current_contract": "BU2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "CU": {
+        "exchange": "SHFE",
+        "sector": "有色与贵金属",
+        "current_contract": "CU2610",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "FU": {
+        "exchange": "SHFE",
+        "sector": "能源与化工",
+        "current_contract": "FU2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "HC": {
+        "exchange": "SHFE",
+        "sector": "黑色与建材",
+        "current_contract": "HC2701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "NI": {
+        "exchange": "SHFE",
+        "sector": "有色与贵金属",
+        "current_contract": "NI2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "OP": {
+        "exchange": "SHFE",
+        "sector": "能源与化工",
+        "current_contract": "OP2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "PB": {
+        "exchange": "SHFE",
+        "sector": "有色与贵金属",
+        "current_contract": "PB2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "RB": {
+        "exchange": "SHFE",
+        "sector": "黑色与建材",
+        "current_contract": "RB2701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "RU": {
+        "exchange": "SHFE",
+        "sector": "能源与化工",
+        "current_contract": "RU2701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "SN": {
+        "exchange": "SHFE",
+        "sector": "有色与贵金属",
+        "current_contract": "SN2610",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "SP": {
+        "exchange": "SHFE",
+        "sector": "能源与化工",
+        "current_contract": "SP2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "SS": {
+        "exchange": "SHFE",
+        "sector": "有色与贵金属",
+        "current_contract": "SS2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      },
+      "WR": {
+        "exchange": "SHFE",
+        "sector": "黑色与建材",
+        "current_contract": "WR2701",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true,
+        "note": "illiquid_retained"
+      },
+      "ZN": {
+        "exchange": "SHFE",
+        "sector": "有色与贵金属",
+        "current_contract": "ZN2611",
+        "horizons": [
+          "1D",
+          "3D",
+          "5D",
+          "20D"
+        ],
+        "history_state": "ok",
+        "curve_state": "ok",
+        "roll_flag": false,
+        "scanned": true
+      }
     }
+  },
+  "options": {
+    "source_date": "2026-09-17",
+    "surface_ready": 212,
+    "positioning_ready": 54,
+    "execution_ready": 0,
+    "conclusion": "realtime quotes and Greeks required Monday"
   },
   "event_calendar": [
     {
-      "time_bjt": "2026-09-19 to 2026-09-20",
-      "event": "Saudi pipeline/Sohar/Hormuz weekend headlines",
-      "handling": "no new China risk; stress weekend gaps"
+      "time_bjt": "next 24h",
+      "event": "Riyadh/Yanbu damage assessment and ship flow",
+      "handling": "cap energy/shipping delta"
     },
     {
       "time_bjt": "2026-09-21 09:00",
-      "event": "next China day session",
-      "handling": "refresh anchors and wait 30-45 minutes"
+      "event": "China commodity reopen",
+      "handling": "wait 30-45m"
+    },
+    {
+      "time_bjt": "2026-09-21 21:00",
+      "event": "next legal China night session",
+      "handling": "rebuild map from day acceptance"
     },
     {
       "time_bjt": "2026-09-23 22:30",
-      "event": "EIA weekly petroleum report",
-      "handling": "reduce energy Delta beforehand"
+      "event": "EIA weekly petroleum",
+      "handling": "reduce energy delta"
     },
     {
-      "time_bjt": "2026-09-24 around 20:30",
-      "event": "USDA weekly export sales window",
-      "handling": "trade realized sales and China basis response only"
+      "time_bjt": "next 7d",
+      "event": "USDA exports, harvest weather, palm exports",
+      "handling": "use actual releases only"
     },
     {
-      "time_bjt": "2026-09-25",
-      "event": "EU provisional electrical-steel safeguards begin",
-      "handling": "research metals/ferroalloy impact; no direct arbitrage inference"
+      "time_bjt": "next CFTC release",
+      "event": "CFTC COT",
+      "handling": "lagged context only"
     }
   ],
   "action_list": {
     "A": "今晚没有应立即建立的新仓位。",
-    "B": "今晚只应挂条件单的仓位：无；周末休市，周五旧锚全部过期，周一09:00后重新报价并等待30—45分钟。",
-    "C": "今晚应继续观察的机会：LU2611相对SC2611、SC2611反弹失败空、AG2612回撤接受多、TA701成本回吐及EC2610事件重估。",
-    "D": "今晚必须避免或退出的交易：平移周五条件单、低开追SC/FU/TA、追AG第一跳、把LU/SC称无风险或beta-neutral、恢复RM旧多，以及在execution-ready=false时臆测期权成本。"
+    "B": "今晚只应挂条件单的仓位：无；周日休市且今晚无21:00夜盘，周一09:00后重新报价，EC/SC/能源与贵金属至少等待30—45分钟。",
+    "C": "今晚应继续观察的机会：EC2610事件gap接受、AG2612回撤多、LU2611/SC2611重新配比、FU深back，以及Riyadh/Yanbu损害与船流核实。",
+    "D": "今晚必须避免或退出的交易：沿用SC单向空卡、平移周五或异常Night锚、追周一EC/能源第一跳、恢复RM/PR旧多、把C级basis或外盘proxy称套利，以及在execution-ready=false时臆测期权成本。"
   },
   "risk_budget": {
-    "current_weekend_new_risk_nav_pct": 0,
-    "single_trial_nav_pct": "0.15%-0.25% after Monday re-quote",
-    "confirmed_trade_nav_pct": "<=0.75%",
-    "shared_energy_factor_nav_pct": "<=0.50% initial",
-    "precious_metals_factor_nav_pct": "<=0.40% initial",
-    "single_high_conviction_theme_nav_pct": "<=2.5% after confirmation",
-    "stress_tests": [
-      "one/two price limits",
-      "weekend geopolitical gap",
-      "correlation break",
-      "liquidity disappearance",
-      "margin increase",
-      "IV jump/collapse",
-      "delivery squeeze",
-      "RMB shock"
-    ]
+    "immediate_new_risk_nav_pct": 0,
+    "test_trade_max_pct": 0.25,
+    "confirmed_trade_max_pct": 0.75,
+    "energy_shipping_shared_max_pct": 0.75,
+    "high_conviction_theme_max_pct": 2.5
   },
   "sources": [
     {
-      "title": "China-Commodities-Engine unified report input",
-      "publisher": "GitHub / farfromexact",
+      "title": "China Commodities Engine unified input",
       "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/report_input_latest.json",
-      "source_date": "2026-09-19",
+      "source_date": "2026-09-20",
       "supported_claims": [
-        "Friday five-exchange last-good",
+        "Friday last-good futures",
         "market state",
-        "physical/external/options summaries"
+        "physical",
+        "external",
+        "options",
+        "metadata"
       ]
     },
     {
-      "title": "China-Commodities-Engine core run status",
-      "publisher": "GitHub / farfromexact",
-      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/last_run_status.json",
-      "source_date": "2026-09-19",
-      "supported_claims": [
-        "Saturday refresh failure",
-        "Friday last-good preserved"
-      ]
-    },
-    {
-      "title": "China-Commodities-Engine Night status",
-      "publisher": "GitHub / farfromexact",
+      "title": "China Commodities Engine Night status",
       "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/night_session/last_run_status.json",
-      "source_date": "2026-09-19",
+      "source_date": "2026-09-20",
       "supported_claims": [
-        "raw Saturday trading_date",
-        "coverage counts",
-        "query errors"
+        "no legal weekend session",
+        "raw status failed",
+        "previous snapshot retained"
       ]
     },
     {
-      "title": "INE Trading Rules",
-      "publisher": "Shanghai International Energy Exchange",
+      "title": "Reuters—Saudi and Gulf stocks after attacks",
+      "url": "https://www.reuters.com/world/middle-east/saudi-gulf-stocks-fall-after-houthis-claim-riyadh-attacks-2026-09-20/",
+      "source_date": "2026-09-20",
+      "supported_claims": [
+        "TASI -0.5%",
+        "Aramco -0.6%",
+        "Qatar index -0.9%"
+      ]
+    },
+    {
+      "title": "AP—Saudi attack report",
+      "url": "https://apnews.com/article/b1286cad816dd3e553f50f6dd5205972",
+      "source_date": "2026-09-20",
+      "supported_claims": [
+        "missile intercepted",
+        "Yanbu claims unverified",
+        "no reported casualties"
+      ]
+    },
+    {
+      "title": "Reuters—China LPR unchanged",
+      "url": "https://www.reuters.com/business/finance/china-keeps-benchmark-lending-rates-unchanged-16th-month-september-2026-09-20/",
+      "source_date": "2026-09-20",
+      "supported_claims": [
+        "1Y LPR 3.00%",
+        "5Y LPR 3.50%"
+      ]
+    },
+    {
+      "title": "INE rulebook",
       "url": "https://www.ine.cn/eng/services/rules/rulebook/202202/t20220222_821734.html",
-      "source_date": "accessed 2026-09-19",
+      "source_date": "accessed 2026-09-20",
       "supported_claims": [
-        "trading days are Monday-Friday",
-        "continuous trading belongs to the subsequent actual trading day"
+        "trading-day and continuous-session semantics"
       ]
     },
     {
-      "title": "Oil falls as worries over Middle East supply disruptions ease",
-      "publisher": "Wall Street Journal",
-      "url": "https://www.wsj.com/finance/commodities-futures/oil-falls-as-worries-over-middle-east-supply-disruptions-ease-36be861a",
-      "source_date": "2026-09-18",
+      "title": "Reuters—CXMT mass production",
+      "url": "https://www.reuters.com/world/asia-pacific/chinas-cxmt-says-new-memory-chip-platform-enters-mass-production-2026-09-20/",
+      "source_date": "2026-09-20",
       "supported_claims": [
-        "WTI and Brent Friday settlements"
-      ]
-    },
-    {
-      "title": "Aramco halts October crude deliveries to some European refiners",
-      "publisher": "Reuters",
-      "url": "https://www.reuters.com/business/energy/aramco-halts-october-crude-deliveries-some-european-refiners-after-pipeline-2026-09-18/",
-      "source_date": "2026-09-18",
-      "supported_claims": [
-        "European delivery halt",
-        "repair timing",
-        "Sohar rerouting"
-      ]
-    },
-    {
-      "title": "Gold rises, supported by oil pullback",
-      "publisher": "Wall Street Journal",
-      "url": "https://www.wsj.com/finance/commodities-futures/gold-rises-likely-supported-by-oil-pullback-0023a879",
-      "source_date": "2026-09-18",
-      "supported_claims": [
-        "Friday gold and silver settlements"
-      ]
-    },
-    {
-      "title": "Two-year U.S. Treasury yield reaches multi-year high",
-      "publisher": "Wall Street Journal",
-      "url": "https://www.wsj.com/finance/investing/two-year-u-s-treasury-yield-reaches-new-multi-year-high-99d3112b",
-      "source_date": "2026-09-18",
-      "supported_claims": [
-        "US 2-year and 10-year yields"
-      ]
-    },
-    {
-      "title": "EIA Weekly Petroleum Status Report",
-      "publisher": "U.S. EIA",
-      "url": "https://www.eia.gov/petroleum/supply/weekly/",
-      "source_date": "accessed 2026-09-19",
-      "supported_claims": [
-        "next weekly petroleum event window"
-      ]
-    },
-    {
-      "title": "USDA Weekly Export Sales",
-      "publisher": "USDA FAS",
-      "url": "https://www.fas.usda.gov/data/export-sales-weekly-export-sales",
-      "source_date": "accessed 2026-09-19",
-      "supported_claims": [
-        "weekly export-sales monitoring"
-      ]
-    },
-    {
-      "title": "CFTC COT Release Schedule",
-      "publisher": "CFTC",
-      "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm",
-      "source_date": "accessed 2026-09-19",
-      "supported_claims": [
-        "COT is lagged positioning context"
+        "new memory platform entered mass production"
       ]
     }
   ],
-  "archive_status": "success",
-  "ci_validation_status": "pending_or_unverified"
+  "archive": {
+    "archive_status": "pending_verification",
+    "ci_validation_status": "pending_or_unverified",
+    "paths": [
+      "reports/2026/09/2026-09-20_commodities_evening.md",
+      "reports/2026/09/2026-09-20_commodities_evening.json",
+      "latest/commodities_evening.md",
+      "latest/commodities_evening.json",
+      "status/commodities_evening_latest.json",
+      "manifests/reports.json"
+    ]
+  }
 }
