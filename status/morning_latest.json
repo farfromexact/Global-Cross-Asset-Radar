@@ -1,16 +1,43 @@
 {
-  "report_date":"2026-09-19",
-  "edition":"morning",
-  "generated_at":"2026-09-19T18:59:01+08:00",
-  "status":"published",
-  "archive_status":"success",
-  "ci_validation_status":"pending_or_unverified",
-  "data_fresh":true,
-  "data_status":{"global_eod":"ok_2026-09-18","china_options":"ok_2026-09-18","china_options_history":"empty","china_commodities_eod":"ok_2026-09-18","china_commodities_night":"validated_partial_but_calendar_semantics_conflict_isolated","global_option_surfaces":"missing_or_not_execution_verified","vix_move":"secondary_or_delayed","hy_oas":"ok_2026-09-17_release_lag"},
-  "china_options_path":"data/radar_latest.json; data/radar_history.json",
-  "china_options_date":"2026-09-18",
-  "china_commodities_date":"2026-09-18",
-  "previous_date":"2026-09-18",
-  "errors":["China-Options-Engine data/radar_history.json is empty; no fabricated 3D series.","Global live option surfaces and executable bid/ask/Greeks are unavailable in this补跑.","USDCNH exact 2026-09-18 close was not independently verified; no exact value asserted.","VIX/MOVE exact official EOD chain not independently verified; secondary/delayed values are context only.","China commodity Night has 214 unresolved contracts and coverage_complete=false.","Upstream China-Commodities-Engine labels the Friday-night/Saturday-morning records trading_date=2026-09-19 although 2026-09-19 is Saturday; the raw label is preserved, affected records are isolated, and they are not treated as a valid Saturday trading day or independent current catalyst."],
-  "paths":{"markdown":"reports/2026/09/2026-09-19_morning.md","json":"reports/2026/09/2026-09-19_morning.json","latest_markdown":"latest/morning.md","latest_json":"latest/morning.json","manifest":"manifests/reports.json"}
+  "report_date": "2026-09-20",
+  "edition": "morning",
+  "generated_at": "2026-09-20T08:04:26+08:00",
+  "status": "published",
+  "archive_status": "success",
+  "ci_validation_status": "pending_or_unverified",
+  "data_fresh": true,
+  "data_status": {
+    "global_eod": "ok_2026-09-18",
+    "weekend_session": "not_applicable",
+    "treasury_nominal_real": "ok_2026-09-18",
+    "global_option_surfaces": "missing",
+    "vix": "stale_delayed",
+    "move": "missing",
+    "hy_oas": "ok_2026-09-17_release_lag",
+    "china_options_latest": "ok_2026-09-18",
+    "china_options_history": "empty",
+    "china_options_3d_fixed_snapshot": "missing_2026-09-15",
+    "china_commodities_eod": "ok_2026-09-18",
+    "china_commodities_night": "missing_failed_sunday_last_good_retained",
+    "china_commodity_options": "stale_partial_zero_execution_ready"
+  },
+  "china_options_path": "data/radar_latest.json; data/radar_history.json; data/latest.json",
+  "china_options_date": "2026-09-18",
+  "china_commodities_date": "2026-09-18",
+  "previous_date": "2026-09-19",
+  "errors": [
+    "Global executable option surfaces and live bid/ask/Greeks unavailable.",
+    "China-Options-Engine data/radar_history.json is empty; Sep15 fixed snapshot missing so 3D remains missing.",
+    "MOVE exact official EOD unavailable; VIX is delayed secondary context.",
+    "EURUSD and USDCNH exact Sep18 closes unavailable.",
+    "China commodity Sunday Night run failed as expected for weekend; last-good EOD retained.",
+    "China commodity options latest Sep17, 45/64 and zero execution-ready."
+  ],
+  "paths": {
+    "markdown": "reports/2026/09/2026-09-20_morning.md",
+    "json": "reports/2026/09/2026-09-20_morning.json",
+    "latest_markdown": "latest/morning.md",
+    "latest_json": "latest/morning.json",
+    "manifest": "manifests/reports.json"
+  }
 }
