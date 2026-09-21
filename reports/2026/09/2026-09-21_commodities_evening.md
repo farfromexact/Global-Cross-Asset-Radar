@@ -188,7 +188,7 @@ research only; manual quote and manual confirmation required before execution; n
 - 航运软商品：EC晨间触发未成立；深back与高运费保留观察，exact运价缺失。
 - 风险预算：单笔试仓0.15%—0.25% NAV；确认后≤0.75%；能源—聚酯共享因子≤0.60%，能源—航运总风险≤0.75%，单主题总风险≤2.5%。压力测试包括两板、相关性破裂、流动性消失、夜盘gap、保证金上调、人民币急变和交割挤压。
 
-archive_status=pending_verification；ci_validation_status=pending_or_unverified。
+archive_status=success；ci_validation_status=pending_or_unverified。
 
 A. 今晚没有应立即建立的新仓位。  
 B. 今晚只应挂条件单的仓位：21:30后多13手LU2611/空1手SC2611仅在比值7.45—7.60承接并重上7.50时试仓；或SC2611反抽728—735失败并跌回722.5/VWAP下方时试空，二者不得叠加满额。  
