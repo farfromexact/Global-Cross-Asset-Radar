@@ -187,7 +187,7 @@ Night原始字段为`trading_date=2026-09-23`、`night_session_date=2026-09-22`�
 - 航运软商品：EC进入榜单但只能明早验证；棉花、白糖、苹果、红枣、花生未见三层异常。
 - 风险预算：单笔试仓0.15%—0.25% NAV；得到价格、curve和非价格层确认后才考虑提升至0.75%；RU与BR合并≤0.40%，能源—航运事件因子≤0.50%，单主题总风险≤2.5%。
 
-固定六路径将按main回读核验；CI只作push后独立校验，不等待。
+固定六路径已从main回读验证：历史及latest的MD/JSON一致，status对应本期，manifest中`2026-09-23 + commodities_evening`恰好一条。[正式归档报告](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/main/reports/2026/09/2026-09-23_commodities_evening.md)。`archive_status=success`，`ci_validation_status=pending_or_unverified`。
 
 A. 今晚没有应立即建立的新仓位。  
 B. 今晚只应挂条件单的仓位：RU2701仅在21:30后回撤19180—19350承接并重上19455/VWAP时研究试多；BR2611仅在14900—15100承接并重上15160时研究试多，两者参数未补齐前不可执行且不得同时满额。  
