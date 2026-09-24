@@ -210,7 +210,7 @@ China-Options固定提交`766297620979275f58f5ccddd3550bdbedff4830`，读取`dat
 
 单一试仓最大损失0.25%—0.75% NAV；单一确认交易0.75%—1.50%；高确信主题总风险≤2.5%—3.0%。QQQ Put、USDJPY Put与利率仓共享“美元/实际利率/风险偏好”因子，合并≤1.0%—1.5%；IM/IF与任何小盘多头合并≤0.75%—1.25%；SC/FU/TA与全球油价多头合并≤0.60%。期权成本上限均为执行门槛，不是市场报价。
 
-归档目标：`reports/2026/09/2026-09-24_morning.md/.json`、`latest/morning.md/.json`、`status/morning_latest.json`、`manifests/reports.json`；CI独立事后状态为`pending_or_unverified`。
+六个目标文件已在`main`完成首轮写入与逐项回读：历史MD/JSON存在，latest日期与edition正确，status对应本期，manifest中`2026-09-24 + morning`恰好一条；`archive_status=success`，CI独立事后状态为`pending_or_unverified`。
 
 ## 十四、今日行动清单
 
