@@ -1,56 +1,51 @@
 {
   "schema_version": "1.0",
   "status": "published",
-  "report_date": "2026-09-23",
+  "report_date": "2026-09-24",
   "edition": "evening",
-  "generated_at_bjt": "2026-09-23T20:25:05+08:00",
-  "data_cutoff_bjt": "2026-09-23T20:00:00+08:00",
+  "generated_at_bjt": "2026-09-24T20:18:00+08:00",
+  "data_cutoff_bjt": "2026-09-24T20:15:00+08:00",
   "weekend_mode": false,
-  "data_status": "fresh_china_eod_with_global_premarket_and_known_option_gaps",
+  "data_status": "mixed_fresh_china_cash_futures_and_commodities_stale_china_options_global_premarket_partial",
   "inputs": {
-    "global_eod_date": "2026-09-22",
-    "global_intraday_date": "2026-09-23",
+    "global_eod_date": "2026-09-23",
+    "global_intraday_date": "2026-09-24",
     "china_options_date": "2026-09-23",
-    "china_options_commit": "766297620979275f58f5ccddd3550bdbedff4830",
+    "china_options_commit": "50c86cda40c8104d75f234d064ed0eca2d10ec34",
     "china_options_paths": [
       "data/radar_latest.json",
       "data/radar_history.json",
-      "data/snapshots/2026-09-23.json",
-      "data/snapshots/2026-09-22.json",
-      "data/snapshots/2026-09-18.json",
-      "data/snapshots/2026-09-16.json",
-      "data/snapshots/2026-08-26.json"
+      "data/snapshots/2026-09-24.json (missing)"
     ],
-    "china_options_fresh": true,
-    "china_commodities_date": "2026-09-23",
-    "china_commodities_commit": "848df0efdd0f5ceaa28cc1cb0035e35eb9744d0b",
+    "china_options_fresh": false,
+    "china_commodities_date": "2026-09-24",
+    "china_commodities_commit": "62e9526cb922ea701c060d83520e14778a2b00b3",
     "china_commodities_paths": [
       "data/report_input_latest.json",
       "data/last_run_status.json"
     ],
     "china_commodities_fresh": true,
-    "previous_global": "2026-09-23_morning",
-    "previous_evening": "2026-09-22_evening"
+    "previous_global": "2026-09-24_morning",
+    "previous_evening": "2026-09-23_evening"
   },
   "errors": [
-    "Global executable option surfaces and live bid/ask/Greeks unavailable.",
-    "Sep22 U.S. intraday OHLC path unavailable; historical trigger status unknown and no fill inferred.",
-    "VIX term structure, MOVE exact EOD, CTA positioning and U.S. dealer net gamma unavailable.",
-    "China-Options-Engine data/radar_history.json is empty; fixed dated snapshots used.",
-    "China breadth, margin financing, DR007, member rankings and ETF strike-level bid/ask unavailable.",
-    "China commodity basis/member rankings and current option surface unavailable; execution_ready=false.",
-    "No user fill feedback; no actual portfolio positions inferred.",
-    "No dedicated status JSON schema found at schemas/status.schema.json or schemas/report-status.schema.json; status/evening_latest.json structure used as the actual template."
+    "Global executable option surfaces and live bid/ask/Greeks unavailable; all option cost bands are execution limits, not quotes.",
+    "China-Options-Engine data/radar_latest.json remains dated 2026-09-23; data/snapshots/2026-09-24.json is missing and data/radar_history.json is empty.",
+    "China 2026-09-24 HO/IO/MO IV, skew, PCR and gamma migration unavailable; last-good values are explicitly stale.",
+    "China commodity basis/member rankings and current options surface unavailable; official_complete=false and options execution_ready=false.",
+    "MOVE and HY OAS are last-good, not synchronized real-time readings.",
+    "No verified intraday trigger/fill path and no user fill feedback; no actual position inferred.",
+    "No dedicated status JSON schema found at schemas/status.schema.json or schemas/report-status.schema.json; current status file structure used as actual template."
   ],
-  "archive_status": "success",
+  "archive_status": "pending",
   "ci_validation_status": "pending_or_unverified",
-  "verified_main": true,
+  "verified_main": false,
   "targets": {
-    "reports/2026/09/2026-09-23_evening.md": true,
-    "reports/2026/09/2026-09-23_evening.json": true,
-    "latest/evening.md": true,
-    "latest/evening.json": true,
-    "status/evening_latest.json": true,
-    "manifests/reports.json": true
+    "reports/2026/09/2026-09-24_evening.md": false,
+    "reports/2026/09/2026-09-24_evening.json": false,
+    "latest/evening.md": false,
+    "latest/evening.json": false,
+    "status/evening_latest.json": false,
+    "manifests/reports.json": false
   }
 }
