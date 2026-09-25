@@ -204,7 +204,7 @@ TA701只在09:30后6260—6320承接并重上6340/VWAP时研究试多；30分钟
 
 China-Options实际读取：`data/radar_latest.json`、`data/radar_history.json`、`data/latest.json`，固定commit `50c86cda40c8104d75f234d064ed0eca2d10ec34`；数据日9月23日。`data/snapshots/2026-09-24.json`缺失。归档schema/status模板缺项：`schemas/status.schema.json`与`templates/status.json`未取得内容，status沿用仓库现有字段；未修改schema、配置或模板。
 
-归档状态：pending_verification；CI：pending_or_unverified。
+归档状态：success；CI：pending_or_unverified。
 
 **A. 今天可以立即建立的仓位：无；期权双边价、9月25日中国开盘确认与同步全球波动率面均缺失。**  
 **B. 今天只应挂条件单的仓位：TLT反弹80.00—80.40失败的10/16 79/76 Put Spread；ORCL反弹141—143失败且SOXX守560的等美元多SOXX/空ORCL；09:30后IF重新领先IM的多9 IF2612/空8 IM2612；USDJPY接受159.20后的159/162 Call Spread；TA701承接6260—6320并重上6340。**  
