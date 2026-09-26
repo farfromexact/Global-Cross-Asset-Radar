@@ -1,90 +1,109 @@
 {
   "schema_version": "1.0",
   "status": "published",
-  "report_date": "2026-09-26",
+  "report_date": "2026-09-27",
   "edition": "commodities_morning",
-  "generated_at_bjt": "2026-09-26T08:10:00+08:00",
+  "generated_at_bjt": "2026-09-27T07:04:00+08:00",
   "weekend_mode": true,
-  "title": "全球商品期货期权高风险机会雷达｜晨间版｜2026-09-26",
-  "one_sentence_conclusion": "截至本报告时点，无可立即执行的合格新交易；油价周五收跌、金银与橡胶收涨，周一gap方向分化，所有中国品种先等09:45确认。",
-  "regime": "holiday_gap_accumulation / energy pullback / precious metals and rubber relative strength",
+  "title": "全球商品期货期权高风险机会雷达｜晨间版｜2026-09-27",
+  "one_sentence_conclusion": "截至本报告时点，无可立即执行的合格新交易；周末未出现足以改变周一gap框架的新证据，橡胶、航运偏强与能源偏弱均须等09:45确认。",
+  "regime": "holiday gap accumulation / no new China session / energy weak / rubber, shipping and precious metals relatively strong",
   "worth_taking_risk": false,
-  "data_cutoff": "2026-09-26T07:00:00+08:00",
+  "data_cutoff": "2026-09-27T07:00:00+08:00",
   "input_snapshots": {
     "china_commodities": {
-      "paths": ["data/report_input_latest.json","data/night_session/last_run_status.json","data/last_run_status.json","data/radar_latest.json","data/external/latest.json"],
+      "repository": "farfromexact/China-Commodities-Engine",
+      "paths": ["data/report_input_latest.json", "data/night_session/last_run_status.json", "data/last_run_status.json", "data/radar_latest.json", "data/latest.json", "data/external/latest.json"],
       "trade_date": "2026-09-24",
-      "generated_at": "2026-09-26T05:16:42.498134+08:00",
+      "generated_at": "2026-09-27T06:42:04.474862+08:00",
       "data_fresh": false,
       "official_complete": false,
-      "full_market_ready_last_good": true,
-      "last_good_contract_count": 806,
-      "last_good_product_count": 77,
-      "included_exchanges": ["SHFE","INE","DCE","CZCE","GFEX"]
+      "last_good_full_market_ready": true,
+      "source_date_match_pct": 100.0,
+      "critical_module_errors_last_good": 0,
+      "contract_count": 806,
+      "product_count": 77,
+      "included_exchanges": ["SHFE", "INE", "DCE", "CZCE", "GFEX"]
     }
   },
   "source_status": {
-    "last_good_eod": {"date":"2026-09-24","state":"ok","new_this_report":false},
-    "holiday_refresh": {"requested_date":"2026-09-25","state":"parse_error","critical_module_errors":15,"interpretation":"calendar-inapplicable; does not invalidate verified last-good"},
-    "external": {"requested_date":"2026-09-25","generated_at":"2026-09-26T05:16:00.259832+08:00","state":"ok","fresh_targets":17,"unavailable_targets":5},
-    "night_session": {"trading_date":"2026-09-26","night_session_date":"2026-09-25","generated_at":"2026-09-26T05:03:34.726709+08:00","data_fresh":false,"validation_passed":false,"published":false,"coverage_complete":false,"contract_count":0,"product_count":0,"outside_night_window_count":592,"query_error_count":214,"unresolved_contract_count":214,"interpretation":"holiday_not_applicable"},
-    "options": {"source_date":"2026-09-17","surface_ready_series":212,"positioning_ready_series":54,"execution_ready_series":0,"bid_ask_coverage":0}
+    "last_good_eod": {"date": "2026-09-24", "state": "ok", "new_this_report": false},
+    "holiday_refresh": {"requested_date": "2026-09-25", "generated_at": "2026-09-27T06:36:08.752607+08:00", "state": "parse_error", "critical_module_errors": 15, "interpretation": "calendar-inapplicable; does not invalidate verified last-good"},
+    "external": {"requested_date": "2026-09-25", "generated_at": "2026-09-27T06:41:31.305082+08:00", "state": "ok", "fresh_targets": 17, "unavailable_targets": 5, "failed_targets": 0},
+    "night_session": {"trading_date": "2026-09-27", "night_session_date": "2026-09-26", "generated_at": "2026-09-27T06:29:34.158477+08:00", "data_fresh": false, "validation_passed": false, "published": false, "coverage_complete": false, "contract_count": 0, "product_count": 0, "outside_night_window_count": 592, "query_error_count": 214, "unresolved_contract_count": 214, "interpretation": "holiday_not_applicable; previous valid snapshot retained"},
+    "options": {"source_date": "2026-09-17", "record_count": 16016, "product_count": 45, "expected_product_count": 64, "surface_ready_series": 212, "positioning_ready_series": 54, "execution_ready_series": 0, "bid_ask_coverage": 0},
+    "physical": {"requested_date": "2026-09-24", "fresh_targets": 18, "unavailable_targets": 2, "validation_passed": false, "published": false},
+    "contract_metadata": {"quality_state": "partial", "effective_contract_match_coverage": 0.7344913151364765, "trading_parameter_coverage": 0.3014888337468983}
   },
   "meaningful_changes": [
-    {"item":"energy_close","state":"WTI/Brent public proxies closed about -2.29%/-2.09%; naphtha -3.19%"},
-    {"item":"precious_metals","state":"gold/silver retained smaller positive closes; old AG short no longer valid"},
-    {"item":"rubber","state":"overseas rubber held +1.80%; China OI and curve remain counter-evidence"},
-    {"item":"calendar_correction","state":"Sep 25-27 China holiday; prior Sep 25 morning trading window did not exist"}
+    {"item": "china_market", "state": "no new China EOD or Night; Sep 24 verified last-good retained"},
+    {"item": "external_recollection", "state": "Sep 25 external series refreshed at 06:41; 17/22 fresh"},
+    {"item": "brent_source_reconciliation", "state": "repo Brent continuous close 97.43 differs from prior public proxy near 104.37; only same-source direction retained"},
+    {"item": "weekend_news", "state": "no independently verified event newer than Sep 22 pipeline restart facts that changes Monday gap framework"},
+    {"item": "ranking_consistency", "state": "EC score 69 ranked ahead of BR score 68; no thesis reversal"}
   ],
   "top_opportunities": [
-    {"rank":1,"name":"BR2611假期gap延续多","idea_id":"COM-E-BR2611-REVERSAL-20260923","direction":"long","score":68,"score_components":{"logic":19,"convexity":14,"catalyst":13,"price_curve_vol":10,"crowding_technical":12},"supporting_layers":[1,4],"execution_status":"holiday; wait 2026-09-28 09:45"},
-    {"rank":2,"name":"TA701假期失败回落空","idea_id":"COM-E-TA701-HOLIDAY-FADE-20260925","direction":"short","score":60,"score_components":{"logic":18,"convexity":15,"catalyst":13,"price_curve_vol":8,"crowding_technical":6},"supporting_layers":[4],"execution_status":"holiday; waiting trigger"},
-    {"rank":3,"name":"AG2612海外反转多","idea_id":"COM-E-AG2612-REVERSAL-20260925","direction":"long","score":59,"score_components":{"logic":18,"convexity":13,"catalyst":13,"price_curve_vol":8,"crowding_technical":7},"supporting_layers":[4],"execution_status":"holiday; live quote required"},
-    {"rank":4,"name":"FU2611能源回落空","idea_id":"COM-E-FU2611-HOLIDAY-FADE-20260925","direction":"short","score":58,"score_components":{"logic":17,"convexity":14,"catalyst":12,"price_curve_vol":8,"crowding_technical":7},"supporting_layers":[4],"execution_status":"holiday; deep backwardation is counter-evidence"},
-    {"rank":5,"name":"EC2611趋势回撤多","idea_id":"COM-E-EC2611-ROLL-20260924","direction":"long","score":69,"score_components":{"logic":20,"convexity":14,"catalyst":14,"price_curve_vol":11,"crowding_technical":10},"supporting_layers":[1,2],"execution_status":"wait 2026-09-28 09:45; roll and exact freight missing"}
+    {"rank": 1, "name": "EC2611趋势回撤多", "idea_id": "COM-E-EC2611-ROLL-20260924", "direction": "long", "score": 69, "score_components": {"logic": 20, "convexity": 14, "catalyst": 14, "price_curve_vol": 11, "crowding_technical": 10}, "supporting_layers": [1, 2], "research_judgment": "存在待验证优势", "evidence_sufficiency": "部分", "execution_status": "holiday; wait 2026-09-28 09:45; roll and exact freight missing"},
+    {"rank": 2, "name": "BR2611 gap延续多", "idea_id": "COM-E-BR2611-REVERSAL-20260923", "direction": "long", "score": 68, "score_components": {"logic": 19, "convexity": 14, "catalyst": 13, "price_curve_vol": 10, "crowding_technical": 12}, "supporting_layers": [1, 4], "research_judgment": "存在待验证优势", "evidence_sufficiency": "部分", "execution_status": "holiday; wait 2026-09-28 09:45"},
+    {"rank": 3, "name": "TA701失败回落空", "idea_id": "COM-E-TA701-HOLIDAY-FADE-20260925", "direction": "short", "score": 59, "score_components": {"logic": 18, "convexity": 14, "catalyst": 13, "price_curve_vol": 8, "crowding_technical": 6}, "supporting_layers": [4], "research_judgment": "存在待验证优势", "evidence_sufficiency": "不足", "execution_status": "holiday; wait 2026-09-28 trigger"},
+    {"rank": 4, "name": "AG2612海外反转多", "idea_id": "COM-E-AG2612-REVERSAL-20260925", "direction": "long", "score": 59, "score_components": {"logic": 18, "convexity": 13, "catalyst": 13, "price_curve_vol": 8, "crowding_technical": 7}, "supporting_layers": [4], "research_judgment": "证据不足", "evidence_sufficiency": "不足", "execution_status": "holiday; live quote required"},
+    {"rank": 5, "name": "FU2611能源回落空", "idea_id": "COM-E-FU2611-HOLIDAY-FADE-20260925", "direction": "short", "score": 58, "score_components": {"logic": 17, "convexity": 14, "catalyst": 12, "price_curve_vol": 8, "crowding_technical": 7}, "supporting_layers": [4], "research_judgment": "证据不足", "evidence_sufficiency": "不足", "execution_status": "holiday; deep backwardation is counter-evidence"}
   ],
   "top_trade_cards": [
-    {"idea_id":"COM-E-BR2611-REVERSAL-20260923","contract":"BR2611","direction":"long","entry":"2026-09-28 09:45 after 15380-15600 holds and price reclaims 15680/VWAP","stop":"45-minute acceptance below 15180","invalidation":"break 15220 with curve contango and overseas rubber reversal","tp1":"15950 or +1.5R","tp2":"16400 or +3R","time_stop":"1-5D","max_loss_limited":false},
-    {"idea_id":"COM-E-TA701-HOLIDAY-FADE-20260925","contract":"TA701","direction":"short","entry":"2026-09-28 09:45 after break of 6270 and failed rebound into 6260-6310","stop":"45-minute acceptance above 6350","invalidation":"oil rebounds and PX price/OI confirm","tp1":"6180 or +1.5R","tp2":"6100 or +3R","time_stop":"1-3D","max_loss_limited":false},
-    {"idea_id":"COM-E-AG2612-REVERSAL-20260925","contract":"AG2612","direction":"long","entry":"2026-09-28 09:45 after 15775-15900 holds and price reclaims 16000","stop":"45-minute acceptance below 15580","invalidation":"gold and silver reverse lower","tp1":"16300 or +1.5R","tp2":"16700 or +3R","time_stop":"1-5D","max_loss_limited":false}
+    {"idea_id": "COM-E-EC2611-ROLL-20260924", "contract": "EC2611", "direction": "long", "entry": "2026-09-28 09:45 after 2748-2800 holds and 2800/VWAP is reclaimed", "stop": "45-minute acceptance below 2670", "invalidation": "break 2700 with weak liquidity and freight non-confirmation", "tp1": "2900 or +1.5R", "tp2": "3050 or +3R", "time_stop": "1-5D", "max_loss_limited": false},
+    {"idea_id": "COM-E-BR2611-REVERSAL-20260923", "contract": "BR2611", "direction": "long", "entry": "2026-09-28 09:45 after 15380-15600 holds and 15680/VWAP is reclaimed", "stop": "45-minute acceptance below 15180", "invalidation": "break 15220 with contango and overseas rubber reversal", "tp1": "15950 or +1.5R", "tp2": "16400 or +3R", "time_stop": "1-5D", "max_loss_limited": false},
+    {"idea_id": "COM-E-TA701-HOLIDAY-FADE-20260925", "contract": "TA701", "direction": "short", "entry": "2026-09-28 09:45 after break of 6270 and failed rebound into 6260-6310", "stop": "45-minute acceptance above 6350", "invalidation": "oil rebounds and PX price/OI confirm", "tp1": "6180 or +1.5R", "tp2": "6100 or +3R", "time_stop": "1-3D", "max_loss_limited": false}
   ],
   "commodities_tracking": {
-    "data_quality":{"status":"holiday_last_good_plus_fresh_external","basis_status":"C grade or missing; context only","options_surface_status":"stale_or_partial","contract_metadata_quality":"partial"},
-    "coverage":{"required_products":77,"analyzed_last_good_products":77,"last_good_contracts":806,"options_required_products":64,"options_products_available":45,"external_fresh_targets":17,"external_unavailable_targets":5},
-    "module_freshness":{"futures":"last_good_2026-09-24","market_state":"last_good_2026-09-24","physical":"last_good_native_frequency","external":"fresh_2026-09-25","night_session":"holiday_not_applicable","options":"stale_2026-09-17"},
-    "report_input_requested_date":"2026-09-24",
-    "report_input_generated_at":"2026-09-26T05:16:42.498134+08:00",
-    "night_session_trading_date":"2026-09-26",
-    "night_session_date":"2026-09-25",
-    "night_session_fallback_used":false,
-    "options_surface_ready":212,
-    "options_positioning_ready":54,
-    "options_execution_ready":0,
-    "options_surface":{"status":"not_ready","tradeable_structures":[]}
+    "prompt_version": "radar_2026-09-06_coverage_v1",
+    "data_protocol_version": "china_commodities_v2",
+    "data_quality": {"status": "holiday_last_good_plus_fresh_external_recollection", "basis_status": "C grade or missing; context only", "options_surface_status": "stale_or_partial", "contract_metadata_quality": "partial"},
+    "coverage": {"required_products": 77, "analyzed_last_good_products": 77, "last_good_contracts": 806, "options_required_products": 64, "options_products_available": 45, "external_fresh_targets": 17, "external_unavailable_targets": 5},
+    "module_freshness": {"futures": "last_good_2026-09-24", "market_state": "recomputed_2026-09-27_using_2026-09-24_data", "physical": "last_good_native_frequency", "external": "fresh_2026-09-25_recollected_2026-09-27", "night_session": "holiday_not_applicable", "options": "stale_2026-09-17"},
+    "report_input_requested_date": "2026-09-24",
+    "report_input_generated_at": "2026-09-27T06:42:04.474862+08:00",
+    "night_session_trading_date": "2026-09-27",
+    "night_session_date": "2026-09-26",
+    "night_session_generated_at": "2026-09-27T06:29:34.158477+08:00",
+    "night_session_data_fresh": false,
+    "night_session_validation_passed": false,
+    "night_session_coverage_complete": false,
+    "night_session_contract_count": 0,
+    "night_session_product_count": 0,
+    "night_session_fallback_used": false,
+    "physical_coverage": "18/20 native-frequency series; 2 unavailable",
+    "external_coverage": "17/22 fresh daily series; context only",
+    "options_surface_ready": 212,
+    "options_positioning_ready": 54,
+    "options_execution_ready": 0,
+    "contract_metadata_quality": "partial",
+    "options_surface": {"status": "not_ready", "tradeable_structures": []}
   },
   "event_calendar": [
-    {"time_bjt":"2026-09-26 to 2026-09-27","event":"China commodity holiday","risk_action":"no China orders"},
-    {"time_bjt":"2026-09-28 09:00","event":"China commodity day session reopens","risk_action":"wait 45 minutes"},
-    {"time_bjt":"2026-09-28 21:00","event":"next actual night session","risk_action":"belongs to 2026-09-29"},
-    {"time_bjt":"2026-09-30 22:30","event":"EIA weekly petroleum report","risk_action":"reduce energy delta beforehand"}
+    {"time_bjt": "2026-09-27", "event": "China commodity holiday", "risk_action": "no China orders"},
+    {"time_bjt": "2026-09-28 09:00", "event": "China commodity day session reopens", "risk_action": "wait 45 minutes"},
+    {"time_bjt": "2026-09-28 21:00", "event": "next actual Night session", "risk_action": "belongs to 2026-09-29"},
+    {"time_bjt": "2026-09-30 22:30", "event": "EIA weekly petroleum report", "risk_action": "reduce energy delta beforehand"},
+    {"time_bjt": "2026-10-01 to 2026-10-07", "event": "China National Day holiday", "risk_action": "reduce cross-holiday delta and verify exchange margin/limits"}
   ],
   "action_list": {
-    "A":"今天没有应立即建立的新仓位。",
-    "B":"今天没有可挂的中国商品条件单；仅预设9月28日09:45后的BR、TA、AG研究条件。",
-    "C":"观察周末油价、金银、橡胶、棕榈油及人民币对周一gap的影响。",
-    "D":"避免任何中国商品新单、沿用不存在的9月25日窗口、预判周一第一跳及使用旧期权面。"
+    "A": "今天没有应立即建立的新仓位。",
+    "B": "今天没有可挂的中国商品条件单；仅预设9月28日09:45后的EC、BR、TA研究条件。",
+    "C": "观察周末能源设施与船流、橡胶和金银、EC运价、棕榈油及人民币。",
+    "D": "避免任何中国商品新单、预判周一第一跳、把休市写成缺失及使用旧期权面或海外proxy套利。"
   },
-  "risk_budget":{"trial_position_nav_pct":"0.10-0.15","confirmed_trade_nav_pct_max":0.5,"single_theme_nav_pct_max":2.5,"holiday_gap_shared_factor_pct_max":0.4,"stress_tests":["one/two price limits","liquidity disappearance","weekend gap","margin increase","IV jump/collapse","delivery squeeze","RMB shock"]},
+  "risk_budget": {"trial_position_nav_pct": "0.10-0.15", "confirmed_trade_nav_pct_max": 0.5, "single_theme_nav_pct_max": 2.5, "holiday_gap_shared_factor_pct_max": 0.4, "stress_tests": ["one/two price limits", "correlation break", "liquidity disappearance", "weekend gap", "margin increase", "IV jump/collapse", "delivery squeeze", "RMB shock"]},
   "sources": [
-    {"title":"China-Commodities-Engine unified report input","publisher":"GitHub repository","url":"https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/report_input_latest.json","source_date":"2026-09-26","supported_claims":["verified 2026-09-24 China last-good and fresh 2026-09-25 external module"]},
-    {"title":"China-Commodities-Engine Night status","publisher":"GitHub repository","url":"https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/night_session/last_run_status.json","source_date":"2026-09-26","supported_claims":["raw Night validation state and zero published contracts"]},
-    {"title":"INE holiday notice","publisher":"Shanghai International Energy Exchange","url":"https://www.ine.cn/publicnotice/notice/202609/t20260921_833506.html","source_date":"2026-09-21","supported_claims":["Sep 25-27 closure and Sep 28 reopening"]},
-    {"title":"Trading Economics commodities","publisher":"Trading Economics","url":"https://tradingeconomics.com/commodities","source_date":"2026-09-25","supported_claims":["Friday overseas commodity closes and directions"]},
-    {"title":"Trading Economics China currency","publisher":"Trading Economics","url":"https://tradingeconomics.com/china/currency","source_date":"2026-09-25","supported_claims":["USD/CNY near 6.72 and daily change"]},
-    {"title":"CFTC COT release schedule","publisher":"CFTC","url":"https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm","source_date":"2026-09-25","supported_claims":["release timing; positioning not independently analyzed"]},
-    {"title":"EIA weekly petroleum status report","publisher":"U.S. EIA","url":"https://www.eia.gov/petroleum/supply/weekly/","source_date":"2026-09-23","supported_claims":["next weekly petroleum report context"]}
+    {"title": "China-Commodities-Engine unified report input", "publisher": "GitHub repository", "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/report_input_latest.json", "source_date": "2026-09-27", "accessed_at_bjt": "2026-09-27T07:01:00+08:00", "supported_claims": ["verified Sep 24 last-good", "module freshness", "77-product market-state scan"]},
+    {"title": "China-Commodities-Engine exact EOD contracts", "publisher": "GitHub repository", "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/latest.json", "source_date": "2026-09-24", "accessed_at_bjt": "2026-09-27T07:02:00+08:00", "supported_claims": ["specific contract OHLC, settlement, volume and open interest"]},
+    {"title": "China-Commodities-Engine Night status", "publisher": "GitHub repository", "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/night_session/last_run_status.json", "source_date": "2026-09-27", "accessed_at_bjt": "2026-09-27T07:01:00+08:00", "supported_claims": ["raw holiday Night failure labels", "zero published current-session contracts", "previous valid snapshot retained"]},
+    {"title": "China-Commodities-Engine External", "publisher": "GitHub repository", "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/external/latest.json", "source_date": "2026-09-25", "accessed_at_bjt": "2026-09-27T07:02:00+08:00", "supported_claims": ["17 fresh external daily closes", "WTI 92.43", "Brent continuous 97.43", "all context only"]},
+    {"title": "Saudi Arabia restarts East-West oil pipeline", "publisher": "Reuters", "url": "https://www.reuters.com/business/energy/saudi-arabia-restarts-east-west-oil-pipeline-resume-exports-yanbu-sources-say-2026-09-22/", "source_date": "2026-09-22", "accessed_at_bjt": "2026-09-27T07:03:00+08:00", "supported_claims": ["pipeline restarted at reduced rate", "full recovery may take weeks", "not a new Sep 27 catalyst"]},
+    {"title": "INE holiday notice", "publisher": "Shanghai International Energy Exchange", "url": "https://www.ine.cn/publicnotice/notice/202609/t20260921_833506.html", "source_date": "2026-09-21", "accessed_at_bjt": "2026-09-27T07:03:00+08:00", "supported_claims": ["Sep 25-27 closure", "Sep 28 reopening", "National Day schedule context"]},
+    {"title": "EIA weekly petroleum status report", "publisher": "U.S. EIA", "url": "https://www.eia.gov/petroleum/supply/weekly/", "source_date": "2026-09-23", "accessed_at_bjt": "2026-09-27T07:03:00+08:00", "supported_claims": ["next weekly petroleum event window"]},
+    {"title": "CFTC COT release schedule", "publisher": "CFTC", "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm", "source_date": "2026-09-25", "accessed_at_bjt": "2026-09-27T07:03:00+08:00", "supported_claims": ["release timing only", "positioning not independently analyzed"]}
   ],
-  "archive":{"markdown_path":"reports/2026/09/2026-09-26_commodities_morning.md","json_path":"reports/2026/09/2026-09-26_commodities_morning.json","latest_markdown_path":"latest/commodities_morning.md","latest_json_path":"latest/commodities_morning.json","archive_status":"success","commit_sha":null,"error":null},
-  "archive_status":"success",
-  "ci_validation_status":"pending_or_unverified"
+  "archive": {"markdown_path": "reports/2026/09/2026-09-27_commodities_morning.md", "json_path": "reports/2026/09/2026-09-27_commodities_morning.json", "latest_markdown_path": "latest/commodities_morning.md", "latest_json_path": "latest/commodities_morning.json", "archive_status": "success", "commit_sha": null, "error": null},
+  "archive_status": "success",
+  "ci_validation_status": "pending_or_unverified"
 }
