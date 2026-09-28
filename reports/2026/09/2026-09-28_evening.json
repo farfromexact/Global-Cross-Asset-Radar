@@ -55,7 +55,14 @@
         "contracts": "806",
         "options": "45/64 products; execution_ready 0"
       },
-      "included_exchanges": ["CFFEX", "SHFE", "INE", "DCE", "CZCE", "GFEX"],
+      "included_exchanges": [
+        "CFFEX",
+        "SHFE",
+        "INE",
+        "DCE",
+        "CZCE",
+        "GFEX"
+      ],
       "actual_read_paths": [
         "data/report_input_latest.json",
         "reports/2026/09/2026-09-28_commodities_evening.md"
@@ -77,25 +84,177 @@
     "parse_error": false
   },
   "dashboard": [
-    {"asset":"US 2Y","latest":"4.81%","change_1d":"+4bp","change_1w":"+5bp","signal":"前端偏鹰","data_time":"2026-09-25 official","data_attribute":"close"},
-    {"asset":"US 10Y","latest":"5.17%;盘前约5.20%-5.23%","change_1d":"+5-6bp指示","change_1w":"+16bp","signal":"坏利率上升","data_time":"2026-09-25/28","data_attribute":"close+indicative"},
-    {"asset":"US 30Y","latest":"5.49%;盘前5.517%","change_1d":"+2.7bp指示","change_1w":"+15bp","signal":"长端压力","data_time":"2026-09-25/28","data_attribute":"close+indicative"},
-    {"asset":"10Y real","latest":"2.83%","change_1d":"+4bp","change_1w":"+15bp","signal":"高真实贴现率","data_time":"2026-09-25","data_attribute":"close"},
-    {"asset":"2s30s","latest":"+68bp","change_1d":"约-1bp","change_1w":"+10bp","signal":"周度熊陡","data_time":"2026-09-25","data_attribute":"calculated_close"},
-    {"asset":"DXY","latest":"101.39高点","change_1d":"约+0.4%","change_1w":"未同源复核","signal":"美元强","data_time":"2026-09-28","data_attribute":"indicative"},
-    {"asset":"QQQ","latest":"744.50","change_1d":"+0.46%","change_1w":"未同源复核","signal":"NQ盘前-0.7%至-1.0%","data_time":"2026-09-25/28","data_attribute":"close+indicative"},
-    {"asset":"SOXX","latest":"572.68","change_1d":"+1.17%","change_1w":"未同源复核","signal":"相对ORCL强","data_time":"2026-09-25","data_attribute":"close"},
-    {"asset":"WTI","latest":"94.49","change_1d":"+2.25%","change_1w":"未同源复核","signal":"地缘溢价","data_time":"2026-09-28","data_attribute":"indicative"},
-    {"asset":"Brent","latest":"106.92;高107.16","change_1d":"+2.49%至约3%","change_1w":"未同源复核","signal":"海运风险","data_time":"2026-09-28","data_attribute":"indicative"},
-    {"asset":"Spot Gold","latest":"约4151","change_1d":"约-3%","change_1w":"月内近-7%","signal":"政策信用对冲失效","data_time":"2026-09-28","data_attribute":"indicative"},
-    {"asset":"VIX","latest":"14.87","change_1d":"非实时","change_1w":"未同源复核","signal":"最近完整收盘","data_time":"2026-09-25","data_attribute":"close"},
-    {"asset":"MOVE","latest":"96.00","change_1d":"-8.2%","change_1w":"+19%","signal":"104.58误作收盘已纠正","data_time":"2026-09-25","data_attribute":"close"},
-    {"asset":"HY OAS","latest":"2.80%","change_1d":"+7bp","change_1w":"+12bp","signal":"温和走阔","data_time":"2026-09-24","data_attribute":"delayed"},
-    {"asset":"IH2612","latest":"2770.2;基差-1.31%","change_1d":"-1.23%","change_1w":"missing","signal":"最抗跌","data_time":"2026-09-28","data_attribute":"official_close"},
-    {"asset":"IF2612","latest":"4280.8;基差-1.38%","change_1d":"-2.15%","change_1w":"missing","signal":"相对IM强","data_time":"2026-09-28","data_attribute":"official_close"},
-    {"asset":"IC2612","latest":"7270.0;基差-1.79%","change_1d":"-2.44%","change_1w":"missing","signal":"中盘弱","data_time":"2026-09-28","data_attribute":"official_close"},
-    {"asset":"IM2612","latest":"7157.2;基差-1.88%","change_1d":"-3.16%","change_1w":"missing","signal":"小盘弱但贴水修复","data_time":"2026-09-28","data_attribute":"official_close"},
-    {"asset":"HO/IO/MO 2612 ATM IV","latest":"14.99/17.95/24.58%","change_1d":"仅9/23 last-good","change_1w":"missing","signal":"不可执行","data_time":"2026-09-23","data_attribute":"stale"}
+    {
+      "asset": "US 2Y",
+      "latest": "4.81%",
+      "change_1d": "+4bp",
+      "change_1w": "+5bp",
+      "signal": "前端偏鹰",
+      "data_time": "2026-09-25 official",
+      "data_attribute": "close"
+    },
+    {
+      "asset": "US 10Y",
+      "latest": "5.17%;盘前约5.20%-5.23%",
+      "change_1d": "+5-6bp指示",
+      "change_1w": "+16bp",
+      "signal": "坏利率上升",
+      "data_time": "2026-09-25/28",
+      "data_attribute": "close+indicative"
+    },
+    {
+      "asset": "US 30Y",
+      "latest": "5.49%;盘前5.517%",
+      "change_1d": "+2.7bp指示",
+      "change_1w": "+15bp",
+      "signal": "长端压力",
+      "data_time": "2026-09-25/28",
+      "data_attribute": "close+indicative"
+    },
+    {
+      "asset": "10Y real",
+      "latest": "2.83%",
+      "change_1d": "+4bp",
+      "change_1w": "+15bp",
+      "signal": "高真实贴现率",
+      "data_time": "2026-09-25",
+      "data_attribute": "close"
+    },
+    {
+      "asset": "2s30s",
+      "latest": "+68bp",
+      "change_1d": "约-1bp",
+      "change_1w": "+10bp",
+      "signal": "周度熊陡",
+      "data_time": "2026-09-25",
+      "data_attribute": "calculated_close"
+    },
+    {
+      "asset": "DXY",
+      "latest": "101.39高点",
+      "change_1d": "约+0.4%",
+      "change_1w": "未同源复核",
+      "signal": "美元强",
+      "data_time": "2026-09-28",
+      "data_attribute": "indicative"
+    },
+    {
+      "asset": "QQQ",
+      "latest": "744.50",
+      "change_1d": "+0.46%",
+      "change_1w": "未同源复核",
+      "signal": "NQ盘前-0.7%至-1.0%",
+      "data_time": "2026-09-25/28",
+      "data_attribute": "close+indicative"
+    },
+    {
+      "asset": "SOXX",
+      "latest": "572.68",
+      "change_1d": "+1.17%",
+      "change_1w": "未同源复核",
+      "signal": "相对ORCL强",
+      "data_time": "2026-09-25",
+      "data_attribute": "close"
+    },
+    {
+      "asset": "WTI",
+      "latest": "94.49",
+      "change_1d": "+2.25%",
+      "change_1w": "未同源复核",
+      "signal": "地缘溢价",
+      "data_time": "2026-09-28",
+      "data_attribute": "indicative"
+    },
+    {
+      "asset": "Brent",
+      "latest": "106.92;高107.16",
+      "change_1d": "+2.49%至约3%",
+      "change_1w": "未同源复核",
+      "signal": "海运风险",
+      "data_time": "2026-09-28",
+      "data_attribute": "indicative"
+    },
+    {
+      "asset": "Spot Gold",
+      "latest": "约4151",
+      "change_1d": "约-3%",
+      "change_1w": "月内近-7%",
+      "signal": "政策信用对冲失效",
+      "data_time": "2026-09-28",
+      "data_attribute": "indicative"
+    },
+    {
+      "asset": "VIX",
+      "latest": "14.87",
+      "change_1d": "非实时",
+      "change_1w": "未同源复核",
+      "signal": "最近完整收盘",
+      "data_time": "2026-09-25",
+      "data_attribute": "close"
+    },
+    {
+      "asset": "MOVE",
+      "latest": "96.00",
+      "change_1d": "-8.2%",
+      "change_1w": "+19%",
+      "signal": "104.58误作收盘已纠正",
+      "data_time": "2026-09-25",
+      "data_attribute": "close"
+    },
+    {
+      "asset": "HY OAS",
+      "latest": "2.80%",
+      "change_1d": "+7bp",
+      "change_1w": "+12bp",
+      "signal": "温和走阔",
+      "data_time": "2026-09-24",
+      "data_attribute": "delayed"
+    },
+    {
+      "asset": "IH2612",
+      "latest": "2770.2;基差-1.31%",
+      "change_1d": "-1.23%",
+      "change_1w": "missing",
+      "signal": "最抗跌",
+      "data_time": "2026-09-28",
+      "data_attribute": "official_close"
+    },
+    {
+      "asset": "IF2612",
+      "latest": "4280.8;基差-1.38%",
+      "change_1d": "-2.15%",
+      "change_1w": "missing",
+      "signal": "相对IM强",
+      "data_time": "2026-09-28",
+      "data_attribute": "official_close"
+    },
+    {
+      "asset": "IC2612",
+      "latest": "7270.0;基差-1.79%",
+      "change_1d": "-2.44%",
+      "change_1w": "missing",
+      "signal": "中盘弱",
+      "data_time": "2026-09-28",
+      "data_attribute": "official_close"
+    },
+    {
+      "asset": "IM2612",
+      "latest": "7157.2;基差-1.88%",
+      "change_1d": "-3.16%",
+      "change_1w": "missing",
+      "signal": "小盘弱但贴水修复",
+      "data_time": "2026-09-28",
+      "data_attribute": "official_close"
+    },
+    {
+      "asset": "HO/IO/MO 2612 ATM IV",
+      "latest": "14.99/17.95/24.58%",
+      "change_1d": "仅9/23 last-good",
+      "change_1w": "missing",
+      "signal": "不可执行",
+      "data_time": "2026-09-23",
+      "data_attribute": "stale"
+    }
   ],
   "meaningful_changes": [
     "Brent一度107.16、30Y 5.517%、DXY 101.39而纳指期货下跌，滞胀式Risk-off成为盘前主线。",
@@ -114,9 +273,18 @@
       "direction": "看空长久期美债",
       "holding_period": "1-10个交易日",
       "stage": "等待触发及报价",
-      "instruments": ["买入TLT 2026-10-16 79 Put", "卖出TLT 2026-10-16 76 Put"],
+      "instruments": [
+        "买入TLT 2026-10-16 79 Put",
+        "卖出TLT 2026-10-16 76 Put"
+      ],
       "max_loss_limited": true,
-      "score_components": {"logic":23,"convexity":20,"catalyst":18,"pricing":12,"positioning_technical":14},
+      "score_components": {
+        "logic": 23,
+        "convexity": 20,
+        "catalyst": 18,
+        "pricing": 12,
+        "positioning_technical": 14
+      },
       "research_judgement": "存在待验证优势",
       "evidence_sufficiency": "部分",
       "execution_status": "等待触发"
@@ -129,9 +297,18 @@
       "direction": "多AI现金流/空融资Capex Beta",
       "holding_period": "5-20个交易日",
       "stage": "等待回撤",
-      "instruments": ["SOXX多头", "ORCL空头"],
+      "instruments": [
+        "SOXX多头",
+        "ORCL空头"
+      ],
       "max_loss_limited": false,
-      "score_components": {"logic":22,"convexity":18,"catalyst":17,"pricing":13,"positioning_technical":14},
+      "score_components": {
+        "logic": 22,
+        "convexity": 18,
+        "catalyst": 17,
+        "pricing": 13,
+        "positioning_technical": 14
+      },
       "research_judgement": "存在待验证优势",
       "evidence_sufficiency": "部分",
       "execution_status": "等待触发"
@@ -144,9 +321,18 @@
       "direction": "多大盘防御/空小盘高Beta",
       "holding_period": "3-15个交易日",
       "stage": "昨日条件已触发；新仓等回撤",
-      "instruments": ["多9手IF2612", "空8手IM2612"],
+      "instruments": [
+        "多9手IF2612",
+        "空8手IM2612"
+      ],
       "max_loss_limited": false,
-      "score_components": {"logic":23,"convexity":17,"catalyst":15,"pricing":15,"positioning_technical":12},
+      "score_components": {
+        "logic": 23,
+        "convexity": 17,
+        "catalyst": 15,
+        "pricing": 15,
+        "positioning_technical": 12
+      },
       "research_judgement": "存在待验证优势",
       "evidence_sufficiency": "部分",
       "execution_status": "已触发但新入场等待回撤"
@@ -159,9 +345,19 @@
       "direction": "有限风险看涨油价尾部",
       "holding_period": "3-20个交易日",
       "stage": "等待美盘60分钟及报价",
-      "instruments": ["买1 CLZ26 95C", "卖2 CLZ26 105C", "买1 CLZ26 115C"],
+      "instruments": [
+        "买1 CLZ26 95C",
+        "卖2 CLZ26 105C",
+        "买1 CLZ26 115C"
+      ],
       "max_loss_limited": true,
-      "score_components": {"logic":21,"convexity":20,"catalyst":17,"pricing":12,"positioning_technical":10},
+      "score_components": {
+        "logic": 21,
+        "convexity": 20,
+        "catalyst": 17,
+        "pricing": 12,
+        "positioning_technical": 10
+      },
       "research_judgement": "存在待验证优势",
       "evidence_sufficiency": "部分",
       "execution_status": "待报价"
@@ -174,9 +370,17 @@
       "direction": "空白银",
       "holding_period": "1-5个交易日",
       "stage": "等待夜盘触发",
-      "instruments": ["空AG2612期货"],
+      "instruments": [
+        "空AG2612期货"
+      ],
       "max_loss_limited": false,
-      "score_components": {"logic":21,"convexity":17,"catalyst":14,"pricing":11,"positioning_technical":10},
+      "score_components": {
+        "logic": 21,
+        "convexity": 17,
+        "catalyst": 14,
+        "pricing": 11,
+        "positioning_technical": 10
+      },
       "research_judgement": "存在待验证优势",
       "evidence_sufficiency": "部分",
       "execution_status": "等待触发"
@@ -219,16 +423,38 @@
     }
   ],
   "top_trade_cards": [
-    {"idea_id":"RATES-TLT-20260927-01","name":"TLT 10/16 79/76 Put Spread","entry":"79.60-79.90失败后跌回79.50且30Y>=5.50%，或78.80下方接受30分钟","invalidation":"TLT>80.20且30Y<5.42%","exit":"78.00减半，76.50退出"},
-    {"idea_id":"AI-SOXX-ORCL-20260927-02","name":"等美元多SOXX/空ORCL","entry":"比值4.10-4.14后重上4.15","invalidation":"比值<4.04","exit":"4.28/4.40"},
-    {"idea_id":"CN-IFIM-20260924-01","name":"多9手IF2612/空8手IM2612","entry":"回吐0.4-0.7个百分点后IF重新领先>=0.30个百分点","invalidation":"相对优势回吐>0.60个百分点","exit":"+1.5/+2.2个百分点"}
+    {
+      "idea_id": "RATES-TLT-20260927-01",
+      "name": "TLT 10/16 79/76 Put Spread",
+      "entry": "79.60-79.90失败后跌回79.50且30Y>=5.50%，或78.80下方接受30分钟",
+      "invalidation": "TLT>80.20且30Y<5.42%",
+      "exit": "78.00减半，76.50退出"
+    },
+    {
+      "idea_id": "AI-SOXX-ORCL-20260927-02",
+      "name": "等美元多SOXX/空ORCL",
+      "entry": "比值4.10-4.14后重上4.15",
+      "invalidation": "比值<4.04",
+      "exit": "4.28/4.40"
+    },
+    {
+      "idea_id": "CN-IFIM-20260924-01",
+      "name": "多9手IF2612/空8手IM2612",
+      "entry": "回吐0.4-0.7个百分点后IF重新领先>=0.30个百分点",
+      "invalidation": "相对优势回吐>0.60个百分点",
+      "exit": "+1.5/+2.2个百分点"
+    }
   ],
   "gold_tracking": {
     "hypothesis_status": "本轮暂时失效",
     "research_judgement": "未发现多头优势",
     "evidence_sufficiency": "部分",
     "execution_status": "撤销旧Call条件",
-    "facts": ["现货金约4151、日跌约3%", "10Y实际利率2.83%", "DXY盘前触101.39"],
+    "facts": [
+      "现货金约4151、日跌约3%",
+      "10Y实际利率2.83%",
+      "DXY盘前触101.39"
+    ],
     "falsifier": "DXY>101且实际利率高位时黄金重站4285-4300并持续相对走强",
     "expression": "暂不参与；新Call Spread需重算并待报价"
   },
@@ -236,9 +462,18 @@
     "state": "利率冲击下的质量分化",
     "preferred_expression": "等美元多SOXX/空ORCL",
     "qqq_status": "旧Call Spread降级；低开<739.80取消",
-    "supporting_evidence": ["AI债买方选择性增强", "Oracle项目贷款压力", "SOXX/ORCL比值4.177"],
-    "counter_evidence": ["Oracle OCI增长与RPO约6640亿美元", "Capex兑现可能令ORCL补涨"],
-    "data_gaps": ["同步IV、偏度、bid-ask和Greeks"]
+    "supporting_evidence": [
+      "AI债买方选择性增强",
+      "Oracle项目贷款压力",
+      "SOXX/ORCL比值4.177"
+    ],
+    "counter_evidence": [
+      "Oracle OCI增长与RPO约6640亿美元",
+      "Capex兑现可能令ORCL补涨"
+    ],
+    "data_gaps": [
+      "同步IV、偏度、bid-ask和Greeks"
+    ]
   },
   "china_tracking": {
     "qualified_trade": true,
@@ -251,26 +486,92 @@
     "relative_value": "多9 IF2612/空8 IM2612",
     "options_expression": "9月28日IV/skew/PCR/Gamma缺失，暂不能确认优于裸期货",
     "futures_option_linkage": {
-      "IH_HO": {"status":"HO stale","boundary":"一一对应但今日期权参数缺失"},
-      "IF_IO": {"status":"期货条件已触发，IO stale","boundary":"IO直接对应IF指数但今日不可执行"},
-      "IC_proxy": {"status":"no direct option","boundary":"MO/IO/500ETF为Beta、基差、跟踪误差代理，不能完全对冲"},
-      "IM_MO": {"status":"MO stale","boundary":"一一对应但今日期权参数缺失"}
+      "IH_HO": {
+        "status": "HO stale",
+        "boundary": "一一对应但今日期权参数缺失"
+      },
+      "IF_IO": {
+        "status": "期货条件已触发，IO stale",
+        "boundary": "IO直接对应IF指数但今日不可执行"
+      },
+      "IC_proxy": {
+        "status": "no direct option",
+        "boundary": "MO/IO/500ETF为Beta、基差、跟踪误差代理，不能完全对冲"
+      },
+      "IM_MO": {
+        "status": "MO stale",
+        "boundary": "一一对应但今日期权参数缺失"
+      }
     },
-    "multi_period_options": {"day_1":"missing for 2026-09-28","day_3":"missing","day_5":"missing","day_20":"missing","last_good_date":"2026-09-23"}
+    "multi_period_options": {
+      "day_1": "missing for 2026-09-28",
+      "day_3": "missing",
+      "day_5": "missing",
+      "day_20": "missing",
+      "last_good_date": "2026-09-23"
+    }
   },
   "event_calendar": [
-    {"time_bjt":"2026-09-28T23:30:00+08:00","event":"US 13W/26W bill auctions","positioning":"观察前端现金需求"},
-    {"time_bjt":"2026-09-29T01:25:00+08:00","event":"Fed Cook谈AI","positioning":"降低AI裸Delta"},
-    {"time_bjt":"2026-09-29T12:30:00+08:00","event":"RBA利率决定","positioning":"降低AUD利率/FX Delta"},
-    {"time_bjt":"2026-09-29T22:00:00+08:00","event":"US JOLTS","positioning":"降低前端利率/美元裸Delta"},
-    {"time_bjt":"2026-09-30T09:30:00+08:00","event":"中国官方PMI","positioning":"降低A股长假前隔夜Delta"},
-    {"time_bjt":"2026-09-30T20:30:00+08:00","event":"US GDP/PCE","positioning":"降低rates/equity裸Delta与short-vol Vega"},
-    {"time_bjt":"2026-09-30T22:30:00+08:00","event":"EIA周度石油报告","positioning":"避免裸卖油期权"},
-    {"time_bjt":"2026-10-01T06:00:00+08:00","event":"Micron FYQ4近似盘后","positioning":"仅定义损失结构"},
-    {"time_bjt":"2026-10-01T22:00:00+08:00","event":"US ISM制造","positioning":"宏观Delta减半或等数据"},
-    {"time_bjt":"2026-10-02T20:30:00+08:00","event":"US非农","positioning":"降低Delta/Vega或保留有限亏损凸性"},
-    {"time_bjt":"2026-10-04","event":"OPEC+七国会议时点待定","positioning":"只允许定义损失油价结构"},
-    {"time_bjt":"2026-10-05T22:00:00+08:00","event":"US ISM服务业","positioning":"管理Theta"}
+    {
+      "time_bjt": "2026-09-28T23:30:00+08:00",
+      "event": "US 13W/26W bill auctions",
+      "positioning": "观察前端现金需求"
+    },
+    {
+      "time_bjt": "2026-09-29T01:25:00+08:00",
+      "event": "Fed Cook谈AI",
+      "positioning": "降低AI裸Delta"
+    },
+    {
+      "time_bjt": "2026-09-29T12:30:00+08:00",
+      "event": "RBA利率决定",
+      "positioning": "降低AUD利率/FX Delta"
+    },
+    {
+      "time_bjt": "2026-09-29T22:00:00+08:00",
+      "event": "US JOLTS",
+      "positioning": "降低前端利率/美元裸Delta"
+    },
+    {
+      "time_bjt": "2026-09-30T09:30:00+08:00",
+      "event": "中国官方PMI",
+      "positioning": "降低A股长假前隔夜Delta"
+    },
+    {
+      "time_bjt": "2026-09-30T20:30:00+08:00",
+      "event": "US GDP/PCE",
+      "positioning": "降低rates/equity裸Delta与short-vol Vega"
+    },
+    {
+      "time_bjt": "2026-09-30T22:30:00+08:00",
+      "event": "EIA周度石油报告",
+      "positioning": "避免裸卖油期权"
+    },
+    {
+      "time_bjt": "2026-10-01T06:00:00+08:00",
+      "event": "Micron FYQ4近似盘后",
+      "positioning": "仅定义损失结构"
+    },
+    {
+      "time_bjt": "2026-10-01T22:00:00+08:00",
+      "event": "US ISM制造",
+      "positioning": "宏观Delta减半或等数据"
+    },
+    {
+      "time_bjt": "2026-10-02T20:30:00+08:00",
+      "event": "US非农",
+      "positioning": "降低Delta/Vega或保留有限亏损凸性"
+    },
+    {
+      "time_bjt": "2026-10-04",
+      "event": "OPEC+七国会议时点待定",
+      "positioning": "只允许定义损失油价结构"
+    },
+    {
+      "time_bjt": "2026-10-05T22:00:00+08:00",
+      "event": "US ISM服务业",
+      "positioning": "管理Theta"
+    }
   ],
   "action_list": {
     "A": "无；美国现金盘未开、商品夜盘未给触发，中国IF/IM已伸展且期权数据滞后。",
@@ -287,16 +588,67 @@
       "ai_quality": "SOXX/ORCL与QQQ合并<=1.0%",
       "china_style": "IF/IM与其他A股风格表达合并<=1.0%"
     },
-    "notes": ["期货计划止损不等于结构性最大损失", "未收到用户持仓或成交反馈"]
+    "notes": [
+      "期货计划止损不等于结构性最大损失",
+      "未收到用户持仓或成交反馈"
+    ]
   },
   "coverage_audit": {
-    "rates": {"required":"4 tenors+curves+real/BEI","analyzed":"complete","missing":["intraday term premium"]},
-    "fx": {"required":"DXY/EURUSD/USDJPY/USDCNH","analyzed":"4/4","missing":["option skew","carry crowding"]},
-    "ai": {"required":"index/chips/equipment/network/cloud/software/power","analyzed":"all segments","missing":["live option surface"]},
-    "oil": {"required":"WTI/Brent/curve/supply/geopolitics/OVX/skew","analyzed":"prices,curve,supply","missing":["OVX","live skew"]},
-    "gold": {"required":"spot/futures/real/DXY/ETF/CFTC/options","analyzed":"spot/futures/macro","missing":["same-day ETF flow","live CFTC/options"]},
-    "china": {"required":"4 cash+4 futures+HO/IO/MO+ETF options+1/3/5/20d","analyzed":"cash and CFFEX futures plus last-good options","missing":["current option multiperiod","full term structure","ETF flow"]},
-    "commodities": {"required_codes":63,"analyzed_codes":63,"expanded_products":77,"contracts":806,"options_coverage":"45/64","execution_ready":0}
+    "rates": {
+      "required": "4 tenors+curves+real/BEI",
+      "analyzed": "complete",
+      "missing": [
+        "intraday term premium"
+      ]
+    },
+    "fx": {
+      "required": "DXY/EURUSD/USDJPY/USDCNH",
+      "analyzed": "4/4",
+      "missing": [
+        "option skew",
+        "carry crowding"
+      ]
+    },
+    "ai": {
+      "required": "index/chips/equipment/network/cloud/software/power",
+      "analyzed": "all segments",
+      "missing": [
+        "live option surface"
+      ]
+    },
+    "oil": {
+      "required": "WTI/Brent/curve/supply/geopolitics/OVX/skew",
+      "analyzed": "prices,curve,supply",
+      "missing": [
+        "OVX",
+        "live skew"
+      ]
+    },
+    "gold": {
+      "required": "spot/futures/real/DXY/ETF/CFTC/options",
+      "analyzed": "spot/futures/macro",
+      "missing": [
+        "same-day ETF flow",
+        "live CFTC/options"
+      ]
+    },
+    "china": {
+      "required": "4 cash+4 futures+HO/IO/MO+ETF options+1/3/5/20d",
+      "analyzed": "cash and CFFEX futures plus last-good options",
+      "missing": [
+        "current option multiperiod",
+        "full term structure",
+        "ETF flow"
+      ]
+    },
+    "commodities": {
+      "required_codes": 63,
+      "analyzed_codes": 63,
+      "expanded_products": 77,
+      "contracts": 806,
+      "options_coverage": "45/64",
+      "execution_ready": 0
+    }
   },
   "previous_date": "2026-09-27",
   "previous_report_paths": [
@@ -322,33 +674,182 @@
     "live global option bid/ask, IV, skew and Greeks unavailable"
   ],
   "sources": [
-    {"title":"美国财政部每日国债收益率曲线","publisher":"U.S. Treasury","url":"https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value_month=202609","source_date":"2026-09-25","supported_claims":["2Y/5Y/10Y/30Y为4.81%/4.98%/5.17%/5.49%","2s30s为68bp"]},
-    {"title":"FRED 10-Year TIPS Yield","publisher":"Federal Reserve Bank of St. Louis","url":"https://fred.stlouisfed.org/series/DFII10","source_date":"2026-09-25","supported_claims":["10年实际利率2.83%"]},
-    {"title":"FRED 10-Year Breakeven Inflation","publisher":"Federal Reserve Bank of St. Louis","url":"https://fred.stlouisfed.org/series/T10YIE","source_date":"2026-09-25","supported_claims":["10年BEI 2.34%"]},
-    {"title":"FRED US High Yield OAS","publisher":"Federal Reserve Bank of St. Louis","url":"https://fred.stlouisfed.org/series/BAMLH0A0HYM2","source_date":"2026-09-24","supported_claims":["HY OAS 2.80%","周扩12bp"]},
-    {"title":"9月28日全球市场、油价、美元、收益率与黄金","publisher":"Reuters/MarketScreener","url":"https://ca.marketscreener.com/news/stocks-fall-as-middle-east-stalemate-boosts-oil-ce785adcdd89f725","source_date":"2026-09-28","supported_claims":["Brent一度107.16","30Y 5.517%","DXY 101.39","黄金约跌3%"]},
-    {"title":"CBOE VIX","publisher":"CBOE","url":"https://www.cboe.com/tradable-products/vix/","source_date":"2026-09-25","supported_claims":["VIX收14.87"]},
-    {"title":"9月28日A股收盘、宽度与成交额","publisher":"新华财经","url":"https://www.cnfin.com/yw-lb/detail/20260928/4475549_1.html","source_date":"2026-09-28","supported_claims":["上证3823.62","898涨4554跌","成交1.7169万亿元"]},
-    {"title":"CFFEX 9月28日官方日行情CSV","publisher":"中国金融期货交易所","url":"http://www.cffex.com.cn/sj/hqsj/rtj/202609/28/20260928_1.csv","source_date":"2026-09-28","supported_claims":["IH/IF/IC/IM价格成交持仓","IF相对IM更强且两腿OI增加"]},
-    {"title":"央行流动性与资金面","publisher":"新华财经","url":"https://www.cnfin.com/yw-lb/detail/20260928/4475556_1.html","source_date":"2026-09-28","supported_claims":["DR007约1.37%-1.38%","下跌并非资金面骤紧"]},
-    {"title":"China Options Engine radar_latest","publisher":"farfromexact","url":"https://github.com/farfromexact/China-Options-Engine/blob/e3ced1bb08d598a4ae9a9911f17adc808a47d863/data/radar_latest.json","source_date":"2026-09-23","supported_claims":["HO/IO/MO last-good指标","对9月28日已过时"]},
-    {"title":"China Commodities Engine report input","publisher":"farfromexact","url":"https://github.com/farfromexact/China-Commodities-Engine/blob/366ad1fbf6d42faf6906e0cb3dca3228717a30e7/data/report_input_latest.json","source_date":"2026-09-28","supported_claims":["63强制代码全覆盖","77产品806合约","AG/FU/EC候选"]},
-    {"title":"AI债买方更挑剔","publisher":"Reuters","url":"https://www.reuters.com/legal/transactional/corporate-bond-buyers-get-picky-with-flood-ai-debt-2026-09-22/","source_date":"2026-09-22","supported_claims":["AI融资环境分化"]},
-    {"title":"Oracle数据中心贷款压力","publisher":"Reuters","url":"https://www.reuters.com/business/finance/oracles-18-billion-data-center-debt-under-pressure-ft-reports-2026-09-18/","source_date":"2026-09-18","supported_claims":["约180亿美元项目贷款压力","支持SOXX/ORCL假设"]},
-    {"title":"BEA发布日历","publisher":"BEA","url":"https://www.bea.gov/news/schedule","source_date":"2026-09-28","supported_claims":["9月30日GDP/PCE发布时间"]},
-    {"title":"BLS就业发布","publisher":"BLS","url":"https://www.bls.gov/news.release/empsit.nr0.htm","source_date":"2026-09-28","supported_claims":["10月2日非农发布时间"]},
-    {"title":"EIA周报日历","publisher":"EIA","url":"https://www.eia.gov/petroleum/supply/weekly/schedule.php","source_date":"2026-09-28","supported_claims":["9月30日周度石油报告"]},
-    {"title":"上交所国庆休市安排","publisher":"上海证券交易所","url":"https://www.sse.com.cn/disclosure/announcement/general/c/c_20260915_10832273.shtml","source_date":"2026-09-15","supported_claims":["10月1-7日休市、10月8日恢复"]}
+    {
+      "title": "美国财政部每日国债收益率曲线",
+      "publisher": "U.S. Treasury",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value_month=202609",
+      "source_date": "2026-09-25",
+      "supported_claims": [
+        "2Y/5Y/10Y/30Y为4.81%/4.98%/5.17%/5.49%",
+        "2s30s为68bp"
+      ]
+    },
+    {
+      "title": "FRED 10-Year TIPS Yield",
+      "publisher": "Federal Reserve Bank of St. Louis",
+      "url": "https://fred.stlouisfed.org/series/DFII10",
+      "source_date": "2026-09-25",
+      "supported_claims": [
+        "10年实际利率2.83%"
+      ]
+    },
+    {
+      "title": "FRED 10-Year Breakeven Inflation",
+      "publisher": "Federal Reserve Bank of St. Louis",
+      "url": "https://fred.stlouisfed.org/series/T10YIE",
+      "source_date": "2026-09-25",
+      "supported_claims": [
+        "10年BEI 2.34%"
+      ]
+    },
+    {
+      "title": "FRED US High Yield OAS",
+      "publisher": "Federal Reserve Bank of St. Louis",
+      "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+      "source_date": "2026-09-24",
+      "supported_claims": [
+        "HY OAS 2.80%",
+        "周扩12bp"
+      ]
+    },
+    {
+      "title": "9月28日全球市场、油价、美元、收益率与黄金",
+      "publisher": "Reuters/MarketScreener",
+      "url": "https://ca.marketscreener.com/news/stocks-fall-as-middle-east-stalemate-boosts-oil-ce785adcdd89f725",
+      "source_date": "2026-09-28",
+      "supported_claims": [
+        "Brent一度107.16",
+        "30Y 5.517%",
+        "DXY 101.39",
+        "黄金约跌3%"
+      ]
+    },
+    {
+      "title": "CBOE VIX",
+      "publisher": "CBOE",
+      "url": "https://www.cboe.com/tradable-products/vix/",
+      "source_date": "2026-09-25",
+      "supported_claims": [
+        "VIX收14.87"
+      ]
+    },
+    {
+      "title": "9月28日A股收盘、宽度与成交额",
+      "publisher": "新华财经",
+      "url": "https://www.cnfin.com/yw-lb/detail/20260928/4475549_1.html",
+      "source_date": "2026-09-28",
+      "supported_claims": [
+        "上证3823.62",
+        "898涨4554跌",
+        "成交1.7169万亿元"
+      ]
+    },
+    {
+      "title": "CFFEX 9月28日官方日行情CSV",
+      "publisher": "中国金融期货交易所",
+      "url": "http://www.cffex.com.cn/sj/hqsj/rtj/202609/28/20260928_1.csv",
+      "source_date": "2026-09-28",
+      "supported_claims": [
+        "IH/IF/IC/IM价格成交持仓",
+        "IF相对IM更强且两腿OI增加"
+      ]
+    },
+    {
+      "title": "央行流动性与资金面",
+      "publisher": "新华财经",
+      "url": "https://www.cnfin.com/yw-lb/detail/20260928/4475556_1.html",
+      "source_date": "2026-09-28",
+      "supported_claims": [
+        "DR007约1.37%-1.38%",
+        "下跌并非资金面骤紧"
+      ]
+    },
+    {
+      "title": "China Options Engine radar_latest",
+      "publisher": "farfromexact",
+      "url": "https://github.com/farfromexact/China-Options-Engine/blob/e3ced1bb08d598a4ae9a9911f17adc808a47d863/data/radar_latest.json",
+      "source_date": "2026-09-23",
+      "supported_claims": [
+        "HO/IO/MO last-good指标",
+        "对9月28日已过时"
+      ]
+    },
+    {
+      "title": "China Commodities Engine report input",
+      "publisher": "farfromexact",
+      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/366ad1fbf6d42faf6906e0cb3dca3228717a30e7/data/report_input_latest.json",
+      "source_date": "2026-09-28",
+      "supported_claims": [
+        "63强制代码全覆盖",
+        "77产品806合约",
+        "AG/FU/EC候选"
+      ]
+    },
+    {
+      "title": "AI债买方更挑剔",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/legal/transactional/corporate-bond-buyers-get-picky-with-flood-ai-debt-2026-09-22/",
+      "source_date": "2026-09-22",
+      "supported_claims": [
+        "AI融资环境分化"
+      ]
+    },
+    {
+      "title": "Oracle数据中心贷款压力",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/finance/oracles-18-billion-data-center-debt-under-pressure-ft-reports-2026-09-18/",
+      "source_date": "2026-09-18",
+      "supported_claims": [
+        "约180亿美元项目贷款压力",
+        "支持SOXX/ORCL假设"
+      ]
+    },
+    {
+      "title": "BEA发布日历",
+      "publisher": "BEA",
+      "url": "https://www.bea.gov/news/schedule",
+      "source_date": "2026-09-28",
+      "supported_claims": [
+        "9月30日GDP/PCE发布时间"
+      ]
+    },
+    {
+      "title": "BLS就业发布",
+      "publisher": "BLS",
+      "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
+      "source_date": "2026-09-28",
+      "supported_claims": [
+        "10月2日非农发布时间"
+      ]
+    },
+    {
+      "title": "EIA周报日历",
+      "publisher": "EIA",
+      "url": "https://www.eia.gov/petroleum/supply/weekly/schedule.php",
+      "source_date": "2026-09-28",
+      "supported_claims": [
+        "9月30日周度石油报告"
+      ]
+    },
+    {
+      "title": "上交所国庆休市安排",
+      "publisher": "上海证券交易所",
+      "url": "https://www.sse.com.cn/disclosure/announcement/general/c/c_20260915_10832273.shtml",
+      "source_date": "2026-09-15",
+      "supported_claims": [
+        "10月1-7日休市、10月8日恢复"
+      ]
+    }
   ],
-  "archive_status": "pending",
+  "archive_status": "success",
   "ci_validation_status": "pending_or_unverified",
   "archive": {
     "markdown_path": "reports/2026/09/2026-09-28_evening.md",
     "json_path": "reports/2026/09/2026-09-28_evening.json",
     "latest_markdown_path": "latest/evening.md",
     "latest_json_path": "latest/evening.json",
-    "archive_status": "pending",
-    "commit_sha": null,
+    "archive_status": "success",
+    "commit_sha": "36c5fc5f1cdae608b1e62e4e0754ecb0c6cd5b61",
     "error": null
   }
 }
