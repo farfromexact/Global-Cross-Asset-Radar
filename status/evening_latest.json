@@ -1,53 +1,54 @@
 {
   "schema_version": "1.0",
   "status": "published",
-  "report_date": "2026-09-27",
+  "report_date": "2026-09-28",
   "edition": "evening",
-  "generated_at_bjt": "2026-09-27T20:12:00+08:00",
-  "data_cutoff_bjt": "2026-09-27T20:10:00+08:00",
-  "weekend_mode": true,
-  "data_status": "global_2026-09-25_eod_china_2026-09-24_holiday_china_options_2026-09-23_stale_commodities_external_refreshed",
+  "generated_at_bjt": "2026-09-28T20:13:30+08:00",
+  "data_cutoff_bjt": "2026-09-28T20:05:00+08:00",
+  "weekend_mode": false,
+  "data_status": "global_2026-09-28_premarket_china_2026-09-28_eod_china_options_2026-09-23_stale_commodities_2026-09-28_fresh",
   "inputs": {
     "global_eod_date": "2026-09-25",
+    "china_cash_date": "2026-09-28",
+    "china_futures_date": "2026-09-28",
     "china_options_date": "2026-09-23",
-    "china_options_commit": "e3ced1bb08d598a4ae9a9911f17adc808a47d863",
-    "china_options_paths": [
+    "china_options_commit_sha": "e3ced1bb08d598a4ae9a9911f17adc808a47d863",
+    "china_options_actual_read_paths": [
       "data/radar_latest.json",
-      "data/radar_history.json (empty)",
-      "data/snapshots/2026-09-27.json (missing)"
+      "data/radar_history.json",
+      "data/snapshots/2026-09-28.json"
     ],
-    "china_options_fresh": false,
-    "china_commodities_date": "2026-09-24",
-    "china_commodities_commit": "3f9ff3f203fcfbbdfb52d024ec52d5b5e1798292",
-    "china_commodities_paths": [
-      "data/report_input_latest.json",
-      "data/last_run_status.json",
-      "data/night_session/last_run_status.json",
-      "data/external/latest.json"
-    ],
-    "china_commodities_fresh": false,
-    "external_source_date": "2026-09-25",
-    "external_fresh_targets": 17
+    "china_commodities_date": "2026-09-28",
+    "china_commodities_commit_sha": "366ad1fbf6d42faf6906e0cb3dca3228717a30e7"
   },
+  "data_fresh": {
+    "global_premarket": true,
+    "us_eod": true,
+    "china_cash": true,
+    "china_futures": true,
+    "china_options": false,
+    "china_commodities": true
+  },
+  "previous_date": "2026-09-27",
+  "previous_global_path": "reports/2026/09/2026-09-28_morning.json",
+  "previous_same_edition_path": "reports/2026/09/2026-09-27_evening.json",
   "errors": [
+    "China-Options-Engine data/radar_history.json exists but is empty",
+    "China-Options-Engine data/snapshots/2026-09-28.json missing",
+    "China options latest is stale at 2026-09-23",
     "schemas/status.schema.json missing",
     "templates/status.json missing",
     "templates/manifest.json missing",
-    "China-Options-Engine radar_history.json empty",
-    "China-Options-Engine snapshots/2026-09-27.json missing",
-    "global executable option surfaces and current Greeks missing",
-    "morning Brent 104.32 not reproducible; corrected to 97.43 from fixed same-source snapshot"
+    "live global option bid/ask, IV, skew and Greeks unavailable"
   ],
-  "archive_status": "success",
+  "archive_status": "pending",
   "ci_validation_status": "pending_or_unverified",
-  "paths": {
-    "markdown": "reports/2026/09/2026-09-27_evening.md",
-    "json": "reports/2026/09/2026-09-27_evening.json",
-    "latest_markdown": "latest/evening.md",
-    "latest_json": "latest/evening.json",
-    "status": "status/evening_latest.json",
-    "manifest": "manifests/reports.json"
-  },
-  "archive_verified_at_bjt": "2026-09-27T20:16:00+08:00"
+  "archive_paths": {
+    "markdown_path": "reports/2026/09/2026-09-28_evening.md",
+    "json_path": "reports/2026/09/2026-09-28_evening.json",
+    "latest_markdown_path": "latest/evening.md",
+    "latest_json_path": "latest/evening.json",
+    "status_path": "status/evening_latest.json",
+    "manifest_path": "manifests/reports.json"
+  }
 }
-
