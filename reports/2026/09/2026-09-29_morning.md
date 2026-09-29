@@ -215,7 +215,7 @@ China-Commodities-Engine固定提交366ad1fbf6d42faf6906e0cb3dca3228717a30e7，�
 - [BLS就业报告日程](https://www.bls.gov/schedule/news_release/empsit.htm)
 - [EIA周度石油报告日程](https://www.eia.gov/petroleum/supply/weekly/schedule.php)
 
-**归档状态：pending。** 六文件将直接写入main并在回读核验后更新为success；CI不阻塞本期。
+**归档状态：success。** main分支六文件已回读一致；2026-09-29 + morning在manifest中唯一；CI仅作事后校验，ci_validation_status=pending_or_unverified。
 
 ## 十四、今日行动清单
 
