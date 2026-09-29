@@ -1,57 +1,57 @@
 {
   "schema_version": "1.0",
   "status": "published",
-  "report_date": "2026-09-28",
+  "report_date": "2026-09-29",
   "edition": "evening",
-  "generated_at_bjt": "2026-09-28T20:13:30+08:00",
-  "data_cutoff_bjt": "2026-09-28T20:05:00+08:00",
+  "generated_at_bjt": "2026-09-29T20:15:00+08:00",
+  "data_cutoff_bjt": "2026-09-29T20:08:00+08:00",
   "weekend_mode": false,
-  "data_status": "global_2026-09-28_premarket_china_2026-09-28_eod_china_options_2026-09-23_stale_commodities_2026-09-28_fresh",
+  "data_status": "mixed_fresh_china_cash_and_futures_stale_china_options_fresh_commodity_day_delayed_global_eod",
   "inputs": {
-    "global_eod_date": "2026-09-25",
-    "china_cash_date": "2026-09-28",
-    "china_futures_date": "2026-09-28",
+    "global_eod_date": "2026-09-28",
+    "global_intraday_date": "2026-09-29",
+    "china_cash_futures_date": "2026-09-29",
     "china_options_date": "2026-09-23",
-    "china_options_commit_sha": "e3ced1bb08d598a4ae9a9911f17adc808a47d863",
-    "china_options_actual_read_paths": [
+    "china_options_commit": "353307807ee5ed37a7c1e2877de02044993478e5",
+    "china_options_paths": [
+      "data/last_run_status.json",
       "data/radar_latest.json",
-      "data/radar_history.json",
-      "data/snapshots/2026-09-28.json"
+      "data/radar_history.json (empty)",
+      "data/snapshots/2026-09-29.json (missing)",
+      "data/snapshots/2026-09-28.json (missing)"
     ],
-    "china_commodities_date": "2026-09-28",
-    "china_commodities_commit_sha": "366ad1fbf6d42faf6906e0cb3dca3228717a30e7"
+    "china_options_fresh": false,
+    "china_commodities_date": "2026-09-29",
+    "china_commodities_commit": "ca5de2d5be4d2887dea3fcf1b4719fa235a07e4b",
+    "china_commodities_paths": [
+      "data/report_input_latest.json",
+      "data/last_run_status.json",
+      "data/night_session/last_run_status.json",
+      "data/radar_latest.json",
+      "data/radar_history.json"
+    ],
+    "china_commodities_fresh": true,
+    "china_commodities_night_state": "missing"
   },
-  "data_fresh": {
-    "global_premarket": true,
-    "us_eod": true,
-    "china_cash": true,
-    "china_futures": true,
-    "china_options": false,
-    "china_commodities": true
-  },
-  "previous_date": "2026-09-27",
-  "previous_global_path": "reports/2026/09/2026-09-28_morning.json",
-  "previous_same_edition_path": "reports/2026/09/2026-09-27_evening.json",
   "errors": [
-    "China-Options-Engine data/radar_history.json exists but is empty",
-    "China-Options-Engine data/snapshots/2026-09-28.json missing",
-    "China options latest is stale at 2026-09-23",
     "schemas/status.schema.json missing",
     "templates/status.json missing",
     "templates/manifest.json missing",
-    "live global option bid/ask, IV, skew and Greeks unavailable"
+    "China-Options-Engine radar_history.json empty",
+    "China-Options-Engine 2026-09-29 and 2026-09-28 snapshots missing",
+    "China-Options-Engine current radar restored to stale 2026-09-23 last-good after CFFEX CSV header error",
+    "global live option surfaces and executable bid/ask quotes missing",
+    "China-Commodities-Engine night-session refresh missing with 806 query errors"
   ],
-  "archive_status": "success",
+  "archive_status": "pending",
   "ci_validation_status": "pending_or_unverified",
-  "archive_paths": {
-    "markdown_path": "reports/2026/09/2026-09-28_evening.md",
-    "json_path": "reports/2026/09/2026-09-28_evening.json",
-    "latest_markdown_path": "latest/evening.md",
-    "latest_json_path": "latest/evening.json",
-    "status_path": "status/evening_latest.json",
-    "manifest_path": "manifests/reports.json",
-    "archive_status": "success",
-    "commit_sha": "36c5fc5f1cdae608b1e62e4e0754ecb0c6cd5b61"
+  "paths": {
+    "markdown": "reports/2026/09/2026-09-29_evening.md",
+    "json": "reports/2026/09/2026-09-29_evening.json",
+    "latest_markdown": "latest/evening.md",
+    "latest_json": "latest/evening.json",
+    "status": "status/evening_latest.json",
+    "manifest": "manifests/reports.json"
   },
-  "archive_commit_sha": "36c5fc5f1cdae608b1e62e4e0754ecb0c6cd5b61"
+  "archive_verified_at_bjt": null
 }
