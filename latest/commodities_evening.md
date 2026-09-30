@@ -1,163 +1,211 @@
-# 全球商品期货期权高风险机会雷达｜晚间版｜2026-09-29
+# 全球商品期货期权高风险机会雷达｜晚间版｜2026-09-30
 
-`prompt_version=radar_2026-09-06_coverage_v1` · `data_protocol_version=china_commodities_v2`
+`prompt_version=radar_2026-09-06_coverage_v1`　`data_protocol_version=china_commodities_v2`
 
-**实际生成：2026-09-29 19:46 BJT；研究截点：19:40 BJT。** 最近完整中国时段为9月29日日盘（T）；今晚21:00开始的连续交易归属9月30日交易日（T+1），尚未发生。仓库Night快照停在9月24日且验证失败，不能冒充9月29日早前已完成的Night，也不能据此计算今日隔夜—日盘分解。
+生成时间：2026-09-30 19:50 北京时间｜信息截点：19:42｜中国最近可验证完整EOD：2026-09-29｜今日交易日：2026-09-30（但EOD尚未入库）
+
+> **今晚的商品市场究竟有没有值得冒险的机会？**
+>
+> **截至本报告时点，无可立即执行的合格新交易。** 9月30日日盘EOD缺失、今晚全市场无夜盘；BR/OI/能源链只保留节后重新报价后的研究机会，不能把晨间条件延长使用。
 
 ## 一、今晚一句话结论
 
-> **截至本报告时点，无可立即执行的合格新交易；AG、AO偏空和EB回撤多存在待验证优势，但须等夜盘报价、触发与节前参数确认。**
+截至本报告时点，无可立即执行的合格新交易；9月30日EOD未入库且今晚休市，BR、菜油和能源链仅保留节后重报价观察。
 
-最强产业链是纯苯—苯乙烯及部分能化裂解品，最弱是橡胶、贵金属与新能源材料；regime是“节前保证金上调、国内强弱分化、海外油价回落与美元偏强”。价格与曲线对AG/AO下行、EB上行各有两层支持，但实体证据不足，期权全部缺bid/ask，不能把研究分数当成胜率或仓位指令。
+研究判断分三类：已分析但优势不足（AG/AO/EC）；研究机会存在、等待新价格（BR/OI/SC-FU）；数据不足、暂时无法判断（全部品种的9月30日日盘变化、日盘路径及当日EOD曲线）。最接近验证的窗口不是今晚21:00，而是**10月8日08:55集合竞价、09:00日盘**。
 
 ## 二、数据质量与覆盖
 
-本期首先读取[统一报告输入](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/report_input_latest.json)、[核心状态](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/last_run_status.json)、[Night状态](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/night_session/last_run_status.json)和[雷达摘要](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/radar_latest.json)，随后为具体合约下钻[data/latest.json](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/latest.json)、[market_state_latest.json](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/market_state_latest.json)、Physical、External、Options quality/surface和contract_meta；所有仓库输入取自同一main快照语义，未拼接scoped回退。
+| 模块 | 实际读取 | 日期/生成时间 | 状态 | 本期用途 |
+|---|---|---|---|---|
+| 统一输入 | `data/report_input_latest.json` | requested 2026-09-29；generated 2026-09-30 08:20:58 | ok，但非9月30日EOD | 统一质量状态和嵌入式Night摘要 |
+| Futures | `data/latest.json`、`data/last_run_status.json` | EOD 2026-09-29；08:07:26 | last-good、verified vendor-primary | 仅作最近完整EOD背景 |
+| Market State | `data/market_state_latest.json` | 2026-09-29；77品种 | ok/last-good | 1/3/5/20D、RV20、OI、curve |
+| Physical | `data/physical/latest.json` | requested 2026-09-29；09-30 08:20 | 18/20按原生频率fresh；SC/LU unavailable | 仅原生频率背景；basis全为C级，不入方向评分 |
+| External repo | `data/external/latest.json` | 2026-09-29 | 17/22 fresh；context_only | 日频背景，不当可执行套利 |
+| 早前Night | `report_input.night_session` + `data/night_session/last_run_status.json` | trading_date=2026-09-30；session 09-29晚至09-30凌晨；08:01:30 | data_fresh=true、validation=true、published=true；coverage_complete=false | 属于今天已完成的连续交易阶段；不是今晚未来行情 |
+| Night明细 | `data/night_session/latest.json` | 0字节 | empty | 不能下钻；仅使用统一输入内嵌代表合约，禁止跨月替代 |
+| Options | `data/options/quality_latest.json`、`data/options/latest.json` | 2026-09-29；13,324条、184 series | 180 surface-ready、46 positioning-ready、0 execution-ready；`surface_latest.json` empty | T-1研究截面；无当前报价执行权 |
+| Metadata | `data/contract_meta.json` | 2026-09-29 | partial_error；有效匹配约73.45%，动态参数约30.15% | 缺失参数一律标“未确认” |
 
-| 模块 | 日期/生成时间 | 状态 | 本期用途与限制 |
-|---|---|---|---|
-| Futures | 2026-09-29 / 18:57 BJT | ok；五所；`full_market_ready=true`；source-date match 100% | 806个具体合约；unknown/duplicate/invalid OHLC/negative volume-OI均0；4个placeholder已排除排行；critical errors 0 |
-| Market State | 2026-09-29 / 18:57 | ok；77品种 | 同合约1/3/5/20D、RV20、量仓z、near-next curve；个别新品历史不足时不输出z |
-| Physical | 2026-09-29 / 19:09 | ok，18/20 fresh，2 unavailable | 仅绝对现货水平；没有可验证变化序列，不能单独计完整实体层；Basis均C级、只作context |
-| External（日频） | 2026-09-29 / 19:09 | ok，17/22 fresh，5 unavailable | 全部`context_only`，不是exact-contract进口套利 |
-| Night Session | 快照trading_date=2026-09-24；状态任务trading_date=2026-09-29 / 08:06 | **stale/validation failed/unpublished** | 状态任务0条Night合约、806 query errors/806 unresolved；统一输入旧快照423条但同样invalid。今日早前Night close、return-vs-close、day-follow-through、Night curve均缺失 |
-| Options | 2026-09-29 / 18:58 | 13,324合约、184 series；39/64产品 | 180/184 series surface-ready；positioning-ready 46；execution-ready 0；IV 98.92%、OI 68.97%、bid/ask 0%；全局surface文件为empty，但统一输入逐series紧凑层可用 |
-| Contract Metadata | 2026-09-29 / 18:57 | partial_error | DCE contract-info失败、GFEX source-date未验证；动态margin/limit覆盖不足。前三卡缺口逐卡披露，不能据静态值直接下单 |
+核心期货质量闸门：五所（SHFE/INE/DCE/CZCE/GFEX）均覆盖，806合约、77品种，`full_market_ready=true`，`source_date_match_pct=100%`，critical errors=0；4条OHLC占位记录已排除，5条仓单序列沿用。`official_complete=false`，故事实表述为“经验证的供应商主源EOD”，不是五所官方全量完成。
 
-Night质量字段：`data_fresh=false`、`validation_passed=false`、`published=false`、`coverage_complete=false`；状态任务`night_session_contract_count=0`、`missing_timestamp/price/quote=0`、`query_error=806`、`unresolved_contract=806`。旧统一快照的`coverage_pct=52.48%`不解释为本期完整率。由于本期真正缺失的是应得的9月29日具体Night数据，所有涉及昨夜路径的结论降级为“证据不足”；本期不启用媒体Night fallback去伪造exact-contract OHLC。
+Night质量闸门：423个有效夜盘合约、37品种；outside-window 165、no-night-trade 4、missing timestamp/price/quote均0；query error与unresolved各214。`coverage_complete=false`的原因是真实未解析合约，不把合法无夜盘或outside-window误报为错误。Top候选BR2611、OI701在内嵌摘要中有exact-contract记录；DCE候选EB没有有效Night记录。
 
-五所核心期货均完整，DCE只缺**合约参数**而非行情，因此中国市场价格扫描仍完整；仓单方面SHFE/DCE刷新失败，5条last-good沿用只作背景。原始读取状态：report_input/期货/市场状态/Physical/External/Options=ok；surface_latest=empty（不是截断）；Night=stale+validation failure；basis/member rankings=missing；contract metadata=partial_error。
+时间纪律：9月30日早前Night归属交易日9月30日，只能解释隔夜价格发现。仓库截至19:42没有9月30日日盘EOD，也没有可核验盘中路径，因此**不能计算早前Night→日盘follow-through/reversal、不能判断今日收盘曲线确认、不能判断晨间条件是否触发**。这是一项数据不足，不是“9月30日市场无异常”。
 
-## 三、商品仪表盘（展示12项；全量扫描见覆盖核对）
+根据[上期所国庆/中秋安排（2026-09-21）](https://www.shfe.com.cn/publicnotice/notice/202609/t20260921_833503.html)，9月30日晚无夜盘，10月1日至7日休市，10月8日08:55集合竞价，10月8日晚恢复夜盘。故21:00不存在可交易窗口。
 
-`1D/5D`为同一具体主力结算收益；curve为近月减次月，正=backwardation。早前Night列统一为缺失，因为仓库没有9月29日有效快照；这不是“昨夜无波动”。
+## 三、商品仪表盘（12项展示；不限制全市场扫描）
 
-| 板块/品种 | 合约 | EOD close/settle | 1D / 5D | volume / OI / ΔOI | curve | Basis/Physical | 早前Night / day follow | 15:00后海外 | Options readiness | 21:00信号 |
-|---|---:|---:|---:|---:|---:|---|---|---|---|---|
-| 芳烃 BZ | BZ2611 | 8763 / 8616 | +1.82% / +3.46% | 98,152 / 24,727 / -76 | +7.66% back | 无高质basis/实体变化 | 缺失/不可算 | Brent、WTI约-0.9%/-1.0% | 无可执行series | 高开追价差；等45分钟 |
-| 芳烃 EB | EB2611 | 9917 / 9750 | +1.59% / +2.61% | 1,133,222 / 353,335 / +8,529 | +5.23% back | 无高质basis | 缺失/不可算 | 原油回落，反对追多 | chain未覆盖 | 回撤确认后才研究 |
-| 贵金属 AG | AG2612 | 14848 / 14906 | -1.79% / -8.25% | 299,463 / 277,181 / +14,920 | -0.22% contango；z=-1.67 | 仓单刷新失败 | 缺失/不可算 | 银约60.98、日内转正约0.6%，与国内弱势冲突 | S/P/E=是/否/否；ATM14900 IV38.63% | 不追空，等30分钟反抽 |
-| 铝链 AO | AO2701 | 2656 / 2658 | -1.59% / -2.39% | 218,053 / 266,990 / +34,128 | -0.61% contango | 无高质basis | 缺失/不可算 | LME铝代理不精确 | 是/是/否；ATM2650 IV16.62% | 反抽失败才偏空 |
-| 橡胶 NR | NR2612 | 16410 / 16420 | -3.07% / +2.95% | 56,274 / 75,544 / +1,475 | -0.57% contango | 无高质basis | 缺失/不可算 | SGX/日胶精确映射缺失 | 是/否/否；ATM16400 IV21.92% | 等30分钟，不追首跳 |
-| 原油 SC | SC2611 | 711.9 / 716.9 | -2.34% / -1.90% | 195,579 / 29,669 / -2,741 | +1.94% back；z=-1.24 | 无高质basis | 缺失/不可算 | WTI91.64、Brent104.32，均约-1% | 是/否/否；ATM720 IV74.70% | 偏低开；等45分钟 |
-| 燃料油 FU | FU2611 | 4438 / 4418 | +0.64% / +4.54% | 641,064 / 150,615 / -19,038 | +22.97% back | 现货7637.5，但C级basis | 缺失/不可算 | 原油回落，反对追多 | 是/否/否；ATM4400 IV71.20% | 内外冲突，等45分钟 |
-| 沥青 BU | BU2611 | 5246 / 5195 | +0.83% / -2.57% | 1,007,133 / 208,969 / -15,138 | +11.76% back | 无高质basis | 缺失/不可算 | 原油回落 | 是/是/否；ATM5200 IV48.82% | 高位不追；等45分钟 |
-| 聚酯 TA | TA701 | 6350 / 6254 | +0.06% / -0.06% | 1,108,743 / 1,086,512 / +16,220 | +4.85% back；z=1.93 | 现货7328.75，C级basis | 缺失/不可算 | 原油回落 | 是/是/否；ATM6300 IV32.96% | 平低开风险；等30分钟 |
-| 航运 EC | EC2611 | 2845 / 2871.5 | -1.17% / +10.40% | 20,962 / 24,626 / -840 | -26.68% contango；roll flag | 无最新运价确认 | 制度无Night/不适用 | 无15:00后同口径指数 | 无期权 | 下一窗口9/30 09:00 |
-| 畜牧 JD | JD2611 | 3698 / 3717 | -2.31% / -3.10% | 325,331 / 208,218 / -45,089 | +3.17% back | 无可验证库存变化 | 无制度Night/不适用 | 不适用 | 无可执行series | 下一窗口9/30 09:00 |
-| 新能源 LC | LC2701 | 118780 / 119540 | -1.06% / -8.80% | 255,636 / 415,687 / -8,400 | +0.13% back | 现货122000，C级basis | 无制度Night/不适用 | 锂代理约-2.3% | 是/否/否；ATM120000 IV44.28% | 下一窗口9/30 09:00 |
+> 下表EOD均为**9月29日last-good**，不是9月30日收盘；Night为归属9月30日交易日、已经完成的连续交易阶段。`1D/5D`按同一具体主力结算序列；curve为近月减次近月百分比，不能当现货基差。
 
-海外观测约19:30 BJT：WTI 91.64（-1.04%）、Brent 104.32（-0.91%）、金4160.67（+1.11%）、银60.98（+0.59%）、DXY约101.33（+0.13%）、USD/CNH约6.71且较前收走低。它们是海外实时/准实时代理，不表示中国期货已交易这些变化。油价日内来源间点位有小差异，方向均为自欧洲早段高位回落；人民币偏强部分抵消美元走强对进口成本的抬升。[海外报价](https://tradingeconomics.com/commodities)；[美元](https://tradingeconomics.com/united-states/currency)；[USD/CNH](https://ca.investing.com/currencies/usd-cnh-historical-data)。
+| 板块 | 品种/合约 | 9/29 close/settle | 1D / 5D | Vol / OI / ΔOI | EOD curve | Physical/basis | 9/30早前Night close；vs close/vs settle；ΔOI | 15:00–19:42海外 | Options readiness | 当前信号 |
+|---|---|---:|---:|---:|---:|---|---|---|---|---|
+| 橡胶 | BR2611 | 15460 / 15390 | -0.87% / +3.67% | 141383 / 55749 / -13960 | +1.10% backwardation | 缺失/C级 | 16155；+4.50%/+4.97%；+8194，fresh 23:00 | 合成橡胶代理+2.10%，天然橡胶代理-0.95%，冲突 | 无执行报价 | 节后30分钟确认，不追gap |
+| 橡胶 | NR2611* | 16490 / 16525 | NR主力序列-3.07% / +2.95% | 78941 / 42104；主力ΔOI+1475 | NR curve -0.57% contango | 缺失/C级 | 17070；+3.52%/+3.30%；-1158，fresh 23:00 | 天然橡胶代理-0.95%，反向 | series surface可用；execution否 | 竞争解释强，等待45分钟 |
+| 橡胶 | RU2701 | 19010 / 19040 | -2.13% / +1.14% | 254432 / 132155 / -14021 | +0.22% backwardation | context/C级 | 19665；+3.45%/+3.28%；+11873，fresh 23:00 | 天然橡胶代理-0.95%，反向 | surface可用；execution否 | 不把夜盘反弹直接外推 |
+| 油脂 | OI701 | 10057 / 10044 | -0.89% / -1.39% | 216312 / 274068 / -6074 | +1.74% backwardation，z=+1.11 | context/C级 | 10234；+1.76%/+1.89%；+6681，fresh 23:00 | 棕榈油代理-0.67%，反向 | surface可用；execution否 | 节后重新检验相对强势 |
+| 贵金属 | AG2612 | 14848 / 14906 | -1.79% / -8.25% | 299463 / 277181 / +14920 | -0.22% contango，z=-1.67 | 仓单/现货仅context | 14958；+0.74%/+0.35%；+7768，fresh 02:30 | 白银约-0.8%至-1.25%，反向 | ATM IV 38.63%，surface是；position/execution否 | 原空头条件过期，未获新确认 |
+| 贵金属 | AU2612 | 898.78 / 897.86 | -1.56% / -5.06% | 237449 / 225820 / -677 | -0.15% contango | 仓单/现货仅context | 905.02；+0.69%/+0.80%；+1932，fresh 02:30 | 金价约持平；DXY略强、实际利率代理高位 | surface是；execution否 | 黄金信用叙事未形成方向证据 |
+| 有色 | AO2701 | 2656 / 2658 | -1.59% / -2.39% | 218053 / 266990 / +34128 | -0.61% contango | context/C级 | 2662；+0.23%/+0.15%；-278，fresh 01:00 | 工业金属代理小涨 | IV 16.62%，surface/position是；execution否 | 原空头条件过期 |
+| 原油 | SC2611 | 711.9 / 716.9 | -2.34% / -1.90% | 195579 / 29669 / -2741 | +1.94% backwardation | SC实体unavailable | 705.2；-0.94%/-1.63%；-1162，fresh 02:30 | WTI/Brent约+1.45%/+1.63%，但不同源合约报价分散 | IV 74.70%，surface是；execution否 | 等EIA；长假gap风险高 |
+| 燃料 | FU2611 | 4438 / 4418 | +0.64% / +4.54% | 641064 / 150615 / -19038 | +22.97% backwardation，z=+1.38 | context/C级 | 4373；-1.46%/-1.02%；-5144，fresh 23:00 | 原油代理转强 | surface是；execution否 | 内外盘冲突，节后再定价 |
+| 芳烃 | PX611 | 9388 / 9226 | -0.56% / +0.13% | 319210 / 124540 / -14699 | +0.15% | context/C级 | 9228；-1.70%/+0.02%；-9277，fresh 23:00 | 原油上涨 | surface/position是；execution否 | vs close弱、vs settle平：弹性下降 |
+| 沥青 | BU2611 | 5246 / 5195 | +0.83% / -2.57% | 1007133 / 208969 / -15138 | +11.76% backwardation | context/C级 | 5142；-1.98%/-1.02%；-24314，fresh 23:00 | 沥青代理-2.51%，同向 | surface/position是；execution否 | 弱势但不可追，等45分钟 |
+| 苯乙烯/航运 | EB2611 / EC2611 | 9917/9750；2845/2871.5 | EB +1.59/+2.61；EC -1.17/+10.40 | EB ΔOI+8529；EC -840 | EB +5.23%；EC -26.68%且roll flag | context/C级 | DCE Night缺失；EC无夜盘 | 苯乙烯代理+2.02%；集运指数-0.66% | execution均否 | EB旧多头窗口过期；EC曲线不可套利化 |
 
-## 四、相比上一期真正变化
+\* NR的Night代表合约是NR2611，而Market State主力是NR2612；因此不把NR2611的夜盘涨幅替代NR2612正式交易卡，也不计算NR2612的隔夜—日盘分解。
 
-1. **AG弱势延续但赔率下降。** 9月29日AG2612再跌2.17%（close口径），5D结算回报-8.25%，同时ΔOI +14,920、量能z=3.08；这只说明价仓归因线索，不等于已知“新空”。日内低点14745后收14848，首跳追空的坏成交风险上升。
-2. **纯苯—苯乙烯成为最强链。** BZ2611/EB2611收盘分别+3.56%/+3.33%，两者backwardation为7.66%/5.23%；EB量能z=1.97且ΔOI +8,529。但15:00后海外油价约跌1%，新增外盘信息反对21:00直接追多。
-3. **EC从昨日极强转为日内回撤。** EC2611高3020、低2781.5、收2845，收盘-2.08%，ΔOI -840；昨日“回撤接受多”上午条件是否触发无法由EOD路径核实，且今日curve为-26.68%并带roll flag，旧多头候选降级。
-4. **AO/NR出现价跌仓增线索。** AO收盘-1.67%、ΔOI +34,128；NR收盘-3.13%、ΔOI +1,475，且二者contango。方向层支持下行，但实体和境外橡胶/氧化铝映射缺失。
-5. **FU/BU继续强，但更像曲线与风险溢价而非全面量仓确认。** FU/BU收盘分别+1.09%/+1.82%，backwardation很深，但ΔOI分别-19,038/-15,138；海外原油随后回落，前期多头只保留条件观察。
+## 四、相比上一交易日/今晨真正变化
+
+1. **数据层面变化最大**：统一输入在08:20加入了有效的9月30日交易日Night摘要，但19:42仍没有9月30日日盘EOD。相较今晨，我们能确认BR/RU/NR/OI等早前夜盘价格，却仍不能确认白天是否延续或反转。
+2. **橡胶链成为最强早前Night链**：BR2611 +4.50%、NR2611 +3.52%、RU2701 +3.45%（均vs previous close）。BR同时增仓；NR减仓。它们同属价格—成交—持仓第1层，不能拆成多层证据。
+3. **菜油早前Night相对强**：OI701 +1.76%，且9月29日曲线backwardation +1.74%；但19:30附近棕榈代理偏弱，境内外不一致，不能直接推广为油脂链共振。
+4. **PX/TA/PR等close锚与settlement锚明显分歧**：PX夜盘vs close -1.70%，vs settlement约0；说明9月29日close已偏离settlement，不能把相对昨结算的平盘误写成没有隔夜新增压力。
+5. **海外油价在中国收市后偏强但报价离散**：Trading Economics快照显示WTI/Brent约+1.45%/+1.63%；Reuters较早时段也偏强，但其他来源的不同合约出现回落。能源映射只列为21:00/节后gap证据，不能写成中国期货已交易。
+6. **晨间交易窗口全部过期**：AG/AO/NR条件价差和EB/SC观察只适用于9月30日日盘且要求14:30前退出。没有成交反馈，触发状态记为unknown；不得假定用户持仓，也不得将这些条件移到10月8日。
 
 ## 五、产业链地图
 
-| 链条 | 方向/强弱 | 价格—曲线—实体—海外 | 最大缺失 | 置信度 |
-|---|---|---|---|---|
-| 纯苯→苯乙烯→聚酯 | **最强，但不追** | BZ/EB大涨且强back；TA收盘强于结算但1D结算近零；海外油价回落 | 苯乙烯/纯苯实体库存、利润与Night路径 | 中 |
-| 贵金属 | 弱，AG优于AU作为下行观察 | AG/AU 5D -8.25%/-5.06%；AG价跌仓增、contango加深；海外金银在欧洲时段反弹、形成冲突 | 当日Night、当前期权bid/ask、白银库存 | 中 |
-| 橡胶 | 弱 | NR/RU收盘-3.13%/-2.29%；NR价跌仓增、contango，RU价跌仓减 | 日胶/新胶精确盘后映射、库存变化 | 中低 |
-| 原油—燃料 | 内部分化 | SC跌、FU/BU涨；三者backwardation仍在，15:00后Brent/WTI回落 | exact-contract裂解利润、仓单/库存方向 | 中低 |
-| 航运 | 高波动回撤 | EC 5D仍+10.40%，但今日收盘-2.08%、OI下降、curve极端contango且roll flag | 同口径运价、盘中触发路径、期权工具 | 低至中 |
+| 产业链 | 方向/强弱 | 价格与Night | Curve | 库存/实体 | 期权 | 海外 | 最大缺失 | 置信度 |
+|---|---|---|---|---|---|---|---|---|
+| 橡胶（BR/RU/NR） | 早前Night最强；节后偏多问题 | BR/RU/NR均大涨；BR增仓，NR减仓 | BR/RU backwardation；NR contango | 实体层缺可评分数据 | surface部分可研究，execution=0 | 合成/天然橡胶代理分化 | 9/30 EOD与社会库存 | 中低 |
+| 油脂（OI/P/Y/RM） | OI相对强，板块未共振 | OI夜盘+1.76% | OI backwardation z+1.11 | 现货仅C级context | 无执行报价 | 棕榈代理-0.67% | 9/30日盘与高质量基差 | 中低 |
+| 原油—燃料—沥青（SC/FU/LU/BU） | 高波动冲突 | SC/FU/BU早前Night弱，海外午后油价强 | SC/FU/BU均backwardation | SC/LU实体unavailable | SC IV高；execution=0 | 海外油价分歧，EIA未发布 | 9/30 EOD、EIA结果、进口全口径 | 低 |
+| 贵金属（AU/AG） | 弱趋势但反弹/宏观冲突 | 9/29弱，早前Night小幅反弹 | AG/AU轻度contango | 仓单不等于社会库存 | AG surface可用，执行不可用 | 银弱、金平，DXY略强而美债收益率回落 | 9/30 EOD与实时组合报价 | 中低 |
+| 芳烃—聚酯（PX/TA/EB） | 9/29强弱分化，新增弹性下降 | PX对close走弱；DCE EB Night缺失 | EB backwardation但样本仅4；PX近乎平 | context-only | surface可研究、不可执行 | 原油转强、苯乙烯代理强 | 9/30 EOD与DCE Night | 低 |
 
-## 六、机会排行榜（研究吸引力，不是胜率）
+当前regime：**节前数据断层 + 长假gap累积 + 早前Night橡胶强势 + 海外能源再定价 + 全期权执行未就绪**。最强链为早前Night的橡胶；最弱可验证链为沥青/部分芳烃的close锚压力，但缺9月30日日盘确认。
 
-| 排名 | idea_id / 方向 / 工具 | 逻辑/赔率/催化/价曲波/拥挤技术 | 总分 | 五层证据 | 判断 / 证据 / 执行 |
-|---:|---|---:|---:|---|---|
-| 1 | `COM-E-AG2612-DOWNSIDE-20260928` 偏空；AG2612或11/24熊市put spread | 21/17/14/9/8 | **69** | 支持1价仓、2contango；4海外反弹反对；3缺失；5可研究但不可执行 | 存在待验证优势 / 部分 / 等触发及报价 |
-| 2 | `COM-E-AO2701-DOWNSIDE-20260929` 偏空；AO 12/25熊市put spread | 19/16/11/10/10 | **66** | 支持1价仓、2contango；5中性；3/4缺失 | 存在待验证优势 / 部分 / 待报价 |
-| 3 | `COM-E-EB2611-BACKWARDATION-20260929` 回撤多；EB2611 | 18/14/12/12/9 | **65** | 支持1价量仓、2back；4油价回落反对；3/5缺失 | 存在待验证优势 / 部分 / 等触发与参数 |
-| 4 | `COM-E-NR2612-DOWNSIDE-20260929` 偏空；NR2612/put spread | 18/14/10/11/10 | **63** | 支持1、2；5中性；3/4缺失 | 存在待验证优势 / 部分 / 等30分钟与报价 |
-| 5 | `COM-E-EC2611-ROLL-20260924` 回撤接受多，研究观察 | 17/11/10/8/8 | **54** | 1仅弱支持；2极端contango反对；3/4/5缺失 | 证据不足 / 不足 / 9月30日盘重新验证 |
+## 六、机会排行榜（研究排序，不是胜率或仓位指令）
 
-没有70+候选。两层有效独立支持的项目最高69，未用叙事补足实体或境外层；Options ready只表示可研究surface，不等于支持方向或可成交。
+| 排名 | idea_id | 方向/周期/工具 | 分项（逻辑/赔率/催化/价曲波/拥挤） | 总分 | 支持层；反证/缺失 | 研究判断｜证据｜执行 |
+|---:|---|---|---|---:|---|---|
+| 1 | `COM-E-BR2611-RELSTRENGTH-20260930` | 偏多；10月8日后1–5D；BR2611期货（仅研究） | 19/15/12/10/11 | **67** | 支持1、2；反对4；缺3、5 | 存在待验证优势｜部分｜休市，等待10/8重报价与参数 |
+| 2 | `COM-E-OI701-RELSTRENGTH-20260930` | 偏多；1–5D；OI701期货 | 18/14/11/10/10 | **63** | 支持1、2；反对4；缺3、5 | 存在待验证优势｜部分｜休市，等待10/8触发 |
+| 3 | `COM-E-ENERGY-POSTEIA-20260930` | 事件后择向；1–3D；SC2611/FU2611研究篮子 | 17/12/13/8/8 | **58** | 支持2、4；反对1；缺3、5 | 证据不足｜不足｜休市，待EIA和9/30EOD |
+| 4 | `COM-E-AG2612-DOWNSIDE-20260928` | 原偏空；已过期；AG熊市看跌价差 | 17/12/8/9/9 | **55** | 支持2；反对1、4；中性5；缺3 | 未发现当前优势｜部分｜已过期，节后重新立项 |
+| 5 | `COM-E-EC2611-ROLL-20260924` | 曲线观察；1–10D；EC2611/远月仅观察 | 14/10/10/7/7 | **48** | 支持1；曲线pair roll反证；缺2–5 | 证据不足｜不足｜休市/不可执行 |
 
-## 七、前三名研究卡
+总分已逐项复核，均未超过分项上限；只有两个有效独立支持层的候选不超过69分。评分不代表胜率、期望收益或仓位。没有70+候选，不等于没有研究价值。
 
-### 1. AG2612下行延续（条件卡，非当前委托）
+### 重点候选的定价分歧
 
-- **市场隐含与分歧：** 市场已计入连续两日大跌和节前降风险；我们的分歧仅是“反抽若无法收复14980—15080，弱势可能再扩张”，不是认为任何价格都应追空。新增支持是9月29日价跌、OI与量能同步扩张及contango加深；竞争解释是节前移仓/对冲造成OI变化，且海外银已反弹。
-- **最佳表达：** 优先AG2612对应2026-11-24到期1×1熊市put spread（买14900P、卖14000P）；只在21:30后取得双边报价、净支出≤价差宽度35%且盘口容量合格时研究。否则只观察线性期货，不用未报价期权假装限定风险。
-- **入场/分批：** 好成交：反抽14980—15080失败后，15分钟收回14920下，1/2风险；中成交：跌破14745后反抽不越14820，1/3风险；坏成交：首跳直接低于14550，放弃。TP1 14550，TP2 14150；时间止损1—3D无扩张。逻辑失效：30分钟接受15220上方；彻底失效：15450上方且海外银转强。
-- **风险与参数：** option最大损失=实际净支出，未报价不可计算；Greeks、滑点、净R待当前报价。AG乘数15kg、tick 1元/kg、tick value 15元；EOD名义价值约222,720元/手；静态last trading day 2026-12-15。9月29日结算后交易所通知AG2612涨跌停20%、套保保证金21%、一般保证金22%；线性期货1个涨停压力约44,720元/手、连续2个约98,384元/手，最大损失并非有限。夜盘通常21:00—02:30；本卡要求在2026-10-8恢复交易前清掉无法承受长假gap的Delta。来源：[上期/节日参数通知](https://www.shfe.com.cn/publicnotice/notice/202609/t20260921_833503.html)。
+- **BR**：市场早前Night已把强势定价到+4.50%。我们的分歧不是“还会马上上涨”，而是若10月8日大gap没有回吐且BR/RU/NR重新同向，9月29日低OI状态后的补库/资金回流可能延续；最强反证是天然橡胶海外代理走弱、9月30日EOD缺失及长假消息累积。
+- **OI**：市场隐含菜油相对强于9月29日弱势收盘。我们的分歧仅是相对强势可能延续，非油脂普涨；反证是棕榈代理走弱、实体和高质量basis缺失。
+- **能源**：海外在中国收市后重新抬价，但早前SC/FU/BU均弱。真正催化是22:30 EIA及长假期间地缘/出口恢复，竞争解释是不同月份合约与供应恢复导致报价分歧；缺进口平价全口径，不能称跨市场套利。
 
-### 2. AO2701下行（待报价卡）
+## 七、交易研究卡（仅2张，不凑数）
 
-- **事实/推断：** EOD 2656/2658，日内低2639；ΔOI +34,128、价跌仓增只是归因线索；near-next contango -0.61%。推断是弱势可能延续；反证是5D仅-2.39%、没有实体库存变化和精确LME氧化铝映射。
-- **表达：** AO2701对应2026-12-25到期买2650P/卖2500P 1×1；surface-ready、positioning-ready，但bid/ask=0，execution-ready=false。最大净支出/最大损失、Greeks、滑点一律待报价。
-- **入场/退出：** 21:30后反抽2680—2700失败且重新跌破2640，先1/2；跌破2639后回抽不过2650再加1/4。TP1 2580，TP2 2500；30分钟接受2720上方止损，2740上方逻辑失效；3D不扩张退出。首跳低于2580不追。
-- **参数/压力：** 仓库仅确认last trading day 2027-01-15，乘数、tick、margin、limit、夜盘参数在本期metadata中缺失，故线性期货不可列为可执行替代，也不编1/2涨跌停金额。
+### 研究卡1：BR2611节后相对强势确认（非当前可执行卡）
 
-### 3. EB2611 backwardation回撤多（参数待确认卡）
+- 事实：9/29 close/settle 15460/15390；9/30早前Night OHLC 15260/16210/15230/16155，vs close +4.50%、vs settle +4.97%，Night ΔOI +8194。9/29曲线+1.10% backwardation。
+- 定价/推断：市场已大幅预交易橡胶利多；只有节后gap不回吐并获RU/NR同向与曲线维持确认，才存在延续优势。Night ΔOI只作归因线索，不等于已知新多。
+- 最佳表达：BR2611单腿多，仅在参数核验后；不使用未定义的跨品种“中性”篮子。今晚无交易。
+- 入场：10月8日09:30后，首30分钟低点不破且价格重新站上当日VWAP；分两批50%/50%。若集合竞价较16155高开>3%，等45分钟，不追首跳。
+- 好/中/坏成交：好=VWAP下0–0.3%回踩成交；中=VWAP附近；坏=高于首30分钟高点追入，放弃。按计划风险R：初始止损为加权入场价下1.0%，TP1 +1.2R、TP2 +2.0R；滑点和涨停使实际损失可大于计划R。
+- 失效/退出：跌破首30分钟低点且30分钟不收复，或BR强而RU/NR与curve反向；TP1减半、TP2或第5交易日退出。节后首日14:30仍未确认则取消。
+- 风险：期货最大损失不由结构限定；单一试仓计划止损≤NAV 0.50%，压力损失按1/2个涨跌停另算。metadata仅确认last trading day=2026-11-16；multiplier/tick/margin/limit/night-session字段在仓库未确认，未补齐前不执行。交割风险高，最迟进入交割月前滚动。
 
-- **事实/错价：** close 9917、settle 9750、日内9555—9996；1D结算+1.59%、5D +2.61%、ΔOI +8,529、near-next back 5.23%。市场计入芳烃偏紧；我们的分歧是回撤若守9750可能仍有正carry。但海外原油收盘后约跌1%，最强反证是成本端风险溢价回吐。
-- **表达与入场：** 仅EB2611线性期货；DCE期权series未覆盖。21:45后9750—9820获得30分钟接受并重新站上9920，1/3试仓；不在9996上方首跳追价。止损9650；逻辑失效9555下方接受或backwardation收窄至2%以下。TP1 10150、TP2 10400；时间止损2D。
-- **风险：** 最大损失不有限。DCE合约元数据本期为`observed_contract_only`，乘数、tick、margin、limit、last trading day均未确认，故本卡只是研究触发器；参数确认前不得下单。最坏情景为海外油价继续下挫、节前流动性消失及假期地缘gap。
+### 研究卡2：OI701节后相对强势（非当前可执行卡）
 
-所有卡风险预算：单一试仓最大损失NAV 0.25%—0.50%；因贵金属/能化同因子合并计算；长假前不得把条件触发自动升级为确认仓位。若使用期货，止损只是计划风险，不是结构性最大损失。
+- 事实：9/29 close/settle 10057/10044；早前Night OHLC 10057/10256/10051/10234，vs close +1.76%、vs settle +1.89%，Night ΔOI +6681；EOD curve +1.74% backwardation。
+- 定价/推断：市场对菜油做了相对强势定价，但海外棕榈偏弱。若10月8日菜油强、棕榈/豆油不跟，可能是品种特异性；若三油同跌则Night信号失效。
+- 最佳表达：OI701单腿多，非dollar-neutral、非beta-neutral。今晚无交易。
+- 入场：10月8日10:00后，仅当OI701站上首小时VWAP且OI/P、OI/Y价差相对开盘扩大；50%试仓，价差维持至10:30再加50%。不使用9月30旧价挂单。
+- 好/中/坏成交：好=VWAP±0.2%；中=VWAP上0.2%–0.5%；坏=超过首小时高点0.5%追入，放弃。止损为加权入场下1.2%或相对价差回到开盘值；TP1 +1R、TP2 +1.8R；第5交易日退出。
+- 参数：multiplier=10吨/手，tick=1元/吨，tick value=10元；以早前Night close估算名义本金约102,340元/手。仓库margin=9%、price limit=8%、last trading day=2027-01-14。1/2个涨跌停压力约8,187/16,374元每手（以10234静态估算，不含保证金上调、滑点）。
+- 失效/退出：OI高开后30分钟内回补全部gap、OI/P与OI/Y不扩、或新高质量basis/库存反向。交割月前滚动；单一试仓计划损失≤NAV 0.50%。
+
+研究卡不足三张：能源篮子缺9月30EOD、EIA结果、精确跨品种配比与完整参数，不定义伪中性篮子。
 
 ## 八、商品期权专项
 
-- 截面为**T日2026-09-29 EOD，本期新增**：13,324合约、184 series、180 surface-ready、46 positioning-ready、0 execution-ready；全局surface文件empty，但统一输入含逐series计算结果，读取状态不是truncated。
-- AG2612 11/24：ATM 14900、ATM IV 38.63%、RR25 +2.86 vol、BF25 +1.78；AO2701 12/25：ATM2650、IV16.62%、RR25 +3.89、BF25 +1.00；NR2612 11/24：ATM16400、IV21.92%；FU2611 10/19：ATM4400、IV71.20%；SC2611 10/14：ATM720、IV74.70%。RR符号口径未用于推断dealer方向。
-- IV-RV：AG IV约38.6%略高于RV20 34.2%；AO IV16.6%略高于RV14.3%；NR IV21.9%低于RV25.0%；FU/SC IV显著高于RV39.1%/59.2%。这些差值不单独证明便宜/昂贵；节前跳空与期限错配会改变可比性。
-- `positioning_ready=false`时不使用PCR/OI拥挤；`dealer_gamma_direction_known=false`，禁止推断做市商净Gamma。所有series bid/ask coverage=0，因此不报权利金、净成本、滑点、Greeks或期望收益。event convexity只保留有限损失结构方向，执行前必须重新取价。
+最新有效截面是2026-09-29（T-1相对9月30日），本期无新增成交报价。全样本13,324条、184 series；统一输入中180个series `surface_ready=true`、46个`positioning_ready=true`、**0个`execution_ready=true`**，bid/ask coverage=0，dealer gamma方向未知。全局quality/surface文件分别为not-ready与empty，与嵌入式per-series可研究状态并存；因此只能逐series做研究，不能宣称全市场曲面就绪。
+
+- AG2612 2026-11-24：ATM 14900，ATM IV 38.63%，RR25 +2.86，BF25 +1.78；9/30早前标的反弹改变moneyness，9/29截面不代表当前报价。
+- AO2701 2026-12-25：ATM 2650，ATM IV 16.62%，RR25 +3.89，BF25 +1.01；surface/positioning可研究，execution否。
+- NR2612 2026-11-24：ATM 16400，ATM IV 21.92%，RR25 +2.48，BF25 +1.08；代表Night为NR2611，不能直接重估NR2612 Greeks。
+- SC2611：ATM IV约74.70% vs RV20约59.19%；高IV不自动等于贵，也不证明卖波动，EIA/长假跳空使尾部风险更大。
+
+event convexity结论：长假前后事件密集，但没有当前权利金和双边报价，有限损失结构优于裸期货仅是工具偏好，不是当前可执行建议。任何结构均为：**research only; manual quote and manual confirmation required before execution; no premium quoted**。回避裸卖跨假期Gamma、用旧ATM冒充当前ATM、从OI节点推断做市商净Gamma。
 
 ## 九、21:00夜盘开盘风险地图
 
-严格四层：①9月29日中国EOD如上；②今天早前Night应得但仓库缺失，不能分解；③15:00—19:40海外新增：油价下、金银反弹、美元偏强/离岸人民币偏强；④今晚21:00尚未发生，归属9月30日交易日。
+严格四层：
 
-| 品种 | 预期开盘/冲突 | 追价？ | 等待 | 最重要确认 |
-|---|---|---|---:|---|
-| AG/AU | 平至小高；海外反弹与国内弱势冲突 | 否 | 30分钟 | AG能否收复14980；COMEX银是否守60.7 |
-| SC/FU/BU | 偏低；国内燃料强而海外油价回落 | 否 | 45分钟 | Brent/WTI方向、SC 700/720、FU 4350/4450 |
-| EB/BZ/TA/PX | 平低；国内最强链面对成本端回落 | 否 | 45分钟 | EB9750、BZ8500附近接受；back是否维持 |
-| AO/NR/RU | 偏低或平；境外精确代理不足 | 否 | 30分钟 | AO2639、NR16210是否被有效跌破；OI只作线索 |
-| CF/RM/OI/P | 平低；美元偏强但CNH偏强、外盘农产品偏弱 | 否 | 30分钟 | 中国自身成交与curve，不用代理硬套 |
-| EC/LC/JD/LH | 无制度夜盘 | 不适用 | 下一日盘15—45分钟 | 9月30日09:00—09:45价量与curve |
+1. **9月30日中国完整EOD**：仓库缺失，不能作为事实。
+2. **今天早前已完成Night**：归属trading_date=2026-09-30；BR/RU/NR/OI强，SC/FU/BU弱；只是历史价格发现。
+3. **15:00–19:42海外**：原油偏强但不同源合约报价分散；银弱、金近平；DXY约101.43略强、USD/CNH约6.7065略升值；均未被中国收盘后的市场交易。
+4. **下一实际Night**：今晚无夜盘。10月8日21:00恢复夜盘；更早的中国可交易窗口是10月8日08:55集合竞价/09:00日盘。
 
-**特殊日历：** 今晚21:00仍有夜盘；9月30日日盘后，当晚无Night。10月1—7日休市，10月8日08:55集合竞价、09:00复市，10月8日晚恢复Night。节前保证金和涨跌停扩大，意味着好方向也可能是坏交易。官方安排见[上期所通知](https://www.shfe.com.cn/publicnotice/notice/202609/t20260921_833503.html)与[能源中心通知](https://www.ine.com.cn/publicnotice/notice/202609/t20260921_833506.html)。
+| 品种群 | 今晚21:00 | 下一窗口gap判断 | 是否追价 | 等待 | 首要确认 |
+|---|---|---|---|---|---|
+| BR/RU/NR | 休市 | 8天信息累积，方向不可估 | 否 | 45分钟 | 三品种同向、BR曲线、gap回补比例 |
+| SC/FU/LU/BU | 休市 | EIA与地缘使gap双向高 | 否 | 45分钟 | 海外近月、成品油裂解、SC/FU曲线 |
+| AU/AG | 休市 | 金/银分化，方向不可估 | 否 | 30分钟 | DXY、实际利率、金银比、IV新截面 |
+| OI/P/Y/RM | 休市 | OI相对强需重证 | 否 | 30分钟 | 三油价差、仓单/现货、OI变化 |
+| EC/LH/JD/LC等无常规夜盘品种 | 休市 | 10月8日09:00日盘定价 | 否 | 45分钟 | 集合竞价量、主力切换、涨跌停参数 |
 
-## 十、未来24小时/7日事件日历（北京时间）
+不值得交易：今晚所有中国商品；10月8日首跳追价；任何以9月29日EOD或9月30日早前Night为当前挂单价格的策略；C级basis套利；无bid/ask的期权；EC roll-flag曲线“套利”。
 
-| 时间 | 事件 | 影响与处理 |
-|---|---|---|
-| 9月30日09:30 | 中国官方制造业PMI；市场预期约50.1、前值49.8 | 黑色、有色、能化Delta；不在9:00预埋大仓，等数据后15—30分钟。来源：[Reuters 2026-09-29](https://www.reuters.com/business/china-factories-seen-rebounding-september-beijing-signals-more-aid-2026-09-29/) |
-| 9月30日约09:45 | RatingDog制造业PMI | 与官方PMI冲突时延迟入场，不用单一数据追价 |
-| 9月30日20:30—22:00 | 美国ADP/PCE与劳动力数据窗口（具体时点以官方日历为准） | 美元、实际利率、贵金属Vega；AG只用有限损失结构 |
-| 9月30日22:30 | EIA周度石油状态报告（常规周三10:30 ET） | SC/FU/BU/EB gap；中国当晚无Night，若无法海外对冲，日盘前主动降Delta。来源：[EIA schedule](https://www.eia.gov/petroleum/supply/weekly/schedule.php) |
-| 10月1日00:00 | USDA季度Grain Stocks（12:00 ET） | 豆、粕、油、玉米；中国休市，优先境外有限凸性或不持仓。来源：[USDA/NAL](https://esmis.nal.usda.gov/publication/grain-stocks) |
-| 10月1—7日 | 中国期货休市 | 地缘、油田/炼厂、天气累积gap；无跨市场对冲能力则9月30日收盘前减仓 |
-| 10月4日 | OPEC+七国会议 | 原油与能化Vega/Delta；目标为11月政策，避免假期裸空Gamma。来源：[Reuters 2026-09-06](https://www.reuters.com/business/energy/opec-set-keep-oil-output-policy-unchanged-sunday-sources-say-2026-09-06/) |
+## 十、未来24h / 7d事件
 
-## 十一、旧建议台账与覆盖核对
-
-### 旧建议处置
-
-| idea_id | 首次提出 | 上次状态 | 当前状态/变更原因 |
+| 北京时间 | 事件 | 受影响 | 处理 |
 |---|---|---|---|
-| `COM-E-AG2612-DOWNSIDE-20260928` | 9月28日晚 | 9月29晨72分、等待09:30 | EOD继续下跌但盘中路径不足，晨间触发未知；不假设持仓。当前降至69，原因=价格变化与海外反弹。若此前按条件建立，仅在原止损未触发且能承受长假gap时管理，禁止追增 |
-| `COM-E-EC2611-ROLL-20260924` | 9月24 | 69分、等待09:45 | 日内低2781.5低于旧参考2794，但是否形成45分钟接受未知；降至54并取消旧条件单。若此前建立，须核对成交与止损记录，不能因收盘2845自动声称持有/退出 |
-| `COM-E-FU2611-ENERGY-20260928` | 9月28 | 65分、等待09:30 | 收盘续涨但OI显著下降、海外油价转弱；移出前五正式新卡，保留观察。若此前建立，9月30收盘前评估长假敞口，不加仓 |
+| 9月30日22:30 | 美国EIA周度石油状态报告（发布前，结果未确认） | SC/FU/LU/BU、化工、航运 | 中国休市；不做过期条件单，记录为10/8 gap输入 |
+| 10月1–7日 | 中国国庆/中秋休市；海外能源、金属、农产品持续交易 | 全品种 | Delta降至零或预先有限化；本报告不假设真实持仓 |
+| 10月1–7日 | 地缘冲突、海峡/红海航运、矿山/油田/炼厂突发 | 油、运价、金属、橡胶 | 只能用有限损失工具；等待中国重开45分钟 |
+| 未来7日 | OPEC+/IEA/CFTC/USDA/天气与交易所临时参数 | 能源、农产品、全市场保证金 | 截点前未核实具体日程者不编时间；以官方日历复核后再纳入 |
+| 10月8日08:55/09:00 | 中国集合竞价/日盘重开 | 全部中国商品 | 所有旧触发作废；先核验涨跌停、保证金、主力合约和实时报价 |
+| 10月8日21:00 | 节后首个夜盘恢复 | 有夜盘品种 | 首跳不追；15/30/45分钟按品种等待 |
 
-### 覆盖核对
+人民币/美元：DXY略强与USD/CNH小幅下降（人民币略强）方向相互抵消，对人民币计价商品不是单一方向信号。黄金信用主题与AI现金流/Capex主题本期均未形成可识别、可归因的商品错价；PMI改善只作宏观背景，不预设金属多头。
 
-- **应覆盖：** 用户基线63个不同代码及动态新增；统一输入实际77个产品。强制清单全部有价格/曲线扫描，LPG以DCE代码`PG`对齐；动态新增BZ、LG、OP、PD、PL、PT等一并扫描。
-- **实际取数且已分析：** 黑色建材9/9；有色贵金属12/12；能源炼化化工21/21（含PG别名）；新能源3/3及GFEX新增PT/PD；农产品油脂饲料畜牧17/17；航运EC 1/1。策略类别覆盖方向、curve、跨期、跨品种、跨市场代理、期权vol/skew/event convexity；周期覆盖1D/3D/5D/20D（足够历史者）。
-- **数据不足：** 今日Night全模块；高质量basis；SHFE/DCE当日仓单；多数产品实体变化；5个External目标；25个期权产品；全部期权bid/ask；DCE合约参数、GFEX source-date验证。缺口限制对应工具，不删除品种。
-- **不适用/流动性不足：** EC/LC/JD/LH等无Night；小品种/近月若量仓不足不入榜，但仍完成扫描。placeholder记录4条已排除异常排行。
-- **未入榜板块异常：** 黑色无一致强趋势，FG价跌但back、仅噪音候选；农产品JD/LH价跌仓减更像去风险线索；软商品CF价跌仓增且contango，值得跟踪但缺Physical变化；新能源LC 5D -8.80%但价跌仓减、曲线近乎平，未发现三层优势；航运EC为最值得继续验证的roll异常。
+## 十一、旧建议台账
 
-压力测试必须合并考虑1/2个涨跌停、相关性破裂、流动性消失、保证金上调、9月30无Night后的长假gap、IV跳升/塌陷、交割挤压及人民币急变。研究分数不是胜率、期望收益或仓位建议。
+| idea_id | 首次提出 | 原始期限/触发 | 上次状态 | 当前状态 | 变更原因与处置 |
+|---|---|---|---|---|---|
+| COM-E-AG2612-DOWNSIDE-20260928 | 09-28 | 9/30日盘失败反弹；14:30前退出 | 晨间69，等待触发 | 已过期/触发未知 | 时间窗口结束；早前Night反弹、海外银弱，证据冲突。若此前按条件建立，按原计划9/30 14:30前退出；不假设持仓 |
+| COM-E-AO2701-DOWNSIDE-20260929 | 09-29 | 跌破2639；日内 | 晨间66 | 已过期/触发未知 | 无9/30盘中路径或EOD，不能核验；不得顺延 |
+| COM-E-NR2612-DOWNSIDE-20260929 | 09-29 | 跌破16210；日内 | 晨间64 | 已过期且受挑战 | 代表合约NR2611早前Night +3.52%，但不同月份；旧条件仍因时间到期 |
+| COM-E-EB2611-BACKWARDATION-20260929 | 09-29 | 日内回撤多 | 晨间61 | 已过期/数据不足 | DCE Night缺失、9/30EOD缺失；不假设成交 |
+| COM-M-SC2611-DOWNSIDE-20260929 | 09-30 | 日内反弹失败空 | 晨间60 | 已过期；方向转待评而非反向 | 海外午后油价转强且EIA未发布；需要新数据重新立项 |
+| COM-E-BR2611-RELSTRENGTH-20260930 | 09-30 | 10/8后1–5D | 新增研究 | 休市/等待重报价 | 新数据：有效exact-contract Night与curve |
+| COM-E-OI701-RELSTRENGTH-20260930 | 09-30 | 10/8后1–5D | 新增研究 | 休市/等待重报价 | 新数据：Night相对强与backwardation；海外反证保留 |
+
+## 十二、覆盖核对
+
+| 板块 | 应覆盖 | 实际取数且已分析 | 9/30当日数据不足 | 不适用/流动性不足 | 未入榜最值得跟踪异常/无异常依据 |
+|---|---|---|---|---|---|
+| 黑色建材 | I/JM/J/RB/HC/FG/SA/SF/SM | 9/29 EOD与curve全部9个 | 9/30 EOD、当日curve、日盘路径 | 部分无夜盘/期权执行0 | I curve z约-1.8仍异常；其余无独立三层共振 |
+| 有色贵金属 | CU/BC/AL/AO/AD/ZN/PB/NI/SN/SS/AU/AG | 全部12个 | 同上；部分Night unresolved | 期权执行0 | AG/AO旧弱势被早前Night小反弹削弱；NI夜盘偏弱 |
+| 能源炼化化工 | SC/FU/LU/BU/PG/PX/TA/PF/PR/MA/PP/L/V/EG/EB/RU/NR/BR/SH/UR/SP | 全部21个（LPG按PG映射） | 同上；DCE Night大量缺失；SC/LU实体缺 | basis C、import parity不完整 | BR/RU/NR强；PX/TA锚分歧；EB无当日确认 |
+| 新能源 | LC/SI/PS及GFEX新增材料 | LC/SI/PS + PD/PT | 9/30 EOD | 夜盘不适用、执行0 | LC 5D弱但无新增证据，不入榜 |
+| 农产品油脂饲料畜牧 | A/B/M/RM/Y/P/OI/C/CS/LH/JD/CF/CY/SR/AP/CJ/PK | 全部18个 | 9/30 EOD；实体覆盖仅子集 | 多个无夜盘；执行0 | OI夜盘相对强；CF小幅弱，无实体共振 |
+| 航运软商品 | EC及CF/SR/AP/CJ/PK | 已纳入相应主表；EC单独扫描 | 9/30 EOD | EC无夜盘；curve roll flag | EC 5D强但9/29反转、曲线不可比 |
+| 动态新增 | JR/PL/PM/RI/RS/WH/ZC/BZ/LG/RR/PD/PT/OP/WR | 14个均有9/29 EOD扫描 | 9/30 EOD；多品种流动性/历史不足 | 不满足正式卡参数或流动性要求 | BZ/苯乙烯代理仍强但DCE Night缺失 |
+
+覆盖结论：强制63个代码全部在9月29日last-good层完成扫描，另含14个动态产品，共77个；37品种有归属9月30日的有效代表Night。**9月30日日盘EOD对全部63个均不足**，不能把“提到名字”当作完成当日分析，亦未因此缩小应覆盖清单。策略类别已扫方向、curve、基差/跨期、跨品种/跨市场、波动率/偏度/事件凸性和风格/中性表达；只有方向/curve研究具备部分证据，基差/RV/期权执行均因口径或报价缺口降级。周期覆盖：1D受9/30缺失限制，3/5/20D为截至9/29同合约指标。
+
+## 风险预算
+
+单一试仓计划损失NAV 0.25%–0.75%；确认交易0.75%–1.50%；同因子主题合并≤2.5%–3.0%。当前建议风险为0。压力测试必须另算1/2个涨跌停、长假gap、相关性破裂、流动性消失、保证金上调、IV跳升/塌陷、交割挤压及人民币急变；期货止损不是最大损失保证。
+
+## 来源
+
+- [China-Commodities-Engine统一输入](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/report_input_latest.json)（生成于2026-09-30 08:20:58，北京时间；支持质量状态、Night摘要、Options readiness）
+- [China-Commodities-Engine期货EOD](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/latest.json)（交易日2026-09-29；支持合约OHLC/成交/OI）
+- [Market State](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/market_state_latest.json)（交易日2026-09-29；支持同合约收益、RV、OI和curve）
+- [上期所2026年中秋/国庆安排](https://www.shfe.com.cn/publicnotice/notice/202609/t20260921_833503.html)（2026-09-21；支持9/30无夜盘、10/1–7休市、10/8复市）
+- [Trading Economics商品快照](https://tradingeconomics.com/commodities)（访问于2026-09-30约19:30；支持海外实时/准实时报价代理）
+- [Reuters：油价与供给恢复、地缘及EIA预告](https://www.reuters.com/business/energy/oil-climbs-after-trump-denies-he-is-willing-ease-sanctions-iran-2026-09-30/)（2026-09-30；支持能源事件背景）
+- [Reuters：中国9月制造业PMI](https://www.reuters.com/world/asia-pacific/chinas-factory-activity-returns-growth-september-amid-ai-boom-2026-09-30/)（2026-09-30；支持宏观背景）
+- [Reuters：金银与利率背景](https://www.reuters.com/world/india/gold-track-monthly-decline-investors-brace-us-inflation-data-2026-09-30/)（2026-09-30；支持贵金属外盘背景）
+- [EIA Weekly Petroleum Status Report](https://www.eia.gov/petroleum/supply/weekly/)（官方发布页；结果在本截点尚未发布）
 
 A. 今晚没有应立即建立的新仓位。
-B. 今晚只应挂条件单的仓位：无；AG/AO期权缺bid/ask、EB合约参数未确认，全部先观察而不提交委托。
-C. 今晚应继续观察的机会：21:30后AG反抽失败、AO跌破回抽、21:45后EB守9750的触发；9月30日盘复核EC与FU旧观点。
-D. 今晚必须避免或退出的交易：避免首跳追空AG/NR、追多EB/FU、C级basis套利和无bid/ask期权；无法对冲国庆长假gap的仓位须在9月30收盘前降至可承受水平。
+B. 今晚没有可挂的中国商品条件单；10月8日所有品种须以新集合竞价、EOD缺口修复和实时参数重建条件。
+C. 今晚应继续观察BR2611/OI701节后相对强势、EIA后的SC/FU曲线、AG/AO新期权曲面与全部9月30日EOD补发。
+D. 今晚必须避免任何中国商品交易、跨长假裸Delta、旧日盘条件顺延、C级basis套利、无bid/ask期权及把早前Night当今晚行情。
