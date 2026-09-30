@@ -1,58 +1,30 @@
 {
   "schema_version": "1.0",
-  "status": "published",
-  "report_date": "2026-09-29",
+  "report_date": "2026-09-30",
   "edition": "evening",
-  "generated_at_bjt": "2026-09-29T20:15:00+08:00",
-  "data_cutoff_bjt": "2026-09-29T20:08:00+08:00",
-  "weekend_mode": false,
-  "data_status": "mixed_fresh_china_cash_and_futures_stale_china_options_fresh_commodity_day_delayed_global_eod",
-  "inputs": {
-    "global_eod_date": "2026-09-28",
-    "global_intraday_date": "2026-09-29",
-    "china_cash_futures_date": "2026-09-29",
-    "china_options_date": "2026-09-23",
-    "china_options_commit": "353307807ee5ed37a7c1e2877de02044993478e5",
-    "china_options_paths": [
-      "data/last_run_status.json",
-      "data/radar_latest.json",
-      "data/radar_history.json (empty)",
-      "data/snapshots/2026-09-29.json (missing)",
-      "data/snapshots/2026-09-28.json (missing)"
-    ],
-    "china_options_fresh": false,
-    "china_commodities_date": "2026-09-29",
-    "china_commodities_commit": "ca5de2d5be4d2887dea3fcf1b4719fa235a07e4b",
-    "china_commodities_paths": [
-      "data/report_input_latest.json",
-      "data/last_run_status.json",
-      "data/night_session/last_run_status.json",
-      "data/radar_latest.json",
-      "data/radar_history.json"
-    ],
-    "china_commodities_fresh": true,
-    "china_commodities_night_state": "missing"
-  },
-  "errors": [
-    "schemas/status.schema.json missing",
-    "templates/status.json missing",
-    "templates/manifest.json missing",
-    "China-Options-Engine radar_history.json empty",
-    "China-Options-Engine 2026-09-29 and 2026-09-28 snapshots missing",
-    "China-Options-Engine current radar restored to stale 2026-09-23 last-good after CFFEX CSV header error",
-    "global live option surfaces and executable bid/ask quotes missing",
-    "China-Commodities-Engine night-session refresh missing with 806 query errors"
-  ],
+  "generated_at_bjt": "2026-09-30T20:40:00+08:00",
+  "status": "published",
   "archive_status": "success",
   "ci_validation_status": "pending_or_unverified",
-  "paths": {
-    "markdown": "reports/2026/09/2026-09-29_evening.md",
-    "json": "reports/2026/09/2026-09-29_evening.json",
-    "latest_markdown": "latest/evening.md",
-    "latest_json": "latest/evening.json",
-    "status": "status/evening_latest.json",
-    "manifest": "manifests/reports.json"
+  "markdown_path": "reports/2026/09/2026-09-30_evening.md",
+  "json_path": "reports/2026/09/2026-09-30_evening.json",
+  "data_fresh": false,
+  "china_options_date": "2026-09-23",
+  "china_commodities_date": "2026-09-29",
+  "data_status": {
+    "global": "ok",
+    "china_cash_futures": "ok",
+    "china_options_iv_skew_gamma": "stale",
+    "china_options_history": "empty",
+    "china_commodities_eod": "ok",
+    "china_commodities_night": "truncated",
+    "us_options_quotes": "missing"
   },
-  "archive_verified_at_bjt": "2026-09-29T20:18:00+08:00",
-  "archive_commit_sha": "1c9081f41ae106cf8e1fd63a45dde02473899893"
+  "errors": [
+    "China option surface is last-good 2026-09-23 and not executable for 2026-09-30.",
+    "China-Options-Engine data/radar_history.json is empty.",
+    "China commodity night layer is incomplete at 423/806 contracts.",
+    "US options live quotes and Greeks unavailable.",
+    "schemas/status.schema.json, templates/status.json and templates/manifest.json not found."
+  ]
 }
