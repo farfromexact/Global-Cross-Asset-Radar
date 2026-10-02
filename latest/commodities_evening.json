@@ -1,38 +1,38 @@
 {
   "schema_version": "1.0",
   "status": "published",
-  "report_date": "2026-10-01",
+  "report_date": "2026-10-02",
   "edition": "commodities_evening",
-  "generated_at_bjt": "2026-10-01T19:29:00+08:00",
+  "generated_at_bjt": "2026-10-02T19:29:00+08:00",
   "weekend_mode": true,
   "holiday_mode": true,
-  "title": "全球商品期货期权高风险机会雷达｜晚间版｜2026-10-01",
-  "one_sentence_conclusion": "中国休市且海外能源/美元波动扩大，橡胶与菜油存在待验证优势，但没有今晚可执行的新仓；10月8日只在重报价后观察30—45分钟。",
-  "regime": "China National Day holiday / rubber breakout confirmed / energy product-tightness shock / strong USD and long yields / options execution unavailable",
+  "title": "全球商品期货期权高风险机会雷达｜晚间版｜2026-10-02",
+  "one_sentence_conclusion": "国庆休市、今晚无中国夜盘；油价在储备释放讨论下明显回吐，直接补涨逻辑降级，仅保留橡胶、成品油裂解与菜油的复市后条件研究。",
+  "regime": "China National Day holiday / global oil reversal and product-crack stress / rubber tightness still untested / mixed metals / options execution unavailable",
   "worth_taking_risk": false,
   "prompt_version": "radar_2026-09-06_coverage_v1",
   "data_protocol_version": "china_commodities_v2",
   "data_cutoff": {
-    "beijing_time": "2026-10-01T19:20:00+08:00",
+    "beijing_time": "2026-10-02T19:20:00+08:00",
     "china_cash_market": "holiday_closed",
     "china_night_market": "holiday_closed_no_21_00_session",
     "next_actual_window": "2026-10-08T08:55:00+08:00",
     "notes": [
       "2026-09-30 is the latest complete China EOD",
-      "Completed Night trading_date 2026-09-30 belongs to the stage started 2026-09-29 and is historical",
-      "2026-10-01 external observations are not prices already traded by China",
-      "Next China night session is 2026-10-08 21:00"
+      "Completed Night trading_date 2026-09-30 is historical and not a 2026-10-02 future night",
+      "2026-10-02 external observations are not prices already traded by China",
+      "Next China day session is 2026-10-08 09:00 and next night session is 2026-10-08 21:00"
     ]
   },
   "report_input_requested_date": "2026-09-30",
-  "report_input_generated_at": "2026-10-01T19:02:42.611917+08:00",
+  "report_input_generated_at": "2026-10-02T19:02:16.215657+08:00",
   "module_freshness": {
-    "futures": "latest_expected EOD 2026-09-30 valid last-good; 2026-10-01 holiday no EOD",
-    "market_state": "2026-09-30 valid last-good despite holiday refresh flag",
+    "futures": "latest expected EOD 2026-09-30 valid last-good; 2026-10-02 holiday no EOD",
+    "market_state": "regenerated 2026-10-02 with valid 2026-09-30 last-good source dates",
     "physical": "18/20 native-frequency valid at 2026-09-30; SC/LU unavailable",
-    "external": "2026-10-01 fresh 17/22 context-only",
-    "night_session": "latest completed legal session trading_date 2026-09-30; 2026-10-01 holiday refresh not published",
-    "options": "2026-09-30 latest valid EOD research snapshot",
+    "external": "2026-10-02 19:01 BJT fresh 17/22 context-only; supplemented by 15:00-19:20 web observations",
+    "night_session": "2026-10-02 holiday refresh failed/not published with zero legal contracts; prior 2026-09-30 snapshot retained only as history",
+    "options": "2026-09-30 latest valid EOD research snapshot; execution ready zero",
     "contract_metadata": "2026-09-30 partial"
   },
   "prior_night_session_trading_date": "2026-09-30",
@@ -52,7 +52,7 @@
     "targets": 22,
     "fresh": 17,
     "unavailable": 5,
-    "usage": "context_only"
+    "usage": "context_only; supplemented with time-stamped web prices/news"
   },
   "options_surface_ready": false,
   "options_positioning_ready": false,
@@ -74,13 +74,11 @@
         "data/report_input_latest.json",
         "data/last_run_status.json",
         "data/night_session/last_run_status.json",
-        "data/radar_latest.json",
-        "data/latest.json",
-        "data/contract_meta.json"
+        "data/radar_latest.json"
       ],
       "trade_date": "2026-09-30",
       "requested_date": "2026-09-30",
-      "generated_at": "2026-10-01T19:02:42.611917+08:00",
+      "generated_at": "2026-10-02T19:02:16.215657+08:00",
       "data_fresh": true,
       "official_complete": false,
       "full_market_ready": true,
@@ -90,7 +88,7 @@
       "module_quality": {
         "futures": "verified_vendor_primary",
         "physical": "18_of_20_native_frequency_valid",
-        "external": "fresh_context_only",
+        "external": "2026-10-02 fresh 17_of_22 context_only",
         "options": "surface_research_ready_execution_not_ready",
         "contract_meta": "partial"
       },
@@ -98,9 +96,7 @@
         "data/report_input_latest.json",
         "data/last_run_status.json",
         "data/night_session/last_run_status.json",
-        "data/radar_latest.json",
-        "data/latest.json",
-        "data/contract_meta.json"
+        "data/radar_latest.json"
       ],
       "included_exchanges": [
         "SHFE",
@@ -133,28 +129,32 @@
       "official_complete": false
     },
     "holiday_refresh_2026_10_01": {
+      "run_date": "2026-10-02",
+      "generated_at": "2026-10-02T18:57:00+08:00",
       "full_market_ready": false,
       "critical_errors": 15,
       "interpretation": "expected holiday no-EOD run; does not invalidate 2026-09-30 last-good"
     },
     "night_session": {
-      "trading_date": "2026-09-30",
-      "night_session_date": "2026-09-29",
-      "generated_at": "2026-09-30T08:01:30.216625+08:00",
-      "data_fresh": true,
-      "validation_passed": true,
-      "published": true,
+      "trading_date": "2026-10-02",
+      "night_session_date": "2026-10-01",
+      "generated_at": "2026-10-02T07:57:00+08:00",
+      "data_fresh": false,
+      "validation_passed": false,
+      "published": false,
       "coverage_complete": false,
-      "night_session_contract_count": 423,
-      "product_count": 37,
-      "outside_night_window_count": 165,
-      "no_night_trade_count": 4,
+      "night_session_contract_count": 0,
+      "product_count": 0,
+      "outside_night_window_count": 592,
+      "no_night_trade_count": 0,
       "missing_timestamp_count": 0,
       "missing_price_count": 0,
       "missing_quote_count": 0,
       "query_error_count": 214,
       "unresolved_contract_count": 214,
-      "usage": "completed stage for 2026-09-30, not a future night"
+      "prior_snapshot_retained": true,
+      "prior_trading_date": "2026-09-30",
+      "usage": "holiday refresh is not current market evidence; 2026-09-30 snapshot only for historical overnight/day decomposition"
     },
     "options": {
       "trade_date": "2026-09-30",
@@ -255,43 +255,6 @@
       "day_follow_through_pct": -0.0391,
       "options_readiness": "surface_yes_positioning_no_execution_no",
       "signal": "reopen_wait_60m"
-    },
-    {
-      "asset": "RM",
-      "product": "RM",
-      "contract": "RM701",
-      "eod_date": "2026-09-30",
-      "close": 2333,
-      "settle": 2332,
-      "return_1d_pct": 1.4795,
-      "return_5d_pct": -1.2701,
-      "volume": 371584,
-      "open_interest": 621332,
-      "delta_oi": -5933,
-      "curve_pct": -1.2864,
-      "curve_shape": "contango",
-      "options_readiness": "execution_no",
-      "signal": "do_not_chase"
-    },
-    {
-      "asset": "AO",
-      "product": "AO",
-      "contract": "AO2701",
-      "eod_date": "2026-09-30",
-      "close": 2723,
-      "settle": 2695,
-      "return_1d_pct": 1.392,
-      "return_5d_pct": -1.1009,
-      "volume": 214215,
-      "open_interest": 216743,
-      "delta_oi": -50247,
-      "curve_pct": -1.0139,
-      "curve_shape": "contango",
-      "night_close": 2662,
-      "night_return_vs_close_pct": 0.2259,
-      "day_follow_through_pct": 2.2915,
-      "options_readiness": "surface_and_positioning_yes_execution_no",
-      "signal": "wait_45m"
     },
     {
       "asset": "SC",
@@ -398,41 +361,6 @@
       "signal": "no_direction"
     },
     {
-      "asset": "EC",
-      "product": "EC",
-      "contract": "EC2611",
-      "eod_date": "2026-09-30",
-      "close": 2794,
-      "settle": 2823.5,
-      "return_1d_pct": -1.6716,
-      "return_5d_pct": 7.6234,
-      "volume": 13089,
-      "open_interest": 22057,
-      "delta_oi": -2569,
-      "curve_pct": -26.1201,
-      "curve_shape": "contango",
-      "curve_observations": 2,
-      "options_readiness": "execution_no",
-      "signal": "roll_anomaly_avoid"
-    },
-    {
-      "asset": "LC",
-      "product": "LC",
-      "contract": "LC2701",
-      "eod_date": "2026-09-30",
-      "close": 118420,
-      "settle": 118820,
-      "return_1d_pct": -0.6023,
-      "return_5d_pct": -10.769,
-      "volume": 160461,
-      "open_interest": 412703,
-      "delta_oi": -2984,
-      "curve_pct": 0.4351,
-      "curve_shape": "backwardation",
-      "options_readiness": "execution_no",
-      "signal": "do_not_chase"
-    },
-    {
       "asset": "CU",
       "product": "CU",
       "contract": "CU2611",
@@ -448,39 +376,34 @@
       "curve_shape": "backwardation",
       "options_readiness": "surface_yes_execution_no",
       "signal": "wait_reopen"
-    },
-    {
-      "asset": "AP",
-      "product": "AP",
-      "contract": "AP701",
-      "eod_date": "2026-09-30",
-      "close": 6854,
-      "settle": 6834,
-      "return_1d_pct": -1.7539,
-      "return_5d_pct": -3.1463,
-      "volume": 141807,
-      "open_interest": 142083,
-      "delta_oi": 4066,
-      "curve_pct": 9.3759,
-      "curve_shape": "backwardation",
-      "options_readiness": "execution_no",
-      "signal": "early_anomaly_only"
     }
   ],
   "meaningful_changes": [
-    {"change": "2026-09-30 five-exchange EOD became available and passed full-market checks, resolving the prior report's largest gap"},
-    {"change": "RU2701 followed through 2.19% from completed Night close while BR2611 gave back 0.96%, shifting rubber leadership from BR to RU"},
-    {"change": "OI701 closed 10230 versus Night close 10234 and delta OI turned +9681, confirming hold rather than further acceleration"},
-    {"change": "Brent and WTI rose about 2% after Chinese refiners suspended certain fuel exports, creating a holiday gap risk versus weak China energy EOD"},
-    {"change": "Dollar index approached 102 and U.S. 10Y yield reached 5.34%, leaving precious-metals direction unconfirmed"},
-    {"change": "Options series and surface coverage improved but execution-ready count remained zero"}
+    {
+      "change": "WTI fell to about USD89.34 and Brent to about USD99.74 by 18:35 BJT as markets discussed diesel/crude reserve releases; direct China crude catch-up thesis was downgraded"
+    },
+    {
+      "change": "Asian gasoline cracks remained exceptionally high and product curves backwardated, so the energy idea was narrowed from outright SC long to product-versus-crude relative-value research"
+    },
+    {
+      "change": "Repo 2026-10-02 external layer was fresh for 17/22 series; SGX iron fell 1.03%, soybeans 1.12%, meal 0.69%, soybean oil 0.37% and palm 0.46%, weakening China reopen follow-through"
+    },
+    {
+      "change": "ICE sugar rose 2.45% in the repository snapshot while FAO sugar index rose 6.1% month-on-month, creating a new but only 58-point research anomaly"
+    },
+    {
+      "change": "Gold and silver were mixed ahead of US payrolls while the dollar and long yields stayed restrictive; precious metals remained unconfirmed"
+    },
+    {
+      "change": "No China EOD, night-session or options execution update was due during the National Day closure; all China triggers remain inactive until 2026-10-08"
+    }
   ],
   "top_opportunities": [
     {
       "rank": 1,
       "idea_id": "COM-E-RU2701-RUBBER-TIGHTNESS-20261001",
       "name": "RU2701 rubber tightness confirmation",
-      "score": 75,
+      "score": 74,
       "direction": "long conditional",
       "holding_period": "1-5D after reopening",
       "stage": "waiting_trigger_holiday",
@@ -490,10 +413,10 @@
       "max_loss_limited": false,
       "score_components": {
         "logic": 22,
-        "payoff_convexity": 15,
-        "catalyst": 16,
+        "payoff_convexity": 16,
+        "catalyst": 15,
         "price_curve_vol": 13,
-        "crowding_positioning_technical": 9
+        "crowding_positioning_technical": 8
       },
       "supporting_layers": [
         1,
@@ -510,10 +433,42 @@
     },
     {
       "rank": 2,
+      "idea_id": "COM-E-ENERGY-POSTEIA-20260930",
+      "name": "fuel-product tightness versus crude RV",
+      "score": 72,
+      "direction": "long product crack / curve conditional",
+      "holding_period": "1-10D after reopening",
+      "stage": "waiting_quotes_and_parameters",
+      "instruments": [
+        "FU2611 futures",
+        "SC2611 futures"
+      ],
+      "max_loss_limited": false,
+      "score_components": {
+        "logic": 21,
+        "payoff_convexity": 16,
+        "catalyst": 17,
+        "price_curve_vol": 11,
+        "crowding_positioning_technical": 7
+      },
+      "supporting_layers": [
+        2,
+        3,
+        4
+      ],
+      "counterevidence_layers": [
+        1
+      ],
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "休市；待同步报价、手数和beta参数"
+    },
+    {
+      "rank": 3,
       "idea_id": "COM-E-OI701-RELSTRENGTH-20260930",
-      "name": "OI701 post-holiday relative strength",
+      "name": "OI701 relative strength",
       "score": 66,
-      "direction": "long conditional",
+      "direction": "long conditional relative strength",
       "holding_period": "1-5D after reopening",
       "stage": "waiting_trigger_holiday",
       "instruments": [
@@ -522,10 +477,10 @@
       "max_loss_limited": false,
       "score_components": {
         "logic": 19,
-        "payoff_convexity": 15,
-        "catalyst": 13,
-        "price_curve_vol": 10,
-        "crowding_positioning_technical": 9
+        "payoff_convexity": 14,
+        "catalyst": 12,
+        "price_curve_vol": 11,
+        "crowding_positioning_technical": 10
       },
       "supporting_layers": [
         1,
@@ -535,113 +490,67 @@
         3,
         4
       ],
-      "neutral_layers": [
-        5
-      ],
       "research_judgment": "存在待验证优势",
       "evidence_sufficiency": "部分",
-      "execution_status": "休市；等待触发"
-    },
-    {
-      "rank": 3,
-      "idea_id": "COM-E-ENERGY-POSTEIA-20260930",
-      "name": "Fuel tightness relative to crude",
-      "score": 64,
-      "direction": "relative value research",
-      "holding_period": "1-10D after reopening",
-      "stage": "awaiting_contract_ratio_and_quotes",
-      "instruments": [],
-      "max_loss_limited": null,
-      "score_components": {
-        "logic": 18,
-        "payoff_convexity": 13,
-        "catalyst": 15,
-        "price_curve_vol": 10,
-        "crowding_positioning_technical": 8
-      },
-      "supporting_layers": [
-        2,
-        4
-      ],
-      "counterevidence_layers": [
-        1
-      ],
-      "missing_layers": [
-        3,
-        5
-      ],
-      "research_judgment": "存在待验证优势",
-      "evidence_sufficiency": "部分",
-      "execution_status": "待合约配比与报价"
+      "execution_status": "休市；等待2026-10-08相对强度触发"
     },
     {
       "rank": 4,
       "idea_id": "COM-E-BR2611-RELSTRENGTH-20260930",
-      "name": "BR2611 post-holiday relative strength",
-      "score": 62,
+      "name": "BR2611 relative strength",
+      "score": 60,
       "direction": "long conditional",
       "holding_period": "1-5D after reopening",
-      "stage": "waiting_trigger_holiday",
+      "stage": "secondary_watch",
       "instruments": [
         "BR2611 futures"
       ],
       "max_loss_limited": false,
       "score_components": {
         "logic": 18,
-        "payoff_convexity": 14,
-        "catalyst": 12,
+        "payoff_convexity": 13,
+        "catalyst": 11,
         "price_curve_vol": 9,
         "crowding_positioning_technical": 9
       },
       "supporting_layers": [
         1,
-        2,
-        4
+        2
       ],
       "counterevidence_layers": [
-        1
-      ],
-      "missing_layers": [
-        3,
-        5
+        4
       ],
       "research_judgment": "存在待验证优势",
       "evidence_sufficiency": "部分",
-      "execution_status": "休市；等待触发"
+      "execution_status": "次选观察；休市"
     },
     {
       "rank": 5,
-      "idea_id": "COM-E-AP701-DOWNSIDE-20261001",
-      "name": "AP701 downside early anomaly",
-      "score": 55,
-      "direction": "short research",
-      "holding_period": "1-10D",
-      "stage": "early_anomaly",
+      "idea_id": "COM-E-SR701-SUGAR-TIGHTNESS-20261002",
+      "name": "SR701 sugar tightness research",
+      "score": 58,
+      "direction": "long research",
+      "holding_period": "1-10D after reopening",
+      "stage": "early_research",
       "instruments": [
-        "AP701 futures"
+        "SR701 futures"
       ],
       "max_loss_limited": false,
       "score_components": {
-        "logic": 15,
-        "payoff_convexity": 11,
-        "catalyst": 9,
-        "price_curve_vol": 10,
-        "crowding_positioning_technical": 10
+        "logic": 17,
+        "payoff_convexity": 12,
+        "catalyst": 12,
+        "price_curve_vol": 8,
+        "crowding_positioning_technical": 9
       },
       "supporting_layers": [
-        1
-      ],
-      "counterevidence_layers": [
-        2
-      ],
-      "missing_layers": [
         3,
-        4,
-        5
+        4
       ],
+      "counterevidence_layers": [],
       "research_judgment": "证据不足",
       "evidence_sufficiency": "不足",
-      "execution_status": "研究观察"
+      "execution_status": "研究观察；等待中国price/curve/options更新"
     }
   ],
   "top_trade_cards": [
@@ -651,18 +560,18 @@
       "contract": "RU2701",
       "direction": "long conditional after reopening",
       "status": "research_only_holiday_closed",
-      "entry": "2026-10-08 after 09:45 only if first-45m low holds, price reclaims VWAP and RU/NR curve does not flip to contango; 50% then 50% on high break",
-      "stop": "1.5% below weighted entry or first-45m low failure not recovered for 30m",
-      "invalidation": "Thailand weather normalizes, Qingdao inventory rises and RU/NR curve flips to contango",
-      "tp1": "+1.2R reduce half",
-      "tp2": "+2.2R",
-      "time_stop": "fifth trading day",
-      "max_loss": "not structurally limited; planned loss <=0.50% NAV",
-      "good_medium_bad": "good gap<=1%; medium gap 1-3% half risk; bad gap>5% abandon",
+      "entry": "2026-10-08 after 09:45 only if 20095 holds on pullback and curve does not collapse; 50% then 50% on retest",
+      "stop": "19710 failure not recovered for 30m",
+      "invalidation": "SICOM reversal, weather normalization, inventory rise, or RU/NR curve flips to contango",
+      "tp1": "20500 reduce one third",
+      "tp2": "21000 reduce half of remainder",
+      "time_stop": "fifth trading day; exit earlier after two days without expansion",
+      "max_loss": "not structurally limited; planned loss 0.25%-0.50% NAV",
+      "good_medium_bad": "good=gap<=1% and 20095 holds; medium=45m breakout/retest at half risk; bad=gap>5% or price-up/OI-down abandon",
       "night": {
-        "open": null,
-        "high": null,
-        "low": null,
+        "open": 19080,
+        "high": 19780,
+        "low": 19040,
         "close": 19665,
         "return_vs_close_pct": 3.4456,
         "return_vs_settlement_pct": 3.2826,
@@ -677,7 +586,7 @@
         "price_limit": "unconfirmed",
         "night_session": "holiday closed; next 2026-10-08 21:00",
         "last_trading_day": "2027-01-15",
-        "delivery_risk": "roll before delivery month"
+        "delivery_risk": "roll at least ten trading days before delivery month"
       },
       "stress": [
         "one/two-limit loss cannot be quantified with unconfirmed parameters",
@@ -686,22 +595,64 @@
     },
     {
       "rank": 2,
+      "idea_id": "COM-E-ENERGY-POSTEIA-20260930",
+      "contract": "FU2611/SC2611 research basket",
+      "direction": "long FU2611 and short SC2611, 50/50 CNY notional neutral",
+      "status": "research_only_quotes_parameters_missing",
+      "entry": "2026-10-08 after 09:45 only if normalized spread holds above first-45m center, FU backwardation persists and Brent stops falling",
+      "stop": "normalized spread breaks first-45m low for 30m",
+      "invalidation": "reserve release lands, Asian product cracks compress sharply, or FU backwardation weakens",
+      "tp1": "+1R reduce one third",
+      "tp2": "+2R reduce half of remainder",
+      "time_stop": "third day without expansion; maximum ten trading days",
+      "max_loss": "not structurally limited; no hand ratio until synchronous quotes and multipliers are verified",
+      "good_medium_bad": "good=spread pullback holds; medium=breakout/retest; bad=product crack and near spread compress, abandon",
+      "night": {
+        "open": null,
+        "high": null,
+        "low": null,
+        "close": null,
+        "return_vs_close_pct": null,
+        "return_vs_settlement_pct": null,
+        "delta_oi": null,
+        "day_follow_through_pct": null
+      },
+      "metadata": {
+        "multiplier": "unconfirmed for both legs",
+        "tick_size": "unconfirmed",
+        "tick_value": "unconfirmed",
+        "margin": "unconfirmed",
+        "price_limit": "unconfirmed",
+        "night_session": "holiday closed; next 2026-10-08 21:00",
+        "last_trading_day": "SC2611 2026-10-30; FU2611 unconfirmed",
+        "delivery_risk": "high for SC2611; close or roll at least five trading days before LTD"
+      },
+      "stress": [
+        "correlation break and divergent limits can exceed the planned spread stop",
+        "dollar-notional neutral is not beta neutral"
+      ]
+    },
+    {
+      "rank": 3,
       "idea_id": "COM-E-OI701-RELSTRENGTH-20260930",
       "contract": "OI701",
-      "direction": "long conditional after reopening",
+      "direction": "long conditional relative strength",
       "status": "research_only_holiday_closed",
-      "entry": "2026-10-08 after 10:00 only if above first-hour VWAP and OI/P plus OI/Y ratios widen; 50% then 50%",
-      "stop": "1.2% below weighted entry or both relative ratios fall below open",
-      "invalidation": "all three oils fall and OI backwardation narrows materially",
-      "tp1": "+1.0R reduce half",
-      "tp2": "+1.8R",
-      "time_stop": "fifth trading day",
+      "entry": "2026-10-08 after 10:00 only if 10230 holds and OI return stays above Y and P; wait for first-hour retest",
+      "stop": "10050",
+      "invalidation": "OI loses relative strength to Y/P or backwardation collapses",
+      "tp1": "10450",
+      "tp2": "10700",
+      "time_stop": "third day without expansion; maximum five trading days",
       "max_loss": "not structurally limited; planned loss <=0.50% NAV",
-      "good_medium_bad": "good gap<=1%; medium gap 1-2.5% half risk; bad gap>3% abandon",
+      "good_medium_bad": "good=10230 pullback holds; medium=first-hour breakout/retest; bad=gap>2% or Y/P lead, abandon",
       "night": {
+        "open": 10057,
+        "high": 10256,
+        "low": 10051,
         "close": 10234,
-        "return_vs_close_pct": 1.76,
-        "return_vs_settlement_pct": 1.8917,
+        "return_vs_close_pct": 1.7619,
+        "return_vs_settlement_pct": 1.8899,
         "delta_oi": 6681,
         "day_follow_through_pct": -0.0391
       },
@@ -709,15 +660,16 @@
         "multiplier": 10,
         "tick_size": 1,
         "tick_value": 10,
-        "notional_at_reference_close": 102300,
-        "margin_rate_pct": 9,
-        "reference_margin_cny": 9195,
-        "price_limit_pct": 8,
+        "margin": "9% reference",
+        "price_limit": "8% reference",
+        "night_session": "holiday closed; next 2026-10-08 21:00",
         "last_trading_day": "2027-01-14",
-        "one_limit_stress_cny_per_lot": 8184,
-        "two_limit_stress_cny_per_lot": 16368,
         "delivery_risk": "roll before delivery month"
-      }
+      },
+      "stress": [
+        "notional CNY102300 and reference margin CNY9207 per lot at 10230",
+        "one/two-limit stress about CNY8184/CNY16368 per lot"
+      ]
     }
   ],
   "commodities_tracking": {
@@ -731,10 +683,21 @@
       "options_chain_status": "14468 records across 196 series",
       "options_surface_status": "192 research-ready surfaces; execution ready zero",
       "history_comparison_status": "available",
-      "available_horizons": ["1D", "3D", "5D", "20D"],
+      "available_horizons": [
+        "1D",
+        "3D",
+        "5D",
+        "20D"
+      ],
       "comparative_metrics": [
-        {"metric": "same-contract returns", "status": "available"},
-        {"metric": "RV20 and z-scores", "status": "available"}
+        {
+          "metric": "same-contract returns",
+          "status": "available"
+        },
+        {
+          "metric": "RV20 and z-scores",
+          "status": "available"
+        }
       ],
       "required_products": 63,
       "actual_products_analyzed": 77,
@@ -770,21 +733,66 @@
       ]
     },
     "market_dashboard": [
-      {"product": "RU", "main_contract": "RU2701"},
-      {"product": "NR", "main_contract": "NR2612"},
-      {"product": "BR", "main_contract": "BR2611"},
-      {"product": "OI", "main_contract": "OI701"},
-      {"product": "RM", "main_contract": "RM701"},
-      {"product": "AO", "main_contract": "AO2701"},
-      {"product": "SC", "main_contract": "SC2611"},
-      {"product": "FU", "main_contract": "FU2611"},
-      {"product": "BU", "main_contract": "BU2611"},
-      {"product": "AG", "main_contract": "AG2612"},
-      {"product": "AU", "main_contract": "AU2612"},
-      {"product": "EC", "main_contract": "EC2611"},
-      {"product": "LC", "main_contract": "LC2701"},
-      {"product": "CU", "main_contract": "CU2611"},
-      {"product": "AP", "main_contract": "AP701"}
+      {
+        "product": "RU",
+        "main_contract": "RU2701"
+      },
+      {
+        "product": "NR",
+        "main_contract": "NR2612"
+      },
+      {
+        "product": "BR",
+        "main_contract": "BR2611"
+      },
+      {
+        "product": "OI",
+        "main_contract": "OI701"
+      },
+      {
+        "product": "RM",
+        "main_contract": "RM701"
+      },
+      {
+        "product": "AO",
+        "main_contract": "AO2701"
+      },
+      {
+        "product": "SC",
+        "main_contract": "SC2611"
+      },
+      {
+        "product": "FU",
+        "main_contract": "FU2611"
+      },
+      {
+        "product": "BU",
+        "main_contract": "BU2611"
+      },
+      {
+        "product": "AG",
+        "main_contract": "AG2612"
+      },
+      {
+        "product": "AU",
+        "main_contract": "AU2612"
+      },
+      {
+        "product": "EC",
+        "main_contract": "EC2611"
+      },
+      {
+        "product": "LC",
+        "main_contract": "LC2701"
+      },
+      {
+        "product": "CU",
+        "main_contract": "CU2611"
+      },
+      {
+        "product": "AP",
+        "main_contract": "AP701"
+      }
     ],
     "supply_chain_map": [
       {
@@ -895,11 +903,31 @@
       ]
     },
     "night_session_risk_map": [
-      {"product": "RU/NR/BR", "confidence": "medium", "action": "holiday closed; wait 45m after 2026-10-08 reopen"},
-      {"product": "OI", "confidence": "medium", "action": "holiday closed; wait 60m after reopen and confirm relative ratios"},
-      {"product": "SC/FU/BU", "confidence": "low", "action": "holiday closed; wait 45m and compare offshore gap"},
-      {"product": "AU/AG/CU", "confidence": "low", "action": "holiday closed; wait 30m and confirm USD/CNH and yields"},
-      {"product": "EC/LC/AP", "confidence": "low", "action": "holiday closed; wait 45m and avoid roll/curve distortions"}
+      {
+        "product": "RU/NR/BR",
+        "confidence": "medium",
+        "action": "holiday closed; wait 45m after 2026-10-08 reopen"
+      },
+      {
+        "product": "OI",
+        "confidence": "medium",
+        "action": "holiday closed; wait 60m after reopen and confirm relative ratios"
+      },
+      {
+        "product": "SC/FU/BU",
+        "confidence": "low",
+        "action": "holiday closed; wait 45m and compare offshore gap"
+      },
+      {
+        "product": "AU/AG/CU",
+        "confidence": "low",
+        "action": "holiday closed; wait 30m and confirm USD/CNH and yields"
+      },
+      {
+        "product": "EC/LC/AP",
+        "confidence": "low",
+        "action": "holiday closed; wait 45m and avoid roll/curve distortions"
+      }
     ],
     "coverage_check": {
       "required": 63,
@@ -942,7 +970,7 @@
         "CU",
         "oil"
       ],
-      "handling": "China closed; update scenarios only"
+      "handling": "China closed; update scenarios only; no frozen 19:30 order"
     },
     {
       "time_bjt": "2026-10-03T03:30:00+08:00",
@@ -961,7 +989,7 @@
         "BU",
         "LU"
       ],
-      "handling": "wait for reopen; limited convexity overseas only if authorized"
+      "handling": "do not extrapolate before reopening; overseas limited-risk convexity only with live quotes"
     },
     {
       "date_bjt": "2026-10-04/05",
@@ -971,7 +999,7 @@
         "NR",
         "BR"
       ],
-      "handling": "validate supply disruption"
+      "handling": "validate supply disruption and SICOM response"
     },
     {
       "time_bjt": "2026-10-07T22:30:00+08:00",
@@ -982,7 +1010,7 @@
         "BU",
         "LU"
       ],
-      "handling": "delay reopen entry at least 45m if conflict"
+      "handling": "reassess product cracks before China reopening"
     },
     {
       "time_bjt": "2026-10-08T08:55:00+08:00",
@@ -990,7 +1018,7 @@
       "assets": [
         "all China commodities"
       ],
-      "handling": "reprice all triggers"
+      "handling": "reprice every trigger and wait 45-60 minutes"
     },
     {
       "time_bjt": "2026-10-08T21:00:00+08:00",
@@ -1031,45 +1059,93 @@
   },
   "action_list": {
     "A": "今晚没有应立即建立的新仓位。",
-    "B": "今晚不挂中国商品条件单；RU2701与OI701仅保留10月8日重报价后的条件草案。",
-    "C": "今晚继续观察RU/NR天然胶、OI相对强势、油品紧张相对原油及美元/收益率对贵金属的压制。",
-    "D": "今晚必须避免休市合约追价、把10月1日海外涨幅当成中国已交易、无bid/ask期权、未定义配比的能源篮子及EC近月伪套利。"
+    "B": "今晚没有可在中国市场生效的条件单；10月8日仅重估RU2701、FU2611/SC2611裂解篮子和OI701条件。",
+    "C": "今晚应继续观察20:30美国非农、Brent能否重上100美元、亚洲汽柴油裂解、SICOM/泰国降雨、油籽弱势及ICE糖。",
+    "D": "今晚必须避免或退出把昨日油价暴涨线性外推、追逐不存在的中国夜盘、用旧IV下单、未定义手数的跨品种篮子及任何休市proxy套利。"
   },
   "sources": [
     {
       "title": "China-Commodities-Engine unified report input",
       "publisher": "GitHub",
       "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/report_input_latest.json",
-      "source_date": "2026-10-01",
-      "accessed_at_bjt": "2026-10-01T19:10:00+08:00",
+      "source_date": "2026-10-02",
+      "accessed_at_bjt": "2026-10-02T19:10:00+08:00",
       "source_type": "repository primary",
       "supported_claims": [
-        "2026-09-30 EOD and market-state metrics",
-        "2026-10-01 external observations",
+        "2026-09-30 China EOD and market-state last-good",
+        "2026-10-02 external observations",
         "options readiness"
       ]
     },
     {
-      "title": "China-Commodities-Engine futures latest",
+      "title": "China-Commodities-Engine root run status",
       "publisher": "GitHub",
-      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/latest.json",
-      "source_date": "2026-09-30",
-      "accessed_at_bjt": "2026-10-01T19:10:00+08:00",
+      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/last_run_status.json",
+      "source_date": "2026-10-02",
+      "accessed_at_bjt": "2026-10-02T19:10:00+08:00",
       "source_type": "repository primary",
       "supported_claims": [
-        "exact contracts close settle volume OI curves"
+        "holiday refresh did not produce a new EOD",
+        "five-exchange last-good remains 2026-09-30"
       ]
     },
     {
-      "title": "China-Commodities-Engine run status",
+      "title": "China-Commodities-Engine Night Session status",
       "publisher": "GitHub",
-      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/last_run_status.json",
-      "source_date": "2026-10-01",
-      "accessed_at_bjt": "2026-10-01T19:10:00+08:00",
+      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/night_session/last_run_status.json",
+      "source_date": "2026-10-02",
+      "accessed_at_bjt": "2026-10-02T19:10:00+08:00",
       "source_type": "repository primary",
       "supported_claims": [
-        "holiday refresh status",
-        "five-exchange last-good distinction"
+        "no current legal holiday night snapshot",
+        "2026-09-30 prior snapshot retained only as history"
+      ]
+    },
+    {
+      "title": "Oil falls as market weighs reserve releases",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/energy/oil-rises-slightly-market-weighs-mixed-supply-signals-2026-10-02/",
+      "source_date": "2026-10-02",
+      "accessed_at_bjt": "2026-10-02T19:20:00+08:00",
+      "source_type": "news",
+      "supported_claims": [
+        "Brent WTI and gasoil prices around 10:35 GMT",
+        "reserve-release discussion"
+      ]
+    },
+    {
+      "title": "China fuel export suspension tightens Asian supplies",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/energy/china-fuel-export-suspension-choke-supplies-asia-2026-10-02/",
+      "source_date": "2026-10-02",
+      "accessed_at_bjt": "2026-10-02T19:20:00+08:00",
+      "source_type": "news",
+      "supported_claims": [
+        "record gasoline cracks",
+        "steeper gasoil and jet backwardation"
+      ]
+    },
+    {
+      "title": "Gold slips before US payrolls",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/india/gold-slips-before-us-payrolls-data-set-second-weekly-loss-2026-10-02/",
+      "source_date": "2026-10-02",
+      "accessed_at_bjt": "2026-10-02T19:20:00+08:00",
+      "source_type": "news",
+      "supported_claims": [
+        "gold silver dollar and yield context",
+        "nonfarm payroll catalyst"
+      ]
+    },
+    {
+      "title": "World food prices near four-year high",
+      "publisher": "Reuters / FAO",
+      "url": "https://www.reuters.com/markets/us/world-food-prices-near-four-year-high-september-un-says-2026-10-02/",
+      "source_date": "2026-10-02",
+      "accessed_at_bjt": "2026-10-02T19:20:00+08:00",
+      "source_type": "news and official-data report",
+      "supported_claims": [
+        "FAO sugar and vegetable-oil index changes"
       ]
     },
     {
@@ -1077,118 +1153,55 @@
       "publisher": "SHFE",
       "url": "https://www.shfe.com.cn/publicnotice/notice/202609/t20260921_833503.html",
       "source_date": "2026-09-21",
-      "accessed_at_bjt": "2026-10-01T19:20:00+08:00",
+      "accessed_at_bjt": "2026-10-02T19:20:00+08:00",
       "source_type": "official exchange",
       "supported_claims": [
         "holiday closure",
-        "reopening windows"
-      ]
-    },
-    {
-      "title": "Oil prices rise 2% as China suspends fuel exports",
-      "publisher": "Reuters",
-      "url": "https://www.reuters.com/business/energy/oil-prices-barely-changed-investors-assess-us-iran-peace-talks-gulf-exports-2026-10-01/",
-      "source_date": "2026-10-01",
-      "accessed_at_bjt": "2026-10-01T19:20:00+08:00",
-      "source_type": "news",
-      "supported_claims": [
-        "Brent and WTI prices at 0829 GMT",
-        "fuel export suspension",
-        "Gulf export recovery"
-      ]
-    },
-    {
-      "title": "Gold steadies as cooler US inflation counters higher yields",
-      "publisher": "Reuters",
-      "url": "https://www.reuters.com/world/india/gold-inches-higher-softer-us-inflation-dims-october-fed-hike-bets-2026-10-01/",
-      "source_date": "2026-10-01",
-      "accessed_at_bjt": "2026-10-01T19:20:00+08:00",
-      "source_type": "news",
-      "supported_claims": [
-        "gold and silver prices",
-        "high Treasury yields",
-        "payroll catalyst"
-      ]
-    },
-    {
-      "title": "Japanese rubber futures rebound",
-      "publisher": "Reuters via Business Recorder",
-      "url": "https://www.brecorder.com/news/amp/40442053",
-      "source_date": "2026-10-01",
-      "accessed_at_bjt": "2026-10-01T19:20:00+08:00",
-      "source_type": "news and physical context",
-      "supported_claims": [
-        "Thai rain disruption",
-        "Qingdao inventory weekly decline",
-        "SICOM rubber move"
-      ]
-    },
-    {
-      "title": "China weak soybean demand dims US cargo prospects",
-      "publisher": "Reuters",
-      "url": "https://www.reuters.com/world/china/chinas-weak-soybean-demand-dims-prospects-us-cargoes-after-tariff-snub-2026-09-30/",
-      "source_date": "2026-09-30",
-      "accessed_at_bjt": "2026-10-01T19:20:00+08:00",
-      "source_type": "news and physical context",
-      "supported_claims": [
-        "weak feed demand",
-        "negative crush margins",
-        "oilseed demand counterevidence"
+        "2026-10-08 reopening windows"
       ]
     },
     {
       "title": "Weekly Petroleum Status Report",
       "publisher": "U.S. EIA",
       "url": "https://www.eia.gov/petroleum/supply/weekly/",
-      "source_date": "2026-10-01",
-      "accessed_at_bjt": "2026-10-01T19:20:00+08:00",
+      "source_date": "2026-10-02",
+      "accessed_at_bjt": "2026-10-02T19:20:00+08:00",
       "source_type": "official",
       "supported_claims": [
-        "next release 2026-10-07"
-      ]
-    },
-    {
-      "title": "OPEC+ September decision and next meeting",
-      "publisher": "OPEC",
-      "url": "https://www.opec.org/pr-detail/1835613-6-september-2026.html",
-      "source_date": "2026-09-06",
-      "accessed_at_bjt": "2026-10-01T19:20:00+08:00",
-      "source_type": "official",
-      "supported_claims": [
-        "2026-10-04 meeting"
+        "next weekly release schedule"
       ]
     },
     {
       "title": "COT release schedule",
       "publisher": "CFTC",
       "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm",
-      "source_date": "2026-10-01",
-      "accessed_at_bjt": "2026-10-01T19:20:00+08:00",
+      "source_date": "2026-10-02",
+      "accessed_at_bjt": "2026-10-02T19:20:00+08:00",
       "source_type": "official",
       "supported_claims": [
-        "2026-10-02 COT release"
+        "COT release timing"
       ]
     },
     {
-      "title": "2026 WASDE release dates",
+      "title": "WASDE report and release dates",
       "publisher": "USDA",
       "url": "https://www.usda.gov/about-usda/general-information/staff-offices/office-chief-economist/commodity-markets/wasde-report",
-      "source_date": "2026-10-01",
-      "accessed_at_bjt": "2026-10-01T19:20:00+08:00",
+      "source_date": "2026-10-02",
+      "accessed_at_bjt": "2026-10-02T19:20:00+08:00",
       "source_type": "official",
       "supported_claims": [
-        "2026-10-09 12:00 ET WASDE"
+        "2026-10-09 WASDE timing"
       ]
     }
   ],
   "archive": {
     "archive_status": "success",
     "ci_validation_status": "pending_or_unverified",
-    "markdown_path": "reports/2026/10/2026-10-01_commodities_evening.md",
-    "json_path": "reports/2026/10/2026-10-01_commodities_evening.json",
+    "markdown_path": "reports/2026/10/2026-10-02_commodities_evening.md",
+    "json_path": "reports/2026/10/2026-10-02_commodities_evening.json",
     "paths": [
-      "reports/2026/10/2026-10-01_commodities_evening.md",
-      "reports/2026/10/2026-10-01_commodities_evening.json",
+      "reports/2026/10/2026-10-02_commodities_evening.md",
+      "reports/2026/10/2026-10-02_commodities_evening.json",
       "latest/commodities_evening.md",
       "latest/commodities_evening.json",
       "status/commodities_evening_latest.json",
