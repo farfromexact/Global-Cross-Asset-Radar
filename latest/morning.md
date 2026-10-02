@@ -43,14 +43,14 @@
 | IH/IF/IC/IM主力基差 | -44.48/-56.82/-124.96/-130.02点 | — | — | 贴水约-1.58%/-1.30%/-1.68%/-1.78% | 9/30收盘 |
 | HO/IO/MO2610 ATM IV | 12.74%/15.00%/21.86% | 不可比 | 不可比 | **陈旧，不可执行** | 9/23 last-good |
 
-来源：[美国财政部名义曲线](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve)、[实际利率曲线](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_real_yield_curve)、[Reuters美国市场](https://www.reuters.com/world/china/wall-street-ends-higher-energy-shares-rise-investors-await-jobs-report-2026-10-01/)、[Cboe VIX](https://www.cboe.com/tradable_products/vix/)、[FRED HY OAS](https://fred.stlouisfed.org/series/BAMLH0A0HYM2)、[CFFEX行情](https://www.cffex.com.cn/quote/)。
+来源：[美国财政部名义曲线](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve)、[实际利率曲线](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_real_yield_curve)、[Reuters美国市场](https://www.reuters.com/business/dow-futures-hit-three-month-low-yields-surge-micron-earnings-offer-support-2026-10-01/)、[Cboe VIX](https://www.cboe.com/tradable_products/vix/)、[FRED HY OAS](https://fred.stlouisfed.org/series/BAMLH0A0HYM2)、[CFFEX行情](https://www.cffex.com.cn/quote/)。
 
 ## 三、相比上一完整时段真正发生了什么
 
-1. **利率从熊压转为牛陡，但不是“增长崩塌”。** 2Y跌10bp、30Y仅跌3bp，2s30s单日陡7bp；ISM制造业仍为54.5、就业分项52.7，价格分项升至77.9。支持前端政策路径降温，反对追逐长期债券的单边观点。[美国财政部](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve)｜[Reuters ISM](https://www.reuters.com/world/us/us-manufacturing-sector-growth-picks-up-september-inflation-worries-mount-2026-10-01/)
+1. **利率从熊压转为牛陡，但不是“增长崩塌”。** 2Y跌10bp、30Y仅跌3bp，2s30s单日陡7bp；ISM制造业仍为54.5、就业分项52.7，价格分项升至77.9。支持前端政策路径降温，反对追逐长期债券的单边观点。[美国财政部](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve)｜[ISM官方报告](https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/pmi/september/)
 2. **指数上涨掩盖内部风险。** S&P 500与Nasdaq仅小涨，SOXX涨1.29%；但Nasdaq新低家数显著多于新高，HY OAS一周扩大32bp。系统性策略仓位仍高，宽度与信用不支持无条件追指数。
-3. **油价右尾回归，但驱动更像成品油紧张与地缘风险，不是已验证的全球原油断供。** WTI涨2.71%、Brent涨4.37%；同时海湾原油出口已恢复，最强反证仍在，故只用有限损失看涨价差，不追裸期货。[Reuters油市](https://www.reuters.com/business/energy/oil-jumps-china-halts-fuel-exports-us-military-build-up-middle-east-2026-10-01/)
-4. **黄金旧空头逻辑被新证据削弱。** 黄金在DXY上涨、10Y实际利率仍2.88%时上涨；中国进口和ETF需求提供结构性竞争解释。先撤销GLD Put新仓条件，转为等待“高实率下再创新高”的Call Spread验证，不把韧性直接等同于已确认错价。[Reuters黄金分析](https://www.reuters.com/markets/commodities/golds-resilience-high-real-rates-signals-new-structural-premium-2026-10-01/)
+3. **油价右尾回归，但驱动更像成品油紧张与地缘风险，不是已验证的全球原油断供。** WTI涨2.71%、Brent涨4.37%；同时海湾原油出口已恢复，最强反证仍在，故只用有限损失看涨价差，不追裸期货。[Reuters油市](https://www.reuters.com/business/energy/oil-prices-barely-changed-investors-assess-us-iran-peace-talks-gulf-exports-2026-10-01/)
+4. **黄金旧空头逻辑被新证据削弱。** 黄金在DXY上涨、10Y实际利率仍2.88%时上涨；中国进口和ETF需求提供结构性竞争解释。先撤销GLD Put新仓条件，转为等待“高实率下再创新高”的Call Spread验证，不把韧性直接等同于已确认错价。[Reuters黄金分析](https://www.reuters.com/business/entrenched-premium-leaves-gold-primed-climb-despite-surge-us-bond-yields-2026-10-01/)
 5. **AI继续分化，而非广谱恶化。** SOXX一周跑赢ORCL约2.9个百分点，ISM又报告DRAM、存储与电子元件短缺；这支持现金流硬件优于融资型Capex Beta，但供应紧张也可能是暂时补库存，不能单凭一天价格确定因果。
 
 ## 四、机会排行榜
@@ -223,10 +223,10 @@ China-Commodities-Engine本期读取固定于`data/report_input_latest.json`，c
 
 - [美国财政部：名义收益率曲线，2026-10-01](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve)
 - [美国财政部：实际收益率曲线，2026-10-01](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_real_yield_curve)
-- [Reuters：美国股市、就业与ISM，2026-10-01](https://www.reuters.com/world/china/wall-street-ends-higher-energy-shares-rise-investors-await-jobs-report-2026-10-01/)
-- [Reuters：美国制造业与价格压力，2026-10-01](https://www.reuters.com/world/us/us-manufacturing-sector-growth-picks-up-september-inflation-worries-mount-2026-10-01/)
-- [Reuters：油价、成品油出口与中东风险，2026-10-01](https://www.reuters.com/business/energy/oil-jumps-china-halts-fuel-exports-us-military-build-up-middle-east-2026-10-01/)
-- [Reuters：黄金结构性溢价，2026-10-01](https://www.reuters.com/markets/commodities/golds-resilience-high-real-rates-signals-new-structural-premium-2026-10-01/)
+- [Reuters：美国股市、就业与ISM，2026-10-01](https://www.reuters.com/business/dow-futures-hit-three-month-low-yields-surge-micron-earnings-offer-support-2026-10-01/)
+- [ISM：美国制造业与价格压力，2026-09](https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/pmi/september/)
+- [Reuters：油价、成品油出口与中东风险，2026-10-01](https://www.reuters.com/business/energy/oil-prices-barely-changed-investors-assess-us-iran-peace-talks-gulf-exports-2026-10-01/)
+- [Reuters：黄金结构性溢价，2026-10-01](https://www.reuters.com/business/entrenched-premium-leaves-gold-primed-climb-despite-surge-us-bond-yields-2026-10-01/)
 - [BLS：就业报告日历，2026-10-02](https://www.bls.gov/schedule/news_release/empsit.htm)
 - [美国财政部：可流通国债拍卖计划](https://home.treasury.gov/system/files/221/Tentative-Auction-Schedule.pdf)
 - [CFFEX市场数据与交易日历](https://www.cffex.com.cn/)
