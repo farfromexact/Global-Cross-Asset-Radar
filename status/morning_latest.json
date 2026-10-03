@@ -1,52 +1,51 @@
 {
-  "report_date": "2026-10-02",
+  "report_date": "2026-10-03",
   "edition": "morning",
-  "generated_at_bjt": "2026-10-02T08:04:29+08:00",
+  "generated_at_bjt": "2026-10-03T08:03:51+08:00",
   "status": "published",
-  "archive_status": "success",
+  "archive_status": "pending_verification",
   "ci_validation_status": "pending_or_unverified",
   "data_fresh": false,
   "data_status": {
-    "us_treasury": "ok_2026-10-01",
-    "global_cash_quotes": "ok_2026-10-01_closed",
+    "us_treasury": "ok_2026-10-02_official",
+    "global_cash_quotes": "ok_2026-10-02_closed",
     "global_option_surfaces": "missing",
-    "move": "stale_delayed_2026-09-29",
-    "hy_oas": "ok_delayed_2026-09-30",
+    "move": "stale_2026-09-29",
+    "hy_oas": "ok_delayed_2026-10-01",
     "china_index_eod": "ok_last_good_2026-09-30_holiday",
     "china_options_latest": "stale_2026-09-23",
     "china_options_history": "empty",
-    "china_options_snapshot_2026_09_30": "missing",
-    "china_options_snapshot_2026_10_01": "missing",
     "china_commodities_eod": "ok_last_good_2026-09-30_holiday_refresh_failed",
     "china_commodities_night": "missing_holiday",
     "china_commodity_options": "partial_42_of_64_execution_ready_0",
-    "tool_truncation": "none_observed",
+    "tool_truncation": "large connector payload; compact layer usable",
     "parse_error": "none"
   },
-  "china_options_path": "data/radar_latest.json; data/radar_history.json; data/snapshots/2026-09-30.json (missing); data/snapshots/2026-10-01.json (missing)",
+  "china_options_path": "data/radar_latest.json; data/radar_history.json",
   "china_options_date": "2026-09-23",
   "china_options_commit": "2d988b26116b0d81089a9bce051a29c18a5df3e7",
   "china_commodities_path": "data/report_input_latest.json",
   "china_commodities_date": "2026-09-30",
-  "china_commodities_commit": "0bd1b2af748ad2f0a432f1047564f0275423616b",
-  "previous_date": "2026-10-01",
-  "errors": [
-    "Global executable option surfaces, bid-ask and current Greeks unavailable.",
-    "USD/CNH synchronized close and FX option skews unavailable.",
-    "MOVE last-good is delayed at 2026-09-29; HY OAS is delayed at 2026-09-30.",
-    "China options radar_latest is stale at 2026-09-23; radar_history is empty; 2026-09-30 and 2026-10-01 snapshots are missing.",
-    "Current China option 3/5/20-day surface changes and gamma migration unavailable.",
-    "China commodity holiday refresh reported no current contracts; 2026-09-30 last-good preserved and not treated as zero movement.",
-    "Commodity options cover 42/64 products but execution-ready count is zero.",
-    "Exact OPEC+ meeting time and exact Beijing time for Treasury auctions were not verified.",
-    "schemas/status.schema.json, templates/status.json and templates/manifest.json are unavailable; current status and manifest shapes preserved."
-  ],
+  "china_commodities_commit": "ecaf8da43340e14cbf2f0711087a433edb514442",
+  "previous_date": "2026-10-02",
+  "previous_reports": {
+    "latest_global": "reports/2026/10/2026-10-02_evening.json",
+    "latest_same_edition": "reports/2026/10/2026-10-02_morning.json"
+  },
   "paths": {
-    "markdown": "reports/2026/10/2026-10-02_morning.md",
-    "json": "reports/2026/10/2026-10-02_morning.json",
+    "markdown": "reports/2026/10/2026-10-03_morning.md",
+    "json": "reports/2026/10/2026-10-03_morning.json",
     "latest_markdown": "latest/morning.md",
     "latest_json": "latest/morning.json",
     "status": "status/morning_latest.json",
     "manifest": "manifests/reports.json"
-  }
+  },
+  "errors": [
+    "global option bid/ask surfaces and exact current Greeks unavailable",
+    "MOVE stale at 2026-09-29; HY OAS delayed to 2026-10-01",
+    "China Options latest stale at 2026-09-23 and history file empty",
+    "China holiday prevents new EOD through October 7",
+    "schemas/status.schema.json, templates/status.json and templates/manifest.json returned GitHub 404",
+    "US auction/EIA event times await final official confirmation"
+  ]
 }
