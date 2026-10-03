@@ -1,33 +1,45 @@
 {
   "schema_version": "1.0",
-  "report_date": "2026-10-02",
+  "report_date": "2026-10-03",
   "edition": "evening",
-  "generated_at_bjt": "2026-10-02T20:41:00+08:00",
-  "status": "published",
-  "archive_status": "success",
+  "generated_at_bjt": "2026-10-03T20:12:28+08:00",
+  "generated_at": "2026-10-03T20:12:28+08:00",
+  "prompt_version": "radar_2026-09-06_coverage_v1",
+  "archive_status": "pending",
   "ci_validation_status": "pending_or_unverified",
-  "markdown_path": "reports/2026/10/2026-10-02_evening.md",
-  "json_path": "reports/2026/10/2026-10-02_evening.json",
   "data_fresh": false,
-  "china_options_date": "2026-09-23",
-  "china_commodities_date": "2026-09-30",
   "data_status": {
-    "global": "ok_post_release_initial_reaction",
-    "china_cash_futures": "ok_last_good_holiday",
-    "china_options_iv_skew_gamma": "stale",
+    "global": "ok_2026-10-02_close",
+    "china_cash": "ok_last_good_2026-09-30",
+    "china_options": "stale_2026-09-23",
     "china_options_history": "empty",
-    "china_commodities_eod": "ok_last_good",
-    "china_commodities_holiday_rerun": "partial_or_fallback",
-    "commodity_options_execution": "not_ready",
-    "us_options_quotes": "missing"
+    "china_commodities": "stale_or_partial_2026-09-30"
+  },
+  "china_options_date": "2026-09-23",
+  "china_options_commit_sha": "2d988b26116b0d81089a9bce051a29c18a5df3e7",
+  "china_commodities_date": "2026-09-30",
+  "china_commodities_commit_sha": "9a57e81ef6ba8d97c527d85de6699ea9578dd968",
+  "paths": {
+    "markdown": "reports/2026/10/2026-10-03_evening.md",
+    "json": "reports/2026/10/2026-10-03_evening.json",
+    "latest_markdown": "latest/evening.md",
+    "latest_json": "latest/evening.json",
+    "status": "status/evening_latest.json",
+    "manifest": "manifests/reports.json"
   },
   "errors": [
-    "China option surface is last-good 2026-09-23 and not executable for 2026-10-02.",
-    "China-Options-Engine data/radar_history.json is empty, not truncated.",
-    "China commodities 2026-10-02 holiday rerun is partial_or_fallback; verified 2026-09-30 last-good remains valid.",
-    "Commodity and US live options bid/ask/Greeks unavailable.",
-    "USD/CNH synchronous quote and FX option skews unavailable.",
-    "schemas/status.schema.json, templates/status.json and templates/manifest.json not found; actual report and manifest schemas plus existing status file shape used."
+    "US option live bid/ask and exact Greeks missing",
+    "China options current surface stale; history file empty",
+    "China commodities 2026-10-03 refresh fell back to 2026-09-30; execution-ready option surface unavailable",
+    "FX option skew, CTA and dealer net gamma unavailable",
+    "MOVE uses secondary delayed value"
   ],
-  "commit_sha": "5419e6662b460f895e21d6c6a497afc4f7bf571e"
+  "verification": {
+    "historical_markdown": false,
+    "historical_json": false,
+    "latest_markdown_date": false,
+    "latest_json_identity": false,
+    "status_identity": false,
+    "manifest_unique_record": false
+  }
 }
