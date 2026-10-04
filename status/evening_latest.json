@@ -1,45 +1,49 @@
 {
   "schema_version": "1.0",
-  "report_date": "2026-10-03",
+  "report_date": "2026-10-04",
   "edition": "evening",
-  "generated_at_bjt": "2026-10-03T20:12:28+08:00",
-  "generated_at": "2026-10-03T20:12:28+08:00",
+  "generated_at_bjt": "2026-10-04T20:08:48+08:00",
+  "generated_at": "2026-10-04T20:08:48+08:00",
   "prompt_version": "radar_2026-09-06_coverage_v1",
-  "archive_status": "success",
+  "archive_status": "pending",
   "ci_validation_status": "pending_or_unverified",
   "data_fresh": false,
   "data_status": {
     "global": "ok_2026-10-02_close",
+    "weekend_news": "ok_through_2026-10-04_20:03",
+    "opec_official": "missing",
     "china_cash": "ok_last_good_2026-09-30",
     "china_options": "stale_2026-09-23",
     "china_options_history": "empty",
-    "china_commodities": "stale_or_partial_2026-09-30"
+    "china_commodities": "stale_error_last_good_2026-09-30",
+    "china_commodity_options": "empty_current"
   },
   "china_options_date": "2026-09-23",
   "china_options_commit_sha": "2d988b26116b0d81089a9bce051a29c18a5df3e7",
   "china_commodities_date": "2026-09-30",
-  "china_commodities_commit_sha": "9a57e81ef6ba8d97c527d85de6699ea9578dd968",
+  "china_commodities_commit_sha": "21c91cbdd3e1e168fe57581bbc644cacca19b725",
   "paths": {
-    "markdown": "reports/2026/10/2026-10-03_evening.md",
-    "json": "reports/2026/10/2026-10-03_evening.json",
+    "markdown": "reports/2026/10/2026-10-04_evening.md",
+    "json": "reports/2026/10/2026-10-04_evening.json",
     "latest_markdown": "latest/evening.md",
     "latest_json": "latest/evening.json",
     "status": "status/evening_latest.json",
     "manifest": "manifests/reports.json"
   },
   "errors": [
-    "US option live bid/ask and exact Greeks missing",
-    "China options current surface stale; history file empty",
-    "China commodities 2026-10-03 refresh fell back to 2026-09-30; execution-ready option surface unavailable",
-    "FX option skew, CTA and dealer net gamma unavailable",
-    "MOVE uses secondary delayed value"
+    "OPEC+ official Oct4 communiqué missing at cutoff",
+    "US live option bid/ask, skew and Greeks missing",
+    "China options stale 2026-09-23; history empty; CFFEX EOD missing in last run",
+    "China commodities refresh error; current option surface empty",
+    "FX skew, CTA and dealer gamma unavailable",
+    "MOVE delayed; HY OAS latest 2026-10-01"
   ],
   "verification": {
-    "historical_markdown": true,
-    "historical_json": true,
-    "latest_markdown_date": true,
-    "latest_json_identity": true,
-    "status_identity": true,
-    "manifest_unique_record": true
+    "historical_markdown": false,
+    "historical_json": false,
+    "latest_markdown_date": false,
+    "latest_json_identity": false,
+    "status_identity": false,
+    "manifest_unique_record": false
   }
 }
