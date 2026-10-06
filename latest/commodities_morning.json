@@ -1,31 +1,25 @@
 {
   "schema_version": "1.0",
   "status": "published",
-  "report_date": "2026-10-06",
+  "report_date": "2026-10-07",
   "edition": "commodities_morning",
-  "generated_at_bjt": "2026-10-06T07:00:20+08:00",
+  "generated_at_bjt": "2026-10-07T07:00:00+08:00",
   "weekend_mode": false,
   "holiday_mode": true,
   "title": "全球商品期货期权高风险机会雷达（晨间版）",
-  "one_sentence_conclusion": "截至本报告时点，无可立即执行的合格新交易；RU2701 最接近节后触发，但原油终盘回吐、美元走强且国内休市，全部候选须等 10 月 8 日重新报价。",
-  "regime": "china_holiday_oil_risk_premium_fades_logistics_risk_persists_dollar_strong_rubber_leads",
+  "one_sentence_conclusion": "截至本报告时点，无可立即执行的合格新交易。SICOM新结算强化RU，但原油跌破100后收复、贵金属及原糖反弹；10月8日只交易开盘后确认，不押第一跳。",
+  "regime": "china_holiday_last_day_rubber_external_confirmation_crude_flow_recovery_vs_tail_risk_diesel_logistics_tight_metals_sugar_rebound",
   "worth_taking_risk": false,
   "prompt_version": "radar_2026-09-06_coverage_v1",
   "data_protocol_version": "china_commodities_v2",
-  "data_cutoff": {
-    "as_of_bjt": "2026-10-06T07:00:20+08:00",
-    "latest_complete_china_session": "2026-09-30",
-    "next_china_day_session": "2026-10-08T09:00:00+08:00",
-    "next_china_night_session": "2026-10-08T21:00:00+08:00",
-    "overseas_cutoff": "2026-10-06T07:00:00+08:00"
-  },
+  "data_cutoff": "2026-10-07T07:00:00+08:00",
   "input_snapshots": [
     "China-Commodities-Engine:data/report_input_latest.json@80925308665c4a433cfc6b00e2c918898dc650df",
     "China-Commodities-Engine:data/latest.json@fe6403bcfc915f1304e32eaba638570c2275086c",
     "China-Commodities-Engine:data/night_session/last_run_status.json@517bfad8523f799f1848533e4b39f543719fd869"
   ],
   "report_input_requested_date": "2026-09-30",
-  "report_input_generated_at": "2026-10-05T19:08:33.661647+08:00",
+  "report_input_generated_at": "2026-10-06T08:13:50.858492+08:00",
   "module_freshness": {
     "futures": {
       "source_date": "2026-09-30",
@@ -64,9 +58,9 @@
       "state": "research_ready_execution_missing"
     }
   },
-  "night_session_trading_date": "2026-10-05",
-  "night_session_date": "2026-10-04",
-  "night_session_generated_at": "2026-10-05T08:04:52.852895+08:00",
+  "night_session_trading_date": "2026-10-06",
+  "night_session_date": "2026-10-05",
+  "night_session_generated_at": "2026-10-06T08:03:07.396566+08:00",
   "night_session_data_fresh": false,
   "night_session_validation_passed": false,
   "night_session_coverage_complete": false,
@@ -83,11 +77,11 @@
     "eligible_basis_count": 0
   },
   "external_coverage": {
-    "ready": 17,
-    "total": 22,
-    "source_date": "2026-10-05",
-    "realtime_supplement": true,
-    "exact_import_parity_ready": false
+    "repo_series_fresh": 17,
+    "repo_series_target": 22,
+    "repo_source_date": "2026-10-05",
+    "online_update_through": "2026-10-07T07:00:00+08:00",
+    "usage": "context_only"
   },
   "options_surface_ready": 192,
   "options_positioning_ready": 47,
@@ -139,7 +133,8 @@
       "night_delta_oi": 11873,
       "night_status": "historical 2026-09-29 session; not current",
       "options": "surface/positioning/execution=true/true/false",
-      "signal": "holiday_wait_retest"
+      "signal": "holiday_wait_retest_stronger_external_confirmation",
+      "overseas": "SGX TSR20 Dec-26 settlement 259.2 US cents/kg on 2026-10-06; about +0.82% vs 2026-10-02 same month"
     },
     {
       "sector": "agri_oils",
@@ -159,7 +154,8 @@
       "night_delta_oi": 6681,
       "night_status": "historical",
       "options": "true/false/false",
-      "signal": "holiday_wait_retest"
+      "signal": "holiday_wait_retest_lower_external_confirmation",
+      "overseas": "CBOT soybeans about -0.2% in Asia; BMD close unverified"
     },
     {
       "sector": "rubber",
@@ -179,7 +175,8 @@
       "night_delta_oi": 8194,
       "night_status": "historical",
       "options": "true/false/false",
-      "signal": "downgraded_wait"
+      "signal": "watch_with_RU_not_chase",
+      "overseas": "TSR20 supportive; crude merely stable"
     },
     {
       "sector": "energy",
@@ -199,7 +196,8 @@
       "night_delta_oi": -1162,
       "night_status": "historical",
       "options": "true/false/false",
-      "signal": "no_long_confirmation"
+      "signal": "conditional_short_only_after_failed_rebound",
+      "overseas": "Brent 100.58 (+0.3%), WTI 89.44 (flat) settlement; flows recovering but tail risk remains"
     },
     {
       "sector": "energy",
@@ -219,7 +217,8 @@
       "night_delta_oi": -24314,
       "night_status": "historical",
       "options": "not ready",
-      "signal": "avoid_curve_arbitrage"
+      "signal": "avoid_curve_arbitrage",
+      "overseas": "crude stable after intraday selloff"
     },
     {
       "sector": "base_metals",
@@ -238,7 +237,8 @@
       "night_return_vs_settlement_pct": 0.11,
       "night_status": "historical",
       "options": "surface yes/execution no",
-      "signal": "mixed_wait"
+      "signal": "mild_positive_proxy_wait",
+      "overseas": "LME 3m copper about 14446, +0.2% at 0930 GMT, intraday not close"
     },
     {
       "sector": "precious_metals",
@@ -257,7 +257,8 @@
       "night_return_vs_settlement_pct": 0.349,
       "night_status": "historical",
       "options": "surface yes/execution no",
-      "signal": "avoid_bottom_fishing"
+      "signal": "rebound_watch_no_bottom_fishing",
+      "overseas": "spot gold 4168.33 +0.7%; silver 61.56 +0.8%; DXY futures about -0.3%"
     },
     {
       "sector": "black",
@@ -274,7 +275,8 @@
       "night_close": null,
       "night_status": "DCE unresolved",
       "options": "DCE insufficient",
-      "signal": "no_confirmation"
+      "signal": "no_three_layer_confirmation",
+      "overseas": "SGX IODEX Nov-26 settlement 91.65"
     },
     {
       "sector": "agri_oils",
@@ -291,7 +293,8 @@
       "night_close": null,
       "night_status": "DCE unresolved",
       "options": "DCE insufficient",
-      "signal": "weaker_than_OI"
+      "signal": "weaker_than_OI",
+      "overseas": "CBOT oilseed complex soft; BMD close unverified"
     },
     {
       "sector": "chemicals",
@@ -311,7 +314,8 @@
       "night_delta_oi": -30011,
       "night_status": "historical",
       "options": "surface yes/execution no",
-      "signal": "anchor_divergence_wait45m"
+      "signal": "anchor_divergence_wait45m",
+      "overseas": "crude stable; products/logistics remain tight"
     },
     {
       "sector": "softs",
@@ -331,7 +335,8 @@
       "night_delta_oi": 744,
       "night_status": "historical",
       "options": "true/true/false",
-      "signal": "research_divergence"
+      "signal": "external_strength_domestic_curve_conflict",
+      "overseas": "ICE raw sugar 20.81 cents/lb, 19-month high"
     },
     {
       "sector": "shipping",
@@ -348,21 +353,23 @@
       "night_close": null,
       "night_status": "not applicable",
       "options": "not ready",
-      "signal": "avoid_false_arbitrage"
+      "signal": "avoid_false_arbitrage",
+      "overseas": "Middle East crude flows improve; tanker/security risk remains"
     }
   ],
   "meaningful_changes": [
-    "中国无新增 EOD/Night；9/30 last-good 继续有效但不得冒充实时。",
-    "Brent/WTI 10/5 终盘约 100.32/89.43，低于 19:07 repo 快照；SC 多头尾部证据减弱。",
-    "中东出口恢复与油轮/运费风险并存，柴油物流 RV 由 61 升至 62，但仍待报价。",
-    "美元与美债收益率走强、黄金回落，黄金信用主题本期未获确认。",
-    "RTAS 最新仍为 10/2；RU 分数和节后触发不变，BR 因成本端走弱降至 60。"
+    "中国无新增EOD或有效Night；9/30 last-good继续有效，假期刷新失败不构成行情缺失。",
+    "SGX TSR20 Dec-26 10/6结算259.2，较10/2同月约+0.82%；RU由75升至77。",
+    "Brent盘中跌破100后收100.58，WTI收89.44；SC空头只保留为反弹失败条件，降至66。",
+    "EIA抬高Q4 Brent和柴油预测；柴油物流RV维持65，但G7放储和政策缓冲是反证。",
+    "黄金/白银约+0.7%/+0.8%、DXY回落，贵金属仅获一日修复；中国弱势链未被推翻。",
+    "ICE糖20.81创19个月高位，但SR国内价格/curve反对，维持59研究观察。"
   ],
   "top_opportunities": [
     {
       "rank": 1,
       "name": "COM-E-RU2701-RUBBER-TIGHTNESS-20261001",
-      "score": 75,
+      "score": 77,
       "direction": "long conditional",
       "holding_period": "2-10D",
       "stage": "holiday_wait_trigger",
@@ -374,32 +381,32 @@
       "score_components": {
         "logic": 22,
         "convexity": 16,
-        "catalyst": 16,
-        "price_curve_vol": 13,
+        "catalyst": 17,
+        "price_curve_vol": 14,
         "crowding_technical": 8
       },
       "support_layers": 4,
       "research_judgment": "存在待验证优势",
-      "evidence_sufficiency": "部分",
+      "evidence_sufficiency": "部分充分",
       "execution_status": "休市/等待触发"
     },
     {
       "rank": 2,
-      "name": "COM-E-OI701-RELSTRENGTH-20260930",
-      "score": 65,
-      "direction": "long conditional",
-      "holding_period": "3-15D",
+      "name": "COM-E-SC2611-CONDITIONAL-SHORT-20261006",
+      "score": 66,
+      "direction": "short conditional",
+      "holding_period": "1-7D",
       "stage": "holiday_wait_trigger",
       "instruments": [
-        "OI701"
+        "SC2611"
       ],
       "max_loss_limited": false,
       "score_components": {
         "logic": 19,
-        "convexity": 14,
-        "catalyst": 11,
+        "convexity": 15,
+        "catalyst": 13,
         "price_curve_vol": 11,
-        "crowding_technical": 10
+        "crowding_technical": 8
       },
       "support_layers": 2,
       "research_judgment": "存在待验证优势",
@@ -409,20 +416,20 @@
     {
       "rank": 3,
       "name": "COM-E-DIESEL-LOGISTICS-20261005",
-      "score": 62,
-      "direction": "long gasoil / short Brent",
+      "score": 65,
+      "direction": "long gasoil / short Brent RV",
       "holding_period": "1-7D",
-      "stage": "quote_and_parameter_pending",
+      "stage": "quote_and_parameters_required",
       "instruments": [
-        "ICE Low Sulphur Gasoil Nov-2026 x5 long",
-        "ICE Brent Dec-2026 x7 short"
+        "ICE Gasoil Nov-26 x5 long",
+        "ICE Brent Dec-26 x7 short"
       ],
       "max_loss_limited": false,
       "score_components": {
         "logic": 20,
-        "convexity": 12,
-        "catalyst": 15,
-        "price_curve_vol": 9,
+        "convexity": 13,
+        "catalyst": 16,
+        "price_curve_vol": 10,
         "crowding_technical": 6
       },
       "support_layers": 2,
@@ -432,20 +439,20 @@
     },
     {
       "rank": 4,
-      "name": "COM-E-BR2611-RELSTRENGTH-20260930",
-      "score": 60,
+      "name": "COM-E-OI701-RELSTRENGTH-20260930",
+      "score": 63,
       "direction": "long conditional",
-      "holding_period": "2-8D",
-      "stage": "downgraded_holiday_wait",
+      "holding_period": "3-15D",
+      "stage": "holiday_wait_trigger",
       "instruments": [
-        "BR2611"
+        "OI701"
       ],
       "max_loss_limited": false,
       "score_components": {
         "logic": 18,
-        "convexity": 13,
-        "catalyst": 11,
-        "price_curve_vol": 8,
+        "convexity": 14,
+        "catalyst": 10,
+        "price_curve_vol": 11,
         "crowding_technical": 10
       },
       "support_layers": 2,
@@ -457,13 +464,13 @@
       "rank": 5,
       "name": "COM-SR-DIVERGENCE-20260930",
       "score": 59,
-      "direction": "observe divergence",
+      "direction": "long research observation",
       "holding_period": "3-10D",
-      "stage": "research_watch",
+      "stage": "research_only",
       "instruments": [
         "SR701"
       ],
-      "max_loss_limited": null,
+      "max_loss_limited": false,
       "score_components": {
         "logic": 17,
         "convexity": 12,
@@ -482,95 +489,105 @@
       "idea_id": "COM-E-RU2701-RUBBER-TIGHTNESS-20261001",
       "contract": "RU2701",
       "direction": "long conditional",
-      "entry": "2026-10-08 after 09:45; 20000-20200 retest holds and curve not narrowing",
-      "abandon": "gap above 20500 or failure to reclaim 20000 in 45m",
-      "stop": "30m close below 19600 or SICOM weak plus curve contango",
+      "entry": "2026-10-08 after 09:45; 20000-20200 holds and near curve does not weaken; 40/30/30",
+      "abandon": ">20500 opening gap or failure to reclaim 20000 within 45m",
+      "stop": "30m acceptance below 19600 or SICOM weakens plus curve turns contango",
       "targets": [
         20750,
         21400
       ],
-      "time_stop": "2 trading days",
+      "time_stop": "2 trading days without expansion",
       "max_loss_limited": false,
       "risk_budget_nav_pct": 0.5,
       "metadata": {
-        "multiplier_assumption": 10,
-        "tick_size_assumption": 5,
-        "tick_value_assumption": 50,
+        "multiplier": 10,
+        "tick_size": 5,
+        "tick_value": 50,
         "margin_pct": 11,
         "price_limit_pct": 9,
+        "night_session": "21:00-23:00",
         "last_trading_day": "2027-01-15",
-        "delivery_risk": "high; roll by late Dec"
+        "one_limit_stress_cny": 17739,
+        "two_limit_stress_cny": 37070
       },
       "status": "holiday_wait_trigger"
     },
     {
-      "idea_id": "COM-E-OI701-RELSTRENGTH-20260930",
-      "contract": "OI701",
-      "direction": "long conditional",
-      "entry": "2026-10-08 after 09:45; 10120-10220 holds and backwardation >1.5%",
-      "abandon": "gap above 10350",
-      "stop": "30m close below 10020 or curve below 0.8%",
+      "idea_id": "COM-E-SC2611-CONDITIONAL-SHORT-20261006",
+      "contract": "SC2611",
+      "direction": "short conditional",
+      "entry": "2026-10-08 after 09:45; failed rebound at 690-700 or break/retest of 680; 40/30/30",
+      "abandon": "direct gap below 665 or Brent above 103 with SC curve backwardation",
+      "stop": "30m acceptance above 711 for fade setup; reclaim 700 for breakdown setup",
       "targets": [
-        10480,
-        10700
+        665,
+        630
       ],
-      "time_stop": "3 trading days",
+      "time_stop": "2 trading days without expansion",
       "max_loss_limited": false,
-      "risk_budget_nav_pct": 0.35,
+      "risk_budget_nav_pct": 0.25,
       "metadata": {
-        "multiplier": 10,
-        "tick_size": 1,
-        "tick_value": 10,
-        "margin_pct": 9,
-        "price_limit_pct": 8,
-        "last_trading_day": "2027-01-14",
-        "delivery_risk": "high near expiry"
+        "multiplier": 1000,
+        "tick_size": 0.1,
+        "tick_value": 100,
+        "margin_pct": 22,
+        "price_limit_pct": 20,
+        "last_trading_day": "2026-10-30",
+        "one_limit_stress_cny": 139220,
+        "two_limit_stress_cny": 306500
       },
       "status": "holiday_wait_trigger"
     },
     {
       "idea_id": "COM-E-DIESEL-LOGISTICS-20261005",
       "contracts": [
-        "ICE Low Sulphur Gasoil Nov-2026",
-        "ICE Brent Dec-2026"
+        "long 5 ICE Low Sulphur Gasoil Nov-26",
+        "short 7 ICE Brent Dec-26"
       ],
-      "direction": "long 5 gasoil / short 7 Brent",
-      "neutral_definition": "approximate dollar-notional neutral at 2026-10-05 19:07 snapshot; not beta/crack/yield neutral",
-      "pnl_formula": "500*delta_gasoil_usd_per_tonne - 7000*delta_brent_usd_per_bbl",
-      "entry": "next liquid overseas session after live bid/ask; 15m basket breakout >1%",
-      "abandon": "either leg slippage >0.25% or unsynchronized fills",
-      "stop": "basket -0.75% or verified freight normalization",
+      "direction": "long product logistics premium RV",
+      "neutral_definition": "approximate dollar-notional neutral at 2026-10-05 snapshot; not beta-neutral",
+      "pnl_formula": "500*dGasoil_USD_per_tonne - 7000*dBrent_USD_per_bbl",
+      "entry": "only after synchronized live bid/ask and parameters; basket midpoint +1% confirmation; 40/30/30",
+      "abandon": "either leg slippage >0.25% or inability to execute synchronously",
+      "stop": "basket -0.75% from fill",
       "targets": [
         "+1.5%",
         "+3.0%"
       ],
-      "time_stop": "2 liquid sessions",
+      "time_stop": "2 liquid sessions without expansion",
       "max_loss_limited": false,
       "risk_budget_nav_pct": 0.25,
-      "status": "quote_and_parameter_pending"
+      "status": "quote_and_parameters_required"
     }
   ],
   "research_watchlist": [
     {
       "idea_id": "COM-E-BR2611-RELSTRENGTH-20260930",
       "status": "holiday_wait",
-      "score": 60,
-      "change": "downgraded from 62 due weaker crude cost support"
+      "score": 59,
+      "change": "TSR20 support offset by domestic OI decline and weak crude cost support"
     },
     {
       "idea_id": "COM-SR-DIVERGENCE-20260930",
       "status": "research_only",
-      "score": 59
+      "score": 59,
+      "change": "ICE sugar at 19-month high; domestic curve and price still oppose"
     },
     {
-      "idea_id": "COM-SC-SUPPLY-TAIL-20261005",
-      "status": "evidence_insufficient",
-      "reason": "exports recovered and domestic price/curve do not confirm"
+      "idea_id": "COM-E-OI701-RELSTRENGTH-20260930",
+      "status": "holiday_wait",
+      "score": 63,
+      "change": "lower due softer external oilseed proxy and no China update"
     },
     {
       "idea_id": "COM-AU-AG-CREDIT-20261001",
       "status": "not_confirmed",
-      "reason": "dollar/yields up and gold down"
+      "reason": "one-day gold/silver rebound insufficient; China chain and option execution missing"
+    },
+    {
+      "idea_id": "COM-E-SC2611-SUPPLY-TAIL-20261005",
+      "status": "cancelled",
+      "reason": "Gulf flows recovered and old China price/curve do not support long"
     },
     {
       "idea_id": "COM-FU-SC-SPREAD-20260930",
@@ -704,41 +721,46 @@
   },
   "event_calendar": [
     {
-      "time_bjt": "2026-10-06; exact time unconfirmed",
-      "event": "EIA STEO/Winter Fuels Outlook",
-      "handling": "reduce overseas delta; wait for release"
+      "time_bjt": "2026-10-07T22:30:00+08:00",
+      "event": "EIA Weekly Petroleum Status Report",
+      "handling": "focus crude/distillate/refinery utilization; wait 15m or defined-risk only"
     },
     {
-      "time_bjt": "2026-10-07T22:30:00+08:00 regular window",
-      "event": "EIA Weekly Petroleum Status Report",
-      "handling": "wait 15m or defined-risk only"
+      "time_bjt": "2026-10-08T02:00:00+08:00",
+      "event": "FOMC minutes",
+      "handling": "monitor DXY/real yields/gold; no unquoted option structure"
     },
     {
       "time_bjt": "2026-10-08T09:00:00+08:00",
       "event": "China futures reopen",
-      "handling": "wait 30-45m; refresh all quotes"
+      "handling": "refresh all quotes and parameters; wait 30-60m"
     },
     {
       "time_bjt": "2026-10-08T21:00:00+08:00",
       "event": "China night session resumes",
-      "handling": "use exact contract current data"
+      "handling": "use exact-contract current data"
     },
     {
       "time_bjt": "2026-10-10T00:00:00+08:00",
       "event": "USDA WASDE",
-      "handling": "halve agri delta; defined-risk options only with live quote"
+      "handling": "halve agri delta; defined-risk options only with live quotes"
     },
     {
       "time_bjt": "2026-10-10T03:30:00+08:00 regular time",
       "event": "CFTC COT",
       "handling": "positioning context only"
+    },
+    {
+      "time_bjt": "next 7 days",
+      "event": "Gulf cyclone, Hormuz/Bab al-Mandeb flows, Saudi facilities, rubber weather, mine/refinery events",
+      "handling": "wait or use bounded convexity only after live quote"
     }
   ],
   "action_list": {
     "A": "今天没有应立即建立的新仓位。",
-    "B": "今天只应挂条件单的仓位：无；RU2701、OI701 的 10 月 8 日方案须节后重新报价确认。",
-    "C": "今天应继续观察的机会：RU2701 回踩强度、OI701 backwardation、柴油物流篮子实时价差、BR2611 与原油成本端背离。",
-    "D": "今天必须避免或退出的交易：追高 RU/BR、抄底 AG、裸卖 SC/BR 短到期期权、把 BU/EC 深曲线或 C 级 basis 当可执行套利。"
+    "B": "今天只应挂条件单的仓位：无；RU2701、SC2611及OI701均须10月8日重报价并完成30—60分钟确认，柴油篮子须先取得同步bid/ask与参数。",
+    "C": "今天应继续观察的机会：RU外盘强度能否被国内接受、SC对Brent与EIA数据的弹性、柴油/Brent物流价差、SR外强内弱及金银反弹延续性。",
+    "D": "今天必须避免或退出的交易：追逐10月8日第一跳、裸多SC、追高RU/BR、抄底AG、恢复旧SC供应尾险多头、使用C级basis或无bid/ask期权建立所谓套利。"
   },
   "risk_budget": {
     "trial_trade_nav_pct": "0.25-0.75",
@@ -760,7 +782,7 @@
     {
       "title": "China-Commodities-Engine unified report input",
       "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/report_input_latest.json",
-      "source_date": "2026-10-05",
+      "source_date": "2026-10-06",
       "supported_claims": [
         "9/30 China last-good futures/market/physical/options",
         "module freshness and exact contract data"
@@ -769,85 +791,69 @@
     {
       "title": "China-Commodities-Engine night session status",
       "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/night_session/last_run_status.json",
-      "source_date": "2026-10-05",
+      "source_date": "2026-10-06",
       "supported_claims": [
-        "holiday night attempt invalid",
+        "10/6 holiday night attempt invalid",
         "previous valid snapshot retained"
       ]
     },
     {
-      "title": "SHFE National Day holiday arrangements",
-      "url": "https://www.shfe.com.cn/publicnotice/notice/202609/t20260921_833503.html",
-      "source_date": "2026-09-21",
-      "supported_claims": [
-        "Oct 1-7 closure",
-        "Oct 8 reopen and night resumption",
-        "RU holiday limits/margin"
-      ]
-    },
-    {
-      "title": "Reuters oil closes lower as exports recover",
-      "url": "https://www.reuters.com/business/energy/oil-climbs-after-yemeni-houthis-attack-saudi-aramco-sites-2026-10-04/",
-      "source_date": "2026-10-05",
-      "supported_claims": [
-        "Brent 100.32",
-        "WTI 89.43"
-      ]
-    },
-    {
-      "title": "Reuters Middle East crude exports and tanker attacks",
-      "url": "https://www.reuters.com/business/energy/middle-east-crude-oil-exports-exceed-pre-war-levels-tanker-attacks-increase-2026-10-05/",
-      "source_date": "2026-10-05",
-      "supported_claims": [
-        "exports recovered",
-        "tanker attacks persist"
-      ]
-    },
-    {
-      "title": "Reuters global markets",
-      "url": "https://www.reuters.com/world/china/global-markets-global-markets-2026-10-05/",
-      "source_date": "2026-10-05",
-      "supported_claims": [
-        "dollar firmer",
-        "US 10Y yield above 5.3%"
-      ]
-    },
-    {
-      "title": "Rubber Trade Association of Singapore daily prices",
-      "url": "https://www.rtas.sg/rubber-prices/",
-      "source_date": "2026-10-02",
-      "supported_claims": [
-        "latest official page observation remained Oct 2 at report cutoff"
-      ]
-    },
-    {
-      "title": "EIA release schedules",
-      "url": "https://www.eia.gov/petroleum/supply/weekly/schedule.php",
+      "title": "Reuters oil prices and Gulf flows",
+      "url": "https://www.reuters.com/business/energy/oil-prices-slip-traders-weigh-strong-mideast-exports-against-gulf-tensions-2026-10-06/",
       "source_date": "2026-10-06",
       "supported_claims": [
-        "weekly petroleum release schedule"
+        "Brent 100.58 and WTI 89.44 settlement",
+        "12m bpd crude and 2m bpd products recently shipped",
+        "Saudi East-West Pipeline 5.8m bpd"
+      ]
+    },
+    {
+      "title": "Reuters EIA forecast",
+      "url": "https://www.reuters.com/business/energy/us-eia-hikes-oil-price-forecasts-again-as-iran-war-drains-global-stockpile-2026-10-06/",
+      "source_date": "2026-10-06",
+      "supported_claims": [
+        "EIA Q4 Brent forecast 105",
+        "diesel expected above 6 per gallon in October"
+      ]
+    },
+    {
+      "title": "SGX market page",
+      "url": "https://www.sgx.com/",
+      "source_date": "2026-10-06",
+      "supported_claims": [
+        "TSR20 Dec-26 settlement 259.2",
+        "IODEX iron ore Nov-26 settlement 91.65"
+      ]
+    },
+    {
+      "title": "Reuters gold and silver",
+      "url": "https://www.reuters.com/world/india/gold-inches-lower-firmer-dollar-higher-yields-weigh-2026-10-06/",
+      "source_date": "2026-10-06",
+      "supported_claims": [
+        "spot gold 4168.33 up 0.7%",
+        "silver 61.56 up 0.8%"
+      ]
+    },
+    {
+      "title": "Federal Reserve monetary policy releases",
+      "url": "https://www.federalreserve.gov/monetarypolicy.htm",
+      "source_date": "2026-10-07",
+      "supported_claims": [
+        "FOMC minutes calendar"
       ]
     },
     {
       "title": "USDA WASDE schedule",
       "url": "https://usda.azureedge.us/about-usda/general-information/staff-offices/office-chief-economist/commodity-markets/wasde-report",
-      "source_date": "2026-10-06",
+      "source_date": "2026-10-07",
       "supported_claims": [
-        "Oct 9 12:00 ET WASDE release"
-      ]
-    },
-    {
-      "title": "CFTC COT release schedule",
-      "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm",
-      "source_date": "2026-10-06",
-      "supported_claims": [
-        "Oct 9 COT release"
+        "October WASDE release timing"
       ]
     }
   ],
   "archive": {
-    "markdown_path": "reports/2026/10/2026-10-06_commodities_morning.md",
-    "json_path": "reports/2026/10/2026-10-06_commodities_morning.json",
+    "markdown_path": "reports/2026/10/2026-10-07_commodities_morning.md",
+    "json_path": "reports/2026/10/2026-10-07_commodities_morning.json",
     "latest_markdown_path": "latest/commodities_morning.md",
     "latest_json_path": "latest/commodities_morning.json",
     "status_path": "status/commodities_morning_latest.json",
