@@ -1,0 +1,782 @@
+{
+  "schema_version": "1.0",
+  "status": "published",
+  "report_date": "2026-10-07",
+  "edition": "morning",
+  "generated_at": "2026-10-07T08:04:00+08:00",
+  "generated_at_bjt": "2026-10-07T08:04:00+08:00",
+  "weekend_mode": false,
+  "holiday_mode": true,
+  "prompt_version": "radar_2026-09-06_coverage_v1",
+  "title": "全球跨资产高风险机会雷达｜晨间版",
+  "one_sentence_conclusion": "有值得研究但没有应立即市价建立的新仓：选择性Risk-on与高期限溢价并存，QQQ创高而SOXX、小盘未确认，最佳赔率在10年债拍卖/FOMC纪要后的限损凸性。",
+  "regime": "selective_risk_on_narrow_ai_leadership_high_term_premium_pre_event_china_holiday",
+  "market_regime": "selective_risk_on_narrow_ai_leadership_high_term_premium_pre_event_china_holiday",
+  "worth_taking_risk": true,
+  "data_fresh": false,
+  "data_cutoff": {
+    "beijing_time": "2026-10-07T07:59:00+08:00",
+    "us_cash_market": "closed",
+    "china_cash_market": "closed",
+    "notes": [
+      "US/Europe latest complete session 2026-10-06",
+      "China futures latest complete session 2026-09-30",
+      "China options verifiable snapshot 2026-09-23",
+      "China reopens 2026-10-08"
+    ]
+  },
+  "input_snapshots": {
+    "china_options_repository": "farfromexact/China-Options-Engine",
+    "china_options_path": "data/radar_latest.json; data/radar_history.json; data/last_run_status.json",
+    "china_options_date": "2026-09-23",
+    "china_options_generated_at": "2026-09-23T17:15:50+08:00",
+    "china_options_fresh": false,
+    "china_options_official_coverage": false,
+    "china_options_commit": "d1c5f12330707a34fa30955cc869fa8023e8bbdc",
+    "china_commodities_repository": "farfromexact/China-Commodities-Engine",
+    "china_commodities_path": "data/report_input_latest.json; data/last_run_status.json; reports/2026/10/2026-10-07_commodities_morning.json",
+    "china_commodities_date": "2026-09-30",
+    "china_commodities_fresh": false,
+    "china_commodities_commit": "41f0e0a0d3af4cb936b6a4bb48e8005012d68f5c"
+  },
+  "source_status": {
+    "us_treasury": "ok_2026-10-06_official",
+    "us_equities": "ok_2026-10-06_closed",
+    "oil_gold_fx": "ok_2026-10-06_closed",
+    "vix": "ok_secondary_2026-10-06",
+    "move": "stale_last_good_2026-10-05",
+    "hy_oas": "stale_last_good_2026-10-02",
+    "global_option_surfaces": "missing",
+    "china_index_eod": "stale_last_good_2026-09-30",
+    "china_options_latest": "stale_2026-09-23",
+    "china_options_history": "empty",
+    "china_options_refresh": "missing_2026-10-07_holiday",
+    "china_commodities": "stale_last_good_2026-09-30",
+    "china_commodity_options": "surface_partial_execution_ready_0"
+  },
+  "dashboard": [
+    {
+      "asset": "US 2Y",
+      "value": "4.79%",
+      "day_change": "-5bp",
+      "week_change": "-10bp",
+      "signal": "front-end hike pricing eased",
+      "as_of": "2026-10-06 official close"
+    },
+    {
+      "asset": "US 5Y",
+      "value": "5.03%",
+      "day_change": "-3bp",
+      "week_change": "-3bp",
+      "signal": "high but easing",
+      "as_of": "2026-10-06 official close"
+    },
+    {
+      "asset": "US 10Y",
+      "value": "5.27%",
+      "day_change": "-4bp",
+      "week_change": "+1bp",
+      "signal": "high before auction",
+      "as_of": "2026-10-06 official close"
+    },
+    {
+      "asset": "US 30Y",
+      "value": "5.64%",
+      "day_change": "-2bp",
+      "week_change": "+5bp",
+      "signal": "supply pressure remains",
+      "as_of": "2026-10-06 official close"
+    },
+    {
+      "asset": "2s10s/2s30s/5s30s",
+      "value": "+48/+85/+61bp",
+      "day_change": "+1/+3/+1bp",
+      "week_change": "+11/+15/+8bp",
+      "signal": "steepening only partly repaired",
+      "as_of": "derived from Treasury CMT"
+    },
+    {
+      "asset": "10Y real/BEI",
+      "value": "2.91%/2.36%",
+      "day_change": "-4bp/0bp",
+      "week_change": "0bp/+1bp",
+      "signal": "real yield still restrictive",
+      "as_of": "2026-10-06 official/derived"
+    },
+    {
+      "asset": "DXY",
+      "value": "~101.85",
+      "day_change": "~-0.3%",
+      "week_change": "~flat",
+      "signal": "dollar eased",
+      "as_of": "2026-10-06 secondary close"
+    },
+    {
+      "asset": "QQQ",
+      "value": "759.66",
+      "day_change": "+0.46%",
+      "week_change": "+2.94%",
+      "signal": "record, narrow leadership",
+      "as_of": "2026-10-06 close"
+    },
+    {
+      "asset": "SOXX",
+      "value": "589.45",
+      "day_change": "-0.01%",
+      "week_change": "+3.88%",
+      "signal": "did not confirm daily QQQ strength",
+      "as_of": "2026-10-06 close"
+    },
+    {
+      "asset": "WTI/Brent",
+      "value": "89.44/100.58",
+      "day_change": "+0.01/+0.26",
+      "week_change": "~flat/~ -2.0%",
+      "signal": "flows cap geopolitics",
+      "as_of": "2026-10-06 settlement"
+    },
+    {
+      "asset": "Spot gold/GLD",
+      "value": "4168/382.27",
+      "day_change": "+0.7%/+0.71%",
+      "week_change": "GLD -0.16%",
+      "signal": "traditional-factor rally",
+      "as_of": "2026-10-06 close"
+    },
+    {
+      "asset": "VIX",
+      "value": "15.01",
+      "day_change": "-3.29%",
+      "week_change": "-6.42%",
+      "signal": "equity tail risk cheaper",
+      "as_of": "2026-10-06 close"
+    },
+    {
+      "asset": "MOVE",
+      "value": "~113.6",
+      "day_change": "delayed",
+      "week_change": "n/a",
+      "signal": "bond/equity vol divergence",
+      "as_of": "2026-10-05 last-good"
+    },
+    {
+      "asset": "HY OAS",
+      "value": "~3.54%",
+      "day_change": "delayed",
+      "week_change": "~+39bp",
+      "signal": "credit not confirming equity fully",
+      "as_of": "2026-10-02 last-good"
+    },
+    {
+      "asset": "IH2612/IF2612",
+      "value": "2778.8/4300.8",
+      "day_change": "+0.55%/+0.55%",
+      "week_change": "n/a",
+      "signal": "large cap last-good stronger",
+      "as_of": "2026-09-30 stale"
+    },
+    {
+      "asset": "IC2612/IM2612",
+      "value": "7310.2/7168.8",
+      "day_change": "+0.01%/-0.31%",
+      "week_change": "n/a",
+      "signal": "small cap last-good weaker",
+      "as_of": "2026-09-30 stale"
+    },
+    {
+      "asset": "HO/IO/MO ATM IV",
+      "value": "12.74%/15.00%/21.86%",
+      "day_change": "+0.35/+0.52/-0.06vol",
+      "week_change": "n/a",
+      "signal": "stale; not executable",
+      "as_of": "2026-09-23 stale"
+    }
+  ],
+  "meaningful_changes": [
+    "10Y/30Y收益率回落4/2bp、10Y实际回落4bp，TLT put保留事件凸性但取消提前下注。",
+    "QQQ创高而SOXX微跌、Russell 2000下跌，选择性Risk-on尚非全面宽度确认。",
+    "PENG收入同比+68%并上调FY2027展望，反对Capex Beta必然恶化；库存和经营现金流消耗是反证。",
+    "黄金随美元和实际利率下行而涨，方向受支持但政策信用归因没有新增独立证据。",
+    "法国长债收益率下行，EURCHF旧空头财政催化减弱。",
+    "中国期权刷新missing并回退9月23日；休市不等同无机会。"
+  ],
+  "top_opportunities": [
+    {
+      "rank": 1,
+      "idea_id": "US-RATES-TLT-PUT-20260925",
+      "name": "TLT 2026-10-16 78/75 Put Spread",
+      "score": 85,
+      "score_components": {
+        "logic": 22,
+        "convexity": 23,
+        "catalyst": 18,
+        "price_curve_vol": 11,
+        "crowding_technical": 11
+      },
+      "direction": "bearish duration",
+      "holding_period": "1-7D",
+      "stage": "等待触发",
+      "instrument": "long 1 TLT 2026-10-16 78 Put / short 1 TLT 2026-10-16 75 Put",
+      "max_loss_limited": true,
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "10Y拍卖与FOMC纪要后等待触发"
+    },
+    {
+      "rank": 2,
+      "idea_id": "GOLD-CREDIT-CALL-20261007",
+      "name": "GLD 2027-02-19 35Δ/20Δ Call Spread",
+      "score": 80,
+      "score_components": {
+        "logic": 22,
+        "convexity": 22,
+        "catalyst": 17,
+        "price_curve_vol": 10,
+        "crowding_technical": 9
+      },
+      "direction": "bullish gold conditional breakout",
+      "holding_period": "20-90D",
+      "stage": "观察",
+      "instrument": "long 1 GLD 2027-02-19 ~35Δ Call / short 1 same-expiry ~20Δ Call; strikes set from live surface",
+      "max_loss_limited": true,
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "突破4200/4220后待报价"
+    },
+    {
+      "rank": 3,
+      "idea_id": "AI-SOXX-CATCHUP-20261007",
+      "name": "SOXX 2026-11-20 590/620 Call Spread",
+      "score": 76,
+      "score_components": {
+        "logic": 19,
+        "convexity": 20,
+        "catalyst": 16,
+        "price_curve_vol": 10,
+        "crowding_technical": 11
+      },
+      "direction": "bullish semiconductor catch-up",
+      "holding_period": "5-30D",
+      "stage": "观察",
+      "instrument": "long 1 SOXX 2026-11-20 590 Call / short 1 SOXX 2026-11-20 620 Call",
+      "max_loss_limited": true,
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "APLD后等待确认"
+    },
+    {
+      "rank": 4,
+      "idea_id": "CN-COM-RU-NR-20261004",
+      "name": "RU2701突破多、NR2612确认",
+      "score": 75,
+      "score_components": {
+        "logic": 21,
+        "convexity": 16,
+        "catalyst": 16,
+        "price_curve_vol": 13,
+        "crowding_technical": 9
+      },
+      "direction": "bullish rubber conditional",
+      "holding_period": "2-10D",
+      "stage": "观察",
+      "instrument": "RU2701 future with NR2612 and OI confirmation",
+      "max_loss_limited": false,
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "休市；10月8日重算"
+    },
+    {
+      "rank": 5,
+      "idea_id": "EU-FRANCE-EURCHF-PUT-20261005",
+      "name": "EUR/CHF 1M 25Δ/10Δ Put Spread",
+      "score": 71,
+      "score_components": {
+        "logic": 18,
+        "convexity": 19,
+        "catalyst": 14,
+        "price_curve_vol": 9,
+        "crowding_technical": 11
+      },
+      "direction": "bearish EURCHF conditional",
+      "holding_period": "3-20D",
+      "stage": "观察",
+      "instrument": "long 1M 25Δ EUR put/CHF call; short 1M 10Δ EUR put/CHF call",
+      "max_loss_limited": true,
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "等待OAT-Bund再扩与RFQ"
+    }
+  ],
+  "top_trade_cards": [
+    {
+      "idea_id": "US-RATES-TLT-PUT-20260925",
+      "structure": "long 1 TLT 2026-10-16 78 Put / short 1 TLT 2026-10-16 75 Put",
+      "entry": "10Y auction后TLT<77.05且30分钟不能收复、30Y>=5.68%；或TLT反抽77.55-77.80失败且10Y实际>=2.95%",
+      "good_medium_bad": "净支出<=1.15 / 1.16-1.35 / >1.35放弃；均为执行上限，不是报价",
+      "invalidation": "TLT日收>78.00且30Y<5.55%，或10Y实际<2.85%",
+      "exit": "TLT 76.40或1.5R减半；75.30或2.5R退出；最迟10月13日退出未扩张仓位",
+      "max_loss": "net debit",
+      "greeks": "local delta<0, gamma>0, theta<0, vega slightly>0; exact values pending quote",
+      "risk_budget": "0.25%-0.50% trial; policy-credit cluster <=1.25%"
+    },
+    {
+      "idea_id": "GOLD-CREDIT-CALL-20261007",
+      "structure": "long 1 GLD 2027-02-19 ~35Δ Call / short 1 same-expiry ~20Δ Call; strikes set from live surface",
+      "entry": "spot gold 30m >4200 and Dec GC >4220; stronger confirmation if 10Y real>=2.90% or DXY stops falling",
+      "good_medium_bad": "净支出<=价差宽度28% / 28%-34% / >34%放弃；执行上限，不是报价",
+      "invalidation": "spot gold<4120 with real yields/USD rising; or gold<4000 while both real yields and DXY fall",
+      "exit": "GLD +4% or 1.5R half; near short strike or 2.5-3R exit; cut vega if no expansion in 60D",
+      "max_loss": "net debit",
+      "greeks": "local delta>0, gamma>0, vega>0, theta<0; exact strikes/values pending live surface",
+      "risk_budget": "0.25%-0.50% trial; policy-credit cluster <=1.25%"
+    },
+    {
+      "idea_id": "AI-SOXX-CATCHUP-20261007",
+      "structure": "long 1 SOXX 2026-11-20 590 Call / short 1 SOXX 2026-11-20 620 Call",
+      "entry": "after APLD earnings, SOXX close>596.5 and next 30m holds 594; or break>600 with broader semiconductor breadth",
+      "good_medium_bad": "净支出<=价差宽度27% / 27%-34% / >34%放弃；执行上限，不是报价",
+      "invalidation": "SOXX<584 and QQQ<752, or PENG after-hours gain reverses with weak APLD orders/cash flow",
+      "exit": "SOXX 607 or 1.5R half; 618-620 or 2.5R exit; exit if no break of 600 in 10D",
+      "max_loss": "net debit",
+      "greeks": "local delta>0, gamma>0, vega>0, theta<0; exact values pending quote",
+      "risk_budget": "0.25%-0.50% trial; AI cluster <=1.0%"
+    }
+  ],
+  "trade_cards": [
+    {
+      "idea_id": "US-RATES-TLT-PUT-20260925",
+      "structure": "long 1 TLT 2026-10-16 78 Put / short 1 TLT 2026-10-16 75 Put",
+      "entry": "10Y auction后TLT<77.05且30分钟不能收复、30Y>=5.68%；或TLT反抽77.55-77.80失败且10Y实际>=2.95%",
+      "good_medium_bad": "净支出<=1.15 / 1.16-1.35 / >1.35放弃；均为执行上限，不是报价",
+      "invalidation": "TLT日收>78.00且30Y<5.55%，或10Y实际<2.85%",
+      "exit": "TLT 76.40或1.5R减半；75.30或2.5R退出；最迟10月13日退出未扩张仓位",
+      "max_loss": "net debit",
+      "greeks": "local delta<0, gamma>0, theta<0, vega slightly>0; exact values pending quote",
+      "risk_budget": "0.25%-0.50% trial; policy-credit cluster <=1.25%"
+    },
+    {
+      "idea_id": "GOLD-CREDIT-CALL-20261007",
+      "structure": "long 1 GLD 2027-02-19 ~35Δ Call / short 1 same-expiry ~20Δ Call; strikes set from live surface",
+      "entry": "spot gold 30m >4200 and Dec GC >4220; stronger confirmation if 10Y real>=2.90% or DXY stops falling",
+      "good_medium_bad": "净支出<=价差宽度28% / 28%-34% / >34%放弃；执行上限，不是报价",
+      "invalidation": "spot gold<4120 with real yields/USD rising; or gold<4000 while both real yields and DXY fall",
+      "exit": "GLD +4% or 1.5R half; near short strike or 2.5-3R exit; cut vega if no expansion in 60D",
+      "max_loss": "net debit",
+      "greeks": "local delta>0, gamma>0, vega>0, theta<0; exact strikes/values pending live surface",
+      "risk_budget": "0.25%-0.50% trial; policy-credit cluster <=1.25%"
+    },
+    {
+      "idea_id": "AI-SOXX-CATCHUP-20261007",
+      "structure": "long 1 SOXX 2026-11-20 590 Call / short 1 SOXX 2026-11-20 620 Call",
+      "entry": "after APLD earnings, SOXX close>596.5 and next 30m holds 594; or break>600 with broader semiconductor breadth",
+      "good_medium_bad": "净支出<=价差宽度27% / 27%-34% / >34%放弃；执行上限，不是报价",
+      "invalidation": "SOXX<584 and QQQ<752, or PENG after-hours gain reverses with weak APLD orders/cash flow",
+      "exit": "SOXX 607 or 1.5R half; 618-620 or 2.5R exit; exit if no break of 600 in 10D",
+      "max_loss": "net debit",
+      "greeks": "local delta>0, gamma>0, vega>0, theta<0; exact values pending quote",
+      "risk_budget": "0.25%-0.50% trial; AI cluster <=1.0%"
+    }
+  ],
+  "gold_tracking": {
+    "hypothesis_status": "不变但日内证据略减弱",
+    "judgment": "等待突破与传统因子分离",
+    "preferred_expression": "GLD 3-6M defined-risk call spread after confirmation",
+    "invalidation": "gold<4000 while real yields and DXY both fall; persistent ETF outflow or weaker central-bank buying",
+    "data_gaps": [
+      "ETF flows",
+      "central-bank buying",
+      "CFTC positioning",
+      "gold option IV/skew"
+    ]
+  },
+  "ai_tracking": {
+    "regime": "龙头Risk-on与二线基本面验证并存",
+    "cashflow_vs_capex_hypothesis": "减弱；PENG反对机械做空Capex Beta，APLD为下一独立检验",
+    "preferred_expression": "SOXX defined-risk catch-up call spread after APLD and breadth confirmation",
+    "invalidation": "SOXX<584, PENG after-hours reversal, weak APLD orders/financing, or 10Y>5.35%"
+  },
+  "china_tracking": {
+    "qualified_trade": null,
+    "score": null,
+    "preferred_future": null,
+    "research_judgment": "证据不足",
+    "evidence_sufficiency": "不足",
+    "execution_status": "休市；待2026-10-08新报价",
+    "best_watch": "long IM / short IF after 45-minute breadth, basis and OI confirmation",
+    "futures_option_linkage": {
+      "IH_HO": {
+        "status": "stale",
+        "mapping": "IH↔HO"
+      },
+      "IF_IO": {
+        "status": "stale",
+        "mapping": "IF↔IO"
+      },
+      "IC_proxy": {
+        "status": "proxy_only",
+        "mapping": "IC via MO/IO or ETF options",
+        "risks": [
+          "beta",
+          "basis",
+          "tracking error",
+          "sector mismatch"
+        ]
+      },
+      "IM_MO": {
+        "status": "stale",
+        "mapping": "IM↔MO"
+      }
+    },
+    "multiperiod": {
+      "HO2610": {
+        "atm_iv": 12.737,
+        "change_1d": 0.353,
+        "change_3d": 0.248,
+        "change_5d": -1.787,
+        "change_20d": -2.464,
+        "rr25": -0.987,
+        "bf25": 0.666,
+        "pcr_oi": 0.674,
+        "pcr_volume": 0.709,
+        "gamma_node": 2900
+      },
+      "IO2610": {
+        "atm_iv": 15.004,
+        "change_1d": 0.517,
+        "change_3d": -0.342,
+        "change_5d": -2.347,
+        "change_20d": -3.033,
+        "rr25": -0.83,
+        "bf25": 0.354,
+        "pcr_oi": 0.732,
+        "pcr_volume": 0.556,
+        "gamma_node": 4500
+      },
+      "MO2610": {
+        "atm_iv": 21.86,
+        "change_1d": -0.055,
+        "change_3d": 0.82,
+        "change_5d": -3.811,
+        "change_20d": -5.64,
+        "rr25": -1.022,
+        "bf25": 0.495,
+        "pcr_oi": 0.817,
+        "pcr_volume": 0.624,
+        "gamma_node": 8000
+      }
+    }
+  },
+  "commodities_tracking": {
+    "scan_date": "2026-09-30",
+    "products_scanned": 77,
+    "contracts_scanned": 806,
+    "original_codes": 63,
+    "dynamic_additions": 14,
+    "options_eligible": 64,
+    "option_surfaces_available": 42,
+    "execution_ready": 0,
+    "top_watch": [
+      "RU2701/NR2612",
+      "SC/Brent",
+      "diesel/Brent",
+      "OI701",
+      "SR701"
+    ],
+    "status": "stale_last_good_with_2026-10-06_external_updates"
+  },
+  "commodity_tracking": {
+    "scan_date": "2026-09-30",
+    "products_scanned": 77,
+    "contracts_scanned": 806,
+    "execution_ready_options": 0
+  },
+  "previous_date": "2026-10-06",
+  "previous_reports": {
+    "latest_global": "reports/2026/10/2026-10-06_evening.json",
+    "latest_same_edition": "reports/2026/10/2026-10-06_morning.json"
+  },
+  "idea_ledger": [
+    {
+      "idea_id": "US-RATES-TLT-PUT-20260925",
+      "first_seen": "2026-09-25",
+      "previous_status": "waiting/unknown fill",
+      "current_status": "wait after auction/minutes",
+      "change_reason": "new data and shorter tenor"
+    },
+    {
+      "idea_id": "QQQ-CALL-20260926",
+      "first_seen": "2026-09-26",
+      "previous_status": "conditional/unknown fill",
+      "current_status": "no new entry; if previously built reduce half after 760 target",
+      "change_reason": "price change and catalyst decay"
+    },
+    {
+      "idea_id": "EU-FRANCE-EURCHF-PUT-20261005",
+      "first_seen": "2026-10-05",
+      "previous_status": "observe",
+      "current_status": "observe downgraded",
+      "change_reason": "French yield and policy update"
+    },
+    {
+      "idea_id": "CN-COM-RU-NR-20261004",
+      "first_seen": "2026-10-04",
+      "previous_status": "holiday",
+      "current_status": "holiday; recalc October 8",
+      "change_reason": "no new China session"
+    }
+  ],
+  "event_calendar": [
+    {
+      "time_bjt": "2026-10-07T22:30:00+08:00",
+      "event": "EIA weekly petroleum status",
+      "handling": "reduce crude delta; validate diesel/Brent after data"
+    },
+    {
+      "time_bjt": "2026-10-08T01:00:00+08:00",
+      "event": "US 10Y Treasury auction",
+      "handling": "primary TLT put trigger; no add before result"
+    },
+    {
+      "time_bjt": "2026-10-08T02:00:00+08:00",
+      "event": "FOMC minutes",
+      "handling": "avoid naked short vega; retain only defined-risk convexity"
+    },
+    {
+      "time_bjt": "2026-10-08T04:00:00+08:00",
+      "event": "Applied Digital earnings window; exact IR time unconfirmed",
+      "handling": "delay SOXX entry until after result"
+    },
+    {
+      "time_bjt": "2026-10-08T09:30:00+08:00",
+      "event": "China A-share and CFFEX reopen",
+      "handling": "wait 30-45 minutes; do not pre-place IM-IF"
+    },
+    {
+      "time_bjt": "2026-10-08T16:30:00+08:00",
+      "event": "Fed Waller speech",
+      "handling": "adjust rates/USD delta to actual remarks"
+    },
+    {
+      "time_bjt": "2026-10-09T01:00:00+08:00",
+      "event": "US 30Y Treasury auction",
+      "handling": "second TLT catalyst; second tranche only after weak auction"
+    },
+    {
+      "time_bjt": "2026-10-09T22:00:00+08:00",
+      "event": "University of Michigan preliminary sentiment",
+      "handling": "keep only limited inflation convexity"
+    },
+    {
+      "time_bjt": "2026-10-10T00:00:00+08:00",
+      "event": "USDA WASDE",
+      "handling": "avoid naked short gamma in agriculture"
+    }
+  ],
+  "coverage_check": [
+    {
+      "module": "US rates",
+      "required": "2/5/10/30Y, curves, real/BEI, term premium, auctions/Fed",
+      "analyzed": "official yields, curves, real/BEI, 3Y auction and forward calendar",
+      "insufficient": "live option surface and identified term-premium model",
+      "not_applicable": "none"
+    },
+    {
+      "module": "FX",
+      "required": "DXY, EURUSD, USDJPY, USDCNH, skew, carry/crowding",
+      "analyzed": "DXY, EURUSD and EURCHF drivers",
+      "insufficient": "precise USDJPY/USDCNH close and all live option surfaces",
+      "not_applicable": "none"
+    },
+    {
+      "module": "US equities/AI",
+      "required": "Nasdaq/QQQ, SOXX/SMH, six AI-chain segments",
+      "analyzed": "QQQ, SOXX, PENG, APLD catalyst and theme screen",
+      "insufficient": "complete equal-weight breadth, live valuation and option surfaces",
+      "not_applicable": "undefined baskets not labeled neutral"
+    },
+    {
+      "module": "oil/gold",
+      "required": "curves, inventory, cracks, OPEC+, geopolitics, OVX; full gold mechanism",
+      "analyzed": "settlements, EIA preview, logistics and gold competing explanations",
+      "insufficient": "live curves/cracks/OVX; gold ETF/CFTC/IV",
+      "not_applicable": "none"
+    },
+    {
+      "module": "China index",
+      "required": "IH/IF/IC/IM, HO/IO/MO, ETF options, 1/3/5/20D, basis and RV",
+      "analyzed": "four futures last-good, three option families, five RV pairs and reopen framework",
+      "insufficient": "holiday; empty history; fresh breadth/flows/margin",
+      "not_applicable": "IC has no one-to-one index option"
+    },
+    {
+      "module": "commodities",
+      "required": "63 original plus dynamic; direction/curve/basis/RV/vol/event",
+      "analyzed": "77/77 products and 806 contracts across all strategy classes",
+      "insufficient": "domestic EOD stops 2026-09-30; zero execution-ready options",
+      "not_applicable": "some illiquid minor contracts"
+    },
+    {
+      "module": "risk",
+      "required": "VIX/MOVE/HY/breadth/CTA/gamma/crowding/liquidity",
+      "analyzed": "VIX, delayed MOVE/HY, Russell/QQQ/SOXX divergence",
+      "insufficient": "CTA, dealer net gamma, complete breadth",
+      "not_applicable": "OI not used to infer dealer net gamma"
+    }
+  ],
+  "action_list": {
+    "A": "无；中国休市，且美国三项候选都应等10年债拍卖、FOMC纪要或APLD财报后确认。",
+    "B": "拍卖后TLT 10/16 78/75 Put Spread；黄金突破4200/4220后的GLD 2027-02-19 35Δ/20Δ Call Spread；APLD后SOXX 11/20 590/620 Call Spread。",
+    "C": "10月8日开盘45分钟后的多IM/空IF、RU2701/NR2612、EIA后的柴油/Brent、OAT-Bund再扩后的EUR/CHF put spread。",
+    "D": "避免追多QQQ、黄金或节后RU，避免在陈旧HO/IO/MO曲面上预埋交易；若此前已建QQQ 10/16 750/770 Call Spread，应在已触及760目标后减半并不再加仓。"
+  },
+  "risk_budget": {
+    "trial_max_nav": "0.25%-0.75%",
+    "recommended_new_option_trial": "0.25%-0.50%",
+    "confirmed_trade_max_nav": "0.75%-1.50%",
+    "high_conviction_theme_total": "2.5%-3.0%",
+    "policy_credit_cluster_max": "1.25%",
+    "ai_cluster_max": "1.0%",
+    "china_small_cap_cluster_before_reopen": "0%",
+    "notes": [
+      "futures stops are not finite maximum loss",
+      "margin, gap and liquidity stress counted separately"
+    ]
+  },
+  "sources": [
+    {
+      "title": "U.S. Treasury Daily Treasury Par Yield Curve Rates",
+      "publisher": "U.S. Treasury",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve",
+      "source_date": "2026-10-06",
+      "accessed_at_bjt": "2026-10-07T08:04:00+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "2Y/5Y/10Y/30Y yields",
+        "2s10s/2s30s/5s30s curves"
+      ]
+    },
+    {
+      "title": "U.S. Treasury Daily Real Yield Curve Rates",
+      "publisher": "U.S. Treasury",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_real_yield_curve",
+      "source_date": "2026-10-06",
+      "accessed_at_bjt": "2026-10-07T08:04:00+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "10Y real yield",
+        "10Y breakeven estimate"
+      ]
+    },
+    {
+      "title": "Global Markets October 6 close",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/china/global-markets-global-markets-2026-10-06/",
+      "source_date": "2026-10-06",
+      "accessed_at_bjt": "2026-10-07T08:04:00+08:00",
+      "source_type": "newswire",
+      "supported_claims": [
+        "equity close",
+        "dollar",
+        "gold",
+        "Treasury market"
+      ]
+    },
+    {
+      "title": "Oil settles with supply flows and EIA preview",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/energy/oil-prices-slip-traders-weigh-strong-mideast-exports-against-gulf-tensions-2026-10-06/",
+      "source_date": "2026-10-06",
+      "accessed_at_bjt": "2026-10-07T08:04:00+08:00",
+      "source_type": "newswire",
+      "supported_claims": [
+        "WTI and Brent settlement",
+        "EIA consensus",
+        "Mideast exports"
+      ]
+    },
+    {
+      "title": "Penguin Solutions Q4 2026 results exhibit",
+      "publisher": "SEC / Penguin Solutions",
+      "url": "https://www.sec.gov/Archives/edgar/data/1616533/000161653326000046/pengq4-26form8xkxex991.htm",
+      "source_date": "2026-10-06",
+      "accessed_at_bjt": "2026-10-07T08:04:00+08:00",
+      "source_type": "official_filing",
+      "supported_claims": [
+        "revenue growth",
+        "non-GAAP EPS",
+        "FY2027 outlook",
+        "cash flow"
+      ]
+    },
+    {
+      "title": "Le Pen budget plan and French bond reaction",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/far-right-presidential-frontrunner-le-pen-pitch-budget-cuts-french-bonds-bomb-2026-10-06/",
+      "source_date": "2026-10-06",
+      "accessed_at_bjt": "2026-10-07T08:04:00+08:00",
+      "source_type": "newswire",
+      "supported_claims": [
+        "French fiscal proposal",
+        "French 10Y yield move"
+      ]
+    },
+    {
+      "title": "Treasury Auction Timing",
+      "publisher": "TreasuryDirect",
+      "url": "https://treasurydirect.gov/auctions/general-auction-timing/",
+      "source_date": "2026-10-07",
+      "accessed_at_bjt": "2026-10-07T08:04:00+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "Treasury auction timing framework"
+      ]
+    },
+    {
+      "title": "China-Options-Engine fixed commit",
+      "publisher": "GitHub / farfromexact",
+      "url": "https://github.com/farfromexact/China-Options-Engine/commit/d1c5f12330707a34fa30955cc869fa8023e8bbdc",
+      "source_date": "2026-10-07",
+      "accessed_at_bjt": "2026-10-07T08:04:00+08:00",
+      "source_type": "repository_snapshot",
+      "supported_claims": [
+        "option snapshot date",
+        "refresh failure",
+        "read paths"
+      ]
+    },
+    {
+      "title": "Global radar commodities morning 2026-10-07",
+      "publisher": "GitHub / farfromexact",
+      "url": "https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/main/reports/2026/10/2026-10-07_commodities_morning.json",
+      "source_date": "2026-10-07",
+      "accessed_at_bjt": "2026-10-07T08:04:00+08:00",
+      "source_type": "repository_report",
+      "supported_claims": [
+        "77-product commodity scan",
+        "RU/SC/OI/SR status"
+      ]
+    }
+  ],
+  "errors": [
+    "global live option bid/ask, synchronized IV/skew and exact Greeks unavailable",
+    "TLT simultaneous intraday trigger path and user fills unavailable",
+    "MOVE and HY OAS are delayed last-good observations",
+    "China options latest stale at 2026-09-23; radar_history empty",
+    "China markets closed October 1-7; no nonexistent EOD assumed",
+    "China commodities last-good 2026-09-30 and option execution-ready count is zero",
+    "schemas/status.schema.json, templates/status.json and templates/manifest.json unavailable on main; existing status/manifest structures used"
+  ],
+  "archive_status": "success",
+  "ci_validation_status": "pending_or_unverified",
+  "archive": {
+    "markdown_path": "reports/2026/10/2026-10-07_morning.md",
+    "json_path": "reports/2026/10/2026-10-07_morning.json",
+    "latest_markdown_path": "latest/morning.md",
+    "latest_json_path": "latest/morning.json",
+    "status_path": "status/morning_latest.json",
+    "manifest_path": "manifests/reports.json",
+    "archive_status": "success",
+    "commit_sha": null,
+    "error": null
+  }
+}
