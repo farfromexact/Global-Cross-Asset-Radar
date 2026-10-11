@@ -1,62 +1,48 @@
 {
-  "report_date": "2026-10-10",
+  "report_date": "2026-10-11",
   "edition": "morning",
-  "generated_at_bjt": "2026-10-10T08:04:20+08:00",
+  "generated_at_bjt": "2026-10-11T08:01:08+08:00",
   "status": "published",
-  "archive_status": "success",
+  "archive_status": "partial",
   "ci_validation_status": "pending_or_unverified",
   "data_fresh": false,
   "data_status": {
-    "us_treasury": "ok_2026-10-09_official",
-    "us_equities": "ok_2026-10-09_closed",
-    "oil_gold_fx": "ok_2026-10-09_closed",
-    "vix": "ok_2026-10-09",
-    "move": "delayed_market_value_2026-10-09",
-    "hy_oas": "ok_2026-10-08_fred_lagged",
-    "global_option_surfaces": "missing",
-    "china_index_eod": "ok_2026-10-09_crosschecked",
-    "china_index_volume_oi": "ok_2026-10-09",
-    "china_options_latest": "stale_2026-09-23",
-    "china_options_history": "parse_error",
-    "china_options_refresh": "parse_error_2026-10-10_no_header",
-    "china_commodities": "ok_2026-10-09_vendor_primary",
-    "china_commodities_basis": "missing",
-    "china_commodities_options": "truncated_and_not_ready",
-    "read_state_policy": [
-      "ok",
-      "missing",
-      "empty",
-      "truncated",
-      "parse_error",
-      "stale"
-    ]
+    "global_prices": "carried_forward_2026-10-09",
+    "weekend_news": "ok_through_2026-10-11T07:50:00+08:00",
+    "china_options": "stale_2026-09-23_history_empty_current_run_missing",
+    "china_commodities": "last_good_2026-10-09_valid_weekend_refresh_error",
+    "errors_count": 8
   },
-  "china_options_path": "data/radar_latest.json; data/radar_history.json; data/latest.json; data/last_run_status.json; data/snapshots/2026-09-23.json",
+  "china_options_path": "data/radar_latest.json; data/radar_history.json; data/latest.json; data/last_run_status.json",
   "china_options_date": "2026-09-23",
-  "china_options_commit": "d509c8ad19e38ebce98e62761db9910674cc066d",
+  "china_options_commit": null,
+  "china_options_blob_shas": {
+    "radar_latest": "a0024326e7874979411ad44385dbbc19d36a4dc7",
+    "radar_history": "ad46d993f83b77bd82bd69c8383af5aaad48312d",
+    "latest": "3d35a81d83f71c7d98a37748b1c75c1c990c4278",
+    "last_run_status": "9d62ea7bce20e0ec8cff86d9a12610d2793c0e3f"
+  },
   "china_commodities_path": "data/report_input_latest.json; data/last_run_status.json; data/radar_latest.json; data/radar_history.json; data/latest.json; data/market_state_latest.json; data/options/surface_latest.json; data/physical/latest.json; data/external/latest.json",
   "china_commodities_date": "2026-10-09",
-  "china_commodities_commit": "7645ea20332f9836ac65cccb7fa127c15d683640",
-  "previous_date": "2026-10-09",
+  "china_commodities_commit": null,
+  "previous_date": "2026-10-10",
   "previous_reports": {
-    "latest_global": "reports/2026/10/2026-10-09_evening.json",
-    "latest_same_edition": "reports/2026/10/2026-10-09_morning.json"
+    "latest_global": "reports/2026/10/2026-10-10_evening.md",
+    "latest_same_edition": "reports/2026/10/2026-10-10_morning.md"
   },
-  "paths": {
-    "markdown": "reports/2026/10/2026-10-10_morning.md",
-    "json": "reports/2026/10/2026-10-10_morning.json",
-    "latest_markdown": "latest/morning.md",
-    "latest_json": "latest/morning.json",
-    "status": "status/morning_latest.json",
-    "manifest": "manifests/reports.json"
-  },
+  "paths": [
+    "reports/2026/10/2026-10-11_morning.md",
+    "reports/2026/10/2026-10-11_morning.json",
+    "latest/morning.md",
+    "latest/morning.json",
+    "status/morning_latest.json",
+    "manifests/reports.json"
+  ],
   "errors": [
-    "global option bid/ask, synchronized IV/skew and exact Greeks unavailable",
-    "MOVE delayed; HY OAS lags one session",
-    "China-Options-Engine refresh failed and restored 2026-09-23 last-good",
-    "China options radar_history returned parse_error, not source empty",
-    "China commodity basis/member rankings unavailable and warehouse partial",
-    "China commodity options surface connector truncated and engine surface/execution flags false",
-    "schemas/status.schema.json, templates/status.json and templates/manifest.json are missing; existing structures preserved"
+    "China options current surface stale and history empty.",
+    "China commodities weekend refresh failed; 2026-10-09 last-good used.",
+    "Global and commodity executable option quotes unavailable.",
+    "Repository commit SHA unavailable through file connector; blob SHAs recorded.",
+    "pending main-branch readback verification"
   ]
 }
