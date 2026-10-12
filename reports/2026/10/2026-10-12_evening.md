@@ -214,7 +214,7 @@
 13. [ASML financial calendar](https://www.asml.com/en/investors/financial-calendar)，2026-10-12；支持：ASML三季报事件窗口。
 14. [TSMC quarterly results](https://investor.tsmc.com/english/quarterly-results/2026/q3)，2026-10-12；支持：TSMC三季报事件窗口。
 
-**归档状态**：archive_status=pending；ci_validation_status=pending_or_unverified。GitHub Actions未等待。
+**归档状态**：archive_status=success；ci_validation_status=pending_or_unverified。GitHub Actions未等待。
 
 A. 今天可以立即建立的新仓：无；海外尚未开盘且所有前三候选均缺触发或可执行双边报价。
 B. 今天只应挂条件的候选：SOXX 560/520 Put Spread、GLD 380/410 Call Spread、FU2701确认多头、CL 100/110/120 Call Butterfly、10月13日10:15后三重确认的IH2612/IM2612。
