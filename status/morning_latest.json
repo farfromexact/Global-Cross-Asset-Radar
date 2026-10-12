@@ -1,21 +1,23 @@
 {
-  "report_date": "2026-10-11",
+  "report_date": "2026-10-12",
   "edition": "morning",
-  "generated_at_bjt": "2026-10-11T08:01:08+08:00",
+  "generated_at_bjt": "2026-10-12T08:02:00+08:00",
   "status": "published",
-  "archive_status": "success",
+  "archive_status": "partial",
   "ci_validation_status": "pending_or_unverified",
   "data_fresh": false,
   "data_status": {
-    "global_prices": "carried_forward_2026-10-09",
-    "weekend_news": "ok_through_2026-10-11T07:50:00+08:00",
-    "china_options": "stale_2026-09-23_history_empty_current_run_missing",
-    "china_commodities": "last_good_2026-10-09_valid_weekend_refresh_error",
-    "errors_count": 8
+    "global_cash_prices": "carried_forward_2026-10-09",
+    "oil": "ok_in_session_2026-10-12T07:04+08:00",
+    "us_cash_treasury": "closed",
+    "china_market": "not_open_at_cutoff",
+    "china_options": "stale_2026-09-23_history_empty",
+    "china_commodities": "last_good_2026-10-09_valid_refresh_error",
+    "errors_count": 6
   },
   "china_options_path": "data/radar_latest.json; data/radar_history.json; data/latest.json; data/last_run_status.json",
   "china_options_date": "2026-09-23",
-  "china_options_commit": null,
+  "china_options_commit": "2e336cbe016f9452f9214f0b8fc234e4e9265283",
   "china_options_blob_shas": {
     "radar_latest": "a0024326e7874979411ad44385dbbc19d36a4dc7",
     "radar_history": "ad46d993f83b77bd82bd69c8383af5aaad48312d",
@@ -24,24 +26,26 @@
   },
   "china_commodities_path": "data/report_input_latest.json; data/last_run_status.json; data/radar_latest.json; data/radar_history.json; data/latest.json; data/market_state_latest.json; data/options/surface_latest.json; data/physical/latest.json; data/external/latest.json",
   "china_commodities_date": "2026-10-09",
-  "china_commodities_commit": null,
-  "previous_date": "2026-10-10",
+  "china_commodities_commit": "8996bd8604398a263fd1f5838d607de595229cda",
+  "previous_date": "2026-10-11",
   "previous_reports": {
-    "latest_global": "reports/2026/10/2026-10-10_evening.md",
-    "latest_same_edition": "reports/2026/10/2026-10-10_morning.md"
+    "latest_global": "reports/2026/10/2026-10-11_evening.md",
+    "latest_same_edition": "reports/2026/10/2026-10-11_morning.md"
   },
   "paths": [
-    "reports/2026/10/2026-10-11_morning.md",
-    "reports/2026/10/2026-10-11_morning.json",
+    "reports/2026/10/2026-10-12_morning.md",
+    "reports/2026/10/2026-10-12_morning.json",
     "latest/morning.md",
     "latest/morning.json",
     "status/morning_latest.json",
     "manifests/reports.json"
   ],
   "errors": [
-    "China options current surface stale and history empty.",
-    "China commodities weekend refresh failed; 2026-10-09 last-good used.",
-    "Global and commodity executable option quotes unavailable.",
-    "Repository commit SHA unavailable through file connector; blob SHAs recorded."
+    "Monday gold, FX and exact equity-index futures quotes unavailable at cutoff.",
+    "Global executable option quotes, IV/skew and current Greeks unavailable.",
+    "China options current surface stale at 2026-09-23; history file empty; last run missing.",
+    "China commodities weekend refresh failed; verified 2026-10-09 last-good used.",
+    "Commodity basis/member rankings and executable bid/ask unavailable.",
+    "Repository commit SHA not re-derived in this run; current blob SHAs retained where available."
   ]
 }
