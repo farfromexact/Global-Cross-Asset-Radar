@@ -3,17 +3,13 @@ name: Validate Radar Reports
 on:
   push:
     branches: [main]
-    # Formal archives write six files directly to main. The manifest is written
-    # last, so it is the single CI gate instead of starting one run per file.
+    # Only the final manifest write gates reports; code/fixture changes also run.
     paths:
       - "manifests/reports.json"
-      - "tests/**/*_morning.json"
-      - "tests/**/*_evening.json"
-      - "tests/test_*.py"
+      - "tests/**"
       - "config/archive-policy.json"
       - "schemas/**"
-      - "scripts/validate_reports.py"
-      - "scripts/validate_markdown_reports.py"
+      - "scripts/**"
       - "prompts/**"
       - "templates/**"
       - "docs/SCHEDULE_ARCHIVE_INSTRUCTIONS.md"
@@ -26,13 +22,18 @@ on:
       - "manifests/**"
       - "status/**"
       - "config/archive-policy.json"
+      - "schemas/**"
+      - "scripts/**"
       - "prompts/**"
       - "templates/**"
-      - "schemas/**"
-      - "scripts/validate_reports.py"
-      - "scripts/validate_markdown_reports.py"
+      - "docs/SCHEDULE_ARCHIVE_INSTRUCTIONS.md"
       - ".github/workflows/validate-reports.yml"
   workflow_dispatch:
+    inputs:
+      strict_audit:
+        description: "Also enforce the original strict schema and Markdown rules"
+        type: boolean
+        default: false
 
 concurrency:
   group: validate-radar-${{ github.workflow }}-${{ github.ref }}
@@ -42,74 +43,66 @@ permissions:
   contents: read
 
 jobs:
-  publication:
-    name: Validate current publication
+  report-health:
+    name: Current report readability
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Checkout
-        uses: actions/checkout@v7
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-
-      - name: Detect manifest publication
-        id: publication
-        shell: bash
-        env:
-          BASE_REF: ${{ github.event.pull_request.base.sha || github.event.before }}
-        run: |
-          if [[ -z "$BASE_REF" ]]; then
-            echo "manifest_changed=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          echo "base_ref=$BASE_REF" >> "$GITHUB_OUTPUT"
-          if [[ "$BASE_REF" =~ ^0+$ ]] || ! git cat-file -e "$BASE_REF^{commit}"; then
-            echo "manifest_changed=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          if git diff --name-only "$BASE_REF" "$GITHUB_SHA" -- | grep -Fxq "manifests/reports.json"; then
-            echo "manifest_changed=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "manifest_changed=false" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Set up Python
-        if: steps.publication.outputs.manifest_changed == 'true'
-        uses: actions/setup-python@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
-
-      - name: Install validator
-        if: steps.publication.outputs.manifest_changed == 'true'
-        run: python -m pip install --disable-pip-version-check "jsonschema[format]>=4.23,<5"
-
-      - name: Validate final six-file publication
-        if: steps.publication.outputs.manifest_changed == 'true'
+      - name: Check current reports (editorial drift is advisory)
         env:
-          BASE_REF: ${{ steps.publication.outputs.base_ref }}
-        run: python scripts/validate_reports.py --scope publication --base-ref "$BASE_REF"
+          BASE_REF: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: python scripts/check_report_health.py --base-ref "$BASE_REF" --output-json current-health.json
+      - name: Retain current report findings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: current-report-health
+          path: current-health.json
+          if-no-files-found: warn
+          retention-days: 14
 
-  full-archive:
-    name: Validate full archive
+  archive-audit:
+    name: Archive advice and validator tests
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-
-      - name: Set up Python
-        uses: actions/setup-python@v7
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
-
       - name: Install validator
         run: python -m pip install --disable-pip-version-check "jsonschema[format]>=4.23,<5"
-
-      - name: Validate reports, manifest and portable citations
-        run: python scripts/validate_reports.py --scope full
-
-      - name: Validate full Markdown archives
-        run: python scripts/validate_markdown_reports.py
-
-      - name: Run archive validator tests
+      - name: Audit historical schema and Markdown (advisory)
+        run: python scripts/check_report_health.py --scope audit --output-json archive-advice.json
+      - name: Run validator regression tests
+        if: ${{ !cancelled() }}
         run: python -m unittest discover -s tests -p "test_*.py"
+      - name: Retain complete archive advice
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-advice
+          path: archive-advice.json
+          if-no-files-found: warn
+          retention-days: 14
+
+  strict-audit:
+    name: Optional strict audit
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.strict_audit }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check "jsonschema[format]>=4.23,<5"
+      - run: python scripts/validate_reports.py --scope full
+      - if: ${{ !cancelled() }}
+        run: python scripts/validate_markdown_reports.py

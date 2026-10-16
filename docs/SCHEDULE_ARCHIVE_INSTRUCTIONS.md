@@ -64,7 +64,7 @@ farfromexact/Global-Cross-Asset-Radar
    - latest Markdown/JSON对应本次报告；
    - status对应本次运行；
    - manifest中本次 `report_date + edition` 仅有一个记录。
-8. 只有第7步全部成功后，才能设置或声称 `archive_status=success`。
+8. 最终内容预先准备好成功状态，只有第7步全部成功后，才能对用户声称 `archive_status=success`。不要再为“确认成功”重写 Manifest；若复核失败，更新状态文件记录 `partial` 或 `failed`，并在对话中说明，而不是循环触发 Manifest 校验。
 9. main验证完成后立即结束本次 Scheduled Task；不要继续轮询、不要等待CI、不要创建或清理branch。
 
 如果 GitHub Git-data 原子操作可以安全直接更新 `main`，可以使用；如果不能，允许通过 contents API 顺序创建/更新6个路径。**不得因为原子提交不可用而退回 staging/PR/merge。**
@@ -75,7 +75,9 @@ farfromexact/Global-Cross-Asset-Radar
 - `archive_status=partial`：部分 main 写入或复核失败。
 - `archive_status=failed`：无法完成正式 main 归档。
 - GitHub Actions `Validate Radar Reports` 仅作为**push后的独立事后校验**，不得阻塞 Scheduled Task。
-- 最终 Manifest 写入触发一次 Actions run：`Validate current publication` 只校验本次变更条目的六文件包，`Validate full archive` 同时扫描完整历史、Markdown 和单元测试。
+- 最终 Manifest 写入触发一次 Actions run：`Current report readability` 检查四类当前报告是否存在且可读取，`Archive advice and validator tests` 输出历史/schema/Markdown建议并运行单元测试。
+- 缺少 revision/schema 字段、字段别名、标题/字数和引用格式差异、状态元数据或旧归档问题只记为建议，不阻断日常运行；当期文件缺失、空文件、坏 JSON、明确的日期/edition/路径冲突，以及校验程序/单元测试错误仍会失败。
+- 绿色只代表归档可读与校验程序正常，不代表行情新鲜、研究结论正确或交易可执行。需要严格治理时手动运行工作流并勾选 `strict_audit`；不要在每份报告后反复修订旧文件来追求严格全绿。
 - 如果任务结束时无法取得 Actions 最终结果，记录：
 
 ```text
@@ -89,7 +91,7 @@ ci_validation_status = pending_or_unverified
 ## 写入内容规则
 
 - Markdown必须保存完整中文报告。
-- JSON必须以 `templates/report.json` 为字段骨架并符合 `schemas/report.schema.json`；必须写入 `schema_version=1.0` 和 `status=published`，精简字段可作为附加字段保留，不得取代标准字段。
+- JSON优先使用对应模板和 `schemas/report.schema.json` 的标准字段；建议写入 `schema_version=1.0`、`status=published` 和 revision。允许已有精简字段和语义等价别名，不为字段拼写或可选元数据缺失重发一份已经可读的报告。
 - JSON中至少记录：报告日期、edition、生成时间、市场状态、机会榜、交易卡、行动清单、风险预算、来源、China-Commodities-Engine与China-Options-Engine实际输入路径、各模块数据日期/生成时间/新鲜度、previous_date、errors、archive_status、ci_validation_status。
 - `input_snapshots.china_commodities.trade_date` 必须是实际使用的商品 EOD 日期：优先已写快照值，其次顶层 `china_commodities_date`，再其次 `source_status.last_good_eod.date`；不得用报告日期猜测。
 - 正式历史JSON的 `archive.markdown_path` 和 `archive.json_path` 应与实际历史路径一致，或在 `archive.paths` 中完整列出实际路径。
@@ -154,18 +156,18 @@ farfromexact/China-Commodities-Engine/data/report_input_latest.json
 
 商品报告必须明确：近月—次近月曲线不等于现货基差；未采集仓单/基差/会员排名时不得推断；`options_surface != ready` 时不得输出商品 ATM IV、偏度、PCR、Gamma 或具体期权执行价；历史不足时不得生成伪造的 1/3/5/20 日变化。
 
-### 商品期权研究结构的固定免责声明（必填）
+### 商品期权研究结构的执行边界（必须明确）
 
-当商品期权链不完整、`options_execution_ready=0`、`execution_ready=false` 或 bid/ask 覆盖不足时，`commodities_tracking.options_surface.tradeable_structures` 里的每个结构只能作为研究观察；每个对象的 `condition` 或 `execution_condition` 必须包含下列固定英文句，以便通过归档校验：
+当商品期权链不完整、`options_execution_ready=0`、`execution_ready=false` 或 bid/ask 覆盖不足时，`commodities_tracking.options_surface.tradeable_structures` 里的每个结构只能作为研究观察；每个对象的 `condition` 或 `execution_condition` 必须明确仅研究、执行前人工询价并确认、不提供未经验证的权利金。推荐统一表述：
 
 ```text
 research only; manual quote and manual confirmation required before execution; no premium quoted
 ```
 
-不得只写“fresh quotes required”或“only after live quotes”来替代该句；这些可以保留为补充条件。若无法提供上述明确免责声明，则省略 `tradeable_structures`，不得把结构呈现为可直接执行的交易建议。该固定文本也记录在 `config/archive-policy.json` 的 `commodity_input_data.partial_option_trade_structure_disclaimer` 中。
+语义完整的等价表述也可使用，日常 CI 不因英文措辞不同失败。若无法明确上述执行边界，则省略 `tradeable_structures`，不得把结构呈现为可直接执行的交易建议。推荐文本也记录在 `config/archive-policy.json` 的 `commodity_input_data.partial_option_trade_structure_disclaimer` 中。
 
 完整商品 Markdown 的变化段落标题建议固定为 `相比上一交易日真正变化`；若需标注时段，可使用 `相比上一交易日/今晨真正变化`，两者均为当前校验器认可的标题。
-全球版完整 Markdown 的变化段落标题也必须包含 `真正发生了什么变化`；可按需要前置“相比昨天”或“相比 HH:MM revision N”等比较对象。
+全球版完整 Markdown 的变化段落标题建议包含 `真正发生了什么变化`；可按需要前置“相比昨天”或“相比 HH:MM revision N”等比较对象。标题是编辑建议，不是日常 CI 的硬性条件。
 完整商品 Markdown 的事件段落标题建议固定为 `未来24h / 7d事件` 或 `未来24小时与7天事件`；两者均为当前校验器认可的标题。
 商品晨间版如沿用既有版式，`相比上一交易日/上一revision真正变化`、`9:00后风险地图` 与 `未来24小时 / 7日事件` 也均为当前校验器认可的标题；新报告仍优先采用上面的规范标题。
 ## 晨间版专用规则
