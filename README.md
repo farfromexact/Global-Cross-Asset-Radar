@@ -51,7 +51,9 @@
 │   ├── commodities_morning.md
 │   └── commodities_evening.md
 ├── scripts/
-│   └── validate_reports.py
+│   ├── check_report_health.py
+│   ├── validate_reports.py
+│   └── validate_markdown_reports.py
 └── .github/workflows/
     └── validate-reports.yml
 ```
@@ -86,4 +88,27 @@ GitHub Markdown 不保留 ChatGPT 专用的引用标记。归档报告应把关�
 
 ## 校验
 
-正式报告的前五个路径先完成写入，最后一次 Manifest 更新才触发 GitHub Actions。同一次运行会分别校验当前六文件发布包与完整历史归档，检查 JSON schema、Markdown 配对、文件命名和不可渲染的 ChatGPT 引用标记。
+正式报告的前五个路径先完成写入，最后一次 Manifest 更新才触发 GitHub Actions；不要为了确认成功再写一次 Manifest。代码和测试变更也会触发检查。
+
+日常 CI 采用实用的可读性门槛，不把报告版式当成发布故障：
+
+- **阻断**：当前报告 JSON 缺失、损坏、为空或不是对象；当前 Markdown 缺失或为空；Manifest 无法读取/没有可用条目；当前历史文件日期、edition 或 Manifest 路径明确指错；校验代码及其回归测试出错。
+- **提醒**：缺少 revision/schema 字段、字段别名、标题和字数差异、引用格式、状态元数据、latest 内容同步差异，以及旧归档问题。摘要与 JSON artifact 保留具体问题，不再让同一个历史问题每天阻断新报告。
+- 每次检查四个 edition 的最新 Manifest 记录和实际 latest 报告；历史 Manifest 修订不要求 latest 回退。拿不到 base ref 时仍检查全部当前报告。
+
+默认两个 job：`Current report readability` 检查当前可读性；`Archive advice and validator tests` 输出完整历史建议并运行回归测试。绿色只代表归档可读及校验代码通过，**不代表数据新鲜、研究结论正确或交易可执行**。
+
+日常验收：
+
+```sh
+python scripts/check_report_health.py --output-json current-health.json
+python scripts/check_report_health.py --scope audit --output-json archive-advice.json
+python -m unittest discover -s tests -p "test_*.py"
+```
+
+原严格规则没有删除。需要专项治理时，在 Actions 手动运行勾选 `strict_audit`，或执行下列命令；历史存量问题可能使其失败，这是严格审计结果，不是默认日常门槛：
+
+```sh
+python scripts/validate_reports.py --scope full
+python scripts/validate_markdown_reports.py
+```

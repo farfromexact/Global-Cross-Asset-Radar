@@ -66,6 +66,7 @@
   "latest_file_policy": "overwrite_only_after_report_generation_succeeds",
   "manifest_policy": "report_date+edition is the unique key; update an existing entry instead of appending a duplicate; write the manifest exactly once after the other five paths are final and re-read",
   "manifest_final_entry_requirements": {
+    "enforcement": "publication guidance; metadata differences are advisory in daily CI",
     "status": "published",
     "archive_status": "success",
     "revision": "integer >= 1",
@@ -75,6 +76,14 @@
   "github_failure_policy": "report the failing main path and error; never suppress the research report",
   "archive_status_semantics": "archive_status=success means all required files are confirmed present on main for the current report; success does not imply CI validation passed",
   "ci_validation_semantics": "Validate Radar Reports is post-push validation only; do not wait for it and do not let CI block Scheduled Task completion; if the result is unavailable record ci_validation_status=pending_or_unverified",
+  "ci_validation_policy": {
+    "default": "current_report_readability",
+    "blocking": "missing, empty or unreadable current reports; explicit current date/edition/path conflicts; unusable manifest/configuration; validator code or regression test failures",
+    "advisory": "schema and revision metadata, editorial headings/length/citations, status/latest synchronization, and historical archive findings",
+    "strict_audit": "manual opt-in; original strict validators remain available",
+    "green_means": "archive readability and validator health, not verified market freshness or executable research"
+  },
+  "manifest_confirmation_policy": "prepare final contents, write the manifest last once, re-read all six paths, then report success; never rewrite the manifest only to confirm success; record failed verification in the status file and chat",
   "completion_policy": "after all six main paths are re-read and verified, end the Scheduled Task immediately; do not poll CI, create branches, create PRs, merge, or perform branch cleanup",
   "citation_policy": "GitHub Markdown uses ordinary Markdown links or footnotes; never write ChatGPT-only citation tokens such as filecite, cite, memcite, turn-search IDs or private connector IDs",
   "source_policy": "JSON stores a structured sources array with title, publisher, URL when available, source date, access time and supported claims",
