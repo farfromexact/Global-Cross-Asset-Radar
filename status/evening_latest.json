@@ -1,52 +1,63 @@
 {
   "schema_version": "1.0",
-  "report_date": "2026-10-15",
+  "report_date": "2026-10-16",
   "edition": "evening",
-  "generated_at_bjt": "2026-10-15T20:05:00+08:00",
-  "generated_at": "2026-10-15T20:05:00+08:00",
+  "generated_at_bjt": "2026-10-16T20:36:00+08:00",
+  "generated_at": "2026-10-16T20:36:00+08:00",
   "prompt_version": "radar_2026-10-12_stock_v1",
   "archive_status": "success",
   "ci_validation_status": "pending_or_unverified",
   "data_fresh": false,
   "data_status": {
-    "global_market_quotes": "ok",
-    "china_cash": "ok_2026-10-15",
-    "china_options": "stale_2026-10-14",
+    "global_market_quotes": "ok_partial_premarket",
+    "china_cash": "ok_2026-10-16",
+    "china_index_futures": "partial_change_only_2026-10-16",
+    "china_options": "stale_2026-10-15",
     "china_options_history": "empty",
-    "china_commodities": "ok_2026-10-15_degraded_modules",
-    "china_stock": "ok_2026-10-14_stale_for_current_execution",
-    "move": "missing",
-    "hy_oas": "stale_2026-10-13"
+    "china_commodities": "ok_futures_2026-10-16_degraded_other_modules",
+    "china_stock": "stale_for_current_execution_2026-10-15",
+    "move": "last_good_2026-10-15",
+    "hy_oas": "last_good_2026-10-14"
   },
-  "china_options_date": "2026-10-14",
-  "china_options_commit_sha": "7373764a0b9eea8542d2505938673e79119a2b93",
-  "china_commodities_date": "2026-10-15",
-  "china_commodities_commit_sha": "c6bc05e4c7c85d71c12f5c478d46a875bf670066",
-  "china_stock_trade_date": "2026-10-14",
-  "china_stock_research_asof": "2026-10-15T00:11:47+00:00",
-  "china_stock_commit_sha": "a4175e2b6f53cc067d4c0b90139cffedb44a071b",
-  "paths": {
-    "report_markdown": "reports/2026/10/2026-10-15_evening.md",
-    "report_json": "reports/2026/10/2026-10-15_evening.json",
-    "latest_markdown": "latest/evening.md",
-    "latest_json": "latest/evening.json",
-    "status": "status/evening_latest.json",
-    "manifest": "manifests/reports.json"
-  },
-  "errors": [
-    "China-Options current session stale at 2026-10-14",
-    "radar_history.json empty",
-    "2026-10-15 CFFEX futures/options missing",
-    "MOVE/CTA/US gamma missing",
-    "China 2026-10-15 full breadth truncated",
-    "schemas/status.schema.json not found; current status/evening_latest.json used as template"
+  "china_options_date": "2026-10-15",
+  "china_options_commit_sha": "43a05fe998c639e000e3dad4f676003a742e10d0",
+  "china_options_actual_paths": [
+    "data/radar_latest.json",
+    "data/radar_history.json"
   ],
-  "verification": {
-    "historical_markdown": true,
-    "historical_json": true,
-    "latest_markdown_report_date": true,
-    "latest_json_identity": true,
-    "status_identity": true,
-    "manifest_unique_identity": true
-  }
+  "china_commodities_date": "2026-10-16",
+  "china_commodities_commit_sha": "c06fafd6fddcd4218f7e3d25f6c259b6a682da4b",
+  "china_commodities_actual_paths": [
+    "data/report_input_latest.json"
+  ],
+  "china_stock_date": "2026-10-15",
+  "stock_trade_date": "2026-10-15",
+  "stock_research_asof": "2026-10-16T07:38:33+08:00",
+  "stock_commit": "fedd4009648646888f86214bfecae9e545cecb42",
+  "stock_actual_paths": [
+    "data/last_run_status.json",
+    "data/latest/manifest.json",
+    "data/latest/data_reference_latest.json",
+    "data/latest/opportunity_radar_latest.json",
+    "data/latest/research_inputs_latest.json"
+  ],
+  "previous_global_report": "reports/2026/10/2026-10-16_morning.json",
+  "previous_same_edition_report": "reports/2026/10/2026-10-15_evening.json",
+  "errors": [
+    "China-Options-Engine did not yet contain 2026-10-16 option/futures EOD at cutoff",
+    "China-Options radar_history was empty",
+    "2026-10-16 China index futures exact points/basis/volume/OI were unavailable",
+    "China-Stock-Engine remained on 2026-10-15 EOD",
+    "commodity official_complete=false; basis/member rankings and execution-grade options unavailable; DCE options permission denied",
+    "USDJPY same-cutoff quote, current CTA positioning and US dealer gamma unavailable"
+  ],
+  "archive_paths": [
+    "reports/2026/10/2026-10-16_evening.md",
+    "reports/2026/10/2026-10-16_evening.json",
+    "latest/evening.md",
+    "latest/evening.json",
+    "status/evening_latest.json",
+    "manifests/reports.json"
+  ],
+  "archive_error": null
 }
