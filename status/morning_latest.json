@@ -1,32 +1,35 @@
 {
   "schema_version": "1.0",
-  "report_date": "2026-10-16",
+  "report_date": "2026-10-17",
   "edition": "morning",
-  "generated_at": "2026-10-16T08:02:13+08:00",
-  "generated_at_bjt": "2026-10-16T08:02:13+08:00",
+  "generated_at": "2026-10-17T08:06:37+08:00",
+  "generated_at_bjt": "2026-10-17T08:06:37+08:00",
   "status": "published",
   "data_status": "degraded",
-  "data_fresh": true,
-  "china_options_date": "2026-10-15",
-  "china_options_fresh": true,
-  "china_commodities_date": "2026-10-15",
-  "china_commodities_fresh": true,
-  "china_stock_trade_date": "2026-10-15",
-  "china_stock_research_asof": "2026-10-16T07:38:00+08:00",
-  "previous_date": "2026-10-15",
-  "archive_status": "success",
-  "ci_validation_status": "pending_or_unverified",
-  "errors": [
-    "China-Options-Engine data/radar_history.json is empty; 3/5/20-day option comparisons unavailable.",
-    "China-Commodities-Engine night-session coverage is partial and its option snapshot is stale/non-executable.",
-    "China-Stock-Engine lacks adjusted returns, industry, true index membership, forecasts and EOD tradability.",
-    "Live option quotes and exact Greeks were unavailable at the information cutoff."
-  ],
+  "data_fresh": false,
+  "previous_date": "2026-10-16",
+  "china_options_date": "2026-10-16",
+  "china_options_engine_paths": ["data/radar_latest.json", "data/radar_history.json"],
+  "input_snapshots": {
+    "global": "e9982558a265ca7a52a4b9e81d62003273a30ea5",
+    "china_options": "3e51d139dc0aadb1d399eec24217a37f34ef453f",
+    "china_commodities": "16ebd46fcf8311d64f635eb3415e70d644aaa2f4",
+    "china_stock": "79c96a9d9e73a7c2a13d340229acc7c64f4ec144"
+  },
   "paths": {
-    "markdown": "reports/2026/10/2026-10-16_morning.md",
-    "json": "reports/2026/10/2026-10-16_morning.json",
+    "report_markdown": "reports/2026/10/2026-10-17_morning.md",
+    "report_json": "reports/2026/10/2026-10-17_morning.json",
     "latest_markdown": "latest/morning.md",
     "latest_json": "latest/morning.json",
+    "status": "status/morning_latest.json",
     "manifest": "manifests/reports.json"
-  }
+  },
+  "errors": [
+    "China-Options-Engine data/radar_history.json empty",
+    "China-Stock-Engine 2026-10-16 failed_backfill; last-good 2026-10-15",
+    "China-Commodities options stale and non-executable",
+    "status schema and report JSON template paths missing"
+  ],
+  "archive_status": "pending",
+  "ci_validation_status": "pending_or_unverified"
 }
