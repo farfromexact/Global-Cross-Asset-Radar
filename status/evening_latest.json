@@ -1,59 +1,60 @@
 {
   "schema_version": "1.0",
-  "report_date": "2026-10-16",
+  "report_date": "2026-10-17",
   "edition": "evening",
-  "generated_at_bjt": "2026-10-16T20:36:00+08:00",
-  "generated_at": "2026-10-16T20:36:00+08:00",
+  "generated_at_bjt": "2026-10-17T20:00:16+08:00",
+  "generated_at": "2026-10-17T20:00:16+08:00",
   "prompt_version": "radar_2026-10-12_stock_v1",
   "archive_status": "success",
   "ci_validation_status": "pending_or_unverified",
   "data_fresh": false,
   "data_status": {
-    "global_market_quotes": "ok_partial_premarket",
+    "global_market_quotes": "ok_last_good_2026-10-16_weekend_closed",
     "china_cash": "ok_2026-10-16",
-    "china_index_futures": "partial_change_only_2026-10-16",
-    "china_options": "stale_2026-10-15",
+    "china_index_futures": "ok_2026-10-16",
+    "china_options": "ok_2026-10-16",
     "china_options_history": "empty",
     "china_commodities": "ok_futures_2026-10-16_degraded_other_modules",
-    "china_stock": "stale_for_current_execution_2026-10-15",
-    "move": "last_good_2026-10-15",
-    "hy_oas": "last_good_2026-10-14"
+    "china_stock": "stale_for_current_execution_2026-10-15_failed_backfill",
+    "move": "missing_exact_close_direction_only",
+    "hy_oas": "last_good_2026-10-15"
   },
-  "china_options_date": "2026-10-15",
-  "china_options_commit_sha": "43a05fe998c639e000e3dad4f676003a742e10d0",
+  "china_options_date": "2026-10-16",
+  "china_options_commit_sha": "3e51d139dc0aadb1d399eec24217a37f34ef453f",
   "china_options_actual_paths": [
     "data/radar_latest.json",
     "data/radar_history.json"
   ],
   "china_commodities_date": "2026-10-16",
-  "china_commodities_commit_sha": "c06fafd6fddcd4218f7e3d25f6c259b6a682da4b",
+  "china_commodities_commit_sha": "f299a6dc679255e86680866cddd3d790c2494400",
   "china_commodities_actual_paths": [
-    "data/report_input_latest.json"
+    "data/report_input_latest.json",
+    "data/last_run_status.json"
   ],
   "china_stock_date": "2026-10-15",
   "stock_trade_date": "2026-10-15",
   "stock_research_asof": "2026-10-16T07:38:33+08:00",
-  "stock_commit": "fedd4009648646888f86214bfecae9e545cecb42",
+  "stock_commit": "79c96a9d9e73a7c2a13d340229acc7c64f4ec144",
   "stock_actual_paths": [
     "data/last_run_status.json",
     "data/latest/manifest.json",
     "data/latest/data_reference_latest.json",
     "data/latest/opportunity_radar_latest.json",
-    "data/latest/research_inputs_latest.json"
+    "data/latest/research_inputs_latest.json",
+    "data/latest/research_d_003.json",
+    "data/latest/research_9_002.json"
   ],
-  "previous_global_report": "reports/2026/10/2026-10-16_morning.json",
-  "previous_same_edition_report": "reports/2026/10/2026-10-15_evening.json",
+  "previous_global_report": "reports/2026/10/2026-10-17_morning.json",
+  "previous_same_edition_report": "reports/2026/10/2026-10-16_evening.json",
   "errors": [
-    "China-Options-Engine did not yet contain 2026-10-16 option/futures EOD at cutoff",
-    "China-Options radar_history was empty",
-    "2026-10-16 China index futures exact points/basis/volume/OI were unavailable",
-    "China-Stock-Engine remained on 2026-10-15 EOD",
-    "commodity official_complete=false; basis/member rankings and execution-grade options unavailable; DCE options permission denied",
-    "USDJPY same-cutoff quote, current CTA positioning and US dealer gamma unavailable"
+    "China-Options radar_history is empty",
+    "China-Stock 2026-10-16 backfill failed after SSL handshake timeout; last-good is 2026-10-15",
+    "China-Commodities official_complete=false; basis/member rankings and execution-grade options unavailable",
+    "MOVE exact close, same-cutoff USDCNH, FX skew, term premium, CTA and dealer gamma unavailable"
   ],
   "archive_paths": [
-    "reports/2026/10/2026-10-16_evening.md",
-    "reports/2026/10/2026-10-16_evening.json",
+    "reports/2026/10/2026-10-17_evening.md",
+    "reports/2026/10/2026-10-17_evening.json",
     "latest/evening.md",
     "latest/evening.json",
     "status/evening_latest.json",
