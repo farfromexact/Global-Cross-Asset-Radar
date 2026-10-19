@@ -1,0 +1,259 @@
+{
+  "schema_version": "1.0",
+  "status": "published",
+  "edition": "commodities_evening",
+  "report_date": "2026-10-19",
+  "generated_at": "2026-10-19T19:40:00+08:00",
+  "generated_at_bjt": "2026-10-19T19:40:00+08:00",
+  "timezone": "Asia/Shanghai",
+  "information_cutoff": "2026-10-19T19:35:00+08:00",
+  "prompt_version": "radar_2026-10-12_stock_v1",
+  "data_protocol_version": "china_commodities_core_2026-10-17_v1",
+  "headline": "截至本报告时点，无可立即执行的合格新交易；FU强结构与SC及海外油价回落冲突，今晚只等21:00后价差和留存确认。",
+  "immediate_new_trade": false,
+  "archive_status": "success",
+  "ci_status": "pending_or_unverified",
+  "repository_refs": {
+    "global_radar": "c35a7e141a46592896dfa1241c82dd7edff1ecc1",
+    "commodities_engine": "af640f11ff3f55c2aef82b11f3203147010a2c7f",
+    "stock_engine": "79c96a9d9e73a7c2a13d340229acc7c64f4ec144"
+  },
+  "input_snapshots": {
+    "china_commodities": {
+      "requested_date": "2026-10-19",
+      "generated_at": "2026-10-19T19:08:46.154787+08:00",
+      "trade_date": "2026-10-19",
+      "actual_read_paths": [
+        "data/report_input_latest.json",
+        "data/last_run_status.json",
+        "data/night_session/last_run_status.json",
+        "data/radar_latest.json",
+        "data/night_session/latest.json",
+        "data/crosschecks/futures_latest.json"
+      ]
+    },
+    "stock": {
+      "last_valid_trade_date": "2026-10-15",
+      "data_fresh": false,
+      "actual_read_paths": [
+        "data/last_run_status.json",
+        "data/latest/manifest.json",
+        "data/latest/data_reference_latest.json",
+        "data/latest/research_inputs_latest.json",
+        "config/company_commodity_exposures.json"
+      ],
+      "decision_contribution": "background_only_no_new_candidate"
+    }
+  },
+  "module_freshness": {
+    "futures": {"source_date": "2026-10-19", "generated_at": "2026-10-19T18:59:39.040640+08:00", "fresh": true},
+    "market_state": {"source_date_max": "2026-10-19", "generated_at": "2026-10-19T18:59:39.040640+08:00", "fresh": true},
+    "physical": {"source_date": "2026-10-19", "generated_at": "2026-10-19T19:08:01.382023+08:00", "fresh": true, "published": true},
+    "external": {"source_date": "2026-10-19", "generated_at": "2026-10-19T19:08:08.898373+08:00", "fresh": true, "published": true},
+    "night_session": {"trading_date": "2026-10-19", "session_start_date": "2026-10-16", "generated_at": "2026-10-18T06:02:30.697839+08:00", "fresh": true, "published": true},
+    "options": {"source_date": "2026-10-19", "generated_at": "2026-10-19T11:00:26+00:00", "fresh": true, "published": true}
+  },
+  "data_quality": {
+    "futures": {
+      "exchange_count": 5,
+      "contract_count": 806,
+      "product_count": 77,
+      "source_date_match_pct": 100,
+      "full_market_ready": true,
+      "critical_errors": 0,
+      "unknown_contracts": 0,
+      "duplicate_contracts": 0,
+      "invalid_ohlc": 0,
+      "zero_volume_oi_placeholders": 8
+    },
+    "physical": {"target_series": 20, "fresh_series": 18, "unavailable_series": 2, "eligible_basis_count": 0, "basis_grade": "C_only"},
+    "external": {"target_series": 22, "fresh_series": 17, "unavailable_series": 5, "usage": "context_only"},
+    "night_session": {
+      "trading_date": "2026-10-19",
+      "night_session_date": "2026-10-16",
+      "session_start_date": "2026-10-16",
+      "session_end_date": "2026-10-17",
+      "data_fresh": true,
+      "validation_passed": true,
+      "published": true,
+      "coverage_complete": false,
+      "coverage_pct": 51.3648,
+      "night_session_contract_count": 414,
+      "product_count": 44,
+      "query_error_or_unresolved_count": 214,
+      "calendar_mismatch": false,
+      "price_semantics": "vendor_latest_trade_asof_snapshot",
+      "ohlcv_scope": "vendor_realtime_unverified_session_scope",
+      "official_night_close_verified": false,
+      "night_session_fallback": false
+    },
+    "options": {
+      "source_date": "2026-10-19",
+      "collection_scope": "core_v1",
+      "analytics_scope": "sampled_strikes",
+      "expected_product_count": 64,
+      "successful_product_count": 45,
+      "product_coverage_pct": 70.3125,
+      "contract_count": 1014,
+      "series_count": 45,
+      "iv_coverage_pct": 100,
+      "oi_coverage_pct": 96.2525,
+      "bid_ask_coverage_pct": 0,
+      "core_atm_ready_count": 43,
+      "skew_ready_count": 30,
+      "surface_ready_count": 0,
+      "positioning_ready_count": 0,
+      "execution_ready_count": 0,
+      "full_chain_verified": false,
+      "dealer_gamma_direction_known": false
+    },
+    "futures_crosscheck": {
+      "state": "partial",
+      "actual_price_difference_count": 0,
+      "matched_by_exchange": {"SHFE": 238, "INE": 63, "CZCE": 243, "GFEX": 48},
+      "source_error": {"DCE": "HTTP_412"},
+      "scope_official_complete": false,
+      "volume_oi_crosschecked": false
+    },
+    "contract_metadata": {
+      "effective_contract_match_pct": 73.45,
+      "multiplier_tick_value_pct": 30.15,
+      "margin_limit_pct": 30.15,
+      "night_session_pct": 0,
+      "delivery_fields_pct": 0
+    },
+    "stock": {
+      "trade_date": "2026-10-15",
+      "data_fresh": false,
+      "universe_count": 5576,
+      "daily_price_ready_count": 5565,
+      "company_evidence_eligible_count": 2,
+      "execution_ready": false,
+      "decision_contribution": "background_only_no_new_candidate"
+    }
+  },
+  "coverage": {
+    "required_codes": ["I","JM","J","RB","HC","FG","SA","SF","SM","CU","BC","AL","AO","AD","ZN","PB","NI","SN","SS","AU","AG","SC","FU","LU","BU","LPG","PX","TA","PF","PR","MA","PP","L","V","EG","EB","RU","NR","BR","SH","UR","SP","LC","SI","PS","A","B","M","RM","Y","P","OI","C","CS","LH","JD","CF","CY","SR","AP","CJ","PK","EC"],
+    "lpg_engine_alias": "PG",
+    "actual_product_count": 77,
+    "dynamic_codes_reviewed": ["BZ","JR","LG","OP","PD","PL","PM","PT","RI","RR","RS","WH","WR","ZC"],
+    "background_scan_complete": true,
+    "candidate_deep_dive_count": 4,
+    "stock_candidate_count": 0
+  },
+  "prior_reports": [
+    {"report_date": "2026-10-19", "edition": "commodities_morning", "path": "reports/2026/10/2026-10-19_commodities_morning.json"},
+    {"report_date": "2026-10-18", "edition": "commodities_evening", "path": "reports/2026/10/2026-10-18_commodities_evening.json"}
+  ],
+  "top_opportunities": [
+    {
+      "rank": 1,
+      "idea_id": "COM-M-FU2701-HSFO-TIGHTNESS-LONG-20261018",
+      "instrument": "FU2701",
+      "direction": "conditional_long",
+      "horizon": "1-5D",
+      "tool": "futures",
+      "score": 66,
+      "score_components": {"logic": 18, "odds_convexity": 13, "catalyst": 12, "price_curve_vol": 13, "crowding_technical": 10},
+      "support_layers": [1,2],
+      "research_judgment": "待验证优势",
+      "evidence_state": "部分",
+      "execution_state": "等21:30确认与参数",
+      "trigger": "21:30后连续15分钟守住4950，SC不破710且产品curve不低于7.5%",
+      "invalidation": "30分钟低于4880或curve低于6%",
+      "tp1": 5050,
+      "tp2": 5200,
+      "time_exit": "2 trading days",
+      "risk_budget": "trial_nav_0.25_to_0.50_pct"
+    },
+    {
+      "rank": 2,
+      "idea_id": "COM-E-LH2701-WEAK-CURVE-SHORT-20261013",
+      "instrument": "LH2701",
+      "direction": "conditional_short",
+      "horizon": "3-10D",
+      "tool": "futures",
+      "score": 65,
+      "score_components": {"logic": 17, "odds_convexity": 14, "catalyst": 11, "price_curve_vol": 13, "crowding_technical": 10},
+      "support_layers": [1,2],
+      "research_judgment": "待验证优势",
+      "evidence_state": "部分",
+      "execution_state": "等10月20日日盘触发与DCE参数",
+      "trigger": "10380-10480反弹失败，或09:30后破10180且curve不高于-2.5%",
+      "invalidation": "10580以上",
+      "tp1": 9950,
+      "tp2": 9600,
+      "time_exit": "5 trading days",
+      "risk_budget": "trial_nav_max_0.25_pct"
+    },
+    {
+      "rank": 3,
+      "idea_id": "COM-E-AG2612-OVERSEAS-REPAIR-LONG-20261019",
+      "instrument": "AG2612",
+      "direction": "conditional_long",
+      "horizon": "1-5D",
+      "tool": "futures_preferred_over_unquoted_options",
+      "score": 64,
+      "score_components": {"logic": 17, "odds_convexity": 14, "catalyst": 11, "price_curve_vol": 11, "crowding_technical": 11},
+      "support_layers": [1,4],
+      "research_judgment": "早期观察",
+      "evidence_state": "部分",
+      "execution_state": "等21:30内外同向"
+    },
+    {
+      "rank": 4,
+      "idea_id": "COM-M-SC2612-GAP-FAILURE-SHORT-20261019",
+      "instrument": "SC2612",
+      "direction": "conditional_short",
+      "horizon": "1-3D",
+      "tool": "futures",
+      "score": 62,
+      "score_components": {"logic": 17, "odds_convexity": 13, "catalyst": 13, "price_curve_vol": 10, "crowding_technical": 9},
+      "support_layers": [1,4],
+      "research_judgment": "待验证优势",
+      "evidence_state": "部分",
+      "execution_state": "等710下破与海外确认",
+      "trigger": "21:15后连续15分钟低于710、Brent不高于108且近月backwardation不大于1.0%",
+      "invalidation": "724以上",
+      "tp1": 695,
+      "tp2": 680,
+      "time_exit": "3 trading days",
+      "risk_budget": "combined_energy_trial_nav_max_0.75_pct"
+    }
+  ],
+  "night_session_risk_map": {
+    "as_of": "2026-10-19T19:35:00+08:00",
+    "china_night_session_tonight": true,
+    "next_china_night_session": "2026-10-19T21:00:00+08:00",
+    "next_night_trading_date": "2026-10-20",
+    "prior_completed_night_trading_date": "2026-10-19",
+    "prior_completed_night_session_start_date": "2026-10-16",
+    "confirmation_windows": ["21:15","21:30","21:45"],
+    "do_not_chase": ["FU2701 above 5020","SC2612 below 700","AG2612 first jump","unquoted options"]
+  },
+  "risk_policy": {
+    "trial_nav_pct": [0.25,0.75],
+    "confirmed_nav_pct": [0.75,1.5],
+    "same_theme_max_nav_pct": [2.5,3.0],
+    "combined_factors": ["SC_FU_energy_event","commodity_related_stock"],
+    "stress_tests": ["one_two_price_limits","correlation_break","liquidity_disappearance","gap","margin_hike","iv_jump_collapse","delivery_squeeze","fx_shock","china_holiday_overseas_move"]
+  },
+  "sources": [
+    {"title":"China-Commodities-Engine report_input","publisher":"GitHub / farfromexact","url":"https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/report_input_latest.json","source_date":"2026-10-19","accessed_at_bjt":"2026-10-19T19:20:00+08:00","source_type":"repository primary","supported_claims":["五所EOD覆盖与质量","模块freshness","Options局部readiness","Physical和External缺口"]},
+    {"title":"China-Commodities-Engine Night","publisher":"GitHub / farfromexact","url":"https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/night_session/latest.json","source_date":"2026-10-16","accessed_at_bjt":"2026-10-19T19:25:00+08:00","source_type":"repository primary","supported_claims":["2026-10-19交易日归属","vendor snapshot语义","重点合约Night到Day分解"]},
+    {"title":"Official futures crosscheck","publisher":"GitHub / farfromexact","url":"https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/crosschecks/futures_latest.json","source_date":"2026-10-19","accessed_at_bjt":"2026-10-19T19:25:00+08:00","source_type":"repository primary","supported_claims":["四所价格实际差异为零","DCE HTTP 412","不覆盖成交量和持仓"]},
+    {"title":"前三季度经济运行总体平稳","publisher":"国家统计局","url":"https://www.stats.gov.cn/sj/zxfbhjd/202610/t20261019_1965618.html","source_date":"2026-10-19","accessed_at_bjt":"2026-10-19T19:28:00+08:00","source_type":"official macro","supported_claims":["Q3 GDP 4.5%","9月工业增加值5.5%","生猪产量出栏存栏数据"]},
+    {"title":"Gulf bourses subdued as regional worries weigh","publisher":"Reuters","url":"https://www.reuters.com/world/middle-east/gulf-bourses-subdued-regional-worries-weigh-2026-10-19/","source_date":"2026-10-19","accessed_at_bjt":"2026-10-19T19:30:00+08:00","source_type":"market news","supported_claims":["Brent 107.57美元及跌幅","Hormuz地缘风险","俄罗斯制裁豁免供给反证"]},
+    {"title":"Gold edges up as oil retreat lends support","publisher":"Reuters","url":"https://www.reuters.com/world/india/gold-edges-higher-softer-oil-fed-rate-outlook-focus-2026-10-19/","source_date":"2026-10-19","accessed_at_bjt":"2026-10-19T19:30:00+08:00","source_type":"market news","supported_claims":["黄金与白银日内报价","Fed与油价风险"]},
+    {"title":"FU contract risk parameter notice","publisher":"上海期货交易所","url":"https://www.shfe.com.cn/publicnotice/notice/202610/t20261009_833667.html","source_date":"2026-10-09","accessed_at_bjt":"2026-10-19T19:32:00+08:00","source_type":"exchange official","supported_claims":["FU2701涨跌停16%","一般保证金18%","套保保证金17%"]},
+    {"title":"Weekly Petroleum Status Report Schedule","publisher":"EIA","url":"https://www.eia.gov/petroleum/supply/weekly/schedule.php","source_date":"2026-10-19","accessed_at_bjt":"2026-10-19T19:32:00+08:00","source_type":"official schedule","supported_claims":["WPSR常规周三10:30 ET发布"]},
+    {"title":"COT Release Schedule","publisher":"CFTC","url":"https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm","source_date":"2026-10-19","accessed_at_bjt":"2026-10-19T19:32:00+08:00","source_type":"official schedule","supported_claims":["2026-10-23 COT计划发布"]},
+    {"title":"China-Stock-Engine commodity exposures","publisher":"GitHub / farfromexact","url":"https://github.com/farfromexact/China-Stock-Engine/blob/main/config/company_commodity_exposures.json","source_date":"2026-10-15","accessed_at_bjt":"2026-10-19T19:25:00+08:00","source_type":"repository primary","supported_claims":["紫金矿产金铜条件映射","宝钢钢矿利润约束","股票不优于直接商品表达"]}
+  ],
+  "final_actions": {
+    "A": "今晚没有应立即建立的新仓位。",
+    "B": "今晚仅应挂条件的候选：21:30后确认的FU2701多、SC2612空；LH2701只等10月20日日盘反弹失败。",
+    "C": "今晚继续观察：AG2612内外同向、FU/SC相对强弱、LH曲线与SA旧多失效后的二次定价。",
+    "D": "今晚必须回避或有条件退出：回避能源首跳追价、AP/LC接刀、无bid/ask期权；若此前按条件建仓，SC/SA旧多均按失效处理。"
+  }
+}
