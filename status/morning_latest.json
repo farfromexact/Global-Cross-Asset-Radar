@@ -1,33 +1,33 @@
 {
   "schema_version": "1.0",
-  "report_date": "2026-10-21",
+  "report_date": "2026-10-22",
   "edition": "morning",
-  "generated_at": "2026-10-21T08:05:22+08:00",
-  "generated_at_bjt": "2026-10-21T08:05:22+08:00",
+  "generated_at": "2026-10-22T08:06:37+08:00",
+  "generated_at_bjt": "2026-10-22T08:06:37+08:00",
   "status": "published",
   "data_status": "partial_with_disclosed_limitations",
   "data_fresh": false,
-  "previous_date": "2026-10-20",
+  "previous_date": "2026-10-21",
   "china_options_date": "2026-10-20",
   "china_options_engine_paths": [
     "data/radar_latest.json",
     "data/radar_history.json"
   ],
   "input_snapshots": {
-    "global_radar_commit": "ddb8bfd052623e05e6ee7947a5880d4c7971a9bc",
+    "global_radar_commit": "f1a56aed887e2d084404cfbc33055df7aee9b97d",
     "china_options_commit": "ad367e4c58ee8e6de0ffcda60ca22dae4c205491",
     "china_options_date": "2026-10-20",
-    "china_options_fresh": true,
-    "china_commodities_commit": "87d6e885ccbfbd15555d955506d780db9eaf43c3",
-    "china_commodities_date": "2026-10-20",
+    "china_options_fresh": false,
+    "china_commodities_commit": "45280dc38664344a99f1f2768771720ef3db20cd",
+    "china_commodities_date": "2026-10-21",
     "china_commodities_fresh": true,
-    "china_stock_commit": "79c96a9d9e73a7c2a13d340229acc7c64f4ec144",
-    "china_stock_date": "2026-10-15",
-    "china_stock_fresh": false
+    "china_stock_commit": "795e149866d7f1eefd1efdaf8fe510cd8f1c750e",
+    "china_stock_date": "2026-10-21",
+    "china_stock_fresh": true
   },
   "paths": {
-    "historical_markdown": "reports/2026/10/2026-10-21_morning.md",
-    "historical_json": "reports/2026/10/2026-10-21_morning.json",
+    "historical_markdown": "reports/2026/10/2026-10-22_morning.md",
+    "historical_json": "reports/2026/10/2026-10-22_morning.json",
     "latest_markdown": "latest/morning.md",
     "latest_json": "latest/morning.json",
     "status": "status/morning_latest.json",
@@ -35,12 +35,13 @@
   },
   "errors": [
     "China-Options-Engine data/radar_history.json is empty.",
+    "China-Options-Engine last-good date is 2026-10-20, one trading session behind report date.",
     "China-Commodities-Engine data/report_input_latest.json is empty; module fallbacks were used.",
-    "Commodity options execution_ready=false and bid/ask coverage=0.",
+    "Commodity options surface/positioning/execution are not ready and bid/ask coverage is zero.",
     "DCE official futures crosscheck failed with HTTP 412.",
-    "China-Stock-Engine 2026-10-16 backfill failed; last-good is 2026-10-15.",
-    "schemas/status.schema.json is absent; existing status structure was followed."
+    "China-Stock-Engine lacks adjustment, industry, index membership, forecast revisions and verified tradability.",
+    "schemas/status.schema.json and templates/report.template.json were unavailable; existing status and actual report schema were followed."
   ],
-  "archive_status": "success",
+  "archive_status": "pending",
   "ci_validation_status": "pending_or_unverified"
 }
