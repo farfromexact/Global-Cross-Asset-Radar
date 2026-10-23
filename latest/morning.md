@@ -134,4 +134,4 @@ D. 今天必须回避或有条件退出的交易：追多TLT>81.20、追空SOXX�
 - [FOMC October 2026 calendar](https://www.federalreserve.gov/newsevents/2026-october.htm)（2026-10-23；支持：10月27-28日FOMC）
 - [BEA release schedule](https://www.bea.gov/news/schedule)（2026-10-23；支持：10月29日GDP与PCE）
 
-归档状态将在六路径写入并从main回读后确定；独立CI状态为pending_or_unverified。
+归档状态：success（六路径已从main回读并核对身份）；独立CI状态为pending_or_unverified。
