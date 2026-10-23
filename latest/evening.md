@@ -1,237 +1,193 @@
-# 全球跨资产机会雷达晚间版｜2026-10-22
+# 全球跨资产机会雷达晚间版｜2026-10-23
 
-**实际生成：** 2026-10-22T20:22:25.310+08:00  
-**信息截点：** 2026-10-22T20:12:00+08:00（截点时美国现金盘与中国10月23交易日商品夜盘均未开始）  
-**输入版本：** Global b8130bf18df6；China-Options ad367e4c58ee；China-Commodities b0eaf30aa35c；China-Stock 795e149866d7  
-**最近完整会话 / 下一窗口：** 中国股票与股指期货10月22日EOD；美国现金10月21日收盘、10月22日欧洲/盘前截至20:12；商品夜盘10月22日21:00（归属10月23交易日）；美股现金21:30；中国股指期货10月23日09:15、A股09:30。
+**实际生成：** 2026-10-23T20:16:12.792+08:00  
+**信息截点：** 2026-10-23T20:12:00+08:00  
+**输入ref：** Global 699499785bf23a46c59910a0972bba76785cd252；China-Options d3375bfc81ad1375d0a53a586c04262305f55491；China-Commodities b0d41f1c9e8923bb016835492a3e2215e1d48780；China-Stock 795e149866d7f1eefd1efdaf8fe510cd8f1c750e  
+**最近完整会话 / 下一合法窗口：** 中国股票、股指、商品日盘10月23日EOD；美国现金10月22日收盘、10月23日欧洲/盘前截至20:12；商品夜盘10月23日21:00（归属10月26交易日）；美股现金21:30；中国股指10月26日09:15、A股09:30。
 
 ## 1. 一句话结论
 
-混合偏Risk-off：油价与AI资本开支风险压制权益，但长债走强、黄金反跌；只保留TLT、SC与纯碱的条件交易，撤回IM/IF偏多。
+混合偏Risk-off但信用未失速：油价与波动率抬升、实际利率回落却黄金走弱；首选仅是下一窗口条件交易，不追中国反弹。
 
 ## 2. 事实台账与全市场仪表盘
 
-### 关键事实台账
-
 | fact_id | 标的/数值 | 口径与时间 | 支持判断 | 局限 |
 |---|---|---|---|---|
-| F01 | US 2Y/5Y/10Y/30Y CMT：4.81% / 4.95% / 5.13% / 5.42% | 2026-10-21官方收盘附近，% p.a.；观测2026-10-21 ET；known_at 2026-10-21；U.S. Treasury | 曲线仍陡且实际利率高 | 不是10月22盘中 |
-| F02 | US 10Y实际/10Y BEI：2.76% / 2.37% | 官方实际CMT；BEI=5.13%-2.76%；观测2026-10-21 ET；known_at 2026-10-21；U.S. Treasury | 黄金机会成本仍高 | BEI为同期限简单差值 |
-| F03 | US 10Y盘中：约5.05%（较前一时点-10bp） | Reuters盘中，不与官方CMT收盘口径混算；观测2026-10-22 约20:00 BJT；known_at 2026-10-22；Reuters | 油涨而债券上涨，增长/避险压过通胀 | 盘中会变 |
-| F04 | Brent：约112美元/桶，约+3% | 欧洲时段盘中；观测2026-10-22 约20:00 BJT；known_at 2026-10-22；Reuters | 中东供应尾部与SC夜盘上行条件 | 不是结算价 |
-| F05 | 现货黄金：4060.37美元/盎司，-1.9% | 1134 GMT盘中；观测2026-10-22 19:34 BJT；known_at 2026-10-22 20:03 BJT报道；Reuters | 避险失效、政策信用叙事降级 | 无同步期权IV/skew |
-| F06 | VIX：开18.29，较前收16.68约+9.05% | Cboe延迟至少20分钟；观测2026-10-22 11:58 ET页面时点；known_at 2026-10-22；Cboe | 跨资产风险升温 | 期限结构未取得 |
-| F07 | HY OAS：3.33% | 日度收盘、非季调；观测2026-10-20；known_at 2026-10-21 09:13 CDT；FRED/ICE | 信用未同步显示急性危机 | 滞后两日 |
-| F08 | Meta Q3 2026：收入646.01亿美元；Capex349.1亿美元；FCF -21.2亿美元 | 公司季度披露，USD；观测截至2026-09-30季度；known_at 2026-10-21 US；Meta IR | 收入强、现金转化与资本密集度反证 | 含98.9亿美元法律费用影响成本 |
-| F09 | Lam Sep-quarter：收入82.19亿美元；12月季指引86±4亿美元 | 公司季度披露，USD；观测截至2026-09-27季度；known_at 2026-10-21 US；Lam Research IR | 设备端需求/定价权较强 | 单家公司不代表全SOXX |
-| F10 | 中国四指数EOD：50/300/500/1000=-0.81/-1.84/-2.71/-2.98% | 2026-10-22现金指数收盘；观测2026-10-22 15:00 BJT；known_at 2026-10-22 16:15 BJT；Tencent公开行情/指数官方标的 | 小盘相对大盘反转、撤回IM/IF偏多 | 非官方指数文件直连；异常用CFFEX期货交叉检查 |
-| F11 | CFFEX 12月主力：IH/IF/IC/IM结算变动=-0.761/-1.594/-1.952/-2.116% | 结算对前结算；成交/OI为交易所EOD；观测2026-10-22 15:30 BJT；known_at 2026-10-22 16:20 BJT；CFFEX日行情CSV | 小盘风险更弱；四合约OI均增 | OI不识别新多/新空或dealer gamma |
-| F12 | 商品Futures EOD：五所full_market_ready；77产品范围 | 供应商主源、10月22日EOD；观测2026-10-22；known_at 2026-10-22 19:03 BJT；China-Commodities-Engine | 全市场扫描与商品候选 | DCE官方交叉核对HTTP 412；成交/OI未官方复核 |
-| F13 | 商品期权core_v1：45/64产品、70.3125%；1048行、45 series；bid/ask 0% | sampled_strikes，不是全链；观测2026-10-22 EOD；known_at 2026-10-22 19:04 BJT前；China-Commodities-Engine | 可研究局部ATM/RR，不可报可成交权利金 | surface/positioning/execution均false |
-| F14 | China-Options：HO/IO/MO 2611 ATM IV=14.890/18.368/27.263% | 官方CFFEX 672行完整匹配后的10月20日last-good；观测2026-10-20 EOD；known_at 2026-10-21 06:15 BJT；China-Options-Engine | 仅作历史波动背景 | 比当前中国EOD旧两会话 |
-| F15 | China-Stock：10月21日5568有效报价；候选并集0；公司财务包2家 | 未复权价格发现；tradability unknown；观测2026-10-21 EOD；known_at 2026-10-22 06:06 BJT前；China-Stock-Engine | 无可排名A股个股；限定公告检索仍需补证 | 对本报告日旧一会话，行业/正式成分/预期修订缺 |
+| F01 | US 2Y/5Y/10Y/30Y CMT：4.65% / 4.78% / 4.96% / 5.29% | 美国财政部2026-10-22日度CMT，% p.a.；观测2026-10-22 ET close；known_at 2026-10-22 ET；U.S. Treasury | 债券强反弹、长端仍高 | 不是10月23盘中 |
+| F02 | 10Y实际/BEI/2s30s：2.64% / 2.32% / +64bp | 实际CMT；BEI=4.96%-2.64%；观测2026-10-22 ET close；known_at 2026-10-22 ET；U.S. Treasury | 实际利率明显回落但黄金仍弱 | BEI为同期限简单差值 |
+| F03 | 全球风险窗口：欧洲约-0.3%；美股期货约-0.1%至-0.2% | Reuters欧洲时段/美国盘前；观测2026-10-23约20:00 BJT；known_at 2026-10-23；Reuters | 科技抛售缓和而非彻底反转 | 盘前会变 |
+| F04 | Brent/WTI：114.57 / 约100.8美元/桶 | Brent 11:38 GMT盘中；WTI同一报道附近；观测2026-10-23 19:38 BJT；known_at 2026-10-23；Reuters | 供应尾部仍在、支持SC/FU条件多 | 非结算；事件溢价可快速回吐 |
+| F05 | 现货黄金：4021.99美元/盎司附近 | Reuters盘中；观测2026-10-23欧洲时段；known_at 2026-10-23；Reuters | 政策信用/避险属性继续未确认 | 目标期权IV/skew缺 |
+| F06 | VIX/HY OAS：19.03 / 3.27% | VIX 10/22官方收盘；HY OAS 10/21 FRED/ICE；观测2026-10-22与10-21；known_at 2026-10-23读取；Cboe; FRED/ICE | 波动抬升、信用尚未失速 | 不同日期；MOVE 106.84为二级来源 |
+| F07 | DXY/EURUSD/USDJPY/USDCNH：101.64 / 1.121 / 156.73 / 约6.6726 | Reuters/公开外汇盘中；观测2026-10-23欧洲时段；known_at 2026-10-23；Reuters及公开行情 | 美元仍偏强、日元避险有限 | FX skew未取得；CNH为近似盘中 |
+| F08 | 美股上一现金收盘：QQQ 704.47；SOXX 475.69；RSP 218.22；TLT 81.74美元 | 2026-10-22现金收盘；观测2026-10-22 16:00 ET；known_at 2026-10-23；公开市场报价 | 半导体急跌但等权上涨；RSP/SOXX=0.458744 | 非10月23盘前可成交价 |
+| F09 | 中国四指数：50/300/500/1000=2757.68/4105.33/6814.44/6734.55 | 现金收盘；涨跌+1.21/+1.71/+2.39/+2.38%；观测2026-10-23 15:00 BJT；known_at 2026-10-23 16:14 BJT；腾讯公开行情 | 小盘反弹跑赢、否定晨报防御对冲 | 未获得官方成分贡献/正式宽度文件 |
+| F10 | IH/IF/IC/IM 2612：2719/4055/6742/6660 | CFFEX官方收盘；基差-1.403/-1.226/-1.063/-1.107%；观测2026-10-23 15:30 BJT；known_at 2026-10-23；CFFEX日行情CSV | 现金反弹、IM/IC成交OI更活跃 | OI不识别新多新空或dealer gamma |
+| F11 | HO/IO/MO 2612：ATM行权价2700/4050/6700；PCR(OI) 0.611/0.651/0.629 | CFFEX官方原始期权行聚合；非IV曲面；观测2026-10-23 EOD；known_at 2026-10-23；CFFEX日行情CSV | 期权成交持仓存在，可核ATM原始价 | 当前IV/RR/BF/term/Gamma缺；PCR不代表dealer方向 |
+| F12 | China-Options last-good：10/22 HO/IO/MO ATM IV=17.000/20.275/29.672% | 2612系列；RR25=-1.366/-1.994/-3.073vol；观测2026-10-22 EOD；known_at 2026-10-23 06:18 BJT；China-Options-Engine | MO左偏与波动梯度背景 | 比当前现金EOD旧一会话，不能执行 |
+| F13 | 中国商品EOD：77产品范围、五所vendor full_market_ready | 2026-10-23 EOD；观测2026-10-23；known_at 2026-10-23 19:02 BJT；China-Commodities-Engine | 完整商品后台扫描与条件候选 | DCE官方交叉核对HTTP 412；成交/OI未官方复核 |
+| F14 | 商品期权core_v1：45/64产品=70.3125%；1031行/45 series；bid/ask 0% | sampled_strikes，不是全链；观测2026-10-23 EOD；known_at 2026-10-23 19:02 BJT；China-Commodities-Engine | 局部ATM/个别RR可研究 | surface/positioning/execution均false |
+| F15 | SC/FU/AG EOD：SC2612 724.9；FU2701 5139；AG2612 13108 | close；settle 717/5028/13255；观测2026-10-23 EOD；known_at 2026-10-23 19:02 BJT；China-Commodities-Engine | 油链强、银弱，等待下一夜盘 | 20:12时今晚夜盘未开始 |
+| F16 | 长电科技2026Q3：单季收入114.251亿元；归母净利7.727亿元；扣非7.526亿元 | 合并报表，CNY；同比+13.53/+59.99/+117.43%；观测截至2026-09-30单季；known_at 2026-10-22晚披露；10-23读取；公司三季报/上海证券报 | 先进封装/高稼动率兑现到利润和现金流 | 同比不等于超预期；缺共识与估值锚 |
+| F17 | 长电科技股价：59.78元，+1.32%，区间55.67–60.50，成交56.74亿元 | 2026-10-23 A股收盘；观测2026-10-23 15:00 BJT；known_at 2026-10-23；腾讯公开行情 | 财报后温和收涨但盘中分歧大 | 公司行动复权、当日证券状态独立核验不足 |
 
-### 仪表盘
-
-| 资产 | 最新值 | 1D/一周 | 信号 | 时点与属性 |
+| 资产 | 最新值 | 1D/一周 | 信号 | 时点/属性 |
 |---|---|---|---|---|
-| US 2Y/10Y/30Y | 4.81% / 5.13% / 5.42% | +2/+1/0 bp（10/21）；周未完整同口径 | 官方曲线仍陡；10/22 10Y盘中约5.05%显示避险 | 官方10/21；盘中10/22约20:00 BJT；官方CMT+Reuters盘中，不混算 |
-| 10Y实际 / 10Y BEI / 2s30s | 2.76% / 2.37% / +61bp | -1/+2/-1 bp（10/21）；周未完整 | 实际利率仍高；曲线陡峭 | 2026-10-21 ET；Treasury官方，BEI/利差计算 |
-| DXY / EURUSD / USDJPY / USDCNH | 日内+0.1% / 1.12 / 157.1 / 缺 | Reuters盘中；CNH缺；周缺 | 日元避险走强；CNH与FX skew不足 | 2026-10-22约20:00 BJT；盘中媒体；CNH不以CNY替代 |
-| QQQ / SOXX / SMH | 725.20 / 510.36 / 556.70美元 | +1.06%/+2.07%/+1.86%（上一现金收盘）；周缺 | 财报后风险偏好被欧洲/盘前risk-off反转挑战 | 2026-10-21 16:00 ET附近；延迟现金收盘；非20:12可交易价 |
-| WTI / Brent | 97.15（10/21结算）/约112盘中 | WTI -0.7%旧结算；Brent约+3%盘中；周缺 | 事件溢价抬升，国内SC须夜盘确认 | 10/21结算+10/22盘中；不可直接比较 |
-| Spot Gold / Dec Gold / GLD | 4060.37 / 4075.70 / 378.95 | 现货-1.9%/期货-1.8%；GLD上一收+0.34%；周缺 | 未获避险流，黄金叙事降级 | 金价10/22 19:34 BJT；GLD 10/21；盘中+上一现金收盘 |
-| VIX / MOVE / HY OAS | 约18.19估算 / 101.7 / 3.33% | VIX +9.05%；MOVE与OAS滞后；周未完整 | 权益波动抬升，信用尚未急剧恶化 | VIX 10/22 11:58 ET页面；MOVE 10/20；OAS 10/20；官方/延迟混合；VIX由前收×变动估算 |
-| 上证50/沪深300/中证500/中证1000 | 2724.81/4036.30/6655.25/6578.27 | -0.81/-1.84/-2.71/-2.98%；周5日-1.46/-3.11/-1.68/-1.50% | 今日小盘显著跑输；20日四者均负 | 2026-10-22 15:00 BJT；现金指数EOD |
-| IH/IF/IC/IM 2612 | 2679.2/3970.0/6543.0/6471.6 | 结算-0.761/-1.594/-1.952/-2.116%；周未列 | 基差-1.674/-1.643/-1.686/-1.621%；OI全增但方向不可识别 | 2026-10-22 15:30 BJT；CFFEX官方EOD；主力按成交/OI |
-| HO/IO/MO 2611 ATM IV | 14.890/18.368/27.263% | 仅10/20 last-good；周history不足 | MO左偏最强但数据旧两会话 | 2026-10-20 EOD；China-Options-Engine；不可执行 |
-| SC2612 / SA701 / AG2612 | 713.4 / 935 / 13608（EOD close） | SC同口径缺 / SA -1.68% / AG -1.37%；周SA -0.11% / AG +1.04% | 仅条件候选；21:00前无今晚新夜盘价 | 2026-10-22 EOD；供应商EOD；夜盘待发生 |
-| A股Stock能力 | trade_date 10/21；5568有效报价；候选0 | 对报告日旧一会话；周原始多窗有；复权缺 | 公司研究可做，今日执行与价量信号不可做 | known by 2026-10-22早间；China-Stock-Engine |
+| US 2Y/10Y/30Y | 4.65% / 4.96% / 5.29% | -16/-17/-13bp；周2Y -12、10Y -14、30Y -14bp（10/15→10/22） | 强久期反弹；不追TLT | 2026-10-22 ET官方CMT |
+| 10Y实际 / BEI / 2s30s | 2.64% / 2.32% / +64bp | -12/-5/+3bp；周实际-14、BEI约持平、曲线-2bp | 实际利率降而黄金仍弱是负背离 | 2026-10-22 ET官方/计算 |
+| DXY / EURUSD / USDJPY / USDCNH | 101.64 / 1.121 / 156.73 / 约6.6726 | 盘中，精确1D未同口径；周缺 | 美元偏强；FX skew缺 | 10/23欧洲时段 |
+| QQQ / SOXX / SMH / RSP | 704.47 / 475.69 / 未同口径 / 218.22美元 | QQQ -2.84；SOXX -6.82；RSP +0.72%；周缺 | 集中科技跌、等权抗跌；相对交易待现金确认 | 10/22美股收盘 |
+| WTI / Brent | 约100.8 / 114.57美元 | Brent约+1.2%；周Brent约+4.2% | 供应尾部与高事件溢价并存 | 10/23 19:38 BJT盘中 |
+| Gold | 现货约4021.99美元/盎司 | 10/22近-3%；10/23近持平；周约-3.4% | 未体现避险；政策信用叙事减弱 | 10/23欧洲盘 |
+| VIX / MOVE / HY OAS | 19.03 / 106.84 / 3.27% | VIX +14.1%；MOVE +11.4%；OAS -6bp；周未完整 | 利率/权益波动升而信用稳 | VIX10/22、MOVE二级10/22、OAS10/21 |
+| 上证50/300/500/1000 | 2757.68/4105.33/6814.44/6734.55 | +1.21/+1.71/+2.39/+2.38%；周引擎窗口不足 | 今日小盘跑赢；不追单日反转 | 10/23 15:00 BJT |
+| IH/IF/IC/IM 2612 | 2719/4055/6742/6660 | +1.27/+1.69/+1.83/+1.70%（收盘/前结）；周缺 | 基差-1.403/-1.226/-1.063/-1.107%；IH-IM基差差-0.296pp | 10/23 CFFEX EOD |
+| HO/IO/MO | 10/22 ATM IV 17.000/20.275/29.672% | 当前IV缺；周缺 | MO左偏最强；当前只可研究原始EOD | 10/22引擎last-good；10/23 CFFEX原始行 |
+| SC/FU/AG | 724.9/5139/13108 | 油链强、AG约-4.2%；周由引擎多窗扫描 | 仅下一夜盘条件候选 | 10/23 EOD，非20:12夜盘价 |
+| Stock能力 | trade_date 10/21；5568有效报价 | 对报告日旧两会话；周原始窗口部分，复权缺 | 主动公告补证可研究；执行不可确认 | Stock ref 795e1498 |
 
-## 3. 相较晨报与前一晚报的实质变化
+**可比性：** 中国EOD与美国上一现金收盘、欧洲/盘前不是同一时点；只用于跨时区条件设计，不把收益直接相减。VIX/MOVE/HY OAS日期亦不同。旧last-good仅作背景，不是新催化。
 
-1. **风险状态从晨间混合偏Risk-on转为混合偏Risk-off**：欧洲科技下跌、美国期货跌1%-1.7%、VIX约+9%；同时10Y降至约5.05%；处置：提高对冲/久期排序，降低AI追多分数。
-2. **黄金避险背离恶化**：油价与地缘风险上升、债券上涨但现货金跌至4060.37；处置：政策信用期权由偏弱/证据不足下调为减弱；不做3-6月call spread。
-3. **中国小盘相对优势反转**：CSI1000 -2.98%对CSI300 -1.84%，IM主力结算跌幅大于IF；处置：撤回CN-SMALL-LARGE-RV-20261013预入场计划。
-4. **商品全市场更新至10月22日**：EOD full_market_ready；SC/SA/AG有多层条件，但今晚21:00尚未开始；处置：只挂顺序条件，不把上一夜盘快照作当前证据。
-5. **AI基本面更分化**：Lam收入/指引强，Meta收入强但FCF为负且Capex高，盘前risk-off；处置：SOXX条件多从80降至70；多现金流/空Capex仅主题观察。
+## 3. 前序以来的实质变化
 
-## 4. 全球统一机会榜（Top 5上限）
+1. **中国小盘反弹推翻晨报防御对冲**：CSI1000 +2.38%对SSE50 +1.21%；IH-IM基差差-0.296pp；处置：撤回未触发的多IH/空IM，不反手追小盘。
+2. **SC从突破条件改为回踩确认**：SC2612日收724.9已越过晨报724，但无分钟顺序；Brent114.57且IV高；处置：不认定成交；下一夜盘仅做回踩720–726后重上728。
+3. **SA空头逻辑失效**：SA701收963、结算948且日内反向，原跌破/失败收复结构不再成立；处置：撤回COM-M-SA701-CONTANGO-WARRANT-SHORT-20261022，不移动止损。
+4. **债券已完成大部分短线重估**：10Y 5.13%降至4.96%，TLT收81.74高于晨报不追阈值81.20；处置：UST战术多头窗口过期；不把收益率下行继续外推。
+5. **新增可验证A股经营事实**：长电科技Q3扣非净利同比+117.43%，9M经营现金流43.00亿元；股价仅+1.32%但宽幅震荡；处置：进入研究榜但休市且执行未就绪，等10/27说明会和价量确认。
 
-分项顺序为逻辑/赔率凸性/催化/价格曲线波动/拥挤技术；分数是研究排序，不是胜率或仓位。
+## 4. 全球统一Top 5
 
-| 排名 | idea_id / 工具 | 方向与期限 | 三轴状态 | 分数 | 关键分歧与损失边界 |
+分项依次为逻辑/赔率凸性/催化/价格曲线波动/拥挤技术；分数是研究优先级，不是胜率、EV或仓位。
+
+| 排名 | idea_id / 工具 | 方向/期限 | 研究/证据/执行 | 分数 | 最关键限制 |
 |---:|---|---|---|---:|---|
-| 1 | UST-TACTICAL-RALLY-20261013<br>TLT 2026-11-20 79/83 Call Spread | long_duration_after_cash_confirmation；2-15个交易日 | 存在待验证优势 / 部分 / 等待触发与报价 | 78 (21/20/18/10/9) | 仅两层证据、总分封顶69；保证金待核 |
-| 2 | COM-E-SC2612-POST-EIA-RECLAIM-LONG-20261021<br>SC2612夜盘确认后多 | long_after_two_stage_night_confirmation；1-3个交易日 | 存在待验证优势 / 部分 / 等待触发 | 76 (21/18/18/11/8) | Brent/EIA支持而国内尚未确认；期货止损不封顶 |
-| 3 | COM-M-SA701-CONTANGO-WARRANT-SHORT-20261022<br>SA701夜盘确认后空 | short_after_break_and_failed_reclaim；1-5个交易日 | 存在待验证优势 / 部分 / 等待触发 | 72 (20/17/15/11/9) | contango/仓单支持但IV已贵；期货止损不封顶 |
-| 4 | AI-SOXX-EARNINGS-CONFIRM-LONG-20261022<br>SOXX 2026-11-20 510/540 Call Spread | long_only_after_risk_off_reversal；2-15个交易日 | 优势降级且待验证 / 部分 / 等待触发与报价 | 70 (20/18/17/7/8) | Lam强、Meta现金流弱；净借记成交后才限损 |
-| 5 | COM-M-AG2612-SILVER-REPAIR-SHORT-20261022<br>AG2612反弹失败后空 | short_after_failed_rebound；1-5个交易日 | 存在待验证优势 / 部分 / 等待触发且保证金待核 | 69 (18/17/14/11/9) | 仅两层证据、总分封顶69；保证金待核 |
-
-未入榜但已完成：外汇、黄金、原油中期、AI相对价值、中国四指数方向/跨期/风格、A股双通道、其余商品板块。未入榜不等于未研究；实时skew/报价不足的项目不能称“无机会”。
+| 1 | COM-E-SC2612-POST-EIA-RECLAIM-LONG-20261021<br>SC2612回踩确认后多 | long_after_pullback_and_reclaim；1-5个交易日 | 存在待验证优势 / 部分 / 等待触发；参数/保证金待经纪端复核 | 76 (22/18/19/13/4) | 高事件溢价、止损不封顶 |
+| 2 | AI-RSP-SOXX-RELATIVE-20261023<br>多RSP/空SOXX等美元名义 | long_equal_weight_short_semiconductors_dollar_neutral_not_beta_neutral；2-10个交易日 | 存在待验证优势 / 部分 / 等待触发、借券和同步报价 | 74 (21/18/16/11/8) | 非Beta-neutral、借券未知 |
+| 3 | COM-E-FU2701-OIL-BETA-LONG-20261023<br>FU2701回踩确认后多 | long_after_pullback_and_oil_confirmation；1-5个交易日 | 存在待验证优势 / 部分 / 等待触发；与SC合并预算 | 74 (21/17/18/15/3) | 与SC高度共因子 |
+| 4 | COM-M-AG2612-SILVER-REPAIR-SHORT-20261022<br>AG2612反弹失败后空 | short_after_failed_rebound；1-5个交易日 | 存在待验证优势 / 部分 / 等待触发；保证金待核 | 72 (21/17/17/14/3) | 已大跌、严禁追空 |
+| 5 | CN-EQ-600584-Q3-CASHFLOW-20261023<br>长电科技Q3盈利/现金流研究候选 | watch_long_not_execution_ready；5-20个交易日 | 存在待验证优势 / 部分 / 休市；Stock引擎陈旧且tradability未确认 | 68 (21/13/16/8/10) | 休市、缺共识/复权/tradability |
 
 ## 5. 详细交易研究卡（3张）
 
-### 1) UST-TACTICAL-RALLY-20261013
+### 1) COM-E-SC2612-POST-EIA-RECLAIM-LONG-20261021
 
-- **状态修订：** 上次72分 → 本次78分。10Y在Brent上冲时反而跌至约5.05%，新增避险/增长确认；仍无现金盘同步报价。
-- **逻辑链：** 新增事实→油价约112美元但10Y跌约10bp至5.05%，说明短线债券避险压过通胀；市场已定价→TLT上一现金收盘80.24、10Y已低于5.10%，已有一部分反弹；分歧→若美股现金盘仍守80.20且10Y持续<5.10%，供给压力被阶段性吸收；主要PnL来自久期价格与有限借记凸性。
-- **最强竞争解释：** 5Y TIPS拍卖、油价与期限溢价可令实际利率再上行；当前TLT只得上一现金时点，双腿报价未确认。
-- **下一项区分观测：** 21:30 BJT后同时观察TLT、10Y，持续30分钟。
-- **工具比较：** 买1张TLT 2026-11-20 79C、卖1张83C；替代是小名义直接多10Y期货/DV01校准，但后者尾损无限，当前不优。
-- **触发/顺序：** TLT>80.20 AND 10Y<5.10%，持续30分钟；若TLT>81.20后才同时满足则不追。
-- **入场/报价：** 只有净借记≤1.55美元/份额；好≤1.35，中1.35-1.55，坏>1.55放弃。
-- **逻辑失效/计划止损：** 10Y日收>5.25% OR TLT<78.70；10Y实际>2.85%亦取消。
-- **TP1/TP2/时间退出：** TP1 TLT81.0或价差1.5倍成本；TP2 82.7-83；10月30日时间退出。
-- **好/中/坏情景净损益：** 4点宽。借记1.35：最大亏损135美元、最大盈利265美元、毛R=1.96；借记1.55：155/245美元、毛R=1.58；费用/滑点另加。
-- **风险预算与尾部：** 每组按真实净借记+费用计合同最大损失；试仓预算NAV 0.25%-0.75%，手数=floor(NAV×预算/(借记×100+费用))。
+- **状态修订：** 77 → 76。日盘SC已站上晨报724阈值，但缺分钟顺序，且局部ATM IV高于RV；不认定晨报已成交，改为下一合法夜盘的回踩—再上破。
+- **新增事实→已定价→分歧/PnL：** 新增事实：Brent升至114.57、SC2612收724.9且近月略backwardation；市场已计价：日盘已上涨、ATM IV约64.89%高于RV20约49.45%；分歧：若下一夜盘回踩720–726后仍能重上728，并与Brent和近月曲线共振，国内风险溢价仍未走完；主要PnL来自期货线性上行。
+- **最强竞争解释：** 地缘溢价回吐、Brent跌破110，或近月转contango；高IV说明事件已部分定价。
+- **下一项区分观测：** 2026-10-26交易日夜盘21:00后观察回踩、5分钟收盘与同一时点曲线。
+- **工具比较：** SC2612多1手起；乘数1000桶/手、tick0.1元/桶=100元。备选call spread因无bid/ask且execution_ready=false不执行。
+- **触发/顺序：** 先回踩720–726，再出现5分钟收盘≥728 AND Brent≥113 AND 同时SC2611-SC2612≥0.8%；顺序必须可达。
+- **入场/成本：** 727.5–731分两批；≥732放弃追价。
+- **逻辑失效/计划止损：** 15分钟收盘<719 OR Brent<110 OR近月转contango；计划止损不封顶。
+- **TP1/TP2/时间退出：** TP1 744减半；TP2 758；最迟2026-10-30退出。
+- **好/中/坏情景：** 假设单程/滑点合计0.5元/桶：好728风险9500元，TP1净15500/R1.63、TP2净29500/R3.11；中729.5风险11000，净14000/R1.27、28000/R2.55；坏731风险12500，净12500/R1.00、26500/R2.12。
+- **预算/压力：** 单笔试仓≤NAV0.50%，油主题（SC+FU+能源股）≤NAV1.50%；1–2个限幅及流动性消失可穿越止损。
 
-### 2) COM-E-SC2612-POST-EIA-RECLAIM-LONG-20261021
+### 2) AI-RSP-SOXX-RELATIVE-20261023
 
-- **状态修订：** 上次未入全球榜分 → 本次76分。从商品晚报接入全球榜单；Brent约112与美国库存下降支持，但必须以今晚新夜盘顺序确认。
-- **逻辑链：** 新增事实→EIA原油库存周减306万桶、Brent盘中约112；市场已定价→SC2612日收713.4、结算702且局部ATM IV59.47%，尾部溢价已高；分歧→只有SC把海外冲击转成724上方的持续收盘，国内贴水才算修复；PnL来自价格重估而非卖波。
-- **最强竞争解释：** Brent事件溢价回吐、SC近月曲线不能扩至≥0.70%、国内需求弱；期权执行不可用。
-- **下一项区分观测：** 21:15第一根15分钟K、21:45前二次确认；旧夜盘快照不计。
-- **工具比较：** SC2612多1手起；乘数1000桶/手、tick0.1元/桶、tick价值100元。替代SC call spread因无bid/ask且execution_ready=false，仅研究不执行。
-- **触发/顺序：** 21:15首根15分钟收盘≥724 AND Brent≥111.5 AND SC2612-SC2701可比价差≥0.70%；随后至21:45无15分钟收盘<720且至少另一根收盘>724。
-- **入场/报价：** 724/727/730三档各1/3；若直接>735放弃。整数手不足3手则只做1手试仓，不伪装分批。
-- **逻辑失效/计划止损：** 任一15分钟收盘<714，或Brent<109.5，或可比近月曲线≤0。
-- **TP1/TP2/时间退出：** TP1 742减半；TP2 765；最迟10月26日退出。
-- **好/中/坏情景净损益：** 含假设成本0.4元/桶=400元/手：好724止714，损10400元，TP1净17600/R1.69、TP2净40600/R3.90；中727损13400，净14600/R1.09、37600/R2.81；坏730损16400，净11600/R0.71、34600/R2.11。
-- **风险预算与尾部：** 保证金约18%只是资金占用，不是最大损失；跳空/限幅可穿越714。
+- **状态修订：** 75 → 74。10月22日SOXX急跌而RSP上涨令比值升至0.458744，已有一部分相对修复；盘前跌势缓和，降低追价价值但不改变现金流/Capex分化。
+- **新增事实→已定价→分歧/PnL：** 新增事实：SOXX -6.82而RSP +0.72；市场已计价：比值已接近突破路线；分歧：若现金盘能在信用稳定、10Y≤5.10%条件下维持相对强势，去集中化而非全面risk-off仍可延续；PnL来自RSP相对SOXX，不是大盘方向。
+- **最强竞争解释：** 半导体在财报后快速V形反弹，或HYG跌破76.80显示广泛信用压力；组合不是Beta-neutral。
+- **下一项区分观测：** 美股现金盘前30分钟及下一30分钟的RSP/SOXX比值，同时核HYG与10Y。
+- **工具比较：** 按上一收近似多458股RSP/空210股SOXX，美元名义约各10万美元；实际须按同步成交价重算整数股和借券。备选SOXX put spread限损，但缺当前IV/报价。
+- **触发/顺序：** 路线A：比值回落0.448–0.454后，30分钟收盘≥0.452；或路线B：30分钟收盘>0.462且下一30分钟仍>0.458；两路线均须HYG≥76.80 AND 10Y≤5.10%。比值>0.470不追。
+- **入场/成本：** 仅限现金盘同步限价；两腿滑点/借券总成本情景按名义0.20%计，实报高于0.35%则放弃。
+- **逻辑失效/计划止损：** 比值<0.444，或SOXX相对RSP从入场反向跑赢1.8%，或HYG<76.50。
+- **TP1/TP2/时间退出：** TP1 0.474减半；TP2 0.490；10个交易日时间退出。
+- **好/中/坏情景：** 组合PnL=458×ΔRSP−210×ΔSOXX−成本。以名义各约10万美元、成本400美元：比值相对+3%约净+2600；+6%约净+5600；-3%约净-3400。仅为同额名义一阶情景，非Beta中性、非封顶。
+- **预算/压力：** 试仓≤NAV0.50%；AI成长主题总预算≤NAV1.50%；借券回补、盘前跳空和相关性断裂需额外压力。
 
-### 3) COM-M-SA701-CONTANGO-WARRANT-SHORT-20261022
+### 3) COM-M-AG2612-SILVER-REPAIR-SHORT-20261022
 
-- **状态修订：** 上次未入全球榜分 → 本次72分。10月22日跌势、contango、仓单与局部IV共同进入候选；日低恰为926，旧的<926未触发。
-- **逻辑链：** 新增事实→SA701日收/结算935/936、1日-1.68%、ΔOI+26897；市场已定价→日低已到926且局部ATM IV24.93%高于RV16.16%，空头并不便宜；分歧→若夜盘有效跌破926且不能收复936，contango与仓单压力才成为趋势而非日内过冲；PnL来自线性下跌。
-- **最强竞争解释：** 能源/化工夜盘联动反弹、空头回补、局部RR+2.66显示上尾也有需求；OI不说明新空。
-- **下一项区分观测：** 21:15后15分钟收盘与随后30分钟是否失败收复。
-- **工具比较：** SA701空1手起；乘数20吨/手、tick1元/吨、tick价值20元。替代有限风险put spread因无bid/ask不执行。
-- **触发/顺序：** 21:15后15分钟收盘<926；其后30分钟无15分钟收盘>936且最终一根仍<926。
-- **入场/报价：** 926/924/922各1/3；直接<918放弃追空。
-- **逻辑失效/计划止损：** 计划止损947；若夜盘收复936并保持则逻辑先失效。
-- **TP1/TP2/时间退出：** TP1 895减半；TP2 860；10月29日时间退出。
-- **好/中/坏情景净损益：** 含2 ticks=40元/手假设成本：好926损460元，TP1净580/R1.26、TP2净1280/R2.78；中924损500，净540/R1.08、1240/R2.48；坏922损540，净500/R0.93、1200/R2.22。
-- **风险预算与尾部：** 保证金8%、限幅7%来自当前合约元数据；期货止损不封顶，压力按1-2个限幅及流动性消失另算。
+- **状态修订：** 72 → 72。银价弱与AG日盘下跌维持方向；但日收已接近目标区域且局部IV高，严格禁止低位追空。
+- **新增事实→已定价→分歧/PnL：** 新增事实：AG2612收13108、现货银约53.89美元且近月曲线约-0.25%；市场已计价：日盘跌约4.2%，相当部分修复已发生；分歧：若反弹至13240–13320失败并重回13200下方，弱势才可复制；PnL来自线性下跌。
+- **最强竞争解释：** 美元/实际利率反转、现货银重上55.5，或工业金属共振反弹；OI/样本期权不能识别拥挤。
+- **下一项区分观测：** 下一夜盘反弹后的5分钟收盘与同一时点现货银、近月曲线。
+- **工具比较：** AG2612空1手起；乘数15千克/手；备选put spread无可执行报价。
+- **触发/顺序：** 先反弹13240–13320，再有5分钟收盘<13200 AND 现货银≤54 AND近月曲线≤-0.20%；直接<13050放弃。
+- **入场/成本：** 13150–13280，按整数手50%/50%；不足2手仅1手试仓。
+- **逻辑失效/计划止损：** 13430或现货银>55.5；计划止损不封顶。
+- **TP1/TP2/时间退出：** TP1 12850；TP2 12500；FOMC前退出。
+- **好/中/坏情景：** 含假设成本30元/点折合450元/手：好13280至止13430亏2700，TP1净6000/R2.22、TP2净11250/R4.17；中13220亏3600，净5100/R1.42、10350/R2.88；坏13150亏4650，净4050/R0.87、9300/R2.00。
+- **预算/压力：** 试仓≤NAV0.50%；贵金属/美元/久期共因子合并≤NAV1.50%；保证金不是风险上限。
 
 
 ## 6. 黄金专项
 
-判断：**政策信用期权叙事减弱**。现货金在Brent约112美元、全球权益risk-off、10Y收益率下行时仍跌至4060.37美元，说明高实际利率/年末紧缩预期和流动性竞争暂时压过避险。这里“期权”仅是宏观类比，不是合同限损。
+判断：**政策信用期权叙事减弱**。10Y实际利率降至2.64%、权益波动抬升时，黄金仍在约4022美元且周跌约3.4%，这更像去杠杆/美元流动性竞争，而非被验证的避险凸性。“期权”仅是经济比喻。
 
-- 支持：地缘、油价与长期财政/政策信用风险仍在；央行长期购金逻辑未被单日推翻。
-- 反对：今日最关键的跨资产检验失败；最新ETF流、CFTC持仓、目标期限IV/skew未同步取得。
-- 3—6月Call Spread：不做。沿用而不重置原始确认：spot>4200 AND GLD>385.2 AND 10Y实际≤2.70% AND DXY≤102.5；同时须取得实时报价。
-- 微型黄金期货：只可在上述价格/实际利率重新确认后作为线性验证，止损不封顶。
-- 黄金多+长债Put Spread：理论上对冲实际利率上冲，但本期两边期权均无同步报价，无法核算净Vega/成本；不执行。
-- 反向：仅当spot<4050且10Y实际>2.85%时研究GLD put spread，仍需权利金、IV和Greeks。现在不追空。
+- 央行购金提供结构性支持，但不是本期新增催化；最新ETF流与10/20 CFTC报告在截点未齐，不能用10/13 last-good冒充当前。
+- 3–6月Call Spread：当前IV、skew、净借记缺失，不沿用旧strike；不执行。微型期货只在spot重上4100且DXY不再走强后研究。
+- 黄金多+长债Put Spread可对冲实际利率反跳，但双边报价/Greeks缺；反向仅在spot<4000且10Y实际重上2.75%时研究put spread。现在不追空。
 
 ## 7. AI专项
 
-Lam给出设备端强收入与指引；Meta收入同比+26%，但单季FCF为-21.2亿美元、Capex 349.1亿美元，现金流与资本开支出现最清晰分化；Tesla收入280.46亿美元而经营利润率承压。欧洲科技与美股期货risk-off说明市场正在把“收入增长”与“资本密集度/治理/现金转化”分开定价。
+SOXX单日-6.82%而RSP +0.72%，市场从全面AI叙事转向现金流与资本密集度分层；10月23盘前跌幅收窄又说明不宜追空。Lam既有收入/指引仍是设备需求反证，Meta收入强但Capex/FCF分化提示远端变现风险。芯片、设备、云、网络/电力、软件均完成扫描；网络/电力和软件没有新的公司级现金流证据，保持观察。
 
-- **自然工具：** SOXX 510/540 call spread只在美股现金盘30分钟>515且回踩510不破、净借记≤10时保留；晨报80降至70。
-- **替代：** 多Lam/空Meta或Tesla是现金流—Capex主题，缺同步Beta、成分权重、借券与报价，不能称Dollar-neutral或Beta-neutral，只观察。
-- **全链覆盖：** 芯片设备获Lam支持；芯片指数需现金盘验证；云/网络/电力仍受 hyperscaler Capex支持；软件现金化相对好；二线融资敏感标的在高利率下风险最大。
-- **反证：** 若SOXX现金盘站不上515、Meta电话会不改善现金转化，或10Y重上5.25%，上行分支失效；若订单/指引继续扩散且SOXX站稳515，旧SOXX下行分支正式失效。
+- 首选表达是多RSP/空SOXX同额美元名义，明确**不是Beta-neutral**；须相对价、HYG和10Y同时确认。
+- SOXX put spread等待实时IV/报价；“多现金流龙头/空Capex Beta”缺精确权重、借券和同步报价，只能称主题。
+- 降低确信的证据：SOXX急跌已释放部分估值拥挤、盘前跌势缓和、信用利差未恶化。
 
-## 8. 中国50/300/500/1000、A股公司与商品专项
+## 8. 中国50/300/500/1000、商品与公司专项
 
-### 指数与期指
+### 股指/期权
 
-| 标的 | 现金1/3/5/20日 | 2612 close/settle | settle 1D | 成交/OI/ΔOI | close basis / 年化* |
-|---|---|---|---:|---:|---:|
-| 上证50/IH | -0.810% / -1.784% / -1.462% / -4.903% | 2679.2/2684.8 | -0.761% | 41459/78225/+7173 | -1.674% / -10.72% |
-| 沪深300/IF | -1.839% / -3.311% / -3.114% / -9.909% | 3970/3987.6 | -1.594% | 89956/188861/+11439 | -1.643% / -10.52% |
-| 中证500/IC | -2.709% / -2.138% / -1.684% / -13.382% | 6543/6621 | -1.952% | 124894/185322/+16646 | -1.687% / -10.80% |
-| 中证1000/IM | -2.979% / -1.792% / -1.503% / -13.300% | 6471.6/6549 | -2.116% | 218470/298458/+26635 | -1.622% / -10.38% |
+50/300/500/1000今日+1.21/+1.71/+2.39/+2.38%，小盘跑赢但只是单日修复。IH/IF/IC/IM 2612基差分别-1.403/-1.226/-1.063/-1.107%；成交量53,855/121,345/179,163/319,452，OI 77,528/191,736/192,258/311,644，ΔOI -697/+2,875/+6,936/+13,186。量仓不能唯一识别新多/回补。
 
-* 年化仅作57个日历日至2026-12-18的简单年化，不含分红、融资与roll；不是可实现收益。
+HO/IO/MO 10月23日原始ATM行权价与PCR可得，但模型IV/RR/BF/期限/Gamma仍停在10月22日；last-good ATM IV 17.000/20.275/29.672%，RR25 -1.366/-1.994/-3.073vol。OI不代表dealer净Gamma。IH↔HO、IF↔IO、IM↔MO；IC没有一一对应指数期权，MO/IO代理留下Beta、基差和跟踪误差。IF-IH、IM-IF、IM-IH、IC-IF、IM-IC均复核；今日不做方向、跨期、long gamma或有限风险short gamma，因为当前IV与可执行报价不齐。晨报多IH/空IM的两个收盘条件均失败：现金相对收益反向1.17pp，IH-IM基差差-0.296pp低于-0.25pp阈值；撤回而不反手。
 
-今日CSI1000相对CSI300落后1.14个百分点，50相对1000领先2.17个百分点；IM主力结算跌幅也大于IF。因此 CN-SMALL-LARGE-RV-20261013 在未入场状态下撤回，不反手追空。IH相对防御，但四个主力均贴水且OI增加不能识别新空/套保/换月，最合适结论是“防御观察”，不是多IH确认。
+### 商品全范围
 
-### HO/IO/MO
+维护77产品、原63代码及动态新增均完成方向、曲线、实体、外盘与期权可得性扫描。能源SC/FU最强；化工分化且SA旧空失效；黑色无三层高赔率机会；贵金属AG弱但已大跌；油脂虽强，DCE官方交叉核对失败限制执行；EC未形成可复制触发。商品期权45/64、1031行、45 series，局部SC/FU/AG/AP ATM可研究，但full-chain/surface/positioning/execution均false且bid/ask为0，不能给权利金、PCR拥挤或dealer Gamma。官方价格交叉核对SHFE/INE/CZCE/GFEX共238/63/243/48合约一致，DCE是HTTP 412源错误，不是已证实价差；成交/OI未被官方复核。
 
-独立股指期权引擎last-good为10月20日：HO/IO/MO 2611 ATM IV 14.890%/18.368%/27.263%，RR25 -0.546/-1.696/-3.527 vol点，BF25 +0.607/+0.459/+0.397，PCR(OI) 0.644/0.665/0.595，Gamma峰值2800/4200/7000。数据比当前EOD旧两会话，只能作背景，不能据此下HO/IO/MO订单、判断dealer净Gamma或构建今日IV-RV。IC没有一一对应的指数期权；MO代理IC会留下Beta、基差与跟踪误差。
+20:12尚无今晚新夜盘价；仓库最新夜盘是10月22夜间、归属10月23交易日的供应商快照。今晚21:00归属10月26交易日，开后15/30/45分钟三情景：油与曲线共振→只等回踩确认；油涨而国内不跟→放弃SC/FU；全面risk-off且银反弹失败→才启用AG条件空。
 
-### China-Stock-Engine与主动公告发现
+### 公司
 
-引擎trade_date为10月21日：5568/5576有效报价，3/5/20日原始窗大体可用，但复权收益、行业、正式指数成分、预期修订和交易状态未就绪；候选并集为0，公司证据目录仅宝钢、紫金两家。其证据可做旧事实/利润桥背景，不能生成10月22日新信号。
+Stock引擎仍停在10月21日：全市场5568有效报价，但复权、行业、正式指数成分、预期修订、当日tradability不齐。主动检索范围为上交所/公司IR/上海证券报的半导体链，并复核紫金、湖南黄金、宝钢的商品映射。
 
-本次额外检索SSE/SZSE/CNINFO的半导体、能源、钢铁及公司IR新公告。截至20:12没有找到可进入全球Top5的新经营/订单/资本配置事实。唯一明确未来点是长电科技公告：10月23日披露Q3、10月27日15:00召开说明会。它是未来催化，不是已知盈利；下一缺证是先进封装收入、毛利率、Capex与经营现金流同口径利润桥。个股报价/停复牌/涨跌停/成本未核，不称可执行。
+长电科技新增三季报：Q3合并收入114.251亿元、归母7.727亿元、扣非7.526亿元；9M收入309.52亿元、归母16.17亿元、扣非15.61亿元、经营现金流43.00亿元。简化利润桥：AI基础设施/国产替代与高稼动率支持售价/产品结构和销量，现金流改善提供独立验证；竞争解释是行业周期高点、库存/折旧/Capex与价格压力尚未分拆。59.78元仅+1.32%但区间宽，说明分歧而非“未定价”的证明。为何暂不优于SOXX/RSP：个股有直接经营证据，但缺共识、估值锚、复权价量、证券状态和下一窗口成本；因此只研究，不把低PE或同比增长当alpha。10月27日说明会核先进封装收入、持续利用率、Capex/折旧和现金流，任何一项恶化都可推翻净受益假设。
 
-### 中国商品全市场覆盖与质量
+## 9. 风险日历、覆盖与台账
 
-10月22日EOD覆盖维护中的77品种，包含用户指定63+清单；钢矿煤焦、基本金属/贵金属、能源化工、新能源、农产品、航运均完成价格/1-20日/曲线/可得仓单实体/外盘/局部期权扫描。代表异常：SC获全球油价与EIA支持但等夜盘；SA下跌+contango+仓单进入条件空；AG仅价格/曲线两层，得分封顶69；MA/EB上涨且backwardation，与“化工全面走弱”相反；AP/LH弱但曲线冲突，不入榜。
+| 北京时间 | 事件 | 操作含义 |
+|---|---|---|
+| 2026-10-23 21:00 | 中国商品10月26交易日夜盘（scheduled Friday night; official calendar still to be checked by broker） | SC/FU/AG只观察15/30/45分钟顺序；旧夜盘快照不计 |
+| 2026-10-23 21:30 | 美股现金开盘（US EDT） | RSP/SOXX前30分钟不追；核HYG和10Y |
+| 2026-10-23 21:45 | S&P Global US flash PMI（scheduled） | 降低AI和久期Delta；不在发布前用市价 |
+| 2026-10-23 22:00 | Michigan sentiment final（scheduled） | 通胀预期异常上冲则撤回利率敏感多头 |
+| 2026-10-26 09:15/09:30 | 中国股指期货/A股下一开盘（正常交易日待交易所最终日历） | 先看45分钟广度、IF/IH与IM/IF及基差，不追周五反弹 |
+| 2026-10-27 15:00-16:30 | 长电科技业绩说明会（公司公告） | 核先进封装收入、利用率持续性、Capex与现金流；缺答案不升级 |
+| 2026-10-28 22:30左右 | EIA周度油品库存（常规日历待EIA最终确认） | SC/FU若触发，事件前减共同油价Delta |
+| 2026-10-29 02:00/02:30 | FOMC决定/发布会（Fed日历） | 不裸卖Gamma；RSP/SOXX与贵金属降仓或限损 |
+| 2026-10-29 20:30 | 美国Q3 GDP初值与9月PCE（BEA日历） | 超出严格24h但在7日内；控制久期/美元/黄金共因子 |
 
-| 模块 | 源/交易日 | 能力与结论 | 缺口 |
-|---|---|---|---|
-| Futures | 10/22 EOD，19:03生成 | 五所full_market_ready；供应商主源 | DCE官方HTTP 412；量/OI未官方交叉核验 |
-| Market/Physical/External | 10/22及各原生频率 | 曲线可用；仓单部分carry；外盘可作映射 | spot basis、会员排名不可用 |
-| Options | 10/22，core_v1 | 45/64产品、1048行、45 series；SC/SA等局部ATM/RR可研究 | 非全链；bid/ask 0%；surface/positioning/execution false |
-| Night | 最近归属10/22、session 10/21 | vendor latest-trade snapshot，非官方夜收 | 今晚归属10/23的夜盘在截点尚未开始 |
-| Contract metadata | 当前ref | SC/SA乘数/tick等候选参数可用 | 部分错误，AG保证金未确认 |
-| Crosscheck | 10/22 | SHFE238、INE63、CZCE243、GFEX48合约的可比close/settle/pre-settle无可信差异 | partial来自DCE源错误，不代表价格不一致 |
+**覆盖核对：** 应覆盖的七大全球模块、中国四指数/期权、A股双通道、77商品均实际取数并分析。关键不足为实时MOVE期限、FX/油期权skew、CTA/dealer gamma、黄金ETF/CFTC、10月23中国模型IV曲面、商品盘口/全链/持仓、DCE官方比对和A股当日引擎/复权/tradability。缺数据只限制依赖表达，不等于市场无机会。
 
-商品局部期权：SC ATM IV59.47% vs RV50.25%、RR25 +5.30；SA 24.93% vs16.16%、RR25 +2.66；AL 11.16% vs11.33%、RR25 -2.17。它们是已就绪系列的局部指标，不是完整曲面/PCR/拥挤/dealer gamma，更不是可成交权利金。
+**台账处置：** SC保留ID并修订触发；RSP/SOXX保留并降1分；IH/IM与SA撤回；UST窗口过期；SOXX旧多条件失效；AG沿用10月22 short ID。无成交回执，所有实际持仓均为未知/未提供。
 
-## 9. 未来24小时/7天风险日历与夜盘地图
+**发布闸门：** 分项上限与加总、基差/相对价、三张卡PnL、合法窗口、回踩→确认可达性已重算；Markdown/JSON同源生成。未解：实时报价/Greeks、用户持仓/成交、截点后触发、CI结果。
 
-| 北京时间 | 事件 | 状态 | 风险处置 |
-|---|---|---|---|
-| 2026-10-22 20:30 | US initial jobless claims | scheduled; after cutoff | TLT/SOXX不在数据前预挂市价；只留限损结构 |
-| 2026-10-22 21:00 | 中国商品10月23交易日夜盘 | scheduled | SC/SA/AG执行15/30/45分钟顺序闸门；无触发即不做 |
-| 2026-10-22 21:30 | 美股现金开盘 | scheduled under US DST | 验证TLT/10Y与SOXX；前30分钟不追价 |
-| 2026-10-23 01:00 | 美国5Y TIPS拍卖 | Treasury tentative schedule | 久期结构降低Delta，若实际利率上破2.85取消 |
-| 2026-10-23 中国披露时段 | 长电科技Q3 2026报告 | 公司公告已确认 | 只读取正式财报后再做利润桥；今日不抢跑 |
-| 2026-10-23 21:45 / 22:00 | S&P Global US PMI / Michigan final | 日历待临近复核 | 限制SOXX/TLT Vega与方向仓位 |
-| 2026-10-27 15:00-16:30 | 长电科技业绩说明会 | 公司公告确认 | 核先进封装收入、毛利率、Capex/现金流，不把订单表述当已兑现盈利 |
-| 2026-10-28 美国时段 | EIA周度油品库存 | EIA下一期 | SC若仍持有则减隔夜Delta |
-| 2026-10-29 02:00 / 02:30 | FOMC决定/发布会 | Fed日历 | 不裸卖Gamma；TLT到会前分批止盈或降Delta |
-| 2026-10-29 20:30 | 美国Q3 GDP初值与9月PCE | BEA日历 | 虽略超7日边界仍为主要时间退出锚；黄金/久期不得跨越而无保护 |
+## 10. 最终行动
 
-今晚商品夜盘三情景：
+A. 今天没有应立即建立的新仓位。
+B. 今天仅应挂条件的候选：SC2612回踩720–726后5分钟≥728且Brent≥113、曲线≥0.8%；RSP/SOXX仅按两条相对价路线并同时满足HYG≥76.80、10Y≤5.10%；FU2701与AG2612仅按卡内顺序条件，SC与FU合并油主题预算。
+C. 今天继续观察：长电科技10月27日说明会、HO/IO/MO 10月23日IV补齐、黄金4000–4100与实际利率背离、AI现金流龙头对Capex Beta，以及中国小盘反弹的45分钟广度和基差。
+D. 今天必须回避或若此前已建仓则有条件退出：撤回未触发的多IH/空IM与SA701空；UST多头窗口和SOXX旧多条件已失效；回避追SC≥732、AG≤13050、无bid/ask的商品期权和把旧夜盘当今晚行情。
 
-1. **油继续上冲且SC曲线扩张：** 只按SC两阶段AND触发；21:15/21:30/21:45分别核首收、守720、二次收>724。
-2. **油稳而内盘不跟：** 不做SC；SA只在跌破926且不能收复936时空，AG只观察。
-3. **油回落或流动性恶化：** 取消SC，多腿期权因无bid/ask不启用；期货只保留未触发状态。
+## 来源
 
-## 10. 覆盖、台账与发布闸门
-
-- **应覆盖：** 七大全球模块、中国四指数及期权、A股双通道、维护77商品与新挂牌核查。
-- **实际分析：** 全球利率/FX/AI/油/金/风险；中国现金与CFFEX同日EOD；China-Options last-good；Commodity Futures/Market/Physical/External/Night/Options/Metadata/Crosscheck；Stock价量与公司目录，并做限定公告检索。
-- **关键缺口：** USDCNH exact current quote and FX skew；OVX and target option skew；current CTA/dealer gamma；fresh CFTC gold and ETF flow；China options 10/22 analytics；commodity bid/ask/full chain/positioning；DCE official crosscheck；A-share 10/22 stock engine, adjusted returns, industry, official constituents, forecast revisions and tradability。
-- **台账：** TLT 72→78；SOXX上行80→70；IM/IF 67→撤回；AL/NI晨间窗口过期、不重置ID；没有成交回执，所有实际持仓状态均“未提供/未知”。
-- **计算检查：** 5个分数逐项未越上限且加总通过；CFFEX基差/年化、三张卡情景PnL重算；57天年化、100/1000/20乘数与成本假设均显式；触发和放弃价可达性检查通过。
-- **语义检查：** AND/先后/持续时间、禁止追价、独立失效与止损、TP/时间退出、单笔与主题上限均保留。未解项为实时报价、Greeks、用户成交/持仓、截点后触发与CI；因此没有候选被标为立即可执行。
-
-风险预算：试仓NAV 0.25%—0.75%，确认0.75%—1.50%，同一高确信主题合计≤2.5%—3.0%。保证金不是风险预算；期货止损不封顶；股票、商品、指数和FX的同因子风险需合并。无账户数据，不编净敞口。
-
-## 来源（直达链接；日期与支持结论）
-
-- [Daily Treasury Par Yield Curve Rates](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve)（U.S. Treasury，2026-10-21）：2Y/5Y/10Y/30Y CMT；曲线利差。
-- [Daily Treasury Par Real Yield Curve Rates](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_real_yield_curve)（U.S. Treasury，2026-10-21）：10Y实际收益率；10Y breakeven计算。
-- [Stocks fall as Meta dents AI optimism; French bonds under fire](https://www.reuters.com/world/china/global-markets-global-markets-2026-10-22/)（Reuters，2026-10-22）：全球risk-off；Brent约112；10Y约5.05%；EURUSD/USDJPY；黄金未获避险流。
-- [Gold hits over two-month low](https://www.reuters.com/world/india/gold-drops-over-1-oil-rally-reinforces-higher-for-longer-rate-outlook-2026-10-22/)（Reuters，2026-10-22）：现货金4060.37；COMEX金4075.70；FOMC/PCE日期。
-- [U.S. Stocks of Crude Oil and Petroleum Products](https://www.eia.gov/dnav/pet/pet_stoc_wstk_dcu_NUS_W.htm)（EIA，2026-10-21）：原油/汽油/馏分油库存变化。
-- [VIX Volatility Products](https://www.cboe.com/tradable-products/vix/)（Cboe，2026-10-22）：VIX前收、开盘与变动。
-- [ICE BofA US High Yield OAS](https://fred.stlouisfed.org/series/BAMLH0A0HYM2)（FRED/ICE，2026-10-20）：HY OAS 3.33%。
-- [Meta Reports Third Quarter 2026 Results](https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx)（Meta IR，2026-10-21）：Q3收入、Capex、FCF、Q4指引。
-- [Tesla Q3 2026 update](https://ir.tesla.com/_flysystem/s3/sec/000162828026066738/tsla-20261021-gen.pdf)（Tesla IR/SEC filing，2026-10-21）：收入、利润率、OCF、Capex、FCF。
-- [Lam Research Sep-quarter results](https://investor.lamresearch.com/2026-10-21-Lam-Research-Corporation-Reports-Financial-Results-for-the-Quarter-Ended-September-27,-2026)（Lam Research IR，2026-10-21）：收入、毛利率、下一季度指引。
-- [CFFEX 2026-10-22 daily futures/option CSV](http://www.cffex.com.cn/sj/hqsj/rtj/202610/22/20261022_1.csv)（CFFEX，2026-10-22）：IH/IF/IC/IM价格、结算、成交、OI与变化。
-- [Tencent public index quote endpoint](https://qt.gtimg.cn/q=s_sh000016,s_sh000300,s_sh000905,s_sh000852)（Tencent Finance，2026-10-22）：四现金指数EOD。
-- [JCET Q3 2026 results briefing notice](https://big5.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-10-20/600584_20261020_UJTR.pdf)（SSE/JCET，2026-10-20）：10月23日披露三季报；10月27日业绩说明会。
-- [BEA release schedule](https://www.bea.gov/news/schedule)（BEA，2026-10-22）：10月29日GDP与PCE。
-- [China-Options radar_latest](https://github.com/farfromexact/China-Options-Engine/blob/ad367e4c58ee8e6de0ffcda60ca22dae4c205491/data/radar_latest.json)（China-Options-Engine，2026-10-20）：HO/IO/MO last-good ATM/RR/BF/PCR/Gamma。
-- [China-Commodities last run](https://github.com/farfromexact/China-Commodities-Engine/blob/b0eaf30aa35cac366066f30fab15f1bcfe7e35ab/data/last_run_status.json)（China-Commodities-Engine，2026-10-22）：商品模块日期、范围和质量。
-- [China-Commodities options quality](https://github.com/farfromexact/China-Commodities-Engine/blob/b0eaf30aa35cac366066f30fab15f1bcfe7e35ab/data/options/quality_latest.json)（China-Commodities-Engine，2026-10-22）：core_v1覆盖、full-chain/positioning/execution限制。
-- [China-Commodities futures crosscheck](https://github.com/farfromexact/China-Commodities-Engine/blob/b0eaf30aa35cac366066f30fab15f1bcfe7e35ab/data/crosschecks/futures_latest.json)（China-Commodities-Engine，2026-10-22）：四所价格匹配、DCE HTTP 412。
-- [China-Commodities night status](https://github.com/farfromexact/China-Commodities-Engine/blob/b0eaf30aa35cac366066f30fab15f1bcfe7e35ab/data/night_session/last_run_status.json)（China-Commodities-Engine，2026-10-22）：上一合法夜盘日期与语义。
-- [China-Stock manifest](https://github.com/farfromexact/China-Stock-Engine/blob/795e149866d7f1eefd1efdaf8fe510cd8f1c750e/data/latest/manifest.json)（China-Stock-Engine，2026-10-21）：全市场价量覆盖、能力与交易日。
-- [China-Stock research inputs](https://github.com/farfromexact/China-Stock-Engine/blob/795e149866d7f1eefd1efdaf8fe510cd8f1c750e/data/latest/research_inputs_latest.json)（China-Stock-Engine，2026-10-21）：公司目录、候选与能力缺口。
-
-A. 今天没有应立即建立的新仓位。  
-B. 今天仅应挂条件的候选：TLT 79/83 call spread仅在21:30后TLT>80.20且10Y<5.10%持续30分钟、净借记≤1.55；SC2612仅按724/Brent/曲线双阶段确认；SA701仅跌破926且30分钟不能收复936；SOXX仅30分钟>515并回踩510不破且净借记≤10。  
-C. 今天继续观察：AG2612反弹失败空、IH相对防御、长电科技10月23正式财报、Lam强需求能否抵消Meta现金流/Capex压力，以及黄金4060附近能否重新获得避险流。  
-D. 今天必须回避或若此前已建仓则有条件退出：回避把10月21旧夜盘当今晚行情、追SC>735或SA<918；撤回未触发的IM多/IF空；晨间AL/NI窗口已过期不重置；黄金3-6月call spread在现货<4200且无IV/报价时回避。
+- [Daily Treasury Par Yield Curve Rates](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve)（U.S. Treasury，2026-10-22；支持：2Y/5Y/10Y/30Y CMT、曲线利差）
+- [Daily Treasury Par Real Yield Curve Rates](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_real_yield_curve)（U.S. Treasury，2026-10-22；支持：10Y实际收益率、10Y breakeven）
+- [Global markets Oct 23](https://www.reuters.com/world/china/global-markets-global-markets-2026-10-23/)（Reuters，2026-10-23；支持：欧洲/美国盘前、DXY/黄金/中国指数、Fed隐含路径）
+- [Oil holds near five-month high](https://www.reuters.com/business/energy/oil-little-changed-supply-concern-lingers-amid-houthi-attacks-saudi-arabia-2026-10-23/)（Reuters，2026-10-23；支持：Brent/WTI盘中、供应尾部）
+- [Yen shines as AI jitters spur safe-haven rush](https://www.reuters.com/world/asia-pacific/yen-shines-ai-jitters-spur-safe-haven-rush-2026-10-23/)（Reuters，2026-10-23；支持：USDJPY与美元风险）
+- [VIX History](https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv)（Cboe，2026-10-22；支持：VIX收盘19.03）
+- [ICE BofA US High Yield OAS](https://fred.stlouisfed.org/series/BAMLH0A0HYM2)（FRED/ICE，2026-10-21；支持：HY OAS 3.27%）
+- [CFFEX 2026-10-23 daily CSV](http://www.cffex.com.cn/sj/hqsj/rtj/202610/23/20261023_1.csv)（CFFEX，2026-10-23；支持：IH/IF/IC/IM价格量仓、HO/IO/MO原始期权行）
+- [长电科技2026年第三季度报告](https://paper.cnstock.com/html/2026-10/23/content_2279945.htm)（长电科技/上海证券报，2026-10-23；支持：Q3/9M营收利润现金流、管理层经营解释）
+- [长电科技三季报PDF](https://stockmc.xueqiu.com/202610/600584_20261023_08SZ.pdf)（长电科技，2026-10-23；支持：原始财务报表交叉核对）
+- [China-Options radar_latest](https://github.com/farfromexact/China-Options-Engine/blob/d3375bfc81ad1375d0a53a586c04262305f55491/data/radar_latest.json)（farfromexact/China-Options-Engine，2026-10-23；支持：10/22 last-good ATM/RR/BF/PCR）
+- [China-Commodities report_input_latest](https://github.com/farfromexact/China-Commodities-Engine/blob/b0d41f1c9e8923bb016835492a3e2215e1d48780/data/report_input_latest.json)（farfromexact/China-Commodities-Engine，2026-10-23；支持：商品全范围EOD、曲线、期权core）
+- [China-Stock research_inputs_latest](https://github.com/farfromexact/China-Stock-Engine/blob/795e149866d7f1eefd1efdaf8fe510cd8f1c750e/data/latest/research_inputs_latest.json)（farfromexact/China-Stock-Engine，2026-10-21；支持：Stock能力、双通道限制）
