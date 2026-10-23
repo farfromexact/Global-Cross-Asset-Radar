@@ -1,0 +1,725 @@
+{
+  "schema_version": 3,
+  "status": "published",
+  "report_date": "2026-10-23",
+  "edition": "morning",
+  "generated_at_bjt": "2026-10-23T08:03:37+08:00",
+  "information_cutoff_bjt": "2026-10-23T07:58:00+08:00",
+  "prompt_version": "radar_2026-10-12_stock_v1",
+  "commodity_consumer_version": "core_2026-10-17_v1",
+  "research_quality_version": "2026-10-21_v1",
+  "weekend_mode": false,
+  "title": "全球跨资产机会雷达晨间版｜2026-10-23",
+  "one_sentence_conclusion": "混合Risk-off：美债牛市与AI/半导体急跌同现，但等权、小盘和信用未崩；首选油价尾部与IH/IM相对交易，拒绝追债追空科技。",
+  "regime": "mixed_risk_off_ai_capex_rotation_duration_rally_oil_tail",
+  "worth_taking_risk": true,
+  "immediate_new_trade": false,
+  "data_cutoff": {
+    "information_cutoff_bjt": "2026-10-23T07:58:00+08:00",
+    "us_session": "2026-10-22",
+    "china_eod": "2026-10-22",
+    "next_china_window": "2026-10-23 09:00/09:15/09:30 BJT",
+    "next_us_cash": "2026-10-23 21:30 BJT"
+  },
+  "repository_refs": {
+    "global": "efa8e1fd8346b77c6d33dbdcc784e2c1e05926f0",
+    "options": "d3375bfc81ad1375d0a53a586c04262305f55491",
+    "commodities": "b0eaf30aa35cac366066f30fab15f1bcfe7e35ab",
+    "stock": "795e149866d7f1eefd1efdaf8fe510cd8f1c750e"
+  },
+  "previous_reports": [
+    "reports/2026/10/2026-10-22_evening.md",
+    "reports/2026/10/2026-10-22_morning.md"
+  ],
+  "input_snapshots": [
+    {
+      "repo": "China-Options-Engine",
+      "path": "data/radar_latest.json",
+      "date": "2026-10-22",
+      "status": "ok",
+      "commit": "d3375bfc81ad1375d0a53a586c04262305f55491"
+    },
+    {
+      "repo": "China-Options-Engine",
+      "path": "data/radar_history.json",
+      "status": "empty",
+      "commit": "d3375bfc81ad1375d0a53a586c04262305f55491"
+    },
+    {
+      "repo": "China-Commodities-Engine",
+      "path": "data/report_input_latest.json",
+      "status": "empty",
+      "commit": "b0eaf30aa35cac366066f30fab15f1bcfe7e35ab"
+    },
+    {
+      "repo": "China-Commodities-Engine",
+      "path": "data/radar_latest.json",
+      "date": "2026-10-22",
+      "status": "ok",
+      "commit": "b0eaf30aa35cac366066f30fab15f1bcfe7e35ab"
+    },
+    {
+      "repo": "China-Commodities-Engine",
+      "path": "data/night_session/latest.json",
+      "status": "empty",
+      "commit": "b0eaf30aa35cac366066f30fab15f1bcfe7e35ab"
+    },
+    {
+      "repo": "China-Stock-Engine",
+      "path": "data/latest/research_inputs_latest.json",
+      "date": "2026-10-21",
+      "status": "stale",
+      "commit": "795e149866d7f1eefd1efdaf8fe510cd8f1c750e"
+    }
+  ],
+  "source_status": {
+    "global_market": "ok",
+    "treasury_official": "ok",
+    "china_options": "ok",
+    "china_commodities": "partial",
+    "china_stock": "stale_partial",
+    "vix_spot": "missing",
+    "commodity_night_current": "missing"
+  },
+  "fact_ledger": [
+    {
+      "fact_id": "F-US-UST-20261022",
+      "instrument": "UST 2/5/10/30Y",
+      "value": "4.65/4.78/4.96/5.29%",
+      "observation_time": "2026-10-22 EOD ET",
+      "known_at": "2026-10-23T08:03:37+08:00",
+      "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve",
+      "supports": "大幅牛市与曲线陡峭",
+      "limitation": "CMT非可交易合约价"
+    },
+    {
+      "fact_id": "F-US-AI-20261022",
+      "instrument": "QQQ/SOXX/RSP/IWM",
+      "value": "-2.84/-6.82/+0.72/+0.09%",
+      "observation_time": "2026-10-22 close ET",
+      "known_at": "2026-10-23T08:03:37+08:00",
+      "source": "https://www.reuters.com/business/nasdaq-futures-drop-over-1-ai-worries-resurface-oil-climbs-2026-10-22/",
+      "supports": "AI集中度冲击而非全面去杠杆",
+      "limitation": "单日相对冲击可能均值回归"
+    },
+    {
+      "fact_id": "F-CN-IDX-20261022",
+      "instrument": "IH/IF/IC/IM",
+      "value": "见dashboard",
+      "observation_time": "2026-10-22 EOD BJT",
+      "known_at": "2026-10-23T06:19:06+08:00",
+      "source": "https://github.com/farfromexact/China-Options-Engine/blob/d3375bfc81ad1375d0a53a586c04262305f55491/data/radar_latest.json",
+      "supports": "IH防御与MO波动率重估",
+      "limitation": "history empty"
+    },
+    {
+      "fact_id": "F-CN-STOCK-HNGOLD-Q3",
+      "instrument": "002155.SZ",
+      "value": "Q3营收-42.45%、归母-45.36%",
+      "observation_time": "2026-09-30 quarter-end",
+      "known_at": "2026-10-23 before cutoff",
+      "source": "https://static.cninfo.com.cn/finalpage/2026-10-23/1225615988.PDF",
+      "supports": "黄金股非线性受益",
+      "limitation": "开盘反应未观察"
+    }
+  ],
+  "dashboard": {
+    "us_rates": {
+      "date": "2026-10-22",
+      "ust2": 4.65,
+      "ust5": 4.78,
+      "ust10": 4.96,
+      "ust30": 5.29,
+      "real10": 2.64,
+      "bei10": 2.32,
+      "curve_2s30s_bp": 64
+    },
+    "global": {
+      "DXY": 101.5,
+      "QQQ": 704.47,
+      "SOXX": 475.69,
+      "RSP": 218.22,
+      "IWM": 276.67,
+      "WTI": 99.47,
+      "Brent": 113.17,
+      "spot_gold": 4041.39,
+      "GLD": 369.08,
+      "MOVE_proxy": 95.94,
+      "HY_OAS_proxy": 3.33,
+      "HYG": 77.1
+    },
+    "china_index": {
+      "IH2612": {
+        "close": 2679.2,
+        "cash": 2724.81,
+        "basis_pct": -1.6739,
+        "volume": 41459,
+        "oi": 78225,
+        "oi_change": 7173
+      },
+      "IF2612": {
+        "close": 3970,
+        "cash": 4036.3,
+        "basis_pct": -1.6426,
+        "volume": 89956,
+        "oi": 188861,
+        "oi_change": 11439
+      },
+      "IC2612": {
+        "close": 6543,
+        "cash": 6655.25,
+        "basis_pct": -1.6866,
+        "volume": 124894,
+        "oi": 185322,
+        "oi_change": 16646
+      },
+      "IM2612": {
+        "close": 6471.6,
+        "cash": 6578.27,
+        "basis_pct": -1.6216,
+        "volume": 218470,
+        "oi": 298458,
+        "oi_change": 26635
+      }
+    },
+    "china_options": {
+      "HO2612": {
+        "atm_iv": 0.170001,
+        "rr25": -0.013662,
+        "bf25": 0.005581,
+        "pcr_oi": 0.6311
+      },
+      "IO2612": {
+        "atm_iv": 0.202749,
+        "rr25": -0.019935,
+        "bf25": 0.00582,
+        "pcr_oi": 0.652
+      },
+      "MO2612": {
+        "atm_iv": 0.29672,
+        "rr25": -0.030734,
+        "bf25": 0.007448,
+        "pcr_oi": 0.6464
+      }
+    }
+  },
+  "meaningful_changes": [
+    "TLT高于旧禁追线，原新入场过期",
+    "SOXX Call Spread失效",
+    "AI冲击转为RSP/SOXX相对机会",
+    "Brent强而SC尚未确认",
+    "湖南黄金Q3反证黄金股线性映射"
+  ],
+  "top_opportunities": [
+    {
+      "rank": 1,
+      "idea_id": "COM-E-SC2612-POST-EIA-RECLAIM-LONG-20261021",
+      "name": "SC2612日盘双阶段确认后多",
+      "direction": "long_after_reclaim",
+      "holding_period": "1-3个交易日",
+      "stage": "等待09:15后顺序触发；当前夜盘缺失",
+      "instruments": [
+        "SC2612"
+      ],
+      "score": 77,
+      "score_components": {
+        "logic": 23,
+        "payoff_convexity": 18,
+        "catalyst": 18,
+        "price_curve_vol": 10,
+        "crowding_technical": 8
+      },
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "等待触发；期货尾损不封顶",
+      "max_loss_limited": false
+    },
+    {
+      "rank": 2,
+      "idea_id": "AI-RSP-SOXX-ROTATION-20261023",
+      "name": "多RSP/空SOXX美元中性轮动",
+      "direction": "long_equal_weight_short_semis",
+      "holding_period": "2-10个交易日",
+      "stage": "等待回撤承接或二次突破",
+      "instruments": [
+        "RSP",
+        "SOXX"
+      ],
+      "score": 75,
+      "score_components": {
+        "logic": 22,
+        "payoff_convexity": 17,
+        "catalyst": 17,
+        "price_curve_vol": 12,
+        "crowding_technical": 7
+      },
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "等待触发、券源与成本",
+      "max_loss_limited": false
+    },
+    {
+      "rank": 3,
+      "idea_id": "CN-IH-IM-DEFENSIVE-REL-20261023",
+      "name": "多IH2612/空IM2612近似美元中性",
+      "direction": "long_large_cap_short_small_cap",
+      "holding_period": "1-5个交易日",
+      "stage": "等待09:30后45分钟确认",
+      "instruments": [
+        "IH2612",
+        "IM2612"
+      ],
+      "score": 73,
+      "score_components": {
+        "logic": 21,
+        "payoff_convexity": 17,
+        "catalyst": 15,
+        "price_curve_vol": 12,
+        "crowding_technical": 8
+      },
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "等待触发；非Beta中性",
+      "max_loss_limited": false
+    },
+    {
+      "rank": 4,
+      "idea_id": "COM-M-SA701-CONTANGO-WARRANT-SHORT-20261022",
+      "name": "SA701跌破失败回抽后空",
+      "direction": "short_after_break_failed_reclaim",
+      "holding_period": "1-5个交易日",
+      "stage": "延续原参数；等待日盘触发",
+      "instruments": [
+        "SA701"
+      ],
+      "score": 72,
+      "score_components": {
+        "logic": 21,
+        "payoff_convexity": 18,
+        "catalyst": 15,
+        "price_curve_vol": 10,
+        "crowding_technical": 8
+      },
+      "research_judgment": "存在待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "等待触发；当前夜盘缺失",
+      "max_loss_limited": false
+    }
+  ],
+  "top_trade_cards": [
+    {
+      "idea_id": "COM-E-SC2612-POST-EIA-RECLAIM-LONG-20261021",
+      "previous_score": 76,
+      "current_score": 77,
+      "change_reason": "Brent收113.17提供外部支持，但SC2612日盘713.4且近月升水仅0.37%，原724/0.70%确认仍未满足；当前夜盘文件为空。",
+      "thesis": "新增事实→Brent涨4%而SC日盘仅收713.4；已定价→地缘溢价已明显进入Brent；分歧→只有SC重上724且近端曲线升水扩大，才证明境内补涨而非外盘过冲。主要PnL来自SC向外盘/曲线再定价。",
+      "strongest_counter": "Brent技术超买、事件缓和或汇率/运费差异使境内不跟；缺当前夜盘与可执行盘口。",
+      "next_test": "09:15首个15分钟收盘、Brent亚洲时段、SC2612-SC2701同刻曲线。",
+      "expression": "SC2612多头；SC期货1000桶/手、0.1元最小跳动=100元/手。期权Core无bid/ask且execution_ready=false，不以期权虚构限损。",
+      "trigger": "09:15首个15分钟收盘>=724 AND Brent>=112.5 AND近月曲线>=0.70%；随后一个15分钟仍收>724且期间无收盘<720。>735不追。",
+      "entry": "三等份724/727/730；风险预算不足3手时，只在最终确认后1手。",
+      "invalidation": "15分钟收盘<714 OR Brent<109.5 OR近月曲线<=0；逻辑失效优先于计划止损。",
+      "targets": "TP1 742；TP2 765；最迟3个交易日退出。",
+      "pnl_math": "以724入场：每手计划止损至714为-10,000元；TP1 +18,000元=1.8R，TP2 +41,000元=4.1R；未含手续费/滑点，跳空可令损失超过计划值。",
+      "risk": "试仓风险NAV 0.25%-0.50%；手数=floor(NAV×预算/(10,000+压力滑点))；保证金不是风险上限。"
+    },
+    {
+      "idea_id": "AI-RSP-SOXX-ROTATION-20261023",
+      "previous_score": null,
+      "current_score": 75,
+      "change_reason": "新建：RSP +0.72%、IWM +0.09%，同时QQQ -2.84%、SOXX -6.82%；NYSE上涨家数略多且HYG上涨，冲击更像AI集中度/Capex重估。",
+      "thesis": "新增事实→半导体暴跌而等权与小盘上涨；已定价→RSP/SOXX比值单日已升8.09%、一周升5.72%，不可追；分歧→若回撤后仍守住，市场会继续从远期Capex Beta转向当期现金流/广度。主要PnL来自相对收益而非大盘方向。",
+      "strongest_counter": "单日挤压后SOXX均值回归；大盘转全面Risk-off时RSP也跌，空头券源和股息成本不确定。",
+      "next_test": "美股现金盘RSP/SOXX比值、HYG、10Y和SOXX相对成交量。",
+      "expression": "每组多458股RSP、空210股SOXX，按10/22约99,945美元对99,895美元，名义差50美元；仅美元中性，不是Beta中性。",
+      "trigger": "路线A：比值回撤0.448-0.454后30分钟收>=0.452；路线B：30分钟收>0.462且下一30分钟仍>0.458。两者均要求HYG>=76.80、10Y<=5.10%；比值>0.470不追。",
+      "entry": "满足任一路线后50%/50%两批；先核SOXX券源、借券费和两腿成交。",
+      "invalidation": "30分钟比值<0.440，或HYG<76.50且10Y反弹>5.15%；10月30日时间退出。",
+      "targets": "TP1 0.480；TP2 0.500。",
+      "pnl_math": "每组名义约20万美元。情景假设每腿往返10bp成本约200美元：好(RSP+2%、SOXX-5%)约+6,794；中(+1%/-2%)约+2,797；坏(-3%/+4%)约-7,194。成本为假设，非实报。",
+      "risk": "线性空头无合同最大损失；按坏情景与跳空压力反推组数，试仓风险NAV 0.25%-0.50%。"
+    },
+    {
+      "idea_id": "CN-IH-IM-DEFENSIVE-REL-20261023",
+      "previous_score": null,
+      "current_score": 73,
+      "change_reason": "新建：10/22上证50仅跌0.81%，中证1000跌2.98%；IH/IM主力相对收益+2.38个百分点，且MO ATM IV升3.12vol至29.67%。",
+      "thesis": "新增事实→大盘价值显著防御，小盘波动被重估；已定价→单日相对幅度已大；分歧→若开盘后相对强势保留且基差不恶化，防御轮动可能延续。主要PnL来自IH对IM相对表现。",
+      "strongest_counter": "政策/流动性反转可令小盘急剧反弹；全部主力OI增加不能识别新空或回补；当前无3/5/20日历史。",
+      "next_test": "09:30-10:15现金指数相对收益、IH/IM基差差、MO/HO ATM。",
+      "expression": "多8手IH2612、空5手IM2612：按收盘名义643.01万元对647.16万元，净空4.15万元；近似美元中性，非Beta中性。",
+      "trigger": "09:30后45分钟上证50跑赢中证1000>=0.60个百分点 AND (IH基差%-IM基差%)>=-0.25个百分点；随后15分钟相对优势不回吐超过0.30个百分点。开盘即跑赢>1.50个百分点不追。",
+      "entry": "满足后先4IH/2IM，再4IH/3IM；整数腿导致首批暂不完全中性，须快速完成第二批。",
+      "invalidation": "入场后30分钟IM跑赢IH>=0.80个百分点，或组合盯市亏损达毛名义0.40%；后者约5.16万元，仅为计划止损。",
+      "targets": "TP1相对+1.20个百分点；TP2 +2.20个百分点；5个交易日退出。",
+      "pnl_math": "组合PnL=8×300×ΔIH-5×200×ΔIM。示例IH+0.5%、IM-1%约+96,866元；坏情景IH-1%、IM+0.5%约-96,659元，均未含手续费、基差与滑点。",
+      "risk": "中国期指存在跳空与保证金追加；首批腿不齐风险高，不能把计划止损当封顶。"
+    }
+  ],
+  "gold_tracking": {
+    "status": "weakened",
+    "reason": "实际利率与美元有利但黄金下跌；缺ETF/CFTC/skew新鲜截面",
+    "execution": "no_new_trade"
+  },
+  "ai_tracking": {
+    "status": "rotation_not_broad_deleveraging",
+    "preferred_expression": "long RSP short SOXX dollar-neutral",
+    "limitation": "borrow/beta/current options missing"
+  },
+  "china_tracking": {
+    "date": "2026-10-22",
+    "relative_preference": "IH over IM",
+    "history_1_3_5_20": "1D only; 3/5/20 unavailable",
+    "company_research": {
+      "candidate": "002155.SZ",
+      "decision_contribution": "lowered_gold_equity_confidence_only",
+      "execution": "not_ready"
+    }
+  },
+  "commodities_tracking": {
+    "data_quality": {
+      "status": "degraded",
+      "price_source": "vendor futures validated; official price crosscheck partial",
+      "curve_definition": "near_minus_next_futures_curve_not_spot_basis",
+      "basis_status": "partial",
+      "warehouse_status": "partial",
+      "member_rankings_status": "available_not_intent",
+      "options_chain_status": "core_v1 sampled 45/64",
+      "options_surface_status": "no full surfaces; no execution quotes",
+      "history_comparison_status": "insufficient_history",
+      "available_horizons": [],
+      "comparative_metrics": [],
+      "full_market_ready": true,
+      "futures_crosscheck": "SHFE/INE/CZCE/GFEX matched; DCE HTTP412",
+      "night_current": "missing"
+    },
+    "market_dashboard": [
+      {
+        "product": "SC",
+        "main_contract": "SC2612",
+        "close": 713.4,
+        "curve_pct": 0.37
+      },
+      {
+        "product": "SA",
+        "main_contract": "SA701",
+        "close": 935,
+        "curve_pct": -2.146
+      },
+      {
+        "product": "AG",
+        "main_contract": "AG2612",
+        "close": 13608
+      },
+      {
+        "product": "AL",
+        "main_contract": "AL2612",
+        "close": 23175
+      },
+      {
+        "product": "NI",
+        "main_contract": "NI2612",
+        "close": 121650
+      },
+      {
+        "product": "RM",
+        "main_contract": "RM701",
+        "close": 2248
+      }
+    ],
+    "supply_chain_map": [
+      {
+        "product": "SA",
+        "warehouse": 3464,
+        "change": 0,
+        "interpretation": "contango+flat warehouse supports conditional short only"
+      },
+      {
+        "product": "SC",
+        "external": "Brent113.17",
+        "interpretation": "external shock awaits domestic curve confirmation"
+      }
+    ],
+    "options_surface": {
+      "status": "not_ready",
+      "available_metrics": [],
+      "tradeable_structures": [],
+      "research_priority_when_ready": [
+        "SC event convexity",
+        "SA skew"
+      ],
+      "core_sampling": {
+        "expected": 64,
+        "success": 45,
+        "atm_ready": 44,
+        "skew_ready": 26,
+        "full_chain_verified": false,
+        "positioning_ready": false,
+        "execution_ready": false
+      },
+      "local_research_metrics": {
+        "SC2612": {
+          "atm_iv": 0.59465,
+          "rr25": 0.053,
+          "bf25": 0.02675
+        },
+        "SA701": {
+          "atm_iv": 0.24925,
+          "rr25": 0.0266,
+          "bf25": 0.00705
+        }
+      }
+    },
+    "night_session_risk_map": [
+      {
+        "product": "ALL",
+        "confidence": "low",
+        "action": "current night file empty; use next day confirmation only"
+      }
+    ]
+  },
+  "event_calendar": [
+    {
+      "time_bjt": "2026-10-23 Asia/Europe/US",
+      "event": "Flash PMI",
+      "action": "reduce unconfirmed delta"
+    },
+    {
+      "time_bjt": "2026-10-29 02:00",
+      "event": "FOMC decision/press conference",
+      "action": "de-risk linear positions"
+    },
+    {
+      "time_bjt": "2026-10-29 20:30",
+      "event": "US Q3 GDP advance + Sep PCE",
+      "action": "retain only priced convexity"
+    }
+  ],
+  "coverage": {
+    "required": [
+      "UST",
+      "FX",
+      "AI",
+      "oil",
+      "gold",
+      "risk",
+      "China index/options",
+      "China commodities",
+      "A-shares"
+    ],
+    "analyzed": [
+      "all with available inputs"
+    ],
+    "limitations": [
+      "VIX spot",
+      "FX skew",
+      "commodity night",
+      "options bid/ask",
+      "DCE official crosscheck",
+      "stock adjustments/industry/index/tradability"
+    ]
+  },
+  "state_ledger": [
+    {
+      "idea_id": "UST-TACTICAL-RALLY-20261013",
+      "previous_status": "waiting",
+      "current_status": "entry_expired_no_chase",
+      "reason": "TLT81.74 above 81.20 no-chase; trigger path/filled status unknown",
+      "actual_position": "unknown"
+    },
+    {
+      "idea_id": "AI-SOXX-EARNINGS-CONFIRM-LONG-20261022",
+      "previous_status": "waiting",
+      "current_status": "invalidated",
+      "reason": "SOXX high494 and close475.69 below 503 invalidation",
+      "actual_position": "unknown"
+    },
+    {
+      "idea_id": "COM-E-SC2612-POST-EIA-RECLAIM-LONG-20261021",
+      "previous_status": "waiting_night",
+      "current_status": "waiting_day_confirmation",
+      "reason": "Brent support; current night unavailable; original thresholds unchanged",
+      "actual_position": "unknown"
+    },
+    {
+      "idea_id": "COM-M-SA701-CONTANGO-WARRANT-SHORT-20261022",
+      "previous_status": "waiting_night",
+      "current_status": "waiting_day_confirmation",
+      "reason": "current night unavailable; original thresholds unchanged",
+      "actual_position": "unknown"
+    }
+  ],
+  "validation": {
+    "score_sums": "verified",
+    "notional_math": "verified",
+    "pnl_math": "verified",
+    "source_open_checks": "verified_for_key_sources",
+    "calendar_dst": "verified",
+    "representation_consistency": "verified_before_archive_write",
+    "unresolved": [
+      "live quotes",
+      "borrow",
+      "fees",
+      "night data",
+      "fills"
+    ]
+  },
+  "action_list": {
+    "A": "今天没有应立即建立的新仓位。",
+    "B": "SC2612双阶段确认多；RSP/SOXX回撤承接或二次突破；8IH2612/5IM2612开盘45分钟确认；SA701跌破926且不能收复936。",
+    "C": "TLT仅管理不追、黄金背离、AG反弹失败、湖南黄金回款/库存、AI现金流/Capex相对价值。",
+    "D": "回避追多TLT>81.20、追空SOXX、无bid/ask商品期权、把旧夜盘当当前行情；若此前建立SOXX多头，原503失效位已触发。"
+  },
+  "risk_budget": {
+    "trial": "NAV 0.25%-0.75%",
+    "confirmed": "NAV 0.75%-1.50%",
+    "theme_cap": "NAV 2.5%-3.0%",
+    "note": "not guaranteed max loss"
+  },
+  "sources": [
+    {
+      "title": "Daily Treasury Par Yield Curve Rates",
+      "publisher": "U.S. Treasury",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve",
+      "source_date": "2026-10-22",
+      "accessed_at_bjt": "2026-10-23T08:03:37+08:00",
+      "source_type": "official_or_primary",
+      "supported_claims": [
+        "2Y/5Y/10Y/30Y收益率",
+        "2s30s等曲线"
+      ]
+    },
+    {
+      "title": "Daily Treasury Real Yield Curve Rates",
+      "publisher": "U.S. Treasury",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_real_yield_curve",
+      "source_date": "2026-10-22",
+      "accessed_at_bjt": "2026-10-23T08:03:37+08:00",
+      "source_type": "official_or_primary",
+      "supported_claims": [
+        "10Y实际收益率",
+        "10Y盈亏平衡通胀计算"
+      ]
+    },
+    {
+      "title": "Stocks drop as Meta fans AI worries, Treasuries gain",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/china/global-markets-global-markets-2026-10-22/",
+      "source_date": "2026-10-22",
+      "accessed_at_bjt": "2026-10-23T08:03:37+08:00",
+      "source_type": "reliable_media",
+      "supported_claims": [
+        "Nasdaq/SOX跌幅",
+        "Brent/WTI结算",
+        "10Y变动",
+        "FX"
+      ]
+    },
+    {
+      "title": "S&P 500, Nasdaq end sharply lower",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/nasdaq-futures-drop-over-1-ai-worries-resurface-oil-climbs-2026-10-22/",
+      "source_date": "2026-10-22",
+      "accessed_at_bjt": "2026-10-23T08:03:37+08:00",
+      "source_type": "reliable_media",
+      "supported_claims": [
+        "AI Capex冲击",
+        "市场宽度",
+        "成交量"
+      ]
+    },
+    {
+      "title": "VIX Term Structure",
+      "publisher": "Cboe",
+      "url": "https://www.cboe.com/en/tradable-products/vix/term-structure/",
+      "source_date": "2026-10-22",
+      "accessed_at_bjt": "2026-10-23T08:03:37+08:00",
+      "source_type": "official_or_primary",
+      "supported_claims": [
+        "VIX期货期限结构"
+      ]
+    },
+    {
+      "title": "China-Options radar_latest",
+      "publisher": "GitHub/farfromexact",
+      "url": "https://github.com/farfromexact/China-Options-Engine/blob/d3375bfc81ad1375d0a53a586c04262305f55491/data/radar_latest.json",
+      "source_date": "2026-10-22",
+      "accessed_at_bjt": "2026-10-23T08:03:37+08:00",
+      "source_type": "repository_input",
+      "supported_claims": [
+        "IH/IF/IC/IM",
+        "HO/IO/MO"
+      ]
+    },
+    {
+      "title": "China-Commodities radar_latest",
+      "publisher": "GitHub/farfromexact",
+      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/b0eaf30aa35cac366066f30fab15f1bcfe7e35ab/data/radar_latest.json",
+      "source_date": "2026-10-22",
+      "accessed_at_bjt": "2026-10-23T08:03:37+08:00",
+      "source_type": "repository_input",
+      "supported_claims": [
+        "商品全市场扫描",
+        "曲线与局部期权指标"
+      ]
+    },
+    {
+      "title": "China-Stock research_inputs_latest",
+      "publisher": "GitHub/farfromexact",
+      "url": "https://github.com/farfromexact/China-Stock-Engine/blob/795e149866d7f1eefd1efdaf8fe510cd8f1c750e/data/latest/research_inputs_latest.json",
+      "source_date": "2026-10-21",
+      "accessed_at_bjt": "2026-10-23T08:03:37+08:00",
+      "source_type": "repository_input",
+      "supported_claims": [
+        "股票研究能力与缺口"
+      ]
+    },
+    {
+      "title": "湖南黄金2026年第三季度报告",
+      "publisher": "CNINFO/湖南黄金",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-10-23/1225615988.PDF",
+      "source_date": "2026-10-23",
+      "accessed_at_bjt": "2026-10-23T08:03:37+08:00",
+      "source_type": "official_filing",
+      "supported_claims": [
+        "季度营收利润",
+        "现金流、存货和应收"
+      ]
+    },
+    {
+      "title": "FOMC October 2026 calendar",
+      "publisher": "Federal Reserve",
+      "url": "https://www.federalreserve.gov/newsevents/2026-october.htm",
+      "source_date": "2026-10-23",
+      "accessed_at_bjt": "2026-10-23T08:03:37+08:00",
+      "source_type": "official_or_primary",
+      "supported_claims": [
+        "10月27-28日FOMC"
+      ]
+    },
+    {
+      "title": "BEA release schedule",
+      "publisher": "BEA",
+      "url": "https://www.bea.gov/news/schedule",
+      "source_date": "2026-10-23",
+      "accessed_at_bjt": "2026-10-23T08:03:37+08:00",
+      "source_type": "official_or_primary",
+      "supported_claims": [
+        "10月29日GDP与PCE"
+      ]
+    }
+  ],
+  "archive": {
+    "target_branch": "main",
+    "archive_status": "pending_readback",
+    "ci_validation_status": "pending_or_unverified",
+    "paths": [
+      "reports/2026/10/2026-10-23_morning.md",
+      "reports/2026/10/2026-10-23_morning.json",
+      "latest/morning.md",
+      "latest/morning.json",
+      "status/morning_latest.json",
+      "manifests/reports.json"
+    ]
+  }
+}
