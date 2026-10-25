@@ -1,33 +1,31 @@
 {
   "schema_version": "1.0",
   "status": "published",
-  "report_date": "2026-10-24",
+  "report_date": "2026-10-25",
   "edition": "evening",
-  "generated_at_bjt": "2026-10-24T20:08:48+08:00",
+  "generated_at_bjt": "2026-10-25T20:08:10.931+08:00",
   "weekend_mode": true,
-  "title": "全球跨资产机会雷达晚间版｜2026-10-24",
-  "one_sentence_conclusion": "混合偏Risk-off：油价与信用压力仍在、AI仅局部企稳，CFTC显示商品多头减仓；周末无即时新仓，周一只做回踩与宽度确认。",
-  "regime": "weekend_mixed_risk_off_oil_supply_risk_credit_pressure_ai_rotation_commodity_deleveraging",
+  "title": "全球跨资产机会雷达晚间版｜2026-10-25",
+  "one_sentence_conclusion": "混合偏Risk-off：机场重开削弱油品追涨，铜矿罢工与黑海航运增添尾险；周日无即时新仓，周一仅做回踩与跨资产确认。",
+  "regime": "sunday_closed_mixed_risk_off_oil_tail_normalization_black_sea_shipping_risk_copper_strike_ai_rotation",
   "worth_taking_risk": false,
   "data_cutoff": {
-    "bjt": "2026-10-24T20:08:00+08:00",
-    "market_state": "周末；无中国日盘、无中国21:00夜盘、无欧美现金盘",
-    "us_last_complete_session": "2026-10-23",
-    "china_last_complete_session": "2026-10-23",
-    "next_windows": {
-      "cme_globex": "2026-10-26 06:00 BJT（常规重开，交易所临时安排仍需核）",
-      "china_futures": "2026-10-26 09:00 BJT；EC 09:30",
-      "china_cash": "2026-10-26 09:30 BJT",
-      "us_cash": "2026-10-26 21:30 BJT（EDT）",
-      "china_night": "2026-10-26 21:00 BJT，归属2026-10-27交易日"
-    }
+    "beijing_time": "2026-10-25T20:08:10.931+08:00",
+    "us_cash_market": "closed",
+    "china_cash_market": "closed",
+    "notes": [
+      "中国、欧洲、美国周日均无现金市场；最后完整会话为2026-10-23。",
+      "CME Globex预计2026-10-26 06:00北京时间重开；中国商品日盘09:00、A股与股指期货09:30、美国现金市场21:30。",
+      "2026-10-25 21:00无中国商品夜盘；下一夜盘为2026-10-26 21:00，通常归属2026-10-27交易日。",
+      "截至报告时点没有周末新价格；所有周一触发、成交及期权报价均未知。"
+    ]
   },
   "input_snapshots": {
     "global_radar": {
       "repository": "farfromexact/Global-Cross-Asset-Radar",
-      "commit": "4e0e6e40fd8f7c18acf4d085cb4e8cc10542f591",
-      "previous_global": "reports/2026/10/2026-10-24_morning.md",
-      "previous_same_edition": "reports/2026/10/2026-10-23_evening.md",
+      "commit": "a79ed46affa6ea844fb85a5b25f485d4526d533d",
+      "previous_global": "reports/2026/10/2026-10-25_morning.md",
+      "previous_same_edition": "reports/2026/10/2026-10-24_evening.md",
       "status": "ok"
     },
     "china_options_repository": "farfromexact/China-Options-Engine",
@@ -47,12 +45,11 @@
     "china_commodities": {
       "repository": "farfromexact/China-Commodities-Engine",
       "branch": "main",
-      "commit": "bafe191fd925a1c588e6561433183c562f0e2ce4",
+      "commit": "e1e7c2ccbd81406d7de1ba5e392f3b6dd2e4e4c9",
       "last_run_status_path": "data/last_run_status.json",
       "radar_latest_path": "data/radar_latest.json",
-      "radar_history_path": "data/radar_history.json",
       "trade_date": "2026-10-23",
-      "generated_at": "2026-10-24T19:07:08+08:00",
+      "generated_at": "2026-10-25T19:03:00+08:00",
       "data_fresh": true,
       "official_complete": false,
       "source_date_match_pct": 100,
@@ -60,12 +57,12 @@
       "critical_module_errors": 0,
       "history_record_count": 77,
       "module_quality": {
-        "futures": "verified_vendor_primary",
+        "futures": "verified_vendor_primary_806_contracts_77_products",
         "market_state": "ready_20d",
         "physical": "partial_no_eligible_basis",
         "external": "context_only",
-        "night": "published_incomplete_vendor_snapshot",
-        "options": "core_sampled_local_ready_not_execution",
+        "night": "published_incomplete_vendor_snapshot_416_of_806",
+        "options": "core_sampled_45_of_64_atm44_skew26_not_execution",
         "contract_metadata": "partial",
         "futures_crosscheck": "partial_DCE_HTTP412"
       },
@@ -81,9 +78,10 @@
         "data/last_run_status.json",
         "data/night_session/last_run_status.json",
         "data/radar_latest.json",
-        "reports/2026/10/2026-10-24_commodities_evening.md",
-        "reports/2026/10/2026-10-24_commodities_evening.json"
-      ]
+        "reports/2026/10/2026-10-25_commodities_evening.md",
+        "reports/2026/10/2026-10-25_commodities_evening.json"
+      ],
+      "radar_history_path": "data/radar_history.json"
     },
     "china_stock": {
       "repository": "farfromexact/China-Stock-Engine",
@@ -115,15 +113,17 @@
   },
   "source_status": {
     "overall": "partial_with_disclosed_limitations",
-    "global_market": "2026-10-23 official/verified closes; no weekend session",
-    "china_options": "fresh 2026-10-23 EOD, history empty",
-    "china_commodities": "fresh 2026-10-23 EOD; 77 products; partial official crosscheck; options not execution-ready",
-    "china_stock": "stale to 2026-10-21; public announcement supplement through 2026-10-24 20:08 BJT",
+    "global_market": "2026-10-23 official/verified closes; no Sunday session",
+    "china_options": "2026-10-23 EOD; radar_latest usable, radar_history empty",
+    "china_commodities": "2026-10-23 EOD; 2026-10-25 19:03 refresh; 77 products; partial official crosscheck; sampled options not execution-ready",
+    "china_stock": "stale to 2026-10-21; limited SSE/SZSE/CNINFO and metals/energy IR discovery through 2026-10-25T20:08:10.931+08:00",
     "errors": [
-      "China-Options radar_history empty",
-      "China-Commodities report_input_latest connector render empty; used same-ref status/radar and archived specialist report",
+      "China-Options radar_history empty; 3/5/20 same-contract option history unavailable",
+      "China-Commodities report_input_latest connector render empty; used same-ref statuses/radar and archived specialist report",
+      "Repository path schemas/status.schema.json missing (404); status used current production status shape",
       "USD/JPY and USD/CNH precise institutional closes and FX option skew unavailable",
-      "official VIX settlement reconciliation and VIX term unavailable",
+      "Treasury auction amounts and market-implied Fed path unavailable in verified same-cutoff inputs",
+      "official VIX settlement reconciliation and VIX term unavailable; MOVE is secondary",
       "current CTA and dealer gamma unavailable",
       "gold ETF daily flow and COMEX IV/skew unavailable",
       "commodity options bid/ask, full chain, positioning and execution unavailable",
@@ -345,21 +345,27 @@
   "meaningful_changes": [
     {
       "id": "CHG-1",
-      "change": "CFTC截至10月20日的新周报被本期核实：黄金非商业净多199,865手、周减8,014；白银净多19,795、周减2,836；WTI净多89,325、周减11,018。",
-      "impact": "强化贵金属/原油处于价格强弱与仓位去杠杆并存的判断，不支持周一跳空追价。",
-      "disposition": "黄金叙事继续弱化；SC/FU保留条件、下调追价意愿。"
+      "change": "Riyadh主要机场于10月25日恢复1、2号航站楼国内及国际航班；同日沙特仍称拦截胡塞导弹与无人机。",
+      "impact": "运输正常化是对油品事件溢价的新增反证，但持续拦截说明尾部风险未消失，也不等于能源基础设施受损。",
+      "disposition": "SC、FU各降1分；保留回踩与Brent/曲线联合确认，禁止跳空追涨。"
     },
     {
       "id": "CHG-2",
-      "change": "19:07版商品引擎确认五所806合约、77品种及20日状态完整；期权45/64产品、ATM ready 44、skew ready 26，但surface/positioning/execution均为0。",
-      "impact": "SC/FU曲线与局部IV研究可保留；任何商品期权净成本、PCR全链和dealer方向仍不可写。",
-      "disposition": "榜单不变，执行边界收紧。"
+      "change": "俄罗斯国防部称无人机击中一艘驶往Chornomorsk的货船及物流设施；Reuters无法独立核实。",
+      "impact": "黑海航运与谷物尾部风险升高，但事件真实性、货物与运力影响未确认，不能直接生成方向交易。",
+      "disposition": "新增谷物/运费观察，不进入Top5；下一项区分观测是周一谷物曲线、EC运价和官方/港口确认。"
     },
     {
       "id": "CHG-3",
-      "change": "周六限定公告检索覆盖上交所10月24日定期报告页、Stock目录两家公司及紫金IR；未发现足以在无价格反应时新增Top5的公司证据。",
-      "impact": "紫金维持研究候选；不把周末披露数量误作催化强度。",
-      "disposition": "无新增A股交易卡。"
+      "change": "Teck正式确认Highland Valley Copper在罢工期间降负荷运行，产量影响取决于持续时间。",
+      "impact": "公司原件提高供给风险事实质量，但仍无量化损失；CU2612周五价格反应与周一期限结构缺失。",
+      "disposition": "铜维持研究观察，不把减负荷外推为已实现供给缺口或公司盈利。"
+    },
+    {
+      "id": "CHG-4",
+      "change": "自晨报后没有新的合法交易时段；19:03商品引擎刷新仍是周五EOD，期权ATM 44、skew 26、execution 0。",
+      "impact": "同日刷新改善读取时点而非价格新催化；旧夜盘供应商快照不能称周日新行情。",
+      "disposition": "除SC/FU因新增反证各降1分外，其余榜单、触发与风险参数不变。"
     }
   ],
   "top_opportunities": [
@@ -375,18 +381,18 @@
       ],
       "max_loss_limited": false,
       "score_components": {
-        "logic": 23,
+        "logic": 22,
         "convexity": 21,
         "catalyst": 17,
         "price_curve_vol": 9,
         "crowding_technical": 7
       },
-      "score": 77,
+      "score": 76,
       "research_judgment": "存在待验证优势",
       "evidence": "部分",
-      "execution": "休市/等待触发",
+      "execution": "休市/等待周一触发",
       "position_status": "未提供/未知",
-      "score_change_from_morning": 0
+      "score_change_from_morning": -1
     },
     {
       "rank": 2,
@@ -400,18 +406,18 @@
       ],
       "max_loss_limited": false,
       "score_components": {
-        "logic": 22,
+        "logic": 21,
         "convexity": 20,
         "catalyst": 17,
         "price_curve_vol": 9,
         "crowding_technical": 7
       },
-      "score": 75,
+      "score": 74,
       "research_judgment": "存在待验证优势",
       "evidence": "部分",
-      "execution": "休市/等待触发",
+      "execution": "休市/等待周一触发",
       "position_status": "未提供/未知",
-      "score_change_from_morning": 0
+      "score_change_from_morning": -1
     },
     {
       "rank": 3,
@@ -461,7 +467,7 @@
       "score": 70,
       "research_judgment": "存在待验证优势",
       "evidence": "部分",
-      "execution": "休市/等待触发",
+      "execution": "休市/等待周一触发",
       "position_status": "未提供/未知",
       "score_change_from_morning": 0
     },
@@ -486,7 +492,7 @@
       "score": 68,
       "research_judgment": "存在待验证优势",
       "evidence": "部分",
-      "execution": "休市/待报价与证券状态核验",
+      "execution": "休市/待周一报价与证券状态核验",
       "position_status": "未提供/未知",
       "score_change_from_morning": 0
     }
@@ -495,9 +501,9 @@
     {
       "idea_id": "COM-E-SC2612-POST-EIA-RECLAIM-LONG-20261021",
       "rank": 1,
-      "logic": "新增事实是Brent/WTI再创新高且SC夜间快照抬升；市场已定价一部分供应尾部，但曲线仍需确认。主要PnL来自事件溢价维持与近月曲线不塌陷。竞争解释是短促地缘跳涨后供应释放、SPR/航运恢复造成回吐。",
+      "logic": "新增事实是Riyadh机场部分恢复国际航班，削弱无差别追涨赔率；胡塞攻击仍在、能源设施损害未确认，油链尾部未消失。市场已反映的是周五WTI/Brent上涨及SC旧夜盘跳升，但周一价格尚未出现。主要PnL仍来自事件溢价维持与SC近月曲线不塌陷；最强竞争解释是运输正常化、无产能损失与出口维持使跳空迅速回吐。",
       "instrument": "INE SC2612",
-      "window": "2026-10-26日盘",
+      "window": "2026-10-26日盘09:00后；周日无夜盘",
       "trigger": "09:15以后SC>=742 AND Brent>=114 AND SC2612-SC2701曲线>=1.20%；随后先回踩738—744，再出现5分钟收盘>=746，顺序缺一不可。",
       "entry": "744—748分两批50%/50%；若开盘首价>=760且无回踩则放弃。",
       "stop": "计划止损732；期货非合同限损，跳空/涨跌停可超过计划风险。",
@@ -539,14 +545,14 @@
       ],
       "greeks": "不适用；商品期权execution_ready=false，不用未报价期权替代限损。",
       "risk": "单手计划风险1.2万—1.6万元；手数=floor(单笔风险预算人民币/对应入场风险)，试仓0.25%—0.75% NAV。",
-      "abandon": "Brent<114、曲线<1.20%、开盘跳空>=760无回踩，任一满足则不做。"
+      "abandon": "Brent<114、SC近次月曲线<1.20%、开盘首价>=760且无回踩，或机场/航运继续正常化且Brent跳空后跌回114以下，任一满足则不做。"
     },
     {
       "idea_id": "COM-M-FU2701-CRACK-CURVE-LONG-20261024",
       "rank": 2,
-      "logic": "FU2701日盘涨4.49%、夜间快照再涨4.09%，近次月曲线从4.03%扩至4.74%；PnL来自高硫燃料油裂解与近月紧张。竞争解释是原油上行但终端/炼厂需求不跟，曲线快速回落。",
+      "logic": "Riyadh机场重开是新增反证，FU强势更可能同时包含油价上移、裂解和低流动性周末溢价。市场已反映周五FU上涨与旧夜盘曲线扩张，但周一不存在确认。主要PnL来自FU强于原油的裂解/曲线延续；最强竞争解释是成品油供给恢复或下游需求不足，使曲线回落。",
       "instrument": "SHFE FU2701",
-      "window": "2026-10-26日盘",
+      "window": "2026-10-26日盘09:00后；周日无夜盘",
       "trigger": "先回踩5300—5350，再出现5分钟收盘>=5360 AND FU近次月曲线>=4.50% AND Brent>=114。",
       "entry": "5350—5380分50%/50%；首价>=5420或曲线<4.0%直接放弃。",
       "stop": "计划止损5190；期货非合同限损。",
@@ -593,7 +599,7 @@
     {
       "idea_id": "AI-RV-RSP-LONG-SOXX-SHORT-20261022",
       "rank": 3,
-      "logic": "周五半导体逆转、RSP走弱使比值落入触发区，表明市场已部分交易AI防御；我们的分歧是FOMC与超大云财报前，资本开支Beta周线仍脆弱。主要PnL来自等权现金流宽度恢复、半导体估值压缩。最强反证是芯片订单/毛利与云Capex指引同时上修。",
+      "logic": "周五半导体逆转、RSP走弱使比值0.4528落入触发区，但连续30分钟确认未发生；FOMC与超大云财报前，资本开支Beta周线仍脆弱。主要PnL来自等权现金流宽度恢复、半导体估值压缩；最强反证是芯片订单/毛利与云Capex、FCF同时上修。",
       "instrument": "多462股RSP/空209股SOXX（约10万美元/腿，美元中性近似）",
       "window": "2026-10-26美股现金时段",
       "trigger": "RSP/SOXX进入0.448—0.454后，下一连续30分钟收盘>=0.454 AND HYG>=76.85 AND 10Y<=5.05%；当前0.4528仅满足区间，不满足可验证确认。",
@@ -616,8 +622,8 @@
     }
   ],
   "gold_tracking": {
-    "status": "减弱",
-    "thesis": "政策信用期权仅为经济比喻，不是合同限损。实际利率周降而金价周跌，加上CFTC黄金非商业净多周减8,014手，更符合去杠杆/美元流动性和油致通胀重定价的竞争解释。",
+    "status": "弱化；周末无新价格，维持前序判断",
+    "thesis": "10Y实际收益率周降8bp而GLD周跌约4%，不支持单一“政策信用买盘”解释；周五美元与实际利率反弹、CFTC净多下降与流动性/保证金竞争机制更强。",
     "key_data": {
       "spot_close_approx": "3999.9 USD/oz",
       "gld_close": 366.61,
@@ -656,12 +662,8 @@
     ]
   },
   "ai_tracking": {
-    "status": "轮动假设待验证",
-    "facts": [
-      "QQQ 704.40几乎平收；SOXX 478.20 +0.57%；SMH 527.20 +0.73%；RSP 216.54 -0.77%",
-      "半导体单日企稳但周线仍弱，且FOMC与超大云财报集中",
-      "未取得设备、网络、电力或软件公司新增订单/利润率证据"
-    ],
+    "status": "等待FOMC与Alphabet/Amazon财报；RSP/SOXX仅到触发区，未确认",
+    "facts": "SOXX/SMH周五反弹但SOXX周线仍约-3%；RSP/SOXX=0.4528、日跌约1.29%，广度未确认；现金流/定价权与远期Capex Beta继续分化。",
     "variant_view": "现金流宽度相对远端Capex Beta可能在事件周恢复，但周五RSP/SOXX比值下滑说明尚未确认。",
     "instrument_comparison": "RSP/SOXX有明确成员、手数与美元中性近似；并非Beta中性。期权因财报后IV/skew缺失不优于线性pair。",
     "counter_case": "Alphabet/Microsoft/Amazon同时上修云收入、Capex回报、FCF与毛利，则多SOXX/空RSP反向更合理。",
@@ -767,17 +769,16 @@
       "limitation": "dollar-neutral approximation, not beta-neutral; current evidence is one-day only"
     },
     "stock": {
-      "engine_date": "2026-10-21",
-      "active_search": "SSE regular filings dated 2026-10-24 plus Zijin/Baosteel/company-commodity routes",
-      "new_ranked_candidate_count": 0,
-      "zijin": "Q3 parent net profit +25.97%; 9M operating cash flow +61.74%; Q3 gold product margins weakened QoQ while copper concentrate margin improved slightly; Monday price reaction and security status unknown",
-      "baosteel": "no new decisive operating fact in limited weekend search",
-      "execution": "not_ready"
+      "status": "research_only_stale_for_execution",
+      "candidate": "紫金矿业601899.SH",
+      "contribution": "Q3现金流与铜/金利润桥保留为第五名；周末新公告扫描未发现证据更强且有价格反应的替代候选",
+      "active_discovery": "覆盖上交所/深交所定期报告与能源、有色重点公司IR；无新的合法价格反应",
+      "limitation": "Stock EOD仅至2026-10-21，radar为0行，复权、行业、正式指数成分、证券状态和当前报价缺失"
     }
   },
   "commodities_tracking": {
     "data_quality": {
-      "status": "degraded",
+      "status": "degraded_but_analytically_usable",
       "price_source": "vendor EOD with partial official price crosscheck",
       "curve_definition": "near_minus_next_futures_curve_not_spot_basis",
       "basis_status": "no eligible physical basis",
@@ -929,12 +930,22 @@
       {
         "product": "SC/FU",
         "confidence": "partial",
-        "action": "Monday day-session pullback/curve confirmation; no Saturday 21:00 action"
+        "action": "Monday day-session pullback/curve confirmation; no Sunday 21:00 action"
+      },
+      {
+        "product": "CU/BC",
+        "confidence": "partial",
+        "action": "wait for Monday price, curve and official HVC duration/impact"
+      },
+      {
+        "product": "grain/EC",
+        "confidence": "low_to_partial",
+        "action": "Black Sea claim unverified; watch curve and port/ship confirmation"
       },
       {
         "product": "MA/PX/TA/BU",
         "confidence": "low_to_partial",
-        "action": "watch breadth; no chase"
+        "action": "watch oil-chain breadth; no chase"
       },
       {
         "product": "AU/AG",
@@ -943,92 +954,79 @@
       }
     ],
     "protocol": {
-      "futures": {
-        "contracts": 806,
-        "products": 77,
-        "full_market_ready": true
-      },
-      "night": {
-        "trading_date": "2026-10-26",
-        "coverage_contracts": "416/806",
-        "official_night_close_verified": false,
-        "calendar_mismatch": false
-      },
-      "options": {
-        "expected_products": 64,
-        "successful_products": 45,
-        "atm_ready": 44,
-        "skew_ready": 26,
-        "surface_ready": 0,
-        "positioning_ready": 0,
-        "execution_ready": 0,
-        "bid_ask_coverage": 0
-      },
-      "crosscheck": {
-        "SHFE_matched": 238,
-        "INE_matched": 63,
-        "CZCE_matched": 243,
-        "GFEX_matched": 48,
-        "DCE": "HTTP 412",
-        "volume_oi_checked": false
-      }
+      "version": "core_2026-10-17_v1",
+      "futures": "available_and_analytically_ready_not_fully_official_crosschecked",
+      "market_state": "20d_ready",
+      "physical": "partial",
+      "external": "context_only",
+      "night": "vendor_latest_trade_asof_snapshot_not_official_close; previous snapshot maps to trading_date 2026-10-26; no calendar mismatch; no Sunday night session",
+      "options": "core_v1 sampled_strikes; expected64 successful45 product_coverage70.3%; ATM ready44; skew ready26; full_chain false; positioning false; execution false",
+      "contract_metadata": "partial",
+      "futures_crosscheck": "partial; DCE HTTP412; no verified contract-level price mismatch inferred"
     }
   },
   "event_calendar": [
     {
-      "window": "24h",
-      "event": "周末；无中美欧常规现金市场和中国商品夜盘",
-      "time_bjt": "截至2026-10-25 20:08",
-      "risk_action": "不新增线性Delta；只更新地缘与周一gap情景"
+      "time_bjt": "2026-10-26 06:00",
+      "event": "CME Globex周一重开（预计）",
+      "risk": "先看Brent/WTI、黄金、美债对周末地缘事件的首个可交易反应；首价跳空不追。"
     },
     {
-      "window": "7d",
-      "event": "中国月末PMI",
-      "time_bjt": "2026-10-31，通常09:30；发布前再核",
-      "risk_action": "中国周期/商品仓位降低隔夜相关因子"
+      "time_bjt": "2026-10-26 09:00",
+      "event": "中国商品日盘重开",
+      "risk": "SC/FU先看15/30/45分钟曲线与回踩顺序；CU核罢工定价；无满足触发则不下单。"
     },
     {
-      "window": "7d",
-      "event": "FOMC",
-      "time_bjt": "2026-10-27—28；决议约10-29 02:00，发布会02:30",
-      "risk_action": "财报/利率共振前降低成长Delta与裸Vega"
+      "time_bjt": "2026-10-26 09:30",
+      "event": "A股与CFFEX股指期货重开",
+      "risk": "IC/IH需现货风格差与basis优势共同确认；Stock候选先核证券状态与价格反应。"
     },
     {
-      "window": "7d",
-      "event": "EIA Weekly Petroleum Status Report",
+      "time_bjt": "2026-10-26 21:00",
+      "event": "中国下一商品夜盘",
+      "risk": "归属下一交易日；不得与周日旧快照混同。"
+    },
+    {
+      "time_bjt": "2026-10-26 21:30",
+      "event": "美国现金市场重开",
+      "risk": "RSP/SOXX需触发区后连续30分钟确认，HYG与10Y同时满足。"
+    },
+    {
       "time_bjt": "2026-10-28 22:30",
-      "risk_action": "SC/FU若触发，发布前减半或锁盈"
+      "event": "EIA周度石油状态报告",
+      "risk": "油链持仓前降Delta；若库存/产品供给反向则放弃SC/FU确认。"
     },
     {
-      "window": "7d",
-      "event": "Alphabet Q3 call",
-      "time_bjt": "2026-10-29 04:30",
-      "risk_action": "RSP/SOXX只可半仓进入事件，或事前退出"
+      "time_bjt": "2026-10-29 02:00/02:30",
+      "event": "FOMC决定/记者会",
+      "risk": "黄金、长久期和AI均面临利率/美元跳变；未确认的Vega交易不提前建立。"
     },
     {
-      "window": "7d",
-      "event": "US Q3 GDP advance + September Personal Income/PCE",
+      "time_bjt": "2026-10-29 04:30前后",
+      "event": "Alphabet Q3结果与电话会",
+      "risk": "核云收入、Capex、折旧和FCF；RSP/SOXX在财报前控制总AI因子。"
+    },
+    {
       "time_bjt": "2026-10-29 20:30",
-      "risk_action": "利率/美元/黄金/成长统一压力测试"
+      "event": "美国Q3 GDP初值与9月PCE",
+      "risk": "真实利率与美元可能同向跳升；黄金和长债组合需分别设限。"
     },
     {
-      "window": "7d",
-      "event": "Amazon Q3 call",
       "time_bjt": "2026-10-30 05:00",
-      "risk_action": "不跨盘后持有未经限定的AI单名股风险"
+      "event": "Amazon Q3电话会",
+      "risk": "AWS增速、Capex和FCF是AI现金流/资本开支分化的决定性检验。"
     },
     {
-      "window": "7d",
-      "event": "紫金矿业业绩说明会",
-      "time_bjt": "2026-10-28 16:00—17:00",
-      "risk_action": "验证金/铜售价、单位成本、并表与Capex现金流桥"
+      "time_bjt": "2026-10-28 收盘后/说明会窗口",
+      "event": "紫金矿业三季报说明会与宝钢股份Q3披露窗口",
+      "risk": "只把新业务/成本/资本配置事实计作催化，不把周末旧披露冒充新增。"
     }
   ],
   "action_list": {
     "A": "今天没有应立即建立的新仓位。",
-    "B": "仅挂周一条件：SC2612回踩确认多头；FU2701曲线确认多头（与SC优先二选一）；多RSP/空SOXX需30分钟确认；多3手IC2612/空5手IH2612需宽度与basis共同确认。",
-    "C": "继续观察紫金矿业Q3利润桥、黄金CFTC去杠杆、MO高IV/深put skew、MA/PX/TA/BU油链广度、美债5%与HY OAS。",
-    "D": "回避油品跳空追高、未报价商品/黄金期权、把OI解释成新多新空或dealer方向、把陈旧Stock价量当今日信号；若此前按旧防御性IH/IM方案建立，仅按原失效规则条件化退出。"
+    "B": "SC2612回踩确认多头；FU2701曲线确认多头（与SC优先二选一）；多RSP/空SOXX需30分钟确认；多3 IC2612/空5 IH2612需周一宽度与basis差共同确认。",
+    "C": "Highland Valley Copper罢工与CU曲线；黑海货船/谷物及EC运费；紫金Q3利润桥与10月28日说明会；黄金政策信用叙事；MO高IV/深put skew；美债5%与HY OAS背离。",
+    "D": "回避油品/铜/谷物跳空追高、把未核实货船或能源设施损害当供给损失、未报价商品/黄金期权、由OI推新多新空或dealer gamma、把陈旧Stock价量当今日信号。"
   },
   "risk_budget": {
     "trial_nav_pct": "0.25%—0.75%",
@@ -1053,352 +1051,380 @@
   },
   "fact_ledger": [
     {
-      "fact_id": "F-G-001",
+      "fact_id": "F-RATE-001",
       "instrument": "UST curve",
       "value": "2Y 4.69%, 5Y 4.82%, 10Y 5.00%, 30Y 5.33%, real10 2.66%",
       "attribute": "2026-10-23 official close",
       "known_at": "2026-10-24 BJT",
       "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve",
-      "claim": "rates and curve regime",
-      "limitation": "daily close, not weekend live"
+      "claim": "rates, breakeven and curve regime",
+      "limitation": "daily close; not weekend live"
     },
     {
-      "fact_id": "F-G-002",
-      "instrument": "US equities",
-      "value": "QQQ 704.40; SOXX 478.20; SMH 527.20; RSP 216.54",
-      "attribute": "2026-10-23 US close",
-      "known_at": "2026-10-24 BJT",
-      "source": "https://www.reuters.com/world/china/global-markets-global-markets-2026-10-23/",
-      "claim": "AI breadth divergence",
-      "limitation": "ETF prices do not prove fundamentals"
-    },
-    {
-      "fact_id": "F-G-003",
+      "fact_id": "F-OIL-001",
       "instrument": "WTI/Brent",
-      "value": "103.27 / 116.72 USD/bbl",
+      "value": "103.27/116.72 USD/bbl; +3.8%/+3.14% 1D",
       "attribute": "2026-10-23 settlement",
       "known_at": "2026-10-24 BJT",
-      "source": "https://www.reuters.com/world/china/global-markets-global-markets-2026-10-23/",
-      "claim": "oil supply-risk premium",
-      "limitation": "no weekend quote"
+      "source": "https://www.reuters.com/business/energy/oil-little-changed-supply-concern-lingers-amid-houthi-attacks-saudi-arabia-2026-10-23/",
+      "claim": "oil risk premium and Monday gap anchor",
+      "limitation": "Friday settlement"
     },
     {
-      "fact_id": "F-G-004",
-      "instrument": "CFTC gold/silver/WTI",
-      "value": "net 199865 / 19795 / 89325; weekly -8014 / -2836 / -11018",
-      "attribute": "positions 2026-10-20, released 2026-10-23",
+      "fact_id": "F-GEO-001",
+      "instrument": "Saudi energy infrastructure",
+      "value": "Houthi attack claims; missiles reported intercepted; physical damage unconfirmed",
+      "attribute": "event report",
+      "known_at": "2026-10-24 16:34 BJT",
+      "source": "https://www.reuters.com/world/middle-east/saudi-civil-defense-says-danger-passed-after-brief-alerts-mecca-jeddah-taif-2026-10-24/",
+      "claim": "higher oil tail risk without confirmed supply loss",
+      "limitation": "claim and interception reports; no verified production outage"
+    },
+    {
+      "fact_id": "F-SHIP-001",
+      "instrument": "Hormuz shipping",
+      "value": "28 confirmed/reported October ship attacks; about 3.5% of VLCC fleet damaged",
+      "attribute": "Reuters/IMO-derived",
+      "known_at": "2026-10-23",
+      "source": "https://www.reuters.com/business/energy/ship-attacks-strait-hormuz-hit-record-high-october-2026-10-23/",
+      "claim": "freight and transport tail risk",
+      "limitation": "reported incidents may be incomplete"
+    },
+    {
+      "fact_id": "F-CU-001",
+      "instrument": "Highland Valley Copper",
+      "value": "strike started; reduced-capacity operations; impact depends on duration",
+      "attribute": "company statement reported by Reuters",
+      "known_at": "2026-10-25 04:21 BJT",
+      "source": "https://www.reuters.com/business/world-at-work/teck-says-strike-begins-highland-valley-copper-mine-british-columbia-2026-10-24/",
+      "claim": "copper supply-tail watch",
+      "limitation": "no quantified output loss; Monday price response absent"
+    },
+    {
+      "fact_id": "F-AI-001",
+      "instrument": "RSP/SOXX",
+      "value": "0.452823; -1.29% 1D",
+      "attribute": "2026-10-23 ETF closes",
       "known_at": "2026-10-24 BJT",
-      "source": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-      "claim": "deleveraging/crowding",
-      "limitation": "three-day lag; not dealer gamma"
+      "source": "https://www.reuters.com/world/china/global-markets-global-markets-2026-10-23/",
+      "claim": "pair entered trigger zone but no 30-minute confirmation",
+      "limitation": "ratio derived from closes; does not prove intraday sequence"
     },
     {
       "fact_id": "F-CN-001",
-      "instrument": "CSI indices and IH/IF/IC/IM",
-      "value": "50/300/500/1000 +1.21/+1.71/+2.39/+2.38%; 2612 basis -1.40/-1.23/-1.06/-1.11%",
-      "attribute": "2026-10-23 EOD",
+      "instrument": "IH/IF/IC/IM and HO/IO/MO",
+      "value": "cash, futures, basis, OI and Dec ATM/RR/BF/PCR snapshot",
+      "attribute": "2026-10-23 CFFEX EOD",
       "known_at": "2026-10-24 06:13 BJT",
       "source": "https://github.com/farfromexact/China-Options-Engine/blob/2c81ee1fa48827434faf49e415dcb9023c800bf3/data/radar_latest.json",
-      "claim": "small/mid relative strength",
-      "limitation": "one-day history only"
-    },
-    {
-      "fact_id": "F-CN-002",
-      "instrument": "HO/IO/MO 2612",
-      "value": "ATM 16.36/19.01/28.26%; RR25 -1.29/-1.50/-3.56 vol",
-      "attribute": "2026-10-23 CFFEX EOD analytics",
-      "known_at": "2026-10-24 06:13 BJT",
-      "source": "https://github.com/farfromexact/China-Options-Engine/blob/2c81ee1fa48827434faf49e415dcb9023c800bf3/data/radar_latest.json",
-      "claim": "small-cap vol premium and downside skew",
-      "limitation": "no dealer direction; history empty"
+      "claim": "China style and option-vol comparison",
+      "limitation": "history parse_error/truncated; dealer gamma direction unknown"
     },
     {
       "fact_id": "F-COM-001",
-      "instrument": "China commodities universe",
-      "value": "806 contracts, 77 products; core63 + dynamic14",
-      "attribute": "2026-10-23 EOD; generated 2026-10-24 19:07 BJT",
-      "known_at": "2026-10-24T20:08:00+08:00",
-      "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/bafe191fd925a1c588e6561433183c562f0e2ce4/data/radar_latest.json",
-      "claim": "full available universe scan",
-      "limitation": "official crosscheck partial"
+      "instrument": "China commodity universe",
+      "value": "806 contracts, 77 products; options 45/64, ATM44, skew26, execution0",
+      "attribute": "2026-10-23 EOD / 2026-10-25 19:03 refresh",
+      "known_at": "2026-10-25 19:03 BJT",
+      "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/e1e7c2ccbd81406d7de1ba5e392f3b6dd2e4e4c9/data/last_run_status.json",
+      "claim": "commodity coverage and execution boundary",
+      "limitation": "DCE crosscheck HTTP412; options sampled, not full-chain or executable"
     },
     {
-      "fact_id": "F-STK-001",
-      "instrument": "China Stock Engine",
-      "value": "trade_date 2026-10-21; 5576 universe, 5568 quotes, candidate_union 0",
-      "attribute": "stale for execution",
-      "known_at": "2026-10-24T20:08:00+08:00",
-      "source": "https://github.com/farfromexact/China-Stock-Engine/blob/795e149866d7f1eefd1efdaf8fe510cd8f1c750e/data/latest/manifest.json",
-      "claim": "stock engine capability limits",
-      "limitation": "not current signal"
+      "fact_id": "F-STOCK-001",
+      "instrument": "A-share Stock engine",
+      "value": "trade_date 2026-10-21; 5576 universe; adjusted/industry/index/execution missing",
+      "attribute": "repository snapshot",
+      "known_at": "2026-10-22 07:34 BJT",
+      "source": "https://github.com/farfromexact/China-Stock-Engine/blob/795e149866d7f1eefd1efdaf8fe510cd8f1c750e/data/latest/research_inputs_latest.json",
+      "claim": "company-research capability boundary",
+      "limitation": "stale for execution; directory is not full-market fundamental audit"
+    },
+    {
+      "fact_id": "F-ZIJIN-001",
+      "instrument": "601899.SH",
+      "value": "Q3 revenue 89.274bn CNY +3.22%; parent NP 18.356bn +25.97%; 9M CFO 84.276bn +61.74%",
+      "attribute": "2026 Q3 consolidated report",
+      "known_at": "2026-10-23",
+      "source": "https://www.zjky.cn/upload/file/2026/10/23/6d85a06e7c1b45f5b843eea9db9447e3.pdf",
+      "claim": "cash-flow and metal-margin bridge",
+      "limitation": "no post-release market reaction; current tradability not verified"
+    },
+    {
+      "fact_id": "F-NORM-001",
+      "instrument": "Riyadh airport / Saudi airspace",
+      "value": "Terminals 1 and 2 reopened to domestic and international flights; Houthi attacks persisted",
+      "attribute": "AP event report",
+      "known_at": "2026-10-25 BJT",
+      "source": "https://apnews.com/article/mideast-news-october-25-2026-4779a3deeb1a23f59414164532d5c885",
+      "claim": "partial transport normalization lowers immediate oil chase quality",
+      "limitation": "airport reopening does not prove energy supply normalization"
+    },
+    {
+      "fact_id": "F-BLACKSEA-001",
+      "instrument": "Black Sea shipping/grain",
+      "value": "Russian ministry claimed strike on cargo vessel bound for Chornomorsk; Reuters could not verify",
+      "attribute": "Reuters event report",
+      "known_at": "2026-10-25 16:15 BJT",
+      "source": "https://www.reuters.com/world/russia-says-it-hit-cargo-vessel-ukrainian-logistic-hubs-overnight-2026-10-25/",
+      "claim": "shipping/grain tail risk",
+      "limitation": "single-party claim; vessel damage, cargo and market impact unverified"
+    },
+    {
+      "fact_id": "F-HVC-PRIMARY-001",
+      "instrument": "Highland Valley Copper",
+      "value": "operations continue at reduced capacity; production impact depends on duration",
+      "attribute": "Teck official update",
+      "known_at": "2026-10-25 BJT",
+      "source": "https://www.teck.com/news/news-releases/2026/teck-provides-update-on-highland-valley-copper-operations",
+      "claim": "copper supply-tail fact quality improved",
+      "limitation": "no quantified lost output"
     }
   ],
   "coverage": {
     "expected": [
-      "US rates",
-      "FX",
-      "Nasdaq/AI",
-      "oil",
-      "gold",
-      "risk/liquidity",
-      "China 50/300/500/1000 futures/options",
-      "China commodities 63+dynamic products",
-      "China Stock two-route research"
+      "US rates/curves/Fed/auctions",
+      "FX DXY EURUSD USDJPY USDCNH/skew",
+      "AI chips/equipment/network/power/cloud/software",
+      "oil curve/inventory/cracks/OPEC/geopolitics/OVX",
+      "gold real rates/USD/central banks/ETF/CFTC/IV",
+      "VIX/MOVE/HY/width/CTA/gamma/liquidity",
+      "China 50/300/500/1000 futures/options/style",
+      "China commodities 63-base plus dynamic products",
+      "A-share company evidence and active disclosure discovery",
+      "24h/7d event calendar"
     ],
     "analyzed": [
-      "US Treasury nominal/real/curves",
-      "DXY/EURUSD plus USDJPY/USDCNH gaps",
-      "QQQ/SOXX/SMH/RSP and hyperscaler events",
-      "WTI/Brent and oil chain",
-      "gold/real/DXY/CFTC",
-      "VIX/MOVE/HY OAS with caveats",
-      "IH/IF/IC/IM and HO/IO/MO",
-      "806 commodity contracts/77 products by engine scan",
-      "Stock engine capability plus limited public announcement scan"
+      "US official yield curve and Friday market closes",
+      "DXY/EURUSD and limited CNH context",
+      "QQQ/SOXX/SMH/RSP pair and Alphabet/Amazon event calendar",
+      "WTI/Brent plus Saudi airport normalization and continuing attack tail",
+      "gold/real-yield/USD/CFTC contradiction",
+      "VIX provisional/MOVE secondary/HY official lagged",
+      "IH/IF/IC/IM and HO/IO/MO 2026-10-23 EOD",
+      "77-product commodity scan via same-ref engine and 10/25 specialist evening report",
+      "Stock capability, Zijin Q3 and limited SSE/SZSE/CNINFO plus metals/energy IR discovery",
+      "Black Sea shipping/grain claim and Teck primary update"
     ],
     "insufficient": [
-      "FX option skew and precise USDJPY/USDCNH close",
-      "VIX term and official MOVE reconciliation",
-      "CTA/dealer gamma",
-      "gold ETF flow and IV/skew",
-      "China options 3/5/20 comparable history",
-      "commodity full chain/bid-ask/positioning/execution",
-      "DCE official crosscheck",
-      "current Stock EOD, adjustment, industry/index/tradability"
+      "USDJPY exact close and FX skew",
+      "Treasury auction amounts and Fed-path market pricing",
+      "full crude curve/cracks/OVX target skew",
+      "gold ETF flow and COMEX IV/skew",
+      "official VIX settlement/term, CTA and dealer gamma",
+      "China index 3/5/20 same-contract option history and cash breadth",
+      "commodity full-chain bid/ask/positioning/execution",
+      "A-share adjusted returns, industry, official index membership, security status and current quotes",
+      "Black Sea vessel damage/cargo confirmation and Monday grain/EC price reaction"
     ],
     "not_applicable_or_illiquid": [
-      "no Saturday China night session",
-      "no IC one-to-one index option",
-      "unverified commodity option series not executable"
+      "No Sunday cash/EOD session exists",
+      "Commodity option unselected strikes/months are sampling design, not collection failure",
+      "IC has no assumed one-to-one CFFEX index option; MO/IO proxy carries basis/Beta residual"
     ]
   },
   "validation": {
-    "score_math": "passed: 77/75/72/70/68; component caps respected",
-    "deterministic_calculations": "passed for SC, FU, RSP/SOXX and IC/IH using stated inputs",
-    "source_checks": "critical public links opened; repo inputs fixed to stated refs",
-    "time_checks": "weekend/DST/next legal windows checked",
-    "representation_consistency": "MD/JSON rendered from same candidate object; conditions retained",
+    "score_math": "passed: all five component sums recomputed 76/74/72/70/68 within caps",
+    "deterministic_calculations": "passed: SC/FU point PnL, RSP/SOXX ratio/notionals, IC/IH integer notionals and stress retained from identical prior inputs; no parameter reset",
+    "source_checks": "partial: AP airport normalization, Reuters Black Sea claim, Teck primary update and official event calendars opened; some market/vol fields remain secondary or missing",
+    "time_checks": "passed: no Sunday prices used; no Sunday China night session invented; next legal windows separated",
+    "representation_consistency": "passed: Top5, three cards, action list and JSON generated from one object; score changes only -1/-1/0/0/0",
     "unresolved": [
-      "live quotes and bid/ask",
-      "borrow availability/cost",
-      "actual fills/positions",
-      "option premiums/Greeks",
-      "post-cutoff events"
+      "Monday live price and trigger sequence",
+      "Saudi energy physical damage confirmation",
+      "Black Sea vessel damage, cargo and shipping impact",
+      "HVC strike duration and quantified production impact",
+      "option bid/ask/Greeks/net premium",
+      "Zijin post-report price reaction and tradability",
+      "actual holdings and fills",
+      "status schema path missing; current production status shape used"
     ],
     "ci_validation_status": "pending_or_unverified"
   },
   "sources": [
     {
-      "title": "Daily Treasury Par Yield Curve Rates",
-      "publisher": "U.S. Department of the Treasury",
+      "name": "U.S. Treasury daily rates",
       "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve",
-      "source_date": "2026-10-23",
-      "accessed_at_bjt": "2026-10-24T20:08:48+08:00",
-      "source_type": "official",
+      "date": "2026-10-23",
       "supported_claims": [
-        "2Y/5Y/10Y/30Y nominal yields",
-        "2s30s and 5s30s calculations"
+        "2/5/10/30Y nominal yields",
+        "10Y real yield",
+        "curve calculations"
       ]
     },
     {
-      "title": "Daily Treasury Real Yield Curve Rates",
-      "publisher": "U.S. Department of the Treasury",
-      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_real_yield_curve",
-      "source_date": "2026-10-23",
-      "accessed_at_bjt": "2026-10-24T20:08:48+08:00",
-      "source_type": "official",
+      "name": "Reuters oil close",
+      "url": "https://www.reuters.com/business/energy/oil-little-changed-supply-concern-lingers-amid-houthi-attacks-saudi-arabia-2026-10-23/",
+      "date": "2026-10-23",
       "supported_claims": [
-        "10Y real yield 2.66%",
-        "10Y breakeven inference"
+        "WTI/Brent settlement",
+        "oil risk premium"
       ]
     },
     {
-      "title": "Stocks fall, tech steady, oil highest in nearly six months",
-      "publisher": "Reuters",
-      "url": "https://www.reuters.com/world/china/global-markets-global-markets-2026-10-23/",
-      "source_date": "2026-10-23",
-      "accessed_at_bjt": "2026-10-24T20:08:48+08:00",
-      "source_type": "wire",
+      "name": "AP Riyadh airport reopening",
+      "url": "https://apnews.com/article/mideast-news-october-25-2026-4779a3deeb1a23f59414164532d5c885",
+      "date": "2026-10-25",
       "supported_claims": [
-        "US index closes",
-        "semiconductor and energy divergence",
-        "Brent/WTI settlements",
-        "10Y market context"
+        "Riyadh terminals reopened",
+        "Houthi attacks persisted"
       ]
     },
     {
-      "title": "Commitments of Traders",
-      "publisher": "CFTC",
-      "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-      "source_date": "2026-10-20 positions, released 2026-10-23",
-      "accessed_at_bjt": "2026-10-24T20:08:48+08:00",
-      "source_type": "official",
+      "name": "Reuters Black Sea vessel claim",
+      "url": "https://www.reuters.com/world/russia-says-it-hit-cargo-vessel-ukrainian-logistic-hubs-overnight-2026-10-25/",
+      "date": "2026-10-25",
       "supported_claims": [
-        "gold, silver and WTI non-commercial positioning and weekly changes"
+        "Russian strike claim",
+        "Reuters could not independently verify"
       ]
     },
     {
-      "title": "ICE BofA US High Yield Index Option-Adjusted Spread",
-      "publisher": "FRED / ICE",
-      "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-      "source_date": "2026-10-22",
-      "accessed_at_bjt": "2026-10-24T20:08:48+08:00",
-      "source_type": "official_redistribution",
+      "name": "Teck HVC official update",
+      "url": "https://www.teck.com/news/news-releases/2026/teck-provides-update-on-highland-valley-copper-operations",
+      "date": "2026-10-24",
       "supported_claims": [
-        "HY OAS 3.40%, lagged one session"
+        "reduced-capacity operations",
+        "impact depends on labour-action duration"
       ]
     },
     {
-      "title": "2026 FOMC Meeting Calendar",
-      "publisher": "Federal Reserve",
-      "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
-      "source_date": "2026-10-24",
-      "accessed_at_bjt": "2026-10-24T20:08:48+08:00",
-      "source_type": "official",
+      "name": "Federal Reserve October 2026 calendar",
+      "url": "https://www.federalreserve.gov/newsevents/2026-october.htm",
+      "date": "2026-10-25 accessed",
       "supported_claims": [
-        "October 27-28 FOMC meeting"
+        "October 27-28 FOMC",
+        "2:00/2:30pm ET timing"
       ]
     },
     {
-      "title": "BEA Release Schedule",
-      "publisher": "Bureau of Economic Analysis",
-      "url": "https://www.bea.gov/news/schedule/",
-      "source_date": "2026-10-24",
-      "accessed_at_bjt": "2026-10-24T20:08:48+08:00",
-      "source_type": "official",
+      "name": "BEA release schedule",
+      "url": "https://www.bea.gov/news/schedule/full",
+      "date": "2026-10-25 accessed",
       "supported_claims": [
-        "October 29 Q3 GDP advance and September PCE release"
+        "October 29 Q3 GDP advance",
+        "September personal income and outlays"
       ]
     },
     {
-      "title": "Weekly Petroleum Status Report Schedule",
-      "publisher": "Energy Information Administration",
-      "url": "https://www.eia.gov/petroleum/supply/weekly/schedule.php",
-      "source_date": "2026-10-24",
-      "accessed_at_bjt": "2026-10-24T20:08:48+08:00",
-      "source_type": "official",
+      "name": "EIA weekly petroleum schedule",
+      "url": "https://www.eia.gov/petroleum/supply/weekly/",
+      "date": "2026-10-25 accessed",
       "supported_claims": [
-        "October 28 weekly petroleum report window"
+        "weekly petroleum report schedule"
       ]
     },
     {
-      "title": "Alphabet Q3 2026 earnings call announcement",
-      "publisher": "Alphabet Investor Relations",
+      "name": "Alphabet IR",
       "url": "https://abc.xyz/investor/news/news-details/2026/Alphabet-Announces-Date-of-Third-Quarter-2026-Financial-Results-Conference-Call-2026-8tpGZsLS6v/default.aspx",
-      "source_date": "2026-10-06",
-      "accessed_at_bjt": "2026-10-24T20:08:48+08:00",
-      "source_type": "company_ir",
+      "date": "2026-10-25 accessed",
       "supported_claims": [
-        "October 28 13:30 PT earnings call"
+        "October 28 earnings release/call"
       ]
     },
     {
-      "title": "Amazon Q3 2026 conference call announcement",
-      "publisher": "Amazon Investor Relations",
+      "name": "Amazon IR",
       "url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-to-Webcast-Third-Quarter-2026-Financial-Results-Conference-Call/default.aspx",
-      "source_date": "2026-10-15",
-      "accessed_at_bjt": "2026-10-24T20:08:48+08:00",
-      "source_type": "company_ir",
+      "date": "2026-10-15",
       "supported_claims": [
-        "October 29 17:00 ET earnings call"
+        "October 29 5pm ET conference call"
       ]
     },
     {
-      "title": "采购经理调查统计报表制度",
-      "publisher": "国家统计局",
-      "url": "https://zjzd.stats.gov.cn/gjtjjwzdcd/dcbk/dczd/art/2026/art_539097f0da7a400ba491ca5d944dfa55.html",
-      "source_date": "2026",
-      "accessed_at_bjt": "2026-10-24T20:08:48+08:00",
-      "source_type": "official",
+      "name": "SSE periodic report schedule",
+      "url": "https://www.sse.com.cn/disclosure/listedinfo/periodic/",
+      "date": "2026-10-25 accessed",
       "supported_claims": [
-        "national PMI is published on the last calendar day of the month"
+        "A-share scheduled-report discovery scope"
       ]
     },
     {
-      "title": "紫金矿业2026年第三季度报告",
-      "publisher": "紫金矿业",
+      "name": "Zijin Q3 report",
       "url": "https://www.zjky.cn/upload/file/2026/10/23/6d85a06e7c1b45f5b843eea9db9447e3.pdf",
-      "source_date": "2026-10-23",
-      "accessed_at_bjt": "2026-10-24T20:08:48+08:00",
-      "source_type": "company_filing",
+      "date": "2026-10-23",
       "supported_claims": [
-        "Q3 and 9M revenue, profit and operating cash flow",
-        "gold and copper price-cost-margin bridge"
+        "Q3 profit and 9M operating cash flow"
       ]
     },
     {
-      "title": "上交所定期报告检索",
-      "publisher": "上海证券交易所",
-      "url": "https://www.sse.com.cn/disclosure/listedinfo/regular/",
-      "source_date": "2026-10-24",
-      "accessed_at_bjt": "2026-10-24T20:08:48+08:00",
-      "source_type": "official",
+      "name": "Zijin Chifeng control update",
+      "url": "https://es.zijinmining.com/global/emission-news-detail-122993.htm",
+      "date": "2026-10-23",
       "supported_claims": [
-        "limited active scan of October 24 A-share quarterly filings"
+        "25.85% stake and control of Chifeng Gold"
       ]
     },
     {
-      "title": "China-Options radar_latest",
-      "publisher": "farfromexact/China-Options-Engine",
+      "name": "China Options Engine radar",
       "url": "https://github.com/farfromexact/China-Options-Engine/blob/2c81ee1fa48827434faf49e415dcb9023c800bf3/data/radar_latest.json",
-      "source_date": "2026-10-23",
-      "accessed_at_bjt": "2026-10-24T20:08:48+08:00",
-      "source_type": "repository_snapshot",
+      "date": "2026-10-24 accessed",
       "supported_claims": [
-        "IH/IF/IC/IM and cash index EOD",
-        "HO/IO/MO ATM IV, RR25, BF25, PCR and gamma peaks"
+        "IH/IF/IC/IM EOD",
+        "HO/IO/MO local metrics"
       ]
     },
     {
-      "title": "China-Commodities radar_latest",
-      "publisher": "farfromexact/China-Commodities-Engine",
-      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/bafe191fd925a1c588e6561433183c562f0e2ce4/data/radar_latest.json",
-      "source_date": "2026-10-23",
-      "accessed_at_bjt": "2026-10-24T20:08:48+08:00",
-      "source_type": "repository_snapshot",
+      "name": "China Commodities Engine status",
+      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/e1e7c2ccbd81406d7de1ba5e392f3b6dd2e4e4c9/data/last_run_status.json",
+      "date": "2026-10-25",
       "supported_claims": [
-        "77-product scan",
-        "SC/FU/MA/PX/TA/BU and other commodity observations"
+        "77-product coverage",
+        "module quality and dates"
       ]
     },
     {
-      "title": "China-Commodities night status",
-      "publisher": "farfromexact/China-Commodities-Engine",
-      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/bafe191fd925a1c588e6561433183c562f0e2ce4/data/night_session/last_run_status.json",
-      "source_date": "2026-10-24",
-      "accessed_at_bjt": "2026-10-24T20:08:48+08:00",
-      "source_type": "repository_snapshot",
+      "name": "China Commodities specialist evening report",
+      "url": "https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/a79ed46affa6ea844fb85a5b25f485d4526d533d/reports/2026/10/2026-10-25_commodities_evening.json",
+      "date": "2026-10-25",
       "supported_claims": [
-        "Friday-night snapshot belongs to trading date 2026-10-26",
-        "coverage and official-close limitations"
+        "commodity protocol interpretation",
+        "SC/FU score downgrade"
       ]
     },
     {
-      "title": "China-Stock manifest",
-      "publisher": "farfromexact/China-Stock-Engine",
-      "url": "https://github.com/farfromexact/China-Stock-Engine/blob/795e149866d7f1eefd1efdaf8fe510cd8f1c750e/data/latest/manifest.json",
-      "source_date": "2026-10-21",
-      "accessed_at_bjt": "2026-10-24T20:08:48+08:00",
-      "source_type": "repository_snapshot",
+      "name": "China Stock Engine research inputs",
+      "url": "https://github.com/farfromexact/China-Stock-Engine/blob/795e149866d7f1eefd1efdaf8fe510cd8f1c750e/data/latest/research_inputs_latest.json",
+      "date": "2026-10-22",
       "supported_claims": [
-        "stock capability, staleness and company directory scope"
+        "stock research capabilities and gaps"
       ]
     },
     {
-      "title": "2026-10-24 morning global radar",
-      "publisher": "farfromexact/Global-Cross-Asset-Radar",
-      "url": "https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/4e0e6e40fd8f7c18acf4d085cb4e8cc10542f591/reports/2026/10/2026-10-24_morning.md",
-      "source_date": "2026-10-24 08:00 BJT",
-      "accessed_at_bjt": "2026-10-24T20:08:48+08:00",
-      "source_type": "prior_report_for_idea_tracking_only",
+      "name": "Prior global morning report",
+      "url": "https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/a79ed46affa6ea844fb85a5b25f485d4526d533d/reports/2026/10/2026-10-25_morning.json",
+      "date": "2026-10-25",
       "supported_claims": [
-        "prior idea IDs and prior states, not current prices"
+        "stable idea IDs and prior parameters"
+      ]
+    },
+    {
+      "name": "Prior same-edition evening report",
+      "url": "https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/a79ed46affa6ea844fb85a5b25f485d4526d533d/reports/2026/10/2026-10-24_evening.json",
+      "date": "2026-10-24",
+      "supported_claims": [
+        "same-edition baseline"
+      ]
+    },
+    {
+      "name": "FRED ICE BofA US HY OAS",
+      "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+      "date": "2026-10-22",
+      "supported_claims": [
+        "HY OAS lagged level"
+      ]
+    },
+    {
+      "name": "CFTC commitments of traders",
+      "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+      "date": "2026-10-23 accessed",
+      "supported_claims": [
+        "positioning framework and publication cadence"
       ]
     }
   ],
   "archive": {
-    "markdown_path": "reports/2026/10/2026-10-24_evening.md",
-    "json_path": "reports/2026/10/2026-10-24_evening.json",
+    "markdown_path": "reports/2026/10/2026-10-25_evening.md",
+    "json_path": "reports/2026/10/2026-10-25_evening.json",
     "latest_markdown_path": "latest/evening.md",
     "latest_json_path": "latest/evening.json",
     "status_path": "status/evening_latest.json",
