@@ -157,4 +157,4 @@ D. 回避：油品高开追涨、低位追空AG、把旧Night快照当官方收�
 - [前序全球晚报](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/7881a68ae7d64afcf631544d1437f5c10345a552/reports/2026/10/2026-10-25_evening.json)（稳定idea_id与原参数）
 - [本日商品晨报](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/7881a68ae7d64afcf631544d1437f5c10345a552/reports/2026/10/2026-10-26_commodities_morning.json)（商品协议解释）
 
-归档状态：pending_verification；CI：pending_or_unverified。
+归档状态：success（六路径写入并回读核验）；CI：pending_or_unverified。
