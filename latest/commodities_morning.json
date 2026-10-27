@@ -1,27 +1,27 @@
 {
   "schema_version": "1.0",
   "status": "published",
-  "report_date": "2026-10-27",
+  "report_date": "2026-10-28",
   "edition": "commodities_morning",
-  "generated_at_bjt": "2026-10-27T07:09:31+08:00",
+  "generated_at_bjt": "2026-10-28T07:02:36+08:00",
   "weekend_mode": false,
-  "title": "商品期货期权晨间雷达｜2026-10-27",
-  "one_sentence_conclusion": "截至本报告时点，无可立即执行的合格新交易；铜、甲醇与原油反转均只到条件研究，须等09:15后精确曲线和报价确认。",
-  "regime": "monday_eod_domestic_chemicals_strength_legal_tuesday_night_partial_with_oil_external_conflict",
+  "title": "商品期货期权晨间雷达｜2026-10-28",
+  "one_sentence_conclusion": "截至本报告时点，无可立即执行的合格新交易；铜与原油仅有条件机会，须等待09:15后价格、曲线与外盘共同确认。",
+  "regime": "铜供应冲击与油价外交回撤并存、国内油化高位分化、FOMC/EIA事件前执行报价不足",
   "worth_taking_risk": false,
-  "information_cutoff": "2026-10-27 07:09 BJT",
+  "information_cutoff": "2026-10-28 07:02 BJT",
   "data_cutoff": {
-    "china_eod": "2026-10-26",
-    "night_session_trading_date": "2026-10-27",
-    "night_session_start_date": "2026-10-26",
-    "overseas": "through 2026-10-27 07:09 BJT",
-    "next_window": "2026-10-27 09:00 BJT"
+    "china_eod": "2026-10-27",
+    "night_session_trading_date": "2026-10-28",
+    "night_session_start_date": "2026-10-27",
+    "overseas": "through 2026-10-28 07:02 BJT",
+    "next_window": "2026-10-28 09:00 BJT"
   },
   "prompt_version": "radar_2026-10-12_stock_v1",
   "research_quality_version": "2026-10-21_v1",
   "data_protocol_version": "china_commodities_core_2026-10-17_v1",
   "repository_refs": {
-    "global_radar_manifest_blob": "29432f08d4e0ecf44ff6ac99b2a3e7e6f9419231",
+    "global_radar_manifest_blob": "df2f150dee2fc5e5439686d9b80e858cc362d442",
     "commodities_engine_ref": "main; per-file SHAs read; no repository commit asserted",
     "stock_engine_ref": "main; stale tape 2026-10-21"
   },
@@ -32,8 +32,8 @@
       "last_run_status_path": "data/last_run_status.json",
       "radar_latest_path": "data/radar_latest.json",
       "radar_history_path": "data/radar_history.json",
-      "trade_date": "2026-10-26",
-      "generated_at": "2026-10-27T06:12:44.689824+08:00",
+      "trade_date": "2026-10-27",
+      "generated_at": "2026-10-28T06:05:56.596133+08:00",
       "data_fresh": true,
       "official_complete": false,
       "source_date_match_pct": 100,
@@ -44,7 +44,7 @@
         "futures": "verified_vendor_primary",
         "contract_meta": "partial_error",
         "warehouse": "partial_error_with_carry_forward",
-        "basis": "unavailable",
+        "basis": "unavailable_at_root; 18 C-grade context-only in physical module",
         "member_rankings": "unavailable",
         "options_chain": "core_available",
         "options_surface": "not_ready"
@@ -65,8 +65,10 @@
         "data/market_state_latest.json",
         "data/physical/latest.json",
         "data/external/latest.json",
+        "data/night_session/latest.json",
         "data/options/quality_latest.json",
         "data/options/surface_latest.json",
+        "data/options/latest.json",
         "data/contract_meta.json",
         "data/crosschecks/futures_latest.json"
       ]
@@ -77,33 +79,35 @@
       "bytes": 0
     },
     "futures": {
-      "source_date": "2026-10-26",
+      "source_date": "2026-10-27",
       "contracts": 806,
       "products": 77,
       "full_market_ready": true,
       "source_date_match_pct": 100
     },
     "market_state": {
-      "source_date": "2026-10-26",
+      "source_date": "2026-10-27",
       "products": 77,
       "history_days": 20
     },
     "physical": {
-      "requested_date": "2026-10-26",
+      "requested_date": "2026-10-27",
       "fresh": "18/20",
-      "basis_ab": 0
+      "basis_ab": 0,
+      "carried_forward": 0,
+      "stale": 0
     },
     "external": {
-      "requested_date": "2026-10-26",
+      "requested_date": "2026-10-27",
       "fresh": "17/22",
       "usage": "context_only",
-      "brent_conflict": true
+      "intraday": false
     },
     "night_session": {
-      "trading_date": "2026-10-27",
-      "session_start_date": "2026-10-26",
-      "session_end_date": "2026-10-27",
-      "generated_at": "2026-10-27T06:06:14.517900+08:00",
+      "trading_date": "2026-10-28",
+      "session_start_date": "2026-10-27",
+      "session_end_date": "2026-10-28",
+      "generated_at": "2026-10-28T06:00:39.054467+08:00",
       "data_fresh": true,
       "validation_passed": true,
       "published": true,
@@ -113,24 +117,24 @@
       "unresolved_contract_count": 214,
       "raw_latest_read_state": "empty",
       "calendar_mismatch": false,
-      "price_semantics": "fallback market pages for CU/SC/MA only",
+      "price_semantics": "public exact-contract vendor fallback pages for CU/SC/MA/AU; repository raw latest empty",
       "official_night_close_verified": false,
       "night_session_fallback": true
     },
     "options": {
-      "source_date": "2026-10-26",
+      "source_date": "2026-10-27",
       "expected": 64,
       "successful": 45,
-      "records": 1052,
+      "records": 988,
       "core_atm_ready": 44,
-      "skew_ready": 27,
+      "skew_ready": 25,
       "surface_ready": 0,
       "positioning_ready": 0,
       "execution_ready": 0,
       "full_chain_verified": false
     },
     "metadata": {
-      "source_date": "2026-10-26",
+      "source_date": "2026-10-27",
       "contract_match_pct": 67.4938,
       "effective_match_pct": 73.4491,
       "dynamic_parameter_coverage_pct": 30.1489
@@ -149,7 +153,7 @@
       "published": true,
       "analytically_ready": true,
       "execution_ready": false,
-      "detail": "806/77，五所同日；动态参数仅30.15%"
+      "detail": "806合约/77产品、五所同日；5个OHLC占位；动态参数30.15%"
     },
     "Market_State": {
       "available": true,
@@ -163,28 +167,28 @@
       "published": true,
       "analytically_ready": false,
       "execution_ready": false,
-      "detail": "18/20 fresh；A/B basis=0"
+      "detail": "18/20 fresh；A/B basis=0；18条basis均C级context-only"
     },
     "External": {
       "available": true,
       "published": true,
       "analytically_ready": false,
       "execution_ready": false,
-      "detail": "17/22 context-only；Brent源冲突"
+      "detail": "17/22 context-only；无盘中源"
     },
     "Night_Session": {
       "available": true,
       "published": true,
       "analytically_ready": false,
       "execution_ready": false,
-      "detail": "416/806；214 unresolved；raw明细0 bytes；三品种fallback"
+      "detail": "416/806；214 unresolved；raw明细0 bytes；四品种公开fallback"
     },
     "Options": {
       "available": true,
       "published": true,
       "analytically_ready": true,
       "execution_ready": false,
-      "detail": "ATM44/skew27；全链/positioning/execution=0"
+      "detail": "ATM44/skew25；全链/positioning/execution=0"
     },
     "Metadata": {
       "available": true,
@@ -198,338 +202,279 @@
       "published": true,
       "analytically_ready": false,
       "execution_ready": false,
-      "detail": "tape 10/21；最小财务包2公司"
+      "detail": "tape截至10/21；最小财务包2公司；公告限定补证0条新增经营事实"
     }
   },
   "fact_ledger": [
     {
-      "fact_id": "F-EOD-001",
+      "fact_id": "F-EOD-20261027",
       "subject": "中国商品期货全市场",
-      "value": "806合约、77产品、五所，source_date=2026-10-26；63项指定代码全部覆盖（LPG以PG映射）",
-      "observed_at": "2026-10-26 EOD",
-      "known_at": "2026-10-27T06:12:44+08:00",
+      "value": "806合约、77产品、五所，source_date=2026-10-27；指定63代码均有映射或覆盖记录",
+      "observed_at": "2026-10-27 EOD",
+      "known_at": "2026-10-28T06:05:56+08:00",
       "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/latest.json",
       "supports": "日盘全范围初筛与横截面比较",
-      "limitation": "6个OHLC占位；vendor full_market_ready不等于官方全字段认证"
+      "limitation": "5个OHLC占位；vendor full_market_ready不等于官方全字段认证"
     },
     {
-      "fact_id": "F-NIGHT-002",
-      "subject": "2026-10-27归属夜盘",
+      "fact_id": "F-NIGHT-20261028",
+      "subject": "归属2026-10-28的中国夜盘",
       "value": "416/806合约；214 query_error/unresolved；coverage=51.6129%；validation_passed/published=true；raw latest=0 bytes",
-      "observed_at": "2026-10-26夜至10-27晨",
-      "known_at": "2026-10-27T06:06:14+08:00",
+      "observed_at": "2026-10-27夜至10-28晨",
+      "known_at": "2026-10-28T06:00:39+08:00",
       "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/night_session/last_run_status.json",
-      "supports": "会话日历合法但重点合约必须独立补证",
+      "supports": "会话归属合法，但重点合约必须独立补证",
       "limitation": "流程闭环不等于准确合约执行就绪"
     },
     {
-      "fact_id": "F-CU-003",
-      "subject": "CU2612",
-      "value": "EOD close/settle 108110/108180；1D结算+0.81%，5D-0.90%，ΔOI +6896；夜盘参考108570（+0.43% vs close，+0.36% vs settle）",
-      "observed_at": "2026-10-26 EOD；2026-10-27 01:00",
-      "known_at": "2026-10-27 07:09 BJT",
-      "source": "https://hq.smm.cn/futures/104179481",
-      "supports": "铜仍有供给事件研究价值，但未越过旧108800触发",
-      "limitation": "夜盘为行情页独立fallback，非交易所官方收盘核验；Night曲线未得"
+      "fact_id": "F-CU-NIGHT",
+      "subject": "CU2612/CU2611",
+      "value": "CU2612 109420（01:00:06），+0.950% vs EOD close108390、+0.718% vs settle108640；CU2611 109980，夜盘近-次月+560/+0.512%",
+      "observed_at": "2026-10-28 01:00:06 BJT",
+      "known_at": "2026-10-28 07:02 BJT",
+      "source": "https://www.9qihuo.com/hangqing?productcode=cu",
+      "supports": "铜夜盘价格层偏多；曲线仍backwardation但较EOD 0.644%收窄",
+      "limitation": "供应商快照，非交易所核验最终夜盘收盘；OI/成交量仅供应商观察"
     },
     {
-      "fact_id": "F-SC-004",
-      "subject": "SC2612",
-      "value": "EOD close/settle 728.1/739.7；SC2611-SC2612=-1.6899%；夜盘733.30（+0.71% vs close，-0.87% vs settle）",
-      "observed_at": "2026-10-26 EOD；2026-10-27 02:31",
-      "known_at": "2026-10-27 02:31 BJT",
-      "source": "https://www.cls.cn/detail/2515846",
-      "supports": "旧≤724条件空未触发；contango与海外油回落仍保留反转空研究",
-      "limitation": "媒体行情fallback；无同会话精确near-next夜盘曲线"
+      "fact_id": "F-SC-NIGHT",
+      "subject": "SC2612/SC2701",
+      "value": "SC2612 712.9（02:35:30），-2.835% vs EOD close733.7、-2.556% vs settle731.6；SC2701 703.5，主-次月+9.4/+1.336%",
+      "observed_at": "2026-10-28 02:35:30 BJT",
+      "known_at": "2026-10-28 07:02 BJT",
+      "source": "https://www.9qihuo.com/hangqing?productcode=sc",
+      "supports": "原油价格层偏空，但月差层反对追空",
+      "limitation": "供应商快照；SC2611成交极低，不用作near-next正式曲线"
     },
     {
-      "fact_id": "F-MA-005",
-      "subject": "MA701",
-      "value": "EOD close/settle 3389/3346，1D结算+4.66%，5D+5.25%，ΔOI +66968；夜盘行情页3401（+0.35% vs close，+1.64% vs settle）",
-      "observed_at": "2026-10-26 EOD；2026-10-27夜盘后页面",
-      "known_at": "2026-10-27 07:09 BJT",
-      "source": "https://quote.stockstar.com/futures/czcema.html",
-      "supports": "强势延续但不证明完整多腿触发",
-      "limitation": "PX同步与MA701-next精确曲线、分钟顺序未核"
-    },
-    {
-      "fact_id": "F-OIL-006",
+      "fact_id": "F-OIL-OVERSEAS",
       "subject": "Brent/WTI",
-      "value": "10月26日结算115.81/101.76美元/桶，日跌0.8%/1.46%",
-      "observed_at": "2026-10-26 US settlement",
-      "known_at": "2026-10-27 07:09 BJT",
-      "source": "https://www.reuters.com/business/energy/oil-prices-down-almost-1-early-trading-2026-10-25/",
-      "supports": "反对追多国内油链，支持SC反转空的外部层",
-      "limitation": "仓库External为110.17/101.25，合约口径冲突；跨市场套利不可用"
+      "value": "10月27日结算Brent 113.88美元/桶（-1.67%）、WTI 99.90（-1.83%）",
+      "observed_at": "2026-10-27 US settlement",
+      "known_at": "2026-10-28 07:02 BJT",
+      "source": "https://www.reuters.com/business/energy/oil-eases-middle-east-diplomacy-hopes-saudi-attacks-keep-supply-worries-alive-2026-10-27/",
+      "supports": "油链夜盘下行有外盘映射",
+      "limitation": "外交缓和与航运/供应风险并存，不等于地缘溢价消失"
     },
     {
-      "fact_id": "F-CU-007",
-      "subject": "Highland Valley Copper",
-      "value": "Teck收到罢工通知，最早可于10月24日08:00 PT启动",
-      "observed_at": "2026-10-24",
-      "known_at": "2026-10-24",
-      "source": "https://www.teck.com/news/news-releases/2026/teck-receives-highland-valley-copper-operations-strike-notice",
-      "supports": "铜供给事件催化",
-      "limitation": "未取得本期产量损失、复工时点或新公司公告"
-    },
-    {
-      "fact_id": "F-OPT-008",
-      "subject": "商品期权core_v1",
-      "value": "45/64产品成功；1052记录；core ATM 44、skew 27；surface/positioning/execution均0",
-      "observed_at": "2026-10-26 EOD",
-      "known_at": "2026-10-27T06:13:27+08:00",
-      "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/options/quality_latest.json",
+      "fact_id": "F-OPTIONS-20261027",
+      "subject": "中国商品期权核心样本",
+      "value": "45/64产品、988记录；ATM ready44、skew ready25；surface/positioning/execution均0",
+      "observed_at": "2026-10-27 EOD",
+      "known_at": "2026-10-28T06:06+08:00",
+      "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/options/surface_latest.json",
       "supports": "局部ATM/skew研究",
-      "limitation": "全链未验、bid/ask=0，不能写可成交权利金或持仓结构"
-    },
-    {
-      "fact_id": "F-XCHK-009",
-      "subject": "官方价格交叉核对",
-      "value": "SHFE238、INE63、CZCE243、GFEX48匹配且价格差异0；DCE HTTP412 source_error",
-      "observed_at": "2026-10-26 EOD",
-      "known_at": "2026-10-26T19:14+08:00",
-      "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/crosschecks/futures_latest.json",
-      "supports": "四所close/settle/pre-settle独立核对",
-      "limitation": "不核成交量/OI；DCE未核完"
-    },
-    {
-      "fact_id": "F-STOCK-010",
-      "subject": "Stock联动",
-      "value": "私库tape截至2026-10-21，5568报价、最小财务包2公司；限定检索600938/600028/601899未见10月26日新增经营公告",
-      "observed_at": "截至2026-10-27 07:09",
-      "known_at": "2026-10-27 07:09 BJT",
-      "source": "https://github.com/farfromexact/China-Stock-Engine/blob/main/data/latest/manifest.json",
-      "supports": "公司表达仅作利润桥背景",
-      "limitation": "价格陈旧、映射不全、证券执行状态未核"
+      "limitation": "bid/ask覆盖0，不能给净权利金、滑点或可成交性"
     }
   ],
   "dashboard": [
     {
-      "asset": "MA701",
-      "close": 3389,
-      "settlement": 3346,
-      "return_1d_pct": 4.66,
-      "return_5d_pct": 5.25,
-      "rv20_pct": 40.23,
-      "volume": 3322801,
-      "open_interest": 952582,
-      "oi_change": 66968,
-      "curve": "MA611-MA612 +6.50%（非701精确pair）",
+      "asset": "CU2612",
+      "close": 108390,
+      "settlement": 108640,
+      "return_1d_pct": 0.425,
+      "return_5d_pct": 0.194,
+      "rv20_pct": 11.402,
+      "volume": 72456,
+      "open_interest": 191199,
+      "oi_change": 524,
+      "curve": "EOD CU2611-12 +0.644%；night +0.512%（收窄）",
       "basis": "C，仅context",
-      "options": "主力series未匹配；execution=false",
-      "signal": "夜盘参考3401；强但不追"
+      "options": "ATM108000 IV12.49% vs RV11.40%；skew=false",
+      "signal": "night109420；价格强、曲线未共振"
     },
     {
       "asset": "SC2612",
-      "close": 728.1,
-      "settlement": 739.7,
-      "return_1d_pct": 3.17,
-      "return_5d_pct": 2.91,
-      "rv20_pct": 46.69,
-      "volume": 194360,
-      "open_interest": 32161,
-      "oi_change": -2071,
-      "curve": "SC2611-SC2612 -1.6899%",
-      "basis": "无A/B",
-      "options": "ATM740 IV68.31%，skew不可用",
-      "signal": "night fallback733.30；旧空触发未到"
+      "close": 733.7,
+      "settlement": 731.6,
+      "return_1d_pct": -1.095,
+      "return_5d_pct": 0.591,
+      "rv20_pct": 44.439,
+      "volume": 153562,
+      "open_interest": 30633,
+      "oi_change": -1528,
+      "curve": "EOD SC2612-2701 +8.2/+1.134%；night +9.4/+1.336%",
+      "basis": "SC现货不可用",
+      "options": "ATM740 IV68.28% vs RV44.44%；execution=false",
+      "signal": "night712.9；价跌而月差走强，不追空"
     },
     {
-      "asset": "CU2612",
-      "close": 108110,
-      "settlement": 108180,
-      "return_1d_pct": 0.81,
-      "return_5d_pct": -0.9,
-      "rv20_pct": 11.34,
-      "volume": 88952,
-      "open_interest": 190675,
-      "oi_change": 6896,
-      "curve": "CU2611-CU2612 +0.6471%",
+      "asset": "MA701",
+      "close": 3448,
+      "settlement": 3402,
+      "return_1d_pct": 1.674,
+      "return_5d_pct": 8.448,
+      "rv20_pct": 40,
+      "volume": 3095010,
+      "open_interest": 904098,
+      "oi_change": -48484,
+      "curve": "EOD MA611-12 +5.584%（非701精确pair）",
       "basis": "C，仅context",
-      "options": "ATM108000 IV13.00%，skew不可用",
-      "signal": "night fallback108570；旧多触发未到"
-    },
-    {
-      "asset": "PX612",
-      "close": 9782,
-      "settlement": 9820,
-      "return_1d_pct": 3.78,
-      "return_5d_pct": 4.31,
-      "rv20_pct": 33.66,
-      "volume": 349829,
-      "open_interest": 112827,
-      "oi_change": 18101,
-      "curve": "PX611-PX612 +1.4460%",
-      "basis": "C，仅context",
-      "options": "ATM9800 IV41.88%，10/28到期，execution=false",
-      "signal": "强价强仓但近到期不追期权"
+      "options": "MA612 ATM3400 IV49.66%、RR25 +1.05；非701同标的",
+      "signal": "night3378；-2.03% vs close，旧多条件失败"
     },
     {
       "asset": "BU2701",
-      "close": 4828,
-      "settlement": 4738,
-      "return_1d_pct": 3,
-      "return_5d_pct": 6.47,
-      "rv20_pct": 31.98,
-      "volume": 286173,
-      "open_interest": 162275,
-      "oi_change": 12310,
-      "curve": "BU2611-BU2612 +7.1267%（非2701）",
-      "basis": "无A/B",
-      "options": "主力series未匹配",
-      "signal": "国内强、海外油跌；冲突"
+      "close": 4965,
+      "settlement": 4893,
+      "return_1d_pct": 3.271,
+      "return_5d_pct": 9.512,
+      "rv20_pct": 30.907,
+      "volume": null,
+      "open_interest": null,
+      "oi_change": 17992,
+      "curve": "near-next +7.268%",
+      "basis": "C，仅context",
+      "options": "ATM IV46.61% vs RV30.91%",
+      "signal": "EOD强，海外油回落；等待日盘消化"
     },
     {
       "asset": "FU2701",
-      "close": 5295,
-      "settlement": 5238,
-      "return_1d_pct": 4.18,
-      "return_5d_pct": 5.67,
-      "rv20_pct": 47.68,
-      "volume": 940140,
-      "open_interest": 252657,
-      "oi_change": -8047,
-      "curve": "FU2611-FU2612 +13.2228%（非2701）",
+      "close": 5386,
+      "settlement": 5295,
+      "return_1d_pct": 1.088,
+      "return_5d_pct": 7.447,
+      "rv20_pct": 46.337,
+      "volume": null,
+      "open_interest": null,
+      "oi_change": 2123,
+      "curve": "near-next +12.696%",
       "basis": "C，仅context",
-      "options": "无合格主力series",
-      "signal": "价涨OI降；不追"
+      "options": "ATM IV71.85% vs RV46.34%",
+      "signal": "高波动/强曲线，执行报价缺失"
     },
     {
       "asset": "AG2612",
-      "close": 13040,
-      "settlement": 13050,
-      "return_1d_pct": -1.55,
-      "return_5d_pct": -6.49,
-      "rv20_pct": 30.86,
-      "volume": 451246,
-      "open_interest": 274179,
-      "oi_change": -9509,
-      "curve": "AG2611-AG2612 -0.1609%",
-      "basis": "无A/B",
-      "options": "ATM13000 IV39.95%，skew不可用",
-      "signal": "沪银夜盘+0.31%；旧空不追"
-    },
-    {
-      "asset": "AL2612",
-      "close": 23450,
-      "settlement": 23475,
-      "return_1d_pct": 1.19,
-      "return_5d_pct": 2,
-      "rv20_pct": 11.83,
-      "volume": 220539,
-      "open_interest": 255547,
-      "oi_change": -1134,
-      "curve": "AL2611-AL2612 +1.1715%",
+      "close": 12763,
+      "settlement": 12986,
+      "return_1d_pct": -0.49,
+      "return_5d_pct": -6.313,
+      "rv20_pct": 30.113,
+      "volume": null,
+      "open_interest": null,
+      "oi_change": -1182,
+      "curve": "near-next -0.223%",
       "basis": "C，仅context",
-      "options": "ATM23400 IV11.20%，RR25 -1.15",
-      "signal": "IV略低于RV但非便宜证明"
+      "options": "ATM IV42.00% vs RV30.11%",
+      "signal": "夜盘品种汇总+0.93%；FOMC前不追"
     },
     {
-      "asset": "LH2701",
-      "close": 9560,
-      "settlement": 9730,
-      "return_1d_pct": -1.22,
-      "return_5d_pct": -5.72,
-      "rv20_pct": 17.44,
-      "volume": 181663,
-      "open_interest": 192896,
-      "oi_change": 3392,
-      "curve": "LH2611-LH2701 -6.1151%",
-      "basis": "无A/B",
-      "options": "无当前合格series",
-      "signal": "趋势空；无夜盘；DCE官方核对缺"
+      "asset": "AU2612",
+      "close": 861.16,
+      "settlement": 863.68,
+      "return_1d_pct": 0.209,
+      "return_5d_pct": -3.285,
+      "rv20_pct": 14.353,
+      "volume": null,
+      "open_interest": null,
+      "oi_change": -3102,
+      "curve": "near-next -0.201%",
+      "basis": "C，仅context",
+      "options": "ATM IV21.20%、RR25 -0.76 vs RV14.35%",
+      "signal": "vendor 873.18；事件前涨幅已部分计价"
+    },
+    {
+      "asset": "SH701",
+      "close": 1486,
+      "settlement": 1499,
+      "return_1d_pct": -3.539,
+      "return_5d_pct": -13.001,
+      "rv20_pct": 16.719,
+      "volume": null,
+      "open_interest": null,
+      "oi_change": 1691,
+      "curve": "near-next +1.170%",
+      "basis": "C，仅context",
+      "options": "ATM IV38.89%、RR25 -3.75 vs RV16.72",
+      "signal": "跌势与近月升水冲突"
     },
     {
       "asset": "SA701",
-      "close": 966,
-      "settlement": 962,
-      "return_1d_pct": 1.48,
-      "return_5d_pct": 0.94,
-      "rv20_pct": 18.19,
-      "volume": 1595349,
-      "open_interest": 1258150,
-      "oi_change": -23419,
-      "curve": "SA611-SA612 -1.9792%",
+      "close": 981,
+      "settlement": 968,
+      "return_1d_pct": 0.624,
+      "return_5d_pct": 2.326,
+      "rv20_pct": 18.314,
+      "volume": null,
+      "open_interest": null,
+      "oi_change": -44376,
+      "curve": "near-next -2.277%",
       "basis": "C，仅context",
-      "options": "ATM960 IV25.18%，RR25 +1.52",
-      "signal": "正确EOD 966/962；反弹但OI降"
+      "options": "ATM IV26.38%、RR25约0 vs RV18.31",
+      "signal": "反弹但减仓，证据不足"
     },
     {
-      "asset": "AP701",
-      "close": 5542,
-      "settlement": 5591,
-      "return_1d_pct": -2.36,
-      "return_5d_pct": -5.68,
-      "rv20_pct": 24.75,
-      "volume": 324958,
-      "open_interest": 164267,
-      "oi_change": 4498,
-      "curve": "AP611-AP612 +10.6833%（仅5观测）",
-      "basis": "无A/B",
-      "options": "ATM5600 IV34.30%，RR25 -3.96",
-      "signal": "跌价增仓；曲线样本短"
+      "asset": "LC2701",
+      "close": 98500,
+      "settlement": 97840,
+      "return_1d_pct": 3.076,
+      "return_5d_pct": -1.905,
+      "rv20_pct": 40.929,
+      "volume": null,
+      "open_interest": null,
+      "oi_change": -4815,
+      "curve": "near-next +1.122%",
+      "basis": "C，仅context",
+      "options": "ATM IV54.01% vs RV40.93%",
+      "signal": "反弹伴减仓，不判新多"
     },
     {
-      "asset": "EC2611",
-      "close": 2403.5,
-      "settlement": 2421.5,
-      "return_1d_pct": -0.43,
-      "return_5d_pct": -12.77,
-      "rv20_pct": 41.24,
-      "volume": 7640,
-      "open_interest": 10222,
-      "oi_change": -2035,
-      "curve": "EC2610-EC2611 -8.6723%",
+      "asset": "LH2701",
+      "close": 9975,
+      "settlement": 9805,
+      "return_1d_pct": 0.771,
+      "return_5d_pct": -3.017,
+      "rv20_pct": 16.624,
+      "volume": null,
+      "open_interest": 174644,
+      "oi_change": -18181,
+      "curve": "near-next -4.895%",
+      "basis": "C，仅context",
+      "options": "期权局部不执行",
+      "signal": "20D -16.62%且大幅减仓，趋势仍弱"
+    },
+    {
+      "asset": "EC2612",
+      "close": 2687,
+      "settlement": 2742.5,
+      "return_1d_pct": -6.255,
+      "return_5d_pct": -15.861,
+      "rv20_pct": null,
+      "volume": null,
+      "open_interest": null,
+      "oi_change": 1969,
+      "curve": "near-next -16.171%",
       "basis": "不适用",
-      "options": "无",
-      "signal": "弱势但OI锐减，非新空确认"
+      "options": "无合格局部执行结构",
+      "signal": "弱势且OI+22.18%；无夜盘，09:30观察"
     }
   ],
   "meaningful_changes": [
-    {
-      "id": 1,
-      "change": "EOD→Night：CU2612从108110到fallback108570，但仍低于旧108800确认线，前序条件多未触发。"
-    },
-    {
-      "id": 2,
-      "change": "EOD→Night：SC2612 fallback733.30相对close+0.71%、相对settle-0.87%；旧≤724条件空未触发，双锚结论冲突。"
-    },
-    {
-      "id": 3,
-      "change": "EOD→Night：MA701行情页3401延续强势，但缺精确曲线/PX同会话确认，不能把单点价写成完整信号。"
-    },
-    {
-      "id": 4,
-      "change": "海外新增：Brent/WTI结算115.81/101.76、分别跌0.8%/1.46%；反对追多国内油链，但仓库Brent110.17存在合约口径冲突。"
-    },
-    {
-      "id": 5,
-      "change": "Options由前序44成功增至45，core ATM仍44、skew增至27；全链/positioning/execution仍为0，研究能力改善不等于可成交。"
-    },
-    {
-      "id": 6,
-      "change": "旧观点处置：SC早间多头继续invalidated；CU/MA/SC三张前序卡均无成交回执，position_status仍为未提供/未知。"
-    }
+    "CU2612由10/27 EOD 108390升至供应商夜盘快照109420（+0.95%），但CU2611-12 backwardation由0.644%收窄至0.512%；旧条件的“价格+曲线”尚未同时成立。",
+    "SC2612供应商夜盘快照712.9，较EOD close跌2.84%；与此同时SC2612-2701价差由+8.2扩大到+9.4，说明价格下行未获得期限层确认，旧短线只能等待曲线转弱。",
+    "MA701从EOD close3448回到夜盘3378，较close -2.03%、较settlement -0.71%；10/27晚报的突破延续多条件明确失败，评分下调且不移止损/不延长窗口。",
+    "Brent/WTI 10月27日分别结算113.88/99.90并下跌1.67%/1.83%；油化链EOD强势被海外回撤反对，但外交与供应风险仍互相拉扯。",
+    "期权核心样本成功品种仍45/64，ATM ready44、skew ready25；完整曲面、positioning、execution均为0。IV高于RV的品种不能据此单独做空波动。"
   ],
   "top_opportunities": [
     {
       "rank": 1,
-      "name": "CU2612 HVC罢工后的突破确认多",
-      "score": 70,
+      "name": "CU2612供应冲击后的二次确认多",
+      "score": 74,
       "direction": "条件多",
       "holding_period": "1—10D",
-      "stage": "等待09:15/09:30",
+      "stage": "等待09:15/09:30/09:45",
       "instruments": [
         "CU2612期货",
         "CU2612看涨价差（待询价）"
       ],
       "max_loss_limited": false,
       "score_components": {
-        "logic": 19,
+        "logic": 20,
         "odds_convexity": 17,
-        "catalyst": 15,
-        "price_curve_vol": 10,
-        "crowding_technical": 9
+        "catalyst": 16,
+        "price_curve_vol": 11,
+        "crowding_technical": 10
       },
       "idea_id": "COM-M-CU2612-HVC-STRIKE-WATCH-20261025",
       "asset": "CU2612",
@@ -537,153 +482,199 @@
       "instrument": "期货优先；期权仅备选",
       "limited_loss": false,
       "scores": {
-        "logic": 19,
+        "logic": 20,
         "odds": 17,
+        "catalyst": 16,
+        "market": 11,
+        "technical": 10
+      },
+      "support_layers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "oppose_layers": [
+        "夜盘近远月斜率收窄",
+        "LME三月铜未越旧阈值14450",
+        "期权execution=false"
+      ],
+      "research_state": "有效研究",
+      "evidence_state": "4层但曲线/外盘共振不足",
+      "execution_state": "仅条件；等待日盘三段确认"
+    },
+    {
+      "rank": 2,
+      "name": "SC2612跌破后的反抽失败空",
+      "score": 68,
+      "direction": "条件空",
+      "holding_period": "日内—2D",
+      "stage": "价格已跌、月差不确认",
+      "instruments": [
+        "SC2612期货"
+      ],
+      "max_loss_limited": false,
+      "score_components": {
+        "logic": 18,
+        "odds_convexity": 16,
+        "catalyst": 15,
+        "price_curve_vol": 10,
+        "crowding_technical": 9
+      },
+      "idea_id": "COM-E-SC2612-CONTANGO-REVERSAL-SHORT-20261026",
+      "asset": "SC2612",
+      "horizon": "日内—2D",
+      "instrument": "期货；期权因无bid/ask放弃",
+      "limited_loss": false,
+      "scores": {
+        "logic": 18,
+        "odds": 16,
         "catalyst": 15,
         "market": 10,
         "technical": 9
       },
       "support_layers": [
         1,
-        2,
-        3
+        4
       ],
       "oppose_layers": [
-        "夜盘108570未越过108800",
-        "LME库存上升与需求担忧"
+        "主-次月backwardation夜盘扩大至1.336%",
+        "EIA在22:30",
+        "IV显著高于RV但不可执行"
       ],
       "research_state": "有效研究",
-      "evidence_state": "3层但外部冲突",
-      "execution_state": "等待精确曲线与日盘确认"
+      "evidence_state": "2层，上限69",
+      "execution_state": "等待09:15曲线侵蚀与反抽失败"
     },
     {
-      "rank": 2,
-      "name": "MA701供应缺口强势延续",
-      "score": 68,
-      "direction": "条件多",
+      "rank": 3,
+      "name": "AG2612/贵金属FOMC前修复观察",
+      "score": 66,
+      "direction": "观察偏多",
       "holding_period": "1—3D",
-      "stage": "等待回踩与PX同步",
+      "stage": "事件前不追",
       "instruments": [
-        "MA701期货"
+        "AG2612期货",
+        "AG期权结构（待询价）"
       ],
       "max_loss_limited": false,
       "score_components": {
-        "logic": 18,
+        "logic": 17,
         "odds_convexity": 16,
-        "catalyst": 12,
-        "price_curve_vol": 12,
-        "crowding_technical": 10
+        "catalyst": 15,
+        "price_curve_vol": 10,
+        "crowding_technical": 8
       },
-      "idea_id": "COM-M-MA701-OIL-CHEMICAL-GAP-RETENTION-20261024",
-      "asset": "MA701",
+      "idea_id": "COM-M-AG2612-FOMC-REBOUND-WATCH-20261028",
+      "asset": "AG2612",
       "horizon": "1—3D",
+      "instrument": "不交易优先；若有可靠报价再评结构",
+      "limited_loss": false,
+      "scores": {
+        "logic": 17,
+        "odds": 16,
+        "catalyst": 15,
+        "market": 10,
+        "technical": 8
+      },
+      "support_layers": [
+        1,
+        4
+      ],
+      "oppose_layers": [
+        "5D仍-6.31%",
+        "FOMC双向gap",
+        "bid/ask=0"
+      ],
+      "research_state": "研究机会",
+      "evidence_state": "2层，上限69",
+      "execution_state": "数据/报价不足"
+    },
+    {
+      "rank": 4,
+      "name": "BU2701强曲线的回撤后再确认",
+      "score": 63,
+      "direction": "观察偏多",
+      "holding_period": "1—5D",
+      "stage": "等待海外油回撤消化",
+      "instruments": [
+        "BU2701期货"
+      ],
+      "max_loss_limited": false,
+      "score_components": {
+        "logic": 17,
+        "odds_convexity": 14,
+        "catalyst": 12,
+        "price_curve_vol": 11,
+        "crowding_technical": 9
+      },
+      "idea_id": "COM-E-BU2701-STRONG-CURVE-PULLBACK-LONG-20261026",
+      "asset": "BU2701",
+      "horizon": "1—5D",
       "instrument": "期货",
       "limited_loss": false,
       "scores": {
-        "logic": 18,
-        "odds": 16,
+        "logic": 17,
+        "odds": 14,
         "catalyst": 12,
-        "market": 12,
-        "technical": 10
+        "market": 11,
+        "technical": 9
       },
       "support_layers": [
         1,
         2
       ],
       "oppose_layers": [
-        "精确701-next曲线缺失",
-        "实体进口事实未独立原始核验",
-        "海外原油下跌"
+        "Brent/WTI下跌",
+        "准确夜盘BU2701未补到",
+        "EIA事件风险"
       ],
-      "research_state": "有效研究",
+      "research_state": "有效观察",
       "evidence_state": "2层，上限69",
-      "execution_state": "仅条件；不追3420以上"
+      "execution_state": "无准确夜盘，评分/执行受限"
     },
     {
-      "rank": 3,
-      "name": "SC2612 contango反转空",
-      "score": 67,
-      "direction": "条件空",
-      "holding_period": "1—2D",
-      "stage": "旧触发失效，重置晨盘观察",
+      "rank": 5,
+      "name": "MA701油化强势的保留失败观察",
+      "score": 59,
+      "direction": "中性偏空观察",
+      "holding_period": "日内—3D",
+      "stage": "旧多条件失败",
       "instruments": [
-        "SC2612期货",
-        "SC2612看跌价差（待询价）"
+        "MA701期货（仅待新条件）"
       ],
       "max_loss_limited": false,
       "score_components": {
-        "logic": 18,
-        "odds_convexity": 17,
-        "catalyst": 13,
+        "logic": 16,
+        "odds_convexity": 12,
+        "catalyst": 12,
         "price_curve_vol": 10,
         "crowding_technical": 9
       },
-      "idea_id": "COM-E-SC2612-CONTANGO-REVERSAL-SHORT-20261026",
-      "asset": "SC2612",
-      "horizon": "1—2D",
-      "instrument": "期货优先",
+      "idea_id": "COM-M-MA701-OIL-CHEMICAL-GAP-RETENTION-20261024",
+      "asset": "MA701",
+      "horizon": "日内—3D",
+      "instrument": "暂不交易",
       "limited_loss": false,
       "scores": {
-        "logic": 18,
-        "odds": 17,
-        "catalyst": 13,
+        "logic": 16,
+        "odds": 12,
+        "catalyst": 12,
         "market": 10,
         "technical": 9
       },
       "support_layers": [
-        2,
-        4
-      ],
-      "oppose_layers": [
-        "夜盘相对EOD close仍+0.71%",
-        "Brent仓库与独立源口径冲突",
-        "Night精确曲线缺"
-      ],
-      "research_state": "有效研究",
-      "evidence_state": "2层，上限69",
-      "execution_state": "等待09:15/09:30且先解海外口径"
-    },
-    {
-      "rank": 4,
-      "name": "LH2701弱势与contango延续",
-      "score": 64,
-      "direction": "观察空",
-      "holding_period": "3—10D",
-      "stage": "研究观察",
-      "instruments": [
-        "LH2701期货"
-      ],
-      "max_loss_limited": false,
-      "score_components": {
-        "logic": 16,
-        "odds_convexity": 16,
-        "catalyst": 10,
-        "price_curve_vol": 11,
-        "crowding_technical": 11
-      },
-      "idea_id": "COM-M-LH2701-TREND-CONTANGO-WATCH-20261027",
-      "asset": "LH2701",
-      "horizon": "3—10D",
-      "instrument": "期货",
-      "limited_loss": false,
-      "scores": {
-        "logic": 16,
-        "odds": 16,
-        "catalyst": 10,
-        "market": 11,
-        "technical": 11
-      },
-      "support_layers": [
-        1,
         2
       ],
       "oppose_layers": [
-        "无实体猪价/产能原始更新",
-        "DCE官方交叉核对失败"
+        "night -2.03% vs close",
+        "OI日盘-48484",
+        "海外原油下跌",
+        "701精确夜盘曲线缺失"
       ],
-      "research_state": "有效研究",
-      "evidence_state": "2层",
-      "execution_state": "非即时；等09:30"
+      "research_state": "优势不足",
+      "evidence_state": "1层，上限59",
+      "execution_state": "旧多窗口终止；等待新结构"
     }
   ],
   "top_trade_cards": [
@@ -691,330 +682,333 @@
       "idea_id": "COM-M-CU2612-HVC-STRIKE-WATCH-20261025",
       "asset": "CU2612",
       "direction": "条件多",
-      "new_fact": "夜盘fallback 108570，仅+0.43% vs EOD close；Teck罢工仍是供给事件。",
-      "priced_in": "EOD已涨0.81%，OI增6896；近月升水0.647%，一部分供给风险已计价。",
-      "disagreement": "若09:15后价格与曲线同步强化，市场可能尚未充分计入停产时长；若LME库存压力占优则论点失败。",
-      "pnl_source": "CU2612突破后的方向收益；非跨市套利。",
-      "catalysts": "1—10D：HVC停产/谈判更新、FOMC、LME库存与现货升贴水。",
-      "competition": "库存上升、需求担忧、罢工影响小于预期。",
-      "next_observation": "09:15 CU≥108800且CU2611-CU2612≥0.8%，09:30或09:45五分钟收于109000上方；二者须同时满足。",
-      "entry": "仅在上述顺序后回踩108800—109100，40%/60%；若首个可成交价>110000放弃。",
-      "stop": "计划止损107600；曲线<0.2%持续15分钟或Teck复工消息为逻辑失效。",
-      "tp": "TP1 111500减半；TP2 114000；11月5日14:45时间退出。",
-      "scenario": "好/中/坏入场108800/108950/109100；每手5吨、tick10元=50元。至止损计划风险6000/6750/7500元；TP1毛利13500/12750/12000元，毛R 2.25/1.89/1.60；TP2 26000/25250/24500元，毛R4.33/3.74/3.27。假设往返各1 tick滑点=100元/手，佣金未知，净R待佣金后重算。",
-      "contract": "SHFE CU2612；EOD 108110/108180；night fallback108570；静态5吨/手、tick10元；最后交易日2026-12-15；最低保证金5%与±3%为合约静态，不等于当日风控参数。",
-      "options": "EOD ATM108000 IV13.00% vs RV20 11.34%；无bid/ask、skew不可用，期权价差仅待询价，不称限损可执行。",
-      "risk_cap": "试仓NAV 0.5%，确认后单idea≤1.25%，与紫金等铜股合并主题≤2.5%。",
-      "stress": "1个静态限幅约16,227元/手，2个约32,454元/手，未含限幅变化、保证金上调与跳空；止损不封顶。"
-    },
-    {
-      "idea_id": "COM-M-MA701-OIL-CHEMICAL-GAP-RETENTION-20261024",
-      "asset": "MA701",
-      "direction": "条件多",
-      "new_fact": "EOD强价强仓，夜盘行情页3401，但未取得精确701-next曲线/PX同步序列。",
-      "priced_in": "EOD+4.66%且成交量z=2.10，供应扰动已被高度交易。",
-      "disagreement": "若回踩后仍守3400并由PX确认，缺口交易可延续；直接高开则赔率迅速恶化。",
-      "pnl_source": "MA701短期趋势延续。",
-      "catalysts": "1—3D：进口到港、伊朗装置、港口库存与PX/烯烃链同步。",
-      "competition": "供应故事已充分计价，海外油回落、下游利润受压导致需求破坏。",
-      "next_observation": "09:15 MA≥3380；随后回踩3390—3410不破，并在09:30/09:45五分钟收≥3400；同时PX612≥9750且准确MA701-next曲线为正。",
-      "entry": "3390—3410，50%/50%；>3420不追，>3430放弃。",
-      "stop": "计划止损3330；精确曲线转负持续15分钟或PX<9600为逻辑失效。",
-      "tp": "TP1 3500减半；TP2 3620；10月29日14:45退出。",
-      "scenario": "好/中/坏3390/3400/3410；10吨/手、tick1元=10元。计划风险600/700/800元；TP1毛利1100/1000/900元，毛R1.83/1.43/1.13；TP2 2300/2200/2100元，毛R3.83/3.14/2.63。假设往返各1 tick=20元/手，佣金未知，净R待询。",
-      "contract": "CZCE MA701；EOD3389/3346；night page3401；10吨/手、tick1元；库内保证金11%、限幅9%、最后交易日2027-01-14。",
-      "options": "无与MA701匹配且execution-ready的当前报价；不使用未报价期权封顶线性风险。",
-      "risk_cap": "试仓NAV0.25%—0.5%；确认≤1.0%；油化工共同主题≤2.5%。",
-      "stress": "按库内9%静态限幅约301点=3010元/手，2限幅约6020元/手；实际风控参数可能调整。"
+      "new_fact": "供应商夜盘109420，较EOD close108390 +0.95%；CU2611-12夜盘backwardation 0.512%，较EOD 0.644%收窄。",
+      "priced_in": "价格已明显反映HVC扰动，且一部分风险通过夜盘上行计价；曲线没有同步强化。",
+      "disagreement": "只有价格、近远月与LME/COMEX同时走强，才说明供应冲击尚未充分计价；单凭109420不能确认。",
+      "pnl_source": "CU2612突破回踩后的方向收益；不把跨市映射称套利。",
+      "catalysts": "1—10D：HVC停产/谈判更新、10月29日Teck三季报、FOMC、LME库存与现货升贴水。",
+      "competition": "HVC复工、LME库存压力、需求担忧或人民币走强。",
+      "next_observation": "09:15后CU2612≥109500持续15分钟 AND CU2611-12≥0.60% AND LME三月铜≥14450；随后09:30/09:45回踩109150—109350不破109000。",
+      "entry": "按上述顺序成立后109150—109350，40%/60%；若首个可成交价>110200或曲线<0.30%放弃。",
+      "stop": "计划止损108300；HVC复工、LME三月铜<14250或曲线<0.30%持续15分钟为逻辑失效。",
+      "tp": "TP1 111500减半；TP2 113800；11月5日14:45时间退出。",
+      "scenario": "好/中/坏入场109150/109250/109350；每手5吨。至108300计划风险4250/4750/5250元；TP1毛利11750/11250/10750元，毛R 2.76/2.37/2.05；TP2毛利23250/22750/22250元，毛R 5.47/4.79/4.24。假设往返各1 tick滑点=100元/手，佣金未知，净R待询价重算。",
+      "contract": "SHFE CU2612；EOD close/settle 108390/108640；vendor night109420；5吨/手、tick10元=50元；最后交易日2026-12-15；保证金率、当日限幅和交割参数动态值未完整确认。",
+      "options": "EOD ATM108000 IV12.49% vs RV20 11.40%；skew=false、bid/ask=0，价差仅待询价，不称可执行限损。",
+      "risk_cap": "试仓NAV 0.50%，确认后单idea≤1.25%，与紫金等铜股合并主题≤2.5%。",
+      "stress": "按价格跳空/涨跌停与保证金上调单独压力；计划止损不封顶。当日动态限幅未核实，不编一/二板精确损失。"
     },
     {
       "idea_id": "COM-E-SC2612-CONTANGO-REVERSAL-SHORT-20261026",
       "asset": "SC2612",
       "direction": "条件空",
-      "new_fact": "夜盘733.30相对close反而+0.71%，旧≤724首触发未到；相对settle-0.87%且外油结算回落。",
-      "priced_in": "EOD曲线已深contango -1.6899%，反转交易并非冷门。",
-      "disagreement": "若09:15跌破731且反弹失败，国内相对EOD的韧性可能消失；否则空头赔率不足。",
-      "pnl_source": "SC2612回落的方向收益。",
-      "catalysts": "1—2D：地缘外交/航运、EIA库存、国内开盘后套保流。",
-      "competition": "地缘再升级、Brent仍处高位、夜盘相对close为正。",
-      "next_observation": "先统一Brent合约口径；09:15 SC≤731且SC2611-SC2612≤-1.0%，随后733—737反弹失败，09:30/09:45五分钟收<731。",
-      "entry": "仅在顺序完成后729—732，40%/60%；若首个可成交价<724不追。",
-      "stop": "计划止损741；曲线>-0.5%持续15分钟或Brent同合约>117为逻辑失效。",
-      "tp": "TP1 715减半；TP2 704；10月28日14:45退出。",
-      "scenario": "好/中/坏729/730.5/732；1000桶/手、tick0.1元=100元。计划风险12000/10500/9000元；TP1毛利14000/15500/17000元，毛R1.17/1.48/1.89；TP2 25000/26500/28000元，毛R2.08/2.52/3.11。假设往返各1 tick=200元/手，佣金未知，净R待询。",
-      "contract": "INE SC2612；EOD728.1/739.7；night fallback733.30；1000桶/手、tick0.1元；最后交易日2026-11-30；动态保证金/限幅未取得。",
-      "options": "ATM740 IV68.31% vs RV20 46.69%；skew、bid/ask、execution均不可用，看跌价差仅待询价。",
-      "risk_cap": "试仓NAV0.25%—0.5%；确认≤1.0%；与BU/FU/能源股合并≤2.5%。",
-      "stress": "若按未知动态限幅，1/2限幅损失不能可靠数值化；地缘gap、流动性消失和保证金上调可能超过计划止损。"
+      "new_fact": "供应商夜盘712.9，较EOD close733.7 -2.84%；但SC2612-2701价差由+8.2扩大至+9.4。",
+      "priced_in": "绝对价格已快速计入外交缓和与海外油回落，追空赔率下降；月差仍保留近端紧张。",
+      "disagreement": "若09:15后主-次月价差降至6元以内且Brent≤113，才说明期限层开始确认单边下跌。",
+      "pnl_source": "SC2612反抽失败后的方向收益；不是近远月套利。",
+      "catalysts": "日内—2D：中东谈判/航运、10月28日22:30 EIA、炼厂与运输扰动。",
+      "competition": "供应中断或航运风险重新上升，近端月差继续走强。",
+      "next_observation": "09:15 SC2612≤710持续15分钟 AND SC2612-SC2701≤6.0元 AND Brent≤113；随后反抽712—716失败。",
+      "entry": "上述顺序成立后712—716，50%/50%；若09:00直接低于705不追，若价差≥10元放弃。",
+      "stop": "计划止损722；Brent>116或主-次月价差≥10元持续15分钟为逻辑失效。",
+      "tp": "TP1 699减半；TP2 690；若未到目标，10月28日14:45退出，不跨EIA事件。",
+      "scenario": "好/中/坏入场715/713.5/712；每手1000桶。至722计划风险7000/8500/10000元；TP1毛利16000/14500/13000元，毛R 2.29/1.71/1.30；TP2毛利25000/23500/22000元，毛R 3.57/2.76/2.20。费用、滑点和价差腿成本未知，净R待询价。",
+      "contract": "INE SC2612；EOD close/settle 733.7/731.6；vendor night712.9；1000桶/手、tick0.1元=100元；最后交易与交割规则按能源中心合约；动态保证金/限幅未完整确认。",
+      "options": "EOD ATM740 IV68.28% vs RV20 44.44%；skew不可用、bid/ask=0，不能据此做空波动或写可执行价差。",
+      "risk_cap": "仅试仓NAV 0.25%—0.50%；不在EIA前扩至确认仓；与BU/FU/油气股合并主题≤2.0%。",
+      "stress": "外交或供应新闻可令夜盘反向gap；止损不限制最大亏损。动态限幅未核，不编精确板损。"
     }
   ],
   "commodities_tracking": {
     "data_quality": {
-      "status": "degraded",
-      "price_source": "iFinD EOD plus limited exact-contract public fallback",
-      "curve_definition": "near_minus_next_futures_curve_not_spot_basis",
-      "basis_status": "18 context-only C-grade; A/B=0",
-      "warehouse_status": "CZCE current; SHFE/DCE/GFEX errors, five carried warehouse rows",
-      "member_rankings_status": "unavailable",
-      "options_chain_status": "core_v1 sampled strikes 45/64",
-      "options_surface_status": "not_ready globally; local ATM44/skew27",
-      "history_comparison_status": "available",
-      "available_horizons": [
-        "1D",
-        "3D",
-        "5D",
-        "20D"
-      ],
-      "comparative_metrics": [
-        {
-          "product": "MA701",
-          "return_1d_pct": 4.66,
-          "return_5d_pct": 5.25,
-          "rv20_pct": 40.23
-        },
-        {
-          "product": "SC2612",
-          "return_1d_pct": 3.17,
-          "return_5d_pct": 2.91,
-          "rv20_pct": 46.69
-        },
-        {
-          "product": "CU2612",
-          "return_1d_pct": 0.81,
-          "return_5d_pct": -0.9,
-          "rv20_pct": 11.34
-        },
-        {
-          "product": "PX612",
-          "return_1d_pct": 3.78,
-          "return_5d_pct": 4.31,
-          "rv20_pct": 33.66
-        },
-        {
-          "product": "BU2701",
-          "return_1d_pct": 3,
-          "return_5d_pct": 6.47,
-          "rv20_pct": 31.98
-        },
-        {
-          "product": "FU2701",
-          "return_1d_pct": 4.18,
-          "return_5d_pct": 5.67,
-          "rv20_pct": 47.68
-        },
-        {
-          "product": "AG2612",
-          "return_1d_pct": -1.55,
-          "return_5d_pct": -6.49,
-          "rv20_pct": 30.86
-        },
-        {
-          "product": "AL2612",
-          "return_1d_pct": 1.19,
-          "return_5d_pct": 2,
-          "rv20_pct": 11.83
-        },
-        {
-          "product": "LH2701",
-          "return_1d_pct": -1.22,
-          "return_5d_pct": -5.72,
-          "rv20_pct": 17.44
-        },
-        {
-          "product": "SA701",
-          "return_1d_pct": 1.48,
-          "return_5d_pct": 0.94,
-          "rv20_pct": 18.19
-        },
-        {
-          "product": "AP701",
-          "return_1d_pct": -2.36,
-          "return_5d_pct": -5.68,
-          "rv20_pct": 24.75
-        },
-        {
-          "product": "EC2611",
-          "return_1d_pct": -0.43,
-          "return_5d_pct": -12.77,
-          "rv20_pct": 41.24
-        }
+      "coverage": "63指定代码及动态新增均在77产品初筛中；LPG使用交易所产品映射PG",
+      "exchange_dates": {
+        "SHFE": "2026-10-27",
+        "INE": "2026-10-27",
+        "DCE": "2026-10-27",
+        "CZCE": "2026-10-27",
+        "GFEX": "2026-10-27"
+      },
+      "full_market_ready": true,
+      "source_date_match_pct": 100,
+      "critical_errors": 0,
+      "carried_warehouse": 5,
+      "placeholder_ohlc": 5,
+      "night": "416/806；214 unresolved；raw空；calendar_mismatch=false",
+      "options": "45/64；ATM44/skew25；surface/positioning/execution=0",
+      "crosscheck": "SHFE238/INE63/CZCE243/GFEX48 matched、价格差异0；DCE HTTP412",
+      "limitations": [
+        "Physical A/B basis=0",
+        "External无intraday",
+        "动态合约参数覆盖30.15%",
+        "Stock stale to10/21"
       ]
     },
     "market_dashboard": [
       {
-        "product": "MA",
-        "main_contract": "MA701",
-        "close": 3389,
-        "settlement": 3346,
-        "signal": "夜盘参考3401；强但不追"
+        "asset": "CU2612",
+        "close": 108390,
+        "settlement": 108640,
+        "return_1d_pct": 0.425,
+        "return_5d_pct": 0.194,
+        "rv20_pct": 11.402,
+        "volume": 72456,
+        "open_interest": 191199,
+        "oi_change": 524,
+        "curve": "EOD CU2611-12 +0.644%；night +0.512%（收窄）",
+        "basis": "C，仅context",
+        "options": "ATM108000 IV12.49% vs RV11.40%；skew=false",
+        "signal": "night109420；价格强、曲线未共振"
       },
       {
-        "product": "SC",
-        "main_contract": "SC2612",
-        "close": 728.1,
-        "settlement": 739.7,
-        "signal": "night fallback733.30；旧空触发未到"
+        "asset": "SC2612",
+        "close": 733.7,
+        "settlement": 731.6,
+        "return_1d_pct": -1.095,
+        "return_5d_pct": 0.591,
+        "rv20_pct": 44.439,
+        "volume": 153562,
+        "open_interest": 30633,
+        "oi_change": -1528,
+        "curve": "EOD SC2612-2701 +8.2/+1.134%；night +9.4/+1.336%",
+        "basis": "SC现货不可用",
+        "options": "ATM740 IV68.28% vs RV44.44%；execution=false",
+        "signal": "night712.9；价跌而月差走强，不追空"
       },
       {
-        "product": "CU",
-        "main_contract": "CU2612",
-        "close": 108110,
-        "settlement": 108180,
-        "signal": "night fallback108570；旧多触发未到"
+        "asset": "MA701",
+        "close": 3448,
+        "settlement": 3402,
+        "return_1d_pct": 1.674,
+        "return_5d_pct": 8.448,
+        "rv20_pct": 40,
+        "volume": 3095010,
+        "open_interest": 904098,
+        "oi_change": -48484,
+        "curve": "EOD MA611-12 +5.584%（非701精确pair）",
+        "basis": "C，仅context",
+        "options": "MA612 ATM3400 IV49.66%、RR25 +1.05；非701同标的",
+        "signal": "night3378；-2.03% vs close，旧多条件失败"
       },
       {
-        "product": "PX",
-        "main_contract": "PX612",
-        "close": 9782,
-        "settlement": 9820,
-        "signal": "强价强仓但近到期不追期权"
+        "asset": "BU2701",
+        "close": 4965,
+        "settlement": 4893,
+        "return_1d_pct": 3.271,
+        "return_5d_pct": 9.512,
+        "rv20_pct": 30.907,
+        "volume": null,
+        "open_interest": null,
+        "oi_change": 17992,
+        "curve": "near-next +7.268%",
+        "basis": "C，仅context",
+        "options": "ATM IV46.61% vs RV30.91%",
+        "signal": "EOD强，海外油回落；等待日盘消化"
       },
       {
-        "product": "BU",
-        "main_contract": "BU2701",
-        "close": 4828,
-        "settlement": 4738,
-        "signal": "国内强、海外油跌；冲突"
+        "asset": "FU2701",
+        "close": 5386,
+        "settlement": 5295,
+        "return_1d_pct": 1.088,
+        "return_5d_pct": 7.447,
+        "rv20_pct": 46.337,
+        "volume": null,
+        "open_interest": null,
+        "oi_change": 2123,
+        "curve": "near-next +12.696%",
+        "basis": "C，仅context",
+        "options": "ATM IV71.85% vs RV46.34%",
+        "signal": "高波动/强曲线，执行报价缺失"
       },
       {
-        "product": "FU",
-        "main_contract": "FU2701",
-        "close": 5295,
-        "settlement": 5238,
-        "signal": "价涨OI降；不追"
+        "asset": "AG2612",
+        "close": 12763,
+        "settlement": 12986,
+        "return_1d_pct": -0.49,
+        "return_5d_pct": -6.313,
+        "rv20_pct": 30.113,
+        "volume": null,
+        "open_interest": null,
+        "oi_change": -1182,
+        "curve": "near-next -0.223%",
+        "basis": "C，仅context",
+        "options": "ATM IV42.00% vs RV30.11%",
+        "signal": "夜盘品种汇总+0.93%；FOMC前不追"
       },
       {
-        "product": "AG",
-        "main_contract": "AG2612",
-        "close": 13040,
-        "settlement": 13050,
-        "signal": "沪银夜盘+0.31%；旧空不追"
+        "asset": "AU2612",
+        "close": 861.16,
+        "settlement": 863.68,
+        "return_1d_pct": 0.209,
+        "return_5d_pct": -3.285,
+        "rv20_pct": 14.353,
+        "volume": null,
+        "open_interest": null,
+        "oi_change": -3102,
+        "curve": "near-next -0.201%",
+        "basis": "C，仅context",
+        "options": "ATM IV21.20%、RR25 -0.76 vs RV14.35%",
+        "signal": "vendor 873.18；事件前涨幅已部分计价"
       },
       {
-        "product": "AL",
-        "main_contract": "AL2612",
-        "close": 23450,
-        "settlement": 23475,
-        "signal": "IV略低于RV但非便宜证明"
+        "asset": "SH701",
+        "close": 1486,
+        "settlement": 1499,
+        "return_1d_pct": -3.539,
+        "return_5d_pct": -13.001,
+        "rv20_pct": 16.719,
+        "volume": null,
+        "open_interest": null,
+        "oi_change": 1691,
+        "curve": "near-next +1.170%",
+        "basis": "C，仅context",
+        "options": "ATM IV38.89%、RR25 -3.75 vs RV16.72",
+        "signal": "跌势与近月升水冲突"
       },
       {
-        "product": "LH",
-        "main_contract": "LH2701",
-        "close": 9560,
-        "settlement": 9730,
-        "signal": "趋势空；无夜盘；DCE官方核对缺"
+        "asset": "SA701",
+        "close": 981,
+        "settlement": 968,
+        "return_1d_pct": 0.624,
+        "return_5d_pct": 2.326,
+        "rv20_pct": 18.314,
+        "volume": null,
+        "open_interest": null,
+        "oi_change": -44376,
+        "curve": "near-next -2.277%",
+        "basis": "C，仅context",
+        "options": "ATM IV26.38%、RR25约0 vs RV18.31",
+        "signal": "反弹但减仓，证据不足"
       },
       {
-        "product": "SA",
-        "main_contract": "SA701",
-        "close": 966,
-        "settlement": 962,
-        "signal": "正确EOD 966/962；反弹但OI降"
+        "asset": "LC2701",
+        "close": 98500,
+        "settlement": 97840,
+        "return_1d_pct": 3.076,
+        "return_5d_pct": -1.905,
+        "rv20_pct": 40.929,
+        "volume": null,
+        "open_interest": null,
+        "oi_change": -4815,
+        "curve": "near-next +1.122%",
+        "basis": "C，仅context",
+        "options": "ATM IV54.01% vs RV40.93%",
+        "signal": "反弹伴减仓，不判新多"
       },
       {
-        "product": "AP",
-        "main_contract": "AP701",
-        "close": 5542,
-        "settlement": 5591,
-        "signal": "跌价增仓；曲线样本短"
+        "asset": "LH2701",
+        "close": 9975,
+        "settlement": 9805,
+        "return_1d_pct": 0.771,
+        "return_5d_pct": -3.017,
+        "rv20_pct": 16.624,
+        "volume": null,
+        "open_interest": 174644,
+        "oi_change": -18181,
+        "curve": "near-next -4.895%",
+        "basis": "C，仅context",
+        "options": "期权局部不执行",
+        "signal": "20D -16.62%且大幅减仓，趋势仍弱"
       },
       {
-        "product": "EC",
-        "main_contract": "EC2611",
-        "close": 2403.5,
-        "settlement": 2421.5,
-        "signal": "弱势但OI锐减，非新空确认"
+        "asset": "EC2612",
+        "close": 2687,
+        "settlement": 2742.5,
+        "return_1d_pct": -6.255,
+        "return_5d_pct": -15.861,
+        "rv20_pct": null,
+        "volume": null,
+        "open_interest": null,
+        "oi_change": 1969,
+        "curve": "near-next -16.171%",
+        "basis": "不适用",
+        "options": "无合格局部执行结构",
+        "signal": "弱势且OI+22.18%；无夜盘，09:30观察"
       }
     ],
     "supply_chain_map": [
       {
-        "chain": "原油→燃料油/沥青→化工",
-        "direction": "国内EOD强、海外结算弱",
-        "strongest": "FU/BU/PX/MA",
-        "weakest": "外油回落",
-        "evidence": "SC contango；油化工涨价但部分OI下降",
-        "missing": "统一Brent合约、精确night curve",
-        "confidence": "中低"
+        "chain": "铜矿→冶炼→沪铜/国际铜→线缆与新能源",
+        "strongest": "CU夜盘价格",
+        "weakest": "曲线共振",
+        "transmission": "HVC停产风险→LME/COMEX→CU；但夜盘curve收窄",
+        "confidence": "中",
+        "stock": "紫金仅利润桥背景，HVC非其资产；直接CU更纯"
       },
       {
-        "chain": "铜矿→精铜→加工",
-        "direction": "供给事件偏多、库存反证",
-        "strongest": "HVC罢工催化",
-        "weakest": "LME库存与需求担忧",
-        "evidence": "CU价升OI升、近月小升水",
-        "missing": "罢工实际损失吨数/复工",
-        "confidence": "中"
+        "chain": "Brent/WTI→SC→FU/BU→化工",
+        "strongest": "BU/FU EOD曲线",
+        "weakest": "SC绝对价格",
+        "transmission": "外交缓和→海外结算下跌→SC gap；月差仍反对追空",
+        "confidence": "中",
+        "stock": "油气股与炼化股受益方向不同，当前Stock陈旧不执行"
       },
       {
-        "chain": "贵金属",
-        "direction": "外盘金银小涨、内盘AG此前弱",
-        "strongest": "AU",
-        "weakest": "AG EOD",
-        "evidence": "沪金夜+0.4%、沪银+0.31%；AG ATM IV高于RV",
-        "missing": "期权bid/ask与实时Delta",
-        "confidence": "中低"
+        "chain": "煤/天然气→MA→MTO/PX",
+        "strongest": "MA EOD backwardation",
+        "weakest": "MA夜盘价格",
+        "transmission": "EOD强势与夜盘回撤冲突，需PX/MA共同确认",
+        "confidence": "中低",
+        "stock": "未新增公司经营事实"
       },
       {
-        "chain": "农产品/畜牧",
-        "direction": "LH/AP弱，外盘收获推进",
-        "strongest": "无",
-        "weakest": "LH/AP/EC",
-        "evidence": "LH/AP跌价增仓；美豆收获79%、玉米60%",
-        "missing": "国内现货、养殖利润、仓单",
-        "confidence": "低"
+        "chain": "贵金属→美元/实际利率→AU/AG",
+        "strongest": "夜盘反弹",
+        "weakest": "5D趋势",
+        "transmission": "FOMC前双向波动，IV高于RV但执行报价缺失",
+        "confidence": "低",
+        "stock": "股票表达不如直接期货纯"
+      },
+      {
+        "chain": "铁矿→钢材→航运",
+        "strongest": "无合格多头",
+        "weakest": "EC2612",
+        "transmission": "EC 1D -6.26%、5D -15.86%且增仓；I/RB偏弱",
+        "confidence": "中低",
+        "stock": "宝钢三季报仅待核利润桥，不预判"
       }
     ],
     "options_surface": {
-      "status": "not_ready",
-      "available_metrics": [],
-      "tradeable_structures": [],
-      "research_priority_when_ready": [
-        "CU看涨价差",
-        "SC看跌价差",
-        "FOMC前AU/AG事件凸性"
+      "source_date": "2026-10-27",
+      "collection_scope": "core_v1",
+      "analytics_scope": "sampled_strikes",
+      "products": "45/64",
+      "core_atm_ready": 44,
+      "skew_ready": 25,
+      "surface_ready": 0,
+      "positioning_ready": 0,
+      "execution_ready": 0,
+      "full_chain_verified": false,
+      "observations": [
+        "SC ATM IV68.28% vs RV44.44%",
+        "FU 71.85% vs46.34%",
+        "BU46.61% vs30.91%",
+        "AU21.20% vs14.35%",
+        "AG42.00% vs30.11%",
+        "MA49.66% RR25+1.05",
+        "SH38.89% RR25-3.75"
       ],
-      "local_core_metrics": {
-        "CU": "ATM13.00 vs RV11.34",
-        "SC": "ATM68.31 vs RV46.69",
-        "AG": "ATM39.95 vs RV30.86",
-        "AL": "ATM11.20 vs RV11.83; RR25 -1.15",
-        "SA": "ATM25.18 vs RV18.19; RR25 +1.52",
-        "AP": "ATM34.30 vs RV24.75; RR25 -3.96"
-      },
-      "limitations": "bid/ask=0；full_chain=false；positioning/dealer gamma不可用"
+      "warning": "只可作局部IV/skew研究；无bid/ask不得写权利金、滑点、PCR、dealer gamma或完整期限结构"
     },
-    "night_session_risk_map": [
-      {
-        "product": "CU",
-        "confidence": "中低",
-        "action": "平至小高开预期；108800以下不追，09:15/09:30确认"
-      },
-      {
-        "product": "MA/PX",
-        "confidence": "中低",
-        "action": "可能高开；若>3420不追，等回踩和双品种同步"
-      },
-      {
-        "product": "SC/BU/FU",
-        "confidence": "低",
-        "action": "外油跌与国内close/settle双锚冲突；先统一海外合约"
-      },
-      {
-        "product": "AU/AG",
-        "confidence": "中低",
-        "action": "小高开可能；FOMC前不卖裸波动"
-      },
-      {
-        "product": "LH/AP/EC",
-        "confidence": "低",
-        "action": "LH无夜盘；弱势只在09:30后确认，不追空"
-      }
-    ]
+    "night_session_risk_map": {
+      "previous_eod": "2026-10-27",
+      "current_trading_date": "2026-10-28",
+      "session_start": "2026-10-27",
+      "calendar_mismatch": false,
+      "layered_map": [
+        "CU：夜盘高开倾向，但曲线收窄；09:15看109500+0.60%曲线",
+        "SC：低开倾向，月差反对追空；09:15看710/6元价差",
+        "MA/BU/FU：油化分化，先等15/30/45分钟",
+        "AU/AG：FOMC前高开风险，不追",
+        "EC/LH：无夜盘或夜盘不可用，按09:30/09:00日盘确认"
+      ],
+      "rule": "09:00不追；09:15看价格与精确曲线，09:30看跨品种，09:45看五分钟收盘与OI。"
+    }
   },
   "gold_tracking": {
     "status": "commodity_context",
-    "signal": "沪金夜盘+0.4%，COMEX EOD约4030.8；FOMC前事件风险",
-    "action": "仅研究，不用无bid/ask的中国期权写执行结构"
+    "signal": "AU2612 vendor快照873.18；EOD options ATM IV21.20% vs RV14.35%；FOMC声明将于10月29日02:00 BJT",
+    "action": "不追夜盘上涨；无bid/ask不写事件结构"
   },
   "ai_tracking": {
     "status": "not_applicable",
@@ -1030,47 +1024,53 @@
   },
   "event_calendar": [
     {
-      "time_bjt": "2026-10-27 09:00/09:15/09:30/09:45",
+      "time_bjt": "2026-10-28 09:00/09:15/09:30/09:45",
       "event": "中国商品日盘与三段确认",
-      "assets": "CU/MA/SC及全市场",
-      "plan": "先价、再曲线、再跨品种；禁止09:00追价"
-    },
-    {
-      "time_bjt": "2026-10-27 全天",
-      "event": "FOMC会议第一日",
-      "assets": "金银、铜、原油、DXY/CNH",
-      "plan": "降低裸Delta与短Vega；用条件而非预测"
+      "assets": "CU/SC/MA及全市场",
+      "plan": "先价、再精确曲线、再跨品种；禁止09:00追价"
     },
     {
       "time_bjt": "2026-10-28 22:30",
       "event": "EIA周度石油状态报告",
       "assets": "WTI/Brent/SC/BU/FU",
-      "plan": "SC线性仓在数据前减风险；无报价不做事件期权"
+      "plan": "线性油链仓在14:45前退出或降至事件风险预算"
     },
     {
       "time_bjt": "2026-10-29 02:00/02:30",
       "event": "FOMC声明/发布会",
-      "assets": "贵金属、铜、美元",
-      "plan": "警惕双向gap与IV塌陷；期货止损不保证"
+      "assets": "AU/AG/CU/DXY/CNH",
+      "plan": "警惕双向gap与IV塌陷；无报价不做短Vega"
+    },
+    {
+      "time_bjt": "2026-10-29 19:00前后/23:00",
+      "event": "Teck Q3业绩发布/电话会",
+      "assets": "铜、HVC供应",
+      "plan": "核产量、罢工时长与指引；HVC复工直接失效铜多论点"
+    },
+    {
+      "time_bjt": "2026-10-28",
+      "event": "宝钢股份三季报预约披露",
+      "assets": "钢铁利润链",
+      "plan": "只核售价/销量、铁矿煤成本、库存和套保；不预判股票交易"
     },
     {
       "time_bjt": "2026-10-30",
-      "event": "中国石化三季报预约",
-      "assets": "600028/油链",
-      "plan": "只做利润桥校验；股票报价与交易状态另核"
+      "event": "EIA Petroleum Supply Monthly",
+      "assets": "油链",
+      "plan": "作为中频供需校验，不当盘中触发"
     },
     {
       "time_bjt": "未来7日",
-      "event": "HVC劳资谈判、地缘与航运、USDA下周Crop Progress",
-      "assets": "CU/油链/谷物",
-      "plan": "只计原始新事实，不重复计同源转载"
+      "event": "中东外交/航运、CFTC周报、USDA天气与作物进度（精确发布时间待官方确认）",
+      "assets": "油、贵金属、农产品",
+      "plan": "只有新原始事实才计层；未确认日程不写精确时间"
     }
   ],
   "action_list": {
     "A": "今天没有应立即建立的新仓位。",
-    "B": "仅挂条件：CU2612突破回踩多、MA701回踩确认多、SC2612跌破反抽失败空；全部须在09:15/09:30重新核精确合约与曲线。",
-    "C": "继续观察：LH2701趋势空、AG2612修复、SA701反弹、AP701/EC2611弱势，以及所有未能取得精确夜盘的品种。",
-    "D": "必须回避：追高油化工、用旧期权EOD当当前报价、把vendor snapshot称官方夜盘收盘、把DCE或Stock缺数据解释成无机会；若已自行建仓，按各卡逻辑失效与时间退出独立处理。"
+    "B": "仅挂条件：CU2612价格+曲线+LME三重确认后的回踩多；SC2612价格下破+主次月价差侵蚀+Brent确认后的反抽失败空。",
+    "C": "继续观察：AG/AU FOMC前修复、BU/FU强曲线、MA旧多失效后的新结构、LH/EC弱势，以及没有准确夜盘的其余品种。",
+    "D": "必须回避：09:00追价、把供应商快照称官方夜盘收盘、把SC绝对跌幅当月差确认、用无bid/ask的旧期权面板写净成本；若已自行建仓，按各卡逻辑失效与时间退出独立处理。"
   },
   "risk_budget": {
     "trial_nav_pct": "0.25%—0.75%",
@@ -1084,108 +1084,95 @@
       "流动性消失",
       "IV跳升/塌陷",
       "交割挤压",
+      "相关性断裂",
       "汇率急变",
       "中国休市海外大波动"
     ],
-    "warning": "保证金不是风险预算，计划止损不限制最大亏损"
+    "warning": "保证金不是风险预算，计划止损不限制最大亏损；动态限幅未核不编精确板损"
   },
   "stock_integration": {
-    "scope": "600938中国海油、600028中国石化、601899紫金矿业；限定原始公告检索",
+    "scope": "601899紫金矿业、600019宝钢股份；限定商品利润桥与原始公告检索",
     "new_operating_clues": 0,
-    "decision_contribution": "仅背景；未改变商品方向或排名",
+    "decision_contribution": "紫金仅背景且HVC不是其资产；宝钢三季报尚未披露，均未改变商品排名或形成股票执行建议",
     "profit_bridges": [
       {
-        "company": "中国海油600938",
-        "bridge": "油价→实现售价/销量；扣减长协、套保、税费、Capex和传导滞后",
-        "competition": "地缘高油价可能伴随成本、产量与政策约束",
-        "expression": "当前数据陈旧，直接SC/Brent更纯粹；股票不执行"
-      },
-      {
-        "company": "中国石化600028",
-        "bridge": "上游受益但炼化原料成本与需求/成品油传导可能抵消",
-        "competition": "原油涨跌两种情景都可能通过不同分部影响利润",
-        "expression": "需等10/30三季报分部桥；商品期货更清晰"
-      },
-      {
         "company": "紫金矿业601899",
-        "bridge": "铜价×销量，扣成本、套保、汇率、少数股东与扩产Capex",
-        "competition": "HVC不是其资产；铜价冲击不能直接等于公司利润催化",
-        "expression": "CU更纯；股票仅待财务和交易状态更新"
+        "bridge": "铜价×销量，扣矿山成本、冶炼费、套保、汇率、少数股东与扩产Capex",
+        "competition": "HVC不是紫金资产；铜价上涨不等于公司当期利润同比例增长",
+        "expression": "Stock tape截至10/21且交易状态未核，直接CU更纯"
+      },
+      {
+        "company": "宝钢股份600019",
+        "bridge": "钢价/销量，扣铁矿与煤焦成本、库存损益、出口与汇率、套保和资本开支",
+        "competition": "原料下跌既可能扩张吨钢利润，也可能反映终端需求弱并压低售价",
+        "expression": "等待10/28三季报分部与现金流；当前不做股票执行"
       }
     ],
-    "limitations": "Stock tape截至10/21；技能cookbook不可读，采用交易所/公司公开页限定补证；未取得10/26新增经营公告"
+    "limitations": "Stock私库截至10/21；最新交易所/公司限定检索未取得截至07:02的新经营事实；不把旧财报入库时间当催化"
   },
   "prior_idea_ledger": [
     {
-      "idea_id": "COM-E-SC2612-POST-EIA-RECLAIM-LONG-20261021",
-      "first_seen": "2026-10-21",
-      "prior_status": "invalidated",
-      "current_status": "invalidated；由short child替代研究",
-      "signal_status": "原曲线条件失败",
+      "idea_id": "COM-M-CU2612-HVC-STRIKE-WATCH-20261025",
+      "first_seen": "2026-10-25",
+      "prior_status": "10/27晚报score72，等21:15价格/曲线",
+      "current_status": "score74，等10/28 09:15/09:30/09:45",
+      "signal_status": "夜盘价格达标，但曲线0.512%与LME阈值未达；旧顺序条件未满足",
       "position_status": "未提供/未知",
-      "revision": "不移动原止损/目标，不追认成交"
+      "revision": "上调仅因夜盘价格与海外铜映射；不追认成交，不延长旧窗口"
     },
     {
       "idea_id": "COM-E-SC2612-CONTANGO-REVERSAL-SHORT-20261026",
       "first_seen": "2026-10-26",
-      "prior_status": "score72，等21:15/21:30",
-      "current_status": "score67，等09:15/09:30",
-      "signal_status": "旧≤724首触发未到；旧窗口过期",
+      "prior_status": "10/27晚报score66，等≤728+curve≤-0.60%",
+      "current_status": "score68，价格已跌但月差反对",
+      "signal_status": "旧曲线条件未满足；不得按价格穿越认定触发",
       "position_status": "未提供/未知",
-      "revision": "新参数仅适用于10/27晨盘新候选；旧计划不延长"
-    },
-    {
-      "idea_id": "COM-E-FU2701-OIL-SHOCK-CURVE-LONG-20261022",
-      "first_seen": "2026-10-22",
-      "prior_status": "score58观察",
-      "current_status": "观察/不追",
-      "signal_status": "海外油回落反对",
-      "position_status": "未提供/未知",
-      "revision": "无新入场窗口"
+      "revision": "新09:15条件仅适用于10/28新候选；EIA前14:45时间退出"
     },
     {
       "idea_id": "COM-M-MA701-OIL-CHEMICAL-GAP-RETENTION-20261024",
       "first_seen": "2026-10-24",
-      "prior_status": "score68研究闸门",
-      "current_status": "score68条件多",
-      "signal_status": "单价支持；精确曲线/PX顺序未知",
+      "prior_status": "10/27晚报score73，条件多",
+      "current_status": "score59，中性偏空观察",
+      "signal_status": "night3378使旧多条件失败",
       "position_status": "未提供/未知",
-      "revision": "窗口改为10/27 09:15/09:30；价格区间不放宽"
+      "revision": "因价格变化和海外油回落下调；旧计划终止，不移动止损"
     },
     {
-      "idea_id": "COM-M-CU2612-HVC-STRIKE-WATCH-20261025",
-      "first_seen": "2026-10-25",
-      "prior_status": "score70条件多",
-      "current_status": "score70条件多",
-      "signal_status": "夜盘108570未过108800",
-      "position_status": "未提供/未知",
-      "revision": "旧夜盘窗口过期；晨盘需重新确认，不回填触发"
-    },
-    {
-      "idea_id": "COM-M-AG2612-FAILED-REBOUND-SHORT-20261026",
+      "idea_id": "COM-E-BU2701-STRONG-CURVE-PULLBACK-LONG-20261026",
       "first_seen": "2026-10-26",
-      "prior_status": "score59观察",
-      "current_status": "score58观察",
-      "signal_status": "沪银夜盘+0.31%，无新空确认",
+      "prior_status": "score71条件多",
+      "current_status": "score63观察",
+      "signal_status": "准确夜盘BU2701未取得",
       "position_status": "未提供/未知",
-      "revision": "继续禁止低位追空"
+      "revision": "海外油回落和夜盘缺口导致降级"
+    },
+    {
+      "idea_id": "COM-E-SC2612-POST-EIA-RECLAIM-LONG-20261021",
+      "first_seen": "2026-10-21",
+      "prior_status": "invalidated",
+      "current_status": "invalidated",
+      "signal_status": "原曲线条件失败",
+      "position_status": "未提供/未知",
+      "revision": "保留父idea，不重置ID"
     }
   ],
   "validation": {
-    "score_sums": "pass",
+    "score_sums": "pass: 74/68/66/63/59",
     "five_layer_caps": "pass",
-    "date_calendar": "pass: 10/26 night belongs 10/27",
-    "night_semantics": "pass with fallback labels; raw unavailable",
-    "exact_contracts": "CU/SC/MA fallback only; others execution-isolated",
-    "risk_math": "recomputed for 3 cards",
+    "date_calendar": "pass: 10/27 night belongs 10/28; calendar_mismatch=false",
+    "night_semantics": "pass with vendor-fallback labels; raw unavailable",
+    "exact_contracts": "CU/SC/MA/AU public fallback only; others execution-isolated",
+    "risk_math": "recomputed for 2 cards",
     "md_json_consistency": "generated from same object",
     "unresolved": [
-      "Brent仓库/Reuters合约冲突",
       "Night raw 0 bytes",
       "214 unresolved night contracts",
       "DCE official crosscheck HTTP412",
       "options bid/ask=0",
-      "Stock stale"
+      "Physical A/B basis=0",
+      "dynamic metadata30.15%",
+      "Stock stale to2026-10-21"
     ],
     "ci_validation_status": "pending_or_unverified"
   },
@@ -1194,8 +1181,8 @@
       "title": "China Commodities Engine - futures EOD",
       "publisher": "GitHub",
       "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/latest.json",
-      "source_date": "2026-10-26",
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
+      "source_date": "2026-10-27",
+      "accessed_at_bjt": "2026-10-28 07:02 BJT",
       "source_type": "repository",
       "supported_claims": [
         "806合约/77产品/五所同日",
@@ -1206,8 +1193,8 @@
       "title": "China Commodities Engine - market state",
       "publisher": "GitHub",
       "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/market_state_latest.json",
-      "source_date": "2026-10-26",
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
+      "source_date": "2026-10-27",
+      "accessed_at_bjt": "2026-10-28 07:02 BJT",
       "source_type": "repository",
       "supported_claims": [
         "1/3/5/20D、RV20、OI与曲线"
@@ -1217,199 +1204,121 @@
       "title": "China Commodities Engine - night status",
       "publisher": "GitHub",
       "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/night_session/last_run_status.json",
-      "source_date": "2026-10-27",
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
+      "source_date": "2026-10-28",
+      "accessed_at_bjt": "2026-10-28 07:02 BJT",
       "source_type": "repository",
       "supported_claims": [
-        "夜盘归属、覆盖、214 unresolved、发布验证状态"
-      ]
-    },
-    {
-      "title": "China Commodities Engine - options quality",
-      "publisher": "GitHub",
-      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/options/quality_latest.json",
-      "source_date": "2026-10-26",
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
-      "source_type": "repository",
-      "supported_claims": [
-        "45/64、1052记录、非全链、无执行报价"
-      ]
-    },
-    {
-      "title": "China Commodities Engine - options surface",
-      "publisher": "GitHub",
-      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/options/surface_latest.json",
-      "source_date": "2026-10-26",
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
-      "source_type": "repository",
-      "supported_claims": [
-        "44 core ATM、27 skew、局部IV"
+        "416/806",
+        "214 unresolved",
+        "calendar consistent"
       ]
     },
     {
       "title": "China Commodities Engine - physical",
       "publisher": "GitHub",
       "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/physical/latest.json",
-      "source_date": "2026-10-26",
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
+      "source_date": "2026-10-27",
+      "accessed_at_bjt": "2026-10-28 07:02 BJT",
       "source_type": "repository",
       "supported_claims": [
-        "18/20 fresh、A/B basis为0"
+        "18/20 fresh",
+        "A/B basis=0"
       ]
     },
     {
-      "title": "China Commodities Engine - external",
+      "title": "China Commodities Engine - options surface",
       "publisher": "GitHub",
-      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/external/latest.json",
-      "source_date": "2026-10-26",
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
+      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/options/surface_latest.json",
+      "source_date": "2026-10-27",
+      "accessed_at_bjt": "2026-10-28 07:02 BJT",
       "source_type": "repository",
       "supported_claims": [
-        "17/22 context-only、仓库国际收盘"
+        "ATM44/skew25",
+        "surface/positioning/execution=0"
       ]
     },
     {
-      "title": "China Commodities Engine - official futures crosscheck",
+      "title": "China Commodities Engine - official crosscheck",
       "publisher": "GitHub",
       "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/crosschecks/futures_latest.json",
-      "source_date": "2026-10-26",
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
+      "source_date": "2026-10-27",
+      "accessed_at_bjt": "2026-10-28 07:02 BJT",
       "source_type": "repository",
       "supported_claims": [
-        "四所价格差异0、DCE HTTP412"
+        "四所matched且价格差异0",
+        "DCE HTTP412"
       ]
     },
     {
-      "title": "SC2612夜盘快讯",
-      "publisher": "财联社",
-      "url": "https://www.cls.cn/detail/2515846",
-      "source_date": "2026-10-27",
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
-      "source_type": "market_media",
+      "title": "CU exact-contract vendor snapshot",
+      "publisher": "九期网",
+      "url": "https://www.9qihuo.com/hangqing?productcode=cu",
+      "source_date": "2026-10-28",
+      "accessed_at_bjt": "2026-10-28 07:02 BJT",
+      "source_type": "market_data_fallback",
       "supported_claims": [
-        "SC2612 733.30、相对结算-0.87%",
-        "沪金+0.4%、沪银+0.31%"
+        "CU2612 109420",
+        "CU2611-12夜盘曲线"
       ]
     },
     {
-      "title": "沪铜2026-10-27夜盘行情",
-      "publisher": "上海有色网",
-      "url": "https://hq.smm.cn/futures/104179481",
-      "source_date": "2026-10-27",
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
-      "source_type": "market_data_page",
+      "title": "SC exact-contract vendor snapshot",
+      "publisher": "九期网",
+      "url": "https://www.9qihuo.com/hangqing?productcode=sc",
+      "source_date": "2026-10-28",
+      "accessed_at_bjt": "2026-10-28 07:02 BJT",
+      "source_type": "market_data_fallback",
       "supported_claims": [
-        "CU2612 108570、01:00"
+        "SC2612 712.9",
+        "SC2612-2701夜盘价差"
       ]
     },
     {
-      "title": "甲醇行情中心",
-      "publisher": "证券之星",
-      "url": "https://quote.stockstar.com/futures/czcema.html",
-      "source_date": "2026-10-27",
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
-      "source_type": "market_data_page",
-      "supported_claims": [
-        "MA701 3401、昨结3346、区间3379—3444"
-      ]
-    },
-    {
-      "title": "Oil settles lower on peace hopes",
+      "title": "Oil settles lower on diplomacy hopes",
       "publisher": "Reuters",
-      "url": "https://www.reuters.com/business/energy/oil-prices-down-almost-1-early-trading-2026-10-25/",
-      "source_date": "2026-10-26",
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
-      "source_type": "news",
+      "url": "https://www.reuters.com/business/energy/oil-eases-middle-east-diplomacy-hopes-saudi-attacks-keep-supply-worries-alive-2026-10-27/",
+      "source_date": "2026-10-27",
+      "accessed_at_bjt": "2026-10-28 07:02 BJT",
+      "source_type": "news_primary_reporting",
       "supported_claims": [
-        "Brent115.81 -0.8%、WTI101.76 -1.46%"
+        "Brent113.88",
+        "WTI99.90",
+        "diplomacy vs supply risk"
       ]
     },
     {
-      "title": "Teck HVC strike notice",
-      "publisher": "Teck Resources",
-      "url": "https://www.teck.com/news/news-releases/2026/teck-receives-highland-valley-copper-operations-strike-notice",
-      "source_date": "2026-10-24",
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
-      "source_type": "company_release",
-      "supported_claims": [
-        "HVC罢工通知与最早启动时间"
-      ]
-    },
-    {
-      "title": "SHFE copper contract",
-      "publisher": "上海期货交易所",
-      "url": "https://www.shfe.com.cn/products/futures/metal/nonferrousmetal/cu_f/standard_cu_f/202312/t20231205_331277.html",
-      "source_date": "2023-03-29",
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
-      "source_type": "exchange",
-      "supported_claims": [
-        "CU 5吨/手、tick10元、静态最低保证金5%、静态限幅3%"
-      ]
-    },
-    {
-      "title": "INE crude oil contract",
-      "publisher": "上海国际能源交易中心",
-      "url": "https://www.ine.cn/products/futures/energyandchemical/",
-      "source_date": null,
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
-      "source_type": "exchange",
-      "supported_claims": [
-        "SC 1000桶/手、tick0.1元"
-      ]
-    },
-    {
-      "title": "CZCE methanol contract",
-      "publisher": "郑州商品交易所",
-      "url": "https://www.czce.com.cn/cn/sspz/jc/bzhy/qhhy/H077002008001001index_1.htm",
-      "source_date": null,
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
-      "source_type": "exchange",
-      "supported_claims": [
-        "MA 10吨/手、tick1元"
-      ]
-    },
-    {
-      "title": "USDA Crop Progress",
-      "publisher": "USDA NASS",
-      "url": "https://data.nass.usda.gov/Publications/Reports_by_Release_Day/",
-      "source_date": "2026-10-26",
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
-      "source_type": "official",
-      "supported_claims": [
-        "本周报告已于10月26日发布"
-      ]
-    },
-    {
-      "title": "FOMC calendars",
+      "title": "Federal Reserve 2026 FOMC calendar",
       "publisher": "Federal Reserve",
       "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
-      "source_date": null,
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
+      "source_date": "2026-10-28",
+      "accessed_at_bjt": "2026-10-28 07:02 BJT",
       "source_type": "official",
       "supported_claims": [
-        "10月27—28日FOMC会议"
+        "Oct27-28 meeting",
+        "statement/press conference schedule"
       ]
     },
     {
-      "title": "EIA weekly petroleum schedule",
+      "title": "EIA Weekly Petroleum Status Report",
       "publisher": "EIA",
-      "url": "https://www.eia.gov/petroleum/supply/weekly/schedule.php",
-      "source_date": null,
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
+      "url": "https://www.eia.gov/petroleum/supply/weekly/",
+      "source_date": "2026-10-28",
+      "accessed_at_bjt": "2026-10-28 07:02 BJT",
       "source_type": "official",
       "supported_claims": [
-        "周度石油状态报告发布时间"
+        "Oct28 10:30 ET release"
       ]
     },
     {
-      "title": "SSE periodic report reservation",
-      "publisher": "上海证券交易所",
-      "url": "https://www.sse.com.cn/disclosure/listedinfo/periodic/",
-      "source_date": "2026-10-27",
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
-      "source_type": "exchange",
+      "title": "Teck Q3 2026 release schedule",
+      "publisher": "Teck",
+      "url": "https://www.teck.com/news/news-releases/2026/teck-to-release-third-quarter-2026-results-on-october-29%2C-2026",
+      "source_date": "2026-10-06",
+      "accessed_at_bjt": "2026-10-28 07:02 BJT",
+      "source_type": "company",
       "supported_claims": [
-        "公司定期报告预约核查入口"
+        "Oct29 premarket results",
+        "8:00 PT webcast"
       ]
     },
     {
@@ -1417,16 +1326,17 @@
       "publisher": "GitHub",
       "url": "https://github.com/farfromexact/China-Stock-Engine/blob/main/data/latest/manifest.json",
       "source_date": "2026-10-21",
-      "accessed_at_bjt": "2026-10-27 07:09 BJT",
+      "accessed_at_bjt": "2026-10-28 07:02 BJT",
       "source_type": "repository",
       "supported_claims": [
-        "Stock数据日期与研究能力范围"
+        "5576 universe/5568 quotes",
+        "Stock tape stale"
       ]
     }
   ],
   "archive": {
-    "markdown_path": "reports/2026/10/2026-10-27_commodities_morning.md",
-    "json_path": "reports/2026/10/2026-10-27_commodities_morning.json",
+    "markdown_path": "reports/2026/10/2026-10-28_commodities_morning.md",
+    "json_path": "reports/2026/10/2026-10-28_commodities_morning.json",
     "latest_markdown_path": "latest/commodities_morning.md",
     "latest_json_path": "latest/commodities_morning.json",
     "archive_status": "success",
