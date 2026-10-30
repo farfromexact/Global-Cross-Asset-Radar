@@ -1,0 +1,949 @@
+{
+  "schema_version": "1.0",
+  "status": "published",
+  "report_date": "2026-10-30",
+  "edition": "evening",
+  "generated_at_bjt": "2026-10-30T20:36:00+08:00",
+  "weekend_mode": false,
+  "title": "全球跨资产机会雷达｜2026-10-30晚间版",
+  "one_sentence_conclusion": "全球处于“增长韧性、再加息定价与AI资本开支折价”组合：中国小盘与美科技承压、油品曲线偏强；今晚只有BU/AG具条件赔率，没有可立即下单的新仓。",
+  "regime": "growth_resilience_rehike_pricing_AI_capex_derating_China_smallcap_riskoff_oil_curve_strength",
+  "worth_taking_risk": false,
+  "prompt_version": "radar_2026-10-12_stock_v1",
+  "commodity_consumer_version": "core_2026-10-17_v1",
+  "research_quality_version": "2026-10-21_v1",
+  "data_cutoff": {
+    "beijing_time": "2026-10-30T20:36:00+08:00",
+    "china_cash_market": "closed; latest complete session 2026-10-30; next regular window 2026-11-02 09:30 BJT",
+    "china_futures_market": "commodity night session opens 2026-10-30 21:00 BJT and belongs to trading date 2026-11-02; index futures next 2026-11-02 09:30 BJT",
+    "us_cash_market": "next regular open 2026-10-30 21:30 BJT; 20:30 ECI scheduled but actual value unavailable as of 20:36 BJT",
+    "notes": [
+      "overseas quotes are delayed or pre-open observations unless explicitly labeled EOD",
+      "old commodity Night snapshot is not treated as the current 21:00 session",
+      "10/30 China index-option refresh missing; 10/29 is last-good research only"
+    ]
+  },
+  "repository_refs": {
+    "global_radar": "3ec077e0c00fa964445afd4f781752494d208a0e",
+    "china_options": "274214095b13f4d9b5f917c39b435f5bfb599ca6",
+    "china_commodities": "f8ec52c5d3751552abc246212a42a954b60a48d8",
+    "china_stock": "ce3dd7cf43438e349cef51fdd7f870f359cc549a"
+  },
+  "input_snapshots": {
+    "strict_prior_global": {
+      "path": "reports/2026/10/2026-10-30_morning.json",
+      "generated_at": "2026-10-30T08:13:00+08:00",
+      "status": "ok"
+    },
+    "prior_same_edition": {
+      "path": "reports/2026/10/2026-10-29_evening.json",
+      "generated_at": "2026-10-29T20:08:00+08:00",
+      "status": "ok"
+    },
+    "commodity_auxiliary": {
+      "path": "reports/2026/10/2026-10-30_commodities_evening.json",
+      "generated_at": "2026-10-30T19:29:00+08:00",
+      "status": "ok"
+    },
+    "china_options_repository": "farfromexact/China-Options-Engine",
+    "china_options_path": "data/radar_latest.json",
+    "china_options_date": "2026-10-29",
+    "china_options_generated_at": "2026-10-30T06:20:49+08:00",
+    "china_options_fresh": false,
+    "china_options_official_coverage": 1,
+    "china_commodities": {
+      "repository": "farfromexact/China-Commodities-Engine",
+      "branch": "main",
+      "last_run_status_path": "data/last_run_status.json",
+      "radar_latest_path": "data/radar_latest.json",
+      "radar_history_path": "data/radar_history.json",
+      "trade_date": "2026-10-30",
+      "generated_at": "2026-10-30T18:59:16+08:00",
+      "data_fresh": true,
+      "official_complete": false,
+      "source_date_match_pct": 100,
+      "full_market_ready": true,
+      "critical_module_errors": 0,
+      "history_record_count": null,
+      "module_quality": {
+        "futures": "verified_vendor_primary",
+        "market_state": "ready",
+        "physical": "degraded",
+        "external": "ready",
+        "night": "published_partial_historical_only",
+        "options": "core_available_surface_not_ready_execution_not_ready",
+        "contract_metadata": "partial_error",
+        "futures_crosscheck": "partial_DCE_HTTP_412"
+      },
+      "included_exchanges": [
+        "SHFE",
+        "INE",
+        "DCE",
+        "CZCE",
+        "GFEX"
+      ],
+      "actual_read_paths": [
+        "data/report_input_latest.json",
+        "data/last_run_status.json",
+        "data/night_session/last_run_status.json",
+        "data/radar_latest.json",
+        "data/options/quality_latest.json",
+        "data/crosschecks/futures_latest.json",
+        "data/night_session/latest.json"
+      ]
+    }
+  },
+  "source_status": {
+    "us_official": "ok",
+    "global_market_quotes": "delayed_secondary",
+    "china_cash": "ok_with_SSE50_secondary_conflict",
+    "china_index_futures": "secondary_close_not_official_settlement",
+    "china_options": "stale_last_good_2026-10-29",
+    "china_commodities_futures": "ok_vendor_official_crosscheck_partial",
+    "china_commodities_options": "analytically_partial_not_execution_ready",
+    "china_stock": "stale_and_not_execution_ready",
+    "corporate_ir": "ok",
+    "eci": "scheduled_but_actual_value_unavailable_as_of_cutoff"
+  },
+  "dashboard": [
+    {
+      "asset": "UST 2Y/10Y/30Y",
+      "latest": "4.61% / 4.98% / 5.32%",
+      "signal": "bear-steep valuation pressure",
+      "data_time": "2026-10-29 EOD",
+      "data_attribute": "official EOD"
+    },
+    {
+      "asset": "10Y real / breakeven",
+      "latest": "2.63% / 2.35%",
+      "signal": "high real-yield headwind",
+      "data_time": "2026-10-29 EOD",
+      "data_attribute": "official/derived"
+    },
+    {
+      "asset": "DXY / EURUSD / USDJPY",
+      "latest": "101.86 / about 1.119 / 157.4-157.7",
+      "signal": "yen has not confirmed BOJ squeeze",
+      "data_time": "latest complete/delayed",
+      "data_attribute": "secondary"
+    },
+    {
+      "asset": "QQQ / IWM / SOXX / SMH",
+      "latest": "prior close 715.34 / 284.01 / 513.86 / 561.67; 10/30 premarket NQ -2.41%, ES -1.03%, RTY about -0.46%",
+      "change_1d": "-1.41% / +0.98% / -1.55% / -1.06% in prior complete session",
+      "signal": "AI capex derating deepened; small-cap relative lead already exceeds no-chase threshold",
+      "data_time": "2026-10-29 complete session plus 2026-10-30 07:14 ET delayed premarket",
+      "data_attribute": "vendor snapshot / secondary delayed futures"
+    },
+    {
+      "asset": "WTI / Brent",
+      "latest": "104.17 / 113.43",
+      "change_1d": "+1.41% / +1.75%",
+      "signal": "overseas oil strong, China SC conflict",
+      "data_time": "2026-10-30 18:17 BJT",
+      "data_attribute": "secondary snapshot"
+    },
+    {
+      "asset": "Gold / Silver",
+      "latest": "3981.98 / 50.546",
+      "change_1d": "-0.64% / -2.66%",
+      "signal": "tactical deleveraging versus structural demand",
+      "data_time": "2026-10-30 18:17 BJT",
+      "data_attribute": "secondary snapshot"
+    },
+    {
+      "asset": "VIX / MOVE / HY OAS",
+      "latest": "18.33 / 93.54 / 314bp",
+      "signal": "not disorderly but VIX above pair trigger",
+      "data_time": "2026-10-29 / 2026-10-28",
+      "data_attribute": "mixed official/secondary"
+    },
+    {
+      "asset": "CSI300 / CSI500 / CSI1000",
+      "latest": "3985.50 / 6266.19 / 6161.23",
+      "change_1d": "-1.39% / -2.91% / -3.41%",
+      "signal": "small-cap risk-off",
+      "data_time": "2026-10-30 15:00 BJT",
+      "data_attribute": "EOD"
+    },
+    {
+      "asset": "IH/IF/IC/IM 2612",
+      "latest": "2700.8 / 3928.0 / 6187.2 / 6081.0",
+      "signal": "basis -1.51/-1.44/-1.26/-1.30%; not reversal proof",
+      "data_time": "2026-10-30 15:00:08 BJT",
+      "data_attribute": "secondary close"
+    },
+    {
+      "asset": "HO/IO/MO",
+      "latest": "10/29 ATM IV 14.84/20.90/35.64; RR25 -2.08/-2.60/-4.62vol",
+      "signal": "last-good only; 10/30 not refreshed",
+      "data_time": "2026-10-29 EOD",
+      "data_attribute": "official coverage 730/730 but stale"
+    },
+    {
+      "asset": "China commodities",
+      "latest": "806 vendor records; options 44/64 products; ATM 44; skew 24",
+      "signal": "futures research-ready; options not execution-ready",
+      "data_time": "2026-10-30 EOD",
+      "data_attribute": "official crosscheck partial"
+    },
+    {
+      "asset": "China Stock Engine",
+      "latest": "trade date 2026-10-28; 5570 unknown tradability; candidate union 0",
+      "signal": "not execution-ready",
+      "data_time": "2026-10-28",
+      "data_attribute": "stale"
+    }
+  ],
+  "meaningful_changes": [
+    {
+      "id": "C1",
+      "change": "China small-cap risk-off deepened",
+      "evidence": "CSI1000 -3.41%, CSI500 -2.91%, breadth about 893 up versus 4602 down",
+      "disposition": "retain defensive large-cap relative view; no immediate trade"
+    },
+    {
+      "id": "C2",
+      "change": "BOJ held 1.25% but accelerated ETF sales from 2027",
+      "evidence": "8-1 decision; book-value annual sales 330bn to 860bn yen",
+      "disposition": "no yen squeeze confirmation; monitor USDJPY"
+    },
+    {
+      "id": "C3",
+      "change": "BU gained third evidence layer while AG chase odds worsened",
+      "evidence": "BU settlement 5204 and OI +13377; AG settlement -4.21% and OI -21622",
+      "disposition": "BU score 76; AG 73 to 72"
+    },
+    {
+      "id": "C4",
+      "change": "AI price action penalizes capex/FCF despite growth",
+      "evidence": "AWS +39.3% with TTM FCF -42.4bn USD; AMZN -6.3% and Nasdaq-100 futures -2.41% around 07:14 ET premarket; GOOGL prior session about -12.7% and premarket -0.6%",
+      "disposition": "old MSFT/GOOGL pair remains invalid, no fill/no PnL"
+    },
+    {
+      "id": "C5",
+      "change": "Commodity option sample coverage improved but execution did not",
+      "evidence": "successful products 33 to 44; bid/ask coverage remains zero; full-chain false",
+      "disposition": "allow local IV/skew research only"
+    },
+    {
+      "id": "C6",
+      "change": "US Q3 ECI publication remained unavailable after the scheduled time",
+      "evidence": "as of 20:36 BJT the BLS current page still showed Q2 and independent calendars had a blank Actual field",
+      "disposition": "do not substitute the 0.8% consensus; all ECI-dependent US execution remains blocked"
+    }
+  ],
+  "top_opportunities": [
+    {
+      "rank": 1,
+      "name": "BU2701 strong-curve pullback long",
+      "idea_id": "COM-E-BU2701-STRONG-CURVE-PULLBACK-LONG-20261026",
+      "score": 76,
+      "direction": "conditional long",
+      "holding_period": "tonight to 2026-11-02",
+      "stage": "conditional_not_triggered",
+      "instruments": [
+        "SHFE BU2701 futures"
+      ],
+      "max_loss_limited": false,
+      "score_components": {
+        "logic": 22,
+        "odds_convexity": 18,
+        "catalyst": 17,
+        "price_term_vol": 10,
+        "crowding_technical": 9
+      },
+      "research_edge": "positive",
+      "evidence_sufficiency": "3 layers",
+      "execution_state": "not ready"
+    },
+    {
+      "rank": 2,
+      "name": "AG2612 failed-rebound short",
+      "idea_id": "COM-M-AG2612-POST-FOMC-BREAKDOWN-SHORT-20261029",
+      "score": 72,
+      "direction": "conditional short",
+      "holding_period": "to 2026-11-04",
+      "stage": "conditional_not_triggered",
+      "instruments": [
+        "SHFE AG2612 futures"
+      ],
+      "max_loss_limited": false,
+      "score_components": {
+        "logic": 21,
+        "odds_convexity": 16,
+        "catalyst": 16,
+        "price_term_vol": 10,
+        "crowding_technical": 9
+      },
+      "research_edge": "positive",
+      "evidence_sufficiency": "3 layers",
+      "execution_state": "not ready"
+    },
+    {
+      "rank": 3,
+      "name": "IWM long / QQQ short relative value",
+      "idea_id": "US-RV-IWM-LONG-QQQ-SHORT-20261030",
+      "score": 71,
+      "direction": "long IWM short QQQ",
+      "holding_period": "5-7 sessions",
+      "stage": "conditional_not_triggered",
+      "instruments": [
+        "IWM shares",
+        "QQQ shares"
+      ],
+      "max_loss_limited": false,
+      "score_components": {
+        "logic": 20,
+        "odds_convexity": 17,
+        "catalyst": 15,
+        "price_term_vol": 10,
+        "crowding_technical": 9
+      },
+      "research_edge": "moderate",
+      "evidence_sufficiency": "3 independent factors",
+      "execution_state": "not ready; delayed premarket relative lead exceeded 1.5pp and VIX around 18.45 exceeded threshold"
+    },
+    {
+      "rank": 4,
+      "name": "AP701 curve pullback long",
+      "idea_id": "COM-A-AP701-MOMENTUM-CURVE-PULLBACK-LONG-20261030",
+      "score": 69,
+      "direction": "conditional long",
+      "holding_period": "2026-11-02 to 2026-11-05",
+      "stage": "next_day_session_only",
+      "instruments": [
+        "CZCE AP701 futures"
+      ],
+      "max_loss_limited": false,
+      "score_components": {
+        "logic": 20,
+        "odds_convexity": 17,
+        "catalyst": 14,
+        "price_term_vol": 9,
+        "crowding_technical": 9
+      },
+      "research_edge": "positive",
+      "evidence_sufficiency": "2 layers; score capped at 69",
+      "execution_state": "window closed"
+    },
+    {
+      "rank": 5,
+      "name": "SC2612 weekend-risk breakout watch",
+      "idea_id": "COM-E-SC2612-WEEKEND-RISK-BREAKOUT-LONG-20261030",
+      "parent_conflict": "morning short hypothesis paused, not erased",
+      "score": 68,
+      "direction": "watch long only on confirmation",
+      "holding_period": "to 2026-11-02",
+      "stage": "watch",
+      "instruments": [
+        "INE SC2612 futures"
+      ],
+      "max_loss_limited": false,
+      "score_components": {
+        "logic": 19,
+        "odds_convexity": 16,
+        "catalyst": 14,
+        "price_term_vol": 10,
+        "crowding_technical": 9
+      },
+      "research_edge": "unconfirmed",
+      "evidence_sufficiency": "2 layers",
+      "execution_state": "not ready"
+    }
+  ],
+  "top_trade_cards": [
+    {
+      "idea_id": "COM-E-BU2701-STRONG-CURVE-PULLBACK-LONG-20261026",
+      "instrument": "BU2701",
+      "contract": "10 tonnes; tick CNY2/tonne; tick value CNY20; reference margin 14%; price limit 12%",
+      "window": "2026-10-30 21:00-23:00 BJT, trading date 2026-11-02",
+      "entry": "after 21:15 BU>=5300 for 15m AND BU2612-BU2701>=1.50% AND Jan Brent>=113.5; then pullback 5235-5265 holds 5200; 40/60",
+      "abandon": "first executable price >5380",
+      "stop": 5170,
+      "logical_invalidation": "curve<1.0% OR Brent<111 for 30m",
+      "tp1": 5380,
+      "tp2": 5520,
+      "time_exit": "22:50 cancel if unconfirmed; 2026-11-02 14:45 final",
+      "scenarios": [
+        {
+          "price": 5235,
+          "risk_cny": 650,
+          "tp1_R": 2.23,
+          "tp2_R": 4.38
+        },
+        {
+          "price": 5250,
+          "risk_cny": 800,
+          "tp1_R": 1.63,
+          "tp2_R": 3.38
+        },
+        {
+          "price": 5265,
+          "risk_cny": 950,
+          "tp1_R": 1.21,
+          "tp2_R": 2.68
+        }
+      ],
+      "cost_note": "fees/slippage unknown; R is gross",
+      "budget": "trial <=0.50% NAV; confirmed <=1.0%; weekend carry <=0.25%; oil theme <=2.5%",
+      "position_state": "not provided/unknown"
+    },
+    {
+      "idea_id": "COM-M-AG2612-POST-FOMC-BREAKDOWN-SHORT-20261029",
+      "instrument": "AG2612",
+      "contract": "15kg; tick CNY1/kg; tick value CNY15; reference margin 22%; price limit 20%",
+      "window": "2026-10-30 21:00-02:30 BJT, trading date 2026-11-02",
+      "entry": "after 21:15 rebound 12280-12350 then fails 12420 for 15m AND COMEX silver<=51.50 AND AG2612-AG2702<=0; 40/60",
+      "abandon": "first executable price <11950",
+      "stop": 12520,
+      "logical_invalidation": "COMEX silver>52.50 OR curve>0.3% for 30m",
+      "tp1": 11950,
+      "tp2": 11500,
+      "time_exit": "2026-11-04",
+      "scenarios": [
+        {
+          "price": 12340,
+          "risk_cny": 2700,
+          "tp1_R": 2.17,
+          "tp2_R": 4.67
+        },
+        {
+          "price": 12310,
+          "risk_cny": 3150,
+          "tp1_R": 1.71,
+          "tp2_R": 3.86
+        },
+        {
+          "price": 12280,
+          "risk_cny": 3600,
+          "tp1_R": 1.38,
+          "tp2_R": 3.25
+        }
+      ],
+      "cost_note": "fees/slippage unknown; R is gross",
+      "budget": "trial <=0.25% NAV; confirmed <=0.75%; precious-metals theme <=1.5%",
+      "position_state": "not provided/unknown"
+    },
+    {
+      "idea_id": "US-RV-IWM-LONG-QQQ-SHORT-20261030",
+      "instrument": "long 100 IWM / short 40 QQQ reference basket",
+      "contract": "approximately dollar-neutral at prior closes, explicitly not beta-neutral",
+      "window": "after 2026-10-30 22:00 BJT",
+      "entry": "IWM/QQQ ratio above first-30m high for 15m AND IWM lead<=1.5pp AND 2Y<=4.65% AND VIX<=18; 50/50",
+      "abandon": "any trigger unknown, IWM lead>1.5pp, or VIX>18; delayed premarket already failed both price and VIX gates",
+      "stop": "basket NAV -1.2%",
+      "logical_invalidation": "QQQ rebound with IWM liquidity deterioration or factor reversal",
+      "tp1": "+2.0%",
+      "tp2": "+3.5%",
+      "time_exit": "2026-11-06 close",
+      "pnl_formula": "100*dIWM - 40*dQQQ before fees, borrow and FX",
+      "cost_note": "net R unverified because borrow/fees/slippage and live prices are missing",
+      "budget": "trial <=0.50% NAV; confirmed <=1.0%; shared equity-factor theme <=2.5%",
+      "position_state": "not provided/unknown"
+    }
+  ],
+  "gold_tracking": {
+    "narrative_assessment": "structurally strengthened, tactically weakened",
+    "drivers": {
+      "real_yield": "10Y real 2.63% is a headwind",
+      "dollar": "DXY around 101.86 is a headwind",
+      "central_banks": "August net purchases 39t; YTD 170t",
+      "etf_flows": "September +USD10bn and +67t; holdings 4256t",
+      "cftc": "latest official data lagged; crowding evidence not current",
+      "price": "spot about 3982 at 18:17 BJT secondary snapshot"
+    },
+    "expressions": [
+      {
+        "name": "3-6m call spread",
+        "status": "quote required; no strike reused",
+        "max_debit": "<=0.60% NAV and <=35% of strike width"
+      },
+      {
+        "name": "micro gold future",
+        "status": "not preferred while real yield rising; stop not max loss"
+      },
+      {
+        "name": "gold long plus long-duration Treasury put spread",
+        "status": "requires separate Gold Delta and DV01 accounting"
+      },
+      {
+        "name": "reverse short",
+        "status": "research only if gold<3965 and real yield rises"
+      },
+      {
+        "name": "no trade",
+        "status": "preferred now"
+      }
+    ],
+    "execution_ready": false
+  },
+  "ai_tracking": {
+    "thesis": "cash-flow pricing power versus capex beta",
+    "facts": [
+      "Amazon AWS +39.3%; TTM FCF -USD42.4bn; 2026 capex about USD220bn",
+      "Microsoft revenue +19%; Azure +48%; quarterly FCF USD18.6bn",
+      "Alphabet cloud profit strong but quarterly capex about USD51.4bn",
+      "SOXX/SMH fell in latest completed session"
+    ],
+    "preferred_expression": "research theme: cash-flow leaders long versus capex-burn short; not beta-neutral",
+    "invalidated_idea": {
+      "idea_id": "AI-MSFT-LONG-GOOGL-SHORT-POST-EARNINGS-20261029",
+      "status": "invalid_before_legal_entry",
+      "reason": "relative opening gap exceeded 3pp abandonment rule",
+      "fill": false,
+      "pnl": null
+    },
+    "execution_ready": false,
+    "next_discriminator": "conversion of capex to next-two-quarter FCF and margins"
+  },
+  "china_tracking": {
+    "qualified_trade": false,
+    "score": null,
+    "preferred_future": null,
+    "cash_eod": {
+      "SSE50": 2742.11,
+      "CSI300": 3985.5,
+      "CSI500": 6266.19,
+      "CSI1000": 6161.23,
+      "breadth": "about 893 up / 4602 down"
+    },
+    "futures": {
+      "IH2612": {
+        "last": 2700.8,
+        "basis_pct": -1.5065,
+        "annualized_basis_pct": -11.22,
+        "volume": 46306,
+        "oi": 75788,
+        "estimated_delta_oi": 3762
+      },
+      "IF2612": {
+        "last": 3928,
+        "basis_pct": -1.443,
+        "annualized_basis_pct": -10.75,
+        "volume": 94604,
+        "oi": 182758,
+        "estimated_delta_oi": 1117
+      },
+      "IC2612": {
+        "last": 6187.2,
+        "basis_pct": -1.261,
+        "annualized_basis_pct": -9.39,
+        "volume": 152330,
+        "oi": 187660,
+        "estimated_delta_oi": 8540
+      },
+      "IM2612": {
+        "last": 6081,
+        "basis_pct": -1.302,
+        "annualized_basis_pct": -9.7,
+        "volume": 275498,
+        "oi": 304720,
+        "estimated_delta_oi": 9900
+      }
+    },
+    "futures_data_limit": "secondary close; not official settlement; delta OI estimated against prior official/engine OI",
+    "options_last_good": {
+      "date": "2026-10-29",
+      "HO_ATM_IV": 14.842,
+      "IO_ATM_IV": 20.899,
+      "MO_ATM_IV": 35.64,
+      "HO_RR25": -2.084,
+      "IO_RR25": -2.599,
+      "MO_RR25": -4.619,
+      "dealer_gamma_direction_known": false
+    },
+    "futures_option_linkage": {
+      "IH": "HO",
+      "IF": "IO",
+      "IM": "MO",
+      "IC": "no one-to-one index option"
+    },
+    "stock_engine": {
+      "trade_date": "2026-10-28",
+      "universe": 5570,
+      "adjustment_ready": false,
+      "industry_ready": false,
+      "tradability_ready": false,
+      "candidate_union": 0,
+      "financial_bundles": 2,
+      "forecast_bundles": 0
+    },
+    "a_share_candidates": [],
+    "next_window": "2026-11-02 09:30 BJT"
+  },
+  "commodities_tracking": {
+    "data_quality": {
+      "status": "degraded",
+      "price_source": "vendor full-market EOD plus partial official exchange crosscheck",
+      "curve_definition": "near_minus_next_futures_curve_not_spot_basis",
+      "basis_status": "unavailable",
+      "warehouse_status": "partial_error_with_carry_forward",
+      "member_rankings_status": "unavailable",
+      "options_chain_status": "core_v1 sampled strikes 44/64 products; not full chain",
+      "options_surface_status": "not_ready; local ATM 44 and skew 24 series may be studied only",
+      "history_comparison_status": "available",
+      "available_horizons": [
+        "1D",
+        "3D",
+        "5D",
+        "20D"
+      ],
+      "comparative_metrics": [],
+      "collection_scope": "futures full vendor market; options core_v1 sampled strikes",
+      "analytics_scope": "local ATM/skew where series-ready",
+      "execution_ready": false,
+      "futures_crosscheck": "partial; SHFE/INE/CZCE/GFEX key prices matched; DCE official HTTP 412; volume/OI not independently checked"
+    },
+    "market_dashboard": [
+      {
+        "product": "BU",
+        "main_contract": "BU2701",
+        "close": 5284,
+        "settlement": 5204,
+        "oi_change": 13377,
+        "signal": "strong curve pullback long conditional"
+      },
+      {
+        "product": "AG",
+        "main_contract": "AG2612",
+        "close": 12093,
+        "settlement": 12374,
+        "oi_change": -21622,
+        "signal": "failed-rebound short conditional; no chase"
+      },
+      {
+        "product": "AP",
+        "main_contract": "AP701",
+        "close": 5887,
+        "settlement": 5678,
+        "change_pct": 5.4,
+        "signal": "day-session pullback long conditional"
+      },
+      {
+        "product": "SC",
+        "main_contract": "SC2612",
+        "signal": "overseas oil strength conflicts with China settlement; watch only"
+      },
+      {
+        "product": "MA",
+        "main_contract": "MA701",
+        "signal": "two-layer watch only"
+      }
+    ],
+    "supply_chain_map": [
+      {
+        "chain": "black/building",
+        "assessment": "BU strongest; steel and glass chains below ranking threshold"
+      },
+      {
+        "chain": "metals",
+        "assessment": "AG deleveraging; AU structural demand; avoid SN chase"
+      },
+      {
+        "chain": "energy/chemicals",
+        "assessment": "overseas oil strong versus China SC weak; MA two layers"
+      },
+      {
+        "chain": "new energy",
+        "assessment": "LC/SI/PS no three-layer executable signal"
+      },
+      {
+        "chain": "agriculture",
+        "assessment": "AP capped at 69; others below threshold"
+      },
+      {
+        "chain": "shipping",
+        "assessment": "EC constrained by spot/time-zone evidence"
+      }
+    ],
+    "options_surface": {
+      "status": "not_ready",
+      "available_metrics": [],
+      "tradeable_structures": [],
+      "research_priority_when_ready": [
+        "BU ATM and skew with live bid/ask",
+        "AG downside skew and term",
+        "AP term after next session"
+      ],
+      "local_metric_notes": "core_atm_ready 44 series and skew_ready 24 series are locally useful; full-chain, positioning and execution remain false; bid/ask coverage zero"
+    },
+    "night_session_risk_map": [
+      {
+        "product": "BU2701",
+        "confidence": "conditional",
+        "action": "21:15 price/curve/oil; 21:30 pullback; 21:45 hold 5200 before first tranche"
+      },
+      {
+        "product": "AG2612",
+        "confidence": "conditional",
+        "action": "21:15 rebound; 21:30 COMEX and curve; 21:45 fail 12420 before first tranche"
+      },
+      {
+        "product": "cross-asset risk",
+        "confidence": "medium",
+        "action": "if 2Y>4.65 or VIX>18, halve commodity budget and cancel IWM/QQQ"
+      }
+    ],
+    "night_semantics": {
+      "current_session": "not started at report cutoff; Friday session belongs to trading date 2026-11-02",
+      "historical_session": "trade date 2026-10-30; 413/806 coverage; 214 unresolved",
+      "price_semantics": "vendor_latest_trade_asof_snapshot, not official night close",
+      "ohlcv_scope": "vendor_realtime_unverified_session_scope",
+      "calendar_mismatch": false
+    }
+  },
+  "event_calendar": [
+    {
+      "time_bjt": "2026-10-30 20:30",
+      "event": "US Q3 Employment Cost Index",
+      "status": "scheduled; actual value unavailable as of 20:36 BJT",
+      "risk": "2Y/USD/VIX reaction unknown; IWM-QQQ execution blocked"
+    },
+    {
+      "time_bjt": "2026-10-30 21:00",
+      "event": "China commodity night session, trading date 2026-11-02",
+      "risk": "BU/AG 15/30/45-minute validation"
+    },
+    {
+      "time_bjt": "2026-10-30 21:30",
+      "event": "US cash open",
+      "risk": "do not use pre-open point as execution"
+    },
+    {
+      "time_bjt": "2026-10-31 03:30 approx",
+      "event": "CFTC weekly positioning",
+      "risk": "lagged crowding validation"
+    },
+    {
+      "time_bjt": "2026-10-31 09:30",
+      "event": "China October PMI",
+      "risk": "CNH, cyclicals and Monday gap"
+    },
+    {
+      "time_bjt": "2026-11-01 time unconfirmed",
+      "event": "OPEC+ meeting",
+      "risk": "oil weekend gap"
+    },
+    {
+      "time_bjt": "2026-11-03 23:00",
+      "event": "US JOLTS",
+      "risk": "front-end yields and growth duration"
+    },
+    {
+      "time_bjt": "2026-11-04 23:30",
+      "event": "EIA weekly petroleum status",
+      "risk": "BU/SC curve"
+    },
+    {
+      "time_bjt": "2026-11-05 21:30",
+      "event": "US productivity/unit labor costs; USDA export sales expected",
+      "risk": "wage-productivity and agriculture"
+    },
+    {
+      "time_bjt": "2026-11-06 21:30",
+      "event": "US employment report",
+      "risk": "Delta/Vega and weekend Gamma"
+    }
+  ],
+  "action_list": {
+    "A": "今天没有应立即建立的新仓位。",
+    "B": "今天仅应挂条件的候选：BU2701强曲线回踩多、AG2612反抽失败空、IWM多/QQQ空相对价值；AP701仅限11月2日日盘条件单，不得提前追价。",
+    "C": "今天继续观察：SC2612周末风险突破、黄金政策信用叙事、AI现金流龙头/Capex Beta分化、HO/IO/MO在10月30日数据补齐后的IV与偏度。",
+    "D": "今天必须回避或若此前已建仓则有条件退出：回避追涨BU/AP、追空AG、无报价商品/海外期权及已失效MSFT多/GOOGL空旧计划；若此前自行建仓，仅按各卡原止损/失效/时间退出，不推定持仓。"
+  },
+  "risk_budget": {
+    "trial_nav_pct": "0.25%-0.75%",
+    "confirmed_nav_pct": "0.75%-1.5%",
+    "theme_cap_nav_pct": "2.5%-3.0%",
+    "specific_limits": {
+      "BU_weekend_carry": "<=0.25% NAV",
+      "AG_precious_metals_theme": "<=1.5% NAV",
+      "IWM_QQQ_trial": "<=0.50% NAV"
+    },
+    "principles": [
+      "margin is not risk budget",
+      "futures stop does not cap maximum loss",
+      "unknown costs are not zero",
+      "aggregate common factors across USD, gold, long duration, AI, China small caps and oil/chemicals"
+    ]
+  },
+  "sources": [
+    {
+      "title": "Daily Treasury Par Yield Curve Rates",
+      "publisher": "U.S. Department of the Treasury",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026",
+      "source_date": "2026-10-29",
+      "accessed_at_bjt": "2026-10-30T20:05:00+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "2Y, 5Y, 10Y and 30Y yields"
+      ]
+    },
+    {
+      "title": "GDP and Personal Income releases",
+      "publisher": "U.S. Bureau of Economic Analysis",
+      "url": "https://www.bea.gov/newsroom",
+      "source_date": "2026-10-29",
+      "accessed_at_bjt": "2026-10-30T20:05:00+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "Q3 GDP 3.4% annualized",
+        "September PCE 3.6% and core PCE 3.1% y/y"
+      ]
+    },
+    {
+      "title": "Employment Cost Index",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "url": "https://www.bls.gov/news.release/eci.nr0.htm",
+      "source_date": "2026-10-30",
+      "accessed_at_bjt": "2026-10-30T20:36:00+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "scheduled release time 08:30 ET",
+        "current official page still showed Q2 values as of report cutoff; Q3 actual not obtained"
+      ]
+    },
+    {
+      "title": "Monetary Policy Meetings",
+      "publisher": "Bank of Japan",
+      "url": "https://www.boj.or.jp/en/mopo/mpmdeci/index.htm",
+      "source_date": "2026-10-30",
+      "accessed_at_bjt": "2026-10-30T20:05:00+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "1.25% overnight rate maintained",
+        "ETF sales pace accelerated from 2027"
+      ]
+    },
+    {
+      "title": "Amazon Quarterly Results",
+      "publisher": "Amazon",
+      "url": "https://ir.aboutamazon.com/quarterly-results/default.aspx",
+      "source_date": "2026-10-29",
+      "accessed_at_bjt": "2026-10-30T20:05:00+08:00",
+      "source_type": "issuer_IR",
+      "supported_claims": [
+        "AWS growth",
+        "FCF and capex"
+      ]
+    },
+    {
+      "title": "Microsoft Investor Relations",
+      "publisher": "Microsoft",
+      "url": "https://www.microsoft.com/en-us/Investor",
+      "source_date": "2026-10-29",
+      "accessed_at_bjt": "2026-10-30T20:05:00+08:00",
+      "source_type": "issuer_IR",
+      "supported_claims": [
+        "revenue, Azure and FCF"
+      ]
+    },
+    {
+      "title": "Nasdaq futures sink as Amazon and Intel intensify AI spending fears",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/nasdaq-futures-tumble-amazon-intel-results-deepen-ai-spending-woes-2026-10-30/",
+      "source_date": "2026-10-30",
+      "accessed_at_bjt": "2026-10-30T20:15:00+08:00",
+      "source_type": "reliable_media",
+      "supported_claims": [
+        "Nasdaq-100 futures -2.41% and S&P futures -1.03% around 07:14 ET",
+        "Amazon -6.3% premarket and AI capex/FCF repricing"
+      ]
+    },
+    {
+      "title": "CBOE VIX",
+      "publisher": "Cboe",
+      "url": "https://www.cboe.com/tradable_products/vix/",
+      "source_date": "2026-10-29",
+      "accessed_at_bjt": "2026-10-30T20:05:00+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "VIX 18.33 official delayed close"
+      ]
+    },
+    {
+      "title": "Gold Demand Trends",
+      "publisher": "World Gold Council",
+      "url": "https://www.gold.org/goldhub/research/gold-demand-trends",
+      "source_date": "2026-10",
+      "accessed_at_bjt": "2026-10-30T20:05:00+08:00",
+      "source_type": "industry_primary",
+      "supported_claims": [
+        "ETF flows and central-bank purchases"
+      ]
+    },
+    {
+      "title": "National data release calendar",
+      "publisher": "National Bureau of Statistics of China",
+      "url": "https://www.stats.gov.cn/sj/fbrc/",
+      "source_date": "2026-10-30",
+      "accessed_at_bjt": "2026-10-30T20:05:00+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "China PMI release calendar"
+      ]
+    },
+    {
+      "title": "China-Commodities-Engine data snapshot",
+      "publisher": "farfromexact",
+      "url": "https://github.com/farfromexact/China-Commodities-Engine",
+      "source_date": "2026-10-30",
+      "accessed_at_bjt": "2026-10-30T20:05:00+08:00",
+      "source_type": "repository",
+      "supported_claims": [
+        "806 futures records",
+        "option core coverage",
+        "night semantics",
+        "BU AG AP data",
+        "official crosscheck limitations"
+      ]
+    },
+    {
+      "title": "China-Options-Engine radar snapshot",
+      "publisher": "farfromexact",
+      "url": "https://github.com/farfromexact/China-Options-Engine",
+      "source_date": "2026-10-29",
+      "accessed_at_bjt": "2026-10-30T20:05:00+08:00",
+      "source_type": "repository",
+      "supported_claims": [
+        "HO IO MO last-good IV, skew, PCR and gamma peaks"
+      ]
+    },
+    {
+      "title": "China-Stock-Engine latest snapshot",
+      "publisher": "farfromexact",
+      "url": "https://github.com/farfromexact/China-Stock-Engine",
+      "source_date": "2026-10-28",
+      "accessed_at_bjt": "2026-10-30T20:05:00+08:00",
+      "source_type": "repository",
+      "supported_claims": [
+        "stale trade date",
+        "adjustment industry and tradability gaps",
+        "limited financial directory"
+      ]
+    }
+  ],
+  "archive": {
+    "markdown_path": "reports/2026/10/2026-10-30_evening.md",
+    "json_path": "reports/2026/10/2026-10-30_evening.json",
+    "latest_markdown_path": "latest/evening.md",
+    "latest_json_path": "latest/evening.json",
+    "archive_status": "success",
+    "commit_sha": null,
+    "error": null,
+    "ci_validation_status": "pending_or_unverified",
+    "validation": {
+      "json_parse": "passed",
+      "schema": "pending_local",
+      "score_arithmetic": "passed",
+      "history_markdown": "passed_after_reread",
+      "history_json": "passed_after_reread",
+      "latest_markdown": "passed_after_reread",
+      "latest_json": "passed_after_reread",
+      "status": "passed_after_reread",
+      "manifest": "passed_after_reread"
+    }
+  }
+}
+
