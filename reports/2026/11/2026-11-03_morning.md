@@ -3,7 +3,7 @@ report_date: 2026-11-03
 edition: morning
 generated_at_bjt: 2026-11-03T08:06:43+08:00
 weekend_mode: false
-archive_status: pending
+archive_status: success
 ---
 
 # 全球跨资产机会雷达｜晨间版｜2026-11-03
