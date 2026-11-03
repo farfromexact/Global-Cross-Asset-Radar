@@ -3,7 +3,7 @@
   "status": "published",
   "report_date": "2026-11-04",
   "edition": "commodities_morning",
-  "generated_at_bjt": "2026-11-04T07:04:45+08:00",
+  "generated_at_bjt": "2026-11-04T07:37:33+08:00",
   "weekend_mode": false,
   "title": "商品期货期权晨间雷达｜2026-11-04",
   "one_sentence_conclusion": "截至本报告时点，无可立即执行的合格新交易；最值得验证的是铜三锚再确认、EC实体确认后的反弹空及SC不追空后的反弹失败。",
@@ -12,7 +12,7 @@
   "prompt_version": "radar_2026-10-12_stock_v1",
   "research_quality_version": "2026-10-21_v1",
   "data_protocol_version": "china_commodities_core_2026-10-17_v1",
-  "data_cutoff": "2026-11-04T07:03:00+08:00",
+  "data_cutoff": "2026-11-04T07:36:00+08:00",
   "input_snapshots": {
     "report_input": {
       "path": "data/report_input_latest.json",
@@ -677,12 +677,12 @@
       "parameters": {
         "multiplier": "5吨/手",
         "tick": "10元/吨=50元/手",
-        "general_margin": "11%（公告后2610—2702延续）",
+        "general_margin": "交易所基础11%；11月4日经纪商风险通知示例14%，实际以账户为准",
         "price_limit": "9%",
         "night": "21:00—01:00",
         "last_trading_day": "2026-12-15",
         "delivery_end": "2026-12-17",
-        "nominal_margin_mid_cny": 58502.5,
+        "nominal_margin_mid_cny": 74585,
         "one_limit_pressure_mid_cny": 47947.5,
         "two_limit_pressure_mid_cny": 95895
       },
@@ -740,12 +740,12 @@
       "parameters": {
         "multiplier": "50元/点",
         "tick": "0.5点=25元/手",
-        "general_margin": "当前EC2612公开结算参数约22%，需开盘复核",
+        "general_margin": "交易所公开结算参数约22%；11月4日经纪商风险通知示例31%，实际以账户为准",
         "price_limit": "10%",
         "night": "无夜盘",
         "last_trading_day": "2026-12-28",
         "settlement": "现金交割",
-        "nominal_margin_mid_cny": 27390,
+        "nominal_margin_mid_cny": 38595,
         "one_limit_pressure_mid_cny": 12450,
         "two_limit_pressure_mid_cny": 24900
       },
@@ -803,12 +803,12 @@
       "parameters": {
         "multiplier": "1000桶/手",
         "tick": "0.1元/桶=100元/手",
-        "general_margin": "20%",
+        "general_margin": "交易所一般20%；11月4日经纪商风险通知示例24%，实际以账户为准",
         "price_limit": "18%",
         "night": "21:00—02:30",
         "last_trading_day": "2026-11-30",
         "delivery_end": "2026-12-07",
-        "nominal_margin_mid_cny": 137400,
+        "nominal_margin_mid_cny": 164880,
         "one_limit_pressure_from_694_9_cny": 125082,
         "two_limit_pressure_cny": 250164
       },
@@ -1102,6 +1102,14 @@
       "supported_claims": [
         "当前刷新失败、last-good 10月30日、执行能力未就绪"
       ]
+    },
+    {
+      "title": "11-04 broker margin risk notice",
+      "url": "https://cdfco.com.cn/a/31589.html",
+      "as_of": "published 2026-11-03; applicable 2026-11-04",
+      "supported_claims": [
+        "CU2612 14%、SC2612 24%、EC2612 31%为经纪商风险参数示例；实际账户以结算单为准"
+      ]
     }
   ],
   "archive": {
@@ -1113,6 +1121,8 @@
     "archive_status": "success",
     "commit_sha": null,
     "error": null,
-    "ci_validation_status": "pending_or_unverified"
-  }
+    "ci_validation_status": "pending_or_unverified",
+    "revision": 2
+  },
+  "revision_note": "07:37 input SHAs unchanged; directions/scores/triggers unchanged. Added broker-margin risk examples for near-delivery-month contracts and kept execution not ready."
 }
