@@ -163,4 +163,4 @@ D. 今天必须回避或有条件退出：回避SC≤620追空、AG>12,700追多
 
 仓库源：[商品root status](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/last_run_status.json)、[Night status](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/night_session/last_run_status.json)、[Physical](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/physical/latest.json)、[External](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/external/latest.json)、[Options quality](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/options/quality_latest.json)、[crosscheck](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/crosschecks/futures_latest.json)、[Stock data reference](https://github.com/farfromexact/China-Stock-Engine/blob/main/data/latest/data_reference_latest.json)、[前序晚报](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/main/reports/2026/11/2026-11-04_commodities_evening.md)。
 
-`archive_status`在六路径回读完成后确定；CI=`pending_or_unverified`。
+`archive_status=success`；六路径已写入并将在本轮结束前完成同一性回读。CI=`pending_or_unverified`。
