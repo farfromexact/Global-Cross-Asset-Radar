@@ -1,0 +1,1096 @@
+{
+  "schema_version": "1.0.0",
+  "status": "published",
+  "report_date": "2026-11-05",
+  "edition": "morning",
+  "generated_at_bjt": "2026-11-05T08:13:51+08:00",
+  "weekend_mode": false,
+  "title": "全球跨资产机会雷达晨间版｜2026-11-05",
+  "one_sentence_conclusion": "混合型Risk-on：油价与收益率下行推动广泛反弹，但半导体继续去杠杆；黄金政策信用溢价增强，中国小盘仅在回撤确认后可研究。",
+  "regime": "mixed_risk_on_with_ai_capex_deleveraging_and_policy_credit_hedging",
+  "worth_taking_risk": false,
+  "data_cutoff": "2026-11-05T08:00:00+08:00",
+  "input_snapshots": [
+    {
+      "repository": "farfromexact/Global-Cross-Asset-Radar",
+      "commit": "7c1c03f2f451057a6e1e3f99e60615e8d26eb724",
+      "status": "ok",
+      "paths": [
+        "manifests/reports.json",
+        "reports/2026/11/2026-11-04_evening.json",
+        "reports/2026/11/2026-11-04_morning.json"
+      ]
+    },
+    {
+      "repository": "farfromexact/China-Options-Engine",
+      "commit": "9eedd0b5069e2067c69aa1a703afa4c2ac8010fc",
+      "status": "ok",
+      "paths": [
+        "data/radar_latest.json",
+        "data/radar_history.json"
+      ],
+      "source_date": "2026-11-04"
+    },
+    {
+      "repository": "farfromexact/China-Commodities-Engine",
+      "commit": "3120399d1f4d810f7d74ae54e5936546ef01c334",
+      "status": "partial_stale",
+      "paths": [
+        "data/report_input_latest.json",
+        "data/last_run_status.json",
+        "data/night_session/last_run_status.json",
+        "data/radar_latest.json",
+        "data/crosschecks/futures_latest.json"
+      ],
+      "source_date": "2026-11-02 last-good; 2026-11-04/05 exact subset and status"
+    },
+    {
+      "repository": "farfromexact/China-Stock-Engine",
+      "commit": "3caa2dc013d9392332b30c5572b7cfb883554dc7",
+      "status": "stale_permission_error",
+      "paths": [
+        "data/last_run_status.json",
+        "data/latest/manifest.json",
+        "data/latest/data_reference_latest.json",
+        "data/latest/opportunity_radar_latest.json",
+        "data/latest/research_inputs_latest.json"
+      ],
+      "source_date": "2026-10-30 last-valid"
+    }
+  ],
+  "source_status": {
+    "global_market": "partial_but_sufficient_for_research",
+    "china_options": "ok_eod_not_realtime",
+    "china_commodities": "partial_last_good_plus_exact_contract_fallback",
+    "china_stock": "stale_execution_not_ready",
+    "internet_crosscheck": "opened_primary_and_reliable_sources"
+  },
+  "fact_ledger": [
+    {
+      "fact_id": "F-US-RATES-001",
+      "instrument": "UST 2Y/5Y/10Y/30Y",
+      "value": "4.58%/4.69%/4.90%/5.28%",
+      "basis": "official close yield",
+      "observed_at": "2026-11-04 ET",
+      "known_at": "2026-11-04",
+      "read_at": "2026-11-05T08:13:51+08:00",
+      "supports": "名义曲线牛市趋陡；2s30s=70bp",
+      "limitation": "期限溢价最新精确值未取得"
+    },
+    {
+      "fact_id": "F-US-REAL-002",
+      "instrument": "UST 10Y real/10Y BEI proxy",
+      "value": "2.64%/2.26%",
+      "basis": "official real yield and nominal-real arithmetic",
+      "observed_at": "2026-11-04 ET",
+      "known_at": "2026-11-04",
+      "read_at": "2026-11-05T08:13:51+08:00",
+      "supports": "黄金上涨并非由实际利率崩落单因子解释",
+      "limitation": "BEI为同日收盘算术代理"
+    },
+    {
+      "fact_id": "F-US-EQ-003",
+      "instrument": "S&P500/Nasdaq/SOX",
+      "value": "+1.6%/+1.4%/-3.1%",
+      "basis": "cash close",
+      "observed_at": "2026-11-04 ET",
+      "known_at": "2026-11-04",
+      "read_at": "2026-11-05T08:13:51+08:00",
+      "supports": "广泛risk-on与半导体去风险并存",
+      "limitation": "媒体收盘口径；ETF用于交叉核对"
+    },
+    {
+      "fact_id": "F-US-ETF-004",
+      "instrument": "QQQ/SOXX/SMH/GLD",
+      "value": "694.02/450.41/504.27/372.49",
+      "basis": "cash close",
+      "observed_at": "2026-11-04 16:00 ET",
+      "known_at": "2026-11-04",
+      "read_at": "2026-11-05T08:13:51+08:00",
+      "supports": "QQQ反弹但SOXX/SMH分别约-3.0%/-2.7%，GLD约+3.7%",
+      "limitation": "周变动按10月28日同品种收盘计算；GLD周基准存在供应商差异"
+    },
+    {
+      "fact_id": "F-FX-005",
+      "instrument": "DXY/EURUSD/USDJPY/USDCNH",
+      "value": "101.53/1.1233/158.446/6.6754",
+      "basis": "vendor close/snapshot",
+      "observed_at": "2026-11-04 global sessions",
+      "known_at": "2026-11-05",
+      "read_at": "2026-11-05T08:13:51+08:00",
+      "supports": "美元总体回落，但日元与离岸人民币未同步走强",
+      "limitation": "非统一官方收盘时点；FX skew未取得"
+    },
+    {
+      "fact_id": "F-OIL-006",
+      "instrument": "Brent/WTI",
+      "value": "94.62/88.12 USD/bbl",
+      "basis": "settlement",
+      "observed_at": "2026-11-04",
+      "known_at": "2026-11-04",
+      "read_at": "2026-11-05T08:13:51+08:00",
+      "supports": "分别下跌8.7%/8.3%，事件溢价快速压缩",
+      "limitation": "准确期限曲线和OVX/skew未取得"
+    },
+    {
+      "fact_id": "F-OIL-STOCK-007",
+      "instrument": "US commercial crude ex SPR",
+      "value": "409.760 mb; -0.865 mb w/w",
+      "basis": "EIA weekly",
+      "observed_at": "week ending 2026-10-30",
+      "known_at": "2026-11-04",
+      "read_at": "2026-11-05T08:13:51+08:00",
+      "supports": "库存小幅下降不支持将油价暴跌完全解释为需求崩塌",
+      "limitation": "周频滞后"
+    },
+    {
+      "fact_id": "F-GOLD-008",
+      "instrument": "spot gold/COMEX Dec/GLD",
+      "value": "4060.50/4075.00/372.49",
+      "basis": "spot snapshot/futures last/cash ETF close",
+      "observed_at": "2026-11-04",
+      "known_at": "2026-11-05",
+      "read_at": "2026-11-05T08:13:51+08:00",
+      "supports": "美元和名义利率回落叠加政策信用需求，黄金单日强势",
+      "limitation": "现货与期货并非同一成交时点；当日ETF流未取得"
+    },
+    {
+      "fact_id": "F-CN-IDX-009",
+      "instrument": "CSI50/300/500/1000 cash",
+      "value": "2808.54/4101.34/6622.03/6511.81",
+      "basis": "cash close",
+      "observed_at": "2026-11-04 15:00 BJT",
+      "known_at": "2026-11-04",
+      "read_at": "2026-11-05T08:13:51+08:00",
+      "supports": "小盘单日领涨但20日仍大幅落后",
+      "limitation": "日线不能证明盘中触发顺序"
+    },
+    {
+      "fact_id": "F-CN-FUT-010",
+      "instrument": "IH/IF/IC/IM 2612",
+      "value": "2776.0/4071.2/6578.8/6469.2",
+      "basis": "CFFEX close",
+      "observed_at": "2026-11-04 15:15 BJT",
+      "known_at": "2026-11-04",
+      "read_at": "2026-11-05T08:13:51+08:00",
+      "supports": "各合约仍贴水；IM-IH修复仅允许回撤确认",
+      "limitation": "滚动主力历史可能包含换月"
+    },
+    {
+      "fact_id": "F-CN-OPT-011",
+      "instrument": "HO/IO/MO 2612",
+      "value": "ATM 15.66/19.42/33.97 vol; RR25 -1.17/-1.23/-3.25",
+      "basis": "engine EOD local metrics",
+      "observed_at": "2026-11-04",
+      "known_at": "2026-11-05 07:16 BJT",
+      "read_at": "2026-11-05T08:13:51+08:00",
+      "supports": "小盘隐波仍高且下偏更陡；单日隐波显著回落",
+      "limitation": "不推断dealer净Gamma；无实时盘口"
+    },
+    {
+      "fact_id": "F-COM-SC-012",
+      "instrument": "SC2612",
+      "value": "EOD close 681.6; settle 676.2; delayed night snapshot 628.4",
+      "basis": "close/settlement/vendor latest-trade snapshot",
+      "observed_at": "2026-11-04 day and 2026-11-05 night label",
+      "known_at": "2026-11-05 07:01 BJT",
+      "read_at": "2026-11-05T08:13:51+08:00",
+      "supports": "油价事件溢价断层下移，反弹失败做空优先",
+      "limitation": "夜盘非官方最终收盘；不得追空"
+    },
+    {
+      "fact_id": "F-COM-AG-013",
+      "instrument": "AG2612",
+      "value": "EOD close 12420; settle 11999; delayed night snapshot 12575",
+      "basis": "close/settlement/vendor latest-trade snapshot",
+      "observed_at": "2026-11-04 day and 2026-11-05 night label",
+      "known_at": "2026-11-05 07:01 BJT",
+      "read_at": "2026-11-05T08:13:51+08:00",
+      "supports": "外盘贵金属重定价使旧空头论证失效，转为回撤多候选",
+      "limitation": "成交区间须日盘验证；期权执行未就绪"
+    },
+    {
+      "fact_id": "F-COM-EC-014",
+      "instrument": "EC2612",
+      "value": "2425",
+      "basis": "EOD close",
+      "observed_at": "2026-11-04",
+      "known_at": "2026-11-04",
+      "read_at": "2026-11-05T08:13:51+08:00",
+      "supports": "贴水/运价下行候选延续",
+      "limitation": "无夜盘；现货W46/W47需当日复核"
+    },
+    {
+      "fact_id": "F-STOCK-015",
+      "instrument": "China-Stock-Engine",
+      "value": "last valid trade_date 2026-10-30; 2026-11-04 run failed HTTP401",
+      "basis": "repository status",
+      "observed_at": "2026-11-04",
+      "known_at": "2026-11-04",
+      "read_at": "2026-11-05T08:13:51+08:00",
+      "supports": "A股公司研究可做但执行不可从旧价量推导",
+      "limitation": "行业、复权、正式指数成分及可交易性能力不完整"
+    },
+    {
+      "fact_id": "F-QCOM-016",
+      "instrument": "QCOM FY2026",
+      "value": "Revenue 43.12bn; CFO 11.145bn; capex 2.494bn; inventory 8.640bn USD",
+      "basis": "company filing/release",
+      "observed_at": "FY ended 2026-09-27",
+      "known_at": "2026-11-04 after close",
+      "read_at": "2026-11-05T08:13:51+08:00",
+      "supports": "汽车/IoT分散化与FCF/库存压力同时存在",
+      "limitation": "财报后盘后价不等于下一现金盘可执行价"
+    }
+  ],
+  "dashboard": [
+    {
+      "asset": "UST 2Y",
+      "latest": "4.58%",
+      "d1": "-3bp",
+      "week": "-9bp vs 10/28",
+      "signal": "前端回落；Fed加息风险仍未消失",
+      "time": "2026-11-04 ET",
+      "gap": "期货隐含路径仅有二手估算"
+    },
+    {
+      "asset": "UST 10Y",
+      "latest": "4.90%",
+      "d1": "-5bp",
+      "week": "-15bp",
+      "signal": "增长/油价冲击压低名义收益率",
+      "time": "2026-11-04 ET",
+      "gap": "期限溢价精确更新缺失"
+    },
+    {
+      "asset": "UST 30Y",
+      "latest": "5.28%",
+      "d1": "-4bp",
+      "week": "-9bp",
+      "signal": "2s30s=70bp，长端财政/供给溢价仍高",
+      "time": "2026-11-04 ET",
+      "gap": "最近拍卖尾差未完成同日核验"
+    },
+    {
+      "asset": "UST 10Y real / BEI",
+      "latest": "2.64% / 2.26%",
+      "d1": "实际利率约-1bp",
+      "week": "实际-3bp；BEI约-12bp",
+      "signal": "通胀补偿降幅大于实际利率",
+      "time": "2026-11-04 ET",
+      "gap": "BEI为算术代理"
+    },
+    {
+      "asset": "DXY / EURUSD",
+      "latest": "101.53 / 1.1233",
+      "d1": "-0.34% / 上涨",
+      "week": "-0.65% / +0.93%",
+      "signal": "美元回落支持贵金属",
+      "time": "2026-11-04",
+      "gap": "FX期权skew缺失"
+    },
+    {
+      "asset": "USDJPY / USDCNH",
+      "latest": "158.446 / 6.6754",
+      "d1": "日元偏弱 / +0.08%",
+      "week": "+0.29% / +0.21%",
+      "signal": "美元广泛走弱未转为亚洲货币一致走强",
+      "time": "2026-11-04/05",
+      "gap": "收盘时点不统一"
+    },
+    {
+      "asset": "Nasdaq / QQQ",
+      "latest": "25736.51 / 694.02",
+      "d1": "+1.4% / +1.28%",
+      "week": "+1.2% / -4.35%",
+      "signal": "大盘反弹，但QQQ仍低于10/28",
+      "time": "2026-11-04 close",
+      "gap": "纳指与QQQ不同标的"
+    },
+    {
+      "asset": "SOXX / SMH",
+      "latest": "450.41 / 504.27",
+      "d1": "-3.00% / -2.72%",
+      "week": "-13.70% / -11.17%",
+      "signal": "半导体去杠杆未结束",
+      "time": "2026-11-04 close",
+      "gap": "ETF成分/权重不同"
+    },
+    {
+      "asset": "WTI / Brent",
+      "latest": "88.12 / 94.62 USD/bbl",
+      "d1": "-8.3% / -8.7%",
+      "week": "未用混合连续合约硬算",
+      "signal": "事件溢价压缩主导，库存小降为反证",
+      "time": "2026-11-04 settlement",
+      "gap": "期限曲线、裂解、OVX/skew缺失"
+    },
+    {
+      "asset": "Gold spot / COMEX Dec / GLD",
+      "latest": "4060.5 / 4075.0 / 372.49",
+      "d1": "约+3.3% / +3.4% / +3.68%",
+      "week": "GLD约-0.3%（基准有差异）",
+      "signal": "政策信用需求增强但实际利率仍高",
+      "time": "2026-11-04",
+      "gap": "当日ETF流、IV/skew缺失"
+    },
+    {
+      "asset": "VIX / VX Nov-Dec",
+      "latest": "16.61 / 17.74-17.98",
+      "d1": "VIX约-20.3%",
+      "week": "未核",
+      "signal": "现货低于期货，短端事件恐慌快速回落",
+      "time": "2026-11-04",
+      "gap": "VIX final为二手交叉；期货为官方"
+    },
+    {
+      "asset": "MOVE / HY OAS",
+      "latest": "93.88 / 3.43%",
+      "d1": "-6.09 / -1bp last-good",
+      "week": "未核",
+      "signal": "利率波动回落、信用未明显恶化",
+      "time": "MOVE 11/04; OAS 11/02",
+      "gap": "MOVE二手；HY OAS滞后"
+    },
+    {
+      "asset": "IH2612 / CSI50",
+      "latest": "2776.0 / 2808.54",
+      "d1": "+1.83% / +1.45%",
+      "week": "5D IH +2.31%",
+      "signal": "basis -32.54点，年化-9.61%",
+      "time": "2026-11-04 EOD",
+      "gap": "无实时开盘验证"
+    },
+    {
+      "asset": "IF2612 / CSI300",
+      "latest": "4071.2 / 4101.34",
+      "d1": "+2.70% / +2.31%",
+      "week": "5D IF +1.09%",
+      "signal": "basis -30.14点，年化-6.10%",
+      "time": "2026-11-04 EOD",
+      "gap": "无实时开盘验证"
+    },
+    {
+      "asset": "IC2612 / CSI500",
+      "latest": "6578.8 / 6622.03",
+      "d1": "+4.86% / +4.66%",
+      "week": "5D IC +0.23%",
+      "signal": "basis -43.23点，年化-5.42%",
+      "time": "2026-11-04 EOD",
+      "gap": "IC无HO/IO/MO同标的默认映射"
+    },
+    {
+      "asset": "IM2612 / CSI1000",
+      "latest": "6469.2 / 6511.81",
+      "d1": "+4.77% / +4.67%",
+      "week": "5D IM -0.50%",
+      "signal": "basis -42.61点，年化-5.43%；20D仍-14.80%",
+      "time": "2026-11-04 EOD",
+      "gap": "反弹路径未验证"
+    },
+    {
+      "asset": "HO/IO/MO 2612 ATM",
+      "latest": "15.66/19.42/33.97 vol",
+      "d1": "约-1.11/-1.87/-3.55 vol",
+      "week": "历史窗口不完整不硬编",
+      "signal": "MO绝对IV和负RR仍最高",
+      "time": "2026-11-04 EOD",
+      "gap": "无盘口、10Δ wings与dealer净Gamma不可用"
+    }
+  ],
+  "meaningful_changes": [
+    "美股广泛反弹但内部裂变：标普+1.6%、Nasdaq+1.4%，SOX却-3.1%；现金流充裕平台与资本开支依赖者分化从叙事变为可观察价格证据。",
+    "油价事件溢价单日压缩：Brent/WTI约-8.7%/-8.3%，而EIA库存仅小降86.5万桶，说明短线冲击不宜简单归因于需求崩塌。",
+    "黄金单日约+3%至4%，同时10年实际收益率仍2.64%；政策信用/避险解释增强，但CFTC净多仍高使追涨赔率下降。",
+    "中国小盘单日强修复：IM/IC约+4.8%，但20日仍约-14.8%/-14.4%；IM-IH仅从超跌状态回补，不能把开盘后确认当作已发生。",
+    "商品旧AG空方向正式失效并保留父idea；转为AG回撤多候选。SC因隔夜断层下移升级v5并加入不追空条件。",
+    "China-Stock-Engine 11月4日回补HTTP401失败；限定公告检索有回购/中标线索，但没有价格、公司事实和执行状态闭环，A股本期0个Top5。"
+  ],
+  "top_opportunities": [
+    {
+      "rank": 1,
+      "idea_id": "US-AI-CASHFLOW-LONG-CAPEXBETA-SHORT-20261103",
+      "parent_idea_id": null,
+      "title": "多现金流定价权AI龙头、空远期Capex Beta主题",
+      "direction": "relative long/short research basket",
+      "horizon": "5-20 trading days",
+      "instrument": "待锁定成员与beta权重的主题篮子；不以ETF价差替代完整组合PnL",
+      "research_conclusion": "待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "待成员、权重、借券与报价",
+      "limited_risk_fact": "非合同限损；未锁定成员前不可称美元或Beta中性",
+      "score": {
+        "logic": 22,
+        "odds_convexity": 15,
+        "catalyst": 19,
+        "price_curve_volatility": 10,
+        "crowding_technical": 10,
+        "total": 76
+      },
+      "change_vs_prior": "+2，现金流龙头/半导体与数据中心运营商分化成为新增市场定价证据",
+      "thesis": "选举后监管与电力约束预期令资本开支依赖者受压，而现金流充裕平台反弹；QCOM与ARM财报证明基本面并非单向恶化。",
+      "counter": "SOXX六个月低点也可能只是宏观去杠杆；ARM许可与数据中心royalty高增、QCOM汽车高增反驳简单空供应链。",
+      "next_test": "用完整成员、财报后现金盘、beta与借券成本验证相对收益；否则不交易"
+    },
+    {
+      "rank": 2,
+      "idea_id": "COM-E-SC2612-USIRAN-DEESCALATION-REBOUND-FAILURE-SHORT-20261103",
+      "parent_idea_id": null,
+      "title": "SC2612事件溢价压缩后的反弹失败空",
+      "direction": "short",
+      "horizon": "1-2 trading days",
+      "instrument": "INE SC2612 futures",
+      "research_conclusion": "待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "等顺序触发且待实时报价",
+      "limited_risk_fact": "裸期货非合同限损；止损不能保证封顶",
+      "score": {
+        "logic": 21,
+        "odds_convexity": 19,
+        "catalyst": 16,
+        "price_curve_volatility": 10,
+        "crowding_technical": 8,
+        "total": 74
+      },
+      "change_vs_prior": "+5；从旧v4改为v5，因隔夜断层下移而禁止追空",
+      "thesis": "Brent/WTI单日约-9%、SC延迟快照跌破630，短期PnL来自事件溢价继续压缩；库存小降是需求崩塌解释的反证。",
+      "counter": "任何谈判逆转、Brent回到98.5以上或SC曲线升至1%以上可迅速挤压空头。",
+      "next_test": "日盘先反弹638-648，再15分钟收于635下且失败回抽；顺序缺一不可"
+    },
+    {
+      "rank": 3,
+      "idea_id": "GLD-POLICY-CREDIT-STABILIZATION-20261103",
+      "parent_idea_id": null,
+      "title": "黄金政策信用溢价：回撤后再确认",
+      "direction": "long bias / no chase",
+      "horizon": "3-20 trading days",
+      "instrument": "GLD、微型黄金期货或3-6月有限风险call spread（均待新报价）",
+      "research_conclusion": "待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "等回撤与IV报价",
+      "limited_risk_fact": "只有实际买入价差后才合同限损；当前经济比喻不是期权合同",
+      "score": {
+        "logic": 20,
+        "odds_convexity": 14,
+        "catalyst": 16,
+        "price_curve_volatility": 11,
+        "crowding_technical": 9,
+        "total": 70
+      },
+      "change_vs_prior": "+2；美元、名义收益率回落与单日上涨支持，但高实际利率及拥挤压低赔率",
+      "thesis": "实际利率仅小幅回落而黄金大涨，政策信用/避险需求的边际解释增强；央行与ETF季度需求提供中期底座。",
+      "counter": "高实际利率2.64%、CFTC净多仍高，若美元反弹且GLD资金流转负，可能只是短线挤仓。",
+      "next_test": "等待现金盘回撤、当日ETF流和目标期限IV/skew；无报价不沿用旧strike"
+    },
+    {
+      "rank": 4,
+      "idea_id": "COM-T-EC2612-TREND-CONTANGO-SHORT-20261028",
+      "parent_idea_id": null,
+      "title": "EC2612运价下行与贴水延续空",
+      "direction": "short",
+      "horizon": "3-12 trading days",
+      "instrument": "INE EC2612 futures",
+      "research_conclusion": "待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "等现货与反弹失败触发",
+      "limited_risk_fact": "裸期货非合同限损；停损不等于最大损失",
+      "score": {
+        "logic": 18,
+        "odds_convexity": 17,
+        "catalyst": 14,
+        "price_curve_volatility": 11,
+        "crowding_technical": 9,
+        "total": 69
+      },
+      "change_vs_prior": "不变；无夜盘，必须等W46/W47现货复核",
+      "thesis": "期货2425与弱现货/贴水结构支持顺势空，但需要最新W46/W47即期报价确认。",
+      "counter": "红海/中东航线风险与现货突然回升可造成跳空，且运价指数并非期货结算的完全同标的。",
+      "next_test": "反弹2435-2470后收破2420、绝对价差至少180且现货不高于3000，再看失败回抽"
+    },
+    {
+      "rank": 5,
+      "idea_id": "COM-M-AG2612-EXTERNAL-REPRICING-PULLBACK-LONG-20261104",
+      "parent_idea_id": "COM-E-AG2612-FAILED-BOUNCE-SHORT-20261103",
+      "title": "AG2612外盘重定价后的回撤多",
+      "direction": "long",
+      "horizon": "2-5 trading days",
+      "instrument": "SHFE AG2612 futures",
+      "research_conclusion": "待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "等回撤、外盘与价差共同确认",
+      "limited_risk_fact": "裸期货非合同限损；商品期权execution_ready=false",
+      "score": {
+        "logic": 17,
+        "odds_convexity": 16,
+        "catalyst": 14,
+        "price_curve_volatility": 11,
+        "crowding_technical": 11,
+        "total": 69
+      },
+      "change_vs_prior": "新方向；旧AG反弹空逻辑因贵金属重定价失效，保留父idea",
+      "thesis": "AG延迟快照12575、COMEX白银强势且近月价差可验证，PnL来自外盘重定价向日盘传导。",
+      "counter": "高实际利率和CFTC拥挤使冲高回落风险大；若COMEX跌破51.50或价差恶化则无优势。",
+      "next_test": "回撤12420-12500、15分钟守住12360、COMEX>=51.80、价差>=-0.40%，再收复12500"
+    }
+  ],
+  "top_trade_cards": [
+    {
+      "idea_id": "COM-E-SC2612-USIRAN-DEESCALATION-REBOUND-FAILURE-SHORT-20261103",
+      "title": "SC2612反弹失败空 v5",
+      "contract": "INE SC2612，乘数1000桶/点，最小变动0.1元，100元/跳",
+      "window": "2026-11-05 09:15 BJT起；仅日盘未来窗口",
+      "sequence": "先反弹至638-648；随后15分钟收盘<635；同时SC2612-SC2701曲线<=0.50%且Brent<=96；最后回抽635失败",
+      "legs": "卖出SC2612；分批30%/30%/40%，允许成交价638/636/634",
+      "stop": "计划止损646；逻辑失效为15分钟收盘>650，或Brent>98.5，或曲线>1.00%",
+      "targets": "TP1 615；TP2 595；时间退出2026-11-06 22:45 BJT",
+      "cost": "情景假设单边合计成本500元/手；非实报",
+      "scenario": "入场638/636/634时TP1净R约2.65/1.95/1.48，TP2净R约5.00/3.86/3.08；保证金未知",
+      "greeks": "不适用",
+      "catalyst": "1-2日油价事件溢价、谈判与全球原油曲线再定价",
+      "worst": "10%向上跳空自636约损失63,600元/手另加成本；流动性消失、涨停和跨市场时差可扩大损失",
+      "abandon": "若直接低开<=620且无638-648反弹，不追；任一顺序条件未满足不下单"
+    },
+    {
+      "idea_id": "COM-M-AG2612-EXTERNAL-REPRICING-PULLBACK-LONG-20261104",
+      "title": "AG2612回撤多",
+      "contract": "SHFE AG2612，乘数15千克/点，最小变动1元，15元/跳",
+      "window": "2026-11-05 09:00 BJT起；仅日盘未来窗口",
+      "sequence": "回撤12420-12500；15分钟守住12360；COMEX白银>=51.80；AG2612-AG2702价差>=-0.40%；随后收复12500",
+      "legs": "买入AG2612；分批30%/30%/40%，允许成交价12420/12460/12500",
+      "stop": "计划止损12320；逻辑失效为COMEX<51.50，或价差<-0.80%，或日盘收盘<12320",
+      "targets": "TP1 12880；TP2 13300；时间退出2026-11-10 14:45 BJT",
+      "cost": "情景假设成本150元/手；非实报",
+      "scenario": "入场12420/12460/12500时TP1净R约4.09/2.73/1.95，TP2净R约7.91/5.53/4.16",
+      "greeks": "商品期权全局execution_ready=false，故不用期权腿或伪造Greeks",
+      "catalyst": "2-5日美元/实际利率、COMEX白银与上海价差传导",
+      "worst": "5%向下跳空自12460约损失9,345元/手另加成本；连续跌停与夜盘流动性可使止损失效",
+      "abandon": "若直接高开>12700且无回撤，放弃追涨；外盘或价差条件任一失败即放弃"
+    },
+    {
+      "idea_id": "COM-T-EC2612-TREND-CONTANGO-SHORT-20261028",
+      "title": "EC2612反弹失败空",
+      "contract": "INE EC2612，乘数50元/指数点，最小变动0.1点，5元/跳",
+      "window": "2026-11-05 09:00 BJT起；无夜盘",
+      "sequence": "先反弹2435-2470；随后收盘<2420；EC远近月绝对价差>=180；W46/W47即期<=3000；最后回抽2420失败",
+      "legs": "卖出EC2612；分批30%/30%/40%，允许成交价2415/2410/2405",
+      "stop": "计划止损2475；逻辑失效为即期>3250或绝对价差<120",
+      "targets": "TP1 2280；TP2 2150；时间退出2026-11-20 14:55 BJT",
+      "cost": "情景假设成本250元/手；非实报",
+      "scenario": "入场2415/2410/2405时TP1净R约2.00/1.79/1.60，TP2净R约4.00/3.64/3.33",
+      "greeks": "不适用",
+      "catalyst": "3-12日即期运价更新、航线供给与地缘风险",
+      "worst": "10%向上跳空自2410约损失12,050元/手另加成本；停牌/涨停/流动性真空可扩大损失",
+      "abandon": "若直接跌破2360且无反弹，不追；现货报价未核则不执行"
+    }
+  ],
+  "gold_tracking": {
+    "conclusion": "增强但不追涨",
+    "policy_credit_metaphor": "经济比喻，不等于合同限损",
+    "support": [
+      "美元回落",
+      "名义收益率下行",
+      "黄金在实际利率仍高时强涨",
+      "Q3央行与ETF需求"
+    ],
+    "against": [
+      "10年实际利率2.64%",
+      "CFTC净多仍高",
+      "当日ETF流与目标IV/skew缺失"
+    ],
+    "expressions": [
+      "3-6月call spread待新报价",
+      "微型黄金期货只作回撤确认",
+      "黄金多头+长债put spread须分别核价",
+      "反向减持/对冲或不交易"
+    ],
+    "execution_status": "not_execution_ready"
+  },
+  "ai_tracking": {
+    "conclusion": "现金流定价权相对Capex Beta的分化增强",
+    "coverage": [
+      "大平台",
+      "半导体与设备",
+      "数据中心运营商",
+      "网络",
+      "云与软件",
+      "电力约束"
+    ],
+    "new_evidence": [
+      "MSFT/AMZN/GOOGL/META上涨",
+      "SOX及SOXX/SMH下跌",
+      "QCOM汽车增长但手机、FCF和库存承压",
+      "ARM许可与数据中心royalty高增"
+    ],
+    "counter": [
+      "监管约束可能推迟而非取消Capex",
+      "ARM/QCOM显示供应链并非整体基本面恶化"
+    ],
+    "execution_status": "research_basket_not_locked"
+  },
+  "china_tracking": {
+    "cash_date": "2026-11-04",
+    "futures_main": "2612",
+    "returns_1_3_5_20d": {
+      "IH": [
+        1.4546,
+        2.7844,
+        2.3071,
+        -3.1065
+      ],
+      "IF": [
+        2.3223,
+        3.6456,
+        1.0926,
+        -9.0844
+      ],
+      "IC": [
+        4.6946,
+        6.3292,
+        0.2255,
+        -14.4455
+      ],
+      "IM": [
+        4.7847,
+        6.3838,
+        -0.5045,
+        -14.8005
+      ]
+    },
+    "relative_returns_1_3_5_20d": {
+      "IM-IH": [
+        3.2824,
+        3.502,
+        -2.7481,
+        -12.0689
+      ],
+      "IM-IF": [
+        2.4065,
+        2.6419,
+        -1.5798,
+        -6.2872
+      ],
+      "IC-IF": [
+        2.3185,
+        2.5892,
+        -0.8577,
+        -5.8968
+      ],
+      "IM-IC": [
+        0.0861,
+        0.0514,
+        -0.7283,
+        -0.4149
+      ],
+      "IF-IH": [
+        0.8553,
+        0.8379,
+        -1.1871,
+        -6.1696
+      ]
+    },
+    "notional_example": "2 IM2612 long vs 3 IH2612 short: long 2,587,680元，short 2,498,400元，净多89,280元；近似Dollar-neutral但非Beta-neutral",
+    "options": {
+      "HO": {
+        "atm_iv": 15.6558,
+        "rr25": -1.1728,
+        "bf25": 0.8807,
+        "pcr_oi": 0.6528,
+        "pcr_volume": 0.514,
+        "forward": 2775.94
+      },
+      "IO": {
+        "atm_iv": 19.4196,
+        "rr25": -1.2276,
+        "bf25": 0.7952,
+        "pcr_oi": 0.6474,
+        "pcr_volume": 0.444,
+        "forward": 4074.13
+      },
+      "MO": {
+        "atm_iv": 33.9726,
+        "rr25": -3.2484,
+        "bf25": 0.7901,
+        "pcr_oi": 0.5995,
+        "pcr_volume": 0.6141,
+        "forward": 6482.09
+      },
+      "dealer_gamma_direction": "unknown"
+    },
+    "stock_research": {
+      "engine_trade_date": "2026-10-30",
+      "active_search_scope": "上交所/深交所/巨潮，2026-11-04 16:00至2026-11-05 08:00，半导体/数据中心/电网/回购",
+      "new_watch": [
+        "海光信息回购线索",
+        "长高电气中标线索"
+      ],
+      "top5_count": 0,
+      "reason": "最新EOD、公司原件细节与交易可行性未闭环"
+    }
+  },
+  "commodities_tracking": {
+    "prompt_products": 63,
+    "last_good_scanned_products": 77,
+    "futures": {
+      "last_good_date": "2026-11-02",
+      "full_market_ready": false,
+      "current_exact_subset": [
+        "SC2612",
+        "AG2612",
+        "AU2612",
+        "CU2612",
+        "MA701",
+        "EC2612"
+      ],
+      "official_crosscheck": "unavailable; no observed price differences established"
+    },
+    "market_physical_external": {
+      "physical_target": 20,
+      "physical_available": 18,
+      "physical_grade_ab_eligible": 0,
+      "external_target": 22,
+      "external_available": 17
+    },
+    "options": {
+      "source_date": "2026-11-02",
+      "sampling": "core_v1/sampled_strikes",
+      "expected_product_count": 64,
+      "successful_product_count": 19,
+      "product_coverage": 0.296875,
+      "records": 430,
+      "core_atm_ready_series": 19,
+      "skew_ready_series": 12,
+      "full_chain_verified": false,
+      "surface_ready": false,
+      "positioning_ready": false,
+      "execution_ready": false,
+      "dealer_gamma_direction_known": false,
+      "bid_ask_coverage": 0
+    },
+    "night": {
+      "trading_date": "2026-11-05",
+      "session_start_date": "2026-11-04",
+      "published": false,
+      "successful": 0,
+      "expected": 806,
+      "price_semantics": "delayed exact-contract latest-trade snapshot fallback",
+      "official_night_close_verified": false,
+      "calendar_mismatch": false
+    },
+    "impact": "可做方向与条件研究；不得把夜盘快照称官方收盘，不得用商品期权编可执行成本/PCR/dealer gamma"
+  },
+  "event_calendar": [
+    {
+      "window": "未来24小时",
+      "event": "11月5日21:30 BJT 美国生产率与单位劳动力成本",
+      "plan": "事件前不扩大美元/实际利率/贵金属相关风险；无盈利缓冲不加Vega"
+    },
+    {
+      "window": "未来48小时",
+      "event": "11月6日21:30 BJT 美国非农就业",
+      "plan": "SC/AG若未触发则等待；黄金仅保留条件凸性，不以旧strike执行"
+    },
+    {
+      "window": "7天",
+      "event": "11月10日21:30 BJT 美国CPI；第二周3Y/10Y/30Y拍卖簇待财政部正式公告",
+      "plan": "黄金/长债/美元按同一主题合并预算；拍卖精确时点未核不写死"
+    },
+    {
+      "window": "未来24小时",
+      "event": "QCOM与ARM财报后首个现金交易时段；NET/IONQ等盘后财报需IR日历再核",
+      "plan": "AI相对篮子先观察现金盘、成交与成员beta，不以盘后价直接执行"
+    },
+    {
+      "window": "中国今日",
+      "event": "11月5日A股、股指期货与商品日盘；开盘30-45分钟只作为未来确认",
+      "plan": "IM/IH及SC/AG/EC严格等待顺序触发；不把昨日EOD路径当今日盘中已发生"
+    }
+  ],
+  "action_list": {
+    "A": "今天可立即建立的新仓：没有；所有Top5均缺少至少一项实时顺序、报价或执行核验。",
+    "B": "今天仅应挂条件的候选：SC2612反弹失败空、AG2612回撤多、EC2612反弹失败空；只挂监控条件，不预埋无保护市价单。",
+    "C": "今天继续观察的机会：AI现金流定价权相对Capex Beta、黄金回撤确认、IM-IH超跌修复、海光信息回购与长高电气中标线索。",
+    "D": "今天必须回避或有条件退出的交易：追空已断层下跌的SC、追高AG/黄金、把2IM/3IH误称Beta中性、沿用旧AG空单或未报价期权结构；无成交回执不假设持仓。"
+  },
+  "risk_budget": {
+    "trial": "NAV 0.25%-0.75%",
+    "confirmation": "NAV 0.75%-1.50%",
+    "theme_total": "NAV 2.5%-3.0%",
+    "specific_caps": {
+      "SC": "试仓<=0.50%，能源主题<=1.25%",
+      "AG": "试仓<=0.50%，贵金属主题<=1.25%",
+      "EC": "试仓<=0.50%，航运主题<=1.00%"
+    },
+    "sizing_formula": "整数手数=floor(NAV×单笔风险预算/每手压力损失)；保证金不是风险预算，未知费用不按0",
+    "stress": [
+      "SC自636向上跳空10%约63,600元/手另加成本",
+      "AG自12460向下跳空5%约9,345元/手另加成本",
+      "EC自2410向上跳空10%约12,050元/手另加成本",
+      "连续涨跌停、隐波重定价、流动性消失、相关性断裂、假期跨市场冲击"
+    ],
+    "positions": "用户实际持仓与成交回执未提供/未知"
+  },
+  "verification": {
+    "score_sums": "passed",
+    "contract_units": "checked for SC/AG/EC",
+    "calendar_dst": "BLS ET to BJT conversion checked; exchange intraday future only",
+    "history_identity": "strict prior global 2026-11-04 evening plus same-edition morning; no same-day rerun reused",
+    "md_json_consistency": "generated from one report object",
+    "execution_reachability": "checked; entry/invalidity not simultaneously required",
+    "unresolved": [
+      "current target option quotes/Greeks",
+      "FX option skew",
+      "oil exact curve/cracks/OVX",
+      "current term premium",
+      "Stock engine fresh EOD/tradability",
+      "live bid/ask and margin"
+    ],
+    "ci_validation_status": "pending_or_unverified"
+  },
+  "sources": [
+    {
+      "title": "Daily Treasury Par Yield Curve Rates",
+      "publisher": "U.S. Treasury",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026",
+      "source_date": "2026-11-04",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "2026-11-04美国2/5/10/30年国债收益率分别为4.58%/4.69%/4.90%/5.28%",
+        "2s10s、2s30s、5s30s据同日同口径计算"
+      ]
+    },
+    {
+      "title": "Daily Treasury Real Long-Term Rates",
+      "publisher": "U.S. Treasury",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_real_yield_curve&field_tdr_date_value=2026",
+      "source_date": "2026-11-04",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "10年TIPS实际收益率2.64%",
+        "10年盈亏平衡通胀代理约2.26%"
+      ]
+    },
+    {
+      "title": "Wall Street ends higher after Democrats win Congress; data center stocks tumble",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/us-stock-index-futures-steady-democrats-seize-congress-2026-11-04/",
+      "source_date": "2026-11-04",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "reliable_media",
+      "supported_claims": [
+        "标普500上涨1.6%而半导体指数下跌3.1%",
+        "现金流充裕AI龙头与资本开支Beta出现明显分化",
+        "油价大跌与选举结果共同改善广泛风险偏好"
+      ]
+    },
+    {
+      "title": "How major US stock indexes fared Wednesday 11/4/2026",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/wall-street-stocks-dow-nasdaq-c0be7ca45b5875abe758e0570cb9a265",
+      "source_date": "2026-11-04",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "reliable_media",
+      "supported_claims": [
+        "标普500收7688.62、纳指收25736.51、道指收53356.12、罗素2000收2856.95",
+        "周内标普/纳指/道指/罗素分别上涨1.4%/1.2%/3.1%/1.6%"
+      ]
+    },
+    {
+      "title": "Weekly Petroleum Status Report",
+      "publisher": "U.S. EIA",
+      "url": "https://www.eia.gov/petroleum/supply/weekly/",
+      "source_date": "2026-11-04",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "截至10月30日美国商业原油库存409.760百万桶",
+        "周度库存减少86.5万桶"
+      ]
+    },
+    {
+      "title": "FY2026 4th Quarter Earnings Release",
+      "publisher": "Qualcomm Investor Relations",
+      "url": "https://investor.qualcomm.com/files/content_files/FY2026-4th-Quarter-Earnings-Release.pdf",
+      "source_date": "2026-11-04",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "company_ir",
+      "supported_claims": [
+        "FY2026收入431.2亿美元、经营现金流111.45亿美元、资本开支24.94亿美元",
+        "Q4汽车收入同比增长89%、手机收入同比下降26%",
+        "库存同比增至86.40亿美元，显示现金流与营运资本反证"
+      ]
+    },
+    {
+      "title": "Arm delivers a record second quarter",
+      "publisher": "Arm Newsroom",
+      "url": "https://newsroom.arm.com/news/arm-q2-fye27-results",
+      "source_date": "2026-11-04",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "company_ir",
+      "supported_claims": [
+        "FY27Q2收入14.4亿美元同比增长27%",
+        "许可收入同比增长50%，数据中心royalty翻倍"
+      ]
+    },
+    {
+      "title": "CFTC Commitments of Traders Report - CMX",
+      "publisher": "CFTC",
+      "url": "https://www.cftc.gov/dea/futures/deacmxsf.htm",
+      "source_date": "2026-10-27",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "official_last_good",
+      "supported_claims": [
+        "COMEX黄金非商业多头223724手、空头37273手、净多186451手",
+        "多头周减13418手，拥挤仍高但边际去风险"
+      ]
+    },
+    {
+      "title": "Gold Demand Trends Q3 2026",
+      "publisher": "World Gold Council",
+      "url": "https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-q3-2026",
+      "source_date": "2026-Q3",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "industry_primary",
+      "supported_claims": [
+        "Q3央行购金321吨、同比增长42%",
+        "黄金ETF净流入211吨、总持仓4256吨"
+      ]
+    },
+    {
+      "title": "Schedule of Selected Releases 2026",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "url": "https://www.bls.gov/schedule/2026/home.htm",
+      "source_date": "2026-11-05",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "official_calendar",
+      "supported_claims": [
+        "11月5日21:30北京时间发布生产率和单位劳动力成本",
+        "11月6日21:30发布非农就业，11月10日21:30发布CPI"
+      ]
+    },
+    {
+      "title": "October 2026 Manufacturing PMI",
+      "publisher": "Institute for Supply Management",
+      "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/pmi/october/",
+      "source_date": "2026-11-02",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "primary",
+      "supported_claims": [
+        "10月制造业PMI为55.5、价格指数75.2",
+        "生产和就业仍扩张但价格压力偏高"
+      ]
+    },
+    {
+      "title": "China-Options-Engine radar_latest",
+      "publisher": "farfromexact",
+      "url": "https://github.com/farfromexact/China-Options-Engine/blob/9eedd0b5069e2067c69aa1a703afa4c2ac8010fc/data/radar_latest.json",
+      "source_date": "2026-11-04",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "repository_engine",
+      "supported_claims": [
+        "IH/IF/IC/IM主力、现货、basis、成交量和持仓量",
+        "HO/IO/MO局部ATM、RR25、BF25、PCR及forward"
+      ]
+    },
+    {
+      "title": "China-Options-Engine radar_history",
+      "publisher": "farfromexact",
+      "url": "https://github.com/farfromexact/China-Options-Engine/blob/9eedd0b5069e2067c69aa1a703afa4c2ac8010fc/data/radar_history.json",
+      "source_date": "2026-11-04",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "repository_engine",
+      "supported_claims": [
+        "股指期货1/3/5/20交易日同口径回报",
+        "期权历史变化来自引擎可得历史"
+      ]
+    },
+    {
+      "title": "China-Commodities-Engine report input",
+      "publisher": "farfromexact",
+      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/3120399d1f4d810f7d74ae54e5936546ef01c334/data/report_input_latest.json",
+      "source_date": "2026-11-02",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "repository_engine_last_good",
+      "supported_claims": [
+        "商品统一入口最后合法全市场为11月2日",
+        "Futures/Market/Physical/External/Options各模块能力与局限"
+      ]
+    },
+    {
+      "title": "China-Commodities-Engine night status",
+      "publisher": "farfromexact",
+      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/3120399d1f4d810f7d74ae54e5936546ef01c334/data/night_session/last_run_status.json",
+      "source_date": "2026-11-05",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "repository_engine",
+      "supported_claims": [
+        "11月5日夜盘采集0/806成功、published=false",
+        "本期使用延迟精确合约快照回退且并非交易所核验收盘"
+      ]
+    },
+    {
+      "title": "China-Commodities-Engine futures crosscheck",
+      "publisher": "farfromexact",
+      "url": "https://github.com/farfromexact/China-Commodities-Engine/blob/3120399d1f4d810f7d74ae54e5936546ef01c334/data/crosschecks/futures_latest.json",
+      "source_date": "2026-11-04",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "repository_engine",
+      "supported_claims": [
+        "官方期货核对状态unavailable",
+        "DCE HTTP412且其余交易所基准不可用，不代表已经比对出价格差异"
+      ]
+    },
+    {
+      "title": "China-Stock-Engine last run status",
+      "publisher": "farfromexact",
+      "url": "https://github.com/farfromexact/China-Stock-Engine/blob/3caa2dc013d9392332b30c5572b7cfb883554dc7/data/last_run_status.json",
+      "source_date": "2026-11-04",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "repository_engine",
+      "supported_claims": [
+        "11月4日回补因HTTP401设备限制失败",
+        "最后有效交易日为10月30日，不能据旧价量生成今日执行信号"
+      ]
+    },
+    {
+      "title": "CNINFO disclosure search",
+      "publisher": "巨潮资讯",
+      "url": "https://www.cninfo.com.cn/new/disclosure",
+      "source_date": "2026-11-05",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "official_disclosure_portal",
+      "supported_claims": [
+        "限定检索发现回购及电网中标类新增公告",
+        "未取得足以与最新EOD及执行状态闭环的A股候选"
+      ]
+    },
+    {
+      "title": "Prior global evening report",
+      "publisher": "farfromexact",
+      "url": "https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/7c1c03f2f451057a6e1e3f99e60615e8d26eb724/reports/2026/11/2026-11-04_evening.json",
+      "source_date": "2026-11-04",
+      "accessed_at_bjt": "2026-11-05T08:13:51+08:00",
+      "source_type": "prior_report_ledger",
+      "supported_claims": [
+        "稳定idea_id、原始触发与上期评分",
+        "仅用于状态继承，不作为当前行情证据"
+      ]
+    }
+  ],
+  "archive": {
+    "status": "pending_write_and_reread",
+    "repository": "farfromexact/Global-Cross-Asset-Radar",
+    "branch": "main",
+    "paths": [
+      "reports/2026/11/2026-11-05_morning.md",
+      "reports/2026/11/2026-11-05_morning.json",
+      "latest/morning.md",
+      "latest/morning.json",
+      "status/morning_latest.json",
+      "manifests/reports.json"
+    ],
+    "commit_sha": null,
+    "ci_validation_status": "pending_or_unverified"
+  }
+}
