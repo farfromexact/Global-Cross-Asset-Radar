@@ -91,6 +91,7 @@ class HealthCheck:
         markdown = self.read_markdown(stem + ".md", blocking=blocking)
         if history is not None:
             self.identity(history, history_path, report_date, edition, blocking=blocking)
+            self._engine_receipts(history, history_path, blocking=blocking)
 
         for field, expected in (("json_path", history_path), ("markdown_path", stem + ".md")):
             reference = entry.get(field)
@@ -118,6 +119,7 @@ class HealthCheck:
                          f"Latest date {latest.get('report_date')!r}; manifest date {report_date!r}")
             if history is not None and latest != history:
                 self.add("latest_sync", latest_path, "Latest and historical JSON differ")
+            self._engine_receipts(latest, latest_path, blocking=blocking)
             if markdown is not None and latest_md is not None and markdown != latest_md:
                 self.add("latest_sync", latest_md_path, "Latest and historical Markdown differ")
         for relative, data in ((history_path, history), (latest_path, latest),
@@ -133,6 +135,20 @@ class HealthCheck:
                 self.add("archive_status", relative, f"Archive state {archive_status!r}; not a readability failure")
         if status is not None and (status.get("report_date"), status.get("edition")) != (report_date, edition):
             self.add("status_sync", status_path, "Status metadata is not synchronized with the manifest")
+
+    def _engine_receipts(self, data: dict[str, Any] | None, relative: str, *, blocking: bool) -> None:
+        if not isinstance(data, dict):
+            return
+        try:
+            messages = receipt_module().protocol_errors(
+                data.get("source_status"),
+                report_date=data.get("report_date") if isinstance(data.get("report_date"), str) else None,
+                edition=data.get("edition") if isinstance(data.get("edition"), str) else None,
+            )
+        except (TypeError, ValueError, OSError) as exc:
+            messages = [f"Engine-read receipt check could not interpret this record: {exc}"]
+        for message in messages:
+            self.add("source_receipt", relative, message, blocking=blocking)
 
     def load_index(self, *, blocking: bool) -> tuple[dict[str, Any], dict[tuple[str, str], dict[str, Any]]]:
         policy = self.read_json("config/archive-policy.json", blocking=True)
@@ -280,6 +296,16 @@ def read_base_manifest(root: Path, ref: str) -> dict[str, Any] | None:
     except (OSError, ValueError):
         return None
     return value if isinstance(value, dict) and isinstance(value.get("reports"), list) else None
+
+
+_RECEIPT_MODULE: Any | None = None
+
+
+def receipt_module() -> Any:
+    global _RECEIPT_MODULE
+    if _RECEIPT_MODULE is None:
+        _RECEIPT_MODULE = load_validator(ROOT, "engine_read_receipts")
+    return _RECEIPT_MODULE
 
 
 def load_validator(root: Path, name: str) -> Any:

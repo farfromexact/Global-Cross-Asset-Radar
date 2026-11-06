@@ -45,6 +45,9 @@
 │   └── report.json
 │   ├── commodities_report.md
 │   └── commodities_report.json
+├── docs/
+│   ├── SCHEDULE_ARCHIVE_INSTRUCTIONS.md
+│   └── ENGINE_READ_PROTOCOL.md
 ├── prompts/
 │   ├── radar_morning.md
 │   ├── radar_evening.md
@@ -52,6 +55,7 @@
 │   └── commodities_evening.md
 ├── scripts/
 │   ├── check_report_health.py
+│   ├── engine_read_receipts.py
 │   ├── validate_reports.py
 │   └── validate_markdown_reports.py
 └── .github/workflows/
@@ -96,7 +100,7 @@ GitHub Markdown 不保留 ChatGPT 专用的引用标记。归档报告应把关�
 - **提醒**：缺少 revision/schema 字段、字段别名、标题和字数差异、引用格式、状态元数据、latest 内容同步差异，以及旧归档问题。摘要与 JSON artifact 保留具体问题，不再让同一个历史问题每天阻断新报告。
 - 每次检查四个 edition 的最新 Manifest 记录和实际 latest 报告；历史 Manifest 修订不要求 latest 回退。拿不到 base ref 时仍检查全部当前报告。
 
-默认两个 job：`Current report readability` 检查当前可读性；`Archive advice and validator tests` 输出完整历史建议并运行回归测试。绿色只代表归档可读及校验代码通过，**不代表数据新鲜、研究结论正确或交易可执行**。
+默认两个 job：`Current report readability` 检查当前可读性；`Archive advice and validator tests` 输出完整历史建议并运行回归测试。绿色只代表归档可读及校验代码通过，**不代表数据新鲜、研究结论正确或交易可执行**。报告只有在 `source_status.engine_read_protocol` 明确写成 `engine_read_2026-11-06` 时，才会额外检查引擎读取回执是否自洽；该检查不访问 GitHub。仓库里的 prompt 副本不会改变已部署的 ChatGPT Scheduled Task。
 
 日常验收：
 

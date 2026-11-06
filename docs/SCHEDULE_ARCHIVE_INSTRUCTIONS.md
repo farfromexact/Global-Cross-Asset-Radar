@@ -106,6 +106,12 @@ ci_validation_status = pending_or_unverified
 - main复核若发现任一必需路径缺失或日期/edition不正确，不得声称成功。
 - 若状态文件可以写入，记录 `archive_status=partial` 或 `failed`；若状态文件也无法写入，则在对话中明确说明错误。
 
+## 引擎读取
+
+研究读取遵守 `docs/ENGINE_READ_PROTOCOL.md`（`engine_read_2026-11-06`）。本仓库中的 prompt 与该文档不会修改已经部署的 ChatGPT Scheduled Task。
+
+不得再把文件过大或普通 contents 不完整写成缺失。普通读取不完整时，用研究前固定的同一 cutoff SHA 取 blob 或 raw，并记录实际 UTF-8 字节长度、blob identity 和 JSON 校验。不假设 1MB。读取状态、新鲜度、交易日历和 last_good 分开；单个仓库失败不抹掉其他仓库。可选回执放在现有 `source_status.source_receipts`，不扩展 schema。日常 CI 只在报告明确写出匹配的 `source_status.engine_read_protocol` 时检查回执是否自洽，不访问 GitHub，也不判断数据是否最新。线上任务不运行本地 Python 校验脚本。
+
 ## 数据来源记录
 
 中国商品期货/期权晨报主输入优先读取：
