@@ -1,0 +1,1476 @@
+{
+  "schema_version": "1.0",
+  "status": "published",
+  "report_date": "2026-11-06",
+  "edition": "morning",
+  "generated_at_bjt": "2026-11-06T08:08:59+08:00",
+  "weekend_mode": false,
+  "title": "全球跨资产高风险机会雷达｜晨间版",
+  "one_sentence_conclusion": "混合Risk-off：美股AI去杠杆与VIX飙升，但美债牛陡、美元未急升且信用尚未同步恶化；优先相对价值与顺序触发，不追单边。",
+  "regime": "mixed risk-off / equity deleveraging",
+  "worth_taking_risk": false,
+  "data_cutoff": {
+    "beijing_time": "2026-11-06T08:08:59+08:00",
+    "us_cash_market": "closed",
+    "china_cash_market": "pre-open",
+    "notes": [
+      "最近完整美国现金时段为2026-11-05",
+      "中国下一合法股指/股票窗口09:30，商品日盘09:00；09:30后30-45分钟仅为未来验证计划",
+      "本次为按当前真实时点更新，不是历史重建"
+    ]
+  },
+  "input_snapshots": {
+    "repositories": [
+      {
+        "repository": "farfromexact/Global-Cross-Asset-Radar",
+        "ref": "259d8a4e99bb4138a4d79774dd8f3404841bab3a",
+        "status": "ok",
+        "paths": [
+          "manifests/reports.json",
+          "reports/2026/11/2026-11-05_evening.md",
+          "reports/2026/11/2026-11-05_evening.json",
+          "reports/2026/11/2026-11-05_morning.json"
+        ]
+      },
+      {
+        "repository": "farfromexact/China-Options-Engine",
+        "ref": "25f333659c4c3a4cc53aeddea3c7c19d25f5fff6",
+        "status": "ok",
+        "paths": [
+          "data/radar_latest.json",
+          "data/radar_history.json"
+        ],
+        "source_date": "2026-11-05"
+      },
+      {
+        "repository": "farfromexact/China-Commodities-Engine",
+        "ref": "8492051f3e415ae5031c3517651e103b79701d04",
+        "status": "partial",
+        "paths": [
+          "data/report_input_latest.json",
+          "data/last_run_status.json",
+          "data/night_session/last_run_status.json",
+          "data/radar_latest.json",
+          "data/crosschecks/futures_latest.json"
+        ],
+        "source_date": "2026-11-05/06",
+        "note": "night latest empty but exact fallback rows readable; DCE official HTTP412"
+      },
+      {
+        "repository": "farfromexact/China-Stock-Engine",
+        "ref": "3fd9a7a6c74613cb2ff61b11014bc02d26939d773",
+        "status": "stale",
+        "paths": [
+          "data/last_run_status.json",
+          "data/latest/manifest.json",
+          "data/latest/data_reference_latest.json",
+          "data/latest/opportunity_radar_latest.json",
+          "data/latest/research_inputs_latest.json"
+        ],
+        "source_date": "last valid price 2026-10-30"
+      }
+    ],
+    "china_options_repository": "farfromexact/China-Options-Engine",
+    "china_options_path": "data/radar_latest.json",
+    "china_options_date": "2026-11-05",
+    "china_options_generated_at": "2026-11-06T07:15:00+08:00",
+    "china_options_fresh": true,
+    "china_options_official_coverage": 1,
+    "china_commodities": {
+      "trade_date": "2026-11-05",
+      "night_trading_date": "2026-11-06",
+      "generated_at": "2026-11-06T07:09:57+08:00",
+      "products": 77,
+      "contracts": 806,
+      "full_market_ready": true,
+      "options_expected": 64,
+      "options_successful": 45,
+      "options_atm_ready": 44,
+      "options_skew_ready": 26,
+      "options_full_chain_verified": false,
+      "options_execution_ready": false,
+      "night_coverage_pct": 52.1092,
+      "futures_crosscheck": "SHFE/INE/CZCE/GFEX matched; DCE HTTP412; volume/OI not officially checked"
+    }
+  },
+  "source_status": {
+    "global_market": "official closes plus labeled non-synchronous snapshots",
+    "china_options": "11/5 EOD usable; dealer gamma sign and live spreads unavailable",
+    "china_commodities": "full futures scan; local options research only; night vendor snapshot not official close",
+    "china_stock": "stale and not execution-ready",
+    "crosscheck": "key official/IR pages opened; missing inputs only restrict dependent claims"
+  },
+  "fact_ledger": [
+    {
+      "fact_id": "F001",
+      "instrument": "UST 2Y/5Y/10Y/30Y",
+      "value": "4.46% / 4.59% / 4.84% / 5.25%",
+      "unit": "yield",
+      "observation_type": "official close",
+      "observed_at": "2026-11-05 ET",
+      "known_at": "2026-11-05",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-TREASURY",
+      "supports": "前端领跌、曲线牛陡峭；2s10s/2s30s/5s30s=+38/+79/+66bp",
+      "limitations": "日终，不是亚洲时段实时"
+    },
+    {
+      "fact_id": "F002",
+      "instrument": "UST 10Y real / BEI",
+      "value": "2.60% / 2.24%",
+      "unit": "yield",
+      "observation_type": "official close / derived",
+      "observed_at": "2026-11-05 ET",
+      "known_at": "2026-11-05",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-TREASURY-REAL",
+      "supports": "实际利率仍高但未压制黄金；BEI=4.84%-2.60%",
+      "limitations": "BEI为同日名义减实际的简化口径"
+    },
+    {
+      "fact_id": "F003",
+      "instrument": "QQQ / SOXX / SMH",
+      "value": "647.05 (-6.33%) / 131.90 (-12.75%) / 447.73 (-11.46%)",
+      "unit": "USD close and 1D",
+      "observation_type": "cash close",
+      "observed_at": "2026-11-05 16:00 ET",
+      "known_at": "2026-11-05",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-US-ETF",
+      "supports": "AI/半导体去杠杆远强于宽科技",
+      "limitations": "SOXX 11/5拆股，周变动用调整后历史"
+    },
+    {
+      "fact_id": "F004",
+      "instrument": "VIX / VX Nov / VX Dec",
+      "value": "28.15 / 24.5355 / 22.1918",
+      "unit": "index / futures settlement",
+      "observation_type": "close / official settlement",
+      "observed_at": "2026-11-05 ET",
+      "known_at": "2026-11-05",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-CBOE",
+      "supports": "现货恐慌与期货倒挂并存，近端事件风险高",
+      "limitations": "现货与期货结算时点及构成不同"
+    },
+    {
+      "fact_id": "F005",
+      "instrument": "MOVE / US HY OAS / HYG",
+      "value": "93.88 (11/4) / 3.40% (11/3) / 77.28 (-0.30%,11/5)",
+      "unit": "index / spread / USD",
+      "observation_type": "last-good / close",
+      "observed_at": "2026-11-03 to 2026-11-05",
+      "known_at": "2026-11-05",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-FRED-CREDIT",
+      "supports": "尚无同步信用断裂证据，权益冲击更像去杠杆与久期重定价",
+      "limitations": "MOVE与HY OAS陈旧，不能证明11/5信用安然"
+    },
+    {
+      "fact_id": "F006",
+      "instrument": "DXY / EURUSD / USDJPY / USDCNY",
+      "value": "~101.5 / 1.1229 / 157.63 / 6.6652",
+      "unit": "FX",
+      "observation_type": "late-session snapshots",
+      "observed_at": "2026-11-05",
+      "known_at": "2026-11-05",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-REUTERS-FX",
+      "supports": "美元未随风险急升，黄金与美债反应不完全由美元驱动",
+      "limitations": "非同步；FX期权skew缺失"
+    },
+    {
+      "fact_id": "F007",
+      "instrument": "WTI / Brent",
+      "value": "90.52 / 98.29",
+      "unit": "USD/bbl",
+      "observation_type": "official futures settlement",
+      "observed_at": "2026-11-05",
+      "known_at": "2026-11-05",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-REUTERS-OIL",
+      "supports": "前一日大跌后反弹，事件溢价仍高",
+      "limitations": "准确期限曲线、裂解和OVX未取得"
+    },
+    {
+      "fact_id": "F008",
+      "instrument": "US commercial crude inventory",
+      "value": "409.760 million bbl; -0.865 million w/w",
+      "unit": "bbl",
+      "observation_type": "official weekly",
+      "observed_at": "week ended 2026-10-30",
+      "known_at": "2026-11-04",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-EIA",
+      "supports": "库存未给出供应过剩确认",
+      "limitations": "下一份WPSR延至11/12；不是11/5新催化"
+    },
+    {
+      "fact_id": "F009",
+      "instrument": "GLD / gold spot",
+      "value": "375.49 (+0.83% 1D,+5.54% week) / spot intraday ~4134.83",
+      "unit": "USD",
+      "observation_type": "cash close / intraday",
+      "observed_at": "2026-11-05",
+      "known_at": "2026-11-05",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-GOLD",
+      "supports": "黄金在高实际利率下仍强，政策信用与避险解释增强",
+      "limitations": "spot与ETF非同一时点；IV/skew缺失"
+    },
+    {
+      "fact_id": "F010",
+      "instrument": "WGC Q3 demand",
+      "value": "central banks +321t; ETF inflow +211t; holdings 4,256t",
+      "unit": "tonnes",
+      "observation_type": "industry quarterly",
+      "observed_at": "2026-Q3",
+      "known_at": "2026-10-29",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-WGC",
+      "supports": "黄金需求不只是短期美元交易",
+      "limitations": "季度数据，不能解释单日价格"
+    },
+    {
+      "fact_id": "F011",
+      "instrument": "CFTC COMEX gold",
+      "value": "managed money net +105,562; noncommercial net +186,451",
+      "unit": "contracts",
+      "observation_type": "official weekly last-good",
+      "observed_at": "2026-10-27",
+      "known_at": "2026-10-30",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-CFTC",
+      "supports": "多头拥挤是黄金反证",
+      "limitations": "11/3持仓将在本报告后发布"
+    },
+    {
+      "fact_id": "F012",
+      "instrument": "Microsoft / Meta / Alphabet",
+      "value": "MSFT OCF $58.0bn capex $45.2bn FCF $18.6bn; META OCF $32.79bn capex $34.91bn FCF -$2.12bn; GOOGL OCF $42.3bn capex $51.4bn FCF -$9.1bn",
+      "unit": "USD quarterly",
+      "observation_type": "company reported",
+      "observed_at": "latest reported quarter",
+      "known_at": "2026 earnings releases",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-AI-IR",
+      "supports": "现金流定价权与Capex Beta出现可量化分化",
+      "limitations": "公司会计口径与季度不同，不能直接估值"
+    },
+    {
+      "fact_id": "F013",
+      "instrument": "AMD / Arm / NVIDIA",
+      "value": "AMD data-center revenue $8.546bn +97%; Arm revenue $1.443bn +27%; NVIDIA latest revenue $96.221bn +106%",
+      "unit": "USD / y/y",
+      "observation_type": "company reported",
+      "observed_at": "latest reported quarter",
+      "known_at": "2026 earnings releases",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-AI-IR",
+      "supports": "半导体下跌不能简单归因为基本面坍塌",
+      "limitations": "估值、订单质量与最新盘中报价未统一"
+    },
+    {
+      "fact_id": "F014",
+      "instrument": "IH/IF/IC/IM2612 vs cash",
+      "value": "2786/4097.6/6703.6/6605; basis -0.895%/-0.384%/-0.554%/-0.679%",
+      "unit": "index points",
+      "observation_type": "official settlement basis",
+      "observed_at": "2026-11-05",
+      "known_at": "2026-11-05",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-CHINA-OPTIONS",
+      "supports": "小盘相对强但各合约仍贴水",
+      "limitations": "下一交易窗09:30；不代表盘中路径"
+    },
+    {
+      "fact_id": "F015",
+      "instrument": "HO/IO/MO2612",
+      "value": "ATM 14.51/18.93/32.11 vol; RR25 -1.01/-1.02/-3.80 vol",
+      "unit": "annualized IV points",
+      "observation_type": "engine EOD",
+      "observed_at": "2026-11-05",
+      "known_at": "2026-11-06 07:15 BJT",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-CHINA-OPTIONS",
+      "supports": "MO绝对IV与下行偏斜最高",
+      "limitations": "dealer gamma方向未知；实时bid/ask未核"
+    },
+    {
+      "fact_id": "F016",
+      "instrument": "China commodities full scan",
+      "value": "77 products / 806 contracts / five exchanges",
+      "unit": "coverage",
+      "observation_type": "engine EOD",
+      "observed_at": "2026-11-05",
+      "known_at": "2026-11-06 07:09 BJT",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-COMMODITY",
+      "supports": "63个旧代码及新增挂牌的可得数据均纳入初筛",
+      "limitations": "External 17/22、Physical 18/20且basis均C级"
+    },
+    {
+      "fact_id": "F017",
+      "instrument": "Commodity options core_v1",
+      "value": "45/64 products; 44 ATM-ready; 26 skew-ready; full_chain=false; execution_ready=false",
+      "unit": "coverage",
+      "observation_type": "sampled strikes",
+      "observed_at": "2026-11-05",
+      "known_at": "2026-11-06 07:09 BJT",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-COMMODITY",
+      "supports": "局部ATM/skew可研究",
+      "limitations": "无bid/ask、非全链、positioning与dealer gamma不可推"
+    },
+    {
+      "fact_id": "F018",
+      "instrument": "Commodity night session",
+      "value": "420/806 contracts observed; 52.1092% coverage",
+      "unit": "coverage",
+      "observation_type": "vendor latest-trade snapshot",
+      "observed_at": "session 2026-11-05/06 for trading date 2026-11-06",
+      "known_at": "2026-11-06 07:09 BJT",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-COMMODITY",
+      "supports": "SC/SN/CU等提供亚洲开盘前方向线索",
+      "limitations": "非官方最终收盘；OHLCV会话范围未验证；latest文件为空而fallback可读"
+    },
+    {
+      "fact_id": "F019",
+      "instrument": "SC2612 / SN2612",
+      "value": "SC close/settle 624.3/638.4, night snapshot639.8; SN 357400/353520, night343040",
+      "unit": "CNY per unit",
+      "observation_type": "EOD + delayed vendor snapshot",
+      "observed_at": "2026-11-05 EOD / 2026-11-06 pre-open",
+      "known_at": "2026-11-06 07:09 BJT",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-COMMODITY",
+      "supports": "SC旧空失效、SN反弹失败空候选",
+      "limitations": "夜盘非官方收盘；SN动态保证金/限幅未核"
+    },
+    {
+      "fact_id": "F020",
+      "instrument": "China-Stock-Engine",
+      "value": "last valid trade date 2026-10-30; candidate_union=0; HTTP 401 refresh failure",
+      "unit": "status",
+      "observation_type": "repository status",
+      "observed_at": "2026-11-05 run",
+      "known_at": "2026-11-05",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-STOCK-ENGINE",
+      "supports": "不得用旧价量生成11/6新执行信号",
+      "limitations": "不等于全市场无公司机会"
+    },
+    {
+      "fact_id": "F021",
+      "instrument": "A-share bounded disclosure discovery",
+      "value": "002546 State Grid awards CNY55.585m; 600506 coolant framework no minimum; 688368 buyback CNY120m complete; 688167 cancel 349,642 shares proposed",
+      "unit": "company disclosures",
+      "observation_type": "official portal discovery",
+      "observed_at": "2026-10-30 to 2026-11-05",
+      "known_at": "respective disclosure dates",
+      "read_at": "2026-11-06T08:08:59+08:00",
+      "source": "SRC-A-SHARE-DISCLOSURES",
+      "supports": "完成经营/资本配置/风险线索的限定检索，未形成可执行Top5公司股",
+      "limitations": "缺11/5价格、复权、停复牌/限价与完整利润桥"
+    }
+  ],
+  "dashboard": [
+    {
+      "asset": "UST 2Y/10Y/30Y",
+      "latest": "4.46% / 4.84% / 5.25%",
+      "change": "1D -12/-6/-3bp；周 -10/-10/-6bp",
+      "signal": "前端领跌、牛陡峭；2s30s +79bp",
+      "time": "11/5 official close",
+      "gap": "亚洲实时缺失"
+    },
+    {
+      "asset": "10Y real / BEI",
+      "latest": "2.60% / 2.24%",
+      "change": "1D -4bp / -2bp；周 0bp / -10bp",
+      "signal": "实际利率仍高，黄金却走强",
+      "time": "11/5 official close",
+      "gap": "BEI为简化同日差"
+    },
+    {
+      "asset": "DXY / EURUSD",
+      "latest": "~101.5 / 1.1229",
+      "change": "DXY 1D近持平；周约-0.3%~-0.5%",
+      "signal": "美元未确认避险急升",
+      "time": "11/5 late snapshot",
+      "gap": "非同步；skew缺"
+    },
+    {
+      "asset": "USDJPY / USDCNY",
+      "latest": "157.63 / 6.6652",
+      "change": "JPY约+0.46% 1D；CNH变化未同刻核",
+      "signal": "亚洲FX并非单向risk-off",
+      "time": "11/5 snapshot",
+      "gap": "carry与期权缺"
+    },
+    {
+      "asset": "Nasdaq / QQQ",
+      "latest": "Nasdaq 24,315 / QQQ 647.05",
+      "change": "1D -5.5% / -6.33%；QQQ周约-7.6%",
+      "signal": "宽科技去杠杆",
+      "time": "11/5 close",
+      "gap": "下一现金窗口22:30 BJT"
+    },
+    {
+      "asset": "SOXX / SMH",
+      "latest": "131.90 / 447.73",
+      "change": "1D -12.75%/-11.46%；周 -16.08%/-14.31%",
+      "signal": "半导体Beta显著弱于QQQ",
+      "time": "11/5 close",
+      "gap": "SOXX拆股已调整；权重不同"
+    },
+    {
+      "asset": "WTI / Brent",
+      "latest": "90.52 / 98.29",
+      "change": "1D +2.72%/+3.88%",
+      "signal": "冲击后反弹，供需与事件溢价未分离",
+      "time": "11/5 settlement",
+      "gap": "curve/crack/OVX/skew缺"
+    },
+    {
+      "asset": "Gold / GLD",
+      "latest": "spot ~4,134.83 / 375.49",
+      "change": "GLD 1D +0.83%；周 +5.54%",
+      "signal": "政策信用/避险代理增强但拥挤",
+      "time": "11/5",
+      "gap": "spot/ETF非同步；IV缺"
+    },
+    {
+      "asset": "VIX / MOVE / HY OAS",
+      "latest": "28.15 / 93.88 / 3.40%",
+      "change": "VIX +69.48%；MOVE 11/4 -6.09%；OAS 11/3",
+      "signal": "权益恐慌高，利率波动与信用未同步确认",
+      "time": "11/3-11/5",
+      "gap": "MOVE/OAS陈旧"
+    },
+    {
+      "asset": "IH/IF/IC/IM2612",
+      "latest": "2786 / 4097.6 / 6703.6 / 6605",
+      "change": "1D +0.36/+0.65/+1.90/+2.10%",
+      "signal": "小盘相对强；全线贴水",
+      "time": "11/5 EOD",
+      "gap": "09:30后确认"
+    },
+    {
+      "asset": "SSE50/CSI300/CSI500/CSI1000",
+      "latest": "2811.16/4113.41/6740.93/6650.14",
+      "change": "1D +0.09/+0.29/+1.80/+2.12%",
+      "signal": "宽度偏小盘",
+      "time": "11/5 EOD",
+      "gap": "实时广度/行业贡献缺"
+    },
+    {
+      "asset": "HO/IO/MO2612",
+      "latest": "ATM 14.51/18.93/32.11；RR25 -1.01/-1.02/-3.80",
+      "change": "ATM 1D约-0.97/-0.63/-1.57 vol",
+      "signal": "MO IV与左尾最贵",
+      "time": "11/5 EOD",
+      "gap": "dealer gamma sign、实时价差缺"
+    }
+  ],
+  "meaningful_changes": [
+    "美股冲击从估值压缩升级为强制去杠杆：QQQ -6.33%、SOXX -12.75%、SMH -11.46%，VIX 28.15；但HYG仅-0.30%，HY OAS/MOVE又非同日，因此不升级为已证实信用衰退。",
+    "美债2Y/10Y/30Y单日分别-12/-6/-3bp，2s30s陡峭至+79bp；增长/政策路径重定价比通胀失控更符合当日价格，但就业报告可推翻。",
+    "AI旧主题从不可执行的公司篮子拆为QQQ/SMH代理；现金流分化支持相对判断，AMD/Arm/NVIDIA强经营事实反对把芯片下跌写成基本面坍塌。",
+    "SC旧反弹失败空未完成原顺序，延迟夜盘回到639.8且Brent98.29；旧方向明确失效，建立条件多的子idea，不追价。",
+    "中国IM相对IH延续至1/3/5日+1.73/+2.93/+2.06%，但20日仍-9.95%；从观察升为等开盘确认，不称已触发。",
+    "Stock引擎仍停留10/30；限定公告检索获得四条资本配置/合同线索，但缺现价、可交易状态与完整利润桥，A股公司Top5为0。"
+  ],
+  "top_opportunities": [
+    {
+      "rank": 1,
+      "idea_id": "US-AI-QQQ-SMH-RELATIVE-STABILIZATION-20261106",
+      "parent_idea_id": "US-AI-CASHFLOW-LONG-CAPEXBETA-SHORT-20261103",
+      "revision": 1,
+      "title": "多QQQ、空SMH的AI现金流/Capex Beta相对价值",
+      "direction": "relative long/short",
+      "horizon": "3-10D",
+      "instrument": "154 QQQ long / 223 SMH short per ~$100k leg after trigger",
+      "research_conclusion": "待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "等22:30后顺序触发；待借券、费用与账户资格",
+      "score_components": {
+        "logic": 21,
+        "odds_convexity": 17,
+        "catalyst": 16,
+        "price_curve_vol": 11,
+        "crowding_technical": 10
+      },
+      "score": 75,
+      "support": [
+        "QQQ -6.33%而SMH -11.46%，同日现金流平台相对Capex/半导体Beta显著抗跌",
+        "微软经营现金流仍强；Meta与Alphabet高Capex压低自由现金流，盈利质量分化可验证",
+        "SOXX/SMH周跌约16.08%/14.31%，强制去杠杆提供相对修复而非追空指数的窗口"
+      ],
+      "counter": [
+        "AMD、Arm、NVIDIA经营证据仍强，不能把半导体下跌写成基本面坍塌",
+        "QQQ含半导体且组合仅近似Dollar-neutral，未核beta、借券与实时成本"
+      ],
+      "change_vs_prior": "由无法落地的主题篮子拆分为可观察ETF代理；保留父idea，方向不变但执行仍需触发。"
+    },
+    {
+      "rank": 2,
+      "idea_id": "GLD-POLICY-CREDIT-STABILIZATION-20261103",
+      "revision": 5,
+      "title": "黄金政策信用凸性：只等回撤，不追涨",
+      "direction": "long bias / optionality research",
+      "horizon": "5-20D",
+      "instrument": "GLD or 3-6M call spread only after live chain quote",
+      "research_conclusion": "有边际优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "等回撤；期权待报价与参数",
+      "score_components": {
+        "logic": 20,
+        "odds_convexity": 16,
+        "catalyst": 16,
+        "price_curve_vol": 11,
+        "crowding_technical": 10
+      },
+      "score": 73,
+      "support": [
+        "GLD 375.49，单日+0.83%、一周+5.54%，在10Y实际收益率2.60%下仍强",
+        "WGC Q3央行净购金321吨、黄金ETF流入211吨，提供非美元单因子需求证据",
+        "股权去杠杆与政策信用担忧提高组合凸性价值"
+      ],
+      "counter": [
+        "高实际利率仍是竞争解释；CFTC多头拥挤且11/3持仓尚未发布",
+        "现价、期限IV、skew和可执行价差未同一时点核验"
+      ],
+      "change_vs_prior": "分数+1；需求与避险证据增强，但涨幅过快，执行从观察改为只等回撤。"
+    },
+    {
+      "rank": 3,
+      "idea_id": "CN-IDX-IM-LONG-IH-SHORT-RELATIVE-20261105",
+      "revision": 2,
+      "title": "多IM2612、空IH2612的小盘相对价值",
+      "direction": "relative long/short",
+      "horizon": "3-10D",
+      "instrument": "2×IM2612 long / 3×IH2612 short",
+      "research_conclusion": "待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "等09:30后30-45分钟确认",
+      "score_components": {
+        "logic": 19,
+        "odds_convexity": 16,
+        "catalyst": 14,
+        "price_curve_vol": 11,
+        "crowding_technical": 11
+      },
+      "score": 71,
+      "support": [
+        "IM/IH期货比率1/3/5日约+1.73%/+2.93%/+2.06%，相对趋势已出现",
+        "IM现货+2.12%强于50指数+0.09%；MO下行偏斜绝对值更大，风险溢价可观察",
+        "2IM/3IH名义接近但不等于beta中性，便于把判断限制为风格相对"
+      ],
+      "counter": [
+        "20日IM/IH仍约-9.95%，可能只是超跌反弹",
+        "ETF份额×收盘价代理显示中小盘ETF净减少，且实时广度与beta缺失"
+      ],
+      "change_vs_prior": "分数+2；11/5相对强度延续，但仍禁止用EOD穿越代替盘中确认。"
+    },
+    {
+      "rank": 4,
+      "idea_id": "COM-M-SC2612-OVERNIGHT-REBOUND-CURVE-HOLD-LONG-20261106",
+      "parent_idea_id": "COM-E-SC2612-USIRAN-DEESCALATION-REBOUND-FAILURE-SHORT-20261103",
+      "revision": 1,
+      "title": "SC2612夜盘反弹、曲线维持后的条件多",
+      "direction": "long",
+      "horizon": "1-3D",
+      "instrument": "SC2612 futures",
+      "research_conclusion": "待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "等09:15后回撤—再收复顺序触发",
+      "score_components": {
+        "logic": 19,
+        "odds_convexity": 16,
+        "catalyst": 15,
+        "price_curve_vol": 11,
+        "crowding_technical": 8
+      },
+      "score": 69,
+      "support": [
+        "11/5 EOD close624.3/settle638.4后，延迟夜盘快照639.8，较结算+0.22%",
+        "SC2612/SC2701延迟快照仍约+1.11% backwardation，未出现近端供给完全松弛",
+        "Brent官方结算98.29，地缘溢价并未清零"
+      ],
+      "counter": [
+        "夜盘仅供应商快照、覆盖52.11%，不是官方夜盘最终收盘",
+        "物理基差C级、期权无bid/ask，方向与执行证据均不完整"
+      ],
+      "change_vs_prior": "旧空单v6未满足完整顺序；新事实使旧方向失效，建立父子idea而非改写历史。"
+    },
+    {
+      "rank": 5,
+      "idea_id": "COM-M-SN2612-LME-DIVERGENCE-FAILED-BOUNCE-SHORT-20261106",
+      "revision": 1,
+      "title": "SN2612相对LME背离后的反弹失败空",
+      "direction": "short",
+      "horizon": "2-5D",
+      "instrument": "SN2612 futures",
+      "research_conclusion": "待验证优势",
+      "evidence_sufficiency": "部分",
+      "execution_status": "等09:15后反弹失败与LME同向确认",
+      "score_components": {
+        "logic": 18,
+        "odds_convexity": 15,
+        "catalyst": 12,
+        "price_curve_vol": 12,
+        "crowding_technical": 9
+      },
+      "score": 66,
+      "support": [
+        "延迟夜盘343040，较EOD close357400约-4.02%、较settle353520约-2.96%",
+        "LME锡46995未配合国内高位，跨境映射提示国内溢价回吐",
+        "局部ATM IV37.59%、RR25 -7.30 vol，尾部保护需求高"
+      ],
+      "counter": [
+        "夜盘快照非官方收盘；LME/SHFE合约、汇率、税费不可直接一比一",
+        "ΔOI下降且金属波动高，追空易遭流动性反抽"
+      ],
+      "change_vs_prior": "新idea；只允许失败反弹，不允许低开追空。"
+    }
+  ],
+  "top_trade_cards": [
+    {
+      "idea_id": "US-AI-QQQ-SMH-RELATIVE-STABILIZATION-20261106",
+      "revision": 1,
+      "contract": "QQQ / SMH cash ETFs",
+      "direction": "long QQQ / short SMH",
+      "window": "2026-11-06 22:30-23:30 BJT（就业数据后）",
+      "entry_rule": "先观察前30分钟；要求30分钟QQQ/SMH收盘>=1.45 AND VIX不突破11/5高点28.36 AND QQQ守住638.94；随后回踩比率1.44不破，再分批。",
+      "splits": [
+        {
+          "legs": "46 QQQ long / 67 SMH short",
+          "pct": 30
+        },
+        {
+          "legs": "46 / 67",
+          "pct": 30
+        },
+        {
+          "legs": "62 / 89",
+          "pct": 40
+        }
+      ],
+      "forbid": "比率跳空>=1.52不追；VIX>32、HYG单日跌幅>1%或无法核借券/实时价差则取消",
+      "stop": "30分钟比率<1.40，或QQQ<638.94且广度继续恶化",
+      "tp1": "ratio 1.52",
+      "tp2": "ratio 1.58",
+      "time_exit": "2026-11-12 US close",
+      "formula": "PnL USD = 154×ΔQQQ - 223×ΔSMH",
+      "notional": "154×647.05=$99,645.70 long; 223×447.73=$99,843.79 short; net -$198.09",
+      "cost_scenarios": "实时佣金、借券费与滑点未取得；好/中/坏净R不可核，机器表示not execution-ready",
+      "risk_budget": "试仓<=0.50% NAV；确认<=1.00%；AI相对主题<=1.50%",
+      "limited_risk": false,
+      "position_state": "未提供/未知"
+    },
+    {
+      "idea_id": "CN-IDX-IM-LONG-IH-SHORT-RELATIVE-20261105",
+      "revision": 2,
+      "contract": "IM2612 / IH2612",
+      "direction": "2 long / 3 short",
+      "window": "2026-11-06 09:30-10:30 BJT",
+      "entry_rule": "先观察30分钟；要求IM/IH>=2.38 AND 现金CSI1000/SSE50相对收益非负 AND IM基差不差于-1.10%；随后15分钟再创新高。",
+      "splits": [
+        {
+          "legs": "2 IM long / 3 IH short",
+          "pct": 33
+        },
+        {
+          "legs": "2 IM long / 3 IH short",
+          "pct": 33
+        },
+        {
+          "legs": "2 IM long / 3 IH short",
+          "pct": 34
+        }
+      ],
+      "forbid": "比率跳空>=2.44不追；IM基差<-1.10%、无法获得同期现货或实时广度则取消",
+      "stop": "15分钟比率<2.31，或IM基差<-1.40%",
+      "tp1": "ratio 2.48",
+      "tp2": "ratio 2.55",
+      "time_exit": "2026-11-13 14:45 BJT",
+      "formula": "PnL CNY = 400×ΔIM - 900×ΔIH",
+      "notional": "2×6605×200=CNY2,642,000 long；3×2786×300=CNY2,507,400 short；净多CNY134,600",
+      "cost_scenarios": "保证金、手续费、滑点与beta未实时取得；不能给净R，not execution-ready",
+      "risk_budget": "试仓<=0.35% NAV；确认<=0.75%；中国风格主题<=1.25%",
+      "limited_risk": false,
+      "position_state": "未提供/未知"
+    },
+    {
+      "idea_id": "COM-M-SC2612-OVERNIGHT-REBOUND-CURVE-HOLD-LONG-20261106",
+      "revision": 1,
+      "contract": "INE SC2612",
+      "direction": "long",
+      "window": "2026-11-06 09:15-11:30 BJT",
+      "entry_rule": "先回撤636-640，15分钟不收于632下 AND SC2612/SC2701 backwardation>=1.00% AND 同时Brent>=98；随后15分钟收复642。",
+      "splits": [
+        {
+          "price": 640,
+          "pct": 30
+        },
+        {
+          "price": 642,
+          "pct": 30
+        },
+        {
+          "price": 644,
+          "pct": 40
+        }
+      ],
+      "forbid": "开盘/跳涨>=650不追；Brent<96.5、曲线<0.80%或无同刻跨境报价取消",
+      "stop": 632,
+      "tp1": 660,
+      "tp2": 680,
+      "time_exit": "2026-11-10 22:45 BJT",
+      "multiplier": 1000,
+      "tick": 0.1,
+      "tick_value": 100,
+      "cost_assumption_cny": 500,
+      "scenarios": [
+        {
+          "label": "好",
+          "entry": 640,
+          "risk": 8500,
+          "tp1_net": 19500,
+          "rr1": 2.29,
+          "tp2_net": 39500,
+          "rr2": 4.65
+        },
+        {
+          "label": "中",
+          "entry": 642,
+          "risk": 10500,
+          "tp1_net": 17500,
+          "rr1": 1.67,
+          "tp2_net": 37500,
+          "rr2": 3.57
+        },
+        {
+          "label": "坏",
+          "entry": 644,
+          "risk": 12500,
+          "tp1_net": 15500,
+          "rr1": 1.24,
+          "tp2_net": 35500,
+          "rr2": 2.84
+        }
+      ],
+      "weighted": {
+        "entry": 642.2,
+        "risk": 10700,
+        "rr1": 1.6,
+        "rr2": 3.5
+      },
+      "stress": "20%保证金不是风险上限；从642单次18%跌停约-115,600元/手，连续两次复合约-210,000元/手（均未含流动性与追加保证金）",
+      "risk_budget": "试仓<=0.35% NAV；确认<=0.75%；SC主题<=1.50%",
+      "limited_risk": false,
+      "position_state": "未提供/未知"
+    }
+  ],
+  "gold_tracking": {
+    "conclusion": "增强，但执行仅等回撤；‘政策信用期权’是经济比喻，不是合同限损",
+    "evidence": [
+      "10Y实际2.60%仍高而GLD周涨5.54%",
+      "WGC Q3央行净购321t、ETF流入211t",
+      "VIX近端恐慌强化组合凸性需求"
+    ],
+    "counter": [
+      "CFTC多头拥挤且11/3新持仓未出",
+      "高实际利率、美元反弹和流动性抛售均可打断趋势"
+    ],
+    "comparison": {
+      "3-6M_call_spread": "理论优先但须同到期链、bid/ask、IV与净成本；当前待报价",
+      "micro_gold_future": "可作方向确认，但保证金与跳空不是限损",
+      "gold_plus_long_bond_put_spread": "可隔离名义利率上行，但两腿IV/相关性未核",
+      "reverse_or_no_trade": "若GLD跌破11/5低点且实际利率上破2.70%、美元同步上行，优先减持/不交易"
+    },
+    "execution": "禁止沿用旧strike；下一美股窗口22:30 BJT，数据前后不追涨"
+  },
+  "ai_tracking": {
+    "conclusion": "盈利兑现没有坍塌，风险集中在Capex兑现速度、自由现金流与拥挤去杠杆",
+    "coverage": {
+      "leaders": "MSFT/NVDA/GOOGL/META",
+      "secondary": "AMD/ARM",
+      "cloud_software": "MSFT/GOOGL plus software proxy not separately quoted",
+      "equipment_network": "SOXX/SMH proxy; exact equipment/network basket unavailable",
+      "power": "Vistra 11/6 event watch; no position signal"
+    },
+    "cashflow_bridge": "MSFT OCF58.0-capex45.2≈FCF18.6；META OCF32.79-capex34.91≈-2.12；Alphabet OCF42.3-capex51.4≈-9.1（公司披露口径）",
+    "strongest_counter": "AMD data-center +97%、Arm +27%、NVIDIA +106%说明产业需求仍强；ETF下跌也可能主要来自系统性卖盘",
+    "preferred_expression": "QQQ/SMH条件相对价值；未核beta前只称Dollar-near-neutral代理",
+    "reverse_expression": "若SMH相对QQQ站回并且VIX回落、信用稳定，则相对空芯片论证失效；可选择不交易而非反向追多"
+  },
+  "china_tracking": {
+    "qualified_trade": null,
+    "score": 71,
+    "preferred_future": "2×IM2612 long / 3×IH2612 short after trigger",
+    "returns": {
+      "IH": "1/3/5/20D +0.36/+2.29/+2.65/-0.23%",
+      "IF": "+0.65/+3.09/+2.94/-6.33%",
+      "IC": "+1.90/+5.24/+5.16/-10.23%",
+      "IM": "+2.10/+5.29/+4.77/-10.16%",
+      "IM_over_IH": "+1.73/+2.93/+2.06/-9.95%"
+    },
+    "basis": {
+      "IH": "-25.16pts/-0.895% annualized -7.597%",
+      "IF": "-15.81/-0.384% annualized -3.263%",
+      "IC": "-37.33/-0.554% annualized -4.701%",
+      "IM": "-45.14/-0.679% annualized -5.762%"
+    },
+    "options": {
+      "HO2612": "ATM14.51 RR25-1.01 BF25+0.92 PCR_OI0.6645 forward2785.109",
+      "IO2612": "ATM18.93 RR25-1.02 BF25+0.77 PCR_OI0.6539 forward4092.899",
+      "MO2612": "ATM32.11 RR25-3.80 BF25+1.02 PCR_OI0.6163 forward6613.518",
+      "capability": "EOD metrics available; 10D wings/term/PCR history incomplete; gamma peaks only absolute, dealer direction unknown"
+    },
+    "futures_option_linkage": {
+      "IH_HO": {
+        "mapping": "SSE50",
+        "residual": "cash/future basis and expiry"
+      },
+      "IF_IO": {
+        "mapping": "CSI300",
+        "residual": "cash/future basis and expiry"
+      },
+      "IC_proxy": {
+        "mapping": "no default matching option",
+        "residual": "IO/MO/ETF proxy introduces index/beta/basis risk"
+      },
+      "IM_MO": {
+        "mapping": "CSI1000",
+        "residual": "cash/future basis and expiry"
+      }
+    },
+    "breadth": "SSE50/CSI300/CSI500/CSI1000 1D +0.09/+0.29/+1.80/+2.12%；真实涨跌家数、行业贡献与两融当日值未取得",
+    "etf_proxy": "份额变化×收盘价代理：IF +5.40亿元、IH -4.19亿元、IC -4.61亿元、IM -8.89亿元；不是订单流或机构净买卖",
+    "stock_engine": "11/5刷新失败、最近价格10/30；限定检索002546、600506、688368、688167，0个公司进入Top5；不据此宣称全市场无机会"
+  },
+  "commodities_tracking": {
+    "scan": "77 products/806 contracts/five exchanges；原63个代码与动态新增均按可得数据初筛；异常非入榜包括FU、LU、MA、EC、AG、CU、AP、JM",
+    "module_status": {
+      "futures": "available/published/analytically_ready；full_market_ready=true",
+      "market_state": "available；basis quality C",
+      "physical": "18/20，basis均C，GFEX仓单last-good 2026-09-01",
+      "external": "17/22 context-only",
+      "night": "trading_date 11/6；vendor_latest_trade_asof_snapshot；coverage52.1092%；official close false",
+      "options": "45/64；ATM44、skew26；full_chain/surface/positioning/execution false",
+      "metadata": "806 contracts；effective match73.45%，native multiplier/tick/margin/limit约30.15%",
+      "futures_crosscheck": "SHFE/INE/CZCE/GFEX compared=matched；DCE source_error HTTP412；no verified price differences among compared rows"
+    },
+    "conclusions": [
+      "FU2701 -10.06%、LU2701 -8.21%但夜盘反弹，冲击与流动性混合，证据不足不追",
+      "MA701 -4.94%且跨月价差扩大，旧压缩逻辑被数据纠正",
+      "EC2612 5D -7.43%且远月升水6.11%，但当前现货映射缺失，观察",
+      "AG2702 +4.99%后夜盘回撤；旧AG2612多头失效，不移动止损",
+      "CU2612夜盘约-1.37%，局部ATM17.13但实体证据弱，观察",
+      "AP701 5D +6.17%，ATM34.37、RR25-5.21，事件凸性候选但不具执行报价"
+    ],
+    "execution_impact": "局部ATM/skew可用于研究相对波动；无全链/bid-ask/positioning，不写可执行权利金、PCR拥挤、dealer gamma或合同限损。",
+    "data_quality": {
+      "status": "degraded",
+      "price_source": "China-Commodities-Engine vendor EOD futures plus labeled delayed night snapshot",
+      "curve_definition": "near_minus_next_futures_curve_not_spot_basis",
+      "basis_status": "available_but_all_C_grade",
+      "warehouse_status": "partial_18_of_20_GFEX_stale",
+      "member_rankings_status": "not_collected",
+      "options_chain_status": "sampled_strikes_45_of_64_not_full_chain",
+      "options_surface_status": "local_ATM_44_skew_26_global_surface_not_ready",
+      "history_comparison_status": "available",
+      "available_horizons": [
+        "1D",
+        "3D",
+        "5D",
+        "20D"
+      ],
+      "comparative_metrics": [
+        {
+          "product": "SC",
+          "main_contract": "SC2612",
+          "return_1d_pct": -5.59,
+          "return_5d_pct": -3.84,
+          "rv20": 45.5,
+          "curve_pct": 1.237
+        },
+        {
+          "product": "SN",
+          "main_contract": "SN2612",
+          "return_1d_pct": 0.57,
+          "return_5d_pct": -4.87,
+          "rv20": 28.33,
+          "curve_pct": 1.607
+        },
+        {
+          "product": "AG",
+          "main_contract": "AG2702",
+          "return_1d_pct": 4.99,
+          "return_5d_pct": -4.92,
+          "rv20": 40.1
+        }
+      ]
+    },
+    "market_dashboard": [
+      {
+        "product": "SC",
+        "main_contract": "SC2612",
+        "close": 624.3,
+        "settlement": 638.4,
+        "night_snapshot": 639.8,
+        "curve_pct": 1.237,
+        "conclusion": "old short invalid; conditional long only"
+      },
+      {
+        "product": "SN",
+        "main_contract": "SN2612",
+        "close": 357400,
+        "settlement": 353520,
+        "night_snapshot": 343040,
+        "conclusion": "failed-bounce short candidate"
+      },
+      {
+        "product": "CU",
+        "main_contract": "CU2612",
+        "close": 106410,
+        "settlement": 106320,
+        "night_snapshot": 104950,
+        "conclusion": "observe; physical evidence weak"
+      },
+      {
+        "product": "AG",
+        "main_contract": "AG2702",
+        "close": 12743,
+        "settlement": 12629,
+        "night_snapshot": 12631,
+        "conclusion": "old AG2612 long invalid; no chase"
+      },
+      {
+        "product": "EC",
+        "main_contract": "EC2612",
+        "close": 2430,
+        "settlement": 2389,
+        "conclusion": "contango signal; spot mapping missing"
+      }
+    ],
+    "supply_chain_map": [
+      {
+        "chain": "energy",
+        "products": [
+          "SC",
+          "FU",
+          "LU",
+          "BU",
+          "LPG"
+        ],
+        "finding": "event premium and refinery/transport shock not cleanly separated; physical basis low quality"
+      },
+      {
+        "chain": "ferrous",
+        "products": [
+          "I",
+          "JM",
+          "J",
+          "RB",
+          "HC",
+          "FG",
+          "SA",
+          "SF",
+          "SM"
+        ],
+        "finding": "JM curve and OI notable; DCE official price crosscheck unavailable"
+      },
+      {
+        "chain": "base_precious",
+        "products": [
+          "CU",
+          "BC",
+          "AL",
+          "AO",
+          "AD",
+          "ZN",
+          "PB",
+          "NI",
+          "SN",
+          "SS",
+          "AU",
+          "AG"
+        ],
+        "finding": "SN/CU cross-border divergence; precious volatility high"
+      },
+      {
+        "chain": "chemicals",
+        "products": [
+          "PX",
+          "TA",
+          "PF",
+          "PR",
+          "MA",
+          "PP",
+          "L",
+          "V",
+          "EG",
+          "EB",
+          "RU",
+          "NR",
+          "BR",
+          "SH",
+          "UR",
+          "SP"
+        ],
+        "finding": "MA/FU/LU abnormal but rebound/liquidity risks block chase"
+      },
+      {
+        "chain": "agriculture_and_shipping",
+        "products": [
+          "A",
+          "B",
+          "M",
+          "RM",
+          "Y",
+          "P",
+          "OI",
+          "C",
+          "CS",
+          "LH",
+          "JD",
+          "CF",
+          "CY",
+          "SR",
+          "AP",
+          "CJ",
+          "PK",
+          "EC"
+        ],
+        "finding": "AP event convexity watch; EC contango watch; execution inputs incomplete"
+      }
+    ],
+    "options_surface": {
+      "status": "not_ready",
+      "available_metrics": [],
+      "tradeable_structures": [],
+      "research_priority_when_ready": [
+        "ATM IV-RV by exact series",
+        "RR25/BF25 only for skew_ready series",
+        "two-expiry term structure",
+        "live bid/ask and net debit"
+      ],
+      "local_research_metrics": {
+        "products_successful": 45,
+        "core_atm_ready": 44,
+        "skew_ready": 26,
+        "full_chain_verified": false,
+        "execution_ready": false
+      }
+    },
+    "night_session_risk_map": [
+      {
+        "product": "SC",
+        "confidence": "medium_research_low_execution",
+        "action": "wait for day-session pullback and same-time Brent/curve"
+      },
+      {
+        "product": "SN",
+        "confidence": "medium_research_low_execution",
+        "action": "do not chase gap; require failed bounce and LME confirmation"
+      },
+      {
+        "product": "CU",
+        "confidence": "low",
+        "action": "observe only"
+      },
+      {
+        "product": "AG",
+        "confidence": "low",
+        "action": "old long invalid; no stop revision"
+      },
+      {
+        "product": "FU/LU/MA",
+        "confidence": "low",
+        "action": "abnormal move but no chase"
+      }
+    ]
+  },
+  "event_calendar": [
+    {
+      "time_bjt": "2026-11-06 21:30",
+      "event": "美国10月就业报告",
+      "plan": "发布前不加AI/黄金方向Delta；数据后30分钟再看收益率、美元、VIX与信用共同反应",
+      "source": "SRC-BLS-CALENDAR"
+    },
+    {
+      "time_bjt": "2026-11-06 22:30",
+      "event": "美国现金市场开盘",
+      "plan": "QQQ/SMH只按顺序触发；禁止把盘前或首根K线称确认",
+      "source": "SRC-US-ETF"
+    },
+    {
+      "time_bjt": "2026-11-07 01:15",
+      "event": "Fed Bowman讲话",
+      "plan": "若政策路径再鹰、2Y反弹，则减少成长Delta/黄金Vega",
+      "source": "https://www.federalreserve.gov/newsevents/2026-november.htm"
+    },
+    {
+      "time_bjt": "2026-11-07 04:30",
+      "event": "CFTC持仓（截至11/3）",
+      "plan": "更新黄金拥挤判断，不回填为08:09已知",
+      "source": "SRC-CFTC"
+    },
+    {
+      "time_bjt": "2026-11-09 09:30",
+      "event": "中国CPI/PPI",
+      "plan": "IM/IH若已触发，事件前降低30%-50%名义或仅保留可承受跳空的整数手",
+      "source": "SRC-NBS-CALENDAR"
+    },
+    {
+      "time_bjt": "2026-11-10/11/13 02:00",
+      "event": "美国3Y/10Y/30Y拍卖（$58bn/$42bn/$25bn）",
+      "plan": "黄金与长久期风险按尾部拍卖预留，不把期限溢价单因子化",
+      "source": "SRC-TREASURY-AUCTIONS"
+    },
+    {
+      "time_bjt": "2026-11-10 21:30",
+      "event": "美国CPI",
+      "plan": "高Vega结构在数据前核成本上限；无报价则不建仓",
+      "source": "SRC-BLS-CALENDAR"
+    },
+    {
+      "time_bjt": "2026-11-13 01:00",
+      "event": "EIA WPSR（延期）",
+      "plan": "SC催化超过时间退出，不能据此延长旧计划",
+      "source": "https://www.eia.gov/petroleum/supply/weekly/schedule.php"
+    },
+    {
+      "time_bjt": "2026-11-10至15（未定）",
+      "event": "中国社融/信贷可能窗口",
+      "plan": "确切发布时间未公布；只作日历风险，不写成确定事件",
+      "source": "https://www.pbc.gov.cn/"
+    }
+  ],
+  "action_list": {
+    "A": "没有。08:09 BJT时中国股票/股指尚未开盘、商品顺序尚未验证、美国现金市场未开；全部候选仍缺至少一个触发或实时执行参数。",
+    "B": "09:15后SC2612条件多、09:30后IM2612/IH2612相对多、22:30后QQQ/SMH相对多；均须完整AND/THEN顺序与放弃条件。",
+    "C": "黄金回撤型3—6月Call Spread待询价；SN2612失败反弹空；EC/FU/LU/MA/AG/CU/AP与A股公告候选继续观察。",
+    "D": "回避在VIX高位追空QQQ/SMH、低开追空SN、跳涨追多SC/黄金；旧SC空与AG2612多已失效，如用户另有真实持仓须按原失效条件独立核对，不假设已持有。"
+  },
+  "risk_budget": {
+    "trial": "0.25%-0.75% NAV",
+    "confirmation": "0.75%-1.50% NAV",
+    "theme_total": "2.5%-3.0% NAV",
+    "specific_caps": {
+      "AI_relative": "trial<=0.50%, confirm<=1.00%, theme<=1.50%",
+      "IM_IH": "trial<=0.35%, confirm<=0.75%, theme<=1.25%",
+      "SC": "trial<=0.35%, confirm<=0.75%, theme<=1.50%"
+    },
+    "sizing_formula": "futures lots=floor(允许风险金额/计划每手损失)；期权只有取得实际净权利金后才可反推数量；保证金不是风险预算",
+    "factor_map": {
+      "AI_QQQ_SMH": "growth/semiconductor relative, residual beta",
+      "IM_IH": "China small-cap/style, liquidity and basis",
+      "gold": "real yield/USD/policy credit/liquidity",
+      "SC": "geopolitics/oil curve/CNY",
+      "SN": "cross-border metal/basis/FX"
+    },
+    "stress": [
+      "equity gap and volatility repricing",
+      "one/two futures price limits",
+      "margin hike",
+      "borrow recall and short squeeze",
+      "liquidity disappearance",
+      "holiday/cross-market mismatch",
+      "correlation breakdown"
+    ],
+    "positions": "未提供/未知，不推断净敞口"
+  },
+  "verification": {
+    "score_sums": "passed: 75/73/71/69/66；各分项在25/25/20/15/15上限内",
+    "calculations": "passed: Treasury curves, ETF weekly returns, QQQ/SMH ratio/notional, IM/IH notional/PnL formula, SC good/mid/bad and weighted R",
+    "calendar_dst": "passed: US cash 22:30 BJT after DST end; China night belongs 11/6 trading day",
+    "history_identity": "passed: strict prior 2026-11-05 evening; same edition 2026-11-05 morning; stable IDs inherited",
+    "md_json_consistency": "generated from one internal report object",
+    "execution_reachability": "passed for three cards; trigger and invalidation not simultaneous; missing costs isolate execution only",
+    "unresolved": [
+      "live bid/ask and borrow",
+      "beta-neutral hedge ratios",
+      "same-day MOVE/HY OAS",
+      "FX and commodity option skew beyond available samples",
+      "commodity full chains and official night close",
+      "A-share 11/5 adjusted price/tradability"
+    ],
+    "ci_validation_status": "pending_or_unverified",
+    "archive_reread": "pending until post-write six-path connector reread"
+  },
+  "sources": [
+    {
+      "source_id": "SRC-TREASURY",
+      "name": "U.S. Treasury daily par yield curve",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value_month=202611&type=daily_treasury_yield_curve",
+      "source_date": "2026-11-05",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "UST 2Y/5Y/10Y/30Y closes",
+        "curve changes"
+      ],
+      "title": "U.S. Treasury daily par yield curve"
+    },
+    {
+      "source_id": "SRC-TREASURY-REAL",
+      "name": "U.S. Treasury daily real yield curve",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_real_yield_curve",
+      "source_date": "2026-11-05",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "10Y real yield",
+        "derived BEI"
+      ],
+      "title": "U.S. Treasury daily real yield curve"
+    },
+    {
+      "source_id": "SRC-US-ETF",
+      "name": "US ETF close data and fund pages",
+      "url": "https://finance.yahoo.com/quote/QQQ/",
+      "source_date": "2026-11-05",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "public_market",
+      "supported_claims": [
+        "QQQ close and return",
+        "SOXX/SMH/GLD/HYG/TLT closes"
+      ],
+      "title": "US ETF close data and fund pages"
+    },
+    {
+      "source_id": "SRC-CBOE",
+      "name": "Cboe VIX futures daily settlements",
+      "url": "https://www.cboe.com/markets/us/futures/market-statistics/settlement/futures/daily",
+      "source_date": "2026-11-05",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "VX Nov/Dec settlements",
+        "near-term backwardation"
+      ],
+      "title": "Cboe VIX futures daily settlements"
+    },
+    {
+      "source_id": "SRC-FRED-CREDIT",
+      "name": "FRED ICE BofA US High Yield OAS",
+      "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+      "source_date": "2026-11-03",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "official_aggregator",
+      "supported_claims": [
+        "last-good HY OAS",
+        "freshness limitation"
+      ],
+      "title": "FRED ICE BofA US High Yield OAS"
+    },
+    {
+      "source_id": "SRC-REUTERS-FX",
+      "name": "Reuters dollar and FX market report",
+      "url": "https://www.reuters.com/world/asia-pacific/dollar-edges-lower-us-election-outcome-cheers-global-markets-2026-11-05/",
+      "source_date": "2026-11-05",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "reliable_media",
+      "supported_claims": [
+        "DXY/EURUSD/USDJPY snapshots",
+        "Fed pricing context"
+      ],
+      "title": "Reuters dollar and FX market report"
+    },
+    {
+      "source_id": "SRC-REUTERS-OIL",
+      "name": "Reuters oil settlement report",
+      "url": "https://www.reuters.com/business/energy/oil-falls-fourth-day-expectations-lower-risk-iran-war-escalation-2026-11-05/",
+      "source_date": "2026-11-05",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "reliable_media",
+      "supported_claims": [
+        "WTI/Brent settlements",
+        "geopolitical context"
+      ],
+      "title": "Reuters oil settlement report"
+    },
+    {
+      "source_id": "SRC-EIA",
+      "name": "EIA weekly petroleum stocks and schedule",
+      "url": "https://www.eia.gov/dnav/pet/PET_STOC_WSTK_A_EPC0_SAX_MBBL_W.htm",
+      "source_date": "2026-11-04",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "commercial crude inventory",
+        "weekly change"
+      ],
+      "title": "EIA weekly petroleum stocks and schedule"
+    },
+    {
+      "source_id": "SRC-WGC",
+      "name": "World Gold Council Q3 2026 demand trends",
+      "url": "https://www.gold.org/news-and-events/press-releases/central-bank-buying-and-etf-inflows-support-gold-demand-q3",
+      "source_date": "2026-10-29",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "industry_primary",
+      "supported_claims": [
+        "central-bank purchases",
+        "ETF flows and holdings"
+      ],
+      "title": "World Gold Council Q3 2026 demand trends"
+    },
+    {
+      "source_id": "SRC-CFTC",
+      "name": "CFTC futures only commitments of traders",
+      "url": "https://www.cftc.gov/dea/futures/other_sf.htm",
+      "source_date": "2026-10-27",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "COMEX gold positioning",
+        "staleness"
+      ],
+      "title": "CFTC futures only commitments of traders"
+    },
+    {
+      "source_id": "SRC-AI-IR",
+      "name": "Microsoft, Meta, Alphabet, AMD, Arm and NVIDIA investor releases",
+      "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2027-q1/press-release-webcast",
+      "source_date": "2026 latest reported quarters",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "company_primary",
+      "supported_claims": [
+        "AI platform operating cash flow and capex",
+        "semiconductor revenue and operating evidence"
+      ],
+      "title": "Microsoft, Meta, Alphabet, AMD, Arm and NVIDIA investor releases"
+    },
+    {
+      "source_id": "SRC-CHINA-OPTIONS",
+      "name": "China-Options-Engine fixed commit",
+      "url": "https://github.com/farfromexact/China-Options-Engine/tree/25f333659c4c3a4cc53aeddea3c7c19d25f5fff6",
+      "source_date": "2026-11-05",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "repository",
+      "supported_claims": [
+        "IH/IF/IC/IM futures and basis",
+        "HO/IO/MO local option metrics"
+      ],
+      "title": "China-Options-Engine fixed commit"
+    },
+    {
+      "source_id": "SRC-COMMODITY",
+      "name": "China-Commodities-Engine fixed commit",
+      "url": "https://github.com/farfromexact/China-Commodities-Engine/tree/8492051f3e415ae5031c3517651e103b79701d04",
+      "source_date": "2026-11-05/06",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "repository",
+      "supported_claims": [
+        "77-product futures scan",
+        "options readiness",
+        "night semantics",
+        "SC/SN data"
+      ],
+      "title": "China-Commodities-Engine fixed commit"
+    },
+    {
+      "source_id": "SRC-STOCK-ENGINE",
+      "name": "China-Stock-Engine fixed commit",
+      "url": "https://github.com/farfromexact/China-Stock-Engine/tree/3fd9a7a6c74613cb2ff61b11014bc02d26939d773",
+      "source_date": "2026-11-05 run; prices through 2026-10-30",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "repository",
+      "supported_claims": [
+        "stale price capability",
+        "candidate union and refresh failure"
+      ],
+      "title": "China-Stock-Engine fixed commit"
+    },
+    {
+      "source_id": "SRC-A-SHARE-DISCLOSURES",
+      "name": "SSE/SZSE bounded corporate disclosure discovery",
+      "url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/",
+      "source_date": "2026-10-30 to 2026-11-05",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "official_exchange",
+      "supported_claims": [
+        "bounded A-share announcement discovery",
+        "capital allocation and contract limitations"
+      ],
+      "title": "SSE/SZSE bounded corporate disclosure discovery"
+    },
+    {
+      "source_id": "SRC-BLS-CALENDAR",
+      "name": "BLS November 2026 calendar",
+      "url": "https://www.bls.gov/schedule/2026/11_sched.htm",
+      "source_date": "2026-11-06",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "US employment/CPI/PPI event times"
+      ],
+      "title": "BLS November 2026 calendar"
+    },
+    {
+      "source_id": "SRC-TREASURY-AUCTIONS",
+      "name": "US Treasury quarterly refunding statement",
+      "url": "https://home.treasury.gov/news/press-releases/sb0678",
+      "source_date": "2026-11",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "3Y/10Y/30Y auction sizes and dates"
+      ],
+      "title": "US Treasury quarterly refunding statement"
+    },
+    {
+      "source_id": "SRC-NBS-CALENDAR",
+      "name": "National Bureau of Statistics release calendar",
+      "url": "https://www.stats.gov.cn/sj/fbrc/",
+      "source_date": "2026-11",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "official",
+      "supported_claims": [
+        "China CPI/PPI timing"
+      ],
+      "title": "National Bureau of Statistics release calendar"
+    },
+    {
+      "source_id": "SRC-GLOBAL-PRIOR",
+      "name": "Global-Cross-Asset-Radar prior report fixed commit",
+      "url": "https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/259d8a4e99bb4138a4d79774dd8f3404841bab3a/reports/2026/11/2026-11-05_evening.json",
+      "source_date": "2026-11-05",
+      "accessed_at_bjt": "2026-11-06T08:08:59+08:00",
+      "source_type": "repository_prior",
+      "supported_claims": [
+        "stable idea IDs and prior parameters",
+        "not current market evidence"
+      ],
+      "title": "Global-Cross-Asset-Radar prior report fixed commit"
+    }
+  ],
+  "archive": {
+    "status": "success",
+    "archive_status": "success",
+    "repository": "farfromexact/Global-Cross-Asset-Radar",
+    "branch": "main",
+    "paths": [
+      "reports/2026/11/2026-11-06_morning.md",
+      "reports/2026/11/2026-11-06_morning.json",
+      "latest/morning.md",
+      "latest/morning.json",
+      "status/morning_latest.json",
+      "manifests/reports.json"
+    ],
+    "markdown_path": "reports/2026/11/2026-11-06_morning.md",
+    "json_path": "reports/2026/11/2026-11-06_morning.json",
+    "latest_markdown_path": "latest/morning.md",
+    "latest_json_path": "latest/morning.json",
+    "status_path": "status/morning_latest.json",
+    "manifest_path": "manifests/reports.json",
+    "commit_sha": null,
+    "error": null,
+    "ci_validation_status": "pending_or_unverified"
+  }
+}
