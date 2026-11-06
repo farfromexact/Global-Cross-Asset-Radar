@@ -1,0 +1,93 @@
+{
+  "report_date": "2026-11-06",
+  "edition": "morning",
+  "live_refetch": "optional_parent_controlled_not_run_in_ci",
+  "source_status": {
+    "engine_read_protocol": "engine_read_2026-11-06",
+    "repos": {
+      "china_options": {
+        "read_status": "ok",
+        "calendar": "previous_trade_day",
+        "cutoff_sha": "1111111111111111111111111111111111111111",
+        "cutoff_at": "2026-11-06T07:30:00",
+        "cutoff_zone": "Asia/Shanghai",
+        "commit_timestamp": "2026-11-05T16:00:00Z",
+        "commit_timestamp_source": "committer_date",
+        "last_good": {
+          "last_good_commit_sha": "5555555555555555555555555555555555555555",
+          "trade_date": "2026-11-04",
+          "reason": "older verified options commit, not this research pin"
+        }
+      },
+      "china_commodities": {
+        "read_status": "ok",
+        "calendar": "not_started",
+        "cutoff_sha": "2222222222222222222222222222222222222222",
+        "cutoff_at": "2026-11-06T07:30:00",
+        "cutoff_zone": "Asia/Shanghai",
+        "commit_timestamp": "2026-11-05T16:00:00Z",
+        "commit_timestamp_source": "committer_date",
+        "head_changed_after_pin": "4444444444444444444444444444444444444444"
+      },
+      "china_stock": {
+        "read_status": "ok",
+        "calendar": "backfill",
+        "cutoff_sha": "3333333333333333333333333333333333333333",
+        "cutoff_at": "2026-11-06T07:30:00",
+        "cutoff_zone": "Asia/Shanghai",
+        "commit_timestamp": "2026-11-05T16:00:00Z",
+        "commit_timestamp_source": "committer_date"
+      }
+    },
+    "source_receipts": [
+      {
+        "repo": "china_options",
+        "repository": "farfromexact/China-Options-Engine",
+        "path": "data/radar_latest.json",
+        "role": "research_pin",
+        "session_role": "previous_trade_day",
+        "market_trade_date": "2026-11-05",
+        "cutoff_sha": "1111111111111111111111111111111111111111",
+        "observed_sha": "1111111111111111111111111111111111111111",
+        "read_status": "ok",
+        "transport": "contents",
+        "blob_identity_source": "contents_metadata",
+        "utf8_byte_length": 80,
+        "blob_identity": "6666666666666666666666666666666666666666",
+        "json_validation": "object",
+        "freshness": "carried"
+      },
+      {
+        "repo": "china_commodities",
+        "repository": "farfromexact/China-Commodities-Engine",
+        "path": "data/radar_latest.json",
+        "role": "research_pin",
+        "cutoff_sha": "2222222222222222222222222222222222222222",
+        "observed_sha": "2222222222222222222222222222222222222222",
+        "read_status": "ok",
+        "calendar": "not_started",
+        "transport": "contents",
+        "blob_identity_source": "contents_metadata",
+        "utf8_byte_length": 90,
+        "blob_identity": "7777777777777777777777777777777777777777",
+        "json_validation": "object",
+        "freshness": "carried"
+      },
+      {
+        "repo": "china_stock",
+        "repository": "farfromexact/China-Stock-Engine",
+        "path": "data/latest/manifest.json",
+        "role": "backfill",
+        "as_of_date": "2026-11-05",
+        "cutoff_sha": "3333333333333333333333333333333333333333",
+        "observed_sha": "3333333333333333333333333333333333333333",
+        "read_status": "ok",
+        "transport": "blob",
+        "utf8_byte_length": 70,
+        "blob_identity": "8888888888888888888888888888888888888888",
+        "json_validation": "object",
+        "freshness": "backfill"
+      }
+    ]
+  }
+}

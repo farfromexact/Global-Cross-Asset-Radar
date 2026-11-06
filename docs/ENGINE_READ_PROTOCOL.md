@@ -2,37 +2,50 @@
 
 协议版本：`engine_read_2026-11-06`。
 
-本文件和 `prompts/` 里的四份副本只约束仓库中的文字。它们**不会**修改已经保存的 ChatGPT Scheduled Task。要让线上任务改口，只能由任务所有者把正文贴进任务配置。合并本仓库的变更不等于线上任务已经更新。
+本文件和 `prompts/` 里的四份副本只约束仓库中的文字。它们不会修改已经保存的 ChatGPT Scheduled Task。要让线上任务改口，只能由任务所有者把正文贴进任务配置。线上任务正文不在本仓库里。
 
-六文件归档路径、写入顺序和 direct-to-main 规则不变。本协议只规定研究开始前如何读取三个引擎仓库，以及如何把可选回执放进现有 JSON。
+六文件归档路径、写入顺序和 direct-to-main 规则不变。
 
-## 固定 cutoff SHA
+## 每个仓库自己的 cutoff
 
-对每个要读的仓库，在使用其内容做研究之前先固定一个 cutoff SHA。之后该仓库的研究读取都指向这个 SHA。后出现的提交不能混进同一次研究；若工具返回了另一个 SHA，把那次读取标成隔离的 post-cutoff，不要把它当作本次 pin。
+三个引擎仓库各自解析 cutoff，不能靠一个未分仓库的 SHA。解析记录写在该仓库上：
 
-不能固定 SHA 时写明限制。不得编造 SHA、字节长度或 blob identity。
+- `cutoff_at` 与 `cutoff_zone`
+- `commit_timestamp` 与 `commit_timestamp_source=committer_date`
+- 选出的提交是 committer date 不晚于 cutoff 的那一枚，不用 author date 代替
+- `cutoff_sha` 与每条已 pin 路径的 `observed_sha` 都是 40 位小写 hex，并且在同一仓库内相同
 
-## 先读小文件，再读该 SHA 的正文
+`pin_failed` 只表示这枚 SHA 还无法解析。一旦 pin 成功，后面的 `not_found`、`permission_denied`、`read_failed` 仍写这枚 40 位 SHA。
 
-每个仓库先读小的 status / manifest，再读本次研究真正要用的内容：
+HEAD 若在 pin 之后从 A 变成 B，只在仓库上记 `head_changed_after_pin`。B 不是这棵 pinned tree 的成员，不能写成 post-cutoff 读取。若另做隔离复查，`role=isolated_followup` 且 `used_in_report=false`，不进入报告。
 
-- `farfromexact/China-Options-Engine`：`data/last_run_status.json`、`data/radar_latest.json`。历史或逐合约大文件仍按原研究规则，但必须落在同一个 cutoff SHA。
-- `farfromexact/China-Commodities-Engine`：`data/last_run_status.json`、`data/night_session/last_run_status.json`、`data/radar_latest.json`，然后才是 `data/report_input_latest.json` 和其他大 JSON。
-- `farfromexact/China-Stock-Engine`：`data/last_run_status.json`、`data/latest/manifest.json`。公司明细只在全球研究需要时再读同一 SHA，不猜分片。
+## 读取状态和日历分开
 
-路径以该 SHA 上实际存在的文件为准。文件不存在就记 `missing`，不要改读更新的提交来补。
+`read_status` 只表示字节结果：`ok`、`valid_zero`、`actual_empty`、`truncated`、`parse_error`、`not_found`、`permission_denied`、`read_failed`、`pin_failed`。
 
-## 普通 contents 不完整时用同一 SHA 的 blob 或 raw
+旧名只按这个方向折叠，不再混用：
 
-普通文件读取不完整（截断、只有摘要、工具声明过大）时，用**同一个 cutoff SHA** 再取 git blob 或 raw 正文。不要改 pin，也不要改标成 `missing`。
+- `empty` → `actual_empty`。它不是 permission，也不是 read failure。
+- `missing` → `not_found`。路径或 ref 404 与 `read_failed` 不是一回事。
+- `permission` 与 `permission_error` → `permission_denied`。
 
-不得假设 1MB 或其他固定上限。文件大于该上限仍然可以是完整、可解析的 JSON。回执里的长度是实际 UTF-8 字节数 `len(utf-8 bytes)`，不是字符数，也不是工具愿意返回的上限。
+`not_started`、`not_due`、`stale`、`last_good` 是日历或数据时点，不是 `read_status`。开盘前可以 `read_status=ok` 且 `calendar=not_started`。
 
-`{}` 和 `[]` 是合法 JSON，状态为 `valid_zero`，字节长度大于 0。只有 0 byte 才是 `empty`。截断 JSON 是 `truncated`，其余无法解析的正文是 `parse_error`。这两种都不是 `ok`，也不是源文件为空。
+`{}` 与 `[]` 是 `valid_zero`，字节长度大于 0。只有 0 byte 才是 `actual_empty`。截断 JSON 是 `truncated`，坏 JSON 是 `parse_error`。无正文的回执不写 `blob_identity`，也不写 `json_validation`。contents 响应元数据里的 blob sha 可以作为 `blob_identity`，不必先把正文再下一次才知道 blob。
+
+`last_good` 必须同时有 40 位 `last_good_commit_sha`、`trade_date` 和 `reason`。该 SHA 不是本次 research pin。当前新鲜快照就是这次 pin，不能再标成 last_good。
+
+## 路径失败不连坐
+
+普通 contents 不完整时，用同一 SHA 的 blob 或 raw 再读。raw 不可用时，保留 `ordinary_contents`，并把这一条路径的 blob 尝试写成 `read_failed` 且 `scope=per_path`，同时记下 `actual_tools`。同仓库另一条已经成功的路径保持成功，不要把仓库收成一次总失败。
+
+商品大文件至少包括 `data/report_input_latest.json` 和 `data/night_session/latest.json`。夜盘供应商快照是 `vendor_snapshot`，`official_night_close_verified` 必须为 false。晨报对已经结束的夜盘写 `session_timing=completed`。晚报对尚未开始的当夜写 `session_timing=not_due`。
+
+不得因文件过大标 `not_found`，不得假设 1MB。ChatGPT 只用已经连接的 GitHub 工具，不运行本仓库的 Python，也不假定 Grok 的本地 helper 存在。
 
 ## 回执放在现有字段里
 
-不扩展 schema。`source_status` 已经允许附加属性。需要留下机器可读回执时，写在 `source_status` 内，并带上本协议版本。没有这组字段的旧报告仍然有效。
+不扩展 schema。`source_status` 已允许附加属性。没有 `engine_read_protocol` 的旧报告不启用这些检查。
 
 ```json
 {
@@ -40,13 +53,16 @@
   "repos": {
     "china_options": {
       "read_status": "ok",
-      "cutoff_sha": "<sha pinned before research>",
-      "last_good": {"date": "2026-11-05"},
-      "freshness": "carried",
-      "calendar": "session_closed"
+      "calendar": "not_started",
+      "cutoff_sha": "0123456789abcdef0123456789abcdef01234567",
+      "cutoff_at": "2026-11-06T07:30:00",
+      "cutoff_zone": "Asia/Shanghai",
+      "commit_timestamp": "2026-11-05T16:00:00Z",
+      "commit_timestamp_source": "committer_date",
+      "head_changed_after_pin": "fedcba9876543210fedcba9876543210fedcba98"
     },
-    "china_commodities": {"read_status": "permission"},
-    "china_stock": {"read_status": "not_started"}
+    "china_commodities": {"read_status": "permission_denied", "cutoff_sha": "1111111111111111111111111111111111111111", "cutoff_at": "2026-11-06T07:30:00", "cutoff_zone": "Asia/Shanghai", "commit_timestamp": "2026-11-05T16:00:00Z", "commit_timestamp_source": "committer_date"},
+    "china_stock": {"read_status": "pin_failed"}
   },
   "source_receipts": [
     {
@@ -54,56 +70,31 @@
       "repository": "farfromexact/China-Options-Engine",
       "path": "data/radar_latest.json",
       "role": "research_pin",
-      "cutoff_sha": "<same sha>",
-      "observed_sha": "<same sha>",
+      "cutoff_sha": "0123456789abcdef0123456789abcdef01234567",
+      "observed_sha": "0123456789abcdef0123456789abcdef01234567",
       "read_status": "ok",
+      "calendar": "not_started",
       "transport": "contents",
-      "ordinary_contents": "complete",
+      "blob_identity_source": "contents_metadata",
       "utf8_byte_length": 128,
-      "blob_identity": "<git blob sha of those exact bytes>",
+      "blob_identity": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
       "json_validation": "object",
-      "freshness": "carried",
-      "calendar": "session_closed"
+      "session_role": "previous_trade_day",
+      "market_trade_date": "2026-11-05"
     }
   ]
 }
 ```
 
-成功读取至少要有三项：实际 UTF-8 字节长度、blob identity、JSON 校验结果。`transport` 使用实际走通的那一种：`contents`、`blob` 或 `raw`。商品大 JSON 不得用 compact 摘要代替正文。
+上面的 SHA 只是字段形状，不是受信任的 pin。`head_changed_after_pin` 只是元数据。`calendar=not_started` 与 `read_status=ok` 可以同时成立。
 
-旧读取状态继续可用：`ok`、`missing`、`empty`、`truncated`、`parse_error`、`stale`、`permission_error`。新增粒度是 `valid_zero`、`permission`（`permission_error` 的同义值）、`read_failed`、`not_started`、`isolated`。
+## 归档校验
 
-## 状态、新鲜度、日历、last_good 分开
+`scripts/engine_read_receipts.py` 只在 `source_status.engine_read_protocol` 等于本版本时检查回执是否自洽。它不访问 GitHub，也不用日历判断数据是否应该存在。
 
-`read_status` 只表示这次字节有没有拿到、是否解析成功。它不表示行情新不新，也不表示今天是否开市。
+信任描述符只来自 `config/engine_read_evidence.json`。文件缺失或损坏时，引用它的回执失败，不会改用测试目录或内置替身。这组数字是 2026-11-06 对 `farfromexact/China-Commodities-Engine` 提交 `2dfb15b11da3854605013ce15349a43c783384f3` 的事后只读核对，不是当时报告已经看见这些字节的证据。
 
-`freshness` 和 `calendar` 单独写。`stale` 只保留为旧别名，不能再拿来同时表示“读失败”和“数据过期”。沿用已验证的 last-good 市场快照时，`last_good` 记录市场日期或其他市场身份，不能把 cutoff SHA 本身写成 last_good。
-
-补跑或 backfill 必须自标 `role=backfill`。一份 `as_of_date=2026-11-05` 的 backfill 不是 `2026-11-06` 的 current 读取；新鲜度写 `backfill` 或 `carried`，不要写成 `current`。
-
-## 一个仓库失败不影响其他仓库
-
-全球晨报和晚报必须尝试三个仓库。商品晨报和晚报必须检查这三个仓库，并且商品大文件走上面的正文回执。任一仓库可以是 `permission`、`read_failed`、`missing` 或 `not_started`。这个结果只属于该仓库，不能清空其他仓库已经读到的回执，也不能把未开始写成缺失。
-
-## ChatGPT connector 的能力边界
-
-线上 ChatGPT 只用当前任务里已经连接的 GitHub 工具。能用的通常是仓库文件 contents 读取；若同一次连接另外提供了该 SHA 的 git blob 或 raw 读取，普通 contents 不完整时改用其中一种，SHA 保持不变。
-
-本协议不假定每个 ChatGPT 连接器都同时暴露 contents、blob 和 raw，也不假定工具名叫某一个固定函数。记录实际调用到的工具。若 blob/raw 不在本次工具列表里，记 `read_failed`，并写明缺的是哪一种读取；不要编造长度、blob identity 或 SHA，也不要把不完整响应写成 `missing` 或 `empty`。
-
-不要用网页搜索代替私有仓库文件。不要要求 Scheduled Task 运行本仓库的 Python，包括 `scripts/engine_read_receipts.py`。Grok 或其他本地环境可能有 checkout 和 `gh`，线上 ChatGPT 不能假定这些 helper 存在。
-
-## 归档校验做什么
-
-`scripts/engine_read_receipts.py` 只在报告写出 `source_status.engine_read_protocol = engine_read_2026-11-06` 时检查回执是否自洽。它不访问 GitHub，不判断新鲜度，也不用日历决定某天是否应该有数据。
-
-自洽包括：成功回执的三项字段齐全；`valid_zero` 的字节长度大于 0，`empty` 的字节长度为 0；截断或坏 JSON 不能标成 `ok`；普通 contents 不完整时必须是同一 SHA 的 blob 或 raw；商品大文件不能用 compact；cited canonical descriptor 的长度和 blob identity 必须与描述符一致；post-cutoff SHA 必须隔离；backfill 不能标成 current；`last_good` 不能等于 pinned SHA；`not_started` 不能同时带成功回执。
-
-两个受信任的固定描述符只用于这个一致性检查，不是当前 HEAD，也不是 CI 现场测量：
-
-| descriptor | UTF-8 bytes | blob identity | JSON |
+| path | UTF-8 bytes | git blob | SHA256 |
 | --- | ---: | --- | --- |
-| `pinned_utf8_2266923` | 2266923 | `canonical-blob:2266923` | object |
-| `pinned_utf8_1612360` | 1612360 | `canonical-blob:1612360` | object |
-
-引用描述符时，长度必须等于上表，即使它大于 1MB。不引用描述符的回执不跟这两行比较。描述符数字来自已确认的 pin，校验器禁止为了“更新”它们去读 GitHub。
+| `data/report_input_latest.json` | 2266923 | `4dc792ef93e18f8a98e42af811c8b34d5e195460` | `51d01dbe8fe584dd4c12ae03792d333d38db22591f58dbdbe56fc581272168c7` |
+| `data/night_session/latest.json` | 1612360 | `aa0548cb195c4a2ba8ad3c1b43c64abf2b3c5ce9` | `4193dc29e6f2628413d0ee4a7d1b7c6b11d55fd4b063ec3641ae2690dda25c0d` |

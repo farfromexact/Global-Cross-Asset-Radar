@@ -110,7 +110,7 @@ ci_validation_status = pending_or_unverified
 
 研究读取遵守 `docs/ENGINE_READ_PROTOCOL.md`（`engine_read_2026-11-06`）。本仓库中的 prompt 与该文档不会修改已经部署的 ChatGPT Scheduled Task。
 
-不得再把文件过大或普通 contents 不完整写成缺失。普通读取不完整时，用研究前固定的同一 cutoff SHA 取 blob 或 raw，并记录实际 UTF-8 字节长度、blob identity 和 JSON 校验。不假设 1MB。读取状态、新鲜度、交易日历和 last_good 分开；单个仓库失败不抹掉其他仓库。可选回执放在现有 `source_status.source_receipts`，不扩展 schema。日常 CI 只在报告明确写出匹配的 `source_status.engine_read_protocol` 时检查回执是否自洽，不访问 GitHub，也不判断数据是否最新。线上任务不运行本地 Python 校验脚本。
+不得再把文件过大或普通 contents 不完整写成 `not_found`。每个仓库单独固定 40 位 hex cutoff，并用 committer date 而不是 author date 解析。普通读取不完整时，用同一 SHA 的 blob 或 raw，记下实际 UTF-8 字节长度、blob identity 和 JSON 校验。`empty` 只表示 `actual_empty`，`missing` 只表示 `not_found`，`permission`/`permission_error` 只表示 `permission_denied`。`not_started`、`not_due`、`stale`、`last_good` 是日历或时点，不是 `read_status`。一条路径 `read_failed` 且 `scope=per_path` 不把同仓库其他成功路径打成仓库级失败。可选回执放在现有 `source_status.source_receipts`，不扩展 schema。日常 CI 只在报告明确写出匹配的 `source_status.engine_read_protocol` 时检查回执是否自洽，不访问 GitHub，也不判断数据是否最新。线上任务不运行本地 Python 校验脚本，任务正文也不在本仓库。
 
 ## 数据来源记录
 
