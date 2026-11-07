@@ -78,10 +78,11 @@
   "ci_validation_semantics": "Validate Radar Reports is post-push validation only; do not wait for it and do not let CI block Scheduled Task completion; if the result is unavailable record ci_validation_status=pending_or_unverified",
   "ci_validation_policy": {
     "default": "current_report_readability",
-    "blocking": "missing, empty or unreadable current reports; explicit current date/edition/path conflicts; unusable manifest/configuration; validator code or regression test failures",
-    "advisory": "schema and revision metadata, editorial headings/length/citations, status/latest synchronization, and historical archive findings",
+    "blocking": "missing, empty or unreadable current reports; explicit current date/edition/path conflicts; unusable manifest/configuration; validator code or regression test failures; versioned engine_read_protocol receipt inconsistencies on the current report",
+    "advisory": "schema and revision metadata, editorial headings/length/citations, status/latest synchronization, historical archive findings, and versioned receipt notes on historical reports",
     "strict_audit": "manual opt-in; original strict validators remain available",
-    "green_means": "archive readability and validator health, not verified market freshness or executable research"
+    "green_means": "archive readability and validator health, not verified market freshness or executable research",
+    "engine_read_receipts": "enforce source_status.engine_read_protocol engine_read_2026-11-06 only; check receipt consistency; do not fetch GitHub and do not judge freshness or the calendar"
   },
   "manifest_confirmation_policy": "prepare final contents, write the manifest last once, re-read all six paths, then report success; never rewrite the manifest only to confirm success; record failed verification in the status file and chat",
   "completion_policy": "after all six main paths are re-read and verified, end the Scheduled Task immediately; do not poll CI, create branches, create PRs, merge, or perform branch cleanup",

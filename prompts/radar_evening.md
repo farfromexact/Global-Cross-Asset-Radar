@@ -7,7 +7,7 @@
 
 【时间、数据与结论分离】
 先确定实际生成时间、信息截点、各市场最近完整交易时段及下一实际可交易窗口；记录关键数据观测时间、发布/可得时间、单位、合约与时区。周末/节假日不要求不存在的当日EOD。刷新失败不自动使已验证last-good快照失效；按原生发布频率、应有会话和源完整性判断有效性，并另标“本期新增/沿用”。真正过时、错误或无法验证的输入不能当有效证据；任何沿用不得冒充实时。
-读取状态区分ok、missing、empty、truncated、parse_error、stale；不能把工具截断写成源文件为空。优先在同一repo ref/快照下读相关数据；不能固定时记录实际来源日期与版本差异。缓存指标须保留原始来源、计算口径、窗口和截止日期，上一期生成文字不能成为原始行情依据。文件过大时读取可用紧凑层、范围或明确快照；仍失败则标缺失，不猜数、不改引擎。
+读取状态只描述字节是否取得并解析：ok、valid_zero、actual_empty、truncated、parse_error、not_found、permission_denied、read_failed、pin_failed。旧名 empty 只等于 actual_empty，不能当成 permission_denied 或 read_failed；missing 只等于 not_found，不等于 read_failed；permission 与 permission_error 等于 permission_denied。not_started、not_due、stale、last_good 是日历或时点，不是 read_status；开盘前可以 read_status=ok 且 calendar=not_started。`{}` 与 `[]` 是 valid_zero，0 byte 才是 actual_empty；截断或坏 JSON 不是 ok。每个仓库单独解析 cutoff：cutoff_at、cutoff_zone，用 committer date 而不是 author date 选出 commit_timestamp，得到 40 位 hex cutoff_sha。先读小 status/manifest，再读该 SHA。普通 contents 不完整则用同一 SHA 的 blob 或 raw；contents 元数据中的 blob sha 可以当作 blob identity。无正文时不写 blob identity 或 json_validation。pin_failed 只用于 SHA 还无法解析；pin 之后的 not_found 或 read_failed 仍带这枚 40 位 SHA。raw 不可用时记下 ordinary_contents，并把该路径的 blob 尝试记为 read_failed 且 scope=per_path，不要把同仓库另一条已成功路径打成仓库级失败。HEAD 后来从 A 变成 B 时只写 head_changed_after_pin，B 不是 pinned tree 的成员；隔离的后续读取 used_in_report=false，不进入报告。last_good 必须另有 40 位 last_good_commit_sha、trade_date 和 reason，且该 SHA 不是本次 research pin；当前新鲜快照不是 last_good。不得因文件过大标 not_found，不得假设 1MB。缓存指标保留原始来源、口径、窗口和截止日期；上一期文字不是行情。ChatGPT 只用已连接的 GitHub connector，不要求本机 Python，也不假定 Grok 的本地 helper。修改仓库 prompt 不会改写已部署的 Scheduled Task。细则见 docs/ENGINE_READ_PROTOCOL.md。不猜数、不改引擎。
 每个候选分别给“研究判断：存在待验证优势/未发现优势/证据不足”“证据：充分/部分/不足”“执行：可执行候选/等待触发/待报价或参数/休市/已过期”。没有立即新仓，不等于没有值得研究的机会。关键执行缺口只限制对应工具、期限或交易腿；相关方向、早期异常和替代表达仍保留观察。
 补跑必须注明历史重建或更新至实际时点；已过去的入场窗口不能作为当前条件单。刷新必要信息并重新评估，或标过期；无法核实当时信息可得性，不宣称事前可执行。
 
@@ -32,7 +32,7 @@
 
 【前序报告与本版任务】
 研究前必须通过 GitHub connector 读取 Global-Cross-Asset-Radar 的 manifests/reports.json，定位严格早于本次研究截点的最近一份全球报告（不论晨晚版）及最近一份同版报告，优先读取日期明确的 reports/YYYY/MM/YYYY-MM-DD_{edition}.md 与配套 JSON；若 latest 指向同一份可核对身份的报告，可直接复用。两份基准是同一份时只读一次；不可将本次补跑旧稿当成上一期。按共用规则逐项复核未到期研究建议，并区分新增事实、数据纠错和观点变化。必须尝试读取后才可标记“无可比基准”，并说明具体失败路径与原因。前序报告用于追踪历史判断，其引用的数据须回到原始数据或可核验快照验证，不能把报告自身当作独立市场证据。
-读取 China-Options-Engine 的 latest 文件时，尽可能固定本次取得的同一 commit 或同批生成时点；有对应日期快照时优先用于可比历史复核。记录实际路径、日期与可取得的 commit SHA；无法固定时标记限制，不得捏造 SHA。
+全球版必须尝试三个引擎仓库，每个仓库单独解析自己的 cutoff SHA，一条路径失败不放弃其他仓库或其他路径：farfromexact/China-Options-Engine、farfromexact/China-Commodities-Engine、farfromexact/China-Stock-Engine。每个仓库在研究前固定 cutoff SHA，先读小 status/manifest（Options 的 data/last_run_status.json 与 data/radar_latest.json；Commodities 的 data/last_run_status.json、data/night_session/last_run_status.json 与 data/radar_latest.json；Stock 的 data/last_run_status.json 与 data/latest/manifest.json），再只读该 SHA 上本次研究要用的内容。大文件若普通 contents 不完整，用同一 SHA 的 blob 或 raw 取回全文并记录实际 UTF-8 字节长度、blob identity 和 JSON 校验；不得改读 cutoff 之后的新提交，不得捏造 SHA。有对应日期快照时优先用于可比历史复核，快照也必须属于已固定的 SHA。
 本晚间版在完整扫描全部资产、策略与专项的基础上，重点解释中国当日收盘、欧洲时段和美国盘前新增信息如何改变最近晨报及上一份晚报的研究建议，逐项维持、升级、降级、修订或撤销，并准备海外下一实际交易窗口。晨报未入榜的资产也必须重新筛选；不能以“晨报已覆盖”为由跳过模块。
 
 【中国衍生品数据层】
