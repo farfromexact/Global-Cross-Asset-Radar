@@ -1,219 +1,184 @@
-# 2026-11-06 商品期货期权晚间雷达
+# 商品期货期权晚间雷达｜2026-11-07
 
-> 版本：radar_2026-10-12_stock_v1｜commodity_consumer=core_2026-10-17_v1｜research_quality=2026-10-21_v1  
-> 生成：2026-11-06 19:40:09 北京时间｜信息截点：19:40 北京时间｜中国最新完整日盘：2026-11-06｜下一夜盘归属：2026-11-09  
-> 仅作研究与决策支持；不下单，不假定任何建议已成交或已持有。
+> 生成时间/信息截点：2026-11-07T19:42:36+08:00；研究用途，不下单，不假定持仓或成交。
 
 ## 1. 一句话结论
 
-截至本报告时点，无可立即执行的合格新交易；今晚只承担非农后经顺序确认的锡空、原油多与铜跨期风险，不追日盘极值。
+截至本报告时点，无可立即执行的合格新交易；周六无21:00夜盘，周一仅等CU跨期、SC重夺与AP有效报价，锡空因实体紧张降级。
 
-**今晚值得承担的风险只有“等待后再承担”：** 21:00先看开盘，21:30美国非农后，只有SN反弹失败、SC回踩企稳且布伦特同步、CU跨期价差回撤再确认三类条件候选。**截至本报告时点，无可立即执行的合格新交易。**
-
-- 已研究但优势不足：AP强势但OI下降；PP/L/PG/PL暴跌伴OI下降且曲线仍倒挂；EC缺当周现货；均不追。
-- 研究机会存在但条件/报价未到：SN、SC、CU跨期、MA跨期。
-- 数据不足不能判断：当前21:00夜盘尚未发生；night明细文件为空；期权无bid/ask；DCE官方交叉核对HTTP 412；动态保证金/涨跌停未核。
-- 最有价值的下一窗口：21:00开盘观察；21:30非农；21:45/22:00顺序确认。EC、LC等无夜盘品种下一窗口为11月9日09:00。
+今晚值得承担的不是周末方向仓，而是把风险预算留给周一可验证的三个条件：CU跨期回踩重夺、SC守位后重夺646、AP期权取得真实双边报价。**截至本报告时点，无可立即执行的合格新交易。** 已研究但优势不足：EC、SN；研究机会存在但等待条件/报价：CU、SC、AP；数据不足不能判断：EC现货运价、A/B基差、期权执行报价、动态保证金/限幅。最有价值的验证顺序是11月9日09:15的CU价差、SC价与Brent同向确认，以及AP701期权双边报价。
 
 ## 2. 数据质量、覆盖与事实台账
 
-### 2.1 覆盖数表
+当前ref：Global-Cross-Asset-Radar `7c224833…`；China-Commodities-Engine `a7586fbc…`；China-Stock-Engine `80485af9…`。`report_input_latest.json`为空，故以模块文件为准；没有把空合并层冒充缺失全市场。
 
-| 模块 | 目标 / 实得 | 日期与生成 | 状态 | 局部影响 |
-|---|---:|---|---|---|
-| Futures | 806合约 / 77品种 / 五所 | 11-06；19:04 | vendor full_market_ready=true；source-date=100%；critical=0；OHLC占位4 | 五所EOD可用于研究；并非全部官方认证 |
-| 五所 | SHFE 238、INE 63、DCE 214、CZCE 243、GFEX 48 | 均为11-06 | full_market_ready=true | 全范围初筛完成 |
-| Market State | 77品种 | 11-06 | 1/3/5/20D、RV、OI、curve可读；部分roll提示 | 同合约历史，不把roll拼接当收益 |
-| Physical | 20目标，18 fresh，2 unavailable | 19:14 | A/B basis=0；现货均C级 | 只作背景，不计方向层或套利 |
-| External | 22目标，17 fresh，5 unavailable | 19:15 | context_only | 需和公开盘中来源分层 |
-| Night | 上一合法会话420/806=52.11%；outside 166；no-trade 6；query/unresolved 214 | 11-05夜→11-06交易日；05:59发布 | validated/published=true；complete=false；明细latest为空 | 不复用旧夜盘价；当前11-06 21:00尚未发生 |
-| Options | 64目标，46尝试，44成功，2失败，18跳过；1048条 | 11-06 | ATM 44、skew 29、surface/positioning/execution 0；bid/ask=0；full_chain=false | 可研究局部IV/skew，不可声称可成交 |
-| Metadata | contract match 67.49%；multiplier/tick 30.15%；LTD 67.49% | 11-06 | partial；DCE 412、GFEX日期缺 | Top3乘数/tick另以交易所规则核；动态参数仍阻断 |
-| Official crosscheck | SHFE 238、INE 63、CZCE 243、GFEX 48；DCE失败 | 19:15 | 四所可比settle/close/pre-settle差异均0；DCE 412 | 不代表volume/OI官方核验 |
-| Stock | 5571只EOD，2个最小财务包 | 股价11-05；research_asof 11-06 08:32 BJT | 复权、行业、实时可交易性不足 | 仅利润桥；不宣称即时股票交易 |
+| 模块 | 目标/实际 | 日期/生成 | 状态与局限 |
+|---|---:|---|---|
+| Futures | 5所、806合约、77品种 | 源11/6；19:02重读 | full_market_ready=true，日期匹配100%，critical=0，placeholder=4 |
+| Market State | 77/77 | 11/6 | 准确合约1/5D、RV/OI/曲线；部分历史缺交易日 |
+| Physical | 20/18 | 11/6；06:09 | 2项不可用；A/B基差0，全部C级不计方向 |
+| External | 22/17 | 11/6；19:04 | context_only；连续合约close与结算/官方收盘不混用 |
+| Night | 806选、420夜盘、166窗外、6无成交、214 unresolved | 11/6晚—11/7凌晨，归属11/9 | validated/published；coverage 52.1092%、complete=false；detail空；exact-contract公共快照fallback，不认证官方夜收 |
+| Options | 64目标、46尝试、45成功、1失败、18跳过；1068合约/45 series | 11/6；19:03再发布 | core ATM 44、skew 29；surface/positioning/execution均0，bid/ask=0，full-chain=false |
+| Metadata | 806 | 11/6 | match 67.49%、effective 73.45%；乘数/tick effective 36.10%；night 0%；margin/limit 30.15% |
+| Official crosscheck | SHFE238/INE63/CZCE243/GFEX48 | 11/6 | 比较字段无可信差异；DCE HTTP412；不含量仓核验 |
+| Stock | 5579证券、5573报价、2个完整最小财务包 | trade_date 11/6；research_asof 11/7 08:32 BJT | 财务partial、复权missing、execution not_ready |
 
-[data/report_input_latest.json](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/report_input_latest.json) 本次读取为empty，不是missing或truncated；因此按协议使用模块文件与root status。核心路径：[last_run_status](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/last_run_status.json)、[latest](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/latest.json)、[market_state](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/market_state_latest.json)、[physical](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/physical/latest.json)、[external](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/external/latest.json)、[options quality](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/options/quality_latest.json)、[crosscheck](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/crosschecks/futures_latest.json)。
+日历闸门：11月7日是周六，官方休市；周五夜盘属于11月9日交易日，`calendar_mismatch=false`。今晚不存在21:00会话，下一中国期货窗口是11月9日09:00。
 
-### 2.2 Night与日历闸门
-
-11月6日是周五且不在2026休市清单；按[上期所交易时间](https://www.shfe.com.cn/services/calenderandholidays/tradinghours/)，“某交易日夜盘从上个工作日21:00开始”，因此今晚21:00会话归属11月9日周一。上一状态文件的trading_date=11-06、session_start_date=11-05合法，calendar_mismatch=false；它不是“今晚夜盘”。当前会话未开始，不因未来数据缺失扣分。night明细文件empty，故没有重点合约上一会话的可复核snapshot、双锚或纯夜盘OI；不以旧报告替代。
-
-### 2.3 可追溯事实台账
-
-| fact_id | 标的 / 单位 / 口径 | 观测、known_at、读取 | 来源 | 支持判断 | 局限 |
+| fact_id | 标的 | 值/口径 | 观测/known_at | 支持判断 | 局限 |
 |---|---|---|---|---|---|
-| F-EOD-001 | 五所806合约，CNY各合约单位，EOD close/settle | 11-06 EOD；generated 19:04；read 19:40 | Engine latest/status | 全市场EOD扫描 | vendor全市场≠全部官方 |
-| F-SN-002 | SN2612 343340/346310 CNY/t close/settle | 11-06 EOD；read 19:40 | Engine latest | 日跌、5D弱势 | OHLC不证明触发顺序 |
-| F-CU-003 | CU2612-2701 close spread 1180、settle 1080 CNY/t | 11-06 EOD；read 19:40 | Engine latest | 近月相对韧性 | 不是可成交实时价差 |
-| F-NGT-004 | 420/806，prior night status | 11-05 21:00至11-06；generated 05:59 | Night status | 覆盖局部 | 明细empty，不用于价差/收益 |
-| F-OPT-005 | 44/64，ATM44，skew29，bid/ask 0 | 11-06 EOD；generated约19:05；read19:40 | Options quality/surface | 局部IV、skew | 无执行性/全链/positioning |
-| F-OIL-006 | Brent Jan 97.55 USD/bbl，08:26 GMT | 16:26 BJT；Reuters 11-06；read19:40 | [Reuters](https://www.reuters.com/business/energy/oil-set-sharp-weekly-drop-middle-east-supply-concerns-provide-floor-2026-11-06/) | 油价外部压力 | repo 19:15 context=98.38，时点冲突 |
-| F-LME-007 | LME closing page，USD/t | 11-06页面最新显示；read19:40 | [LME](https://www.lme.com/market-data/reports-and-data/lme-closing-prices) | 锡约45.5k、铜海外弱 | 非21:00同步成交报价 |
-| F-EVT-008 | 美国10月非农 | 11-06 08:30 ET=21:30 BJT | [BLS](https://www.bls.gov/ces/) | 今晚主催化 | 结果尚未发布 |
-| F-PHY-009 | 18个日频现货，C级 | 11-06；generated19:14 | Engine physical | 产业背景 | 0个A/B，不能算方向层 |
-| F-XCK-010 | 四所价格零差，DCE 412 | 11-06；generated19:15 | Engine crosscheck | 四所价格复核 | 不核volume/OI |
-| F-STK-011 | 紫金、宝钢2026H1 YTD合并财务 | 报告期6/30；公告8/22；engine known_at 11-06 08:29 | [紫金中报](https://static.cninfo.com.cn/finalpage/2026-08-22/1225550244.PDF)、[宝钢中报](https://static.cninfo.com.cn/finalpage/2026-08-22/1225489250.PDF) | 利润传导验证 | 不是今晚新催化 |
+| F01 | 五所期货全集 | 806合约/77品种 | 源交易日2026-11-06；19:02重读 | 全市场扫描 | 无新交易日 |
+| F02 | 夜盘状态 | trading_date=2026-11-09；420/806 | 生成2026-11-07 06:02 | 周五晚归属周一 | 214 unresolved、非完整覆盖 |
+| F03 | CU2612/2701 | EOD收盘价差1180；夜快照1230 | 11/6收盘；11/7 01:00 | 近月韧性 | 快照非官方夜收 |
+| F04 | SC2612/2701 | EOD收盘价差4.2；夜快照5.2 | 11/6；11/7 02:30 | 期限层未崩 | 实体SC/LU缺失 |
+| F05 | SN2612 | 夜快照349830，较收盘+1.89% | 11/7 01:00 | 旧空触发未满足 | 供应商范围未认证 |
+| F06 | 锡库存/曲线 | LME 3885t、SHFE 4004t；两地贴水 | Reuters 11/6 | 反对追空 | 周度/交易所库存仍需持续跟踪 |
+| F07 | Brent/WTI | 98.32/90.83美元/桶结算 | 11/6纽约结算 | SC周一外部锚 | 周末无实时盘 |
+| F08 | Options | 45/64成功；44 core ATM、29 skew | 11/6快照 | 局部IV可研究 | bid/ask=0，执行不ready |
+| F09 | Physical | 18/20；A/B basis=0 | 11/6 | 实体层局部 | C级基差不计方向 |
+| F10 | Crosscheck | SHFE/INE/CZCE/GFEX零价格差异 | 11/6 | 四所价格核对 | DCE 412未核 |
+| F11 | CFTC铜 | 非商业净多37710，周减10607 | 持仓11/3，周五发布 | 铜外部层混合 | 并非实时仓位 |
+| F12 | 紫金矿业601899.SH | 11/6收28.28，-4.07%；H1归母391.70亿元 | 价11/6；报表H1 | 公司表达校验 | 周六非实时、交易性未核 |
+| F13 | 宝钢股份600019.SH | 11/6收6.11，+0.49%；H1归母45.71亿元 | 价11/6；报表H1 | 钢铁利润桥 | 采购/售价/套保未量化 |
+| F14 | 交易日历 | 周六无21:00；下窗11/9 09:00 | 11/7核验 | 窗口闸门 | 周末突发只改变缺口风险 |
 
-### 2.4 全范围后台扫描
+完整扫描分板块：黑色10、金属14、能源化工航运26、新能源3、农产品14、软商品10，合计77个实际产品；未入榜最重要异常分别为FG/SA旧夜盘快照本次未重验、锡实体紧张反驳追空、PP去杠杆但非新空信号、LC价升仓降、油脂谷物等待WASDE、AP价升仓减。覆盖不等于每个模块都具备执行数据。
 
-| 板块 | 实得与已分析代码 | 未入榜最重要异常 / 无异常依据 |
-|---|---|---|
-| 黑色与建材（10） | FG/SA/SF/SM/I/J/JM/HC/RB/WR | JM +1.40%但OI -3.43%；RB仅+0.36%，未形成同向板块确认 |
-| 金属（14） | PD/PT/BC/AD/AG/AL/AO/AU/CU/NI/PB/SN/SS/ZN | SN -2.04%且量能z=2.56；CU曲线z=2.48；NI +2.14%但OI下降 |
-| 能源化工航运（26） | MA/PF/PL/PR/PX/SH/TA/UR/ZC/BZ/EB/EG/L/PG/PP/V/EC/LU/NR/SC/BR/BU/FU/OP/RU/SP | SC/LU反弹与PP/L/PG/PL下跌分裂；EC contango |
-| 新能源（3） | LC/PS/SI | LC +1.26%但OI -6.00%，未确认趋势 |
-| 农产品（14） | OI/RM/RS/A/B/C/CS/JD/LG/LH/M/P/RR/Y | JD -2.84%；M -0.48%；DCE交叉核对缺口限制精确执行 |
-| 软商品与特色（10） | AP/CF/CJ/CY/JR/PK/PM/RI/SR/WH | AP +4.92%最突出但OI下降；不追 |
+## 3. 市场仪表盘
 
-## 3. 市场仪表盘（12项）
+收益为结算基准；Night为供应商最新成交快照，非交易所核定最终夜盘收盘。OI/量如列为Night仅是供应商会话范围观察。
 
-| 品种 / 准确合约 | EOD close / settle | 1D / 5D / RV20 | 量仓与曲线 | Physical / Night / 外盘 / Options | 信号 |
-|---|---:|---|---|---|---|
-| SC2612 / SC2701 | 644/636.8；639.8/631.8 | SC2701 +0.19% / -3.47% / 44.64% | OI +1.25%；settle spread +5.0=0.79% | SC现货缺；当前Night未开始；Brent 97.55与repo98.38冲突；SC IV63.86>RV | 非农后回踩确认多，非立即 |
-| SN2612 | 343340 / 346310 | -2.04% / -7.13% / 28.52% | vol z2.56；OI +2235/+5.59%；backwardation | 无A/B实体；当前Night未开始；LME锡约45.5k；IV43.96、RR25 -8.78 | 反弹失败空，禁止低开追 |
-| CU2612 / 2701 | 104260/105110；103080/104030 | -1.14% / -2.52% / 11.64% | OI +5.04%；spread close1180、settle1080 | 现货C级；LME铜弱；IV19.27、RR25 -9.28 | 价差过了旧追价线，等回撤 |
-| PP2701 | 9585 / 9496 | -3.51% / -2.98% / 33.95% | OI -9.49%；近月曲线仍backwardation | DCE官方核对失败；期权跳过 | 去杠杆，不追空 |
-| L2701 | 8792 / 8762 | -3.78% / -2.49% / 31.51% | OI -9.64% | 同上 | 不追空 |
-| AP701 | 6004 / 5969 | +4.92% / +9.81% / 37.20% | OI -3.40%；backwardation | ATM IV33.55<RV但无bid/ask | 只观察失败形态 |
-| MA701 / 702 | 3263/3211；3139/3102 | MA -0.71% / -1.86% / 44.06% | close spread124、settle109 | MA现货C级；MA612期权不是同腿 | 研究升水压缩 |
-| EC2612 | 2326 / 2351 | -1.59% / -5.63% / 45.22% | OI +1.34%；contango -7.83% | 无当前现货/期权；无夜盘 | 11/9日盘条件空 |
-| AG2612 / 2702 | 12367/12539；12402/12575 | -0.43% / -6.14% / 39.95% | 主力已roll至2702 | IV47.17，skew不ready | 旧多失效，不重置 |
-| LC2701 | 92860 / 91940 | +1.26% / -2.38% / 44.22% | OI -6.00% | 现货C级；ATM IV52.15，无skew；无夜盘 | 反弹缺仓量确认 |
-| JM2701 | 1414 / 1414.5 | +1.40% / +2.02% / 29.93% | OI -3.43%；backwardation | 现货C级；DCE核对失败 | 观察 |
-| AU2612 | 869.86 / 879.22 | -0.00% / -0.56% / 19.25% | OI -1.62%；contango | 非农前；ATM IV23.92 | 事件敏感，回避裸Vega |
+| 合约 | EOD收/结 | 1D/5D | 量/OI/ΔOI | 曲线 | Night快照 | 信号 |
+|---|---:|---:|---:|---:|---|---|
+| CU2612 | 104260/105110 | -1.1381%/-2.8468% | 193345/205726/9880 | 1.722% | 105060；2026-11-07 01:00 BJT；vsC 0.7673% / vsS -0.0476% | calendar-spread pullback only |
+| SC2612 | 644/636.8 | 0.1903%/-12.7107% | 127996/18762/— | —% | 639.1；2026-11-07 02:30 BJT；vsC -0.7609% / vsS 0.3612% | reclaim 646 not satisfied |
+| SN2612 | 343340/346310 | -2.0395%/-6.4432% | 342256/42233/2235 | 1.2214% | 349830；2026-11-07 01:00 BJT；vsC 1.89% / vsS 1.0164% | short trigger not satisfied; physical tightness opposes |
+| AP701 | 6004/5969 | 4.9218%/5.125% | 546544/161014/-5668 | 6.8539% | —；—；vsC —% / vsS —% | local-vol watch; bid/ask absent |
+| EC2612 | 2326/2351 | -1.5906%/-11.216% | 11797/17790/235 | -7.8265% | —；—；vsC —% / vsS —% | trend short watch; spot/freight missing |
+| SA701 | 961/974 | -0.8147%/-0.2049% | 1641105/1209679/61934 | -2.4717% | —；—；vsC —% / vsS —% | previous fallback not revalidated; wait Monday |
+| FG701 | 882/892 | 0.6772%/3.1214% | 1454240/1142845/-20658 | -0.7735% | —；—；vsC —% / vsS —% | previous fallback not revalidated; no chase |
+| PP2701 | 9585/9496 | -3.5057%/-8.9811% | 1506943/538712/-56453 | 7.5276% | 9518；2026-11-06 23:00 BJT；vsC -0.699% / vsS 0.2317% | liquidation not a fresh short signal |
+| AG2702 | 12402/12575 | -0.4276%/1.3704% | 611260/235765/2546 | -0.7975% | 12523；2026-11-07 02:30 BJT；vsC 0.9756% / vsS -0.4135% | option sample underlying mismatch |
+| LC2701 | 92860/91940 | 1.2555%/2.0875% | 387415/391338/-24978 | 0.4081% | —；—；vsC —% / vsS —% | price up/OI down; no night session |
 
-Night列统一说明：上一合法明细文件empty，本表不编night snapshot/%vsClose/%vsSettle/ΔOI；当前21:00尚未发生。
+外盘完整会话锚：Brent 98.32、WTI 90.83美元/桶；repo连续合约口径分别97.92/90.34，仅作context。CFTC铜非商业多85660、空47950，净多37710，周减10607。周六19:30没有欧洲/美国实时窗口。
 
-## 4. 相比前序的五项真变化与旧观点处置
+## 4. 相比前序的真变化
 
-1. **SC从晨间观察到日盘收644。** 日内low 628.2、high 652.5跨越多个旧阈值，但OHLC不能证明“先回撤—守位—再收复”的顺序，更不能证明成交。晨报多头idea保留同一ID，revision 1→2；原止损632、触发642改为只适用于今晚新候选的止损636、非农后收复646。假设已有仓不适用新参数。
-2. **SN弱势得到海外锡低位背景，但曲线反证增强。** 分数70→72，原因是11-06日盘和LME页面；backwardation仍反对空头，不追低开。
-3. **CU价差已超过晨报“direct spread≥1050放弃”。** 晨报执行计划判为abandoned-for-immediate，不回填盈利；同ID revision 2只等待950—1000回撤后的新顺序。
-4. **能源化工从同向下跌变成上下游分裂。** SC/LU反弹，PP/L/PG/PL继续跌且PP/L OI减少近一成；这降低“追空全链”的确信。
-5. **AG多头旧观点继续失效。** 当前主力roll至AG2702，AG 5D仍-6.14%；不因换月重置idea_id或移动旧止损。
+1. **仓库Futures于19:03重读11月6日全市场，值与晨报一致；没有新交易日** 合法last-good，不算新催化；全部触发移到周一真实窗口
+2. **Stock引擎从11月5日推进到11月6日：紫金28.28/-4.07%，宝钢6.11/+0.49%** 只更新表达比较；同一商品冲击的股价不增加证据层
+3. **新增独立锡实体证据：LME+SHFE库存合计约7889吨、四年低位且两地贴水** SN空头由64降59；旧触发仍未满足，不事后移动
+4. **纳入CFTC 11月3日铜持仓：非商业净多37710、周减10607** CU外部层改为混合，72降71；仍须LME>=13750和价差回踩
+5. **周六欧洲/美国与中国均休市；没有19:30实时海外增量或21:00夜盘** 风险只表现为周一缺口，不可写成已发生价格路径
 
-前序基准：[2026-11-06晨报MD](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/main/reports/2026/11/2026-11-06_commodities_morning.md) / [JSON](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/main/reports/2026/11/2026-11-06_commodities_morning.json)；最近同版：[2026-11-05晚报](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/main/reports/2026/11/2026-11-05_commodities_evening.md)。
+旧观点处置：CU、AP、SC、EC的idea_id和触发不变；SN不重置ID、不移动343000/351000/330000/318000参数，只因新增反证降级。无成交回执，实际持仓一律为“未提供/未知”。
 
-## 5. 产业链与Stock利润桥
+## 5. 产业链与公司利润桥
 
-### 5.1 原油—燃料—化工
+1. **铜矿—LME/SHFE—冶炼—电网/制造—紫金**：方向=CU跨期韧性强于单边；最强=CU2612-CU2701夜快照1230；最弱/反证=CFTC非商业净多周减10607；实体=CU现货109720但基差C级，不计方向层；期权=CU ATM IV19.265% vs RV11.636%，RR25=-9.28；无bid/ask；Stock=紫金11/6跌4.07%；H1利润强但产量、套保、金业务混合，股权表达不优于价差；置信度=中。
+2. **原油—SC/LU/FU—炼化—PP/L/BU**：方向=短线地缘上行风险与供给宽松冲突；最强=SC近月价差夜快照5.2、Brent98.32；最弱/反证=FU/LU五日大跌、PP五日-8.98%；实体=SC/LU实体映射缺失；期权=SC ATM IV63.86%显著高于RV44.64%，不支持盲买波动；Stock=无新增合格公司披露；置信度=中低。
+3. **锡矿—冶炼—焊料/光伏—电子**：方向=价格弱但实体紧，方向冲突；最强=LME/SHFE库存低位与贴水；最弱/反证=SN五日-6.44%、AI股风险偏好冲击；实体=独立实体证据反对追空；期权=ATM IV43.96%>RV28.52%、RR25=-8.78，保护需求已贵；Stock=未扩展为云锡独立股票推荐；公司原件未在本预算内核完；置信度=中。
+4. **铁矿—焦煤焦炭—钢材—宝钢**：方向=原料与成材均缺高质量基差，利润桥待验；最强=I/RB/HC现货有值；最弱/反证=全部basis为C级；实体=宝钢H1收入+6.18%而归母-6.30%、成本+7.20%，说明传导不完全；期权=未形成可执行结构；Stock=宝钢11/6 +0.49%，但采购/库存/售价时滞未量化；置信度=低。
+5. **鲜果—AP现货/期货—冷库/消费—期权**：方向=价格急升而OI下降，适合研究波动而非追多；最强=AP +4.92%、backwardation 6.85%；最弱/反证=OI -5668且实体层缺失；实体=无可计分A/B基差；期权=ATM IV33.545%低于RV37.203%，RR25=-2.48；但bid/ask=0；Stock=无自然优于期权的公司表达；置信度=中低。
 
-SC/LU强而PP/L/PG/PL弱，最自然解释是原油地缘溢价与下游去杠杆同时发生，不是单一需求信号。Reuters 16:26 BJT布伦特97.55、WTI89.79，且中东船舶袭击提供下方风险；repo 19:15 context为Brent98.38，两时点不一致，必须等同时报价。
+限定公开补证覆盖紫金、宝钢及11月7日CNINFO检索；未取得足以改变商品论点的新经营公告。11月6日股票EOD是新增输入，但股价是同一风险冲击的映射，不增加第六层。
 
-中国海油只做表达比较：上游股利润桥是“实现油气价×销量－桶油成本±套保/汇率/税/资本开支”，其产量与成本缓冲会弱化今晚SC的纯事件Delta。Stock证据目录没有其完整财务包、当前报价或可交易状态，因此不纳入Top5，不是即时替代。
+## 6. 统一机会榜
 
-### 5.2 锡/铜—矿山—冶炼—股权
+评分=逻辑25/赔率凸性25/催化20/价格曲线波动15/拥挤技术15；评分是研究优先级，不是胜率。
 
-SN日盘跌、LME锡约45.5k，空头价格层与海外层一致；但近月backwardation反对空。CU outright弱、CU2612/2701价差强，说明库存/近月约束可能仍在。Reuters转引的交易所库存下降只作实体背景，不替代A/B基差。
+| 排名 | idea_id | 方向 | 分项=总分 | 五层证据 | 研究/证据/执行 |
+|---:|---|---|---:|---|---|
+| 1 | COM-M-CU2612-2701-CURVE-RESILIENCE-LONG-20261106 | 多近月/空远月 | 20/17/15/12/7=71 | 支持1,2,4；反对5；缺3 | priority/three_layers_external_mixed/not_ready_wait_pullback_depth_live_quotes |
+| 2 | COM-M-AP701-LOCAL-VOL-CONVEXITY-WATCH-20261107 | 双向波动研究 | 18/16/15/12/9=70 | 支持1,2,5；反对1；缺3,4 | priority/three_layers_with_internal_counterevidence/not_ready_no_bid_ask |
+| 3 | COM-M-SC2612-OVERNIGHT-REBOUND-CURVE-HOLD-LONG-20261106 | 多 | 19/17/14/10/9=69 | 支持2,4；反对—；缺3 | priority/two_layers_mixed_price/not_ready_wait_reclaim_646_monday |
+| 4 | COM-M-EC2612-CONTANGO-TREND-SHORT-20261106 | 空 | 16/15/11/10/12=64 | 支持1,2；反对—；缺3,4,5 | observe/two_layers/not_ready_no_night_no_spot_freight |
+| 5 | COM-M-SN2612-LME-DIVERGENCE-FAILED-BOUNCE-SHORT-20261106 | 空 | 14/12/11/10/12=59 | 支持4,5；反对1,2,3；缺— | early_watch/two_layers_with_three_opposing_layers/not_ready_old_trigger_not_satisfied |
 
-紫金矿业601899.SH：11月5日未复权EOD 29.48元，1D +0.79%、5D +5.14%，不是今晚报价。2026H1合并YTD营收1941.78亿元、归母391.70亿元、经营现金流554.72亿元，归母同比+68.17%。利润桥是铜金实现价与矿产量减现金成本，再经冶炼、库存、套保、汇率、少数股东与资本开支；Kamoa减产/检修是最强竞争解释。**对CU跨期价差，股票比直接1:1期货差**：多金属与经营因子太多，且股价近5日已涨、实时可交易状态未核。只作背景，不加第六层。
+## 7. 研究/交易卡
 
-### 5.3 煤—甲醇—聚烯烃—钢铁
+### 卡1：CU2612/CU2701跨期韧性多
 
-JM上涨、MA小跌、PP/L大跌，传播不连续。MA701/702价差压缩具有研究价值，但Physical为C级、MA期权标的是MA612而不是同腿，不能包装成可执行套利。
+- 新事实→定价→分歧：夜快照价差1230已反映近月韧性，不能追；分歧只在回踩后能否重新站上1050。CFTC净多下降使确信降低，但LME锚仍在阈值附近。
+- 表达：多1手CU2612、空1手CU2701；吨数中性，不是Beta/保证金中性。股票替代紫金劣于跨期，因为混合金铜暴露、产量和套保噪声更大。
+- 入场：11/9 09:15后价差先回踩950—1000、从未低于800，随后15分钟收盘重夺1050，且LME铜>=13750、两腿深度合格；全部AND。无回踩不追。
+- 风险/退出：计划止损800；逻辑失效=价差<800或LME铜<13750且曲线同步转弱；TP1=1400、TP2=1650；11/13日盘收盘时间退出。
+- 好/中/坏：950/975/1000，含每对500元成本后风险1250/1375/1500；TP1净利1750/1625/1500，R=1.40/1.18/1.00；TP2净利3000/2875/2750，R=2.40/2.09/1.83。
+- 参数：每腿5吨、tick10元/吨、tick价值50元；最后交易日12/15与1/15。试仓<=0.35% NAV，手数=`floor(0.0035*NAV/1500)`。动态保证金/限幅未核；一腿失去流动性时止损不保证成交。
 
-宝钢股份600019.SH：11月5日未复权EOD 6.08元，1D -1.62%、5D +1.33%。2026H1合并YTD营收1607.31亿元、归母45.71亿元、营业成本1511.02亿元；营收同比+6.18%而归母同比-6.30%。利润桥是钢价/销量减矿煤能源成本，再经品种结构、库存、长协、套保传导。最强反解释是下游需求与产品结构抵消原料变化。**它不比直接JM/钢材价差更纯**，并降低“原料变化必然改善钢企利润”的确信。
+### 卡2：SC2612回踩后重夺多
 
-### 5.4 苹果
+- 新事实→定价→分歧：EOD收644、夜快照639.1，价差由4.2收盘口径到5.2快照口径；Brent98.32。市场已部分定价周五地缘反弹，分歧是宽松平衡表能否压过周末油轮风险。
+- 表达：自然工具是SC2612期货；SC期权ATM IV63.86%高于RV44.64%，又无bid/ask，不是更好表达；不交易仍优于盲买高IV。
+- 入场：11/9 09:15后守636—640、15分钟收>=640、SC2612-SC2701>=5、Brent>=98，之后重夺646；全部AND。开盘>=650且无回踩则放弃。
+- 风险/退出：计划止损636；逻辑失效=Brent<96.5且价差<3；TP1=660、TP2=680；11/10中国日盘收盘退出。
+- 好/中/坏：646/647/648，含1500元成本后风险11500/12500/13500；TP1 R=1.09/0.92/0.78；TP2 R=2.83/2.52/2.26。
+- 参数：1000桶/手，tick0.1元/桶，tick价值100元；夜盘21:00—02:30，最后交易日11/30、交割开始12/7。试仓<=0.35% NAV，手数=`floor(0.0035*NAV/13500)`。1/2涨跌停和周末gap均可突破计划止损。
 
-AP日盘强、OI下降、ATM IV局部低于RV。可能是现货/天气或空头回补，也可能是波动采样差异；没有决策级Physical与bid/ask，下一项区分观测是11月9日开盘是否在6000上方稳定30分钟且OI回升。
-
-### 5.5 航运
-
-EC2612 5D -5.63%且contango，但当前周度现货/运价映射缺失。没有夜盘；下一真实窗口11月9日09:00。只研究反弹失败空，不在缺现货时扩大确信。
-
-## 6. 统一机会榜（上限5，不是配额）
-
-| 排名 | idea_id / 方向 / 期限 | 五层证据（支持；反证/缺失） | 25/25/20/15/15 | 总分 | 研究 / 证据 / 执行 |
-|---:|---|---|---:|---:|---|
-| 1 | SN2612反弹失败空 rev2；1—5D | 1价格、4海外、5skew；2倒挂反对；3缺 | 20/17/15/12/8 | **72** | focus / 3层有冲突 / 等21:45 |
-| 2 | SC2612非农后确认多 rev2；1—3D | 1价格、2曲线；4时点冲突、5高IV反对；3缺 | 19/15/15/12/8 | **69** | focus / 2层封顶 / 等Brent同报 |
-| 3 | CU2612/2701价差多 rev2；3—10D | 1相对价、2曲线；4外铜弱、5偏度反对；3 A/B缺 | 19/16/14/11/9 | **69** | watch / 2层封顶 / 旧追价线已过 |
-| 4 | MA701/702升水压缩 rev2；3—15D | 1相对价、2曲线；3/4/5缺 | 18/15/13/11/9 | **66** | watch / 2层 / 等同步腿价 |
-| 5 | EC2612反弹失败空 rev3；5—20D | 1价格、2曲线；3/4/5缺 | 17/15/13/11/8 | **64** | watch / 2层 / 11-09日盘 |
-
-评分只表研究优先级，不是胜率。支持层不足时严格执行≤69上限。
-
-## 7. 三张完整研究/交易卡
-
-### 卡1｜SN2612反弹失败空｜idea rev2
-
-- **事实：** close 343340、settle 346310、pre-settle 353520；1D -2.04%、5D -7.13%；volume 342256、OI 42233、ΔOI +2235；SN2612/2701 settle spread +3180。上一合法Night明细不可用；当前Night未开始。
-- **定价与分歧：** 市场已定价一段下跌；我们的分歧只在“非农后反弹仍失败且LME锡不回到45800上方”。backwardation与丰富的put skew是最强反证。
-- **触发：** 21:45后，先反弹344000—346000，随后15分钟收在343000下，且同一时点LME 3M锡≤45800，才按343000/342000/341000分30/30/40；不得倒置顺序。
-- **止损/失效/退出：** 351000计划止损；15分钟收上351000或LME锡>47800逻辑失效；TP1 330000、TP2 318000；11月12日14:45时间退出。直接≤340000低开、无LME同报、动态参数未确认则放弃。
-- **合约：** 1吨/手，最小10元/吨，tick value 10元；21:00—01:00；最后交易12月15日、交割末12月17日。动态保证金与涨跌停未知，执行不ready。
-- **好/中/坏成交：** 假设每手费用+滑点200元：343000风险8200元，TP净12800/24800，1.56R/3.02R；342000为9200、11800/23800，1.28R/2.59R；341000为10200、10800/22800，1.06R/2.24R。
-- **压力：** 一涨停损失=1×入场价×当日核实L；连续两涨停=1×入场价×[(1+L1)(1+L2)-1]，再加滑点；未核L不编金额。止损不封顶。
-- **表达比较：** 直接期货优于昂贵put；期权仅可在取得bid/ask、净支出≤本卡风险预算后重评。试仓≤NAV0.35%，确认≤0.75%，锡主题≤1.25%。
-
-### 卡2｜SC2612非农后回踩确认多｜idea rev2
-
-- **事实：** close644、settle636.8、pre-settle638.4，日内628.2—652.5；SC2701 close639.8、settle631.8；settle spread +5.0（0.79%）。日内穿价不证明晨间触发。
-- **定价与分歧：** 曲线与收盘弹性支持近月韧性；但Reuters布伦特97.55与repo context98.38冲突，SC ATM IV 63.86显著高于RV20 44.64。错价仍是假设。
-- **触发：** 21:45后先回踩640—642，15分钟不收破638，SC2612/2701同口径价差≥4.5且同时报价Brent≥98.50，再15分钟收复646；按646/647/648分30/30/40。
-- **止损/失效/退出：** 636计划止损；15分钟收破636、Brent<97或价差<3失效；TP1 660、TP2 680；11月10日22:45退出。直接≥650无回踩、外盘冲突不解则放弃。
-- **合约：** 1000桶/手，最小0.1元/桶，tick value 100元；21:00—02:30；最后交易11月30日、交割末12月7日。动态保证金/限幅未核。
-- **好/中/坏成交：** 假设费用+滑点1500元：646风险11500元，TP净12500/32500，1.09R/2.83R；647为12500、11500/31500，0.92R/2.52R；648为13500、10500/30500，0.78R/2.26R。坏成交仅TP2赔率尚可，因此648上方不追。
-- **压力：** 一跌停损失=1000×入场价×L；两跌停=1000×入场价×[1-(1-L1)(1-L2)]，再加gap/滑点。期货最大损失不由计划止损限定。
-- **表达比较：** SC期权ATM IV高且无bid/ask；不称call spread便宜。试仓≤0.35%，确认≤0.75%，油主题≤1.25%，与FU/LU及中国海油因子合并。
-
-### 卡3｜CU2612/2701近月价差多｜idea rev2
-
-- **事实：** CU2612 close/settle 104260/105110，CU2701 103080/104030；close spread1180、settle1080。CU2612 1D -1.14%、5D -2.52%、ΔOI +9880/+5.04%，curve z=2.48。
-- **旧计划处置：** 晨报“direct spread≥1050放弃”，当前close已经1180；原计划不得回填为成交/盈利。revision 2仅适用下一次回撤。
-- **触发：** 价差先回撤950—1000、15分钟不收破800，再收复1050，且LME铜≥13750、两腿同步深度合格；按950/975/1000分30/30/40。
-- **止损/失效/退出：** 800计划止损；15分钟价差<800或LME铜<13550失效；TP1 1400、TP2 1650；11月20日14:45退出。无回撤、不同步腿价或深度不足放弃。
-- **合约：** 各5吨/手，tick 10元/吨、每腿tick value 50元；1:1等吨，不是beta-neutral或margin-neutral。两腿夜盘21:00—01:00；LTD分别12月15日、1月15日。
-- **好/中/坏成交：** 假设每对费用+滑点500元：950风险1250元，TP净1750/3000，1.40R/2.40R；975为1375、1625/2875，1.18R/2.09R；1000为1500、1500/2750，1.00R/1.83R。
-- **压力：** 相关性断裂时一限幅近腿下跌且远腿上涨的毛损失公式为5×(P近×L近+P远×L远)+费用；两限幅复合计算。限幅未核，不编金额。
-- **表达比较：** 直接跨期优于紫金股权与CU put；后两者加入多金属/方向/IV污染。试仓≤0.35%，确认≤0.75%，铜主题≤1.25%。
+SN旧空头卡不升级：原条件“反弹344000—346000后15分钟跌破343000，且LME锡<=45800”未按顺序满足；夜快照反而349830。新增库存/贴水反证后，必须等实体紧张缓和才恢复为条件候选。
 
 ## 8. 商品期权专项
 
-- 样本是core_v1 / sampled_strikes，不是全链：64目标、44成功；quote_coverage_complete只表示1048个已选合约完成。
-- **SC2612 11/12：** ATM640，IV63.86%，RR25 -0.09，BF25 1.66；RV20 44.64%，IV-RV +19.22点。非农/地缘凸性已贵，不裸买。
-- **SN2612 11/24：** ATM345000，IV43.96%，RR25 -8.78，BF25 0.10；RV20 28.52%，下偏度贵，不追put。
-- **CU2612 11/24：** ATM106000，IV19.27%，RR25 -9.28，BF25 3.61；RV20 11.64%，用跨期代替方向put。
-- **AP701 11/26：** ATM6000，IV33.55%，RR25 -2.48；RV20 37.20%，IV-RV -3.66点只是假设便宜，因无bid/ask、模型与事件概率。
-- **LC2701 12/07：** ATM92000，IV52.15%，skew不ready。
-- 全部surface_ready=false、positioning_ready=false、execution_ready=false；不推全链PCR、dealer Gamma、wing/tail或期限结构，不编权利金、净成本与Greeks组合。
+| 品种/series | ATM IV / RV20 | 25Δ skew | 局部结论 | 执行 |
+|---|---:|---:|---|---|
+| AP701 11/26 | 33.545% / 37.203% | RR -2.48、BF 2.225 | IV低于历史RV只构成研究线索；价格急升仓减，待双边询价 | not_ready |
+| CU2612 11/24 | 19.265% / 11.636% | RR -9.28、BF 3.605 | 下行保护偏贵；不替代跨期 | not_ready |
+| SC2612 11/12 | 63.86% / 44.645% | RR -0.09、BF 1.655 | 短到期事件波动已贵 | not_ready |
+| SN2612 11/24 | 43.96% / 28.517% | RR -8.78、BF 0.10 | 下行skew贵且实体反证 | not_ready |
+| LC2701 12/07 | 52.145% / 44.218% | skew not_ready | 仅ATM | not_ready |
+| AG2612 11/24 | 47.165% / — | skew not_ready | 与主力AG2702月份不一致 | 不可用于主力执行 |
+
+没有完整曲面、期限结构、全链持仓或dealer净Gamma结论；`quote_coverage_complete`只表示计划采样完成。缺bid/ask时只能倒推可接受成本，不能称期权已便宜或结构已限损。
 
 ## 9. 21:00夜盘风险地图
 
-| 层 | 已知信息 | 风险判断 | 21:00 / 21:15 / 21:30 / 21:45 |
+今晚无21:00夜盘。三层状态：Previous China EOD=11/6完整；Completed Night=11/6晚至11/7凌晨、归属11/9且局部；19:30 Overseas=周末休市，无实时新增。
+
+- CU：周一可能偏高，但1230价差已定价韧性；09:15不追，等回踩；09:30中国CPI/PPI前控制试仓。
+- SC：地缘新闻支持高开、供给宽松支持低开/冲高回落；只有守636—640再重夺646才行动。
+- SN：夜盘反弹已反驳旧追空；先看343000是否按顺序失守，且实体贴水/库存紧张是否缓和。
+- AP/EC/LC：制度无夜盘；09:15看价格、09:30看量仓、09:45看曲线与宏观冲击。不把周五OHLC穿越当成周一成交。
+
+## 10. 未来24小时/7日事件与行动前清单
+
+| 北京时间 | 事件 | 影响 | 处理 |
 |---|---|---|---|
-| Previous China EOD | SN、CU弱；SC/LU强；PP/L/PG/PL弱；AP强 | 开盘可能分化，不把日盘close-settle差写成夜盘涨跌 | 21:00只记录exact-contract价、成交时点与两锚 |
-| Completed historical night | 状态属于11-06交易日，明细empty | 不能用于今晚高低开或Night→Day分解 | 不引用旧夜盘价 |
-| 19:40 Overseas/events | Brent时点冲突；LME锡/铜偏弱；21:30非农 | 21:30前信号易反转 | 21:15看价差/深度；21:30禁止新增；21:45首次允许确认 |
+| 未来24小时 | 无预定一级宏观/交易所窗口；仅周末地缘、油轮与矿山/装置突发 | SC/有色周一缺口风险 | 不提前认定方向；周一用首15/30/45分钟确认 |
+| 2026-11-09 09:30 | 中国10月CPI/PPI | 黑色、化工、有色需求与名义价格预期 | 开盘30分钟内不追宏观第一跳 |
+| 2026-11-10 21:30 | 美国10月CPI | 美元/实际利率、贵金属和工业金属 | 线性仓降Delta；期权仅在双边报价可核后使用 |
+| 2026-11-11 01:00左右 | USDA Crop Production/WASDE；EIA STEO | 谷物油脂与原油平衡表 | AP非直接替代；油品控制隔夜Delta/Vega |
+| 2026-11-13 01:00 | EIA WPSR（Veterans Day顺延） | SC/LU/FU/BU | SC时间退出不晚于数据前再审 |
+| 2026-11-13 17:00左右 | IEA 11月OMR | 全球油需/库存 | 若供给宽松证据强化，取消SC多头 |
+| 2026-11-13 21:30 | 美国10月PPI | 美元利率/金属 | 避免事件前裸Vega和追价 |
 
-- **潜在高开：** SC若Brent同时报价≥98.50且SC近月价差≥4.5；高开≥650无回踩不追。
-- **潜在低开：** SN若LME锡≤45800；低开≤340000不追，必须先反弹再失败。
-- **内外冲突：** CU价差强而LME铜弱；只做价差，不做裸多。
-- **无夜盘：** EC、LC等下一真实窗口为11月9日09:00，等09:15/09:30/09:45确认。
-- 15/30/45分钟是从各自合法开盘计时；本报告不宣称未来行情已经发生。
+行动前必须重新取得：周一准确合约双边报价/深度、动态保证金与限幅、CU/SC同步外盘、AP期权bid/ask；复核DCE官方交叉核对、A/B基差、EC现货运价。旧观点参数沿用上表，不因周末延后期限；输入版本为商品`a7586fbc…`、Stock`80485af9…`、Global prior`7c224833…`。发布前已重算5项评分和两张卡全部净R；未做完整曲面、实时保证金/限幅与实盘成交校验，故不能报通过。
 
-## 10. 未来24小时 / 7日事件与行动前检查
+## 资料来源
 
-| 北京时间 | 事件 | 处理 |
-|---|---|---|
-| 11-06 21:30 | [美国10月非农](https://www.bls.gov/ces/) | 21:30前不确认；之后重算美元、油、金属、IV |
-| 11-07 04:30（需官网逐项复核） | [CFTC COT日程](https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm) | 只作拥挤背景 |
-| 11-09 09:30 | [中国CPI/PPI](https://www.stats.gov.cn/english/PressRelease/ReleaseCalendar/202512/t20251226_1962154.html) | 化工/金属利润与需求验证 |
-| 11-10 21:30 | [美国CPI](https://www.bls.gov/schedule/news_release/cpi.htm) | AU/AG/CU的Delta/Vega控制 |
-| 11-11 01:00 | [EIA STEO](https://www.eia.gov/outlooks/steo/release_schedule.php) | SC期限与供需再评 |
-| 11-13 01:00 | [EIA WPSR](https://www.eia.gov/petroleum/supply/weekly/schedule.php) | 退伍军人节延后；库存/炼厂冲击 |
-| 7日内，精确日时待核 | USDA/WASDE、OPEC/IEA | 未核原始日程前不作为触发 |
+- [China-Commodities-Engine root status](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/last_run_status.json)（观测/报告日：2026-11-06；读取：2026-11-07T19:42:36+08:00）— 五所806合约、77品种、full_market_ready=true；Futures 19:02重读但源交易日未变
+- [China commodity exact-contract futures snapshot](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/latest.json)（观测/报告日：2026-11-06；读取：2026-11-07T19:42:36+08:00）— 仪表盘EOD收盘、结算、成交与持仓；近远月价差
+- [China commodity market state](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/market_state_latest.json)（观测/报告日：2026-11-06；读取：2026-11-07T19:42:36+08:00）— 1/5日收益、RV20、OI变化、曲线
+- [Night session status](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/night_session/last_run_status.json)（观测/报告日：2026-11-06/07；读取：2026-11-07T19:42:36+08:00）— trading_date=2026-11-09；420夜盘合约、214 unresolved、coverage incomplete
+- [Sina exact-contract weekend quote fallback](https://hq.sinajs.cn/list=nf_CU2612,nf_CU2701,nf_SC2612,nf_SC2701,nf_SN2612,nf_PP2701,nf_AG2702)（观测/报告日：2026-11-06/07；读取：2026-11-07T19:42:00+08:00）— CU/SC/SN/PP/AG供应商最后成交快照；仅快照，不认证交易所最终夜盘收盘或纯夜盘OHLC/OI
+- [Core option local surfaces](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/options/surface_latest.json)（观测/报告日：2026-11-06；读取：2026-11-07T19:42:36+08:00）— AP/CU/SC/SN局部ATM与25Δ偏度；surface/positioning/execution均未ready
+- [Physical indicators](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/physical/latest.json)（观测/报告日：2026-11-06；读取：2026-11-07T19:42:36+08:00）— 18/20可用；所有basis均C级且0项A/B可计分
+- [External context snapshot](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/external/latest.json)（观测/报告日：2026-11-06；读取：2026-11-07T19:42:36+08:00）— 17/22 context-only；repo连续合约口径与结算/官方收盘不完全相同
+- [Official futures price crosscheck](https://github.com/farfromexact/China-Commodities-Engine/blob/main/data/crosschecks/futures_latest.json)（观测/报告日：2026-11-06；读取：2026-11-07T19:42:36+08:00）— SHFE/INE/CZCE/GFEX已比价格无差异；DCE HTTP412未核完
+- [Reuters: tin rout versus physical tightness](https://www.reuters.com/commentary/reuters-open-interest/tin-hit-by-ai-stock-rout-despite-physical-market-tightness-2026-11-06/)（观测/报告日：2026-11-06；读取：2026-11-07T19:42:36+08:00）— LME库存3885吨、SHFE库存4004吨、合计约四年低位；两地贴水结构与印尼出口下降、个旧检修反驳追空
+- [Reuters: oil settles amid Iran/tanker risk](https://www.reuters.com/business/energy/oil-set-sharp-weekly-drop-middle-east-supply-concerns-provide-floor-2026-11-06/)（观测/报告日：2026-11-06；读取：2026-11-07T19:42:36+08:00）— Brent 98.32、WTI 90.83结算；供给宽松与油轮袭击风险并存
+- [CFTC COMEX copper futures-only COT](https://www.cftc.gov/dea/futures/deacmxsf.htm)（观测/报告日：2026-11-03；读取：2026-11-07T19:42:36+08:00）— 非商业多85660、空47950，净多37710；周净多减少10607，周末才纳入研究但不是新市场时点
+- [SHFE 2026 holiday calendar](https://www.shfe.com.cn/services/calenderandholidays/holiday/)（观测/报告日：2026-11-07；读取：2026-11-07T19:42:36+08:00）— 11月7日周六休市；11月9日周一为下一实际日盘
+- [NBS release calendar](https://www.stats.gov.cn/sj/fbrc/)（观测/报告日：2026-11-07；读取：2026-11-07T19:42:36+08:00）— 10月CPI/PPI于11月9日09:30发布
+- [BLS November 2026 release calendar](https://www.bls.gov/schedule/2026/11_sched_list.htm)（观测/报告日：2026-11-07；读取：2026-11-07T19:42:36+08:00）— 美国CPI 11月10日08:30 ET；美国PPI 11月13日08:30 ET
+- [USDA November 2026 crop report calendar](https://data.nass.usda.gov/Publications/Calendar/reports_by_date.php?month=11&view=l&year=2026)（观测/报告日：2026-11-07；读取：2026-11-07T19:42:36+08:00）— 11月10日12:00 ET Crop Production；WASDE通常同日中午
+- [EIA release schedules](https://www.eia.gov/petroleum/supply/weekly/schedule.php)（观测/报告日：2026-11-07；读取：2026-11-07T19:42:36+08:00）— WPSR因Veterans Day延至11月12日12:00 ET
+- [IEA November Oil Market Report event](https://www.iea.org/events/oil-market-report-november-2026)（观测/报告日：2026-11-07；读取：2026-11-07T19:42:36+08:00）— OMR 2026-11-13发布
+- [China-Stock-Engine research inputs](https://github.com/farfromexact/China-Stock-Engine/blob/main/data/latest/research_inputs_latest.json)（观测/报告日：2026-11-06；读取：2026-11-07T19:42:36+08:00）— 5579证券、公司证据目录2家公司；执行检查not_ready
+- [Zijin 2026H1 filing](https://static.cninfo.com.cn/finalpage/2026-08-22/1225550244.PDF)（观测/报告日：2026-06-30；读取：2026-11-07T19:42:36+08:00）— 收入1941.78亿元、归母391.70亿元、经营现金流554.72亿元；铜/金利润传导取决于产量、成本、套保与时滞
+- [Baosteel 2026H1 filing](https://static.cninfo.com.cn/finalpage/2026-08-22/1225489250.PDF)（观测/报告日：2026-06-30；读取：2026-11-07T19:42:36+08:00）— 收入1607.31亿元、归母45.71亿元、毛利率约5.99%；原料上涨与钢材售价传导不完全
 
-行动前必须重取：当前exact-contract bid/ask、两腿同时报价、LME/Brent同时时点、动态保证金/涨跌停、SC/SN/CU交割参数、期权净支出；重审旧计划是否已过放弃线。无账户持仓回执，实际持仓状态一律“未提供/未知”。
-
-## 11. 最终行动清单
-
-A. 今天没有应立即建立的新仓位。  
-B. 今天仅应挂条件的候选：21:45后SN2612反弹失败空、SC2612回踩确认多、CU2612/2701价差回撤确认多；均须满足顺序、同时报价与参数复核。  
-C. 今天继续观察：EC2612、MA701/702、AP701，以及SC/LU与PP/L/PG/PL的产业链分化。  
-D. 今天必须回避或有条件退出：回避21:30非农前追单、无bid/ask期权、DCE参数未核的精确执行、日盘极值追涨杀跌；若存在未披露旧仓，仅按原止损/时间退出处理。
-
----
-
-归档状态：success；CI：pending_or_unverified。发布前复核已完成评分加总、PnL公式、日历归属、合约月份与输出语义；未解缺口已列，核验不等于全面行情或成交认证。
+A. 今天没有应立即建立的新仓位。
+B. 今天仅应挂条件的候选：11月9日09:15后CU2612/2701回踩再重夺1050；SC2612守636—640后重夺646；AP701仅待双边期权报价。
+C. 今天继续观察：EC2612趋势空、SN2612反弹失败空（已因实体紧张降级）、SA/FG周一量仓确认，以及紫金/宝钢利润桥。
+D. 今天必须回避或有条件退出：回避周末虚构21:00行情、以旧快照代替周一报价、无bid/ask期权、C级基差套利和锡价下跌追空；未提供成交回执，不假定任何持仓。
