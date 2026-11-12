@@ -1,0 +1,68 @@
+{
+  "schema_version": "radar_run_v2",
+  "run_id": "20261112T230720+0800_0229c84fb9e34738bc0157bee5f6a2c6",
+  "information_cutoff_utc": "2026-11-12T15:07:20Z",
+  "started_at_utc": "2026-11-12T15:07:20Z",
+  "registry_commit": "e6fe6f3c4b248ba70d14c39bedce1494e53e8f9a",
+  "registry_version": "on_demand_2026-11-12_v2",
+  "data_versions": {
+    "commodities": {
+      "repository": "farfromexact/China-Commodities-Engine",
+      "commit": "1db709dcf61a7f032747c1702673b3f78255ef8e"
+    },
+    "options": {
+      "repository": "farfromexact/China-Options-Engine",
+      "commit": "a4c16a18d16d039a30e9c162950096c9333a0a49"
+    }
+  },
+  "archive_mode": "isolated",
+  "completed_at_utc": null,
+  "prompt_sha256": {
+    "radar_run": "96874f934c2483d201f479642c11c9d8e1ea26ea67e8bfd4aefeebf36fb1abfa",
+    "global_radar": "bac8fd093cf04bf78af17c070c861aa266d7eff4047605bc97a415a03ecd2156",
+    "commodities_radar": "140f140f62c38976ce9d8271023ac433ab80e778eb31016bdac150ecaf5b40c9"
+  },
+  "actual_executor": "ChatGPT manual conversation / connected GitHub",
+  "actual_model": "GPT-6",
+  "supersedes_run_id": null,
+  "previous_reports": {
+    "global": {
+      "kind": "legacy",
+      "path": "reports/2026/11/2026-11-12_morning.json",
+      "identity": "2026-11-12_morning_revision_1",
+      "information_cutoff_utc": "2026-11-12T00:05:00Z"
+    },
+    "commodities": {
+      "kind": "legacy",
+      "path": "reports/2026/11/2026-11-12_commodities_morning.json",
+      "identity": "2026-11-12_commodities_morning_revision_1",
+      "information_cutoff_utc": "2026-11-11T23:07:00Z"
+    }
+  },
+  "reports": {
+    "global": {
+      "state": "not_started",
+      "generated_at_utc": null,
+      "markdown": null,
+      "json": null,
+      "errors": []
+    },
+    "commodities": {
+      "state": "not_started",
+      "generated_at_utc": null,
+      "markdown": null,
+      "json": null,
+      "errors": []
+    }
+  },
+  "batch_status": "prepared",
+  "archive_status": "partial",
+  "shared_checks_passed": false,
+  "limitations": [
+    "Night 2026-11-12 start belongs next trade date; current session exact-contract snapshots unverified",
+    "China-Options-Engine latest 2026-11-11; 2026-11-12 CFFEX option/futures EOD not yet present",
+    "Commodity report_input and night raw >1MB, connector could not parse; use validated compact core files",
+    "No stock-repo access by policy; public disclosures only",
+    "No current bid/ask or account permission; no immediate trade approval"
+  ]
+}
