@@ -1,0 +1,486 @@
+{
+  "schema_version": "radar_run_v2",
+  "run_id": "20261112T230720+0800_0229c84fb9e34738bc0157bee5f6a2c6",
+  "information_cutoff_utc": "2026-11-12T15:07:20Z",
+  "started_at_utc": "2026-11-12T15:07:20Z",
+  "registry_commit": "e6fe6f3c4b248ba70d14c39bedce1494e53e8f9a",
+  "registry_version": "on_demand_2026-11-12_v2",
+  "data_versions": {
+    "commodities": {
+      "repository": "farfromexact/China-Commodities-Engine",
+      "commit": "1db709dcf61a7f032747c1702673b3f78255ef8e"
+    },
+    "options": {
+      "repository": "farfromexact/China-Options-Engine",
+      "commit": "a4c16a18d16d039a30e9c162950096c9333a0a49"
+    }
+  },
+  "archive_mode": "isolated",
+  "domain": "global",
+  "generated_at_utc": "2026-11-12T15:33:13.197Z",
+  "prompt_sha256": "bac8fd093cf04bf78af17c070c861aa266d7eff4047605bc97a415a03ecd2156",
+  "previous_report": {
+    "kind": "legacy",
+    "path": "reports/2026/11/2026-11-12_morning.json",
+    "identity": "blob:4be3b10770ca3e2c5a03551f3699dcef0f485c09",
+    "information_cutoff_utc": "2026-11-12T00:05:00Z"
+  },
+  "research_status": "complete",
+  "machine_representation_complete": false,
+  "limitations": [
+    "Market 11/12 U.S. 10:07 ET open only, no final close, no synchronized SOXX/SMH quote or borrow.",
+    "CFFEX index/options engine last official 11/11, third party 11/12 15:00:12 quote not independent official EOD.",
+    "11/12 Treasury official 2/5/10/30/10Y TIPS full curve, USD/CNH and HY OAS missing for cutoff",
+    "Regime/idea scores are analyst-reasoned, not backtested forecast",
+    "Valuation/corporate fundamentals selective to verified SEC 8-K and AMAT calendar, no paused stock-repo.",
+    "Current commodity night exact-contract source missing; cross-domain cards research only.",
+    "No bid/ask or account holdings: no executable orders and machine_representation_complete=false."
+  ],
+  "facts": [
+    {
+      "fact_id": "GL-20261112-CASH",
+      "statement": "2026-11-12 China cash close SSE50=2772.07 (+0.24%), CSI300=4043.93 (-0.78%), CSI500=6604.15 (-1.62%), CSI1000=6537.84 (-1.97%); 875 advancers/4635 decliners, 1.9325T CNY exchange turnover.",
+      "source": "https://m.cngold.org/stock/xw10876301.html",
+      "observed_at": "2026-11-12T15:00:00+08:00",
+      "known_at": "2026-11-12T15:26:54+08:00",
+      "limitations": [
+        "Third-party aggregated not exchange-native verified; turnover may refer沪深两市 and different breadth universe"
+      ]
+    },
+    {
+      "fact_id": "GL-20261112-IM",
+      "statement": "2026-11-12 15:00:12 BJT IM2612 last=6480.4, OI=289107, volume206512; IH2612 last=2739.4, OI=62447, volume28034; 5IM/8IH basket marked P=1000*IM-2400*IH=-94160 CNY versus prior 11/11 P=41720, change=-135880 CNY for hypothetical unchanged basket.",
+      "source": "https://www.9qihuo.com/hangqing?productcode=IM",
+      "observed_at": "2026-11-12T15:00:12+08:00",
+      "known_at": "2026-11-12T15:00:12+08:00",
+      "limitations": [
+        "Composite two separate third-party 15:00:12 display snapshots; not official CFFEX settlement; no synchronization proven to milliseconds; PnL is mark-to-market scenario, not actual position/fill/stop"
+      ]
+    },
+    {
+      "fact_id": "GL-20261112-IF",
+      "statement": "2026-11-12 15:00:12 BJT IF2612 last=4002.4, IC2612 last=6538.4; 11/12 close cash CSI300 4043.93, CSI500 6604.15; all four new same-date indicative basis available with source quality caveat.",
+      "source": "https://www.9qihuo.com/hangqing?productcode=IF",
+      "observed_at": "2026-11-12T15:00:12+08:00",
+      "known_at": "2026-11-12T15:00:12+08:00",
+      "limitations": [
+        "Not official CFFEX end-of-day; cash 15:00 and future at 15:00:12, not exactly same instant"
+      ]
+    },
+    {
+      "fact_id": "GL-20261111-OPTIONS",
+      "statement": "China-Options-Engine latest is 2026-11-11 CFFEX official HO/IO/MO option end-of-day 760 contract quotes matches 760/760; MO2612 ATM IV27.9477%, HO2612 14.6476%, IO2612 17.7885%; MO 25delta RR -2.3557 vol points; dealer gamma sign unknown.",
+      "source": "https://raw.githubusercontent.com/farfromexact/China-Options-Engine/a4c16a18d16d039a30e9c162950096c9333a0a49/data/radar_latest.json",
+      "observed_at": "2026-11-11",
+      "known_at": "2026-11-12T00:00:00Z",
+      "limitations": [
+        "Not 2026-11-12 implied vols; gamma peaks abs only, cannot imply market maker gamma position; no live bidask/Greeks execution"
+      ]
+    },
+    {
+      "fact_id": "GL-20261110-UST",
+      "statement": "U.S. Treasury official 2026-11-10 par yields 2Y4.73%,5Y4.81%,10Y4.98%,30Y5.35%; 10Y TIPS real2.78%. 2026-11-11 Treasury closed for Veterans Day.",
+      "source": "https://home.treasury.gov/",
+      "observed_at": "2026-11-10",
+      "known_at": "2026-11-12T15:00:00Z",
+      "limitations": [
+        "11/12 2/5/10/30/Y TIPS synchronized cash curve not obtained; no fake 11/11 bond settlement"
+      ]
+    },
+    {
+      "fact_id": "GL-20261112-RATES",
+      "statement": "Pre-U.S.-cash news 2026-11-12 reports 2Y Treasury indicative 4.765%, 10Y indicative4.991%, 30Y auction $25B pending 13:00 ET; indicative 2Y vs 10Y not simultaneous with old official 30Y.",
+      "source": "https://www.barrons.com/livecoverage/stock-market-news-today-111226/card/treasury-yields-rise-as-trade-resumes-with-fed-rates-in-focus-kRObHCbV9AkGvaqBiHDt",
+      "observed_at": "2026-11-12 prior to 10:07 ET",
+      "known_at": null,
+      "limitations": [
+        "Media market snapshot, not Treasury official 11/12 close; 30Y auction outcome unknown at cutoff"
+      ]
+    },
+    {
+      "fact_id": "GL-20261111-US",
+      "statement": "2026-11-11 U.S. completed cash close S&P500 7619.38 (+1.31%), Nasdaq25466.19 (+1.60%), Dow52486.49 (+0.49%), VIX17.49 (down10.12%); U.S. cash on 11/12 10:07 ET only partial.",
+      "source": "https://www.hlb.com.my/content/dam/hlb/my/docs/pdf/Global_Markets/daily-market-watch/2026/12-11-2026.pdf",
+      "observed_at": "2026-11-11 close",
+      "known_at": "2026-11-12T00:00:00Z",
+      "limitations": [
+        "11/12 10:07 ET no confirmed synchronized price/depth and 11/12 closing price not known"
+      ]
+    },
+    {
+      "fact_id": "GL-20261111-FX",
+      "statement": "11/11 daily FX DXY around102.84–102.92 (providers differ); USD/JPY about159.79, EUR/USD1.109, USD/CNH≈6.674. USD strength context, not current 11/12 10:07 synchronized rates.",
+      "source": "https://www.hlb.com.my/content/dam/hlb/my/docs/pdf/Global_Markets/daily-market-watch/2026/12-11-2026.pdf",
+      "observed_at": "2026-11-11",
+      "known_at": "2026-11-12T00:00:00Z",
+      "limitations": [
+        "Different provider snapshots; FX conventions and timestamp not aligned; do not compute live correlations"
+      ]
+    },
+    {
+      "fact_id": "GL-20261111-OILGOLD",
+      "statement": "11/11 bank global commodity close Brent92.76 USD/bbl (+1.39%), WTI86.53 (+0.57%), gold spot 4000.50 USD/oz (-0.74%); separate native commodity engine external reports Brent92.97 and COMEX gold4059.3 on 11/11 due different provider/instrument.",
+      "source": "https://www.hlb.com.my/content/dam/hlb/my/docs/pdf/Global_Markets/daily-market-watch/2026/12-11-2026.pdf",
+      "observed_at": "2026-11-11",
+      "known_at": "2026-11-12T00:00:00Z",
+      "limitations": [
+        "Spot versus futures and settlement timestamp differ, not a bad quote by itself; no 11/12 real-time price"
+      ]
+    },
+    {
+      "fact_id": "GL-20261110-CRWV",
+      "statement": "CoreWeave SEC 8-K 2026 Q3 revenue3.661B USD, net loss709M, interest expense846M; FY2026 revenue guide13.0–13.3B, capex37–39B, expected ARR20–21B exit 2026; original release Nov10 2026.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000461/coreweave3q26earningspress.htm",
+      "observed_at": "2026-11-10",
+      "known_at": "2026-11-10",
+      "limitations": [
+        "Issuer management forward guidance not realized results; no direct ETF contribution or borrowing terms"
+      ]
+    },
+    {
+      "fact_id": "GL-20261112-EVENT",
+      "statement": "Treasury scheduled $25B 30Y bond auction 2026-11-12 13:00 ET, AMAT conference call 16:30 ET; EIA holiday schedule release Nov12 noon/2pm ET; IEA Nov13 10am Paris, all later than research cutoff 10:07 ET.",
+      "source": "https://home.treasury.gov/news/press-releases/sb0678/",
+      "observed_at": "2026-11-12 planned",
+      "known_at": "2026-11-04",
+      "limitations": [
+        "Schedules verified from official issuers; results unknown before cutoff"
+      ]
+    },
+    {
+      "fact_id": "COM-20261112-M",
+      "statement": "2026-11-12 M2701 close=3131 settle=3139; M2705 close=2837 settle=2840; spread close=294, settle=299 CNY/t; M2701 volume=737554,OI=1869016.",
+      "source": "https://raw.githubusercontent.com/farfromexact/China-Commodities-Engine/1db709dcf61a7f032747c1702673b3f78255ef8e/data/latest.json",
+      "observed_at": "2026-11-12",
+      "known_at": "2026-11-12T13:33:42Z",
+      "limitations": [
+        "EOD only, not 11/12 night; exact M2705 ΔOI not independently checked"
+      ]
+    },
+    {
+      "fact_id": "COM-20261112-SC",
+      "statement": "2026-11-12 INE SC2612 close=609.9 settle=607.9, SC2701 close=599.9 settle=595.9; close spread=10.0, settle spread=12.0 CNY/bbl.",
+      "source": "https://raw.githubusercontent.com/farfromexact/China-Commodities-Engine/1db709dcf61a7f032747c1702673b3f78255ef8e/data/latest.json",
+      "observed_at": "2026-11-12",
+      "known_at": "2026-11-12T13:33:42Z",
+      "limitations": [
+        "No verified current-night exact contract; Brent as-of 11/11 only"
+      ]
+    },
+    {
+      "fact_id": "COM-20261112-EG",
+      "statement": "2026-11-12 EG2701 close=5048 settle=4993, close_return_pct=+3.46382455%, volume=1075017, ΔOI=+39468.",
+      "source": "https://raw.githubusercontent.com/farfromexact/China-Commodities-Engine/1db709dcf61a7f032747c1702673b3f78255ef8e/data/latest.json",
+      "observed_at": "2026-11-12",
+      "known_at": "2026-11-12T13:33:42Z",
+      "limitations": [
+        "The ΔOI is market-state calculation; not directional investor classification"
+      ]
+    },
+    {
+      "fact_id": "COM-20261112-AP",
+      "statement": "2026-11-12 AP701 close=6201 settle=6111; settle 1D=+2.896110%, 5D=+7.417824%; ΔOI=+15554; RV20=38.7553% annualized.",
+      "source": "https://raw.githubusercontent.com/farfromexact/China-Commodities-Engine/1db709dcf61a7f032747c1702673b3f78255ef8e/data/market_state_latest.json",
+      "observed_at": "2026-11-12",
+      "known_at": "2026-11-12T13:33:42Z",
+      "limitations": [
+        "RV history requested20 days but missing 11/03 and 11/04; exact-contract only"
+      ]
+    },
+    {
+      "fact_id": "COM-20261112-Q",
+      "statement": "2026-11-12 five exchanges 806 futures contracts/77 products, source date match 100%, invalidOHLC/dup/critical0, full_market_ready=true but official_complete=false; 18/20 fresh physical, 17/22 external; options64/64 planned products, 470 sampled contracts, IV coverage92.77%, bidask0, surface/positioning/execution false.",
+      "source": "https://raw.githubusercontent.com/farfromexact/China-Commodities-Engine/1db709dcf61a7f032747c1702673b3f78255ef8e/data/options/quality_latest.json",
+      "observed_at": "2026-11-12",
+      "known_at": "2026-11-12T13:33:43Z",
+      "limitations": [
+        "Crosscheck not independently complete; report_input_latest >1MB unreadable via connector; current-night latest >1MB unreadable"
+      ]
+    },
+    {
+      "fact_id": "COM-20261112-NIGHT",
+      "statement": "Night status generated 2026-11-12 21:40 BJT refers to night_session_date=2026-11-11, trading_date=2026-11-12; not the 2026-11-12 night opening of 2026-11-13.",
+      "source": "https://raw.githubusercontent.com/farfromexact/China-Commodities-Engine/1db709dcf61a7f032747c1702673b3f78255ef8e/data/night_session/last_run_status.json",
+      "observed_at": "2026-11-11/2026-11-12",
+      "known_at": "2026-11-12T13:40:25Z",
+      "limitations": [
+        "Latest night raw >1MB unreadable; cannot infer current-night OHLC, official close or order of touch"
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "scope": "U.S. Treasury nominal 2/5/10/30 and TIPS10, dollar and liquidity/credit",
+      "analysis": "截至cutoff完成所需宏观资产逐模块扫描；11/10官方收益率、11/12部分媒体时点和11/12未来30Y拍卖事实分离；USD DXY EUR USDJPY USDCNH分区。",
+      "limitations": [
+        "11/12现金全曲线/TIPS和credit/MOVE实时无法独立核验",
+        "FX not simultaneous"
+      ]
+    },
+    {
+      "scope": "U.S. equities/AI/SOXX-SMH, gold, crude, China indices/IF-IH-IC-IM, HO/IO/MO",
+      "analysis": "11/12中国现金与第三方指期近收盘逐腿比对、11/11完整官方期权引擎、AI SEC披露、油金和已确认事件计划。",
+      "limitations": [
+        "CFFEX 11/12官方最终结算和期权链未在锁定options repo",
+        "US ETF current 10:07 ET synchronized quote unavailable",
+        "Gold/oil sources have differing spot/futures timestamps"
+      ]
+    },
+    {
+      "scope": "Listed-company earnings/capex primary evidence and capital-market choices",
+      "analysis": "CoreWeave SEC原始8-K与AMAT原始IR排期，传导AI高Capex与融资成本/ETF因子；未使用暂停的China-Stock-Engine。",
+      "limitations": [
+        "未核其他所有指数成分股最新SEC文件；公司fundamental valuation coverage is selective",
+        "未验证SOXX/SMH holdings, rebalance and borrow"
+      ]
+    },
+    {
+      "scope": "Cross-domain idea ledger, conditions, next-session scenarios and stress",
+      "analysis": "与最新global/commodity 11/12早间有效归档对比，交叉M/EG相同id，旧计划守护；亚洲日盘完成、美盘开盘37分、夜盘不完整。",
+      "limitations": [
+        "账户仓位未知；不能以EOD回填日内交易顺序",
+        "无新有效数据支持趋势日机器概率、net GEX"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "idea_id": "UST-2S30S-HOT-CPI-FLATTENER-20261111",
+      "research_judgment": "候选，长端拍卖会改变赔率",
+      "evidence_sufficiency": "11/10官方曲线+11/12媒体交易早时点，缺同刻长端",
+      "execution_status": "待cash与DV01和拍卖后进入",
+      "fact_ids": [
+        "GL-20261110-UST"
+      ],
+      "conditions_markdown": "13:00 EST拍卖后核2/30Y同刻收益率、期限溢价、DV01、CTD/roll，15/30/45min压平才研究；缺任一层不入。"
+    },
+    {
+      "idea_id": "AI-SOXX-SMH-CASHFLOW-CAPEX-RV-20261106",
+      "research_judgment": "证据降级：ETF权重/因子相对交易",
+      "evidence_sufficiency": "11/11历史ETF价差，CRWV公司增长+融资事实；缺本时点同频/borrow/beta",
+      "execution_status": "不可立即入场",
+      "fact_ids": [
+        "GL-20261110-CRWV"
+      ],
+      "conditions_markdown": "以33SOXX/10SMH旧篮子仅为历史条件；11/12新同步quote、beta、borrow、费用、AMAT后的新事实全满足再评估。"
+    },
+    {
+      "idea_id": "COM-M-M2701-2705-WASDE-BACKWARDATION-LONG-20261111",
+      "research_judgment": "降低优先级，价差缩窄",
+      "evidence_sufficiency": "商品价格+期限两层，真实海外与basis不齐",
+      "execution_status": "商品域同一idea，不重复交易",
+      "fact_ids": [
+        "COM-20261112-M"
+      ],
+      "conditions_markdown": "参考同批次commodities研究卡；旧晨报09:15参数过期，重新确认现价和同刻成本。"
+    },
+    {
+      "idea_id": "COM-N-EG2701-PRICE-OI-CURVE-20261112",
+      "research_judgment": "新增化工异动研究",
+      "evidence_sufficiency": "价格+OI/期限、实体库存缺",
+      "execution_status": "商品域同一idea，尚不可交易",
+      "fact_ids": [
+        "COM-20261112-EG"
+      ],
+      "conditions_markdown": "需产业库存/港口/订单和最新交易合约夜盘/日盘同频确认后再研究。"
+    },
+    {
+      "idea_id": "CN-IM-IH-STYLE-REVERSAL-WATCH-20261112",
+      "research_judgment": "反向风格观察，旧多头invalidated",
+      "evidence_sufficiency": "现货广度、近收盘第三方期指，缺当日期权",
+      "execution_status": "只看不做",
+      "fact_ids": [
+        "GL-20261112-CASH"
+      ],
+      "conditions_markdown": "下一个日盘至少两观察时段维持小盘弱于大盘，官方期现基差与MO/HO链、实时深度和风险预算满足才可能成新策略。"
+    }
+  ],
+  "delta": [
+    {
+      "idea_id": "CN-IM-IH-SMALLCAP-BREADTH-RV-20261111",
+      "change_type": "invalidated",
+      "previous": "原榜单73分，5IM多/8IH空，旧P=41720、旧止损−60000",
+      "current": "11/12 P=-94160，现金小盘相对−2.21pp",
+      "reason": "价格与宽度反转超旧止损标记；不代表用户已成交或已止损",
+      "fact_ids": [
+        "GL-20261112-IM"
+      ]
+    },
+    {
+      "idea_id": "AI-SOXX-SMH-CASHFLOW-CAPEX-RV-20261106",
+      "change_type": "weakened",
+      "previous": "前序72，11/11 close 155.40/506.96，11/11价量验证",
+      "current": "当前仅公司原始披露与未完成AMAT催化，11/12同步ETF价缺",
+      "reason": "ETF弱化为纯权重/因子，不能持旧价作新入场",
+      "fact_ids": [
+        "GL-20261110-CRWV"
+      ]
+    },
+    {
+      "idea_id": "UST-2S30S-HOT-CPI-FLATTENER-20261111",
+      "change_type": "weakened",
+      "previous": "前序67，11/10 official2s30s 62bp，假日现金缺",
+      "current": "当前66，11/12部分报价但30Y拍卖尚未发生",
+      "reason": "DV01/期限溢价与现券重开、拍卖风险",
+      "fact_ids": [
+        "GL-20261112-RATES"
+      ]
+    },
+    {
+      "idea_id": "COM-M-M2701-2705-WASDE-BACKWARDATION-LONG-20261111",
+      "change_type": "weakened",
+      "previous": "前序71，M近远close/settle 300/306",
+      "current": "当前65，11/12价差294/299",
+      "reason": "单独统一商品源、非跨域新增仓",
+      "fact_ids": [
+        "COM-20261112-M"
+      ]
+    },
+    {
+      "idea_id": "COM-N-EG2701-PRICE-OI-CURVE-20261112",
+      "change_type": "new",
+      "previous": null,
+      "current": "EG2701 close +3.46%, ΔOI +39468",
+      "reason": "价格+OI异常但实体资料缺、日盘追价风险",
+      "fact_ids": [
+        "COM-20261112-EG"
+      ]
+    },
+    {
+      "idea_id": "CN-IM-IH-STYLE-REVERSAL-WATCH-20261112",
+      "change_type": "new",
+      "previous": null,
+      "current": "仅监测IM弱于IH的反向风格，不自动开反向仓",
+      "reason": "单日风格反转不足，需下一个独立session确认",
+      "fact_ids": [
+        "GL-20261112-CASH"
+      ]
+    },
+    {
+      "idea_id": "GOLD-POLICY-CREDIT-CONVEXITY-20261111",
+      "change_type": "unchanged",
+      "previous": "前序65，黄金凸性观察",
+      "current": "继续观察，真实本时点金价/期权报价缺",
+      "reason": "实际利率、美元与期权beta不同步",
+      "fact_ids": [
+        "GL-20261111-OILGOLD"
+      ]
+    }
+  ],
+  "idea_ledger": [
+    {
+      "idea_id": "CN-IM-IH-SMALLCAP-BREADTH-RV-20261111",
+      "first_proposed_at": "2026-11-11",
+      "original_plan_markdown": "原5IM多/8IH空，09:30后P回撤20k—50k；09:45收≥30k，10:00收≥40k；止损P−60k，TP180k/320k，2026-11-25退出。",
+      "current_plan_markdown": "旧多头invalidated或原Convexity仍观察；不改变旧单和止损。",
+      "changes_markdown": "本次delta=invalidated；价格与宽度反转超旧止损标记；不代表用户已成交或已止损；不得追溯修改旧进场、止损、TP或认定成交。",
+      "actual_position_status": "未提供/未知；无成交回执"
+    },
+    {
+      "idea_id": "AI-SOXX-SMH-CASHFLOW-CAPEX-RV-20261106",
+      "first_proposed_at": "2026-11-06",
+      "original_plan_markdown": "前序11/11 33SOXX多/10SMH空，旧Q回撤20—40、止损−20、TP130/220，仅前次候选。",
+      "current_plan_markdown": "以33SOXX/10SMH旧篮子仅为历史条件；11/12新同步quote、beta、borrow、费用、AMAT后的新事实全满足再评估。",
+      "changes_markdown": "本次delta=weakened；ETF弱化为纯权重/因子，不能持旧价作新入场；不得追溯修改旧进场、止损、TP或认定成交。",
+      "actual_position_status": "未提供/未知；无成交回执"
+    },
+    {
+      "idea_id": "UST-2S30S-HOT-CPI-FLATTENER-20261111",
+      "first_proposed_at": "2026-11-11",
+      "original_plan_markdown": "前序2s30s flatten待现金重开，未确认DV01、roll和利差。",
+      "current_plan_markdown": "13:00 EST拍卖后核2/30Y同刻收益率、期限溢价、DV01、CTD/roll，15/30/45min压平才研究；缺任一层不入。",
+      "changes_markdown": "本次delta=weakened；DV01/期限溢价与现券重开、拍卖风险；不得追溯修改旧进场、止损、TP或认定成交。",
+      "actual_position_status": "未提供/未知；无成交回执"
+    },
+    {
+      "idea_id": "COM-M-M2701-2705-WASDE-BACKWARDATION-LONG-20261111",
+      "first_proposed_at": "2026-11-11",
+      "original_plan_markdown": "{\"rank\":3,\"name\":\"M2701-M2705近多远空\",\"idea_id\":\"COM-M-M2701-2705-WASDE-BACKWARDATION-LONG-20261111\",\"revision\":3,\"score\":71,\"direction\":\"long 1 M2701 / short 1 M2705\",\"holding_period\":\"1-7交易日\",\"stage\":\"conditional_wait_day_pullback\",\"instruments\":[\"DCE M2701\",\"DCE M2705\"],\"max_loss_limited\":false,\"score_components\":{\"logic\":21,\"payoff_convexity\":17,\"catalyst\":17,\"price_curve_volatility\":9,\"crowding_technical\":7},\"research_conclusion\":\"有待验证优势\",\"evidence_sufficiency\":\"价格/OI、期限、实体、海外4层；basis/仓单/执行仍缺\",\"execution_status\":\"等待09:00后回撤—收复顺序\",\"actual_position\":\"未提供/未知\",\"support\":[\"M2701 close/settle 3139/3137，settle 1D +2.08%\",\"M2701-M2705 close/settle价差300/306，backwardation显著\",\"实体与CBOT/USDA方向提供成本支持\"],\"counterevidence\":[\"M2701 OI -25,247，不能判定新多\",\"价差已远离旧价值区，追价赔率下降\",\"商品期权无bid/ask；basis/仓单/会员排名未就绪\"]}",
+      "current_plan_markdown": "参考同批次commodities研究卡；旧晨报09:15参数过期，重新确认现价和同刻成本。",
+      "changes_markdown": "本次delta=weakened；单独统一商品源、非跨域新增仓；不得追溯修改旧进场、止损、TP或认定成交。",
+      "actual_position_status": "未提供/未知；无成交回执"
+    },
+    {
+      "idea_id": "COM-N-EG2701-PRICE-OI-CURVE-20261112",
+      "first_proposed_at": "2026-11-12",
+      "original_plan_markdown": "首次出现或商品域原有条件研究，非用户持仓。",
+      "current_plan_markdown": "需产业库存/港口/订单和最新交易合约夜盘/日盘同频确认后再研究。",
+      "changes_markdown": "本次delta=new；价格+OI异常但实体资料缺、日盘追价风险；不得追溯修改旧进场、止损、TP或认定成交。",
+      "actual_position_status": "未提供/未知；无成交回执"
+    },
+    {
+      "idea_id": "CN-IM-IH-STYLE-REVERSAL-WATCH-20261112",
+      "first_proposed_at": "2026-11-12",
+      "original_plan_markdown": "首次出现或商品域原有条件研究，非用户持仓。",
+      "current_plan_markdown": "下一个日盘至少两观察时段维持小盘弱于大盘，官方期现基差与MO/HO链、实时深度和风险预算满足才可能成新策略。",
+      "changes_markdown": "本次delta=new；单日风格反转不足，需下一个独立session确认；不得追溯修改旧进场、止损、TP或认定成交。",
+      "actual_position_status": "未提供/未知；无成交回执"
+    },
+    {
+      "idea_id": "GOLD-POLICY-CREDIT-CONVEXITY-20261111",
+      "first_proposed_at": "2026-11-11",
+      "original_plan_markdown": "首次出现或商品域原有条件研究，非用户持仓。",
+      "current_plan_markdown": "旧多头invalidated或原Convexity仍观察；不改变旧单和止损。",
+      "changes_markdown": "本次delta=unchanged；实际利率、美元与期权beta不同步；不得追溯修改旧进场、止损、TP或认定成交。",
+      "actual_position_status": "未提供/未知；无成交回执"
+    }
+  ],
+  "sections": [
+    {
+      "number": 1,
+      "title": "一句话结论与时间墙",
+      "markdown": "**截至2026-11-12 23:07:20北京时间／10:07:20美国东部时间**，A股从11/11小盘领涨切换到11/12小盘全面领跌，IM/IH旧相对价值多头的定价优势已被当日反向价格严重挑战；美国上日AI反弹仍受高实际利率、融资成本与未公布的30Y拍卖/AMAT财报制约。总体 **Neutral偏Risk-Off**：有研究价值但没有允许立即建立的合格新仓。以市场会话定权重：**中国日盘已完结、商品夜盘进行中但晚行情未核、美国现金股市已开盘约37分钟且无同步盘口、美国现券重开、欧洲近收盘**；不得称为普通“早报”或“晚报”。"
+    },
+    {
+      "number": 2,
+      "title": "跨资产仪表盘和价格校验",
+      "markdown": "|资产|可核验数值与实际交易/发布日|变化与限制|\n|---|---|---|\n|美国2Y/5Y/10Y/30Y公债|11/10官方 **4.73 / 4.81 / 4.98 / 5.35%**，10Y TIPS真实收益率 **2.78%**|11/11休市；11/12 10:07 ET正式全曲线缺。媒体11/12早时点2Y约4.765%、10Y4.991%，不是同刻官方收盘|\n|DXY / EUR/USD / USDJPY / USDCNH|11/11银行DXY约102.84、EUR/USD1.109、USDJPY159.79、USDCNH6.674|美元高位，11/12即时可成交USD/CNH、美元篮子缺同步价；CNH不是CNY即期|\n|S&P500/纳斯达克/VIX|11/11收 7619.38 (+1.31%) / 25466.19 (+1.60%) / 17.49 (−10.12%)|11/12 10:07美国现金股市已开，仅上日收盘可作精确比较，不能称本时点VIX17.49|\n|AI半导体ETF|SOXX 11/11收155.40 (+6.02%)、SMH506.96 (+4.87%)（前序归档事实）|11/12最新同步10:07价格、借券、beta和盘口未取得；11/11比价延续不可确认|\n|中国四大指数|11/12 SSE50 2772.07 (+0.24%), CSI300 4043.93 (−0.78%), CSI500 6604.15 (−1.62%), CSI1000 6537.84 (−1.97%)|第三方公开收盘汇总，未独立取CSI官方原始字节；上涨875、下跌4635，沪深成交约1.93万亿|\n|股指期货当日近收盘|11/12 15:00:12提供IF2612 4002.4、IH2612 2739.4、IC2612 6538.4、IM2612 6480.4|均来源公开15:00报价显示，非CFFEX官方最终结算；不等同全日oi-change或期权仓位|\n|HO/IO/MO|最新官方11/11 760/760合约EOD；HO2612 ATM14.65%、IO2612 17.79%、MO2612 27.95%|11/12股指/期权EOD仓库未更新，禁报当前IV、GEX方向或盘口|\n|黄金/工业金属|11/11银行黄金约4000.5 USD/oz；国内11/12 AU2612 close852.5 (−2.07%), CU2612 104950 (−0.27%)|现货/期货、时区与汇率不同，不做非同步比较或黄金折价套利|\n|原油|11/11银行Brent92.76、WTI86.53；11/12国内SC2612 close609.9、settle607.9|美国EIA尚未发布；当前SC夜盘未核验，不能把银行夜前历史当实时可执行价|\n|信用/流动性|MOVE、HY OAS、融资额度、ETF实时申赎未取得11/12核验|不能宣布信用已见拐点；外汇/商品/AI均通过美元/利率和波动相关|\n\n**股指期货新同日近收盘的研究交叉对照**（来源为非官方报价，15:00:12 BJT，现金15:00；结算/成交指令需CFFEX原件）：\n\n|品种|11/11官方引擎 close|11/12公开15:00价|按close估算1D|11/12现金指数close|现金1D|当日近似期现基差点数 / %|\n|---|---:|---:|---:|---:|---:|---|\n|IH2612|2742.2|2739.4|-0.10%|2772.07|0.24%|-32.67 / -1.179%|\n|IF2612|4043.4|4002.4|-1.01%|4043.93|-0.78%|-41.53 / -1.027%|\n|IC2612|6664.0|6538.4|-1.88%|6604.15|-1.62%|-65.75 / -0.996%|\n|IM2612|6623.0|6480.4|-2.15%|6537.84|-1.97%|-57.44 / -0.879%|\n\n**现金风格差：CSI1000 1D −1.97% vs SSE50 +0.24%，小盘相对为约−2.21百分点；上一有效研究所依据的11/11是+1.64个百分点，方向单日翻转约−3.85百分点。** 来源：[11/12指数汇总](https://m.cngold.org/stock/xw10876301.html)、[IM公开记录](https://www.9qihuo.com/hangqing?productcode=IM)、[IH公开记录](https://www.9qihuo.com/hangqing?productcode=IH)、[IF公开记录](https://www.9qihuo.com/hangqing?productcode=IF)、[IC公开记录](https://www.9qihuo.com/hangqing?productcode=IC)；[11/11官方期权/期指引擎](https://raw.githubusercontent.com/farfromexact/China-Options-Engine/a4c16a18d16d039a30e9c162950096c9333a0a49/data/radar_latest.json)。不得在现金15:00和期货15:00:12间假定完全同步。"
+    },
+    {
+      "number": 3,
+      "title": "Daily Bias Engine：1主+2辅、竞争解释",
+      "markdown": "**主导变量（p）**＝中国市场宽度及大小盘动量重新定价：11/12 875涨/4635跌，CSI1000−1.97% vs SSE50+0.24%，说明上一交易日的小盘快速回暖未通过第二天持续性验证。大成交额约1.93万亿但下跌广泛，不能将“放量”单独推为Risk-On。**反叙事anti**：在指数剧烈轮动下，可能是短期技术性再平衡，而非所有小盘企业盈利预期下修；缺行业资金和高频ETF申购，同日推断新中期熊市过早。\n\n**辅助1（rates_USD）**：11/10官方10Y TIPS2.78%、2Y4.73%、10Y4.98%、DXY约102.8+。高实际利率与美元解释高duration成长股/贵金属估值承压的一部分，但昨日纳指涨1.6%否定“利率高就必跌”的机械解释。**关键证伪**：11/12国债现金同频2/5/10/30完整曲线和30Y拍卖好坏、USD/CNH与HY OAS同步观测。\n\n**辅助2（AI+能源事件）**：CoreWeave在SEC披露增长很快但高资本开支/利息；AMAT本日晚些时候财报；EIA晚些时候库存。二者可能引发波动，尚不能从公告直接推导NVDA/SOXX即时方向。情景区分：（I）资产反弹且30Y接受度好→择机偏Neutral；（II）利率/美元上行+中国宽度继续恶化→Risk-Off；（III）油风险溢价突增、供应断裂→利率和股指/金属相关性可能断裂。下一美股开盘15/30/45分钟分别标记实际行情，但不制造趋势日概率。"
+    },
+    {
+      "number": 4,
+      "title": "七模块全球扫描与跨资产机制",
+      "markdown": "### 1 利率/TIPS/信用与美元流动性\n11/10美国财政部官方2/5/10/30为4.73/4.81/4.98/5.35%，10Y实际利率2.78%；2s30s=62bp（都为11/10）。11/11休市，11/12盘初短端有上移报道，**不能用媒体2Y与旧30Y计算新2s30s收益**。30Y今晚13:00 ET拍卖前，期限溢价与流动性可单独抬30Y利率，从而使“压平”错。12月联储行动概率是市场交易者估计非确定结果，不能将88%的某来源定为真实政策路径；信用利差HY OAS/MOVE实时缺，不得声称交易胜率。见[Treasury官方](https://home.treasury.gov/)、[11/12拍卖公告](https://home.treasury.gov/news/press-releases/sb0678/)。\n\n### 2 美元/外汇与亚洲利差\n11/11 DXY约102.84–102.92，EUR/USD1.109、USDJPY159.79、USDCNH6.674，美元背景偏强；同刻DXY/CNH/日美长端走势未核。美元走强同时压中国成长股、油金，但在地缘风险时美元与油/金同涨也可能发生，汇率敞口必须独立定向。没有贸易公司现金/外汇套保和借券结构，不把汇率直接当利润结论。\n\n### 3 美股/AI半导体/现金流与Capex\n11/11 S&P+1.31%、纳指+1.60%、VIX降至17.49；SOXX/SMH 155.40/506.96都是上一有效报告的11/11收盘，与当前10:07 ET无法同步。CoreWeave **SEC原始8-K**披露Q3收入36.61亿美元、净亏损7.09亿美元、利息费用8.46亿美元，FY26营收指引130–133亿美元、Capex370–390亿美元、退出ARR200–210亿美元。这揭示强需求与高融资成本共存，ETF权重差不等于多“轻资本AI”/空“重资本AI”的纯因子。AMAT 16:30 ET将举办电话会，**尚未发布结果不能预写指引**。见[CRWV SEC](https://www.sec.gov/Archives/edgar/data/1769628/000176962826000461/coreweave3q26earningspress.htm)、[AMAT原始公告](https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-report-fourth-quarter-and-fiscal-2026-results)。\n\n### 4 黄金/实际收益率/政策及信用凸性\n中国11/12 AU2612 close−2.07%；11/11银行全球黄金价约4000.50与商品引擎COMEX EOD4059.30源口径不同（现货vs期货/时间），非可计算套利。10Y真实收益率2.78%为11/10最后官方，11/12真实利率并无当时完整数据；黄金期权偏斜和可执行credit/event long-vol无法验证。观察美元回落与实际利率同步，再决定是否研究限定损失买权利金；当前报价前预算0。\n\n### 5 原油/油品与地缘\nSC2612 EOD close609.9、settle607.9、SC2612-SC2701 close spread10；11/11 Brent92.76、WTI86.53与引擎Brent92.97不同口径，不能当日同步确认。储油、运费、保险风险溢价与OPEC/IEA供给背景可能改变term，但SC夜盘无法取完整当前合约；EIA 11/12 12:00/14:00 ET公布之前仅能做分支情景。原油跳空可以通过通胀预期使股债负相关转正/变负，不把美元/黄金/油简单组合成自然对冲。\n\n### 6 中国指数/股指期货/ETF/期权\n**11/12现金已确认与11/11风格反转**：CSI1000−1.97%、CSI500−1.62%、CSI300−0.78%、SSE50+0.24%。11/12公开近收盘四合约已观察，但官方中金所当日EOD和当日HO/IO/MO链仍没在锁定引擎中，**不能把11/11 MO期权仓位推为11/12净GEX或Dealer方向**。11/11 MO2612 ATM IV27.95%、RR25−2.36 vol pts，HO14.65、IO17.79，对应11/11非11/12；绝对gamma strike聚集仅表明潜在行权价敏感，不表明实际dealer正/负gamma。ETF日申购只可用11/11份额差×收盘价估算，并非资金净流入订单。今日旧5IM/8IH basket按第三方close重估P=-94160，低于旧计划−60,000止损锚，但任何实际成交/触发时点均未知。\n\n### 7 宏观流动性与相关性压力\n美国11/12开市前后一小时容易出现供给与AI消息冲突，AVO、MOVE、credit/OAS、实时VIX及资金调仓不可得；全球方向判为Neutral偏Risk-Off而非模型“概率70%”。资产相关性在美元信用压力、油供给跳空与中国期货保证金同步扩张时可能非线性变化；同主题IM/AI/高贝塔权益合并，UST/黄金/油也可能经真实利率共振，任何分散假设需要压力场景而不是常态皮尔逊相关。"
+    },
+    {
+      "number": 5,
+      "title": "前一有效 Global Radar → 当前研究变化",
+      "markdown": "对照[`2026-11-12_morning`](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/b57838be9625bd78729bced6da08d08cfbe78315/reports/2026/11/2026-11-12_morning.json)，截点北京时间08:05、先前榜单IM/IH73、SOXX/SMH72、M价差71、SC68、UST趋平67：\n\n1. **IM/IH原多头idea失效为新的新单候选**：原5IM2612多/8IH2612空，11/11 P=41720，旧计划止损P=−60000。11/12公开15:00:12按当日价构造P=-94160，较旧P变-135880元/个5:8篮子；**收盘标记低于旧止损−60000**。这是强反证，不是订单已在−60000成交，也不能说用户存在旧仓/损益。现金CSI1000-SSE50当日−2.21个百分点，较前一天+1.64转负，旧入场逻辑必须停止以原参数挂新仓；若实际持有按当时原始失效规则核风险，不后移止损。\n2. **SOXX/SMH原72分降级**：价格证据停留11/11，11/12未获得同步ETF新价/borrow/beta，不能为涨跌编结算。CoreWeave SEC披露强收入也有巨额Capex、利息与净亏损，进一步支持‘权重比价+因子暴露’而非干净现金流vs重资本叙事；AMAT事件临近但尚未披露，等待业绩后观察。\n3. **M从71→当前65**：11/12 M2701−M2705 close价差294/settle299，前序300/306；旧日盘入场顺序已过时，反证增强。商品报告保留本idea，全球端同源，不单独增加风险预算。\n4. **SC从68→当前商品62**：11/12日盘SC close609.9、settle607.9，缺当晚实时和EIA结果。只有价格/期限层，不符合原收复→回踩AND证据。旧明确止损599不回溯修改。\n5. **UST趋平67→66**：11/12重开及短端上移是方向证据，但30Y拍卖和统一DV01未确认，长端可能独立走高。不能把11/10收益率当11/12清算价。\n6. **新增EG现货异动64**：新增price+OI+曲线观察，尚无独立港口库存；AP longvol在商品端强化但不可实盘；黄金原convexity研究继续削弱/观察，无新可执行期权报价。\n\n前序所有idea的first_proposed_at与original_plan保留；新事实仅用于前瞻新候选，**实际持仓与成交状态从未提供**。"
+    },
+    {
+      "number": 6,
+      "title": "全球机会Top5：研究/证据/执行三轴",
+      "markdown": "统一15/25/20/15/15? **严格以 Registry规定权重：机制25、赔率25、催化20、价格曲线与波动15、拥挤技术15**（总100）；下面按此分解。没有实时同步报价与合约细节时，无可执行高分交易。\n\n|序|idea|机制/赔率/催化/价曲波/拥挤=分|独立证据与最强反证|执行|\n|---|---|---|---|---|\n|1|UST 2s30s flatten，待拍卖后|20/16/14/8/8=**66**|11/10官方曲线+11/12短端媒体上移；反证30Y期限溢价和供给|DV01和bidask缺，0仓|\n|2|SOXX多/SMH空33:10，相对权重比价|20/15/15/8/7=**65**|11/11相对收盘验证；反证同因子ETF成分和CRWV capex利息不支持纯现金流proxy|11/12同频价格/借券不明，0仓|\n|3|M2701多/M2705空价差（跨域共享）|19/14/10/12/10=**65**|商品价格/期限混合；价差由300缩294，basis C、今夜未知|0仓，详见商品卡|\n|4|EG2701新异动（跨域共享）|18/12/12/12/10=**64**|EG价格+OI增长、term；反证实体链空白、旧5D仍负|0仓，详见商品卡|\n|5|IM/IH**反向风格观察**，不是当前卖IM/买IH推荐|18/11/12/8/10=**59**|现金1D大幅风格反转；反证单日过度、期指非官方收盘和缺当日MO chain|旧多头invalidated；新反向信号仅研究，0仓|\n\n黄金原convexity及SC事件虽入全域扫描，但因期权报价与能源夜盘缺失未超过这5项。榜单中的M/EG与商品报告是**同一idea/同一风险预算**；不重复计算仓位上限。数值均为人工研究排序，不是预测概率和胜率。"
+    },
+    {
+      "number": 7,
+      "title": "三张交易结构/失效卡（全部非可执行）",
+      "markdown": "### 卡1｜UST 2s30s曲线趋平：在拍卖与现金全曲线重核后\n- **已知**：财政部11/10 2Y 4.73%、30Y 5.35%、2s30s **+62bp**，10Y TIPS2.78%；11/11休市、11/12报道短端上移，30Y**$25bn** 13:00 ET拍卖未发生于本截点。\n- **已计价/分歧**：市场已反映通胀及偏鹰的政策预期；真正错价需要未来2Y相对30Y收益率上行更多，而不能仅用“热CPI”重复陈述。反向情景是30Y供给弱投标导致长期期限溢价大涨（bear steepening），即使2Y上行亦压平失败。\n- **结构**：用国债期货或IRS构建经确认的DV01-neutral long duration 30Y / short duration 2Y（按具体期货/互换现金流定义方向；“收益率趋平”需逐腿确认），需要CTD/convexity、CTD切换、交易权限、保证金和roll成本。**未核DV01/腿数/报价前不下单**；不得用2Y与30Y各1张假装风险中性。\n- **条件**：拍卖完成后公布投标倍数、尾部/停止收益率、账户适配，且2/30Y同期价差实际收窄并守住下一15/30/45分钟；相反若30Y因期限溢价抬高、2s30s重新走阔或现金流动性消失则放弃。止损/目标、交易成本和时间退出均需每合约可报价DV01才能量化；目前为0仓研究，观察5—15交易日。\n\n### 卡2｜SOXX/SMH 33:10：旧报告price validated不等于现在入场\n- **事实**：前序11/11 SOXX155.40、SMH506.96，SOXX/SMH比率约0.30653；篮子Q=33×SOXX−10×SMH约+$58.60。11/12 10:07 ET准确同步报价/ETF bidask/borrow不可得，**旧Q不是现在的价位**。\n- **原创公司锚**：CoreWeave 2026 Q3营收$3.661B、净亏$0.709B、利息费用$0.846B、2026 Capex指引$37–39B。增长代表真实需求，负利润与资本融资成本也真实；不能把两只高度重叠ETF的强弱直接归因于“自由现金流质量”。新增AMAT电话会11/12 16:30 ET尚未发生。\n- **旧参数（只用于持仓审计）**：旧候选Q区间20–40美元回撤后再验证，旧止损Q=−20/日线ratio<0.3010，TP Q130/220，成本假设$15/篮子；这些不是11/12 10:07新的有效限价、更不是用户实际成交。下一合法窗口若borrow、同频ETF净值/成分/beta、spread、股息税及成本齐全，且15m回踩/续势均AND，才可订新条件；否则弃。当前风险预算0。\n- **失效**：NVDA成分权重差、AMAT/半导体设备业绩改变风格因子，SOXX比率下行、借券费跃升；ETF两腿无限损失风险，需要净beta和美元敞口压力预算，不得称为有限损失套利。\n\n### 卡3｜IM/IH：旧5:8小盘多头失效；反向方案尚未形成\n- **公式与审计**：一组5手IM2612×200点价乘数对8手IH2612×300为**P=1000×IM−2400×IH**。11/11交易所引擎close 6623/2742.2 →P=41720元；11/12 15:00:12公开非官方close 6480.4/2739.4 →P=-94160元；篮子理论变动**-135880元/组**，未扣费/深度和间隙风险。这**不能**变成账户实际PnL。\n- **原计划**：11/12 09:30后要求P先回撤20k—50k、09:45≥30k、10:00≥40k、小盘现货领先≥0.40百分点，旧计划止损P−60k、目标180k/320k，time exit11/25。现现金当日风格差−2.21百分点且收盘P=-94160，旧新仓信号被基本面（价格路径）否定；是否在盘中先触发再跌穿、用户是否持仓均未知，绝不能回填成交或重设旧止损。\n- **反向观测**：考虑短IM/多IH只能作为**新子idea**，依赖下一个日盘后两日风格延续、同一时点期指和现金基差、ETF真正增减份额、MO/HO新一期权链及日内流动性。单日风格反转不能自动保证赔率，未定义可验证止损/目标；当前**不交易**。若真实旧仓存在，应立刻按用户原交易纪律和实盘账户核对原失效条件，不以本报告推定已经止损。"
+    },
+    {
+      "number": 8,
+      "title": "事件排序、会话分支与日内15/30/45分钟",
+      "markdown": "**研究信息墙**：23:07 BJT=10:07 EST，美国11/12开盘后约37分钟；不能使用10:07以后的当日事件结果，也不能将11/11美股收盘映射为11/12本时点现价。\n\n|时间（北京）|明确事件/会话|偏多/偏空竞价路径|需要验证|\n|---|---|---|---|\n|11/12 23:07（截点）|美股现金已开、市内约37分钟；中国股票收盘；商品夜间不同合约仍在交易|美股AI昨日+6%式反弹可能延续也可能回吐；中国今日广度为Risk-Off|美股30/45分钟OR、VIX/IV、SOXX/SMH同步价与借券；中期趋势日概率未知|\n|11/13 01:00及03:00|EIA当日12:00/14:00 EST分期发布（官方排期）|库存意外影响油/SC/通胀风险|官方原表，不能使用API传闻当已公布|\n|11/13 02:00|美国30Y $25bn拍卖（13:00 EST）|需求强/弱分别改变长端期限溢价、美元黄金|官方得标收益、tail/bid-cover、2s30s同刻曲线、DV01|\n|11/13 05:30|AMAT 16:30 EST电话会|半导体Capex需求强可支持SOXX/SMH，也可能指引不及预期|公司原始收入/毛利/现金流/订单与管理层指引|\n|11/13 09:00及后15/30/45分钟|中国股指/商品新日盘|高开不追小盘反向、平开看宽度恢复、低开先等止跌与量仓|IM/IH官方现货、期指及期权新日同频；M/EG按商品报告|\n|11/13 17:00|IEA November Oil Market Report（巴黎10点）|需求/供应修正影响油term|官方全文数据，非市场评论|\n\n不对未发生的事件编结果，不将美元/美债/黄金同涨同跌当恒定相关性。每个市场入场条件必须先观察实际日内K线顺序、成交量/VWAP/OR、标准化价差与可执行深度，未达到即No Trade。"
+    },
+    {
+      "number": 9,
+      "title": "数据缺口与完整风险分解",
+      "markdown": "**源版本校验**：Registry 28/28 SHA256 matches；Commodities commit`1db709…`，Options commit`a4c16a…`，目标报告共享本run_id/cutoff。股指官方11/11 option/futures 760/760可核，本日交易所数据未在该仓归档；公开15:00:12四指合约只能降级作为第三方15:00近收盘标记，不能悄悄取代官方EOD。商品五所EOD 806合约但independent official futures crosscheck unavailable；仓单/Basis C/期权bidask0，真实本夜源不可读。HY OAS、MOVE、11/12 TIPS当日与ETF份额、公司现价、SOXX/SMH beta及借券均缺。\n\n**risk decomposition**：股指IM+SOXX+AI相关成长beta（一个市场上涨不抵消另一个）；UST 2s30s和黄金由real-yield/dollar共同驱动；SC/EG/M受库存/油/美元/资金保证金影响；短gamma或期权多头仅在真实报价后纳入Vega/Theta和GEX，不凭abs gamma strike反推dealer position。单个主题试仓NAV0.25—0.75%、确认0.75—1.50%，共同因子上限NAV2.5—3.0%；**实际今天风险预算=0**，无独立账户/权限/手续费/实时盘口。压力包含利差/汇率跳空、股指跌停、期货腿不对称涨跌停、流动性消失、隔夜保证金/借券成本、波动率崩落、相关性非线性断裂。\n\n**原始原件和可证伪信息**：[Treasury yield](https://home.treasury.gov/)，[Treasury auction](https://home.treasury.gov/news/press-releases/sb0678/)，[AMAT公告](https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-report-fourth-quarter-and-fiscal-2026-results)，[CRWV SEC 8-K](https://www.sec.gov/Archives/edgar/data/1769628/000176962826000461/coreweave3q26earningspress.htm)，[EIA](https://www.eia.gov/petroleum/supply/weekly/)，[IEA](https://www.iea.org/data-and-statistics/data-product/oil-market-report-omr)；市场第三方/可比研究：[11/12 A股](https://m.cngold.org/stock/xw10876301.html)，[11/11 global bank](https://www.hlb.com.my/content/dam/hlb/my/docs/pdf/Global_Markets/daily-market-watch/2026/12-11-2026.pdf)，[11/12 CFFEX 15点公开行情](https://www.9qihuo.com/hangqing?productcode=IM)，[官方链引擎11/11](https://raw.githubusercontent.com/farfromexact/China-Options-Engine/a4c16a18d16d039a30e9c162950096c9333a0a49/data/radar_latest.json)。没有为缺数据模拟ML分数、IV-模型校准、已成交易或净值变动。"
+    },
+    {
+      "number": 10,
+      "title": "A/B/C/D 最终执行清单",
+      "markdown": "A｜立即可建立合格新仓：无。IM/IH原多小盘交易逻辑遭现金风格和篮子标记双重强反证；UST拍卖未出、AI同步篮子及borrow未核；商品条件见同批次commodities。\n\nB｜仅条件候选：UST 2s30s等待正式拍卖/完整DV01和同刻30Y；SOXX/SMH等待AMAT事件与同步ETF/borrow；M和EG只在commodity域完整条件满足且合并风险预算时重新研究。\n\nC｜观察：IM/IH由旧多头invalidated转新反向观察，MO2612 11/11 IV是历史；AU实际利率和美元、SC/EIA与油风险溢价、CoreWeave资本开支/利息链、AI设备订单/利润率。\n\nD｜回避：以旧5IM/8IH价差P=41720继续挂新单、将当前P=-94160误称已成交止损/用户亏损、美国11/11收盘充11/12盘口、EIA/AMAT/30Y未发布结果前做事后归因、用缺bid/ask期权及非同步跨境套利、将两个Radar的相同M/EG仓位额度相加。\n\n**批次一致性说明**：全球与商品共同研究截点、数据引擎commit和Prompt Registry；交叉idea引用同一个id。Report不是实际下单指令，不自动修改任何Automation/Registry/数据引擎；最终归档状态必须由run_manifest回读而非本报告文字决定。"
+    }
+  ],
+  "actions": {
+    "A": "A｜立即可建立合格新仓：无。IM/IH原多小盘交易逻辑遭现金风格和篮子标记双重强反证；UST拍卖未出、AI同步篮子及borrow未核；商品条件见同批次commodities。",
+    "B": "B｜仅条件候选：UST 2s30s等待正式拍卖/完整DV01和同刻30Y；SOXX/SMH等待AMAT事件与同步ETF/borrow；M和EG只在commodity域完整条件满足且合并风险预算时重新研究。",
+    "C": "C｜观察：IM/IH由旧多头invalidated转新反向观察，MO2612 11/11 IV是历史；AU实际利率和美元、SC/EIA与油风险溢价、CoreWeave资本开支/利息链、AI设备订单/利润率。",
+    "D": "D｜回避：以旧5IM/8IH价差P=41720继续挂新单、将当前P=-94160误称已成交止损/用户亏损、美国11/11收盘充11/12盘口、EIA/AMAT/30Y未发布结果前做事后归因、用缺bid/ask期权及非同步跨境套利、将两个Radar的相同M/EG仓位额度相加。"
+  }
+}
