@@ -1,52 +1,1284 @@
 {
   "actions": {
-    "A": "当前没有已满足完整条件、可以立即执行的新跨资产交易；周末休市，且当前大盘防守价差已经上行，暂不追买。",
-    "B": "等待IH2612多3手／IM2612空2手的人民币价差B先回落至−125000以下、再反弹至−120000附近并获同刻报价确认，才研究防守篮子；若直接突破原高而不回撤、或现金与组合风险不合格则放弃。美债曲线与黄金期权仅保留询价研究。",
-    "C": "11月16日10:00复核中国工业、消费和地产数据与四类股指、国债、回购反应；11月18日05:20复核英伟达财报实际毛利及现金回报，决定是否调整AI风险判断。",
-    "D": "回避凭单日股债同步回撤推断信用危机、把股指期权采样Gamma当全市场做市仓位、用ETF不明单位份额推资金流；若有真实旧持仓，遵守其原始失效与固定退出，不用本批次重启旧时钟。"
+    "A": "当前可考虑的新交易：没有已确认触发的新交易。周日股指休市，IM2612与MO价差均为条件研究；周五收盘、结算和未验证时点盘口不构成当前可成交价格。",
+    "B": "等条件的候选：仅11月16日经济数据实际发布后，IM2612先反弹≥6400、完整15分钟收于<6380且中证1000当日弱于上证50，再在6370—6380卖出满足0.25%净值计划风险及共同压力预算的偶数手，最少2手；第一／第二目标6200／6050各平一半，6500止损，最迟17日14:50全退。11:15前未完成、入场前触及6500、直接跌穿6200、成本>12点或预算不足2手则取消。",
+    "C": "继续观察：16日10:00中国经济数据是否使小盘反转；下一美国交易日实际利率、半导体与信用是否同向；18日05:20／06:00英伟达收入、毛利、营运资本回收及下一季指引。黄金等待实际利率止升与价格企稳共同出现，低频央行需求本身不触发买入。",
+    "D": "应回避或有持仓时退出：回避6276.8附近追空IM、无报价重估的黄金看涨期权、用SOXX代替纯英伟达治理风险，以及没有共同预算的IM与SC叠加空头。若实际持有本期IM方案，6500、逻辑反转或17日14:50任一先到即退出；其他旧仓须按其真实原始止损和期限核对，不借新卡重置亏损或延长持有。"
   },
   "archive_mode": "production",
   "candidates": [
     {
-      "conditions_markdown": "IH2612多3手、IM2612空2手，B=900×IH−400×IM：先低于−125000元、再反弹至可执行约−120000的两腿同步价才研究；止损−165000、目标−65000／−40000，最迟11月25日退出，按总费用2500元／完整篮子和计划风险净值0.25%估算；任何旧仓不延期。",
-      "evidence_sufficiency": "指数横截面、准确两腿及美国贴现率变化独立支持风格压力；当前无可成交篮子盘口与足够现价安全余量",
-      "execution_status": "not_triggered_research_only",
+      "conditions_markdown": "本卡只用于未来新开仓。11月16日国家统计局10:00经济数据实际发布后，IM2612须先反弹触及6400点或以上，再出现一根完整15分钟收盘低于6380点，且从当日09:30起中证1000现货收益低于上证50；随后仅在6370—6380点真实可成交卖价建立空头，最迟11:15未成交即取消，不顺延。以2手为最小完整单元，一次建立、第一目标6200平1手、第二目标6050平1手；更多手数只取偶数并同比例退出，不把1手算成两个半手。若仅成交孤立1手且无法在入口内补齐，则取消未成交部分并按可成交条件平回该手，不将不完整单元当作计划持仓。价格达到6500立即按可成交条件止损；若中证1000相对上证50转强且上述15分钟失败信号被随后完整15分钟收盘重新站上6400推翻，也退出。止损或逻辑退出先发生后，不再计算后续目标。最迟11月17日14:50全部退出。入场后不加仓、不滚动延长；若发布延误、价格不回入口、直接跌穿6200、入场前触及6500、完整2手超过预算、实际总成本高于12点/手，或规则及流动性不能支持退出，则放弃。成本基准8点/手，4／8／12点为敏感区间；报价和当日经纪保证金须在合法交易时段复核。试仓计划止损风险取净值0.25%，手数取满足该上限的最大偶数，并同时服从既有持仓及SC等共同因子压力预算；不足2手不启用。",
+      "current_scores": {
+        "catalyst": 13,
+        "crowding_technical": 7,
+        "logic": 20,
+        "payoff": 5,
+        "price_term_vol": 8,
+        "total": 53
+      },
+      "evidence_sufficiency": "准确IM2612合约、同合约历史、实际利率背景、成本和整数手数情景足以条件评分；触发未发生。",
+      "execution_status": "未触发；最早11月16日数据实际发布后的失败反弹，11:15窗口到期。",
       "fact_ids": [
-        "G-CN-INDEX-20261113",
-        "G-US-RATES-20261113"
+        "G_CN_INDICES_20261113",
+        "G_CN_DERIVATIVES_20261113",
+        "G_US_REAL_20261113",
+        "G_IM_SCENARIO",
+        "G_IM_RULES"
       ],
-      "idea_id": "CN-IHIM-DEFENSE-RETEST-20261115",
-      "research_judgment": "13日B=-50660已经大幅上涨，不追；候选仅为未来回撤再确认"
+      "idea_id": "G_CN_IM_REBOUND_SHORT_20261115",
+      "research_judgment": "条件价格研究68；周五低位53，等待反弹改善赔率。",
+      "scores": {
+        "catalyst": 13,
+        "crowding_technical": 9,
+        "logic": 20,
+        "payoff": 17,
+        "price_term_vol": 9,
+        "total": 68
+      }
+    },
+    {
+      "conditions_markdown": "中证1000看跌价差仅作为IM方向方案的有限损替代，或用于已经确认存在的小盘多头风险：买1手MO2612-P-6400、卖1手MO2612-P-6000，均2026年12月18日欧式现金结算、乘数100元/点。11月13日结算参考净支出161点，不是当前可成交价格；若下一合法时段两腿同步净支出不高于161点且全程成本不高于4点，仍须用当时远期、剩余时间和隐含波动重估。若用于替代本卡方向交易，采用相同宏观与反弹失败条件、最迟11月17日14:50退出，并按当时两腿可成交价核算，不能沿用本报告模型价作订单。只有确需跨越11月18日英伟达事件的既有风险对冲，才另外接受持至11月20日14:45；该用途与期货主卡持有期不同，按完整价差最大合同损失16500元/组及组合保证金占用约束规模，且计入同一风险预算。方向替代与IM二选一、不得叠加；保险用途必须存在真实需保护的敞口。缺任一腿或不能承受短腿临时保证金，均不新开仓；没有实际敞口时不以保险名义开仓。",
+      "evidence_sufficiency": "准确两腿和结算参考、模型远期、IV与成本可复算，双退出日九宫格；没有真实多头敞口时不假定保险需求。",
+      "execution_status": "仅条件；当前无可执行报价，须同步双腿和重新估值。",
+      "fact_ids": [
+        "G_MO_LEGS_20261113",
+        "G_MO_SCENARIO",
+        "G_BOOKS_20261114"
+      ],
+      "idea_id": "G_CN_MO_PUTSPREAD_ALTERNATIVE_20261115",
+      "research_judgment": "参考净权利金161条件64，仅作同因子有限损替代或真实持仓保险；不与IM另领预算。",
+      "scores": {
+        "catalyst": 14,
+        "crowding_technical": 9,
+        "logic": 18,
+        "payoff": 14,
+        "price_term_vol": 9,
+        "total": 64
+      }
+    },
+    {
+      "conditions_markdown": "18日05:20／06:00核实际收入、毛利、现金回收及指引；公司1080亿美元±2%不是市场一致预期。没有核实估值、报价与ETF个股权重前，不立方向或卖波动卡。",
+      "evidence_sufficiency": "NVDA/MSFT原始财报现金桥齐，未来共识与期权定价缺。",
+      "execution_status": "无新交易。",
+      "fact_ids": [
+        "G_NVDA_CASH_BRIDGE",
+        "G_MSFT_2026Q1",
+        "G_NVDA_GOV_20261112",
+        "G_NVDA_EVENT_20261118",
+        "G_SOXX_20261113"
+      ],
+      "idea_id": "G_AI_CASH_EARNINGS_20261115",
+      "research_judgment": "收入强与现金兑现分化，事件研究优先；没有定价锚不计总分。",
+      "scores": {
+        "catalyst": 17,
+        "logic": 21,
+        "total": null
+      }
+    },
+    {
+      "conditions_markdown": "未来1—20交易日若实际利率止升且黄金企稳，再核3—6个月准确看涨价差或微型期货；未取得当前价格、有效到期及权利金前不沿用旧执行价。",
+      "evidence_sufficiency": "价格与实际利率、月ETF、季度央行背景可核，但期限报价缺。",
+      "execution_status": "不新开黄金工具。",
+      "fact_ids": [
+        "G_US_REAL_20261113",
+        "G_PRODUCT_SCAN_20261113",
+        "G_GOLD_ETF_202610",
+        "G_GOLD_CB_2026Q3"
+      ],
+      "idea_id": "G_GOLD_CONVEXITY_WAIT_20261115",
+      "research_judgment": "当前实际利率逆风强于低频储备买盘证明的便宜度；等待。",
+      "scores": {
+        "catalyst": 10,
+        "logic": 16,
+        "total": null
+      }
+    },
+    {
+      "conditions_markdown": "观察16日财政结算与未来真实利率；只有准确期限工具、DV01、成本及路径情景齐备才新增曲线方案，不从名义斜率直接算中性手数。",
+      "evidence_sufficiency": "官方曲线、政策和财政结算可核；没有具体合约、CTD或DV01及成本。",
+      "execution_status": "无利率交易。",
+      "fact_ids": [
+        "G_US_NOMINAL_20261113",
+        "G_US_REAL_20261113",
+        "G_TERM_20261106",
+        "G_SUPPLY_20261116"
+      ],
+      "idea_id": "G_UST_CURVE_WAIT_20261115",
+      "research_judgment": "曲线59bp且一周已趋平16bp，缺工具锚不追。",
+      "scores": {
+        "catalyst": 11,
+        "logic": 17,
+        "total": null
+      }
     }
   ],
   "coverage": [
     {
-      "analysis": "美债2/5/10/30年与10年TIPS按11月13日、信用截至12日，美元指数11月13日；固定前后日期，不混用会话",
+      "analysis": "复核官方2/5/10/30年名义和5—30年实际曲线、熊市趋平、近似通胀补偿；核Fed决定、Kim–Wright与季度再融资结算。",
       "limitations": [
-        "欧元日元离岸人民币缺准确同刻报价，故不作套息或跨市场套利"
+        "期限溢价滞后至11月6日；未取得拍卖投标结果和可交易DV01工具，不设美债曲线交易。"
       ],
-      "scope": "US rates/FX/credit"
+      "scope": "美国利率／政策／期限溢价／供给"
     },
     {
-      "analysis": "按英伟达原始FY2027 Q2财报与11月12日治理公告、11月17日指引财报排期，分公司事实与价格反应；黄金由利率传导评价",
+      "analysis": "ECB参考EURUSD、EURJPY、EURCNY计算美元交叉；区分广义美元与DXY、CNY与CNH，解释外部利差与中国风险传导。",
       "limitations": [
-        "最新公司现金流/资本开支、黄金ETF流量与当前期权盘口未形成同口径可执行价格"
+        "CNH、当周DXY和远期点缺失；不编套息收益。"
       ],
-      "scope": "US AI equities and gold"
+      "scope": "汇率"
     },
     {
-      "analysis": "股指4类现金与准确12月期货、HO/IO/MO共84份抽样、国债TS/TF/T/TL及12条回购分层；分别分析流动性与风格",
+      "analysis": "复核SP500、NASDAQ、SOX、SOXX发行人、VIX和HY OAS，区分源日与NAV／市场价格。",
       "limitations": [
-        "股指期权非全链，盘口时间不核，ETF份额单位未验证，国债CTD及DV01缺失"
+        "VIX/OAS最新到12日；MOVE和全市场宽度没有可靠当期值。"
       ],
-      "scope": "China index, options, treasury and funding"
+      "scope": "海外股票／信用／波动率"
     },
     {
-      "analysis": "对接77品种初筛中的原油与黄金，在全球报告只讨论通胀、贴现率和交叉风险",
+      "analysis": "NVDA完整单季现金桥、MSFT资本开支与FCF同比桥，TSMC月营收、ASML设备与Vertiv电力散热现金对照；比较SOXX行业暴露。",
       "limitations": [
-        "产品产业链和商品个券交易计划留给商品报告"
+        "网络和软件无同等完整独立现金桥；缺NVDA一致预期、个股估值和期权报价，不提纯因子ETF配对。"
       ],
-      "scope": "Cross-asset commodity transmission"
+      "scope": "AI芯片／云／设备／制造／电力／网络／软件"
+    },
+    {
+      "analysis": "国内同合约价格、实际利率、WGC ETF区域流量、央行估计与报告值、COMEX月度持仓；比较3—6个月期权、期货和等待。",
+      "limitations": [
+        "国际当前金价和黄金期权报价缺口；央行估计非全部官方确认；SAFE冲突原件未采用。"
+      ],
+      "scope": "黄金"
+    },
+    {
+      "analysis": "完整读取77个实际products；以SC/AU/CU/EG代表跨资产传导，IEA供应与海陆库存、EIA商业和SPR区分。",
+      "limitations": [
+        "本报告不重复单品种产业链交易卡；商品具体规则与夜盘风险由同批商品报告补充。"
+      ],
+      "scope": "原油／能源／商品背景"
+    },
+    {
+      "analysis": "21日完整历史核同合约1/3/5/20日、RV、四类现货、12月及3月差、量仓；重算IH/IM篮子。",
+      "limitations": [
+        "指数与ETF不能代替全市场涨跌家数或行业贡献；无机构净资金推断。"
+      ],
+      "scope": "中国四类股指／历史／基差／跨期"
+    },
+    {
+      "analysis": "84张准确腿、HO/IO/MO两个到期、ATM期限、翼部质量、绝对Gamma，研究MO6400/6000成本与两退出日九宫格。",
+      "limitations": [
+        "非全链，翼部缺口、无dealer signed gamma；盘口未通过合法时段验证。"
+      ],
+      "scope": "中国股指期权／盘口"
+    },
+    {
+      "analysis": "TS/TF/T/TL收盘及前结变化、持仓与跨期；DR/R/沪深回购区分并计算分层利差。",
+      "limitations": [
+        "无CTD、转换因子和DV01；回购不是净投放；ETF份额单位未核。"
+      ],
+      "scope": "中国国债期货与资金"
+    },
+    {
+      "analysis": "本期重点候选0家；同日历史公司观察保留未晋级，不冒称全市场审计。",
+      "limitations": [
+        "没有本期新取得的公司原始公告及完整财务桥支撑新公司交易。"
+      ],
+      "scope": "A股独立公司"
+    },
+    {
+      "analysis": "仅读取11月15日研究截点09:52和09:59两份经校验有效报告，比较全部未结束记录，不跟随其中11月15日前的previous_report链接。09:59批四报告及manifest完整有效但未入成功index，仍纳入观点回顾。",
+      "limitations": [
+        "00:10批次两份JSON哈希与manifest不符且manifest缺必填项，排除为无效，不作为前序或机会来源。",
+        "更早first_proposed_at与参数仅为11月15日有效报告携带的历史记载，不独立核验更早报告；实际持仓未知。"
+      ],
+      "scope": "同日历史与机会连续性"
+    },
+    {
+      "analysis": "北京时间重核NBS、BLS、EIA、NVDA和股指到期；新卡精确窗口与整数目标，0.25%计划风险及IM/SC共同2.5%压力约束。",
+      "limitations": [
+        "成本为明示假设；最新经纪保证金、权限与实际盘口须入场时核实；不承诺期货止损封顶。"
+      ],
+      "scope": "事件／执行／共同风险"
+    },
+    {
+      "analysis": "已实际运行Python计算，并独立复核收益、成本、整数手数、期权持有期估值、现金桥及跨报告压力。附原输入/结果与计算方法，便于重算。",
+      "calculation_method_python": "\"\"\"Reproduce the decision arithmetic from explicitly dated research inputs.\n\nAll market inputs below are reference observations, not executable quotes.\nDomestic observations refer to pinned China-Commodities-Engine data.\n\"\"\"\nimport json\nimport math\nfrom pathlib import Path\n\nROOT = Path(__file__).resolve().parent\noutput = json.loads((ROOT / 'calculations.json').read_text())\n\ndef cdf(x):\n    return (1 + math.erf(x / math.sqrt(2))) / 2\n\ndef put_black76(forward, strike, tau, sigma, rate):\n    d1 = (math.log(forward / strike) + sigma * sigma * tau / 2) / (sigma * math.sqrt(tau))\n    d2 = d1 - sigma * math.sqrt(tau)\n    return math.exp(-rate * tau) * (strike * cdf(-d2) - forward * cdf(-d1))\n\nim = {}\nfor entry in [6276.8, 6370, 6380]:\n    cost = 8\n    loss = (6500 - entry + cost) * 200\n    target1 = (entry - 6200 - cost) * 200\n    target2 = (entry - 6050 - cost) * 200\n    im[str(entry)] = dict(entry=entry, cost_points=cost, stop_net=-loss,\n        first_target_net=target1, second_target_net=target2,\n        weighted_net=(target1 + target2) / 2,\n        weighted_rr=(target1 + target2) / (2 * loss), first_rr=target1 / loss,\n        two_contract_stop_net=-2*loss,\n        two_contract_both_targets_net=target1+target2,\n        two_contract_first_target_then_time_exit_at_entry=target1-cost*200,\n        two_contract_first_target_then_remaining_stop=target1-loss,\n        min_nav_for_two_contracts_at_025pct=2*loss/.0025)\noutput['im_card'] = im\noutput['im_metadata'] = dict(contract='IM2612', expiry='2026-12-18', multiplier=200,\n    price_unit='index_points', reference_date='2026-11-13', reference_close=6276.8,\n    reference_settlement=6295, proposed_entry_date='2026-11-16',\n    latest_exit_time_bjt='2026-11-17T14:50:00+08:00',\n    minimum_contracts=2, sizing_requires_even_number=True,\n    entry_range=[6370,6380], stop=6500, target1=6200,target2=6050,\n    cost_sensitivity_points=[4,8,12], cost_basis='assumed full roundtrip fees/slippage/margin funding; not broker quote',\n    paired_target_rr_definition='one contract exits at each target; path must reach both before a stop or time exit')\noutput['im_stress'] = []\nfor entry in [6370, 6380]:\n    for n in [1,2]:\n        price=6295*(1.1**n)\n        output['im_stress'].append(dict(entry=entry,up_limit_days=n,\n            hypothetical_terminal_price=price,net_loss_cny=(price-entry+8)*200))\noutput['im_stress_assumptions'] = 'Use last known settlement6295 as starting proxy and repeat10%; theoretical stress only, no future exchange-limit rounding or post-limit rule changes modeled. Stop may be inaccessible.'\noutput['im_basis_stress'] = dict(cash_fixed=6357.2582,future_reference=6276.8,\n    full_convergence_loss_per_short_contract=(6357.2582-6276.8)*200,\n    basket_3IH_long_2IM_short_basis_component=900*(2733.4-2775.0228)-400*(6276.8-6357.2582),\n    caution='This is a full-convergence stress, not an assumed two-day cost or additive to already specified futures-price outcomes.')\n\nforward=6282.543713022964\nvols=[.28159506923514055,.313949036711811]\ndef spread(f,t,shift):\n    return put_black76(f,6400,t,vols[0]+shift,.015)-put_black76(f,6000,t,vols[1]+shift,.015)\ngrid=[]\nfor f in [6000,forward,6500]:\n    for shift in [-.05,0,.05]:\n        mark=spread(f,28/365,shift)\n        grid.append(dict(F_exit=f,parallel_iv_shift_pp=shift*100,mark_points=mark,\n            net_pnl_cny_at_ref161=(mark-161-4)*100))\noutput['putspread'] = dict(F=forward,t_days_initial=35,r_assumption=.015,legs_iv=vols,\n    initial_model=spread(forward,35/365,0),reference_debit=161,multiplier=100,\n    cost_points_roundtrip=4,tau_exit_days=28,grid=grid,\n    long_contract='MO2612-P-6400',short_contract='MO2612-P-6000',\n    long_source_code='MO2612-P-6400.CFE',short_source_code='MO2612-P-6000.CFE',\n    long_strike=6400,short_strike=6000,quantity_each=1,\n    quote_date='2026-11-13',scenario_valuation_date='2026-11-20',expiry='2026-12-18',\n    daycount='ACT/365',model='Black76',smile_assumption='sticky-strike two-leg IV, common parallel shifts of -5/0/+5 percentage points',\n    forward_definition='put-call-parity implied forward, not spot6357.2582 or IM2612 close6276.8',\n    reference_price_basis='Nov13 settlement/fallback close; no executable bid/ask',\n    long_reference_price=283.8,short_reference_price=122.8,\n    cash_settlement=True,exercise_style='European',\n    expiry_max_loss_cny=16500,expiry_max_gain_cny=23500,expiry_breakeven_index=6235,\n    initial_forward_delta_cny_per_point=(-.5662168531269606+.30042655855286665)*100,\n    sensitivity_not_execution='A later entry must rebuild premiums, actual remaining time, forward and IV. The grid is Nov13→Nov20, not one week after this report.')\noutput['putspread']['same_exit_date_as_IM_grid'] = [dict(F_exit=f,\n    parallel_iv_shift_pp=shift*100,scenario_valuation_date='2026-11-17',tau_exit_days=31,\n    mark_points=spread(f,31/365,shift),\n    net_pnl_cny_at_ref161=(spread(f,31/365,shift)-161-4)*100)\n    for f in [6000,forward,6500] for shift in [-.05,0,.05]]\nassert abs(output['putspread']['initial_model']-161)<.001\n\nnvda_inputs = dict(net_income=59688,stock_comp=2027,depreciation_amortization=1127,\n    deferred_tax=-602,investment_gains_reversal=-7771,other=315,\n    receivables=-22346,inventory=-5784,prepaids_other=-5497,payables=1915,\n    accrued_current_liabilities=252,other_long_liabilities=753)\nassert sum(nvda_inputs.values())==24077\nassert 24077-2677-59==21341\noutput['nvda']['bridge_labels_usd_millions']=nvda_inputs\noutput['nvda']['cash_capex_intangibles_usd_millions']=2677\noutput['nvda']['finance_lease_principal_usd_millions']=59\noutput['nvda']['other_adjustments_grouped_usd_millions']=3872\noutput['nvda']['period']='FY2027 Q2, single quarter ended2026-07-26; published2026-08-26'\noutput['msft']['period']='FY2027 Q1, single quarter ended2026-09-30; published2026-10-28'\nassert (58000-45057)-(39367-19394)==-7030\noutput['rates']['ten_year_spread_label']='approximation from published par nominal minus par real curves; not a traded bond breakeven or inflation swap'\noutput['joint_risk_example'] = dict(im_entry=6380,im_one_day_loss=110500,im_two_day_loss=248990,\n    sc_entry=626,sc_cost_per_barrel=2,sc_previous_settlement=607.1,sc_two_day_loss=221326.04,\n    formula='q_IM*248990+q_SC*221326.04; plus existing positions, correlation changes and margin stress; no hedge credit assumed',\n    planned_risk_nav_each=.0025,combined_initial_planned_nav_before_integer_sizing=.005,\n    proposed_common_factor_stress_nav_ceiling=.025)\n(ROOT/'calculations.json').write_text(json.dumps(output,ensure_ascii=False,indent=2)+'\\n')\nprint('Recomputed IM scenarios, option grid, cash-flow bridges and common-factor stress.')\n",
+      "calculation_method_sha256": "5f5d7d9c5cceadf61fd246ae2088276e62e6152673c92dec85cfe641065690f1",
+      "calculations": {
+        "baskets": {
+          "2026-10-16": -199300.0,
+          "2026-10-19": -185240.0,
+          "2026-10-20": -219680.0,
+          "2026-10-21": -232780.0,
+          "2026-10-22": -177360.0,
+          "2026-10-23": -216900.0,
+          "2026-10-26": -172700.0,
+          "2026-10-27": -97400.0,
+          "2026-10-28": -158740.0,
+          "2026-10-29": -79160.0,
+          "2026-10-30": -1680.0,
+          "2026-11-02": -57960.0,
+          "2026-11-03": -6940.0,
+          "2026-11-04": -89280.0,
+          "2026-11-05": -134600.0,
+          "2026-11-06": -103020.0,
+          "2026-11-09": -90220.0,
+          "2026-11-10": -130560.0,
+          "2026-11-11": -181220.0,
+          "2026-11-12": -126700.0,
+          "2026-11-13": -50660.0
+        },
+        "cash": {
+          "IC": {
+            "last": 6465.485,
+            "returns": {
+              "1": -2.099715006619929,
+              "20": -4.536828538208071,
+              "3": -2.7144865409757912,
+              "5": -1.9987689604136327
+            },
+            "rv20_sample_ann_pct": 34.64585708313873
+          },
+          "IF": {
+            "last": 4016.2897,
+            "returns": {
+              "1": -0.6833879774340135,
+              "20": -3.7002569238561045,
+              "3": -1.054930630737938,
+              "5": -0.9369660962229798
+            },
+            "rv20_sample_ann_pct": 16.949871815146615
+          },
+          "IH": {
+            "last": 2775.0228,
+            "returns": {
+              "1": 0.10658106800616185,
+              "20": 0.241375637037744,
+              "3": 0.07445839156388079,
+              "5": -0.444230338515883
+            },
+            "rv20_sample_ann_pct": 10.397013116317224
+          },
+          "IM": {
+            "last": 6357.2582,
+            "returns": {
+              "1": -2.762089957795233,
+              "20": -4.859157463207864,
+              "3": -3.375673952759939,
+              "5": -2.2764061000103863
+            },
+            "rv20_sample_ann_pct": 38.03505976168426
+          }
+        },
+        "im_basis_stress": {
+          "basket_3IH_long_2IM_short_basis_component": -5277.240000000078,
+          "cash_fixed": 6357.2582,
+          "caution": "This is a full-convergence stress, not an assumed two-day cost or additive to already specified futures-price outcomes.",
+          "full_convergence_loss_per_short_contract": 16091.640000000007,
+          "future_reference": 6276.8
+        },
+        "im_card": {
+          "6276.8": {
+            "cost_points": 8,
+            "entry": 6276.8,
+            "first_rr": 0.2975778546712813,
+            "first_target_net": 13760.000000000036,
+            "min_nav_for_two_contracts_at_025pct": 36991999.99999997,
+            "second_target_net": 43760.00000000004,
+            "stop_net": -46239.99999999996,
+            "two_contract_both_targets_net": 57520.00000000007,
+            "two_contract_first_target_then_remaining_stop": -32479.999999999927,
+            "two_contract_first_target_then_time_exit_at_entry": 12160.000000000036,
+            "two_contract_stop_net": -92479.99999999993,
+            "weighted_net": 28760.000000000036,
+            "weighted_rr": 0.6219723183391016
+          },
+          "6370": {
+            "cost_points": 8,
+            "entry": 6370,
+            "first_rr": 1.173913043478261,
+            "first_target_net": 32400,
+            "min_nav_for_two_contracts_at_025pct": 22080000.0,
+            "second_target_net": 62400,
+            "stop_net": -27600,
+            "two_contract_both_targets_net": 94800,
+            "two_contract_first_target_then_remaining_stop": 4800,
+            "two_contract_first_target_then_time_exit_at_entry": 30800,
+            "two_contract_stop_net": -55200,
+            "weighted_net": 47400.0,
+            "weighted_rr": 1.7173913043478262
+          },
+          "6380": {
+            "cost_points": 8,
+            "entry": 6380,
+            "first_rr": 1.34375,
+            "first_target_net": 34400,
+            "min_nav_for_two_contracts_at_025pct": 20480000.0,
+            "second_target_net": 64400,
+            "stop_net": -25600,
+            "two_contract_both_targets_net": 98800,
+            "two_contract_first_target_then_remaining_stop": 8800,
+            "two_contract_first_target_then_time_exit_at_entry": 32800,
+            "two_contract_stop_net": -51200,
+            "weighted_net": 49400.0,
+            "weighted_rr": 1.9296875
+          }
+        },
+        "im_metadata": {
+          "contract": "IM2612",
+          "cost_basis": "assumed full roundtrip fees/slippage/margin funding; not broker quote",
+          "cost_sensitivity_points": [
+            4,
+            8,
+            12
+          ],
+          "entry_range": [
+            6370,
+            6380
+          ],
+          "expiry": "2026-12-18",
+          "latest_exit_time_bjt": "2026-11-17T14:50:00+08:00",
+          "minimum_contracts": 2,
+          "multiplier": 200,
+          "paired_target_rr_definition": "one contract exits at each target; path must reach both before a stop or time exit",
+          "price_unit": "index_points",
+          "proposed_entry_date": "2026-11-16",
+          "reference_close": 6276.8,
+          "reference_date": "2026-11-13",
+          "reference_settlement": 6295,
+          "sizing_requires_even_number": true,
+          "stop": 6500,
+          "target1": 6200,
+          "target2": 6050
+        },
+        "im_stress": [
+          {
+            "entry": 6370,
+            "hypothetical_terminal_price": 6924.500000000001,
+            "net_loss_cny": 112500.00000000017,
+            "up_limit_days": 1
+          },
+          {
+            "entry": 6370,
+            "hypothetical_terminal_price": 7616.950000000001,
+            "net_loss_cny": 250990.00000000015,
+            "up_limit_days": 2
+          },
+          {
+            "entry": 6380,
+            "hypothetical_terminal_price": 6924.500000000001,
+            "net_loss_cny": 110500.00000000017,
+            "up_limit_days": 1
+          },
+          {
+            "entry": 6380,
+            "hypothetical_terminal_price": 7616.950000000001,
+            "net_loss_cny": 248990.00000000015,
+            "up_limit_days": 2
+          }
+        ],
+        "im_stress_assumptions": "Use last known settlement6295 as starting proxy and repeat10%; theoretical stress only, no future exchange-limit rounding or post-limit rule changes modeled. Stop may be inaccessible.",
+        "indices": {
+          "IC": {
+            "cash_basis_pct": -1.3995083122147784,
+            "cash_basis_points": -90.48499999999967,
+            "contract": "IC2612",
+            "last_close": 6375.0,
+            "next_minus_main": -147.39999999999964,
+            "oi": 170581.0,
+            "oi_change": -309.0,
+            "returns": {
+              "1": -2.4990823443044152,
+              "20": -4.391253486907232,
+              "3": -3.059517654572552,
+              "5": -2.609306731033645
+            },
+            "volume": 119076.0
+          },
+          "IF": {
+            "cash_basis_pct": -1.4861901022727495,
+            "cash_basis_points": -59.6896999999999,
+            "contract": "IF2612",
+            "last_close": 3956.6,
+            "next_minus_main": -71.19999999999982,
+            "oi": 173340.0,
+            "oi_change": -3774.0,
+            "returns": {
+              "1": -1.1443134119528353,
+              "20": -3.2332224613578653,
+              "3": -1.68960890523282,
+              "5": -1.5379255425044813
+            },
+            "volume": 68383.0
+          },
+          "IH": {
+            "cash_basis_pct": -1.4999083971490286,
+            "cash_basis_points": -41.6228000000001,
+            "contract": "IH2612",
+            "last_close": 2733.4,
+            "next_minus_main": -43.59999999999991,
+            "oi": 63167.0,
+            "oi_change": 720.0,
+            "returns": {
+              "1": -0.21902606410162395,
+              "20": 1.06485247356356,
+              "3": -0.6469904041872532,
+              "5": -0.8560029017047444
+            },
+            "volume": 30203.0
+          },
+          "IM": {
+            "cash_basis_pct": -1.2656116437114358,
+            "cash_basis_points": -80.45820000000003,
+            "contract": "IM2612",
+            "last_close": 6276.8,
+            "next_minus_main": -151.0,
+            "oi": 295156.0,
+            "oi_change": 6049.0,
+            "returns": {
+              "1": -3.141781371520269,
+              "20": -4.660064402454589,
+              "3": -3.679833041770253,
+              "5": -2.847944526993562
+            },
+            "volume": 225869.0
+          }
+        },
+        "joint_risk_example": {
+          "combined_initial_planned_nav_before_integer_sizing": 0.005,
+          "formula": "q_IM*248990+q_SC*221326.04; plus existing positions, correlation changes and margin stress; no hedge credit assumed",
+          "im_entry": 6380,
+          "im_one_day_loss": 110500,
+          "im_two_day_loss": 248990,
+          "planned_risk_nav_each": 0.0025,
+          "proposed_common_factor_stress_nav_ceiling": 0.025,
+          "sc_cost_per_barrel": 2,
+          "sc_entry": 626,
+          "sc_previous_settlement": 607.1,
+          "sc_two_day_loss": 221326.04
+        },
+        "msft": {
+          "capex": 39367,
+          "capex_growth_pct": 102.98545942043931,
+          "fcf_delta": -7030,
+          "fcf_growth_pct": -27.39352375014612,
+          "fcf_simple": 18633,
+          "gm": [
+            67.79332242438691,
+            69.04587179586214
+          ],
+          "ocf": 58000,
+          "ocf_growth_pct": 28.725836163082306,
+          "opmargin": [
+            49.75671604590427,
+            48.872838695557014
+          ],
+          "period": "FY2027 Q1, single quarter ended2026-09-30; published2026-10-28",
+          "prior_capex": 19394,
+          "prior_fcf_simple": 25663,
+          "prior_ocf": 45057
+        },
+        "nvda": {
+          "bridge_labels_usd_millions": {
+            "accrued_current_liabilities": 252,
+            "deferred_tax": -602,
+            "depreciation_amortization": 1127,
+            "inventory": -5784,
+            "investment_gains_reversal": -7771,
+            "net_income": 59688,
+            "other": 315,
+            "other_long_liabilities": 753,
+            "payables": 1915,
+            "prepaids_other": -5497,
+            "receivables": -22346,
+            "stock_comp": 2027
+          },
+          "cash_capex_intangibles_usd_millions": 2677,
+          "fcf": 21341,
+          "finance_lease_principal_usd_millions": 59,
+          "ocf_bridge": [
+            59688,
+            2027,
+            1127,
+            -602,
+            -7771,
+            315,
+            -22346,
+            -5784,
+            -5497,
+            1915,
+            252,
+            753
+          ],
+          "ocf_to_net_income": 0.40338091408658355,
+          "ocf_total": 24077,
+          "ocf_yoy_pct": 56.7002928734136,
+          "other_adjustments_grouped_usd_millions": 3872,
+          "period": "FY2027 Q2, single quarter ended2026-07-26; published2026-08-26",
+          "revenue_growth_pct": 105.85114348672526
+        },
+        "putspread": {
+          "F": 6282.543713022964,
+          "cash_settlement": true,
+          "cost_points_roundtrip": 4,
+          "daycount": "ACT/365",
+          "exercise_style": "European",
+          "expiry": "2026-12-18",
+          "expiry_breakeven_index": 6235,
+          "expiry_max_gain_cny": 23500,
+          "expiry_max_loss_cny": 16500,
+          "forward_definition": "put-call-parity implied forward, not spot6357.2582 or IM2612 close6276.8",
+          "grid": [
+            {
+              "F_exit": 6000,
+              "mark_points": 257.47346027869696,
+              "net_pnl_cny_at_ref161": 9247.346027869697,
+              "parallel_iv_shift_pp": -5.0
+            },
+            {
+              "F_exit": 6000,
+              "mark_points": 246.95238648178756,
+              "net_pnl_cny_at_ref161": 8195.238648178756,
+              "parallel_iv_shift_pp": 0
+            },
+            {
+              "F_exit": 6000,
+              "mark_points": 239.43380115842,
+              "net_pnl_cny_at_ref161": 7443.380115842001,
+              "parallel_iv_shift_pp": 5.0
+            },
+            {
+              "F_exit": 6282.543713022964,
+              "mark_points": 155.38817822776954,
+              "net_pnl_cny_at_ref161": -961.1821772230456,
+              "parallel_iv_shift_pp": -5.0
+            },
+            {
+              "F_exit": 6282.543713022964,
+              "mark_points": 160.51554004977302,
+              "net_pnl_cny_at_ref161": -448.44599502269773,
+              "parallel_iv_shift_pp": 0
+            },
+            {
+              "F_exit": 6282.543713022964,
+              "mark_points": 164.6542132091903,
+              "net_pnl_cny_at_ref161": -34.57867908097114,
+              "parallel_iv_shift_pp": 5.0
+            },
+            {
+              "F_exit": 6500,
+              "mark_points": 88.08973401731335,
+              "net_pnl_cny_at_ref161": -7691.026598268665,
+              "parallel_iv_shift_pp": -5.0
+            },
+            {
+              "F_exit": 6500,
+              "mark_points": 101.98531714522682,
+              "net_pnl_cny_at_ref161": -6301.468285477318,
+              "parallel_iv_shift_pp": 0
+            },
+            {
+              "F_exit": 6500,
+              "mark_points": 113.05645312018183,
+              "net_pnl_cny_at_ref161": -5194.354687981817,
+              "parallel_iv_shift_pp": 5.0
+            }
+          ],
+          "initial_forward_delta_cny_per_point": -26.57902945740939,
+          "initial_model": 160.9999980424144,
+          "legs_iv": [
+            0.28159506923514055,
+            0.313949036711811
+          ],
+          "long_contract": "MO2612-P-6400",
+          "long_reference_price": 283.8,
+          "long_source_code": "MO2612-P-6400.CFE",
+          "long_strike": 6400,
+          "model": "Black76",
+          "multiplier": 100,
+          "quantity_each": 1,
+          "quote_date": "2026-11-13",
+          "r_assumption": 0.015,
+          "reference_debit": 161,
+          "reference_price_basis": "Nov13 settlement/fallback close; no executable bid/ask",
+          "same_exit_date_as_IM_grid": [
+            {
+              "F_exit": 6000,
+              "mark_points": 253.43259408863995,
+              "net_pnl_cny_at_ref161": 8843.259408863994,
+              "parallel_iv_shift_pp": -5.0,
+              "scenario_valuation_date": "2026-11-17",
+              "tau_exit_days": 31
+            },
+            {
+              "F_exit": 6000,
+              "mark_points": 243.33570753035374,
+              "net_pnl_cny_at_ref161": 7833.570753035375,
+              "parallel_iv_shift_pp": 0,
+              "scenario_valuation_date": "2026-11-17",
+              "tau_exit_days": 31
+            },
+            {
+              "F_exit": 6000,
+              "mark_points": 236.19230846380367,
+              "net_pnl_cny_at_ref161": 7119.230846380367,
+              "parallel_iv_shift_pp": 5.0,
+              "scenario_valuation_date": "2026-11-17",
+              "tau_exit_days": 31
+            },
+            {
+              "F_exit": 6282.543713022964,
+              "mark_points": 155.76767458511654,
+              "net_pnl_cny_at_ref161": -923.2325414883462,
+              "parallel_iv_shift_pp": -5.0,
+              "scenario_valuation_date": "2026-11-17",
+              "tau_exit_days": 31
+            },
+            {
+              "F_exit": 6282.543713022964,
+              "mark_points": 160.7911998986646,
+              "net_pnl_cny_at_ref161": -420.8800101335413,
+              "parallel_iv_shift_pp": 0,
+              "scenario_valuation_date": "2026-11-17",
+              "tau_exit_days": 31
+            },
+            {
+              "F_exit": 6282.543713022964,
+              "mark_points": 164.8582979395106,
+              "net_pnl_cny_at_ref161": -14.170206048939349,
+              "parallel_iv_shift_pp": 5.0,
+              "scenario_valuation_date": "2026-11-17",
+              "tau_exit_days": 31
+            },
+            {
+              "F_exit": 6500,
+              "mark_points": 91.0752032618097,
+              "net_pnl_cny_at_ref161": -7392.47967381903,
+              "parallel_iv_shift_pp": -5.0,
+              "scenario_valuation_date": "2026-11-17",
+              "tau_exit_days": 31
+            },
+            {
+              "F_exit": 6500,
+              "mark_points": 104.68911761572625,
+              "net_pnl_cny_at_ref161": -6031.0882384273755,
+              "parallel_iv_shift_pp": 0,
+              "scenario_valuation_date": "2026-11-17",
+              "tau_exit_days": 31
+            },
+            {
+              "F_exit": 6500,
+              "mark_points": 115.49331116632167,
+              "net_pnl_cny_at_ref161": -4950.668883367833,
+              "parallel_iv_shift_pp": 5.0,
+              "scenario_valuation_date": "2026-11-17",
+              "tau_exit_days": 31
+            }
+          ],
+          "scenario_valuation_date": "2026-11-20",
+          "sensitivity_not_execution": "A later entry must rebuild premiums, actual remaining time, forward and IV. The grid is Nov13→Nov20, not one week after this report.",
+          "short_contract": "MO2612-P-6000",
+          "short_reference_price": 122.8,
+          "short_source_code": "MO2612-P-6000.CFE",
+          "short_strike": 6000,
+          "smile_assumption": "sticky-strike two-leg IV, common parallel shifts of -5/0/+5 percentage points",
+          "t_days_initial": 35,
+          "tau_exit_days": 28
+        },
+        "rates": {
+          "2s30s_bp": 58.999999999999986,
+          "par_be10": 2.24,
+          "prev_2s30s_bp": 56.99999999999994,
+          "ten_year_spread_label": "approximation from published par nominal minus par real curves; not a traded bond breakeven or inflation swap",
+          "usd_cny_ecb_cross": 6.671914585595368,
+          "usd_jpy_ecb_cross": 159.99819037278323,
+          "week_2s30s_bp": 75.0,
+          "week_par_be10": 2.2300000000000004,
+          "weekly_dreal10_bp": 28.000000000000025,
+          "weekly_dy10_bp": 29.000000000000004
+        }
+      },
+      "cross_report_risk_calculations": {
+        "6370": {
+          "NAV_min_for_each_025percent_CNY": 22080000.0,
+          "basis": "Price levels based on Nov13 settlement. Two consecutive unchanged10pct IM/18pct SC assumptions; actual subsequent boards may change; ignores additional gap-slippage beyond stated ordinarycosts, no probability or max-loss claim.",
+          "im_entry": 6370,
+          "joint_stress_as_pct_of_min_NAV": 4.278225,
+          "joint_two_constant_limit_losses_CNY": 944632.0800000001,
+          "planned_loss_CNY": 87200,
+          "quantities": {
+            "IM": 2,
+            "SC": 2
+          },
+          "sc_entry": 626
+        },
+        "6380": {
+          "NAV_min_for_each_025percent_CNY": 20480000.0,
+          "basis": "Price levels based on Nov13 settlement. Two consecutive unchanged10pct IM/18pct SC assumptions; actual subsequent boards may change; ignores additional gap-slippage beyond stated ordinarycosts, no probability or max-loss claim.",
+          "im_entry": 6380,
+          "joint_stress_as_pct_of_min_NAV": 4.592930078125,
+          "joint_two_constant_limit_losses_CNY": 940632.0800000001,
+          "planned_loss_CNY": 83200,
+          "quantities": {
+            "IM": 2,
+            "SC": 2
+          },
+          "sc_entry": 626
+        }
+      },
+      "limitations": [
+        "价格与成本情景是研究假设，不是成交、概率或最大损失。",
+        "模型假设与日历、执行限制见各候选正文；计算正确不证明投资优势。"
+      ],
+      "scope": "calculation_methods_and_results"
+    },
+    {
+      "analysis": "固定数据提交的已下载分片按发布目录核对字节与SHA256；历史只在北京时间11月15日及以后有效报告中比较。旧索引存在一个非哈希占位值，记录真实manifest内容摘要与缺陷，不重新认证旧批次。",
+      "historical_index_digest_audit": {
+        "audit_type": "historical_index_digest_repair",
+        "field_path": "runs[run_id='20261115T001000+0800_9d622c26d7d04bf5953cd30cda9c5c98'].manifest.sha256",
+        "historical_batch_newly_certified": false,
+        "historical_batch_validation_conclusion": "not_verified",
+        "historical_manifest_schema_findings": {
+          "old_gpt_manifest_schema": [
+            {
+              "message": "'generated_at_utc' is a required property",
+              "path": "/reports/global"
+            },
+            {
+              "message": "'errors' is a required property",
+              "path": "/reports/global"
+            },
+            {
+              "message": "'generated_at_utc' is a required property",
+              "path": "/reports/commodities"
+            },
+            {
+              "message": "'errors' is a required property",
+              "path": "/reports/commodities"
+            },
+            {
+              "message": "'prompt_sha256' is a required property",
+              "path": "/"
+            },
+            {
+              "message": "'supersedes_run_id' is a required property",
+              "path": "/"
+            },
+            {
+              "message": "'previous_reports' is a required property",
+              "path": "/"
+            },
+            {
+              "message": "'archive_status' is a required property",
+              "path": "/"
+            }
+          ],
+          "old_grok_manifest_schema": [
+            {
+              "message": "'generated_at_utc' is a required property",
+              "path": "/reports/global"
+            },
+            {
+              "message": "'errors' is a required property",
+              "path": "/reports/global"
+            },
+            {
+              "message": "'generated_at_utc' is a required property",
+              "path": "/reports/commodities"
+            },
+            {
+              "message": "'errors' is a required property",
+              "path": "/reports/commodities"
+            },
+            {
+              "message": "'prompt_sha256' is a required property",
+              "path": "/"
+            },
+            {
+              "message": "'supersedes_run_id' is a required property",
+              "path": "/"
+            },
+            {
+              "message": "'previous_reports' is a required property",
+              "path": "/"
+            },
+            {
+              "message": "'archive_status' is a required property",
+              "path": "/"
+            },
+            {
+              "message": "'archive_repository' is a required property",
+              "path": "/"
+            }
+          ]
+        },
+        "historical_run_id": "20261115T001000+0800_9d622c26d7d04bf5953cd30cda9c5c98",
+        "manifest_source_url": "https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/d8d01f1dcfd6d66f9676cc6c08bb9b833d42a187/reports/2026/11/15/20261115T001000+0800_9d622c26d7d04bf5953cd30cda9c5c98/run_manifest.json",
+        "new_value": "4166da0dcd144e4b265652e30794b632539d20ab5e2ea6e77f4fb7d93e2aa9fc",
+        "observed_index_git_blob_sha": "8cc9e5100b12b4bec152086c5d123c758cb98896",
+        "observed_index_path": "manifests/runs.json",
+        "observed_index_sha256": "9f2cfcb03561ff6cb24523733b5754c056e52942011ea88e1018a44d9f9c06b8",
+        "observed_manifest_git_blob_sha": "e278ac1193627fd13e79bf59ddbeef030bcfdddd",
+        "observed_manifest_path": "reports/2026/11/15/20261115T001000+0800_9d622c26d7d04bf5953cd30cda9c5c98/run_manifest.json",
+        "observed_repository_commit": "d8d01f1dcfd6d66f9676cc6c08bb9b833d42a187",
+        "old_report_hash_checks": {
+          "commodities.json": {
+            "actual": "e2c7b23b8d71478f7fecbf22ac66a720cfc249c90803ff35ea11f83e399e8a10",
+            "expected": "453a936c44cad346a7cb06136e371869c26a169f79508a5b5f98be1fbc6c9831",
+            "match": false
+          },
+          "commodities.md": {
+            "actual": "83b405a9c7bcd8050cde7f847670150b09541c46059bbefb83b4009bb3131190",
+            "expected": "83b405a9c7bcd8050cde7f847670150b09541c46059bbefb83b4009bb3131190",
+            "match": true
+          },
+          "global.json": {
+            "actual": "eee5f84d629a85836017002326abf786f4230bbcbf62514d668a73c05bf99563",
+            "expected": "c2666423116e15905d4c9f86fc5024bff1990847b186fad4c3dab4be6ccf9c65",
+            "match": false
+          },
+          "global.md": {
+            "actual": "61c9482176561eb9a8fc822b4b0f13d42dfd2d86e24e3c1193e4560af01522e8",
+            "expected": "61c9482176561eb9a8fc822b4b0f13d42dfd2d86e24e3c1193e4560af01522e8",
+            "match": true
+          }
+        },
+        "old_value": "pending_verification",
+        "preexisting_index_batch_status": "complete",
+        "preexisting_manifest_archive_status": null,
+        "preexisting_manifest_batch_status": "complete",
+        "preserved": "Every old index row and all its other fields/status claims; all historical manifest/report bytes; the orphan 09:59 batch remains unindexed.",
+        "publication_note": "This is a locally prepared audit. Apply the one-field change with the new-batch index append under an expected-head conflict guard, then read back the resulting index. Do not describe the locally repaired baseline as an unmodified remote snapshot.",
+        "remote_mutation_performed_by_reviewer": false,
+        "repair_reason": "The index schema requires a 64-character hexadecimal SHA256. The placeholder blocks a valid append for the current batch. The replacement is computed from freshly retrieved exact historical manifest bytes and changes only its content address.",
+        "repository": "farfromexact/Global-Cross-Asset-Radar",
+        "scope": "Correct a non-hash placeholder in an existing index entry; do not certify or rewrite the historical batch."
+      },
+      "independent_substantive_review": {
+        "conclusion": "No unresolved substantive blocker in reviewed scope.",
+        "corrected_findings": [
+          "Global6500 cancellation event unified; MO directional replacement versus real-exposure insurance distinguished.",
+          "Entry-band lower endpoint sizing and first-target reversal outcomes clarified.",
+          "Shared stress budget and fixed-example coefficients corrected to actual-entry/cost formulas.",
+          "EG basis timing corrected day close369 to night350; commodity time-exit not called contract expiry."
+        ],
+        "drafts": {
+          "commodities": {
+            "canonical_actions": true,
+            "conditions_verbatim": true,
+            "sections": 11,
+            "sha256": "50780c41c1fbc88da349e208012099bc07a3fbac10c1d2a259a6f4cc39453c35"
+          },
+          "global": {
+            "canonical_actions": true,
+            "conditions_verbatim": true,
+            "sections": 10,
+            "sha256": "87485dc1838b4328bc71146f5bbef76d8c4e18b458171915ffbca55b05044db4"
+          }
+        },
+        "limitations": [
+          "No observed actual account NAV, positions, executions or live tradeable bid/ask; conclusions remain conditional.",
+          "Stress shocks and Black76 sensitivity scenarios are assumptions, not probabilities or guaranteed max-loss bounds for futures.",
+          "Original external issuer/macroeconomic citations are owned and verified by research lead; this review primarily checked dataset-supported mechanics and report semantics."
+        ],
+        "scope": "Independent substantive review of current research drafts, not remote publication certification.",
+        "verified": [
+          "IM and SC entry-stop-target cost arithmetic, integer split exits, all option grid cells (MO Nov17 and Nov20; SC Nov20).",
+          "Quote dates, forward-versus-spot model basis, calendar-day expiry progression, same-contract return/basis comparisons.",
+          "SC full AND sequence retained from valid09:59 historical report; new score and strict window changes disclosed against09:52.",
+          "Global historical basket reparameterization and impossible half-basket problem disclosed; new IM card is separate, not retrospective reset.",
+          "Sunday no commodity night session; next commodity day09:00 and index day09:30 MondayNov16; macro-trigger times are conditional on actual release.",
+          "Shared0.25% planned-stop risk and separate2.5% jointstress risk now use actual E,C; sample NAV gates explicitly do not certify account feasibility.",
+          "All candidate condition text occurs verbatim in body; A/B/C/D canonical sections are consistent."
+        ]
+      },
+      "limitations": [
+        "附件为研究冻结前实际取得的证据；远程写入、成功索引与latest的最终状态另以真实工具回读确认。",
+        "00:10批次内容和状态不改写；09:59孤立有效批次用于观点回顾，不在本次额外补登。"
+      ],
+      "scope": "source_and_history_integrity_review",
+      "source_hash_checks": [
+        {
+          "bytes_ok": true,
+          "path": "data/chat/contract_meta/part-002.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/contract_meta/part-005.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/contract_meta/part-006.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/contract_meta/part-007.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/external/part-001.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/funding/part-001.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/futures/part-001.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/futures/part-002.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/futures/part-004.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/futures/part-005.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/futures/part-006.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/futures/part-007.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/futures/part-010.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/futures/part-011.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/futures/part-012.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/futures/part-013.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/futures/part-014.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_books/part-001.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_books/part-002.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_derivatives/part-001.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_derivatives/part-002.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_derivatives/part-003.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_derivatives/part-004.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-001.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-002.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-003.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-004.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-005.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-006.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-007.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-008.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-009.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-010.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-011.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-012.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-013.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-014.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-015.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-016.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-017.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-018.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-019.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-020.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_history/part-021.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/index_radar/part-001.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/market_state/part-007.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/market_state/part-012.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/market_state/part-013.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/night/part-003.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/night/part-006.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/night/part-007.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/night/part-020.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/night/part-021.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/options_DCE_EG/part-001.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/options_INE_SC/part-001.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/options_quality/part-001.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/options_surface/part-001.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/options_surface/part-002.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/options_surface/part-003.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/options_surface/part-004.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/options_surface/part-005.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/physical/part-001.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/report/part-001.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/report/part-002.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/report/part-016.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/report/part-017.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/report/part-018.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/report/part-019.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/report/part-020.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/report/part-021.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/report/part-022.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/report/part-023.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/report/part-024.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/report/part-025.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/report/part-026.json",
+          "sha256_ok": true
+        },
+        {
+          "bytes_ok": true,
+          "path": "data/chat/treasury_futures/part-001.json",
+          "sha256_ok": true
+        }
+      ]
     }
   ],
   "data_versions": {
@@ -57,183 +1289,708 @@
   },
   "delta": [
     {
-      "change_type": "strengthened",
-      "current": "11月13日10Y TIPS2.91%、一周+28bp，与OAS11月12日3.20%的信用韧性形成对照",
+      "change_type": "weakened",
+      "current": "周五B仍-50660，没有新会话支持升级；新增篮子优先级降低，另建有两日退出期限的单腿IM条件研究，旧仓不自动改参。",
       "fact_ids": [
-        "G-US-RATES-20261113",
-        "G-US-CREDIT-20261112"
-      ],
-      "idea_id": "G-US-REAL-RATES-20261115",
-      "previous": "旧报告指出实际利率与AI事件压制高估值，但缺本批重新确认信用层分歧",
-      "reason": "本批先独立研究新市场，低频信用数据源日单列；没有假设新的周日行情"
-    },
-    {
-      "change_type": "new",
-      "current": "从B=−50660和成本压力单独评价新的回撤再确认候选，现价56、条件66，未触发",
-      "fact_ids": [
-        "G-CN-INDEX-20261113"
+        "G_CN_HISTORY_20261113",
+        "G_CN_DERIVATIVES_20261113"
       ],
       "idea_id": "CN-IHIM-DEFENSE-RETEST-20261115",
-      "previous": "旧卡使用3IH多2IM空的风格篮子，原条件必须按旧批版本，不重置已发生的涨幅或时钟",
-      "reason": "11月13日价格已经使防守篮子赔率收窄；新条件仅是研究方案而非旧仓修订"
+      "previous": "09:52报告B先<-125000后回约-120000；S-165000,T-65000/-40000,11月25日退出，条件66。09:59另一篮子改触发-105000至-90000并站回-90000、S入场低点-15000、T-50000/-20000、12月18日退出，条件72。",
+      "reason": "同日不同计划的触发/止损/期限漂移不等于优势提升，且一个3:2篮子无法精确减半。"
     },
     {
       "change_type": "strengthened",
-      "current": "17日公布临近，按原始FY2027 Q2算术桥与Q3指引把盈利和治理分开",
+      "current": "从原始已披露报表算得NVDA OCF/NI40.3%，解释投资收益与营运资本桥；MSFT现金增加12943、capex增加19973百万美元，FCF-7030。",
       "fact_ids": [
-        "G-NVDA-2026Q2",
-        "G-NVDA-CEO-20261112"
+        "G_NVDA_CASH_BRIDGE",
+        "G_MSFT_2026Q1"
       ],
-      "idea_id": "G-NVDA-EARNINGS-20261115",
-      "previous": "旧研究关注AI治理事件与现金兑现",
-      "reason": "公司原始公告与SEC已披露管理层变化，但未来财报和现金流尚未公布"
+      "idea_id": "G_AI_CASH_EARNINGS_20261115",
+      "previous": "09:52报告明确没有完成NVDA完整现金桥；09:59泛称MSFT现金开支增加更快。",
+      "reason": "是旧财报的新计算和检验点，不是周日新发布或未来业绩已下修。"
+    },
+    {
+      "change_type": "data_corrected",
+      "current": "本次官方分发页VIX只核至12日18.70，不采用13日数；SOXX13日收149.30、NAV149.36、NAV-3.62%，与SOX-3.43%分开。",
+      "fact_ids": [
+        "G_VIX_20261112",
+        "G_SOXX_20261113",
+        "G_SOX_20261113",
+        "G_CREDIT_20261112"
+      ],
+      "idea_id": "G_RISK_SOURCE_DATE_CORRECTION_20261115",
+      "previous": "09:52文本采用13日VIX19.30；09:59未独立核海外收盘。",
+      "reason": "来源与日期纠正限制系统风险推断，不伪装成新交易会话。"
     }
   ],
   "domain": "global",
   "facts": [
     {
-      "fact_id": "G-US-RATES-20261113",
-      "known_at": "2026-11-14T12:00:00Z",
-      "limitations": [],
+      "fact_id": "G_US_NOMINAL_20261113",
+      "known_at": null,
+      "limitations": [
+        "官方平价曲线，不是特定可交易单券报价。"
+      ],
       "observed_at": "2026-11-13",
-      "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates",
-      "statement": "美国国债2026-11-13收益率：2Y4.88%、5Y4.98%、10Y5.15%、30Y5.47%；10Y TIPS2.91%；10Y名义一周+29bp、实际一周+28bp"
+      "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value_month=202611&type=daily_treasury_yield_curve",
+      "statement": "美国财政部11月13日2/5/10/30年名义收益率4.88/4.98/5.15/5.47%；12日4.86/4.95/5.10/5.43；6日4.51/4.64/4.86/5.26。"
     },
     {
-      "fact_id": "G-US-CREDIT-20261112",
-      "known_at": "2026-11-13T18:00:00Z",
+      "fact_id": "G_US_REAL_20261113",
+      "known_at": null,
+      "limitations": [
+        "两条平价曲线之差仅近似，不是精确单券盈亏平衡通胀或通胀互换。"
+      ],
+      "observed_at": "2026-11-13",
+      "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_real_yield_curve",
+      "statement": "10年实际收益率11月13日2.91%、12日2.86%、6日2.63%；名义减实际近似2.24%，周变约1bp。"
+    },
+    {
+      "fact_id": "G_FED_20261028",
+      "known_at": null,
+      "limitations": [
+        "决定与异议不是未来政策承诺。"
+      ],
+      "observed_at": "2026-10-28",
+      "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "statement": "10月28日政策目标3.75%—4.00%；两名委员主张加息25bp。"
+    },
+    {
+      "fact_id": "G_TERM_20261106",
+      "known_at": null,
+      "limitations": [
+        "不是ACM模型；滞后不能解释11月9—13日全部变动。"
+      ],
+      "observed_at": "2026-11-06",
+      "source": "https://fred.stlouisfed.org/series/THREEFYTP10",
+      "statement": "Kim–Wright10年期限溢价最近可读11月6日0.8738%，11月10日更新。"
+    },
+    {
+      "fact_id": "G_SUPPLY_20261116",
+      "known_at": null,
+      "limitations": [
+        "9/10/12日拍卖已经发生，未取得拍卖分配结果。"
+      ],
+      "observed_at": "2026-11-04",
+      "source": "https://home.treasury.gov/news/press-releases/sb0678",
+      "statement": "11月4日财政部公布季度再融资1250亿美元、到期970亿美元、净融资280亿美元；3/10/30年分别580/420/250亿美元，11月16日结算。"
+    },
+    {
+      "fact_id": "G_FX_20261113",
+      "known_at": null,
+      "limitations": [
+        "ECB参考汇率非美国收盘；人民币为在岸CNY不是离岸CNH。"
+      ],
+      "observed_at": "2026-11-13",
+      "source": "https://www.ecb.europa.eu/stats/shared/pdf/eurofxref.pdf?181e30421dea46ab9afb856dc6e34369=",
+      "statement": "ECB11月13日EURUSD1.1052、EURJPY176.83、EURCNY7.3738，交叉USDJPY159.9982、USDCNY6.6719146。"
+    },
+    {
+      "fact_id": "G_USD_20261106",
+      "known_at": null,
+      "limitations": [
+        "不是DXY，源日滞后一周。"
+      ],
+      "observed_at": "2026-11-06",
+      "source": "https://fred.stlouisfed.org/series/DTWEXBGS",
+      "statement": "联储广义美元指数11月6日121.8803、5日121.5061，计算+0.308%。"
+    },
+    {
+      "fact_id": "G_US_EQUITY_20261113",
+      "known_at": null,
+      "limitations": [
+        "未取得全市场宽度及行业归因。"
+      ],
+      "observed_at": "2026-11-13",
+      "source": "https://fred.stlouisfed.org/series/SP500",
+      "sources": [
+        "https://fred.stlouisfed.org/series/SP500",
+        "https://fred.stlouisfed.org/series/NASDAQCOM"
+      ],
+      "statement": "标普50011月13日7561.67、12日7592.40；纳斯达克综合25136.27、25366.09。"
+    },
+    {
+      "fact_id": "G_SOX_20261113",
+      "known_at": "2026-11-14T04:46:00Z",
       "limitations": [],
+      "observed_at": "2026-11-13",
+      "source": "https://fred.stlouisfed.org/series/NASDAQSOX",
+      "statement": "费城半导体指数11月13日10146.32、12日10506.67，计算日跌3.4297%。"
+    },
+    {
+      "fact_id": "G_SOXX_20261113",
+      "known_at": null,
+      "limitations": [
+        "NAV变化非同一口径的市场价格回报；未核个股权重。"
+      ],
+      "observed_at": "2026-11-13",
+      "source": "https://www.blackrock.com/us/financial-professionals/products/239705/ishares-semiconductor-etf-soxx",
+      "statement": "SOXX11月13日收盘149.30美元、NAV149.36、NAV日变-3.62%；11月12日30持仓，半导体83.66%、设备16.37%，基准NYSE Semiconductor Index。"
+    },
+    {
+      "fact_id": "G_VIX_20261112",
+      "known_at": null,
+      "limitations": [
+        "12日与13日权益数据不同步。"
+      ],
+      "observed_at": "2026-11-12",
+      "source": "https://fred.stlouisfed.org/series/VIXCLS",
+      "statement": "FRED本次可核VIX最近11月12日18.70、11日17.49，不采用未经同源验证的13日19.30。"
+    },
+    {
+      "fact_id": "G_CREDIT_20261112",
+      "known_at": null,
+      "limitations": [
+        "不能据此确认13日无风险事件，只能说明已观察日没有同步信用走阔。"
+      ],
       "observed_at": "2026-11-12",
       "source": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-      "statement": "FRED HY OAS 11月12日3.20%，11月6日3.42%"
+      "statement": "HY OAS11月12日3.20%、11日3.30%、6日3.42%。"
     },
     {
-      "fact_id": "G-US-RISK-20261113",
-      "known_at": "2026-11-14T12:00:00Z",
-      "limitations": [],
-      "observed_at": "2026-11-13",
-      "source": "https://www.cboe.com/tradable-products/vix ; https://portfolio-terminal.com/markets/us-dollar-index/november-2026",
-      "statement": "VIX 11月13日19.30，前日18.70；DXY 103.41，前日103.17"
-    },
-    {
-      "fact_id": "G-CN-INDEX-20261113",
-      "known_at": "2026-11-13T09:00:00Z",
-      "limitations": [],
+      "fact_id": "G_CN_INDICES_20261113",
+      "known_at": null,
+      "limitations": [
+        "收盘和结算分开，不是实时。"
+      ],
       "observed_at": "2026-11-13",
       "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/index_radar/part-001.json",
-      "statement": "中国四指数11月13日收盘IH现货2775.0228、IF4016.2897、IC6465.485、IM6357.2582；四类12月期货与样本平值IV分别按准确合约"
+      "statement": "上证50/沪深300/中证500/中证1000收盘2775.0228/4016.2897/6465.485/6357.2582；12月期货2733.4/3956.6/6375/6276.8，详见calculation历史。"
     },
     {
-      "fact_id": "G-CN-RATES-FUND-20261113",
-      "known_at": "2026-11-14T13:30:00Z",
-      "limitations": [],
+      "fact_id": "G_CN_HISTORY_20261113",
+      "known_at": null,
+      "limitations": [
+        "B是价格定义不是账户盈亏，回报均收盘对收盘。"
+      ],
+      "observed_at": "2026-10-16/2026-11-13",
+      "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/index_history/index.json",
+      "statement": "21个交易日同合约和同指数历史用于1/3/5/20日收益及20日对数样本年化实现波动；IH/IM3:2篮子11日-181220、12日-126700、13日-50660元。"
+    },
+    {
+      "fact_id": "G_CN_DERIVATIVES_20261113",
+      "known_at": null,
+      "limitations": [
+        "OI变化不是净做空机构资金；缺当刻有效盘口。"
+      ],
       "observed_at": "2026-11-13",
-      "source": "https://github.com/farfromexact/China-Commodities-Engine/tree/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/treasury_futures",
-      "statement": "11月13日T2612收110.045、TL2612收117.450；DR0011.281%、DR0071.3779%、R0071.4222%"
+      "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/index_derivatives/index.json",
+      "statement": "IM2612收盘6276.8、结算6295、前日收6480.4、日高6539低6259.4；乘数200，12月18日到期，OI295156增6049；准确期权采样84张。"
     },
     {
-      "fact_id": "G-NVDA-2026Q2",
-      "known_at": "2026-08-26T23:00:00Z",
-      "limitations": [],
+      "fact_id": "G_CN_OPTIONS_20261113",
+      "known_at": null,
+      "limitations": [
+        "非完整链；多个翼部不合格；绝对Gamma无做市商方向。",
+        "固定r1.5%为模型假设。"
+      ],
+      "observed_at": "2026-11-13",
+      "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/index_radar/part-001.json",
+      "statement": "HO11/12月ATM IV12.4536/13.6347%；IO15.6781/17.2533%；MO30.2946/29.0390%；采样84张，近月到期11月20日、次月12月18日。"
+    },
+    {
+      "fact_id": "G_MO_LEGS_20261113",
+      "known_at": null,
+      "limitations": [
+        "结算参考净支出161，不是同步可成交bid/ask。",
+        "Black76估值的固定利率和未来IV路径是模型假设。"
+      ],
+      "observed_at": "2026-11-13",
+      "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/index_derivatives/index.json",
+      "statement": "MO2612-P-6400结算283.8，MO2612-P-6000结算122.8；12月18日欧式现金结算，乘数100；腿IV28.1595069/31.3949037%，平价远期6282.543713。"
+    },
+    {
+      "fact_id": "G_BOOKS_20261114",
+      "known_at": null,
+      "limitations": [
+        "不能把当前读取时点当当前报价。"
+      ],
+      "observed_at": "2026-11-14T21:04:00+08:00",
+      "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/index_books/index.json",
+      "statement": "index_books周末采集，vendor时间2026-11-13 15:37:44未通过合法交易时段核验，execution_ready=false。"
+    },
+    {
+      "fact_id": "G_CN_TREASURY_20261113",
+      "known_at": null,
+      "limitations": [
+        "净价不是现金收益率；缺CTD/转换因子/DV01，不定套利或中性手数。"
+      ],
+      "observed_at": "2026-11-13",
+      "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/treasury_futures/part-001.json",
+      "statement": "TS/TF/T/TL2612收102.636/106.760/110.045/117.450，较前结-0.016/-0.035/-0.060/-0.550点。"
+    },
+    {
+      "fact_id": "G_CN_FUNDING_20261113",
+      "known_at": null,
+      "limitations": [
+        "银行间日加权与交易所收盘年化报价不同；利率不是资金流量。"
+      ],
+      "observed_at": "2026-11-13",
+      "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/funding/part-001.json",
+      "statement": "DR0011.2810%日-4.37bp；DR0071.3779%日-2.13bp、5日+3.62bp；R0011.3690%、R0071.4222%；GC0011.265%、GC0071.375%，深圳1.255%/1.375%。"
+    },
+    {
+      "fact_id": "G_PRODUCT_SCAN_20261113",
+      "known_at": null,
+      "limitations": [
+        "准确合约自身历史，AU有换主力标记但不拼接连续收益；完整商品产业链在商品报告。"
+      ],
+      "observed_at": "2026-11-13",
+      "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/report/index.json",
+      "statement": "读取分析全部77产品扫描；AU2702结算1/5/20日-2.4499/-4.4689/-6.6699%；SC2701+1.8795/-3.9095/-14.5652%；CU2612-.0951/-.0666/-3.4293%；EG2701+3.3247/+4.7725/+5.5442%。"
+    },
+    {
+      "fact_id": "G_AU_EOD_20261113",
+      "known_at": null,
+      "limitations": [
+        "准确合约日盘；收盘回报与结算回报口径分开。"
+      ],
+      "observed_at": "2026-11-13",
+      "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/futures/part-001.json",
+      "statement": "AU2702收841.48、结840.96、前结862.08元/克；成交131820手、持仓132478手。"
+    },
+    {
+      "fact_id": "G_AU_NIGHT_20261114",
+      "known_at": null,
+      "limitations": [
+        "official_night_close_verified=false，不称交易所官方夜收。",
+        "OI缺失，不推断夜盘资金方向。"
+      ],
+      "observed_at": "2026-11-14T02:30:00+08:00",
+      "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/night/part-003.json",
+      "statement": "AU2702最后完整5分钟收839.06元/克，11月14日02:30；较13日日收-0.2875885%、较日结-0.2259323%，volume48390，66bars，交易日11月16日。"
+    },
+    {
+      "fact_id": "G_IEA_20261113",
+      "known_at": null,
+      "limitations": [
+        "Dated写作时价格不是期货收盘。"
+      ],
+      "observed_at": "2026-10",
+      "source": "https://www.iea.org/reports/oil-market-report-november-2026",
+      "statement": "IEA11月13日：十月供给增加230万桶/日至1.054亿；总库存+5200万桶、水上+8600万，陆上下降；写作时Dated约93美元，十月高136。"
+    },
+    {
+      "fact_id": "G_EIA_20261106",
+      "known_at": null,
+      "limitations": [
+        "商业与战略储备口径区分。"
+      ],
+      "observed_at": "2026-11-06",
+      "source": "https://ir.eia.gov/wpsr/overview.pdf",
+      "statement": "EIA截至11月6日商业原油414.4百万桶、周+4.7；SPR279.5百万、周-2.6。"
+    },
+    {
+      "fact_id": "G_GOLD_ETF_202610",
+      "known_at": null,
+      "limitations": [
+        "11月5日发布；月度资料不是最新周度CFTC，不是实时ETF流量。"
+      ],
+      "observed_at": "2026-10-31",
+      "source": "https://www.gold.org/goldhub/research/gold-etfs-holdings-and-flows/2026/11",
+      "statement": "10月黄金ETF净流入27亿美元、+19吨至4275吨；北美-5.12亿、欧洲+18亿、亚洲+13亿；月末COMEX净多560吨、较9月-94吨。"
+    },
+    {
+      "fact_id": "G_GOLD_CB_2026Q3",
+      "known_at": null,
+      "limitations": [
+        "估计与已报告区分，不将全部认作逐国官方确认。"
+      ],
+      "observed_at": "2026-Q3",
+      "source": "https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-q3-2026/central-banks",
+      "statement": "WGC第三季央行需求估计321.2吨同比+42%，报告值约120吨，较多需求为估算。"
+    },
+    {
+      "fact_id": "G_NVDA_2026Q2",
+      "known_at": null,
+      "limitations": [
+        "8月26日披露，不是本周新财报；FCF定义与微软简单OCF-capex不同。"
+      ],
       "observed_at": "2026-07-26",
       "source": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027",
-      "statement": "英伟达FY2027 Q2收入962.21亿美元，Q1 816.15亿美元，毛利率75.0% vs74.9%，营业利润637.34亿美元 vs535.36亿美元；Q3指引1080亿美元±2%"
+      "statement": "截至7月26日FY27Q2：营收96221、营业利润63734、净利润59688、经营现金24077、现金capex2677、租赁本金59、FCF21341，单位百万美元，单季。"
     },
     {
-      "fact_id": "G-NVDA-CEO-20261112",
-      "known_at": "2026-11-13T04:00:00Z",
-      "limitations": [],
+      "fact_id": "G_NVDA_CASH_BRIDGE",
+      "known_at": null,
+      "limitations": [
+        "投资收益转回非现金；营运资本占用不直接证明不可回收。"
+      ],
+      "observed_at": "2026-07-26",
+      "source": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027",
+      "statement": "百万美元：59688+2027+1127-602-7771+315-22346-5784-5497+1915+252+753=24077；再减2677与59得21341。"
+    },
+    {
+      "fact_id": "G_NVDA_GUIDE",
+      "known_at": null,
+      "limitations": [
+        "未来指引非已实现事实。"
+      ],
+      "observed_at": "2026-08-26",
+      "source": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027",
+      "statement": "Q3FY27公司原指引营收1080亿美元±2%、GAAP毛利74%±0.5个百分点，未假设中国数据中心计算收入；不是市场一致预期。"
+    },
+    {
+      "fact_id": "G_NVDA_GOV_20261112",
+      "known_at": null,
+      "limitations": [
+        "调查不代表指控已证实；业务持续是公司声明。"
+      ],
       "observed_at": "2026-11-12",
       "source": "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition",
-      "statement": "英伟达11月12日正式公布黄仁勋辞任CEO，Colette Kress临时接任，FY27 Q3结果计划11月17日13:20 PT公布"
+      "sources": [
+        "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition",
+        "https://nvidianews.nvidia.com/news/statement-from-the-independent-members-of-the-nvidia-board"
+      ],
+      "statement": "11月12日公司宣布Huang辞任CEO/总裁/董事即时生效，Kress临时CEO兼CFO；此前独立董事公告调查安排。"
     },
     {
-      "fact_id": "G-CN-COM-20261113",
-      "known_at": "2026-11-14T14:00:00Z",
-      "limitations": [],
-      "observed_at": "2026-11-14",
-      "source": "https://github.com/farfromexact/China-Commodities-Engine/tree/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/night",
-      "statement": "SC2701 11/13结算607.1、日收625.5、11/14 02:30夜盘末617；AU2702 840.96元/克"
+      "event_time": "2026-11-18T05:20:00+08:00",
+      "fact_id": "G_NVDA_EVENT_20261118",
+      "known_at": null,
+      "limitations": [
+        "预定未来事件，不声称已经发布。"
+      ],
+      "observed_at": "2026-10-28",
+      "source": "https://nvidianews.nvidia.com/news/nvidia-sets-conference-call-for-third-quarter-financial-results-6928873",
+      "statement": "11月17日13:20PT发布业绩、14:00PT电话会，转换北京时间18日05:20/06:00。"
+    },
+    {
+      "fact_id": "G_MSFT_2026Q1",
+      "known_at": null,
+      "limitations": [
+        "10月28日披露；调整净利剔除OpenAI投资，OCF-capex不包含所有经济资本开支。"
+      ],
+      "observed_at": "2026-09-30",
+      "source": "https://www.microsoft.com/en-us/investor/earnings/fy-2027-q1/press-release-webcast",
+      "statement": "FY27Q1单季百万美元：收入92279、营业利润45915、净利36629、调整36422、OCF58000、cashcapex39367；去年OCF45057、capex19394，简单FCF18633对25663。"
+    },
+    {
+      "fact_id": "G_TSMC_202610",
+      "known_at": null,
+      "limitations": [
+        "营收无利润／现金桥。"
+      ],
+      "observed_at": "2026-10",
+      "source": "https://pr.tsmc.com/english/news/3349",
+      "statement": "台积电10月营收NT$586.89bn，月+14.7%、年+59.7%，11月10日披露。"
+    },
+    {
+      "fact_id": "G_ASML_2026Q3",
+      "known_at": null,
+      "limitations": [
+        "不同币种与期间，不直接与美元公司净利率混排。"
+      ],
+      "observed_at": "2026-Q3",
+      "source": "https://investor.asml.com/news-releases/news-release-details/asml-reports-eu11.7-billion-total-net-sales-and-eu5.0-billion-net-income-q3-2026",
+      "statement": "ASML第三季销售EUR11.662bn、毛利57.5%、净利4.96bn。"
+    },
+    {
+      "fact_id": "G_VERTIV_2026Q3",
+      "known_at": null,
+      "limitations": [
+        "现金兑现强不等于股票估值便宜。"
+      ],
+      "observed_at": "2026-Q3",
+      "source": "https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-Third-Quarter-2026-with-Net-Sales-Growth-of-61-Organic-Orders-Growth-over-100-and-Diluted-EPS-Growth-of-91-Adjusted-Diluted-EPS-Growth-of-78-Raises-Full-Year-2026-Guidance-Across-All-Key-Metrics/",
+      "statement": "Vertiv第三季收入4313、OCF794、capex139.1、软件资本化2.7、调整FCF652.2，去年FCF436.0，百万美元。"
+    },
+    {
+      "event_time": "2026-11-16T09:30:00+08:00",
+      "fact_id": "G_NBS_EVENT_20261116",
+      "known_at": null,
+      "limitations": [
+        "未来计划，执行按实际发布。"
+      ],
+      "observed_at": null,
+      "source": "https://www.stats.gov.cn/sj/fbrc/",
+      "statement": "国家统计局日历计划11月16日09:30房价、10:00工业投资消费等月度活动。"
+    },
+    {
+      "event_time": "2026-11-17T21:30:00+08:00",
+      "fact_id": "G_BLS_EVENT_20261117",
+      "known_at": null,
+      "limitations": [
+        "未来公布值未知。"
+      ],
+      "observed_at": null,
+      "source": "https://www.bls.gov/schedule/2026/11_sched_list.htm",
+      "statement": "BLS日历11月17日08:30EST进出口价格，即21:30北京；11月CPI安排10日、PPI13日已经发生。"
+    },
+    {
+      "event_time": "2026-11-18T23:30:00+08:00",
+      "fact_id": "G_EIA_EVENT_20261118",
+      "known_at": null,
+      "limitations": [
+        "日程可能调整。"
+      ],
+      "observed_at": null,
+      "source": "https://www.eia.gov/petroleum/supply/weekly/schedule.php",
+      "statement": "EIA通常周三10:30ET，下一正常周11月18日对应23:30北京。"
+    },
+    {
+      "fact_id": "G_IM_RULES",
+      "known_at": null,
+      "limitations": [
+        "基准最低保证金与普通限幅不是当前经纪要求；临时规则须复核。"
+      ],
+      "observed_at": "contract_rules",
+      "source": "https://www.cffex.com.cn/u/cms/www/202207/18190308vxpv.pdf",
+      "statement": "IM官方合约乘数200元/点，最小0.2，常规日盘09:30-11:30/13:00-15:00，无夜盘；第三个周五到期，普通涨跌停±10%。"
+    },
+    {
+      "calculation": "(E-exit-C)*200; split target requires even integer contracts",
+      "fact_id": "G_IM_SCENARIO",
+      "known_at": null,
+      "limitations": [
+        "入口、目标、成本与退出为研究假设，未触发未成交。"
+      ],
+      "observed_at": "2026-11-13",
+      "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/index_derivatives/index.json",
+      "statement": "6370/6380卖IM，S6500，T6200/6050，m200，C8点，最少2手。成本后每手计划风险27600/25600，两目标加权RR1.7174/1.9297；现价6276.8仅0.6220。"
+    },
+    {
+      "fact_id": "G_MO_SCENARIO",
+      "known_at": null,
+      "limitations": [
+        "模型价非执行价；sticky-strike两腿IV平移假设，不含偏斜独立变化。"
+      ],
+      "observed_at": "2026-11-13",
+      "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/index_derivatives/index.json",
+      "statement": "MO6400/6000价差参考161，成本4，Black76 ACT365，F6282.5437，r假设1.5%；Nov17余31天、Nov20余28天九宫格另附；到期最大损16500/最大盈23500/盈亏平衡6235。"
+    },
+    {
+      "fact_id": "S_SC2701_REFERENCE_20261113",
+      "known_at": null,
+      "limitations": [
+        "夜盘为已完成5分钟线末值，未独立证明交易所官方夜收；无夜盘持仓；不是当前可成交报价。"
+      ],
+      "observed_at": "2026-11-13/2026-11-14T02:30:00+08:00",
+      "source": "https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/latest.json",
+      "sources": [
+        "https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/latest.json",
+        "https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/night_session/latest.json"
+      ],
+      "statement": "SC2701 2026年11月13日前结595.9、结算607.1、日收625.5元/桶；最近夜盘最后完整5分钟末值617，时点11月14日02:30北京时间、归11月16日交易日。SC2612−SC2701同刻结算/收盘/夜末价差分别8.10/6.80/10.60元/桶。"
+    },
+    {
+      "fact_id": "S_IM_SC_JOINT_RISK_EXAMPLE",
+      "formula": "qIM*(6295*1.1**2-EIM+CIM)*200 + qSC*(607.1*1.18**2-ESC+CSC)*1000 + existing_related_stress_loss <= NAV*0.025",
+      "known_at": null,
+      "limitations": [
+        "非成交、非概率、非最大损失；实际下一涨跌停幅度可能扩大，流动性与追加保证金可能恶化。",
+        "计划预算每项0.25%、合计最多0.50%，与本次额外2.5%共同压力约束分开；按实际入场、成本和整数手数重算，不假定账户净值或持仓。"
+      ],
+      "observed_at": "Research scenario using 2026-11-13 settlement references",
+      "source": "Deterministic calculation reproduced in coverage: calculation_methods_and_results; underlying inputs at https://github.com/farfromexact/China-Commodities-Engine/tree/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat",
+      "statement": "研究例：2手空IM2612@6380、成本8点/手、止损6500，加2手空SC2701@626、成本2元/桶、止损640，计划损失83200元。以Nov13结算IM6295/SC607.1、连续两次不变10%/18%上行，合计压力损失940632.08元；无既有相关敞口时满足2.5%共同压力上限需净值37625283.2元。"
     }
   ],
-  "generated_at_utc": "2026-11-15T02:08:12Z",
+  "generated_at_utc": "2026-11-15T03:22:45Z",
   "idea_ledger": [
     {
-      "actual_position_status": "unknown_no_trade_receipt",
-      "changes_markdown": "不是历史持仓参数调整，未来不满足条件取消；未知实际旧仓，沿用原止损与退出。",
-      "current_plan_markdown": "IH2612多3手、IM2612空2手，B=900×IH−400×IM：先低于−125000元、再反弹至可执行约−120000的两腿同步价才研究；止损−165000、目标−65000／−40000，最迟11月25日退出，按总费用2500元／完整篮子和计划风险净值0.25%估算；任何旧仓不延期。",
+      "actual_position_status": "未知，未提供成交回执；无账户盈亏认定。",
+      "changes_markdown": "新增篮子偏好下降：同日参数显著漂移、现价已反映防守、一个3:2单元无法精确减半。未修改可能存在的真实旧仓。",
+      "current_plan_markdown": "本期不新增此篮子，降低研究优先级。原条件、止损、目标、期限完整保存在original_plan_markdown，不认定已经成交、盈利或失效；实际旧仓需按其真实原方案处理。新IM方案为独立条件，不覆盖本条。",
       "first_proposed_at": null,
+      "historical_note": "仅从11月15日有效报告取得；其中更早日期/关联ID为承接记载，未回溯允许日期之前的报告。",
+      "historical_source_report": "20261115T095216+0800_d3fdccaae7fb954db8d4c5a956ae9109/global.json",
       "idea_id": "CN-IHIM-DEFENSE-RETEST-20261115",
-      "original_plan_markdown": "本批新研究条件：等待大幅回撤和反弹再确认；旧报告存在另一批次篮子，不假定成交。"
+      "original_plan_markdown": "IH2612多3手、IM2612空2手，B=900×IH−400×IM：先低于−125000元、再反弹至可执行约−120000的两腿同步价才研究；止损−165000、目标−65000／−40000，最迟11月25日退出，按总费用2500元／完整篮子和计划风险净值0.25%估算；任何旧仓不延期。",
+      "prior_original_plan_markdown": "本批新研究条件：等待大幅回撤和反弹再确认；旧报告存在另一批次篮子，不假定成交。"
+    },
+    {
+      "actual_position_status": "未知，未提供成交回执；无账户盈亏认定。",
+      "changes_markdown": "保留未结束观察，商品报告承担当期单品种定价与规则更新；无成交回执不判定触发或盈亏。",
+      "current_plan_markdown": "本期继续作为跨资产背景跟踪；不在全球报告另开单品种交易卡、不新增预算。原始完整条件保存在original_plan_markdown；若本期商品报告给出新方案，它只适用于明确的新条件，不自动变更任何可能存在的旧仓。",
+      "first_proposed_at": "2026-11-14T15:25:58Z",
+      "historical_note": "仅从11月15日有效报告取得；其中更早日期/关联ID为承接记载，未回溯允许日期之前的报告。",
+      "historical_source_report": "20261115T095929+0800_51facfda55f347398013afc60652ef93/global.json",
+      "idea_id": "COM-E-SC2701-SUPPLY-REBOUND-RETEST-SHORT-20261114",
+      "original_plan_markdown": "### 卡1｜SC2701：供应恢复下的反弹失败，仅条件研究，现价不追空\n\n**身份与结论。** 沿用 `COM-E-SC2701-SUPPLY-REBOUND-RETEST-SHORT-20261114`，父观点 `COM-E-SC2701-IEA-FAILED-REBOUND-SHORT-20261113`。本卡只适用于未来新开仓，最迟2026年11月20日14:55北京时间退出；父卡的635止损、600/585目标、11月19日14:55退出全部保留，不能把可能存在的旧仓延期到本卡。我们在新截点重新核验了同一组周五数字，结论没有被新的交易会话改写：这仍是“条件下待验证的下行优势”，不是现价可执行空头。证据仍主要是价格行为（L1）与此前已引用的供应恢复叙事（L3）；近端曲线在结算价上恰好等于8.1、夜盘走阔到10.6，因此期限层不能算作方向支持。条件研究评分仍为69；若按夜末617锚评价当前吸引力，仍只有约53分，两者不能混排。\n\n**机制、已定价和最强反证。** 主要收益来自原油绝对价格回吐，不是吃正套持有收益。SC2701周五日收625.5、日结607.1、前结595.9，日高626.6、日低587.8，收盘涨4.967%、结算涨1.880%，持仓增加508手，说明反弹发生在增仓中，不能把收盘接近前期观察带误写成“失败已经完成”。最近完整夜盘末值617.0，较日收回落1.359%、较日结仍高1.631%。SC2612−SC2701结算价差正好是8.10，收盘价差6.80，夜末价差10.60：到岸偏紧、近月仍要溢价，是这张空头最强的即时反证。本周末没有新的官方库存或到港原件，不能把供应恢复故事升级为新催化，也不能当作已被推翻。下一决定性观察仍是11月16日：失败反弹与近端升水收窄能否同时出现；11月18日还要看EIA库存是否与故事一致。\n\n**价格锚、期限与窗口（全部AND，缺一不可）。** 入场观察带625.5—626.5，围绕周五日收625.5与日/夜高626.6，是技术观察带，不是公允价。止损640是约14元/桶的主观失效/预算线。第一目标607.1为当日结算，第二目标587.8为当日最低；两者可复核，但不承诺到达。只在11月16日09:00—10:15观察，宏观数据实际发布后的完整5分钟确认前不建仓（若准时发布，最早约10:05）：①09:00—09:15完整15分钟曾达到626.6且收盘≤626.5；②09:15—09:30完整15分钟最高价≤628、收盘≤626.5；③上述两根完整15分钟结束时，同刻准确SC2612−SC2701价差均≤8.1；④等待计划10:00公布的国家统计局数据**实际发布**后，再有一个完整5分钟反测625.5—626.5并收于≤626，且同刻价差仍≤8.1；之后仍能以625.5—626.5的真实可成交卖价建立空头。延迟发布则向后等待完整5分钟，但不能越过10:15。同时要求：供应恢复证据未被可靠新事实推翻；准确盘口、两腿深度、当日临时规则、账户权限与尾部现金承受能力齐备；全程成本C≤2元/桶；按实际成交价E重算净风险回报比≥1.5。所有条件必须同时满足。当前夜末617、日收625.5或结算607.1，都不构成已经触发。该窗口未完成，不自动顺延到后续交易日。\n\n只用完整2手目标单元：计划2手时一次建立，不拆成两笔1手；计划4手及以上只取4的倍数，两批各50%且均为偶数。第二批须在10:15前再次满足全部条件。若只成交孤立1手又无法在入口内补成2手单元，则取消未成交部分并按可成交条件平回孤立手。q=1不启用。低开或跌破614.2却不回到入口、卖价低于625.5、成本超过2、早段站稳640、曲线条件不齐或单手已超预算，均放弃。\n\n**退出。** 价格止损640。逻辑失效为：15分钟收盘≥640，或同刻12−01价差>10.6且连续两根完整5分钟收于其上，或可靠新事实推翻供应恢复。第一目标607.1买平一半，第二目标587.8买平剩余；先触发止损或逻辑失效后，不再计算随后目标。全部最迟11月20日14:55退出；11月18日EIA前若无法承受缺口风险，应提前减仓或退出。\n\n成本假设仍为往返费用、资金占用与滑点合计C=1/2/3.5元/桶的研究区间，不是经纪实报。中性情形按E=626、C=2：止损约每手16,000元，两个目标都兑现时加权净风险回报比约1.66；若在617追空，同一框架下该比率降至约0.70，应放弃。线性工具在两次涨停与保证金追加情景下的理论亏损远大于计划止损，价格止损不能限制最大损失。试仓计划风险取账户净值0.25%，同一能源主题跨两份报告合计不超过净值2.5%，并扣除已有相关敞口；未知净值与真实持仓时，不给出可下单手数，也不声称预算已经满足。\n\n**替代。** 买SC2701看跌620、卖看跌590的价差，前序结算价差约15.75元/桶，没有同步买卖价，也不能在提前退出框架里证明优于带止损的线性空头。没有满足上述线性条件时，等待优于裸卖波动或假定未成交的期权保护。",
+      "prior_original_plan_markdown": "16日AND窗口内条件卖出SC2701，现价不追。"
+    },
+    {
+      "actual_position_status": "未知，未提供成交回执；无账户盈亏认定。",
+      "changes_markdown": "新增篮子偏好下降：同日参数显著漂移、现价已反映防守、一个3:2单元无法精确减半。未修改可能存在的真实旧仓。",
+      "current_plan_markdown": "本期不新增此篮子，降低研究优先级。原条件、止损、目标、期限完整保存在original_plan_markdown，不认定已经成交、盈利或失效；实际旧仓需按其真实原方案处理。新IM方案为独立条件，不覆盖本条。",
+      "first_proposed_at": "2026-11-14T15:25:58Z",
+      "historical_note": "仅从11月15日有效报告取得；其中更早日期/关联ID为承接记载，未回溯允许日期之前的报告。",
+      "historical_source_report": "20261115T095929+0800_51facfda55f347398013afc60652ef93/global.json",
+      "idea_id": "CN-IH-IM-DEFENSIVE-PULLBACK-20261114",
+      "original_plan_markdown": "### 卡2｜回撤后重新确认的大盘相对小盘防守结构\n\n**身份。** 沿用 `CN-IH-IM-DEFENSIVE-PULLBACK-20261114`。它关联更早的 `CN-IM-IH-SMALLCAP-BREADTH-RV-20261111`，但方向、手数和期限都不同：旧结构是多5手IM、空8手IH，本卡绝不能借用新编号去消除旧亏损或重新计时。新结构为多3手IH2612、空2手IM2612，一个完整篮子。定义B=900×IH2612−400×IM2612，单位人民币。IH乘数300元/点，IM乘数200元/点，最小变动0.2点；两腿都在2026年12月18日到期、现金交割。最新保证金、手续费和限仓必须在下单前按当时交易所与经纪通知核对。\n\n**现价与假说。** 11月13日收盘B仍为−50,660元，若用结算价则为−52,180元。周末没有新的股指报价，因此现价判断与前序一致：防守价差已经连续三天从−181,220元大幅收窄到−50,660元，现价不再便宜。现价研究评分60；只有未来窗口里全部条件成立，才对应条件研究评分72。假说是：在实际利率上升和英伟达管理层与财报事件之后，高弹性小盘的风险溢价调整可能尚未结束，但必须先等防守价差回撤，使下一次走强的潜在收益能够覆盖止损与成本。11月13日现货已经给出方向一致的风格事实：上证50微涨0.107%，中证1000下跌2.762%，中证500下跌2.100%，沪深300下跌0.683%。这支持“风格已经发生”，不支持“现在还好做”。\n\n**条件（全部先后满足，缺一不可）。** 只研究11月16日09:30—10:15北京时间的新窗口。先在09:30—09:45完整15分钟内看到B的低点进入−105,000至−90,000元、且该根15分钟收盘≥−95,000；再要求10:00那根完整15分钟收盘≥−90,000，并且从09:30至10:00，同刻现货上证50收益减去中证1000收益保持非负（即大盘相对小盘不再继续恶化）。然后，只有在同步可成交的IH2612与IM2612报价、最新保证金与限仓、账户权限以及与原油主题合并后的净值2.5%共同预算都核验通过时，才考虑按3:2建立一个完整篮子。10:15仍未满足则放弃，不把条件自动延后，也不在现价B=−50,660追入。\n\n**退出。** 篮子止损设在入场后B再回落并收于入场低点以下15,000元之外，或逻辑失效：中证1000现货相对上证50重新走强、且IM相对IH的结算或收盘优势连续两根15分钟扩大。第一目标是B回到−50,000附近减半，第二目标是回到−20,000附近清掉剩余；最迟不超过2026年12月18日到期前的最后一个日盘14:45。这是研究卡，不是已确认订单。试仓计划风险取净值0.25%—0.75%，若与SC空头同时进入观察，二者共同因子风险合并，不能把0.75%与2.5%简单相加。",
+      "prior_original_plan_markdown": "回撤后3:2防守篮子，现价不追。"
+    },
+    {
+      "actual_position_status": "未知，未提供成交回执；无账户盈亏认定。",
+      "changes_markdown": "保留未结束观察，商品报告承担当期单品种定价与规则更新；无成交回执不判定触发或盈亏。",
+      "current_plan_markdown": "本期继续作为跨资产背景跟踪；不在全球报告另开单品种交易卡、不新增预算。原始完整条件保存在original_plan_markdown；若本期商品报告给出新方案，它只适用于明确的新条件，不自动变更任何可能存在的旧仓。",
+      "first_proposed_at": "2026-11-12",
+      "historical_note": "仅从11月15日有效报告取得；其中更早日期/关联ID为承接记载，未回溯允许日期之前的报告。",
+      "historical_source_report": "20261115T095929+0800_51facfda55f347398013afc60652ef93/global.json",
+      "idea_id": "COM-M-EG2701-RECOVERY-WATCH-20261112",
+      "original_plan_markdown": "### 观察卡｜EG2701：强势优先核对到港与装置，现价不追多\n\n沿用 `COM-M-EG2701-RECOVERY-WATCH-20261112`。EG2701周五结算上涨3.325%并小幅增仓，夜末5216较日结再高约1.1%，近月EG2612对1月升水422元（结算+8.180%）。这足以把乙二醇留在研究优先名单，但还不足以证明“1月合约已经便宜到值得追多”。可证伪机制仍是：现货可用库存与到港不足以维持到1月；竞争解释是运输传闻、临时停工和空头回补，随后复产或到港恢复。本周末仍未取得完整、可复核的港口与装置原件，因此不设新的入场、止损或目标，也不把夜盘5216创新高当成确认。11月16日先复核到港与装置，11月18日再区分这是原油成本共振还是乙二醇自身短缺。方向期货是最直接的后续工具，但现货紧张若只集中在即期，1月合约可能错配。",
+      "prior_original_plan_markdown": "观察乙二醇强势，不设入场。"
+    },
+    {
+      "actual_position_status": "未知，未提供成交回执；无账户盈亏认定。",
+      "changes_markdown": "保留未结束观察，商品报告承担当期单品种定价与规则更新；无成交回执不判定触发或盈亏。",
+      "current_plan_markdown": "本期继续作为跨资产背景跟踪；不在全球报告另开单品种交易卡、不新增预算。原始完整条件保存在original_plan_markdown；若本期商品报告给出新方案，它只适用于明确的新条件，不自动变更任何可能存在的旧仓。",
+      "first_proposed_at": "2026-11-06",
+      "historical_note": "仅从11月15日有效报告取得；其中更早日期/关联ID为承接记载，未回溯允许日期之前的报告。",
+      "historical_source_report": "20261115T095929+0800_51facfda55f347398013afc60652ef93/global.json",
+      "idea_id": "COM-M-CU2612-2701-CURVE-RESILIENCE-LONG-20261106",
+      "original_plan_markdown": "### 观察卡｜CU2612多、CU2701空：重新解释2410/2420，不把旧入口当公允价\n\n沿用 `COM-M-CU2612-2701-CURVE-RESILIENCE-LONG-20261106`。本次没有新的交易会话，也没有新的仓单或可交割现货原件，因此仍然是研究修订，不恢复旧价带自动挂单。准确1:1合约对的日收价差2410元/吨、结算价差2130元/吨、周五夜末价差2420元/吨；日收到夜末只扩大10元，如果拿结算价和夜末比，会夸大变化。近月相对远月约2.07%—2.35%的升水，已经在要求不低的便利收益，市场并非没有为短缺定价。缺少仓单、交割品级与地点、税收和库存到港，就不能给出新的合理上下界，也不能因为价差曾超过旧目标1400/1700就改做空。可见的期限线索最多算一层，赔率维度因缺少交割经济锚暂不给总分。11月16日开盘后应先核对同刻价差与两腿深度，优先补同日仓单和可交割现货；若两腿只是同一外盘冲击而价差没有独立反应，则不增加期限支持。若确有旧仓，仍执行其原750失效、1400/1700目标及原时间退出，不用本观察改变它们。",
+      "prior_original_plan_markdown": "铜正套研究，不把旧入口当公允价。"
+    },
+    {
+      "actual_position_status": "未知，未提供成交回执；无账户盈亏认定。",
+      "changes_markdown": "官方实际利率与月ETF/季度央行证据复核；没有新交易会话，不能再标价格新增恶化。",
+      "current_plan_markdown": "不新开黄金多头；未来实际利率止升与金价企稳后重核3—6个月准确期限和权利金，不沿用旧执行价。",
+      "first_proposed_at": "2026-11-11",
+      "historical_note": "仅从11月15日有效报告取得；其中更早日期/关联ID为承接记载，未回溯允许日期之前的报告。",
+      "historical_source_report": "20261115T095929+0800_51facfda55f347398013afc60652ef93/global.json",
+      "idea_id": "GOLD-POLICY-CREDIT-CONVEXITY-20261111",
+      "original_plan_markdown": "实际利率逆风下继续观察，不新开仓。",
+      "prior_original_plan_markdown": "中期黄金凸性观察。"
+    },
+    {
+      "actual_position_status": "未知，未提供成交回执；无账户盈亏认定。",
+      "changes_markdown": "保留观察，澄清16日是结算不是未来拍卖；期限溢价数据滞后。",
+      "current_plan_markdown": "2s30s59bp，16日关注结算；没有准确DV01工具与成本，不新交易。",
+      "first_proposed_at": "2026-11-11",
+      "historical_note": "仅从11月15日有效报告取得；其中更早日期/关联ID为承接记载，未回溯允许日期之前的报告。",
+      "historical_source_report": "20261115T095929+0800_51facfda55f347398013afc60652ef93/global.json",
+      "idea_id": "UST-2S30S-HOT-CPI-FLATTENER-20261111",
+      "original_plan_markdown": "官方2s30s为59个基点，仍不交易。",
+      "prior_original_plan_markdown": "等待工具齐全的2s30s研究。"
+    },
+    {
+      "actual_position_status": "未知，未提供成交回执；无账户盈亏认定。",
+      "changes_markdown": "没有新证据不等于公司恶化；不假定原观察已结束。",
+      "current_plan_markdown": "无本期新的独立公告与现金桥，仍不升格为交易；本期A股重点公司候选0家。",
+      "first_proposed_at": "2026-11-14",
+      "historical_note": "仅从11月15日有效报告取得；其中更早日期/关联ID为承接记载，未回溯允许日期之前的报告。",
+      "historical_source_report": "20261115T095929+0800_51facfda55f347398013afc60652ef93/global.json",
+      "idea_id": "CN-ZJXC-EARNINGS-CASH-CONVERSION-20261114",
+      "original_plan_markdown": "本周末无新公告，不升格为交易卡。",
+      "prior_original_plan_markdown": "限定范围的公司研究。"
+    },
+    {
+      "actual_position_status": "未知，无成交回执。",
+      "changes_markdown": "本期新研究表达；不重置同日其他计划的原始参数、失败记录或实际持仓。",
+      "current_plan_markdown": "本卡只用于未来新开仓。11月16日国家统计局10:00经济数据实际发布后，IM2612须先反弹触及6400点或以上，再出现一根完整15分钟收盘低于6380点，且从当日09:30起中证1000现货收益低于上证50；随后仅在6370—6380点真实可成交卖价建立空头，最迟11:15未成交即取消，不顺延。以2手为最小完整单元，一次建立、第一目标6200平1手、第二目标6050平1手；更多手数只取偶数并同比例退出，不把1手算成两个半手。若仅成交孤立1手且无法在入口内补齐，则取消未成交部分并按可成交条件平回该手，不将不完整单元当作计划持仓。价格达到6500立即按可成交条件止损；若中证1000相对上证50转强且上述15分钟失败信号被随后完整15分钟收盘重新站上6400推翻，也退出。止损或逻辑退出先发生后，不再计算后续目标。最迟11月17日14:50全部退出。入场后不加仓、不滚动延长；若发布延误、价格不回入口、直接跌穿6200、入场前触及6500、完整2手超过预算、实际总成本高于12点/手，或规则及流动性不能支持退出，则放弃。成本基准8点/手，4／8／12点为敏感区间；报价和当日经纪保证金须在合法交易时段复核。试仓计划止损风险取净值0.25%，手数取满足该上限的最大偶数，并同时服从既有持仓及SC等共同因子压力预算；不足2手不启用。",
+      "first_proposed_at": "2026-11-15T03:07:09Z",
+      "idea_id": "G_CN_IM_REBOUND_SHORT_20261115",
+      "original_plan_markdown": "本卡只用于未来新开仓。11月16日国家统计局10:00经济数据实际发布后，IM2612须先反弹触及6400点或以上，再出现一根完整15分钟收盘低于6380点，且从当日09:30起中证1000现货收益低于上证50；随后仅在6370—6380点真实可成交卖价建立空头，最迟11:15未成交即取消，不顺延。以2手为最小完整单元，一次建立、第一目标6200平1手、第二目标6050平1手；更多手数只取偶数并同比例退出，不把1手算成两个半手。若仅成交孤立1手且无法在入口内补齐，则取消未成交部分并按可成交条件平回该手，不将不完整单元当作计划持仓。价格达到6500立即按可成交条件止损；若中证1000相对上证50转强且上述15分钟失败信号被随后完整15分钟收盘重新站上6400推翻，也退出。止损或逻辑退出先发生后，不再计算后续目标。最迟11月17日14:50全部退出。入场后不加仓、不滚动延长；若发布延误、价格不回入口、直接跌穿6200、入场前触及6500、完整2手超过预算、实际总成本高于12点/手，或规则及流动性不能支持退出，则放弃。成本基准8点/手，4／8／12点为敏感区间；报价和当日经纪保证金须在合法交易时段复核。试仓计划止损风险取净值0.25%，手数取满足该上限的最大偶数，并同时服从既有持仓及SC等共同因子压力预算；不足2手不启用。"
+    },
+    {
+      "actual_position_status": "未知，无成交回执。",
+      "changes_markdown": "本期新研究表达；不重置同日其他计划的原始参数、失败记录或实际持仓。",
+      "current_plan_markdown": "中证1000看跌价差仅作为IM方向方案的有限损替代，或用于已经确认存在的小盘多头风险：买1手MO2612-P-6400、卖1手MO2612-P-6000，均2026年12月18日欧式现金结算、乘数100元/点。11月13日结算参考净支出161点，不是当前可成交价格；若下一合法时段两腿同步净支出不高于161点且全程成本不高于4点，仍须用当时远期、剩余时间和隐含波动重估。若用于替代本卡方向交易，采用相同宏观与反弹失败条件、最迟11月17日14:50退出，并按当时两腿可成交价核算，不能沿用本报告模型价作订单。只有确需跨越11月18日英伟达事件的既有风险对冲，才另外接受持至11月20日14:45；该用途与期货主卡持有期不同，按完整价差最大合同损失16500元/组及组合保证金占用约束规模，且计入同一风险预算。方向替代与IM二选一、不得叠加；保险用途必须存在真实需保护的敞口。缺任一腿或不能承受短腿临时保证金，均不新开仓；没有实际敞口时不以保险名义开仓。",
+      "first_proposed_at": "2026-11-15T03:07:09Z",
+      "idea_id": "G_CN_MO_PUTSPREAD_ALTERNATIVE_20261115",
+      "original_plan_markdown": "中证1000看跌价差仅作为IM方向方案的有限损替代，或用于已经确认存在的小盘多头风险：买1手MO2612-P-6400、卖1手MO2612-P-6000，均2026年12月18日欧式现金结算、乘数100元/点。11月13日结算参考净支出161点，不是当前可成交价格；若下一合法时段两腿同步净支出不高于161点且全程成本不高于4点，仍须用当时远期、剩余时间和隐含波动重估。若用于替代本卡方向交易，采用相同宏观与反弹失败条件、最迟11月17日14:50退出，并按当时两腿可成交价核算，不能沿用本报告模型价作订单。只有确需跨越11月18日英伟达事件的既有风险对冲，才另外接受持至11月20日14:45；该用途与期货主卡持有期不同，按完整价差最大合同损失16500元/组及组合保证金占用约束规模，且计入同一风险预算。方向替代与IM二选一、不得叠加；保险用途必须存在真实需保护的敞口。缺任一腿或不能承受短腿临时保证金，均不新开仓；没有实际敞口时不以保险名义开仓。"
+    },
+    {
+      "actual_position_status": "未知，无成交回执。",
+      "changes_markdown": "本期新研究表达；不重置同日其他计划的原始参数、失败记录或实际持仓。",
+      "current_plan_markdown": "18日05:20／06:00核实际收入、毛利、现金回收及指引；公司1080亿美元±2%不是市场一致预期。没有核实估值、报价与ETF个股权重前，不立方向或卖波动卡。",
+      "first_proposed_at": "2026-11-15T03:07:09Z",
+      "idea_id": "G_AI_CASH_EARNINGS_20261115",
+      "original_plan_markdown": "18日05:20／06:00核实际收入、毛利、现金回收及指引；公司1080亿美元±2%不是市场一致预期。没有核实估值、报价与ETF个股权重前，不立方向或卖波动卡。"
+    },
+    {
+      "actual_position_status": "未知，无成交回执。",
+      "changes_markdown": "本期新研究表达；不重置同日其他计划的原始参数、失败记录或实际持仓。",
+      "current_plan_markdown": "未来1—20交易日若实际利率止升且黄金企稳，再核3—6个月准确看涨价差或微型期货；未取得当前价格、有效到期及权利金前不沿用旧执行价。",
+      "first_proposed_at": "2026-11-15T03:07:09Z",
+      "idea_id": "G_GOLD_CONVEXITY_WAIT_20261115",
+      "original_plan_markdown": "未来1—20交易日若实际利率止升且黄金企稳，再核3—6个月准确看涨价差或微型期货；未取得当前价格、有效到期及权利金前不沿用旧执行价。"
+    },
+    {
+      "actual_position_status": "未知，无成交回执。",
+      "changes_markdown": "本期新研究表达；不重置同日其他计划的原始参数、失败记录或实际持仓。",
+      "current_plan_markdown": "观察16日财政结算与未来真实利率；只有准确期限工具、DV01、成本及路径情景齐备才新增曲线方案，不从名义斜率直接算中性手数。",
+      "first_proposed_at": "2026-11-15T03:07:09Z",
+      "idea_id": "G_UST_CURVE_WAIT_20261115",
+      "original_plan_markdown": "观察16日财政结算与未来真实利率；只有准确期限工具、DV01、成本及路径情景齐备才新增曲线方案，不从名义斜率直接算中性手数。"
     }
   ],
-  "information_cutoff_utc": "2026-11-15T01:52:16Z",
-  "limitations": [],
+  "information_cutoff_utc": "2026-11-15T03:07:09Z",
+  "limitations": [
+    "完整覆盖所获77个商品背景及中国指数/衍生品/债券/回购；全球各序列按实际源日，局部缺口在相关章节和coverage限定。",
+    "持仓和账户净值未知；所有未来入场为条件研究，没有成交认定或交易执行。",
+    "实际交易时需要更新报价、经纪保证金、权限与临时规则；缺当刻盘口不阻止已有准确参考的条件研究评分。",
+    "仅回溯2026年11月15日发布的两份有效报告；不采用哈希不符的00:10记录，不跟随更早前序链接。",
+    "成本、入场、目标、止损、IV变化与涨跌停压力为可复算假设，不是概率预测或损失保证。"
+  ],
   "machine_representation_complete": true,
   "markdown_format": "human_readable_v1",
   "previous_report": {
-    "identity": "20261114T232558+0800_d49f7a0503e44d50aef2479c9f84b44d",
-    "information_cutoff_utc": "2026-11-14T15:25:58Z",
+    "identity": "20261115T095929+0800_51facfda55f347398013afc60652ef93",
+    "information_cutoff_utc": "2026-11-15T01:59:29Z",
     "kind": "on_demand",
-    "path": "reports/2026/11/14/20261114T232558+0800_d49f7a0503e44d50aef2479c9f84b44d/global.json"
+    "path": "reports/2026/11/15/20261115T095929+0800_51facfda55f347398013afc60652ef93/global.json"
   },
-  "prompt_sha256": "ccf51b3bd4cd88aa6ddbe0452eec3b43dccb7a3a34c24a2547281c62dab2acf3",
-  "registry_commit": "2f07ba3ffbda9f68b51bc5d421a0f0f63f9a8751",
+  "prompt_sha256": "7a486e267bedf578a929fa211ff9c709459e69d27b67d45a9e0a9ee2d21ca629",
+  "registry_commit": "195b6c0d66379786616279a6c9f299e8deac1eb7",
   "registry_version": "on_demand_2026-11-15_v6",
   "research_status": "complete",
-  "run_id": "20261115T095216+0800_d3fdccaae7fb954db8d4c5a956ae9109",
+  "run_id": "20261115T110709+0800_d8dd392e3d29405dad12ef4bdb213ed7",
   "schema_version": "radar_run_v3",
   "sections": [
     {
-      "markdown": "我们看到的是**实际贴现率抬升引发的高估值资产重估，而非已经确认的全面信用危机**：11月13日美国10年实际国债收益率2.91%、一周升28基点，纳斯达克当日跌约0.9%；但截至12日美国高收益信用利差3.20%，反而较6日收窄22基点。国内上证50小涨、中证1000大跌，风格差距显著。下周优先研究大小盘防守价差回撤后的再确认，不追已上涨的防守篮子；11月17日英伟达财报和管理层变更构成独立的AI事件风险。判断为**中等把握、低即刻交易吸引力**，价格、现金流及信用反证并存。",
+      "markdown": "**未来数日倾向减少长久期与小盘方向风险，确信度中等；最值得等待的是小盘反弹失败后的短期防守，最应回避的是在周五低位追空，或把黄金和长债自动当作保护。** 主导变量是美国实际折现率重估：11月6日至13日十年名义收益率升29个基点、实际收益率升28个基点；两个辅助变量是英伟达治理及财报不确定性、中国小盘相对大盘的脆弱。高收益信用利差截至12日仍收窄，国内隔夜资金也未显著紧张，因此基准是风险分化，尚不足以推断全面信用危机。若实际利率回落后半导体与小盘重新站稳，防守逻辑减弱；若实际利率不降、财报现金回收又落后，风险溢价仍可能继续抬升。[美国财政部名义曲线](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value_month=202611&type=daily_treasury_yield_curve)、[实际曲线](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_real_yield_curve)、[信用利差](https://fred.stlouisfed.org/series/BAMLH0A0HYM2)。\n\n周日没有新的中国股指交易会话。我们给出有成本、有整数手数和退出期限的IM2612条件空头，但当前没有已确认的新交易；真实账户敞口未知，因此方向建议不等于已完成调仓。",
       "number": 1,
       "title": "结论"
     },
     {
-      "markdown": "**主要价格基准是11月13日收盘；中国期货使用同一交易日准确合约，不把11月14日之后的新闻改写成13日的市场反应。**\n\n| 美国利率／风险 | 最近可得值 | 日变化／一周变化 | 经济含义 |\n|---|---:|---:|---|\n| 2年美债 | 4.88% | +2／+37基点 | 政策路径重新偏紧 |\n| 5年美债 | 4.98% | +3／+34基点 | 中端贴现率上抬 |\n| 10年美债 | 5.15% | +5／+29基点 | 2—10年利差27基点 |\n| 30年美债 | 5.47% | +4／+21基点 | 2—30年利差59基点、周度收窄16基点 |\n| 10年通胀保值国债实际收益率 | 2.91% | +5／+28基点 | 实际利率贡献本周10年名义上行的大部分 |\n| 10年隐含通胀补偿 | 约2.24% | 名义减实际计算 | 不是市场的无偏通胀预测 |\n| Cboe波动率指数（VIX） | 19.30 | 较前日18.70升0.60点 | 风险溢价上升，但不是单凭此数就进入恐慌 |\n| 美国高收益信用利差（HY OAS） | 3.20%，**11月12日** | 较11月6日3.42%收窄22基点 | 与“系统性信用危机”解释冲突 |\n\n来源：[美国财政部收益率](https://home.treasury.gov/resource-center/data-chart-center/interest-rates)、[Cboe VIX](https://www.cboe.com/tradable-products/vix)、[美联储FRED高收益利差](https://fred.stlouisfed.org/series/BAMLH0A0HYM2)。利差是较晚公布但源日较早的观察，绝不能称为13日信用收盘。\n\n| 汇率／海外权益／商品 | 最近可得值 | 变化及解释 |\n|---|---:|---|\n| 美元指数（DXY） | 103.41，11月13日收盘 | 较前日103.17上涨0.23%；与美债利差方向一致，但不能单独证明人民币将贬值 |\n| 标普500指数 | 7561.67，11月13日 | −0.4%；高估值压力并未导致全部行业同跌 |\n| 纳斯达克综合指数 | 25136.27，11月13日 | −0.91%；AI龙头事件加剧估值不确定性 |\n| 半导体ETF（SOXX） | 149.30美元，11月13日 | 较前日154.99跌约3.67%；单日不等于芯片订单下修 |\n| 原油（SC2701） | 607.1元/桶，11月13日结算 | +1.88%；14日02:30夜盘末值617，较日收625.5回落1.36% |\n| 沪金（AU2702） | 840.96元/克，11月13日结算 | −2.45%；与美实际利率上行一致，但不构成单一因果证明 |\n\n美元报价来源为[美元指数历史](https://portfolio-terminal.com/markets/us-dollar-index/november-2026)，美股市场来自[11月13日收盘报道](https://www.reuters.com/business/nasdaq-futures-dip-nvidia-tumult-keeps-investors-edge-2026-11-13/)。欧元／美元、美元／日元与离岸人民币**准确同步收盘值本轮未取得独立可靠报价**，所以仅分析美元整体方向，不编人民币套息收益、跨汇率套利或具体破位位。\n\n| 中国权益／衍生品 | 11月13日现货收盘及日变化 | 12月股指期货收盘；期货减现货基差 | 期权样本 |\n|---|---|---|---|\n| 上证50／IH | 2775.02，+0.11% | IH2612 2733.4；−41.62点 | HO2611平值IV 12.45%，HO2612 13.63% |\n| 沪深300／IF | 4016.29，−0.68% | IF2612 3956.6；−59.69点 | IO2611 15.68%，IO2612 17.25% |\n| 中证500／IC | 6465.49，−2.10% | IC2612 6375.0；−90.49点 | 无同标的股指期权，不以MO代替 |\n| 中证1000／IM | 6357.26，−2.76% | IM2612 6276.8；−80.46点 | MO2611 30.29%，MO2612 29.04% |\n\n| 中国债券／资金 | 11月13日准确值 | 解释边界 |\n|---|---:|---|\n| 2年／5年国债期货 | TS2612 102.636、TF2612 106.760点，收盘 | 报价按每百元面值计，不是现金债收益率 |\n| 10年／30年国债期货 | T2612 110.045、TL2612 117.450点，收盘 | TL较前结算跌0.55点，长端承压；无CTD与DV01不做精确对冲 |\n| 银存间隔夜／7天 | DR001 1.281%、DR007 1.3779%，加权 | 7天高于隔夜9.69基点，不是资金净流量 |\n| 银行间全市场7天 | R007 1.4222%，加权 | 较DR007高4.43基点，反映不同参与主体而非无风险套利 |\n| 上交所隔夜回购 | GC001 1.265%，收盘报价 | 不能与DR001的加权值视为同类同刻价格 |\n\n来源：[统一数据仓股指模块](https://github.com/farfromexact/China-Commodities-Engine/tree/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/index_radar)、[国债模块](https://github.com/farfromexact/China-Commodities-Engine/tree/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/treasury_futures)、[回购模块](https://github.com/farfromexact/China-Commodities-Engine/tree/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/funding)。四类股指期权都是**少量履约价样本**，实际25Delta两翼未同时合格；不能用部分Gamma峰值推断交易商净方向。ETF供应商份额单位未经验证，故不填估算申赎金额。\n\n这组市场最有解释力的背离是：美国利率和AI股下行互相印证，信用利差却没有同步恶化；国内大盘相对小盘强势，而国债长端并未提供明确无风险避险信号。",
+      "markdown": "**利率与成长股的压力相互印证，信用与资金市场却没有同步失序；能源则同时存在供应恢复和可交割货源偏紧。** 各项采用截至北京时间11月15日11:07可得的最近有效源日，不把不同源日拼成同一时刻的成交组合。\n\n| 美国利率 | 11月13日 | 较12日 | 较6日 | 含义 |\n|---|---:|---:|---:|---|\n| 2年名义国债 | 4.88% | +2bp | +37bp | 短端重新计入更紧政策路径 |\n| 5年名义国债 | 4.98% | +3bp | +34bp | 中期折现率上移 |\n| 10年名义国债 | 5.15% | +5bp | +29bp | 股票与地产估值门槛上升 |\n| 30年名义国债 | 5.47% | +4bp | +21bp | 长债本身也承担利率损失 |\n| 10年实际国债 | 2.91% | +5bp | +28bp | 对无现金流黄金和远期盈利形成压力 |\n| 30年减2年 | 59bp | +2bp | −16bp | 一周熊市趋平，单日稍变陡 |\n| 10年名义减实际曲线近似值 | 2.24% | 0bp | +1bp | 不能将本轮上行主要归因于通胀补偿 |\n\n名义与实际表均为财政部公布的期限曲线。最后一行只是两条**平价收益率曲线的算术近似**，不是精确可交易的单券盈亏平衡通胀，也不是通胀互换。政策利率目标仍是10月28日联储决定的3.75%—4.00%；当次两名委员主张加息25bp，说明风险分布有上行尾部，但不等于未来加息已经确定。Kim–Wright十年期限溢价最近可核值仅11月6日0.8738%，不能用它解释随后一周每个基点。财政部11月再融资总额1250亿美元、对应到期约970亿美元，净融资约280亿美元；3／10／30年拍卖已经举行，**11月16日是结算**，本报告没有取得拍卖投标与分配结果，不声称需求疲弱。[名义利率](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value_month=202611&type=daily_treasury_yield_curve)、[实际利率](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_real_yield_curve)、[联储决定](https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm)、[期限溢价模型](https://fred.stlouisfed.org/series/THREEFYTP10)、[财政供给安排](https://home.treasury.gov/news/press-releases/sb0678)。\n\n| 汇率与海外风险 | 最近值与时点 | 可比变化或边界 | 判断 |\n|---|---|---|---|\n| 欧元兑美元 EUR/USD | 1.1052，11月13日ECB参考 | 无同源前日值 | 参考定盘，不能当美国收盘 |\n| 美元兑日元 USD/JPY | 约160.00，同日交叉计算 | EUR/JPY 176.83 ÷ EUR/USD | 日元融资交易仍需看波动与远期成本 |\n| 美元兑在岸人民币 USD/CNY | 约6.6719，同日交叉计算 | EUR/CNY 7.3738 ÷ EUR/USD | 不能替代离岸人民币CNH |\n| 联储广义美元指数 | 121.8803，11月6日 | 较5日+0.31%，2006年=100 | 源日滞后一周；不是DXY |\n| 标普500／纳斯达克综合 | 7561.67／25136.27，11月13日 | 较12日约−0.40%／−0.91% | 科技压力更大，未取得全市场宽度 |\n| 费城半导体指数 SOX | 10146.32，11月13日 | 较12日−3.43% | 行业冲击强于宽基 |\n| iShares半导体ETF SOXX | 收盘149.30美元；NAV149.36，11月13日 | NAV日变−3.62%；不能混作价格回报 | 发行人价格与净值分别标识 |\n| VIX波动率指数 | 18.70，11月12日 | 较11日+1.21点 | 本次可靠源只到12日 |\n| 美国高收益债OAS | 3.20%，11月12日 | 较11日−10bp，较6日−22bp | 尚不支持全面信用紧缩 |\n\n汇率来自[欧洲央行参考汇率](https://www.ecb.europa.eu/stats/shared/pdf/eurofxref.pdf?181e30421dea46ab9afb856dc6e34369=)；指数分别见[广义美元](https://fred.stlouisfed.org/series/DTWEXBGS)、[标普500](https://fred.stlouisfed.org/series/SP500)、[纳斯达克](https://fred.stlouisfed.org/series/NASDAQCOM)、[SOX](https://fred.stlouisfed.org/series/NASDAQSOX)、[SOXX发行人](https://www.blackrock.com/us/financial-professionals/products/239705/ishares-semiconductor-etf-soxx)、[VIX](https://fred.stlouisfed.org/series/VIXCLS)、[高收益OAS](https://fred.stlouisfed.org/series/BAMLH0A0HYM2)。离岸人民币、当周DXY、可交易外汇远期点和MOVE债券波动率未取得同源有效值，故不做外汇套息或债券波动率交易。即期差异也不能给出利差持有收益；若美元走强同时CNH贬值，可能压低中国权益外币回报、抬高进口成本，出口商的折算收益仍要扣除进口、套保与定价传导。\n\n| 商品与实体背景 | 最近观察 | 对跨资产的含义 |\n|---|---|---|\n| 国内黄金AU2702 | 11月13日收841.48、结840.96元/克；结算较前结−2.45%，5／20日−4.47%／−6.67% | 14日02:30最后完整5分钟收839.06，较日收−0.29%；非经核验官方夜收 |\n| 原油SC2701 | 同口径1／5／20日+1.88%／−3.91%／−14.57% | 周五反弹与较长周期回吐可以并存 |\n| 铜CU2612 | 同口径1／5／20日−0.10%／−0.07%／−3.43% | 尚无全面需求上行的价格确认 |\n| 乙二醇EG2701 | 同口径1／5／20日+3.32%／+4.77%／+5.54% | 化工内部有供给／物流分化，不能一概做空 |\n| IEA十月原油供需 | 供应升230万桶/日，至1.054亿桶/日；库存增5200万桶 | 增量来自水上库存约8600万桶，陆上仍下降 |\n| EIA截至11月6日周 | 商业原油4.144亿桶，周增470万；战略储备2.795亿，减260万 | 不能把商业库存增加等同总库存净增加同幅 |\n\n国内商品数据为[同一版本的全部品种扫描](https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/report/index.json)，收益均按各自准确合约结算比较，不连接换月收益。[IEA 11月13日报告](https://www.iea.org/reports/oil-market-report-november-2026)写作时Dated原油约93美元/桶，较10月高点136显著回落，但这不是周五期货收盘；柴油与运输仍偏紧。降低原油通胀与消除供应尾部是两回事。[EIA库存原表](https://ir.eia.gov/wpsr/overview.pdf)。\n\n| 中国现货与12月股指期货，11月13日 | 现货收盘 | 现货日／5日回报 | 期货收盘 | 收盘基差，期货−现货 |\n|---|---:|---:|---:|---:|\n| 上证50／IH2612 | 2775.02 | +0.11%／−0.44% | 2733.4 | −41.62点，−1.50% |\n| 沪深300／IF2612 | 4016.29 | −0.68%／−0.94% | 3956.6 | −59.69点，−1.49% |\n| 中证500／IC2612 | 6465.49 | −2.10%／−2.00% | 6375.0 | −90.48点，−1.40% |\n| 中证1000／IM2612 | 6357.26 | −2.76%／−2.28% | 6276.8 | −80.46点，−1.27% |\n\n| 11月13日其他中国指标 | 当前值与日变化 | 解释 |\n|---|---|---|\n| 上证50期权HO：11月／12月平值IV | 12.45%／13.63% | 近月较低 |\n| 沪深300期权IO：11月／12月平值IV | 15.68%／17.25% | 近月较低 |\n| 中证1000期权MO：11月／12月平值IV | 30.29%／29.04% | 小盘近期事件保险较贵 |\n| 2／5／10／30年国债期货TS／TF／T／TL2612 | 102.636／106.760／110.045／117.450 | 较前结−0.016／−0.035／−0.060／−0.550点，长端最弱 |\n| 银行间DR001／DR007 | 1.2810%／1.3779% | 日变−4.37／−2.13bp；DR007较5日前+3.62bp |\n| 银行间R001／R007 | 1.3690%／1.4222% | R007−DR007=4.43bp，未见显著分层失序 |\n| 交易所GC001／GC007；深圳隔夜／7日 | 1.265%／1.375%；1.255%／1.375% | 收盘年化报价，不是银行间日加权利率 |\n\n股指与期权见[指数及衍生品概览](https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/index_radar/part-001.json)、[准确合约明细](https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/index_derivatives/index.json)；债券与回购见[国债期货](https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/treasury_futures/part-001.json)、[分层资金利率](https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/funding/part-001.json)。期权仅84张采样合约，固定1.5%利率是估值假设；国债期货价格不是现金收益率，回购利率也不是央行净投放。股债齐弱而隔夜利率回落，使“基本面与风险溢价重估”比“单纯资金断裂”更符合现有证据。",
       "number": 2,
       "title": "全球仪表盘"
     },
     {
-      "markdown": "**变化一：实际利率，而非通胀补偿，是一周美债重估的主因。** 11月6日至13日10年名义收益率4.86%→5.15%，10年实际2.63%→2.91%，两者分别上升29、28基点；10年名义与实际之差仅变化约1基点。这支持贴现率冲击解释估值压缩，不能以长端收益率上行直接断言通胀预期失控。若随后实际收益率明显回落而科技股依然下跌，解释应转向盈利或治理。\n\n**变化二：英伟达事件是真实公司治理变化，不是财报已经恶化。** 公司11月12日公告黄仁勋辞任CEO，CFO Colette Kress出任临时CEO；13日半导体ETF下跌。公司尚未披露11月17日当季正式业绩，不能把治理冲击提前写成订单或毛利实际下修。[原始公告](https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition)。\n\n**变化三：A股大小盘差异达到需要单独解释的幅度。** 13日上证50涨0.11%，中证1000跌2.76%，单日相差约2.87个百分点。沪深300和中证500居中，显示并非所有股票同步风险撤退。原有防守跨指数篮子B=900×IH2612收盘−400×IM2612收盘，11月11、12、13日为−181220、−126700、−50660元，三次收盘提高130560元；当前不能再按旧低价假设计算赔率。若小盘开盘后回升、价差回撤，才需要重判。\n\n**变化四：信用证据暂未确认系统性传染。** 11月12日HY OAS从6日3.42%降至3.20%；11月13日VIX虽然从18.70升至19.30，两个指标源日及风险含义不同。风险偏好脆弱而信用尚未全面收紧，两者可同时成立。下次HY OAS快速扩张与权益再次同跌，才算新反证。",
+      "markdown": "**本次最有价值的变化是纠正研究判断与定价边界，周日并没有新增股指交易日。** 可比较的两份报告研究截点分别为今天09:52和09:59；以下不把同一组周五行情重复算成新催化。\n\n**一，防守篮子的条件在同日上午显著漂移，不能据此提高确信度。** 09:52方案是多3手IH2612、空2手IM2612，篮子B=900×IH−400×IM，先跌破−125000元、再回到约−120000才研究，止损−165000、目标−65000／−40000，最迟11月25日退出。09:59报告改为在−105000至−90000区间回撤、之后站回−90000，止损依入场低点减15000元，目标−50000／−20000，最迟12月18日退出，条件评分由前一方案66变为72；这些是两种计划，不是市场出现了支持升级的新信息。共同的周五B仍为−50660元，11日至13日上升130560元，已吃掉不少防守空间。两种窗口均尚未到来，也没有成交回执。我们降低对新增复杂篮子的偏好，另建期限更短、损益更透明的IM反弹空头研究；不把旧条件悄悄替换成新卡，也不为任何可能存在的旧仓延期。单个3:2篮子的“减半”还会产生1.5手IH，原文整数可执行性不足，不能直接下单。[可比股指历史](https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/index_history/index.json)。\n\n**二，AI现金兑现从空白变成可计算的分歧，数据本身并非新发布。** 09:52报告已知英伟达收入962.21亿美元，却明确未完成现金桥；本次从同一份已披露报表算得单季经营现金240.77亿美元，只是净利润596.88亿美元的40.3%。投资收益转回77.71亿美元和应收、存货、预付合计336.27亿美元现金占用解释主要落差。微软同口径经营现金同比增加129.43亿美元，现金资本开支增加199.73亿美元，简单自由现金流反降70.30亿美元。由此把下一财报的检验重点从“是否仍高增长”收窄为“增长能否带来现金回收”；若营运资本回流且资本开支效率改善，防守判断就应减弱。这是研究加深，不是提前宣布11月18日财报失望。[英伟达财报](https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027)、[微软财报](https://www.microsoft.com/en-us/investor/earnings/fy-2027-q1/press-release-webcast)。\n\n**三，海外风险数据的可靠源日需要收紧。** 09:52文本将11月13日VIX写成19.30，本次可独立核验的官方分发页只到11月12日18.70；09:59文本也承认未核海外收盘。本次只采18.70及对应源日，撤回把13日VIX数值当作已证实证据的使用。同时，SOXX发行人确认13日收盘149.30美元、NAV149.36，NAV日跌3.62%，与SOX日跌3.43%分别使用；两者不能混作相同指数或相同回报口径。信用OAS仍是12日3.20%，没有新增证据证明周五发生信用冲击。下一美国交易会话才可能检验波动率与信用是否跟随科技走弱。[VIX源日](https://fred.stlouisfed.org/series/VIXCLS)、[SOXX原页](https://www.blackrock.com/us/financial-professionals/products/239705/ishares-semiconductor-etf-soxx)、[SOX原页](https://fred.stlouisfed.org/series/NASDAQSOX)。\n\n黄金中期凸性、美国2—30年曲线、原油反弹空头、乙二醇及铜期限观察都没有因本周日而自动结束；其中商品不在本报告重复立交易卡。其下一验证点分别是实际利率与黄金企稳、16日财政结算、16日中国需求与准确曲线、以及港口／可交割库存的新原件。没有成交信息，以上均不计账户盈亏。",
       "number": 3,
-      "title": "Delta Research｜值得改变看法的变化"
+      "title": "Delta Research｜哪些变化值得改变看法"
     },
     {
-      "markdown": "**排序依据是现价赔率和反证强度，不是旧卡历史高分。** 五项分数依次为逻辑25、赔率／凸性25、催化20、价格／期限15、拥挤／技术15；分数不是概率或持仓规模。\n\n| 研究对象 | 方向与工具 | 期限 | 分项／总分 | 现价与行动 |\n|---|---|---|---|---|\n| 大盘相对小盘 | 多3手IH2612、空2手IM2612的整数篮子 | 3—7个交易日，最迟11月25日 | **现价**18／7／13／9／9＝56；**未来回撤成立**19／14／14／10／9＝66 | 13日B=−50660已经偏贵；只等大幅回撤、反弹再确认 |\n| 美国2—30年利差 | 债券久期配对的偏平研究 | 至11月25日 | 逻辑18、催化12可评；无总分 | 2s30s已59bp，缺实际两腿DV01、可成交券价及融资成本，不称套利 |\n| 中期黄金凸性 | 准确到期的买权价差，或不交易 | 3—6个月 | 逻辑17、催化11可评；无总分 | 美实际收益率与美元仍逆风，无有效新权利金，不能把长期主题当现价便宜 |\n| AI盈利兑现 | 英伟达公布后评估估值／现金回报，必要时限损结构 | 财报日至20个交易日 | 逻辑18、催化18可评；无总分 | 事件强、方向与隐含波动未定，不能把“必然大波动”当付费优势 |\n\n第一名并非当前可以下单：回撤后条件66分仅为研究观察级，现价56分。债券与黄金未评分不是被判定更差，而是缺少可靠的工具价格和成本后收益风险锚；不把补数工作排为最优投资机会。",
+      "markdown": "**有明确价格改善才把小盘防守排在前面；研究价值较高的AI事件并不自动具有可买卖的赔率。** 分项顺序为逻辑25、赔率／凸性25、催化20、价格／期限／波动15、拥挤／技术15。总分是研究优先级，既非胜率，也不用于直接决定手数。\n\n| 主题、方向与工具 | 持有期 | 五项分数／总分 | 当前吸引力与动作 |\n|---|---|---|---|\n| 中国小盘反弹失败：空IM2612 | 16日入场、17日14:50前退出 | 条件20+17+13+9+9=**68**；周五低位20+5+13+8+7=**53** | 6370—6380条件研究优于6276.8追空；至少2手的完整预算才成立 |\n| 小盘有限损保护：MO2612 6400／6000看跌价差 | 主比较至17日；真实对冲可另到20日 | 18+14+14+9+9=**64**，仅按参考净权利金161 | 保险成本及模型可计算；方向用途与IM同条件二选一；保险用途须有实际敞口 |\n| AI现金兑现：关注NVDA／MSFT及SOXX | 财报前后1—5交易日 | 逻辑21、催化17；其余不填，总分不计 | 缺NVDA一致预期、个股有效估值及期权报价，不能算出财报错价 |\n| 黄金：3—6个月看涨价差或确认后微型期货 | 催化1—20交易日，工具可更长 | 逻辑16、催化10；赔率及期限报价缺失，不计总分 | 实际利率逆风明确，低频买盘不是现价便宜的证明 |\n| 美国曲线：2—30年防守／等待反转 | 1—10交易日 | 逻辑17、催化11；缺可比工具及DV01，不计总分 | 59bp曲线已经一周收窄16bp，单靠供给叙事不能再追平 |\n\nIM的优势来自**入口改善和有期限的风险约束**，不是已经证明下一轮下跌必然发生：6370入场、两个目标按整数手数实现时，成本后收益／计划风险约1.72；周五6276.8直接追空只约0.62。主要扣分是回撤尚未发生、宏观可能触发反弹、基差收敛对空头不利，以及两天内第二目标偏进取。MO的合同限损更适合跨事件保护，但其初始方向敏感度远小于一手IM、上涨时仍会损失权利金；二者属于同一小盘因子，不能叠加成两份独立预算。AI、黄金、曲线保留可评维度，不因资料补齐优先就虚增交易分数。\n\n观察16日财政结算与未来真实利率；只有准确期限工具、DV01、成本及路径情景齐备才新增曲线方案，不从名义斜率直接算中性手数。",
       "number": 4,
       "title": "统一机会榜"
     },
     {
-      "markdown": "**机制：实际利率与AI治理冲击下，小盘成长折现敏感度可能高于大盘权重，但11月13日的相对优势已经显著兑现。** 自然工具为多IH2612、空IM2612；替代是减少现有小盘Beta或持现金，但ETF和单腿期权不保证同一指数暴露。条件入场必须与原有旧仓完全分离，不能追溯延长任何历史持仓。\n\n以一完整篮子计算，3手IH每点300元，空2手IM每点200元；人民币价差B=900×IH－400×IM。13日2733.4／6276.8得到−50660元。多腿名义分别约246.006万元、251.072万元，名义空端高2.06%；**名义接近不等于Beta、波动或尾部中性**。仅有本次可审计的三次价差样本，不声称估计出稳定长期均衡。\n\n| 条款 | 本次新增、尚未触发的研究方案 |\n|---|---|\n| 方向与合约 | 多3手IH2612、空2手IM2612；两合约均2026年12月18日到期 |\n| 严格先后条件 | B先跌至−125000元以下，随后反弹并出现约−120000元的真实同步可执行篮子报价；再确认价差走强不是孤立一根跳价 |\n| 价格与放弃 | 估值计算入场B=−120000；没有真实整篮子报价、只触及日线高低点、或者直接一路上涨不回撤，均不满足 |\n| 目标与止损 | 第一目标B=−65000，第二B=−40000；计划价格失效B=−165000，若小盘利润及市场宽度显著改善须提前重新评估 |\n| 时间 | 成立后研究3—7个交易日；最迟11月25日退出，且不得以旧卡失效作为续期依据 |\n| 费用及预算 | 假设整篮子五手的双向手续费、滑点、冲击和融资合计2500元；实际明细未确认。试仓计划止损预算取账户净值0.25% |\n| 执行限制 | 当前为周末，分腿盘口时间未验证、真实保证金和流动性未取得；研究并未授权订单 |\n\n| 计划退出情景 | B退出值 | 成本后人民币损益，一篮子 |\n|---|---:|---:|\n| 好：回到第一目标 | −65000 | **+52500元** |\n| 更好：单独延伸至第二目标 | −40000 | **+77500元** |\n| 中：回撤后仍平盘 | −120000 | **−2500元** |\n| 坏：在失效位完成退出 | −165000 | **−47500元** |\n\n成本后盈亏平衡B约−117500元；第一／第二目标相对计划止损分别为1.11／1.63倍，并不宽厚。将总费用提高至5000元后，第一目标净收益50000元、止损损失50000元，比例降至1.0；因此当前不强行让这张卡通过交易门槛。\n\n若两腿非同步成交，篮子会暂时有单边股指风险；以13日名义额测算，IH下跌4%、IM上涨4%的双重冲击，粗略损失约19.88万元，远超计划止损。这是压力假设而非已校准联合分布；限制期货涨跌停、追加保证金和不能同时退出的风险不能被“名义中性”消除。若只按47500元计划退出损失和0.25%净值预算，1篮子最低净值约1900万元；净值未知则最多数量为向下取整(0.0025×净值／47500)，真实尾部现金缓冲须另算。与另一份报告同属国内风险预算，不重复占用新的额度。\n\n**完整条件摘要：** IH2612多3手、IM2612空2手，B=900×IH−400×IM：先低于−125000元、再反弹至可执行约−120000的两腿同步价才研究；止损−165000、目标−65000／−40000，最迟11月25日退出，按总费用2500元／完整篮子和计划风险净值0.25%估算；任何旧仓不延期。",
+      "markdown": "### 卡1｜IM2612：用反弹改善赔率，承担短期小盘弱势风险\n\n**方向证据强于现价赔率。** 周五中证1000现货跌2.76%，IM2612收盘跌3.14%、持仓增加6049手；这说明小盘风险被重估，不能单凭增仓断言机构净做空。期货已较现货贴水80.46点，收在当日6259.4低点附近，市场已经计入不小压力。我们的可检验分歧只是：若16日宏观数据发布后的反弹在周五区间中点约6399附近失败，卖在6370—6380的损益结构比追空低点好。最强反证是中国数据或政策改善、实际利率回落使小盘反弹扩散；因此先等数据及失败信号，退出期限放在英伟达业绩之前。目标6200／6050是两天内的有界价格情景，不是公允价值或预测胜率。[准确合约与量仓](https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/index_derivatives/index.json)、[同合约历史](https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/index_history/index.json)。\n\n| 项目 | 完整计划 |\n|---|---|\n| 工具 | 空中证1000期货IM2612，12月18日到期，200元/点，最小变动0.2点 |\n| 参考 | 11月13日收盘6276.8、结算6295；前日收盘6480.4；不是当前卖价 |\n| 新入口 | 6370—6380；宏观实际发布后先反弹至6400，再有完整15分钟失败收盘，顺序见下 |\n| 数量 | 最小2手，更多只取偶数；本卡不加仓，每个2手单元在两目标各平1手 |\n| 止损／逻辑退出 | 6500价格止损；小盘相对转强并重新站上6400则提前退出 |\n| 第一／第二目标 | 6200／6050；先发生止损或时间退出后，不计算随后目标 |\n| 时间 | 仅11月16日、最迟11:15建立；11月17日14:50全部退出 |\n| 计划风险预算 | 净值0.25%，按含成本的止损损失取最大偶数手，且须通过共同因子压力约束 |\n\n本卡只用于未来新开仓。11月16日国家统计局10:00经济数据实际发布后，IM2612须先反弹触及6400点或以上，再出现一根完整15分钟收盘低于6380点，且从当日09:30起中证1000现货收益低于上证50；随后仅在6370—6380点真实可成交卖价建立空头，最迟11:15未成交即取消，不顺延。以2手为最小完整单元，一次建立、第一目标6200平1手、第二目标6050平1手；更多手数只取偶数并同比例退出，不把1手算成两个半手。若仅成交孤立1手且无法在入口内补齐，则取消未成交部分并按可成交条件平回该手，不将不完整单元当作计划持仓。价格达到6500立即按可成交条件止损；若中证1000相对上证50转强且上述15分钟失败信号被随后完整15分钟收盘重新站上6400推翻，也退出。止损或逻辑退出先发生后，不再计算后续目标。最迟11月17日14:50全部退出。入场后不加仓、不滚动延长；若发布延误、价格不回入口、直接跌穿6200、入场前触及6500、完整2手超过预算、实际总成本高于12点/手，或规则及流动性不能支持退出，则放弃。成本基准8点/手，4／8／12点为敏感区间；报价和当日经纪保证金须在合法交易时段复核。试仓计划止损风险取净值0.25%，手数取满足该上限的最大偶数，并同时服从既有持仓及SC等共同因子压力预算；不足2手不启用。\n\n**好、中、坏必须按实际路径计算。** 以下用入场6380、每手全程成本8点=1600元、完整2手单元演示；成本包括研究假设的往返费用、滑点与短期保证金资金成本，并非经纪报价。线性损益为每手`(入场−退出−成本点数)×200`。\n\n| 截至17日14:50的路径 | 2手成本后损益 | 经济解释 |\n|---|---:|---|\n| 好：先6200平1手，再6050平1手 | **+98800元** | 只有两个目标均先于止损／退出兑现，才得到1.93倍计划风险 |\n| 中：6200平1手，另一手至时间退出回到6380 | **+32800元** | 获得第一段弱势，未假设继续暴跌 |\n| 震荡：两手均在6380时间退出 | −3200元 | 方向不兑现仍需支付成本 |\n| 坏：两手都在6500止损 | **−51200元** | 这是可成交止损情景，不是损失上限 |\n| 路径反转：先6200平1手、余下在6500止损 | +8800元 | 不能把第一目标和后来第二目标同时记为收益 |\n\n若卖在6370，完整2手的计划损失55200元、两目标总净收益94800元，比值降为1.72；单手只在第一目标退出的比值仅1.17—1.34，不应套用两目标平均数。若成本从4增至12点，6380入口两目标比值由约2.02降至1.84，6370入口约1.80降至1.64。最强证据仍不足以把“两个目标都完成”指定成最可能路径；实际利率压力偏向延续，但信用韧性、回购平稳与事件反弹使震荡同样合理，所以本卡仅68分、采用预算下沿。\n\n**资金与尾部决定能否做完整单元。** 6380时一手名义额127.6万元；假设保证金率12%／15%／20%，一手占用约15.31／19.14／25.52万元，实际保证金须取当日经纪要求。仅从0.25%计划风险看，2手需要净值约2048万—2208万元；这是规模门槛演算，不是推定账户规模。不足完整单元时，等待优于为了下单删掉风险约束。期货贴水也不是空头收益：若现货6357.2582不动、当前贴水完全收敛，一手空IM会损失约16092元；这是一项独立基差压力，**不再重复加到已经明确给出期货退出价格的损益表**，也不按持有天数机械摊销。\n\n以最近结算6295作压力起点，假设连续按10%上行，一／两日理论价约6924.5／7616.95；6380入场一手含基准成本损失约11.05万／24.90万元，远高于2.56万元计划止损。实际涨跌停价须按交易所取整与临时规则重新核算，连续涨停后规则还可能调整；滑点、无法平仓及追加保证金会使结果更差。[IM合约规则](https://www.cffex.com.cn/u/cms/www/202207/18190308vxpv.pdf)规定的一般交易参数不是经纪的最新风险限额。\n\n若另一商品方案SC2701在626元/桶同时触发2手空头，按每手全程成本2元/桶、止损640，与2手6380入口IM合计计划损失约83200元；以两品种最近结算、10%／18%的连续两次上行压力计算，合计约940632元。两张卡各取净值0.25%的起始计划风险、合计至多0.50%，不等于损失被锁在0.50%。IM与SC都可能受风险偏好或政策反弹打击，不给自动对冲抵扣；本次共同因子压力预算采用净值2.5%上限并扣除既有相关敞口。整数规模还须按实际成交与成本满足`qIM×(7616.95−EIM+CIM)×200 + qSC×(845.32604−ESC+CSC)×1000 + 既有相关压力损失 ≤ 净值×2.5%`，并留足追加保证金现金；它是情景约束，既不是概率判断也不是极端损失保证。上述2手IM@6380加2手SC@626例，假设没有既有相关敞口，净值至少约3763万元才满足940632元压力的2.5%限制；2048万—2208万元只是IM计划止损门槛，绝不是最终可下单门槛。\n\n### 同一风险的实质替代：有限损MO价差，以及不交易\n\n中证1000看跌价差仅作为IM方向方案的有限损替代，或用于已经确认存在的小盘多头风险：买1手MO2612-P-6400、卖1手MO2612-P-6000，均2026年12月18日欧式现金结算、乘数100元/点。11月13日结算参考净支出161点，不是当前可成交价格；若下一合法时段两腿同步净支出不高于161点且全程成本不高于4点，仍须用当时远期、剩余时间和隐含波动重估。若用于替代本卡方向交易，采用相同宏观与反弹失败条件、最迟11月17日14:50退出，并按当时两腿可成交价核算，不能沿用本报告模型价作订单。只有确需跨越11月18日英伟达事件的既有风险对冲，才另外接受持至11月20日14:45；该用途与期货主卡持有期不同，按完整价差最大合同损失16500元/组及组合保证金占用约束规模，且计入同一风险预算。方向替代与IM二选一、不得叠加；保险用途必须存在真实需保护的敞口。缺任一腿或不能承受短腿临时保证金，均不新开仓；没有实际敞口时不以保险名义开仓。\n\n两腿参考权利金分别283.8与122.8点，净161点；总成本假设4点，区间2—6点。模型采用Black76、ACT/365、年利率1.5%假设，11月13日的平价关系远期6282.5437点，腿IV分别28.1595%／31.3949%。这个远期不同于现货6357.2582和IM收盘6276.8。下表估值日为**11月17日，剩31个自然日**；按周五参考净支出161计损益，固定各执行价的波动率形状再整体平移±5个百分点，尚未模拟偏斜单独扭曲。下一交易时段的买价、远期、IV和剩余时间必须重新代入，表中估值不是可成交报价。\n\n| 17日平价关系远期情景 | IV整体下降5个百分点 | IV不变 | IV整体上升5个百分点 |\n|---|---:|---:|---:|\n| 下跌至6000 | +8843元 | +7834元 | +7119元 |\n| 平盘6282.54 | −923元 | −421元 | −14元 |\n| 上涨至6500 | −7392元 | −6031元 | −4951元 |\n\n这是同一计划退出日的提前估值，而不是到期支付；若另为真实风险跨过英伟达事件持至20日，剩28天，平盘／IV不变约亏448元、6000／IV不变约赚8195元，事件后波动率回落仍应看九宫格。到12月18日持有两完整腿，含4点成本的最大合同损失16500元、最大利润23500元、盈亏平衡结算指数6235；这些数字不能代替17日或20日的赔率。每增加1点实际净支出或总成本，净损益少100元。初始每组方向敏感度约−26.58元/远期点，只有一手IM的约13.3%，并随价格与时间变化；不能一组替代一手，也不能假设多个价差风险线性稳定。短腿组合保证金是否认可、两腿成交不同步和提前强平仍需核实。\n\n主卡优先用单一IM，原因是1—2日方向更直接、无需为跨财报保险付费；有明确跨事件对冲需求时MO的合同限损才更有价值。多IH／空IM能减少部分大盘方向，但3:2只是近似名义平衡，既非波动率也非现金流久期中性，且增加两腿错配与整数规模。若入口和预算不同时满足，保留现金是第三种实质选择。",
       "number": 5,
-      "title": "研究／交易卡｜IH与IM风格价差"
+      "title": "完整研究／交易卡"
     },
     {
-      "markdown": "**黄金短期交易的更直接解释是贴现率与美元压力；央行配置或政策信用是中期竞争解释，不是当下自动买入许可。** 沪金AU2702在11月13日结算840.96元/克，单日跌2.45%，20日跌6.67%；同期美国10年实际利率2.91%，较一周前抬升28基点，美元指数103.41。金价与实际收益率的方向符合传统机会成本逻辑，但未控制地缘避险、国内溢价和汇率，不能得出唯一因果。[行情分片](https://github.com/farfromexact/China-Commodities-Engine/tree/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/market_state)、[美国收益率](https://home.treasury.gov/resource-center/data-chart-center/interest-rates)。\n\n官方购金、黄金ETF净申赎、交易所全部持仓与可交易3—6个月黄金期权曲面，本轮没有取得同口径最新原件；不因缺失就否认中期需求，也不能用过期流量当新证据。最强反证有两种：实际利率回落后金价仍不能企稳，说明需求或资金面可能进一步恶化；实际利率继续走高而金价独立走强，则传统贴现解释的权重下降。\n\n工具上，3—6个月**同到期买权价差**把到期最大支付损失限制为净权利金，但会在震荡和事件后波动回落中耗损；微型黄金期货反应直接、却承担跳空和保证金，黄金与长债期权组合又可能在实际利率上行时同时亏损。当前没有准确期权腿与买卖盘，无法计算净成本、持有期九格或公允收益风险比，因此选择等待。真正触发是金价相对强势、实际收益率回落、有效到期权利金三个条件共同出现，不用旧入场价。",
+      "markdown": "**黄金当前更像在支付实际利率上升的成本，长期储备需求尚不能证明短期价格已划算。** AU2702周五收841.48、结840.96元/克，较前结862.08下跌2.45%，同合约20日跌6.67%。随后夜盘最后完整5分钟收在11月14日02:30的839.06元/克，较日收−0.29%、较日结−0.23%；该记录属于11月16日交易日，尚非经核验的交易所官方夜收，不能当周日新价。价格与美国十年实际利率一周升28bp方向一致，支持折现率解释，但缺本周同源美元终值，不能宣称已剥离美元因素。储备需求支撑与短期现金机会成本压力可以同时存在。[准确黄金日盘](https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/futures/part-001.json)、[同合约夜盘记录](https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/night/part-003.json)、[实际利率](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_real_yield_curve)。\n\n买盘证据有明确频率限制。世界黄金协会11月5日发布的10月数据：全球黄金ETF净流入约27亿美元、增加19吨至4275吨，北美却净流出约5.12亿美元，欧洲与亚洲分别流入约18亿和13亿美元；资金并未同向。其月报给出的COMEX净多头约560吨、较9月减少94吨，是10月观察，不能冒充最新一周CFTC持仓。第三季央行需求估计321.2吨、同比增42%，其中已报告约120吨，其余主要是估算，不能全当作逐国官方确认。[WGC十月ETF与持仓](https://www.gold.org/goldhub/research/gold-etfs-holdings-and-flows/2026/11)、[第三季央行需求口径](https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-q3-2026/central-banks)。\n\n最强的看多反证是：若真实利率仍高而黄金不再创新低，同时ETF持仓继续增加，说明风险／储备溢价有能力抵消贴现压力；反过来，若实际利率回落黄金仍弱，需重新检查需求、杠杆去化或流动性，而不能继续只讲利率。本轮没有可靠当前国际金价、黄金期权期限结构和可执行权利金，亦未使用相互冲突的官方储备页面数值，因此不设假精确执行价。\n\n| 表达 | 何时较合适 | 当前取舍 |\n|---|---|---|\n| 3—6个月看涨价差 | 预计储备／政策风险在1—20交易日开始重新定价，又能接受权利金损失 | 尚无本期有效期限和两腿报价，不能证明凸性便宜 |\n| 微型黄金期货确认后买入 | 实际利率止升、美元压力减轻、金价反转三者至少形成可验证配合 | 小乘数有助规模控制，但期货止损不封顶；未核合约和报价前不立卡 |\n| 黄金看涨＋长债看涨期权 | 增长下行、真实利率回落共同受益 | 通胀／财政期限溢价冲击可令两者一起失效，不能默认互相保护 |\n| 减少现有黄金多头或有限损对冲 | 有真实敞口且利率继续上升、价格继续破低 | 依据实际仓位与工具再定，不假定用户已经持有 |\n| 等待 | 当前主要压力已清楚、赔率和波动率报价尚未证明优势 | 本期首选 |\n\n“政策信用期权”只是黄金可能在制度不确定性上升时受益的经济比喻；现货与期货不因此拥有合同限损。下一个决定性观察是未来美国交易日的十年实际利率、黄金本身能否同时停止恶化，月度央行数据提供背景而非分钟级入场信号。\n\n未来1—20交易日若实际利率止升且黄金企稳，再核3—6个月准确看涨价差或微型期货；未取得当前价格、有效到期及权利金前不沿用旧执行价。",
       "number": 6,
-      "title": "黄金专题｜实际利率压过长期配置叙事"
+      "title": "黄金专题"
     },
     {
-      "markdown": "**不能将英伟达治理事件等同于已经发生的盈利下修，但盈利增速也不是自由现金流可无限外推的证明。** [英伟达8月26日发布的第二财季原始业绩](https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027)：截至2026年7月26日季度收入962.21亿美元，前一季度816.15亿美元，同比增长106%；数据中心收入890亿美元，同比增长117%。GAAP毛利率75.0%，营业费用84.08亿美元，营业利润637.34亿美元，净利润596.88亿美元。\n\n| 同口径GAAP利润桥，美元 | 上季Q1 FY27 | Q2 FY27 | 变化 |\n|---|---:|---:|---:|\n| 营收 | 816.15亿 | 962.21亿 | **+146.06亿** |\n| 毛利率 | 74.9% | 75.0% | +0.1个百分点 |\n| 按披露四舍五入毛利率估算毛利 | 约611.30亿 | 约721.66亿 | **约+110.36亿** |\n| 营业费用 | 76.21亿 | 84.08亿 | +7.87亿成本 |\n| 营业利润 | 535.36亿 | 637.34亿 | **+101.98亿** |\n| 净利润 | 583.21亿 | 596.88亿 | **+13.67亿** |\n\n营业利润变化与毛利减费用的估算差约0.5亿美元，来自分项四舍五入与披露口径残差，不强行归因。净利润环比仅+13.67亿美元，远小于营业利润增长，需要查非营业项目、税负及一次性因素，不能简单说经营转弱。经营现金流、资本开支、预收与应收、客户集中及资产负债项目本轮未形成同口径完整现金桥，**因此不编现金转换率或自由现金流弹性**。\n\n公司原有下一季收入指引1080亿美元±2%，毛利率74.0%±0.5个百分点。指引中点相对第二季增长约12.24%，毛利率反而预计环比下降约1个百分点；市场已在多大程度上计入1080亿美元，本轮缺一致预期与精确估值，所以**“超出公司指引”不等于“超市场预期”**。11月12日公司正式公告黄仁勋辞任CEO、CFO暂任CEO，17日财报时间则是新增治理风险与盈利确认的交汇，不把未来信息写成已披露。[CEO公告](https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition)、[财报排期](https://nvidianews.nvidia.com/news/nvidia-sets-conference-call-for-third-quarter-financial-results-6928873)。\n\n产业链中，芯片供应商可能先收到预付款，设备、网络、电力和液冷又受客户建设进度约束；云厂商资本开支增加对硬件收入是正面、对云自由现金流可能短期为负，软件收入要看实际用量和价格留存。没有这些公司同口径现金流时，不能推出“二线一定比龙头便宜”。SOXX单日跌约3.67%，但未核两只ETF成分股与权重，不提伪市场中性多空。优先等财报核订单、毛利、现金与下一季前瞻，现价无确定可交易错价。",
+      "markdown": "**AI需求仍强，但供应商的利润增长与客户的现金回报出现不同速度；治理事件让市场更难忽略这种差异。** 英伟达11月12日公告黄仁勋辞去CEO、总裁及董事职务，即时生效，CFO Colette Kress兼任临时CEO；公司称业务与路线图持续，属于公司表述。董事会此前公布独立调查安排，不能把调查本身当作已证实指控。财报仍按计划发布，下一季收入和现金流尚未出现。[CEO公告](https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition)、[董事会公告](https://nvidianews.nvidia.com/news/statement-from-the-independent-members-of-the-nvidia-board)。\n\n| 单季，亿美元 | 英伟达FY27 Q2，7月26日止 | 微软FY27 Q1，9月30日止 | 投资含义 |\n|---|---:|---:|---|\n| 收入 | 962.21，同比+105.9% | 922.79，同比约+18.8% | 需求增长不能直接当自由现金流增长 |\n| 营业利润 | 637.34 | 459.15，利润率49.76% | 微软利润率同比约+0.88个百分点 |\n| 净利润 | 596.88 | 366.29；剔除OpenAI投资影响口径364.22 | 投资收益会扰动经营比较 |\n| 经营现金流 | 240.77，同比+56.7% | 580.00，同比+28.7% | 两者都增加，但转换不同 |\n| 现金资本开支 | 26.77，另有租赁本金0.59 | 393.67，同比+103.0% | 微软投入增长远快于现金产生 |\n| 自由现金流口径 | 公司定义213.41 | 简单经营现金减现金资本开支186.33，去年256.63 | 两家公司定义不同，不硬做横向利润率排名 |\n\n数据来自[英伟达8月26日财报](https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027)与[微软10月28日财报](https://www.microsoft.com/en-us/investor/earnings/fy-2027-q1/press-release-webcast)，均为单季，美元。英伟达现金桥可以完整解释，不把残差随意归于供应商：净利润596.88，减投资收益转回77.71、应收增加223.46、存货增加57.84、预付等增加54.97，加应付增加19.15及其余非现金／负债调整38.72，得到经营现金240.77亿美元。最后38.72包括股权薪酬20.27、折旧摊销11.27、递延税−6.02、其他3.15、两类负债变动2.52和7.53；再扣现金资本开支26.77与租赁本金0.59，得到自由现金213.41。**40.3%的现金／净利比率主要是营运资本与非现金投资收益的共同结果**，不是“主营毛利已经崩溃”，也未证明应收无法回收。\n\n微软的同比桥更直接：经营现金增加129.43亿美元，现金资本开支增加199.73亿美元，差额使简单自由现金流下降70.30亿美元、约27.4%。收入结构中Azure单季331.65亿美元、同比约48%，Cloud合计639亿美元、同比30%；总毛利率由约69.05%降到67.79%，营业利润率却上升，说明费用效率与业务结构同时起作用。期末现金及短投较6月底减少，不能独立证明盈利恶化；资本开支、回购、分红和投资也会改变余额。对云多头真正不利的是新增投入长期不能带来足够可收费的利用率，而非某一个季度现金余额下降。\n\n链条证据并不一致：台积电10月营收5868.9亿新台币、同比59.7%，是制造需求强的月度确认，不含利润与现金；ASML第三季销售116.62亿欧元、毛利率57.5%，设备兑现仍强；Vertiv第三季收入43.13亿美元、经营现金7.94亿、资本开支1.391亿和资本化软件0.027亿，调整后自由现金6.522亿，较上年4.360亿增长。这说明电力与散热环节有现金兑现样本，不能从一家芯片龙头的营运资本占用推导整条链现金恶化。网络与软件没有取得同等完备的最新独立现金桥，故不因概念映射就选二线赢家。[台积电10月营收](https://pr.tsmc.com/english/news/3349)、[ASML第三季](https://investor.asml.com/news-releases/news-release-details/asml-reports-eu11.7-billion-total-net-sales-and-eu5.0-billion-net-income-q3-2026)、[Vertiv第三季](https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-Third-Quarter-2026-with-Net-Sales-Growth-of-61-Organic-Orders-Growth-over-100-and-Diluted-EPS-Growth-of-91-Adjusted-Diluted-EPS-Growth-of-78-Raises-Full-Year-2026-Guidance-Across-All-Key-Metrics/)。\n\n**投资分歧在兑现与预期，不在“AI有没有增长”。** 英伟达已公布下一季收入指引1080亿美元±2%，即1058.4—1101.6亿，GAAP毛利率74%±0.5个百分点，并未假设中国数据中心计算收入。这个区间是公司指引，缺市场一致预期就不能把落在上沿叫“超预期”。新增观察应是应收回收、库存周转、毛利及再下一季指引是否匹配高投入；若收入强且现金占用回落，不能继续用本季现金比率做机械空头。\n\nSOXX截至11月12日有30个持仓、半导体约83.66%、设备约16.37%，跟踪NYSE Semiconductor Index，并非费城SOX本身；11月13日收盘149.30美元、NAV149.36。它能表达半导体行业风险，却不能隔离英伟达治理，也不覆盖完整云、电力、软件现金回报链。未核两只ETF实际个股权重与动态敏感度，不做“多一只、空另一只就中性”的配对；也未取得足够个股估值／期权报价来推荐卖波动或指定财报期权。此时保留事件后的选股权，比用高增长或单日跌幅替代估值更有纪律。[SOXX发行人资料](https://www.blackrock.com/us/financial-professionals/products/239705/ishares-semiconductor-etf-soxx)。\n\n18日05:20／06:00核实际收入、毛利、现金回收及指引；公司1080亿美元±2%不是市场一致预期。没有核实估值、报价与ETF个股权重前，不立方向或卖波动卡。",
       "number": 7,
-      "title": "AI专题｜盈利仍在兑现，治理和资本成本是新边际"
+      "title": "AI专题"
     },
     {
-      "markdown": "**中证1000下跌幅度超过上证50接近2.87个百分点，代表风格压力而非已确认的全市场资金单向撤离。** 11月13日现货四指数分别约+0.11%、−0.68%、−2.10%、−2.76%；期货以12月为统一样本，IH／IF／IC／IM相对现货分别贴水41.62／59.69／90.49／80.46点。基差受分红、融资、到期和风险折价影响，不能把四个不同点数直接比较强弱或称作无风险套利。\n\n利用同合约11月11—13日构造防守篮子B：−181220→−126700→−50660元，已大幅重定价。相反，国债T2612收盘110.045、TL2612收盘117.450，较前结算分别跌0.060和0.550点；回购DR007为1.3779%，较前一日下行2.13基点。价格上是长端承压、短端资金相对平稳，并不能简单用“国内流动性紧缩”解释全部小盘回撤。\n\n期权方面HO／IO／MO的11月与12月局部平值IV分别12.45/13.63、15.68/17.25、30.29/29.04%；同一指数的近远两期可用于样本期限比较，但因采样范围有限不说明全链波动率曲面。各系列25Delta双翼没有同时落在有效容差内，故标准风险逆转不报数。选样Gamma集中区只是这些合约的绝对敏感度，不代表做市商净空Gamma。人民币资金和ETF原始份额未经独立单位验证，不汇总净流入资金。\n\n独立A股公司候选本期为零：不把仅凭主题热度或最新单一公告筛选出的股票升级为财务论点。真正公司研究需要最新季度收入、归母利润、经营现金流、资本开支、营运资本和证券估值同口径闭合；眼前股指交易能更直接表达风格变化，未知持仓时没有账户对冲建议。",
+      "markdown": "**大小盘分化是真实价格事实，资金断裂和机构净流向尚未被证明。** 同一21交易日窗口内，上证50现货20日仍涨0.24%，中证1000跌4.86%；但两者不能仅凭名称当作“价值／AI”纯因子，金融权重、行业构成、杠杆与股息都可能解释差异。当前没有取得全市场涨跌家数、行业贡献和完整机构资金数据，因此宏观传导只是待检验解释。\n\n| 现货指数，收盘对收盘 | 1日 | 3日 | 5日 | 20日 |\n|---|---:|---:|---:|---:|\n| 上证50 | +0.11% | +0.07% | −0.44% | +0.24% |\n| 沪深300 | −0.68% | −1.05% | −0.94% | −3.70% |\n| 中证500 | −2.10% | −2.71% | −2.00% | −4.54% |\n| 中证1000 | −2.76% | −3.38% | −2.28% | −4.86% |\n\n| 12月准确期货，收盘对收盘 | 1／3／5／20日回报 | 当日成交／持仓／持仓变化，手 | 2027年3月减12月，点 |\n|---|---|---|---:|\n| IH2612 | −0.22%／−0.65%／−0.86%／+1.06% | 30203／63167／+720 | −43.6 |\n| IF2612 | −1.14%／−1.69%／−1.54%／−3.23% | 68383／173340／−3774 | −71.2 |\n| IC2612 | −2.50%／−3.06%／−2.61%／−4.39% | 119076／170581／−309 | −147.4 |\n| IM2612 | −3.14%／−3.68%／−2.85%／−4.66% | 225869／295156／+6049 | −151.0 |\n\n来源为[10月16日至11月13日同口径历史](https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/index_history/index.json)、[11月13日准确合约](https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/index_derivatives/index.json)。这些百分比统一使用前一可比日收盘，不和盘面“较前结算涨跌”混写。期货全线贴水、远季更低，反映风险、股息与资金成本等共同定价，不能把贴水当空头免费收益，也不能缺少可融券篮子与股息预测就宣称跨期套利。前述IH／IM防守篮子现值−50660元只是线性组合的价格定义，未扣成本、没有入场就不是利润；若现货都不动、两腿当前基差全收敛，该篮子反而约增加5277元，不能把单腿IM的基差拖累套给整个篮子。\n\n期权映射严格区分：上证50为IH／HO，沪深300为IF／IO，中证1000为IM／MO；IC对应的中证500没有上述同标的期权，代理对冲含跟踪风险。本次84张样本只覆盖三品种、两个到期各14张：近月11月20日、次月12月18日。MO近月平值30.29%高于12月29.04%，HO与IO则近月低于次月，说明近期小盘事件保护更贵；它不是全市场恐慌或主力方向的证明。20个对数日收益样本的年化实现波动约为上证50 10.40%、沪深300 16.95%、中证500 34.65%、中证1000 38.04%；过去波动高于未来报价不能直接证明买期权便宜，因为观察窗口与未来风险不同。\n\n25Delta看跌翼等多个位置不满足取样质量，故不计算完整偏斜；近月样本绝对Gamma集中于HO2800、IO4000、MO6500一带，但没有做市商净持仓符号，不能推导“涨到某点必须追买／跌破必须卖”。样本持仓比也不是全市场情绪。ETF份额原始单位未核实，不换成资金流入金额；周末取得的盘口时间未通过场内交易时段验证，不能当作新入场价。[期权采样及质量](https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/index_radar/part-001.json)、[盘口时点边界](https://github.com/farfromexact/China-Commodities-Engine/blob/da5ec6becbb4127e321fa1f80af1604576d993f9/data/chat/index_books/index.json)。\n\n国债期货长端更弱，但银行间DR001下降、R007−DR007仅4.43bp，缺乏即时现金荒的配合；TL2612较前结跌0.550点也不能直接换算现金国债收益率或与股指做风险中性比例，缺CTD、转换因子及DV01。人民币外部利差压力可能影响风险偏好，当前CNH实时与远期缺口使这一链条尚不能定量确认。11月16日经济数据若强于市场实际预期、且小盘相对回升，将是空头最直接的反证；若数据改善只体现在大盘，而小盘反弹仍失败，才支持本卡的局部防守。\n\n本期A股独立公司重点候选为零，没有以产业链概念代替最新公司公告与现金桥。此前同日报告出现的公司现金兑现观察仍需最新原始披露才能晋级；未取得披露不等于公司恶化。若后续研究出口硬件或数据中心设备，必须拆开量价、成本、汇率与套保、应收和预付、资本开支及回款滞后，才能判断直接股票是否比指数工具净受益更多。",
       "number": 8,
-      "title": "中国股指与公司｜防守风格和债市缺共振"
+      "title": "中国股指与公司专题"
     },
     {
-      "markdown": "**周日没有可交易的中国现货或股指日盘；下一窗口为11月16日星期一。** 中国股指无夜盘，13日晚国内商品夜盘按交易安排归16日，不能拿其高低点模拟股指开仓。美国股票下一个常规现金开盘是北京时间11月16日22:30。\n\n| 北京时间 | 事件 | 相关资产及传导 | 区分意外与旧消息 |\n|---|---|---|---|\n| 11月16日09:30 | 国家统计局住宅价格 | 黑色、房地产链与A股风格 | 不以环比一次改善替代销售回款；观察股指与信用相关板块是否共同改善 |\n| 11月16日10:00 | 中国工业、消费、投资、地产等数据 | IH／IM、铜、钢材、国债 | 若工业强而地产弱，区分供给改善与终端需求；不知道市场共识就不称超预期 |\n| 11月16日22:30 | 美国股票现金市场开盘 | SOXX、纳斯达克、VIX | 观察前15／30／45分钟是否出现利率与科技股的重新同步，未发生前不当确认 |\n| 11月17日21:30 | 美国进出口价格数据（按官方日历复核） | 美元、名义与实际利率 | 变化必须超出实际已反映通胀预期才改变政策解释 |\n| **11月18日05:20／06:00** | **英伟达第三财季公布／电话会** | AI产业链、SOXX、指数期权 | 核真实收入、毛利率、现金与下一季指引；治理事件对客户需求的传导须有实证 |\n| 11月18日23:30 | EIA美国周度原油库存 | 能源价格、通胀预期 | 不能仅凭单一库存正负判断供应 |\n| 11月19日02:00附近 | 美国20年期国债发行招标（交易所公告复核） | 美债期限溢价、美元、成长股 | 利率与拍卖接受度必须共同观察，未知具体市场预期不编尾部差 |\n\n[国家统计局统计日历](https://www.stats.gov.cn/xw/tjxw/tzgg/)、[英伟达会议公告](https://nvidianews.nvidia.com/news/nvidia-sets-conference-call-for-third-quarter-financial-results-6928873)、[EIA周报](https://www.eia.gov/petroleum/supply/weekly/schedule.php)。\n\n下一中国开盘的分叉：若IM明显高开并收复13日跌幅的一部分、IH相对弱，优先放弃追防守价差；若IM低开但B没有先回撤至条件区，不用理想入场价格改善赔率；若四指数平开，等10:00宏观和10:15之后的真实价差再评。既不把15分钟窗口当统计胜率，也不把前一日日线穿越当真实成交。",
+      "markdown": "**最先改变中国方向的是16日经济数据，最大的科技公司事件在18日清晨；主卡在两者之间持有，主动避开英伟达财报跳空。** 下表全为北京时间。报告写于周日11月15日11:07，未来24小时已覆盖周一中国开盘及宏观发布；美国数据按已进入冬令时换算。缺可核一致预期的项目只设方向响应，不填虚构共识。\n\n| 时间 | 事件／相关资产 | 关注结果与应对 |\n|---|---|---|\n| 11月16日09:30 | 中国股指下一个常规日盘；70城房价计划发布 | 只观察开盘结构；不能用房价或一分钟波动替代10:00经济数据验证 |\n| 11月16日10:00 | 国家统计局工业、投资、消费等月度数据 | 实际发布后看小盘相对表现；政策／需求改善带动IM在入场前触及6500则取消空头 |\n| 11月16日，当日结算，具体时刻非定点事件 | 美国1250亿美元季度再融资结算 | 关注资金与利率反应；拍卖已过，不将结算误写为未来招标结果 |\n| 11月16日22:30起 | 美国下一个常规股票交易时段 | 实际利率、半导体、信用能否同步；无当前CNH／MOVE数字不硬定阈值 |\n| 11月17日14:50 | 本IM研究卡时间退出 | 不论目标是否到达，完成平仓；流动性不足须更早处理 |\n| 11月17日21:30 | 美国进出口价格 | 比较进口通胀与能源回吐是否一致；不是下周CPI／PPI发布 |\n| 11月18日05:20／06:00 | 英伟达业绩新闻稿／电话会 | 核收入相对1058.4—1101.6亿公司区间、毛利、应收回款和后续指引；公司指引不等于市场共识 |\n| 11月18日23:30 | EIA周度石油数据正常安排 | 若陆上可用库存继续偏紧，弱化把原油回落外推成无尾部通缩的判断 |\n| 11月20日 | 11月股指期货／期权第三个周五到期 | 近月Gamma与基差可能非线性变化；主卡12月工具也受邻近到期影响 |\n\n来源：[国家统计局日历](https://www.stats.gov.cn/sj/fbrc/)、[美债结算安排](https://home.treasury.gov/news/press-releases/sb0678)、[BLS十一月日历](https://www.bls.gov/schedule/2026/11_sched_list.htm)、[英伟达财报排期](https://nvidianews.nvidia.com/news/nvidia-sets-conference-call-for-third-quarter-financial-results-6928873)、[EIA发布安排](https://www.eia.gov/petroleum/supply/weekly/schedule.php)、[股指合约到期及日盘](https://www.cffex.com.cn/u/cms/www/202207/18190308vxpv.pdf)。日历可能调整，触发使用实际发布；股指常规09:30—11:30、13:00—15:00，无夜盘，不把商品夜盘当股指入场窗口。\n\n**16日开盘只决定观察路径，不能本身制造优势。** 若IM入场前触及6500，直接放弃空头；高开处于6370—6400附近，仍等宏观实际发布和完整15分钟失败信号，不抢先卖。若平开仍在6276.8附近，只有反弹回入口才重新计算；若低开、跌破6200或一路走弱而不回6370，不追空。触发窗口最迟11:15，未完成即取消，不能自动把时间改到下午。出现小盘相对转强、数据改变增长判断或实际成本失控时，等待就是行动。若有真实跨财报多头需保护，有限损价差可另评，但18日事后的IV回落和两腿价差须重新估值，不能用“事件发生了”推断对冲已经赚钱。",
       "number": 9,
       "title": "未来24小时／7天风险与下一窗口地图"
     },
     {
-      "markdown": "A. 当前没有已满足完整条件、可以立即执行的新跨资产交易；周末休市，且当前大盘防守价差已经上行，暂不追买。\nB. 等待IH2612多3手／IM2612空2手的人民币价差B先回落至−125000以下、再反弹至−120000附近并获同刻报价确认，才研究防守篮子；若直接突破原高而不回撤、或现金与组合风险不合格则放弃。美债曲线与黄金期权仅保留询价研究。\nC. 11月16日10:00复核中国工业、消费和地产数据与四类股指、国债、回购反应；11月18日05:20复核英伟达财报实际毛利及现金回报，决定是否调整AI风险判断。\nD. 回避凭单日股债同步回撤推断信用危机、把股指期权采样Gamma当全市场做市仓位、用ETF不明单位份额推资金流；若有真实旧持仓，遵守其原始失效与固定退出，不用本批次重启旧时钟。",
+      "markdown": "A. 当前可考虑的新交易：没有已确认触发的新交易。周日股指休市，IM2612与MO价差均为条件研究；周五收盘、结算和未验证时点盘口不构成当前可成交价格。\nB. 等条件的候选：仅11月16日经济数据实际发布后，IM2612先反弹≥6400、完整15分钟收于<6380且中证1000当日弱于上证50，再在6370—6380卖出满足0.25%净值计划风险及共同压力预算的偶数手，最少2手；第一／第二目标6200／6050各平一半，6500止损，最迟17日14:50全退。11:15前未完成、入场前触及6500、直接跌穿6200、成本>12点或预算不足2手则取消。\nC. 继续观察：16日10:00中国经济数据是否使小盘反转；下一美国交易日实际利率、半导体与信用是否同向；18日05:20／06:00英伟达收入、毛利、营运资本回收及下一季指引。黄金等待实际利率止升与价格企稳共同出现，低频央行需求本身不触发买入。\nD. 应回避或有持仓时退出：回避6276.8附近追空IM、无报价重估的黄金看涨期权、用SOXX代替纯英伟达治理风险，以及没有共同预算的IM与SC叠加空头。若实际持有本期IM方案，6500、逻辑反转或17日14:50任一先到即退出；其他旧仓须按其真实原始止损和期限核对，不借新卡重置亏损或延长持有。",
       "number": 10,
       "title": "最终行动四行"
     }
   ],
-  "started_at_utc": "2026-11-15T01:52:16Z"
+  "started_at_utc": "2026-11-15T03:07:09Z"
 }
