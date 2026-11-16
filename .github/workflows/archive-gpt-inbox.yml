@@ -1,0 +1,43 @@
+name: Archive GPT Inbox
+
+on:
+  push:
+    branches: [main]
+    paths: ['inbox/gpt/*.md']
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Check the tool without publishing, or retry pending submissions'
+        type: choice
+        options: [check, publish]
+        default: check
+
+concurrency:
+  group: gpt-inbox-archive
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Archive submitted Markdown or run isolated smoke test
+        env:
+          RADAR_ARCHIVE_TOKEN: ${{ github.token }}
+          ARCHIVE_MODE: ${{ github.event_name == 'push' && 'publish' || inputs.mode }}
+        shell: bash
+        run: |
+          if [ "$ARCHIVE_MODE" = "check" ]; then
+            python scripts/gpt_publish.py --self-test
+          else
+            python scripts/gpt_publish.py --publish-inbox
+          fi
