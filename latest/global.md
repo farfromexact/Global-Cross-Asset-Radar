@@ -1,193 +1,274 @@
-# 全球跨资产 Radar｜油价在跌，融资风险还没有退场
+# 全球跨资产 Radar｜小盘继续走弱，油价和政策消息开始分化
 
-**北京时间信息截点为2026年11月19日07:42。** 最近中国股指日盘为18日，国内商品已取得归属19日的夜盘，美国已结束18日常规交易。外部资料于北京时间19日07:43—07:53复核，只采用截点前已经公开的事实。
+**北京时间信息截点：2026年11月19日17:20。** 中国股指和商品采用19日日终，美国采用18日已结束的交易及截点前已公布资料。以下把19日中国日盘、此前已知的夜盘、16:16发布的外交部会晤消息分开；检索随后进行，截点后的行情及结果不纳入。中国结构化数据固定于同一提交，商品范围为本批77个品种、806份合约；这不是中国全部上市品种。[本批原始概览](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/overview.json) 参考收盘、结算和模型价格均不等于可成交报价。
 
 ## 1. 结论
 
-**未来一至五个交易日，保留现金，暂缓增加股票、工业品和黄金的方向风险。确信度中等。** 主变量是**企业盈利能否转化为现金，并让更多公司以可承受的成本融资**。英伟达（NVDA）财报后的第一个完整交易日收跌2.89%，纳斯达克综合和罗素2000反而小涨，说明对龙头盈利的疑问与市场整体去杠杆要分开看。两个辅助变量是美国十年期实际利率和高收益信用利差。前者18日仍达2.88%，比五个有效观测日前高10bp；后者到17日为343bp，两个交易日累计扩大20bp。若融资利差回落、龙头在高实际利率下企稳且上涨范围扩展，才有理由增加风险。眼下值得付费的风险管理限于确须保留的小盘敞口，并取决于能否以合适价格买到保护。[英伟达11月17日原始业绩](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/) · [常规收盘报价，嘉信](https://www.schwab.wallst.com/Research/Public/stocks/summary/?symbol=nvda) · [18日指数收盘，美联社](https://apnews.com/article/wall-street-stocks-dow-nasdaq-990749d3d269f7ef05b9f6c089713a58) · [美国财政部实际利率](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value_month=202611&type=daily_treasury_real_yield_curve) · [ICE高收益利差原序列，经FRED发布](https://fred.stlouisfed.org/data/BAMLH0A0HYM2)
+**未来一至五个交易日，倾向保留现金、降低难以解释的小盘风险，暂不追空，也不追买昂贵保护；确信度中等。** 主变量仍是企业盈利能否转成现金、并承受当前融资成本。两个辅助变量是美国实际利率，以及政策沟通能否变成可执行的贸易与投资安排。今天中证1000跌1.88%，上证50涨0.32%，但上海原油从已知夜末反弹4.42%，说明跨资产压力正在分化；16:16发布的中美元首会晤通报又增加了下一窗口的政策重定价风险。最值得保留的是等待现金回收和市场宽度改善的选择权，最应回避的是把小盘、金属、原油合成同一笔“全球衰退空头”。若实际利率回落、信用利差收窄，而且小盘相对修复伴随更广泛盈利兑现，再提高风险承担；只有外交措辞改善，尚不足以重写盈利预测。[19日中国期现原始分片](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/index_radar/part-001.json) · [准确商品收盘](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/futures/part-005.json) · [外交部，11月19日16:16](https://www.mfa.gov.cn/zyxw/202611/t20261119_12062924.shtml)
 
 ## 2. 全球仪表盘
 
-**利率的日变动更接近前端不动、长端修复。** 11月18日美国财政部指示性平价曲线如下，基点均按收盘同口径计算。美国国债11日休市，五个有效观测日前为10日。名义与实际平价收益率之差是通胀补偿近似，包含流动性和风险补偿。[美国财政部名义曲线](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value_month=202611&type=daily_treasury_yield_curve) · [实际曲线](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value_month=202611&type=daily_treasury_real_yield_curve) · [取价方法](https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics/)
+### 利率：长端一天修复，实际折现门槛仍高
 
-| 美国利率 | 18日 | 较17日 | 较10日 |
-|---|---:|---:|---:|
-| 2年 | 4.80% | 0bp | +7bp |
-| 5年 | 4.89% | −1bp | +8bp |
-| 10年 | 5.07% | −3bp | +9bp |
-| 30年 | 5.41% | −5bp | +6bp |
-| 10年实际 | 2.88% | −1bp | +10bp |
-| 10年通胀补偿近似 | 2.19% | −2bp | −1bp |
-| 30年减2年 | 61bp | −5bp | −1bp |
+美国财政部18日指示性平价收益率如下；五个有效观测日前为10日，11日为美国国债市场假日。名义减实际曲线只是通胀补偿近似，仍包含流动性与风险溢价。[财政部名义曲线](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026) · [实际曲线](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_real_yield_curve&field_tdr_date_value=2026)
 
-18日公布的10月会议纪要显示，联邦基金目标区间为3.75%—4.00%，几乎所有与会者在其基准预测下预计仍需进一步加息，两位提及若通胀不利可讨论加息逾25bp。当前2年收益率已高于区间上限80bp，不能将这80bp直接换算成会议次数。20年债当日发行拍卖160亿美元，最高得标收益率5.459%、投标倍数2.63。供给得到消化，单次拍卖仍不足以分离政策路径与期限溢价；美联储理事会Kim–Wright模型估计13日十年零息期限溢价为98.64bp，10日为91.77bp。这是滞后模型估计，不能据此给18日长端下行拆账。[美联储理事会模型，经FRED发布](https://fred.stlouisfed.org/series/THREEFYTP10)[美联储纪要，11月18日发布](https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm) · [财政部20年券拍卖原件，11月18日](https://www.treasurydirect.gov/instit/annceresult/press/preanre/2026/R_20261118_2.pdf) · [纽约联储期限溢价方法](https://www.newyorkfed.org/research/data_indicators/term-premia-tabs)
+| 美国利率，11月18日 | 当前 | 较17日 | 较10日 | 含义 |
+|---|---:|---:|---:|---|
+| 2年 | 4.80% | 0bp | +7bp | 前端未给出当天宽松确认 |
+| 5年 | 4.89% | −1bp | +8bp | 中期融资门槛仍高 |
+| 10年 | 5.07% | −3bp | +9bp | 日回落尚未抵消近期上行 |
+| 30年 | 5.41% | −5bp | +6bp | 修复主要来自长端 |
+| 10年实际 | 2.88% | −1bp | +10bp | 黄金、长期盈利的共同机会成本 |
+| 30年减2年 | 61bp | −5bp | −1bp | 一天趋平，不能重复记为本次新催化 |
+| 10年名义减实际 | 2.19% | −2bp | −1bp | 近期名义上行主要不来自通胀补偿 |
 
-| 汇率、权益与风险 | 当期观测与变化 | 对决策的含义 |
+18日10年名义下降3bp，可以拆为实际下降1bp、通胀补偿下降2bp。期限溢价另有独立风险：美联储Kim–Wright模型经FRED发布的10年期限溢价，最近可得为13日0.9864%，10日0.9177%；这是滞后的模型估计，不能拿来精确分解18日变动，也不能冒称纽约联储ACM值。[模型原序列及来源](https://fred.stlouisfed.org/series/THREEFYTP10)
+
+政策与供给共同约束长债。联储10月28日将政策区间留在3.75%—4.00%，两名委员主张加25bp；18日发布的10月会议纪要显示，几乎所有与会者认为进一步收紧很可能合适，但这些是10月会议上的判断。18日纪要前，CME市场评论记录的12月加25bp／50bp定价为97%／3%，不是本截点新读取的即时概率。因此，“仍会加息”有明显已定价成分，下一段收益要靠数据相对预期的偏差。[联储决定，10月28日](https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm) · [会议纪要，11月18日发布](https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm) · [CME，11月18日纪要前评论](https://www.cmegroup.com/videos/2026/11/18/gold-futures-fall-below-3-800-as-rate-hike-expectations-rise-1.html)
+
+财政部11月4日季度再融资总额1,250亿美元，已于16日结算，其中净新增融资280亿美元；名义附息券规模暂不增加，不等于久期供给消失。四季度净借款估计6,180亿美元、下一季度8,000亿美元均为预测。下一项更直接的实际利率检验是美东19日10年TIPS续发，随后23—25日有2／5／7年发行。发行量、拍卖承接、结算资金需求分别看，不用一个高收益率数字直接判定拍卖失败。[财政部11月4日声明](https://home.treasury.gov/news/press-releases/sb0678) · [11月2日借款估计](https://home.treasury.gov/news/press-releases/sb0675) · [官方拍卖日历](https://home.treasury.gov/system/files/221/TentativeAuctionScheduleQ42026.pdf)
+
+### 汇率与风险：美元利差仍有支持，信用尚未确认修复
+
+| 指标 | 可核最近值与时点 | 可比变化／解释 |
 |---|---|---|
-| 美元、欧元、日元 | 18日欧洲参考定盘EUR/USD为1.0968，较17日−0.19%。同一参考时点交叉计算USD/JPY为159.42，前日159.30。路透18日美国会话美元指数报103.81，较前参考+0.19% | 美元对欧元和日元均有支撑。美元资产对人民币的未对冲回报仍取决于USD/CNH |
-| 离岸人民币 | 公开行情汇集页18日报6.6652 CNH/美元，17日6.6620，11日6.6731；日变+0.05%，一周−0.12%。为参考快照，缺同刻离岸远期点 | 美元指数上行未机械转成离岸人民币按同幅贬值，利差套利还取决于远期贴水与融资 |
-| 美国现金指数 | 标普500为7,323.63（−0.23%），纳指综合24,429.88（+0.42%），道指50,198.17（−1.11%），罗素2000为2,714.31（+0.46%）。标普与纳指较11日分别−3.88%和−4.07% | 股指分化，纳指单日修复的幅度仍小于一周回撤；不能把一天的指数表现当作全部个股同步反弹 |
-| 波动与信用 | Cboe VIX为24.56，较17日−0.90点、较11日+7.07点。ICE高收益OAS到17日343bp，较16日+9bp、较11日+13bp。MOVE采用可复核的17日报价101.88，较16日+0.60、较10日+9.45点 | 股权保护成本从高位回落，信用观察滞后一日。18日不同渠道的债券波动收盘值不一致，避免拿它证明股债波动同步 |
-| 原油和黄金 | 18日美国会话近端WTI、布伦特期货分别结算83.26、91.95美元/桶，日跌3.20%、1.28%。交易所当日盘中报道COMEX 12月金价3,757美元/盎司，跌2.8%；境内黄金AU2702从18日日收814.32至19日夜末806.78元/克，跌0.93% | 外盘油价价差8.69美元含品质、地点和月份影响；金油可因不同原因下跌，不能把它们加总成一笔增长信号 |
+| 欧元兑美元 | ECB18日参考价1.0968美元/欧元 | 官方日参考，不是19日17:20现汇盘口 |
+| 欧元兑日元／推算美元兑日元 | 174.85日元/欧元；相除得159.42日元/美元 | 后者是同源交叉计算，不是独立美元兑日元报价 |
+| 标普500／标普500等权指数 | 18日7,323.63／8,721.54 | 同源年初以来价格回报+6.98%／+12.33%，不支持把全年上涨说成仅靠少数巨头 |
+| 英伟达NVDA | 18日150.96美元 | 同源年初以来−19.06%；个股折价与全市场宽度不能互相替代 |
+| VIX股票隐含波动率 | 18日收24.56；17日25.46 | 回落0.90点仍高于13日19.30，不能据一天回落认定事件结束 |
+| ICE美国高收益债OAS | 最近17日343bp | 16日334bp、13日323bp；截至可得数据融资风险仍扩大 |
 
-汇率来源为[法国央行18日定盘表](https://www.banque-france.fr/en/statistics/rates-and-prices/exchange-rates-daily-parities-2026-11-18)、[路透18日美元行情](https://www.reuters.com/world/china/global-markets-wrapup-1-2026-11-18/)及[离岸人民币日序列，行情汇集](https://china-snapshot.com/indicators/usd-cnh-offshore-yuan)。美股及波动来源为[美联社收盘](https://apnews.com/article/wall-street-stocks-dow-nasdaq-990749d3d269f7ef05b9f6c089713a58)、[标普历史](https://fred.stlouisfed.org/data/SP500)、[纳指历史](https://fred.stlouisfed.org/data/NASDAQCOM)、[Cboe VIX](https://www.cboe.com/tradable-products/vix)、[Cboe历史经FRED发布](https://fred.stlouisfed.org/data/VIXCLS)、[ICE高收益利差](https://fred.stlouisfed.org/data/BAMLH0A0HYM2)与[MOVE历史行情，二手报价](https://www.investing.com/indices/ice-bofaml-move-historical-data)。商品见[路透18日原油结算](https://www.reuters.com/business/energy/oil-prices-fall-higher-us-crude-stocks-temper-supply-risks-2026-11-18/)、[CME 18日黄金市场评述](https://www.cmegroup.com/videos/2026/11/18/gold-futures-fall-below-3-800-as-rate-hike-expectations-rise-1.html)、[沪金准确月份夜盘](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/night/part-003.json)。
+来源：[ECB18日汇率](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html)；[Nasdaq Dorsey Wright，同源股票／指数表](https://dorseywright.nasdaq.com/chart/performance/symbol/NVDA)；[Cboe前收字段](https://www.cboe.com/tradable-products/vix/)与[经FRED发布的17日及此前VIX](https://fred.stlouisfed.org/series/VIXCLS)；[ICE利差，经FRED发布](https://fred.stlouisfed.org/series/BAMLH0A0HYM2)。Cboe页面后续19日盘中值晚于本截点，未使用。
 
-**同一晚的商品也在区分交割地点和月份。** 五家交易所77个品种、806份期货中，18日日盘代表合约按结算对前结14涨、57跌、6平。归属19日的夜盘有55个品种、528份有效合约记录；代表合约按夜盘末根已完成五分钟K线对同合约日收17涨、35跌、3平。64个品种456份期权样本没有可用的买卖双边报价。上海原油SC2701从576.1跌至561.1元/桶，沪铜CU2701从97,920跌至94,830元/吨；螺纹钢RB2701从2,977升至2,985元/吨。SC2612−SC2701的末值价差从13.2扩大至31.1元/桶，但近月夜盘仅245手，而1月有114,630手；更活跃的1月−2月反从7.9收窄至6.3元。油价的通胀方向向下，最近交割月的价格仍受可交割现货及参与者变化影响。[同批范围](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/overview.json) · [全部日盘代表合约一](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/report/part-016.json)、[二](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/report/part-017.json)、[三](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/report/part-018.json)、[四](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/report/part-019.json) · [夜盘代表合约](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/report/part-020.json) · [原油逐月日盘](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/futures/part-005.json)、[夜盘](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/night/part-020.json) · [数据质量](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/report/part-025.json)
+ECB10月29日存款利率为2.50%，日本央行10月30日把隔夜政策利率留在1.25%。相对美国区间中点3.875%，政策利差分别为1.375、2.625个百分点，支持美元持有收益的方向，但远期点、融资币种及基差决定真实可锁定净息差；一周汇率波动足以压过这点利息。对中国而言，美元融资压力可以压低风险偏好，人民币走强则可缓和进口成本、同时改变出口企业折算收益，不能一概等同盈利利好。[ECB决定](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp261029~9a493adf17.en.html) · [日本央行10月30日记者会原文，11月2日公布](https://www.boj.or.jp/about/press/kaiken_2026/kk261102a.pdf)
 
-美国能源信息署（EIA）18日发布的截至13日周报显示，美国商业原油库存增加338万桶、汽油增加519万桶；汽油库存比五年均值高3%，馏分油却低7%。四周平均汽油表观供应同比下降1.8%，馏分油上升4.3%。18日晨刊所列17日美国湾区LLS原油3:2:1裂解价差为32.70美元/桶，日跌1.6%，这是扣除原油前后的产品价差，尚未扣运营费用。较易兑现的是美国汽油链的现货压力，进口原油交付、取暖油或人民币终端通胀各有自己的时滞；下一批库存若转降且成品油裂解回升，会削弱成本缓和判断。[EIA本周档案，11月18日发布](https://www.eia.gov/petroleum/supply/weekly/archive/2026/2026_11_18/wpsr_2026_11_18.php) · [原始库存表](https://www.eia.gov/dnav/pet/pet_stoc_wstk_dcu_nus_w.htm) · [EIA 11月18日晨刊](https://www.eia.gov/todayinenergy/prices.php)
+本次未取得同截点可靠美元指数、离岸人民币CNH现汇及远期点、债券MOVE指数。故不建立美元／CNH交易，也不宣称股债波动已经同步下降；ECB人民币在岸参考交叉价不能填补CNH报价。
 
-**中国，11月18日日盘。** 现金指数按同一标的收盘对收盘，股指期货统一用12月合约。基差＝期货收盘减现货收盘，月差＝12月收盘减11月收盘，均为指数点。
-  
-| 现货／12月期指 | 现货收盘 | 1／3／5／20日现货变化（%） | 12月收盘／基差／月差（点） | 12月成交／持仓／日增仓（手） |
-|---|---:|---|---|---|
-| 上证50／IH2612 | 2,764.54 | −0.14／−0.38／−0.04／+0.64 | 2,731.2／−33.34／−23.2 | 32,392／62,763／−4,284 |
-| 沪深300／IF2612 | 3,983.77 | +0.18／−0.81／−2.26／−3.12 | 3,928.4／−55.37／−37.6 | 74,512／180,633／+3,049 |
-| 中证500／IC2612 | 6,282.22 | −0.01／−2.83／−6.42／−8.16 | 6,194.0／−88.22／−63.6 | 132,856／177,260／−2,610 |
-| 中证1000／IM2612 | 6,052.82 | −0.65／−4.79／−9.25／−10.73 | 5,987.4／−65.42／−52.6 | 261,653／322,458／+8,847 |
+### 中国：大盘抗跌、长债上涨、回购未显示同步紧张
 
-参照日依次为11月17日、13日、11日及10月21日。3月减12月的收盘月差，IH／IF／IC／IM依次为−49.4／−68.6／−144.6／−146.2点。期货远月贴水越深，持有静态空头对抗贴水收敛的成本越大，但分红与资金成本会影响公允基差。[18日股指](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/index_radar/part-001.json) · [1日端点](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/index_history/part-023.json) · [3日端点](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/index_history/part-021.json) · [5日端点](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/index_history/part-019.json) · [20日端点](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/index_history/part-004.json)
+| 19日收盘，点 | 现货 | 现货较18日 | 12月期货 | 期货−现货／比例 | 12月平值IV |
+|---|---:|---:|---:|---:|---:|
+| 上证50／IH2612／HO2612 | 2,773.4586 | +0.323% | 2,731.2 | −42.26／−1.524% | 13.89% |
+| 沪深300／IF2612／IO2612 | 3,984.8399 | +0.027% | 3,925.8 | −59.04／−1.482% | 19.02% |
+| 中证500／IC2612 | 6,251.9578 | −0.482% | 6,179.0 | −72.96／−1.167% | 无上述同标的期权 |
+| 中证1000／IM2612／MO2612 | 5,938.9012 | −1.882% | 5,876.8 | −62.10／−1.046% | 37.91% |
 
-| 中金所12月国债期货 | 18日收盘，元／百元面值 | 对17日收盘 | 对11日收盘 | 18日收盘对前结 |
+基差未扣股息和资金成本；IV为采样模型，质量边界见第8章。[中国期现与期权汇总原件](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/index_radar/part-001.json)
+
+| 19日国债期货 | 收盘，元/百元面值 | 收盘减18日结算，点 | 12月持仓变化，手 | 全月份持仓变化，手 |
 |---|---:|---:|---:|---:|
-| 2年 TS2612 | 102.658 | +0.012 | +0.016 | +0.016 |
-| 5年 TF2612 | 106.765 | −0.015 | −0.010 | −0.010 |
-| 10年 T2612 | 110.035 | +0.025 | 0.000 | +0.060 |
-| 30年 TL2612 | 117.700 | −0.010 | −0.220 | +0.090 |
+| 2年TS2612 | 102.662 | +0.004 | −948 | +3,862 |
+| 5年TF2612 | 106.820 | +0.055 | −14,838 | +677 |
+| 10年T2612 | 110.145 | +0.100 | −28,212 | +1,391 |
+| 30年TL2612 | 118.230 | +0.520 | −15,630 | +1,909 |
 
-相同收盘时点显示，十年期略升而三十年期小跌，后一品种相对前结算却上涨0.090。日收与结算差别会改变方向判断。缺最便宜可交割券、转换因子及DV01，不据此换算现券收益率或配对手数。[18日合约](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/treasury_futures/part-001.json) · [17日收盘](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/treasury_futures/snapshots/2026-11-17.json) · [11日收盘](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/treasury_futures/snapshots/2026-11-11.json)
+以上变动明确对前结算，不能改称收盘对收盘收益。12月减仓而全月份增仓，换月至少解释了重要部分，不是资金整体逃离债市。净价点数也不能直接换算现金券收益率；缺CTD、转换因子和DV01，不做股债风险中性手数。[四类准确国债合约](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/treasury_futures/part-001.json)
 
-18日银行间存款类机构加权隔夜／7天（DR001／007）为1.2625%／1.3763%，全市场（R001／007）为1.3419%／1.4252%。DR007日／五日变动−3.28／−1.63bp，R007为−0.86／+0.25bp。交易所收盘，沪市隔夜／7天为1.160%／1.350%，深市为1.130%／1.280%。回购是借款价格，沪深交易所收盘报价也有别于银行间全天加权利率，不据这些值反推净投放。11月上证50／沪深300／中证1000期权平值隐波为16.53%／21.86%／46.30%，曲面比较见第8章。[18日回购，19日07:37更新](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/funding/part-001.json) · [18日期权估值](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/index_derivatives/part-004.json)
+| 资金层次 | 最近可核报价 | 变化与口径 |
+|---|---|---|
+| 银行间存款类机构，18日日加权 | DR001 1.2625%；DR007 1.3763% | 较17日−2.96／−3.28bp；DR007较五日前−1.63bp |
+| 银行间全市场，18日日加权 | R001 1.3419%；R007 1.4252% | 较17日−3.09／−0.86bp；R007−DR007为4.89bp |
+| 沪市回购，19日15:30完整5分钟末值 | GC001 1.145%；GC007 1.365% | 18日日终为1.160%／1.350%，统计口径不同，不当日加权变化 |
+| 深市回购，同上 | 1天1.125%；7天1.370% | 交易所报价，不能代替19日DR利率 |
 
-## 3. Delta Research｜隔夜证据改变了哪些决定
+来源：[18日银行间及交易所日终](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/funding/part-001.json) · [19日交易所5分钟原件](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/funding_intraday/part-001.json)。这些是借钱价格，不是资金净流入；19日银行间加权值尚未取得，结论限于可见层次。
 
-**英伟达财报后的首个收盘，降低了追买整条AI链的吸引力。** 前报要看盈利改善能否扩散。18日美国常规盘中，英伟达一度上涨2.7%，最终收跌2.89%，纳指和罗素小幅上涨。美股出现一定轮动，距普遍的风险偏好修复仍远。能区分“个别公司折价”和“整个融资链恶化”的观察，是下一期信用利差与非龙头的现金回收。第7章对比芯片供应商、云客户的现金流，并按周调整英伟达指引。[18日18:04全球前报](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/dc23ac6198c18228a5f50dc2de920eee842581ea/reports/2026/11/18/20261118T181538+0800_0d74dfd9127ece3e1a080f989a4ec029/global.md) · [嘉信常规盘收盘](https://www.schwab.wallst.com/Research/Public/stocks/summary/?symbol=nvda) · [美联社18日盘面](https://apnews.com/article/stock-markets-ai-earnings-oil-apec-shenzhen-dad5715bc91b4aba23a567a40e22b1fc) · [公司财报](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/)
+### 商品：全日跌幅大，新增日盘走势却并不同向
 
-**原定观察到25日的美国曲线趋平，首次从66bp回落到61bp，但价格改善已经发生。** 13日、16日、17日分别为59、63、66bp。18日的回落来自长债，2年仍为4.80%。方向获得一天支持，按当前参考收益率建立的配对仍需再收窄约3bp才覆盖假设成本。第5章将旧案落实到两只具体券和持有成本，维持原退出日。黄金3—6个月看涨价差仍处在原来1—20个交易日的验证期，价格新低降低了抢先买保险的必要性，第6章列明改判条件。[11月15日早期判断](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/dc23ac6198c18228a5f50dc2de920eee842581ea/reports/2026/11/15/20261115T001000+0800_9d622c26d7d04bf5953cd30cda9c5c98/global.md) · [18日晚复盘](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/dc23ac6198c18228a5f50dc2de920eee842581ea/reports/2026/11/18/20261118T181538+0800_0d74dfd9127ece3e1a080f989a4ec029/global.md) · [18日名义曲线](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value_month=202611&type=daily_treasury_yield_curve) · [CME黄金](https://www.cmegroup.com/videos/2026/11/18/gold-futures-fall-below-3-800-as-rate-hike-expectations-rise-1.html)
+本批77品种代表合约按结算比较为11涨、57跌、9平；5个代表合约无成交，有成交72品种中为11涨、57跌、4平。横截面取自完整products：[0—23项](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/report/part-016.json)、[24—48项](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/report/part-017.json)、[49—73项](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/report/part-018.json)、[74—76项](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/report/part-019.json)。这个横截面偏弱，但晨报已经知道夜盘大部分冲击。下表“日盘新增”严格用同合约夜末完整5分钟价至日收计算。
 
-**银行间7天资金分层略扩大，绝对融资成本反而下降。** 上期只能观察到17日，本次读到18日日终，R007−DR007由2.47扩大到4.89bp。拆开看，存款类机构成本下降3.28bp，全市场下降0.86bp；相对利差来自前者降得更快。小盘走弱可以反映风险偏好与交割周避险，目前缺少广泛资金紧张的确认。若两类利率同时抬升数日、信用价差同步扩大，再提高系统性减险优先级。另作收盘口径纠正，前报TL2612的+0.090是相对前结算，收盘较前一日为−0.010，单靠这只合约无法确认避险资金涌入。[18日18:04全球前报](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/dc23ac6198c18228a5f50dc2de920eee842581ea/reports/2026/11/18/20261118T181538+0800_0d74dfd9127ece3e1a080f989a4ec029/global.md) · [18日资金分层](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/funding/part-001.json) · [17日国债收盘](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/treasury_futures/snapshots/2026-11-17.json) · [18日国债收盘](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/treasury_futures/part-001.json)
+| 准确合约、单位 | 19日收盘／结算 | 结算较前结 | 日收较已知夜末 |
+|---|---:|---:|---:|
+| 沪铜CU2701，元/吨 | 94,720／95,600 | −4.19% | −0.12%，夜末94,830 |
+| 沪银AG2702，元/千克 | 10,805／10,806 | −3.89% | +0.35%，夜末10,767 |
+| 沪金AU2702，元/克 | 804.32／808.08 | −2.15% | 此处不把代表夜盘AU2612拼到2月合约 |
+| 上海原油SC2701，元/桶 | 585.9／576.9 | −2.12% | **+4.42%**，夜末561.1 |
+| 铁矿石I2701，元/吨 | 648.0／648.5 | +0.54% | 0.00%，夜末648.0 |
 
-**仍影响本周判断的国内旧案。** 中国股指自前报后没有新会话；没有任何成交回执，以下只评价条件。
+来源：[铜](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/futures/part-002.json) · [金银](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/futures/part-001.json) · [原油](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/futures/part-005.json) · [铁矿](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/futures/part-006.json) · [准确代表合约夜末](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/report/part-020.json)。商品全品种计数来自同批全部products；无成交平价不当作抗跌资金。
 
-| 原方案及固定边界 | 截至19日开盘前 |
-|---|---|
-| 多3手IH2612、空2手IM2612，篮子金额B＝900×IH−400×IM。15日09:52版须先低于−125,000元再回约−120,000元，止损−165,000、目标−65,000／−40,000、25日退出。09:59另案仅限16日09:30—10:15回到−105,000至−90,000再重上−90,000，止损入口低点减15,000，目标−50,000／−20,000、12月18日14:45退出。[首案](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/dc23ac6198c18228a5f50dc2de920eee842581ea/reports/2026/11/15/20261115T095216+0800_d3fdccaae7fb954db8d4c5a956ae9109/global.md) · [另案](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/dc23ac6198c18228a5f50dc2de920eee842581ea/reports/2026/11/15/20261115T095929+0800_51facfda55f347398013afc60652ef93/global.md) · [撤回新增](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/dc23ac6198c18228a5f50dc2de920eee842581ea/reports/2026/11/15/20261115T110709+0800_d8dd392e3d29405dad12ef4bdb213ed7/global.md) | 16日用IH最低及IM最高给出的必要下界已达−45,780元，排除了两案的入场区。18日收B＝63,120元，价格路径不能计为已实现利润。[16日复核](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/dc23ac6198c18228a5f50dc2de920eee842581ea/reports/2026/11/16/20261116T182033+0800_725c6aaf13d4de4c473d1dae587c4979/global.md) |
-| IM2612空在16日数据公布后先触6400，再有完整15分钟收低于6380、且小盘相对弱，6370—6380入，11:15前；止损6500，目标6200／6050，17日14:50退。同期MO2612买6400P卖6000P，净支出≤161点、费用≤4点，方向替代随同退出，仅真实保险原定20日14:45。[首次方案](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/dc23ac6198c18228a5f50dc2de920eee842581ea/reports/2026/11/15/20261115T110709+0800_d8dd392e3d29405dad12ef4bdb213ed7/global.md) · [最终修订](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/dc23ac6198c18228a5f50dc2de920eee842581ea/reports/2026/11/15/20261115T181852+0800_68e1639d399a432796ff00d357e6154e/global.md) | IM当日最高6226.8，方向交易入口已过。旧保险如确有成交，原期内管理；18日样本缺少完整两腿，不能确认成组收益。[失败记录](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/dc23ac6198c18228a5f50dc2de920eee842581ea/reports/2026/11/16/20261116T182033+0800_725c6aaf13d4de4c473d1dae587c4979/global.md) |
-| MO2612买6200P卖5800P，≤154点、费用≤4点，限17日09:30—11:30与13:00—14:45，净回收目标235点、20日14:45整组退。[16日原卡](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/dc23ac6198c18228a5f50dc2de920eee842581ea/reports/2026/11/16/20261116T182033+0800_725c6aaf13d4de4c473d1dae587c4979/global.md) · [17日封闭入口](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/dc23ac6198c18228a5f50dc2de920eee842581ea/reports/2026/11/17/20261117T160901+0800_1920c55c6945f5d6281ec42104188592/global.md) | 17日后不再新增。样本缺5800P；若确有持仓，风险敞口消失即整体退出，否则遵原目标及固定终期。 |
-| MO2612买6100P卖5700P，17日比较方案演变为18日晚明确限价及时间的保险，19日日盘限定入口、20日14:45退出。[首次比较](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/dc23ac6198c18228a5f50dc2de920eee842581ea/reports/2026/11/17/20261117T160901+0800_1920c55c6945f5d6281ec42104188592/global.md) · [18日早报复核](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/dc23ac6198c18228a5f50dc2de920eee842581ea/reports/2026/11/18/20261118T075346+0800_2ee0ae3c009803b0ba55fd32be3e8acc/global.md) · [18日晚方案](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/dc23ac6198c18228a5f50dc2de920eee842581ea/reports/2026/11/18/20261118T181538+0800_0d74dfd9127ece3e1a080f989a4ec029/global.md) | 本次尚在19日开盘前，≤150点等必要条件未经检验；具体期限与情景见第5章。 |
+风险资产没有形成单向共振：中国小盘弱与高实际利率相容，原油反弹、长债上涨和可见回购平稳却反驳“所有资产同时缺现金”的强结论。下一步需要信用、人民币和实际回款数据辨别局部风格调整与广泛融资问题。
+
+## 3. Delta Research｜本次真正改变决定的三件事
+
+**第一，晨报的小盘防守判断得到19日日盘确认，但新的入场价值下降。** [最近有效全球报告，信息截点19日07:42](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/8bf7ec1275c439f81c3dd776a57de518734e9239/reports/2026/11/19/20261119T075415+0800_2976b222185d95923ace173dbe6a63d1/global.md)还在等待当天股指会话。现货上证50与中证1000当日差扩大2.20个百分点；12月MO平值IV从18日34.883%升至37.915%，增加3.03个百分点。新的事实支持降低未充分解释的小盘敞口，却降低追买保险的吸引力。晨报6100P／5700P仅允许19日新开，窗口现在已经结束；今日样本缺这两腿，既不能确认成交，也不能用新5900P／5600P代替旧仓估盈亏。第5章只评估一项独立的新成本研究，原保险的20日14:45期限不延长。[18日可比样本](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/index_history/part-024.json) · [19日样本](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/index_radar/part-001.json)
+
+**第二，晨报的油价回落事实，不能延伸为日盘继续下跌。** [晨报](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/8bf7ec1275c439f81c3dd776a57de518734e9239/reports/2026/11/19/20261119T075415+0800_2976b222185d95923ace173dbe6a63d1/global.md)可得SC2701夜末561.1；19日收585.9，较18日收576.1反而上涨1.70%。12月减1月的同口径收盘价差，从夜末31.1缩至日收9.4元/桶，近端紧张缓和与远月修复同时发生。它支持观察交付瓶颈是否缓和，不能单凭曲线收窄就追空绝对价格。金属全日负结算的大部分也不能再作为中国日盘的第二次冲击。[原油准确日价](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/futures/part-005.json) · [夜盘原件](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/report/part-020.json)
+
+库存给出的反证也应保留。EIA18日发布的13日当周商业原油增加340万桶，但SPR减少320万桶，总原油仅增20万桶；汽油和馏分油分别增520万、160万桶。原油平衡调整项从−46.6万桶/日跳至+120万桶/日，因此不能把单周商业累库全部归因需求坍塌。IEA13日月报显示10月全球观察库存增加5,200万桶、海上增加8,600万桶，差额意味着陆上约减少3,400万桶；供应恢复与到岸可用库存偏紧可以并存。柴油和运费使原油回落传给消费通胀存在滞后。上述周报、月报在晨报前已发布，本次是解释约束，不另计新催化。[EIA11月18日原表](https://www.eia.gov/petroleum/supply/weekly/archive/2026/2026_11_18/download/overview.pdf) · [IEA11月13日月报](https://www.iea.org/reports/oil-market-report-november-2026)
+
+**第三，晨报等待的外交事件已有正式文字，下一窗口应提高对反向跳空的警惕。** [前报事件地图](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/8bf7ec1275c439f81c3dd776a57de518734e9239/reports/2026/11/18/20261118T181538+0800_0d74dfd9127ece3e1a080f989a4ec029/global.md)把19日会晤列为未发生。外交部16:16通报中美元首会见，双方同意制定建设性战略稳定关系行动计划，并提及农产品、能源和人工智能等合作领域。正式文字晚于中国15:00收盘，不能用今日收盘证明市场接受或否定其内容。已读通报没有量化关税生效条款、采购吨数或芯片许可变更；当前改变的是政策尾部风险和下一窗口观察，不是企业收入模型。若后续出现有生效日期的具体措施，且小盘、出口链与CNH共同修复，才撤回部分防守判断；若只有措辞，现金流与利率约束仍在。[外交部原文及发布时间](https://www.mfa.gov.cn/zyxw/202611/t20261119_12062924.shtml)
 
 ## 4. 统一机会榜
 
-| 具体表达与方向 | 参考价与持有期 | 研究评分或空缺 | 现价取舍 |
+**本期没有达到立即增加风险门槛的方案。** 评分依次为逻辑25、赔率／凸性25、催化20、价格／期限／波动15、拥挤／技术15；它是具体方案的研究排序，不是胜率，不因没有交易而抬高分数。
+
+| 具体方向与工具 | 参考价、持有／验证期 | 五项评分及总分 | 当前取舍 |
 |---|---|---|---|
-| 为真实中证1000相关多头买1手MO2612-P-6100、卖1手MO2612-P-5700 | 18日结算净159.8点；潜在持有19日日盘至20日14:45 | 19／12／13／11／8＝63，针对18日结算参考价，未来限价另行评价 | 两腿价差可估、真实敞口可保护；近端波动贵和深跌赔付封顶扣分。19日尚无同步报价，≤150点仍须重估 |
-| 美国国债现券趋平，多1,000美元面值30年券、空8,000美元面值2年券；券号见第5章 | 18日平价曲线5.41%／4.80%，假想19日同利率成交，25日退出 | 逻辑18、赔率10、催化15、价格9、拥挤7，合计59/100，仅评该条件模型 | 每再收窄5bp的样例净赚约2.93美元，仍须借券报价；日内方向正确也不等于已有足够优势 |
-| 英伟达普通股NVDA做多 | 18日收150.96美元，观察1—20日 | 逻辑18、催化13；缺乏可验证的近期估值回归目标，赔率及总分留空 | 有真实利润增量，毛利的每周兑现速度及客户融资仍要求折价 |
-| 美元黄金3—6个月看涨价差 | 18日参考见第6章，价格反应观察1—20日 | 只有主题和期限，未取得相同到期准确两腿及费用，留空 | 实际利率与现金需求约束成本，等待有效报价 |
+| 为必须保留的小盘多头，买1手MO2612-P-5900、卖1手MO2612-P-5600 | 19日收盘264.0／145.0，净119点；比较至26日14:45 | 18／12／15／7／9＝**61** | 有有限区间保护价值，当前成本缺优势；第5章为独立新研究，新增预算0 |
+| 大盘相对小盘：多1手IF2612、空1手IM2612 | 19日3,925.8／5,876.8；观察1—5个交易日 | 逻辑18、催化9；缺新入口和可独立支持的收益目标，总分留空 | 两腿名义接近，但行业、Beta和基差并不中性；近期风格差异已显著体现在价格中 |
+| 美国2—30年趋平：晨报提出多912810UY2面值1,000美元、空91282CRU7面值8,000美元 | 18日对应期限平价5.41%／4.80%；原验证截止25日 | 逻辑18、催化15；本次未取得两券真实融资／借券和成交价，总分留空 | 当前曲线仍是61bp旧观察，等待TIPS；不重新使用模型估价当现券报价 |
+| 英伟达普通股NVDA做多 | 18日150.96美元；未来1—20日 | 逻辑18、催化13；可持续利润和预期差未充分定价，总分留空 | 收入、现金均真实增长；每周毛利和客户投入回报决定是否值得买 |
+| 美元黄金3—6个月看涨价差 | 18日COMEX12月盘中参考3,757美元/盎司；验证1—20日 | 逻辑16、催化10；缺准确到期两腿报价、偏斜和成本，总分留空 | 储备需求提供背景，真实利率仍约束即刻买入；不沿用旧执行价 |
 
-评分顺序为逻辑25、赔率25、催化20、价格／期限／波动15、拥挤／技术15。只有第一项针对现有风险有明确赔付价值；股票、黄金与债券均无迫切新开仓理由。IH／IM历史配对已错过原入口，日终相对收益不能转化为新赔率。
+首项领先只因工具与成本可计算，且对真实风险有保护用途；其61分并不支持以保险名义新建方向空头。IF／IM一组多端名义1,177,740元、空端1,175,360元，净多2,380元；名义差小不能解决小盘反弹时空端高敏感度和两腿相关性变化。现金是这些候选的实质替代。
 
-## 5. 两张研究卡｜小盘保险与美债曲线
+## 5. 一张完整成本研究卡与旧方案的固定边界
 
-### 中证1000的两天保护值多少钱
+### 新研究：5900／5600看跌价差，保护能力能否覆盖付费
 
-**只有实际小盘多头必须保留，才比较这组保护与直接减仓。** 小盘指数相对走弱、临近11月交割支持保险需求，近月高波动与12月下翼保护昂贵则抬高成本。拟用12月MO看跌价差，因其到期日在事件之后、净支出可界定；若基础多头可出售，减仓没有保费和两腿偏斜风险。若对象是海外芯片或中证500，行业和币种错配会显著削弱保护。[11月18日两期限估值与期现联动](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/index_radar/part-001.json) · [18日原方案](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/dc23ac6198c18228a5f50dc2de920eee842581ea/reports/2026/11/18/20261118T181538+0800_0d74dfd9127ece3e1a080f989a4ec029/global.md)
+**下跌证据增强，保护的价格也同步提高；当前119点没有建立足够优势。** 市场已通过37.9%的12月平值波动率和更贵的看跌翼，计入较大风险。我们的分歧不是保证再跌，而是：若确有必须持有到25日美国通胀数据之后的小盘多头，什么保费能换得有意义的赔付。最强反证是政策改善、小盘相对反弹和波动率回落；直接减少基础多头无需支付保费，通常优先于弱保护率的价差。以下是独立于旧6100／5700的研究，不是旧仓换腿或延期。
 
-| 项目 | 边界 |
+| 项目 | 本次可核设定 |
 |---|---|
-| 合约、参考价 | 买1手MO2612-P-6100、卖1手MO2612-P-5700。同为12月18日欧式现金结算，100元/点。18日两腿结算298.0、138.2点，净159.8。各腿成交5,661、4,721手，不能证明此刻可成交 |
-| 19日入场与放弃 | 仅当19日正常日盘、原敞口确须留过风险窗口、两腿同步可成交净价≤150点，且按届时期限、远期和两腿IV复算：到20日远期再跌5%、IV不变，预期情景增益须达整组保费与费用预算约一半。风险已在开盘跳空中实现、敞口已降、相关性失效或双边不齐即放弃。19日09:30连续竞价前仍无新参考 |
-| 目标、失效和退出 | 标的远期跌5%时比较可变现赔付与基础组合损失，必要时同步减险；基础风险消失即整组退出，最迟20日14:45。不把已过去的美债拍卖、纪要或隔夜跳空列作可补保事件 |
-| 资金、预算 | 按18日参考成本，一组净权利金15,980元，往返手续费与滑点假设4点（2—8点敏感区间），2天权利金按2%年化融资约2元。试仓取净值0.25%，按整组保费加费用计算，确认后预算无上调安排。共同因子压力总额按净值2.5%合并；另留卖腿或组合保证金，券商口径待核 |
+| 合约与比例 | 买1手MO2612-P-5900、卖1手MO2612-P-5600；均2026年12月18日到期、欧式现金结算、100元/点 |
+| 参考口径 | 19日15:00两腿收盘264.0／145.0点；原始结算均为0，按字段约定用收盘回退，净119.0点；不是同步买卖盘 |
+| 可研究的未来窗口 | 仅20日正常日盘重新核价；前提为基础小盘风险必须保留到25日数据之后。没有该需求，则不建立；20日未成立不自动延后 |
+| 成本门槛 | 全程手续费和滑点基准4点，敏感区间2—8点；用届时远期、两腿IV和实际期限复算，至26日远期再跌5%、IV不变的净增益至少覆盖含费保费的一半。按当前全部输入，净买价上限约115.55点；119点不通过。115.55是模型成本门槛，不是公允价，输入一变即须重算 |
+| 目标、失效与退出 | 下跌5%时比较可变现赔付与基础损失，可整体兑现并同步减险；风险对象消失、相关性明显失效或政策使保留保险不再合理时整组退出。最迟26日14:45退出，不持到12月到期，不把旧20日退出改成26日 |
+| 资金与预算 | 参考净权利金11,900元；按最长7自然日、年化2%融资约4.56元；含基准费用约12,304.56元为整组最大投入口径。新增预算为0；若20日独立重估通过，试仓采用净值0.25%，与所有同因子风险合并，确认后不自动放量。卖腿／组合保证金另核，净保费不等于全部现金占用 |
+| 放弃 | 没有实际多头、开盘风险已经实现、费用或报价不合格、组合保证金不清、只能建立一腿，均不建立；不以裸卖看跌代替价差 |
 
-[长腿定价与乘数](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/index_derivatives/part-003.json) · [短腿定价](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/index_derivatives/part-002.json) · [盘口缺可验证行情时刻](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/index_books/part-002.json) · [中金所期权交易与到期规则](https://www.cffex.com.cn/u/cms/www/202207/1820311129r5.pdf)
+长腿当日成交6,410手、持仓3,606手；短腿4,700／4,668手，只能说明日内有交易，不保证下一日同时成交。准确价格及模型来源：[两腿原件](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/index_derivatives/part-003.json) · [估值参数与质量](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/index_derivatives/part-004.json)。
 
-**提前退出的成本才决定这张保险能否起作用。** 下面是18日结算基准压力，并非把昨收当作19日入场价。用Black–76、平价远期5992.93、两腿IV 34.873%／38.746%、假设年利率1.5%，18日至12月18日30个自然日、20日退出时剩28日。费用与资金成本同上，各格为20日每组人民币损益，等于100×（退出长腿价值−退出短腿价值−159.8−4）−约2元。[18日曲面假设](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/index_derivatives/part-004.json)
+按Black–76、平价远期5,875.93、长短腿IV分别38.093%／40.355%、固定假设年利率1.5%，19日剩29个自然日、26日退出剩22日。以下为从19日收盘119点参考成本至26日的每组人民币损益；未来20日研究若成立，须改用真实入场价与剩余期限，融资最长7日属于保守估算。公式为`100×(退出两腿价差−119−4)−4.56`，不混用到期支付。
 
-| 相对18日远期 | 两腿IV各降5个百分点 | IV不变 | 两腿IV各升5个百分点 |
+| 26日远期相对参考变化 | 两腿IV各降5个百分点 | IV不变 | 两腿IV各升5个百分点 |
 |---|---:|---:|---:|
-| 跌5%至5693.28 | +8,206 | +7,479 | +6,939 |
-| 横盘5992.93 | −841 | −415 | −55 |
-| 涨5%至6292.58 | −8,314 | −7,128 | −6,130 |
+| −5% | +6,073 | **+5,635** | +5,306 |
+| 0% | −1,046 | **−622** | −271 |
+| +5% | −6,743 | **−5,823** | −5,036 |
 
-以159.8点成本，跌5%、IV不变情景中的净收益为整组保费及费用的约0.46倍；若同一退出估值、净买价150点，仅作敏感性比较，约0.55倍。已经观察到的小盘跌势和较贵保险均降低追买吸引力，宽度修复、IV回落会进一步减损。若只有卖腿IV抬升10个百分点，即使指数持平也约亏6,319元。手数取整数，卖单腿会破坏限损。把标的连续两次同向10%冲击作为模型压力，−19%／+21%时约盈22,067元／亏15,741元；实际极端时无法保证同步退出。若改为持至12月到期，159.8点加4点成本的静态盈亏平衡为5936.2、最大亏损16,380元、最大收益23,620元，另计整个持有期融资。深跌时卖腿截断赔付，买单腿6100P则需29,800元毛保费。初始净Delta约−0.244，即每组每个远期点约−24.4元，远低于一手IM的200元/点；等手对冲留有显著敞口。
+再跌5%且IV不变时，收益约为含费最大投入的45.8%，尚未达到上述50%成本门槛。平盘、IV不变已含时间消耗；IV上涨也不一定增加价差收益，因为卖出的低执行价看跌会变贵。费用从4点改为2／8点，各格分别增加200／减少400元；保费按4%而非2%融资再减约4.56元。市场并未提供可验证概率，不能把“再跌5%”指定为基准收益。偏斜也会单独变化：远期不变、仅短腿IV上升10个百分点时，模型约亏5,721元。
 
-### 美债曲线｜5bp的正确判断能留下多少
+保护率尤其有限。初始净Delta约−0.177845，即每个远期点约−17.78元，只相当于一手IM期货200元/点的8.89%。一手IM在远期下跌5%的量级损失约58,759元，而一组本价差情景增益仅5,635元。它能降低局部损失，不能把整手小盘期货变成限损持仓。买单腿5900P需26,400元毛保费，5600以下仍继续赔付；卖一手IM方向更直接，却有反弹、贴水收敛、追加保证金及跳空风险。若基础多头可减，直接减风险比为相同名义仓位反复叠加此价差更清楚。
 
-将11月15日的趋平想法具体到**买入面值1,000美元、票息5.375%、2056年11月15日到期的912810UY2，借券卖出面值8,000美元、票息4.625%、2028年10月31日到期的91282CRU7**。这是以1,000美元为演示面额、1比8的整数配对。补贴或分红无关，损益来自两端收益率之差、债券持有收益及回购融资。以18日财政部对应期限平价收益率代作19日两券估值输入，不冒充具体券盘口。按半年付息、实际票息期计息，假设19日交易、20日交割，每组两腿全价约995.57和7,994.53美元，曲线各移动1bp的敏感度约1.470和1.466美元。平行移动一阶大体抵消，期限溢价、融资和凸性仍在。[长券条款，财政部11月12日](https://www.treasurydirect.gov/instit/annceresult/press/preanre/2026/R_20261112_4.pdf) · [短券条款，财政部10月26日](https://www.treasurydirect.gov/instit/annceresult/press/preanre/2026/R_20261026_3.pdf) · [18日参考收益率](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value_month=202611&type=daily_treasury_yield_curve)
+**到期边界单独列示。** 忽略到期前额外融资、仅以119点保费加4点交易费，12月18日最大损失12,300元、最大收益17,700元，盈亏平衡结算指数5,777；5600以下赔付封顶。持至到期29天按2%融资约18.91元，分别调整为最大亏损12,318.91、最大收益17,681.09元。以参考远期连续两次±10%作为压力而非预测，累计−19%／+21%时，按22日剩余期限及原IV估值约盈16,776元／亏11,949元；实际期权停板价不能按标的涨跌比例直接套算。一个／两个停板或跳空不会突破完整价差的到期合同支付边界，但会使提前平仓、组合抵扣和现金追加变困难；若经纪拆腿或自己先平长腿，则不再拥有同样边界。期权标的结算与基础组合跟踪误差也必须留在共同预算中。
 
-只作条件研究。原观察期止于11月25日，假定25日平仓、感恩节后27日交割。7天资金假设为短券卖空抵押现金获3.67%、长券融资付4.12%（围绕最近公布SOFR 3.92%分别减25bp、加20bp）；额外抵押、真实美元借券与跨币种资金成本视账户而异。基准双边往返成本每组3美元，敏感区间1—6美元，实际两腿不能同步、借券被召回或需要额外融资时放弃。每组毛面额9,000美元不代表计划风险或保证金。[纽约联储SOFR，17日交易](https://alfred.stlouisfed.org/release?rd=2026-11-18&rid=445) · [SIFMA节假日表](https://www.sifma.org/resources/general/holiday-schedule)
+### 未结束的旧保险不能借新研究重置期限
 
-| 至25日收盘的情景（2年／30年收益率移动） | 空2年券价格损益 | 多30年券价格损益 | 加7天净融资收入4.91美元、扣往返3美元 |
-|---|---:|---:|---:|
-| 温和趋平 +2／−3bp | −4.43 | +5.45 | +2.93美元 |
-| 两端均不变 | −7.34 | +1.03 | −4.40美元 |
-| 通胀或供给令曲线变陡 −3／+4bp | −11.69 | −4.82 | −14.61美元 |
-| 流动性冲击 −10／+20bp | −21.88 | −27.72 | −47.69美元 |
+历史核验从最近有效报告反向追溯至11月15日，各案都没有成交回执；以下记录的是研究条件与事实，不能计账户收益。
 
-平盘损失含票息应计与时间推移，可由约3bp的趋平抵消；额外每1美元成本还需约0.68bp。若短券回购返息低于假设100bp，7天每组再减约1.55美元。30年券供给让曲线继续陡化、TIPS拍卖推升长端实际利率，均会削弱方案。若两次收盘重新高于此前66bp，取消趋平观察；25日以后须另行研究。当前不占用新增风险预算，替代做法是继续持有现金。单买长债会同时承担整体利率变动，无法隔离此处的斜率判断。
+| 已读原方案及边界 | 19日17:20的处理 |
+|---|---|
+| [15日09:52多3IH2612／空2IM2612](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/8bf7ec1275c439f81c3dd776a57de518734e9239/reports/2026/11/15/20261115T095216+0800_d3fdccaae7fb954db8d4c5a956ae9109/global.md)：B＝900IH−400IM，先低于−125,000再回约−120,000；止损−165,000，目标−65,000／−40,000，25日退出；[11:07已撤回新增](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/8bf7ec1275c439f81c3dd776a57de518734e9239/reports/2026/11/15/20261115T110709+0800_d8dd392e3d29405dad12ef4bdb213ed7/global.md) | 19日B＝107,360元只是组合价格。16日用IH最低、IM最高算出的必要下界−45,780元已排除入口；不能把后来上涨补记为成功交易 |
+| [15日09:59另案](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/8bf7ec1275c439f81c3dd776a57de518734e9239/reports/2026/11/15/20261115T095929+0800_51facfda55f347398013afc60652ef93/global.md)：仅16日09:30—10:15，B进−105,000至−90,000再上−90,000；止损入口低点减15,000，目标−50,000／−20,000，12月18日14:45终期 | 同一下界排除入口。两版期限不同，不相互续接；3:2完整篮子也不能直接各腿减半 |
+| [15日18:18最终修订](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/8bf7ec1275c439f81c3dd776a57de518734e9239/reports/2026/11/15/20261115T181852+0800_68e1639d399a432796ff00d357e6154e/global.md)：IM2612在16日数据后先到6400、完整15分钟收低6380且小盘相对弱，6370—6380入、11:15截止；6500止损、6200／6050目标、17日14:50退出。同期MO6400P／6000P≤161点、费用≤4点，方向用途同退，真实保险20日14:45退 | 16日IM最高6226.8，方向入口未出现且期限已过；真实保险若确有成交，20日14:45或风险对象消失时整组退出。今日6000P缺样本，不能确认该组当前损益 |
+| [16日6200P／5800P保险](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/8bf7ec1275c439f81c3dd776a57de518734e9239/reports/2026/11/16/20261116T182033+0800_725c6aaf13d4de4c473d1dae587c4979/global.md)：净支出≤154点、费用≤4点，仅17日09:30—11:30及13:00—14:45，净回收目标235点，20日14:45退出；[17日已关闭入口](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/8bf7ec1275c439f81c3dd776a57de518734e9239/reports/2026/11/17/20261117T160901+0800_1920c55c6945f5d6281ec42104188592/global.md) | 不补建；今日5800P仍不在所取样本。确有持仓则遵原235点目标、保险需求和20日终期，不自动换为5900／5600 |
+| [17日首次比较6100P／5700P](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/8bf7ec1275c439f81c3dd776a57de518734e9239/reports/2026/11/17/20261117T160901+0800_1920c55c6945f5d6281ec42104188592/global.md)，[18日晚明确新入口](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/8bf7ec1275c439f81c3dd776a57de518734e9239/reports/2026/11/18/20261118T181538+0800_0d74dfd9127ece3e1a080f989a4ec029/global.md)：仅19日净价≤150点、往返费4点假设，且跌5%情景增益须达含费保费约一半；风险消失退出，最迟20日14:45 | 新开时段结束；今日两腿均缺采样报价，不能判定≤150是否出现、是否成交或赚了多少。若实际持有，20日14:45退出不改 |
+| 美国2—30年趋平与黄金长期凸性：[17日追踪](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/8bf7ec1275c439f81c3dd776a57de518734e9239/reports/2026/11/17/20261117T160901+0800_1920c55c6945f5d6281ec42104188592/global.md)、[19日晨报具体化](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/8bf7ec1275c439f81c3dd776a57de518734e9239/reports/2026/11/19/20261119T075415+0800_2976b222185d95923ace173dbe6a63d1/global.md) | 曲线验证仍止于25日；若两次收盘高于66bp，取消趋平观察，不能延期。晨报两券为CMT估值模型，未成为实际成交。黄金1—20交易日验证仍在，3—6个月是工具期限；无有效两腿报价则没有新执行价 |
 
-## 6. 黄金专题｜现金利息与储备买盘的时间尺度
+16日失败条件亦由本批[历史原件](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/index_history/part-022.json)复核。旧案没有成交证明，新案预算也不能因此视作已经可用；全部中国小盘、AI和商品风险偏好敞口合并压力检验，同主题压力预算采用净值2.5%上限，不把各篇试仓0.25%重复领取。
 
-**黄金暂时不适合作为这轮科技或信用波动的自动对冲。** 18日COMEX 12月合约盘中已跌破3,800美元/盎司，路透记录当日纽约时段现货约3,726美元/盎司，境内同为2月的沪金夜末亦下跌。短端政策偏紧、美元走强及现金变现需求都有解释力；但美国十年实际利率18日反而小降1bp，无法用单日实际利率上行解释单日金价急跌。世界黄金协会11月16日周刊记录13日伦敦下午基准3,891美元/盎司，周跌3.9%；这是另一基准和时点。[CME 11月18日](https://www.cmegroup.com/videos/2026/11/18/gold-futures-fall-below-3-800-as-rate-hike-expectations-rise-1.html) · [路透现货金](https://www.reuters.com/world/india/gold-slides-over-one-year-low-firm-dollar-us-rate-outlook-2026-11-18/) · [沪金AU2702夜盘](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/night/part-003.json) · [实际利率](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value_month=202611&type=daily_treasury_real_yield_curve) · [WGC周报，11月16日](https://www.gold.org/download/file/21386/WMM_16_Nov_2026_Waller_the_Dollar.pdf)
+## 6. 黄金专题｜储备需求没有消失，短期对冲资格仍须价格证明
 
-中期需求仍在。WGC于11月3日公布三季度央行和官方机构净买321吨，11月5日公布10月实物ETF增持19吨至4,275吨；同期ETF美元净流入27亿美元，但资产净值因价格走低下跌6%。这种量价关系足以解释长期配置资金仍买、短期金价仍跌。CFTC在截至11月10日的COMEX黄金期货报告中记录管理资金多127,406手、空15,065手，净多112,341手；该历史截面无法识别昨夜的卖方。下一次若实际利率与美元仍高、ETF持仓连续回升、金价亦能守住低位，才提高长期买权的吸引力。[WGC三季度需求](https://www.gold.org/news-and-events/press-releases/central-bank-buying-and-etf-inflows-support-gold-demand-q3) · [WGC十月ETF报告](https://www.gold.org/goldhub/research/gold-etfs-holdings-and-flows/2026/11) · [CFTC分项期货持仓](https://www.cftc.gov/dea/futures/other_sf.htm)
+**黄金目前没有显示足以对冲小盘或科技下跌的即时稳定性。** AU2702收804.32元/克、结算五日跌6.26%；准确同月份AU2612从已知夜末804.40降至日收802.14，日盘再跌0.28%。CME18日盘中评论记录12月黄金3,757美元/盎司、跌2.8%，并非最终结算或19日现价。美国十年实际利率18日却小降1bp，所以当天黄金下跌不能全归因“实际利率当天又涨”；此前高实际利率、美元持有收益、杠杆减持和现金需求是竞争解释，本次证据不能识别具体卖方。[准确沪金原件](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/futures/part-001.json) · [同合约夜末](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/report/part-020.json) · [CME18日评论](https://www.cmegroup.com/videos/2026/11/18/gold-futures-fall-below-3-800-as-rate-hike-expectations-rise-1.html)
 
-3—6个月看涨价差能把最大支出固定为净权利金和费用，它也把大幅上涨的收益封顶。下跌、横盘耗时或事件后IV下降均可能使价格继续走低。缺同一时刻准确两腿的报价，无法判断长期凸性便宜。追空新低的反向风险来自融资压力推动货币宽松或官方买盘增加。微型期货方向更直接，但无法把损失限定在保费；黄金与长债看涨期权又可能同时暴露于实际利率上升。现时选择等待，不以结构更复杂代替定价依据。
+世界黄金协会11月5日公布，10月实物ETF净流入27亿美元、持仓增加19吨至4,275吨，资产净值却下降6%；北美净流出5.12亿美元，欧洲和亚洲分别流入18亿、13亿美元。量增价跌并不矛盾，月度配置买盘未抵消价格重估。其11月3日需求报告估计第三季央行净购321吨，含估算口径；11月4日的已报告月度统计为9月61吨、年内228吨，不能和含未披露估算的年内675吨拼接成一条“官方实买”序列。[10月ETF报告](https://www.gold.org/goldhub/research/gold-etfs-holdings-and-flows/2026/11) · [第三季需求](https://www.gold.org/news-and-events/press-releases/central-bank-buying-and-etf-inflows-support-gold-demand-q3) · [9月已报告统计](https://www.gold.org/goldhub/gold-focus/2026/11/central-bank-gold-statistics-september-2026)
 
-## 7. AI专题｜财报多一周，利润每周能多出多少
+CFTC截至11月10日COMEX黄金管理资金期货多127,406手、空15,065手，净多112,341手；这是滞后的持仓截面，不证明18—19日谁在平仓。[CFTC分项原表](https://www.cftc.gov/dea/futures/other_sf.htm) 对当前谨慎判断最强的反证是：实际利率与美元保持高位，黄金却能止跌、ETF持仓继续增加；那将显示储备与风险溢价有更强吸收能力。反过来，实际利率回落而黄金继续创新低，会削弱单一利率解释。
 
-**英伟达下一季度的收入指引环比增加12.2%，按周折算，毛利润中点反而略低。** 截至10月25日的13周内，英伟达收入1,158.44亿美元、毛利润866.76亿美元。11月17日公司给出的下一季度收入为1,300亿美元上下3%、GAAP毛利率71%—72%，该季度有14周。中点的每周收入从89.11增到92.86亿美元，增幅4.2%；每周毛利润从66.67变为66.39亿美元，降约0.4%。按收入和毛利率范围两端组合约为63.95—68.86亿美元/周。这是比较营业速度的粗算；新产品初期成本、每周交付节奏和第14周的季节性均会影响实际结果。[英伟达三季财报与四季指引，11月17日](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/) · [同日季度补充财务资料](https://investor.nvidia.com/files/doc_financials/2027/Q327/Supplemental-Financial-Information-NVDA-2027-Q3.pdf)
+| 可选表达 | 作用与取舍 |
+|---|---|
+| 3—6个月看涨价差 | 能限制完整结构净权利金损失，但封住大涨收益；缺本期准确到期、两腿IV与费用，未证明长期凸性便宜 |
+| 微型黄金期货确认后做多 | 规模更细、方向直接，却有跳空和追保；不能因“小合约”视为限损 |
+| 黄金看涨加长债看涨期权 | 对真实利率回落可能共同受益；通胀或财政期限溢价上升可令两者同时受损，双付保费不是自动分散 |
+| 减持／对冲已有黄金风险，或等待 | 若确有黄金多头，可按真实敞口降风险；无持仓与报价则选择等待，避免追空新低 |
 
-| 单季，十亿美元；本期／上年同期 | 营收 | 营业利润 | 净利润 | 经营现金流 | 购建长期资产现金支出 |
+“政策信用期权”只是经济比喻，黄金本身没有合同损失上限。未来1—20个交易日先验证实际利率、价格与资金吸收，再决定是否购买3—6个月工具，不把储备需求当作今天的入场价。
+
+## 7. AI专题｜收入增长、利润增长与可分配现金是三件事
+
+**当前更支持按现金回报区分公司，无法支持整条AI链统一做多或做空。** 英伟达芯片收入和现金均在增长，云客户的经营现金也增长，但资本开支吞掉了更多可分配余量。下表均为单季、十亿美元，本期／上年同期；公司定义不同的自由现金不直接横排成估值排名。
+
+| 公司与期间 | 营收 | 营业利润 | 净利润 | 经营现金流 | 现金购建长期资产 |
 |---|---:|---:|---:|---:|---:|
-| 英伟达，至10月25日 | 115.84／57.01 | 77.52／36.01 | 65.29／31.91 | 48.25／23.75 | 4.42／1.64，含无形资产 |
-| 微软，至9月30日 | 92.28／77.67 | 45.92／37.96 | 36.63／27.75 | 58.00／45.06 | 39.37／19.39，购建固定资产 |
+| 英伟达，FY27第三季截至10月25日 | 115.844／57.006 | 77.520／36.010 | 65.287／31.910 | 48.253／23.750 | 4.422／1.637 |
+| 微软，FY27第一季截至9月30日 | 92.279／77.673 | 45.915／37.961 | 36.629／27.747 | 58.000／45.057 | 39.367／19.394 |
 
-英伟达净利与经营现金的差额为170.34亿美元。应收与存货吸收180.52亿和81.48亿美元，应付账款增加抵消44.24亿美元，三项合计净占用217.76亿美元，其他非现金调整与营运科目净抵消47.42亿美元。公司定义的自由现金为437.77亿美元，上年同期220.89亿美元。微软经营现金同比多129.43亿美元，购建固定资产却多199.73亿美元，自由现金按前两项之差由256.63亿降至186.33亿美元，降27.4%；这只计现金购建，未把签下但尚未付款的租赁当本季现金。Azure收入331.65亿美元，去年同期223.84亿美元。**上游已实现收入和利润，下游也有收入增长，但承接同一产业扩张的当季现金余量恰好向相反方向走。** [英伟达合并现金流量表](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/) · [微软10月28日业绩及现金流量表](https://www.microsoft.com/en-us/investor/earnings/fy-2027-q1/press-release-webcast) · [微软10-Q](https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm)
+来源：[英伟达11月17日财报](https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2027) · [微软10月28日财报](https://www.microsoft.com/en-us/investor/earnings/fy-2027-q1/press-release-webcast)。这些财报在晨报前已有，不是本次新事件。
 
-英伟达11月12日公告黄仁勋辞去首席执行官等职务，公司任命过渡负责人。财报后股价反应还含公司治理与监管风险，难以单独归因于芯片需求。[公司11月12日董事会公告](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-CEO-Transition/default.aspx)
+英伟达现金桥可以算清：净利润65.287，加非现金调整净额2.560，减应收与存货新增占用26.200，加其余经营资产负债净释放6.606，得到经营现金48.253。再扣现金购建4.422及相关本金0.054，公司口径自由现金43.777，上年22.089。应收与库存占用很大，却没有抵消现金同比增长；不能由“现金少于净利”直接推断坏账或需求消失。新增证伪应来自回款迟滞、存货减值和客户融资条件，而不是仅看余额。
 
-英伟达三个直接客户占单季收入14%、11%、11%，并非三家最终用户。11月10日Anthropic的初步招股书载明，若发行完成并满足条件，七方合计认购260亿美元私募股份，英伟达和谷歌各约100亿美元。此项承诺形成资本联系，不能据此从已确认销售中直接扣减，也不能把项目融资等同于软件用户付款。美联储11月13日金融稳定报告估计，今年至10月先进计算相关债务发行已逾6,800亿美元，其中包括部分项目融资。电力建设的接网、机房交付及担保责任会影响这批债务如何形成终端资产；芯片设备订单、网络端口发货、云账单与软件订阅的回款处在不同阶段。验证二线公司的关键应是订单转换、客户集中和自由现金，而非机械套用芯片商利润率。[英伟达客户集中度原表](https://investor.nvidia.com/files/doc_financials/2027/Q327/Supplemental-Financial-Information-NVDA-2027-Q3.pdf) · [Anthropic初步招股书，同期私募条款](https://ipo.anthropic.com/documents/us/prospectus.pdf) · [美联储金融稳定报告，第2章](https://www.federalreserve.gov/publications/files/financial-stability-report-20261113.pdf)
+指引的关键是时间尺度。下一季收入中点130、GAAP毛利率中点71.5%，比本季多一周，14周对13周：每周收入约9.286对8.911，增4.2%；每周毛利润约6.639对6.667，降0.4%。这不等于季度总毛利下降，更不能在缺市场一致预期时称“低于预期”；它说明额外一周和收入增长尚未转成更快的毛利兑现。以150.96美元、九个月GAAP每股收益7.55粗略按39周年化，倍数约15.0，仅为非预测的尺度检查，不能当未来市盈率或目标倍数；证券投资收益及产品周期还需正常化。
 
-嘉信列示财报后18日常规收盘150.96美元。用本财年前九个月稀释GAAP每股收益7.55美元，加上一财年末季1.76美元，滚动近似9.31美元，对应约16.2倍。近九个月净利润还包含证券公允价值影响，收入集中度和毛利节奏会改变正常化利润；这个倍数仅说明股票并非只能用销售倍数定价。供应商的反证，是毛利率短降随新平台成熟恢复、回款追上营收，同时云端资本开支占经营现金比率回落。作为替代，11月17日发行人持仓显示VanEck半导体ETF（SMH）的英伟达权重17.42%，iShares半导体ETF（SOXX）为6.74%；等额多前者空后者，英伟达相对于每条腿名义的净暴露为+10.68个百分点，AMD及博通为−4.18与−2.14个百分点。两只基金仍同时持有芯片制造与设备公司，无法实现“多现金回收、空项目融资”的纯暴露。现价不追龙头，也不以这一对ETF替代公司研究。[嘉信，18日收盘](https://www.schwab.wallst.com/Research/Public/stocks/summary/?symbol=nvda) · [英伟达前九月收益](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/) · [上一财年末季，2月25日](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Fourth-Quarter-and-Fiscal-2026/) · [SMH发行人持仓](https://www.vaneck.com/us/en/investments/semiconductor-etf-smh/portfolio/) · [SOXX发行人持仓](https://www.ishares.com/us/products/239705/ishares-semiconductor-etf/latest-holdings.csv)
+微软现金桥的主要结论更直接：经营现金同比增加12.943，现金资本开支增加19.973，两者之差使简单自由现金从25.663降到18.633，减少7.030、约27.4%。总毛利率由69.05%降至67.79%，营业利润率却提高，表明业务结构、折旧与费用效率同时作用。管理层电话会所述含租赁资本开支45.2，与现金购建39.367口径不同，不相加；其下一季资本开支超过50的指引意味着后续回款门槛仍高。OpenAI投资影响也使GAAP净利增长高于调整后经营比较，不能全部当云收费增长。[微软电话会与资本开支口径](https://www.microsoft.com/en-us/investor/events/fy-2027/earnings-fy-2027-q1)
 
-## 8. 中国股指与公司｜回购提议改变现金用途，小盘保险还得看价格
+链条内也有重要反证。台积电11月10日披露10月营收5,868.9亿新台币、同比59.7%，确认制造需求，但月收入没有现金流信息；ASML10月14日披露第三季销售116.62亿欧元、毛利率57.5%，设备兑现仍强。电力和散热公司Vertiv第三季经营现金7.940亿美元，扣资本开支1.391亿及资本化软件0.027亿后，调整后自由现金6.522亿美元，高于上年4.360亿；它说明客户扩张能让部分基础设施供应商先取得现金。网络模块的占款与回款见第8章；云与软件最终须靠可收费使用量、续费和利用率，而不能把芯片采购直接当作终端付费需求。[台积电10月原件](https://pr.tsmc.com/english/news/3349) · [ASML第三季原件](https://investor.asml.com/news-releases/news-release-details/asml-reports-eu11.7-billion-total-net-sales-and-eu5.0-billion-net-income-q3-2026) · [Vertiv10月28日原表](https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-Third-Quarter-2026-with-Net-Sales-Growth-of-61-Organic-Orders-Growth-over-100-and-Diluted-EPS-Growth-of-91-Adjusted-Diluted-EPS-Growth-of-78-Raises-Full-Year-2026-Guidance-Across-All-Key-Metrics/)
 
-**过去五个交易日，上证50与中证1000的收益差已达9.21个百分点。** 18日沪深300收涨0.18%，中证1000跌0.65%；21财经对沪深两市的收盘统计显示，上涨1,277家、下跌3,823家，上涨占涨跌家数25.0%。通信服务、元件、IT服务上涨，贵金属、影视院线、出版走弱。指数与行业分化支持“反弹集中”，缺成分权重和逐股贡献，难以把全部差异归给科技。IM2612日增仓8,847手，而IM四个月份合计减2,770手，换月足以改变单一合约的解读。ETF份额单位未经确认，不据此计算净流入金额。结合第2章的人民币、国内债券与回购观察，扩大系统性空头还需要跨市场证据。[现金与期指](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/index_radar/part-001.json) · [准确月份成交持仓](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/index_derivatives/part-001.json) · [21世纪经济报道11月18日收盘统计](https://finance.eastmoney.com/a/202611183933949553.html)
+英伟达还存在独立于财报的管理层过渡：公司11月12日已宣布黄仁勋离任，由CFO Colette Kress兼任临时CEO。它使股价变化不能完全归因芯片需求或折现率，但公告本身不证明收入失实。[公司11月12日公告](https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition)
 
-| 标的与工具 | 11月／12月平值IV | 12月合格25Δ翼 | 12月样本看跌／看涨成交、持仓比 |
-|---|---:|---|---:|
-| 上证50，IH／HO | 16.53%／13.84% | 看跌14.83%、看涨14.07% | 0.48／0.58 |
-| 沪深300，IF／IO | 21.86%／18.60% | 两翼均未通过容差 | 0.58／0.64 |
-| 中证1000，IM／MO | 46.30%／34.88% | 看涨34.04%，最近看跌腿Δ约−0.306，超出容差 | 0.53／0.87 |
+这是现金回报的先后差异，尚不能宣称数据中心债务已经违约。联储10月会议纪要对AI相关举债、表外租赁和循环融资的担忧是风险机制，会议当时也判断整体金融体系有韧性。投资上，直接股票更适合表达具体回款判断；缺可靠共识、正常化现金收益率及借券／期权成本，暂不建立多供应商、空云客户的配对。半导体ETF同时覆盖制造和设备，也不覆盖完整云、软件、电力链；本次没有核定同日全部权重和敏感度，不用两只ETF的名称假设因子中性。
 
-11月MO的平值年化隐波比12月高11.42个百分点，临近20日到期的跳空可使短端迅速重定价。84份样本来自766份目录，按结算价、必要时收盘价，以平价远期和1.5%固定假设利率估值。12月无方向Gamma最大的采样执行价，HO／IO／MO分别为2800／4000／6200点；仅说明到这些价位附近时，样本合约的方向敏感度变化较快。卖近月买远月会添加跳空风险，赌基差收敛需承担融资和分红模型风险；3手IH对2手IM尚有行业、贝塔和跳空残差。持有中证500敞口者用MO替保还多一层风格错配，IC没有上述同标的期权。[11月18日结算与期限、样本明细](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/index_derivatives/part-004.json) · [盘口时间未经验证](https://github.com/farfromexact/China-Commodities-Engine/blob/9c43a2a1e7af18e06e92b23fe381cf31b4cea68e/data/chat/index_books/part-002.json)
+## 8. 中国股指与公司｜风格明确，资金归因仍需克制
 
-**A股只跟踪中际旭创（300308.SZ）。董事长提议回购20亿—40亿元，值得改变的是现金用途的判断。** 公司11月18日披露，拟以自有或自筹资金集中竞价回购A股，待董事会审批后最多12个月实施，可用于员工持股、股权激励等。11月6日公司披露的另一笔9月已执行回购约49.97亿元、拟把565.31万股改作注销；两个批次和法律状态不同。前报观察的回款与扩产问题仍在，本次提议增加了与扩产争用现金的可能性，尚不足以确认估值底部或每股收益提升。[18日前报公司判断](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/dc23ac6198c18228a5f50dc2de920eee842581ea/reports/2026/11/18/20261118T181538+0800_0d74dfd9127ece3e1a080f989a4ec029/global.md) · [中际旭创11月18日提议](https://static.cninfo.com.cn/finalpage/2026-11-18/1225678038.PDF) · [公司11月6日披露](https://static.cninfo.com.cn/finalpage/2026-11-06/1225660601.PDF)
+**过去20个交易日，上证50涨1.79%，中证1000跌9.72%；这个差异很大，但它不是纯粹的“价值对AI”。** 指数的行业构成、盈利弹性、杠杆和股息都可能参与定价。以下由同批25个日记录计算，统一收盘对收盘；1／3／5／20日基准分别为18日、16日、12日和10月22日，不拼接连续合约。
 
-三季度单季收入277.69亿元、归母利润85.87亿元。公司披露800G和1.6T出货扩张，单季港股募资相关汇兑与利息合计拖累归母利润约2.54亿元，股权投资公允价值损失另拖累约4.40亿元。用前三季减半年数复核，单季经营现金流62.09亿元，购建长期资产付现43.59亿元，差额18.50亿元；前三季累计差额仍为−11.52亿元。拟回购金额相当于三季度该项净现金的1.08—2.16倍，但仅占9月底货币资金535.32亿元的3.7%—7.5%，后者包含H股募资。两组比例分别回答内生现金覆盖和时点支付能力，不能推出迫切融资需要。公司披露备料、预付和产品结构提升同时发生，尚缺售价、销量与单位成本的完整分拆。如果回款加快且回购确以经营现金供给，股东回报的论证更强；若应收与备货继续占款、自筹融资增加，董事长信心仍难支撑现金估值。股票能直接表达这项风险，指数不能；尚无足以支持加仓的现金收益率依据。[10月30日公司三季报](https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-10-30/69b9a643-5429-4811-90b8-1e90f6b02bbd.PDF) · [8月22日公司半年报](https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-08-22/037d5232-a9bd-4ec3-a28e-e446195d65d9.PDF) · [11月6日经营情况](https://static.cninfo.com.cn/finalpage/2026-11-06/1225660601.PDF)
+| 现货指数 | 1日 | 3日 | 5日 | 20日 |
+|---|---:|---:|---:|---:|
+| 上证50 | +0.32% | +0.25% | +0.05% | +1.79% |
+| 沪深300 | +0.03% | +0.13% | −1.46% | −1.27% |
+| 中证500 | −0.48% | −0.72% | −5.33% | −6.06% |
+| 中证1000 | −1.88% | −3.66% | −9.16% | −9.72% |
 
-## 9. 未来24小时和7天｜先看实际利率供给，再看通胀
+| 准确12月期货 | 1／3／5／20日收盘回报 | 19日成交／持仓／持仓变化，手 | 2027年3月减12月，点 |
+|---|---|---|---:|
+| IH2612 | 0.00%／−0.41%／−0.30%／+1.94% | 43,711／73,866／+11,103 | −54.2 |
+| IF2612 | −0.07%／−0.34%／−1.91%／−1.11% | 84,087／185,046／+4,413 | −74.4 |
+| IC2612 | −0.24%／−0.63%／−5.50%／−5.56% | 132,336／181,398／+4,138 | −142.0 |
+| IM2612 | −1.85%／−3.74%／−9.31%／−9.19% | 243,975／320,307／−2,151 | −152.8 |
 
-| 北京时间 | 事件与观察 | 什么结果会改变判断 |
+来源：[同批历史索引及25日真实分片](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/index_history/index.json) · [19日准确合约](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/index_derivatives/part-001.json)。现货成交金额上证50／沪深300／中证500／中证1000分别1,289.16／3,954.41／2,242.86／2,321.21亿元，指数成分重叠，不能相加作全市场成交。
+
+IH全月份持仓增加12,519手，IM减少8,298手；后者11月合约减少18,800手，12月减少2,151手。减少可以涉及换月和风险敞口变化，却不能据此辨别多方还是空方主动，更不能直接称机构流入大盘。当前未取得足以复算的19日全市场涨跌家数与行业逐项贡献；因此用四指数确认风格，不将它扩展成全面市场宽度统计。ETF份额原生单位未核，不换算资金净流入。
+
+期权给出的信息比“恐慌升降”更细。84张样本来自766份目录，仅含HO／IO／MO各两期、每期14张；均按1.5%固定利率及平价远期做Black–76估值，当前结算0时回退收盘。11月20日到期的HO、IO平值估值未通过质量门槛，不能拿空值当0；MO近月42.28%，较18日46.30%下降，但12月由34.88%升至37.91%，临到期的近月IV下降没有证明中期风险缓和。
+
+| 12月期权样本 | 平值IV | 合格看涨25Δ／看跌25Δ IV | 看涨减看跌 |
+|---|---:|---:|---:|
+| HO2612，上证50 | 13.89% | 13.76%／15.25% | −1.49个百分点 |
+| IO2612，沪深300 | 19.02% | 看涨不合格／21.06% | 不计算完整偏斜 |
+| MO2612，中证1000 | 37.91% | 36.19%／42.54% | −6.36个百分点 |
+
+来源：[完整采样分析及质量](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/index_derivatives/part-004.json)。MO下翼明显昂贵，卖近月、买远月会添加临到期跳空，不能只凭期限差套利；样本Gamma集中点没有做市商持仓符号，不能预测某点必有追涨杀跌。IC没有上述同标的期权，MO代理保护中证500会增加风格误差。跨风格期货减少部分大盘方向，却未减少全部风险；跨期又需解释股息、资金与换月，不把贴水直接当收益。
+
+债券上涨与可见资金平稳，提示小盘弱势并不需要“国内现金荒”才能发生；但19日银行间全日及同截点CNH仍未核，不能反过来宣布外部融资约束消失。下一观察是政策消息后的宽度与相对表现：若小盘反弹同时信用风险下降，空端拥挤可能迅速逆转；若仅少数权重上涨，现金回报分化的框架更有解释力。
+
+### 一家公司：中际旭创的回购提议还不能替代回款
+
+本期限定跟踪中际旭创（300308.SZ），检索对象为该公司的回购与最近财务披露，不是全A股审计。11月18日原公告仍是董事长提议20亿—40亿元回购，自董事会通过后12个月内实施，资金可自有或自筹；用途可含股权激励和员工持股，不是已经完成注销。该事实晨报已讨论；本次限定检索没有取得截至17:20可确认的新审批文件，因此不把新闻再包装为第二笔现金回购。[11月18日提议原件](https://static.cninfo.com.cn/finalpage/2026-11-18/1225678038.PDF)
+
+第三季单季营收277.69亿元、归母净利85.87亿元；前三季累计减半年数，得到单季经营现金62.09亿元、购建长期资产43.59亿元、简单自由现金18.50亿元。前三季累计经营现金80.08减资本开支91.61，仍为−11.52亿元。回购提议是该季度简单自由现金的1.08—2.16倍，却只占9月底货币资金535.32亿元的3.7%—7.5%；现金存量含H股融资，内生现金覆盖与即时支付能力是两个问题。[10月30日三季报](https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-10-30/69b9a643-5429-4811-90b8-1e90f6b02bbd.PDF) · [8月22日半年报](https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-08-22/037d5232-a9bd-4ec3-a28e-e446195d65d9.PDF)
+
+现金产生的直接桥也可核：前三季经营流入641.16亿元，减采购495.90亿元、人员22.75亿元、税费32.72亿元、其余经营9.71亿元，得到80.08亿元经营现金。应收、备料、预付在高增长阶段占款，公司解释为订单和交付扩张；公开表格未完整分解售价、销量、单位成本及第三季间接法调整，所以不把归母净利与合并现金之差全归给坏账，亦不把汇兑与套保误作主营。若回款追上扩产、回购以可持续内生现金支持，直接股票才更能表达这项收益；若应收与预付继续占用、自筹资金需求扩大，信心公告不足以证明现金估值便宜。缺当前可靠股票定价及正常化现金收益率，本期不新增该股交易，指数也不能替代这项公司风险。
+
+## 9. 未来24小时／7天风险与下一窗口地图
+
+**先区分已公布的政策文字和下一次市场定价，再看实际利率供给与通胀。** 表内均为北京时间，未取得可靠一致预期的项目不填写虚构共识。
+
+| 北京时间 | 事件与相关资产 | 可能改变判断的结果 |
 |---|---|---|
-| 11月19日09:00商品日盘起，09:30中金所股指连续交易 | 夜盘已反映油铜下跌，中国股指尚未交易美国18日收盘和美联储纪要；留意19日小盘相对表现与两腿真实净价 | 若开盘已兑现跌幅，事后补买保险可能将贵波动锁在成本内；按第5章重估。近月原油薄盘的宽价差不能直接作为下次可成交价 |
-| 11月19日日间 | 深圳APEC领导人会议第二天，正式文件发布时间待定 | 观察贸易、出口管制或运输是否有可执行的新条款；若只有原则性表述，维持原来的现金流假设。[APEC秘书处11月14日议程](https://www.apec.org/press/blogs/2026/apec-economic-leaders-week-2026-why-it-matters) |
-| 11月19日21:30 | 费城联储制造业调查，结合新订单、就业与支付价格 | 新订单减弱且投入价格减缓，支持能源通胀缓和；价格强而订单弱，对高估值股票和长久期债都不友好 |
-| 11月19日美国常规交易时段，北京时间当晚至20日凌晨 | Anthropic拟在纳斯达克以ANT交易，首次撮合时刻待定。路透在截点前引知情人报发行价83美元；公司11月10日初步区间70—78美元 | 观察首日承接及芯片、云客户的相对反应。发行价和首笔成交均不等于软件业务已实现的现金回报。[纳斯达克提交的注册证明](https://www.sec.gov/Archives/edgar/data/2130357/000135445726001088/ANT_8A_Cert_0002130357.pdf) · [初步招股书](https://ipo.anthropic.com/documents/us/prospectus.pdf) · [路透，11月18日](https://www.reuters.com/legal/transactional/anthropic-prices-blockbuster-ipo-83-share-source-says-2026-11-18/) |
-| 11月20日02:00 | 美国财政部190亿美元10年TIPS续发，美东19日13:00。观察得标实际收益率相对拍前同券交易与投标结构 | 若实际利率抬升且黄金继续弱，暂缓买金；若长端利率与信用差同涨，取消纯趋平思路；不拿拍卖收益率与另一只券硬比尾差 |
-| 11月20日中国日盘 | 11月股指期货期权到期，12月保护有自身退出时点 | 近月IV回落可只是到期效应。已发生的换月和跨期持仓转移不能再算资金方向 |
-| 11月23—25日美国交易日；25日21:30 | 2、5、7年名义券依次拍卖。25日21:30同时发布十月个人收入与支出（含PCE物价）和三季度GDP第二次估计，次日感恩节 | 月度通胀广度和价格水平比单项能源更影响政策。若核心价格强而长端承接差，重估信用与黄金；25日为旧曲线观察最后一天 |
+| 19日17:20之后，后续文件时间未定 | 16:16会晤通报后的具体落实；CNH、出口链、农产品与能源 | 关税、许可、合同及生效日期才可改变现金流；原则表态先改变风险溢价，不能预设吨数 |
+| 19日21:30 | 费城联储11月制造业调查 | 分开订单、投入价格与就业；增长改善且成本缓和有利风险，价格压力而需求偏弱不利长久期资产 |
+| 19日22:25；22:30起 | 联储Jefferson经济冲击讨论；美国常规股票交易 | 观察政策措辞是否偏离已定价收紧、NVDA与等权股指及信用能否共同改善；没有新利差就不宣称融资已修复 |
+| 20日凌晨，美东19日拍卖 | 美国10年TIPS续发 | 已确认拍卖日，具体竞价截止以发行公告为准；看相对拍前收益率与承接，不用高绝对收益率单独判弱 |
+| 20日日盘；14:45前 | 11月股指期货／期权到期；旧MO保险固定退出 | 临到期波动、基差与样本变化可非线性放大；第5章旧保险期限不因新研究改变 |
+| 24／25／26日凌晨，分别对应美东23／24／25日 | 美国2／5／7年国债拍卖 | 实际政策预期和供给承接若同向推高利率，降低长债趋平及高估值股票吸引力；曲线旧验证25日结束 |
+| 25日21:30；23:30 | 美国第三季GDP第二次估计、企业利润和10月个人收入支出/PCE；EIA周报正常时刻 | 前者分解量、价、利润，后者看商业原油与SPR、成品油和在岸供应，不能只用总量标题 |
+| 26日03:00；26日美国交易时段 | 联储褐皮书；感恩节美国股票休市 | 验证收费、需求和工资；节日前后流动性与结算日变化抬高跨市场对冲成本 |
 
-[费城联储调查日历](https://www.philadelphiafed.org/surveys-and-data/regional-economic-analysis/manufacturing-business-outlook-survey) · [财政部季度再融资与规模](https://home.treasury.gov/news/press-releases/sb0678)、[拍卖日历](https://home.treasury.gov/system/files/221/TentativeAuctionScheduleQ42026.pdf) · [美国经济分析局公布日历](https://www.bea.gov/news/schedule/) · [中金所股指期权规则](https://www.cffex.com.cn/u/cms/www/202207/1820311129r5.pdf) · [美国债市节假日](https://www.sifma.org/resources/general/holiday-schedule)。表中用已公布日程，不虚设市场一致预期；19日美国常规股市开盘为北京时间22:30。
+日历来源：[费城联储官方发布表](https://www.philadelphiafed.org/surveys-and-data/regional-economic-analysis/manufacturing-business-outlook-survey) · [联储11月日历](https://www.federalreserve.gov/newsevents/2026-November.htm) · [美国财政部拍卖表](https://home.treasury.gov/system/files/221/TentativeAuctionScheduleQ42026.pdf) · [BEA发布日历](https://www.bea.gov/news/schedule/) · [EIA发布安排](https://www.eia.gov/petroleum/supply/weekly/schedule.php) · [NYSE交易与节假日](https://www.nyse.com/trade/hours-calendars) · [本批股指准确到期日](https://github.com/farfromexact/China-Commodities-Engine/blob/646597f1c4ac655ded0e393cea9caa4a5c10151e/data/chat/index_derivatives/part-001.json)。
+
+中国股指下一正常交易窗口为20日09:30—11:30、13:00起，期货至15:00、期权连续竞价至14:57后进入收盘集合竞价；股指没有夜盘。[中金所IM交易细则](https://www.cffex.com.cn/u/cms/www/202207/182020307zry.pdf)规定第三个周五交割及日盘时段，[股指期权交易细则](https://www.cffex.com.cn/u/cms/www/202009/242034095sbm.pdf)列明14:57—15:00收盘集合竞价；[中信建投期货11月13日到期提示](https://cfc108.com/zxjtqh/2026-11/13/article_2026111309020111807.shtml)亦明确本月到期为20日。19日商品夜盘不提供股指补保机会。美国常规股票下一窗口为19日22:30至20日05:00。新政策可能先在外汇、海外期货定价，再在中国开盘形成缺口；第5章的门槛须用开盘后准确两腿和新模型判断，不能拿今日119点或已经发生的下跌购买“追溯保险”。
 
 ## 10. 最终行动四行
 
-A. **现在可新增**　没有已证明价格与赔率同时合适的新方向仓。
+A. **当前可考虑的新交易：没有；现价小盘保护成本未通过本篇门槛，油价日盘反弹和收盘后政策消息亦不支持把防守判断直接变成追空订单。**
 
-B. **等条件**　必须保留中证1000相关多头时，19日仅在12月6100P／5700P熊市价差净支出≤150点且压力赔付达预算约一半时比较投保和减仓。
+B. **等条件的候选：只有真实小盘多头必须跨25日数据保留时，才在20日按第5章独立重估MO2612的5900P多／5600P空，费用、保护比例和成本门槛同时通过再考虑，仍以直接减风险作比较。**
 
-C. **继续观察**　看20日凌晨TIPS拍卖、下一期高收益利差，以及英伟达能否在高实际利率环境中把利润增长兑现为现金。
+C. **继续观察：下一美国交易日实际利率与信用、20日政策消息后的中国市场宽度，以及25日通胀和利润数据；AI以回款和资本开支回报验证，黄金以高实际利率下的价格稳定验证。**
 
-D. **回避或退出**　不追昨夜油铜下跌和单一黄金方向；已有保险随基础敞口消失或原时间止点整组退出，旧曲线方案在25日结束。
+D. **应回避或有持仓时退出：不补记旧IM／IH-IM成交、不追付已发生风险的保费、不叠加同因子预算；若确持旧MO保险，依各自目标、保险需求与20日14:45固定终期整组处理，美债趋平原验证也不延过25日。**
 
