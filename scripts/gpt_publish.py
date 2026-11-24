@@ -7,16 +7,19 @@ import argparse
 import base64
 from datetime import datetime, timezone, timedelta
 import hashlib
+from io import BytesIO
 import json
 import os
 from pathlib import Path, PurePosixPath
 import re
 import subprocess
+import sys
 import tempfile
 
 REPOSITORY = 'farfromexact/Global-Cross-Asset-Radar'
 REMOTE = 'https://github.com/' + REPOSITORY + '.git'
 DOMAINS = ('global', 'commodities', 'free')
+EXAMPLE_BODIES = {'global': '全球报告全文', 'commodities': '商品报告全文', 'free': 'Free Report 全文'}
 FORMAT = 'radar_text_archive_v1'
 BJT = timezone(timedelta(hours=8))
 MARKER = re.compile(r'^<!-- radar:(global|commodities|free) -->\r?\n', re.M)
@@ -57,8 +60,11 @@ def parse_submission(raw):
     for i, match in enumerate(markers):
         end = markers[i + 1].start() if i + 1 < len(markers) else len(text)
         body = text[match.end():end]
-        require(body.strip(), 'Empty report: ' + match.group(1))
-        reports[match.group(1)] = body
+        domain = match.group(1)
+        stripped = body.strip()
+        require(stripped, 'Empty report: ' + domain)
+        require(stripped not in EXAMPLE_BODIES.values(), 'Unfilled delivery example: ' + domain)
+        reports[domain] = body
     return reports
 
 
@@ -68,7 +74,26 @@ def receipt_path(path):
 
 
 class GitError(ValueError):
-    pass
+    def __init__(self, message, *, retryable=True):
+        super().__init__(message)
+        self.retryable = retryable
+
+
+def git_failure(operation, result):
+    # Only fixed labels leave the process. Credential helpers can write secrets to stderr.
+    stderr = result.stderr.lower()
+    categories = (
+        ('protected branch', False, (b'protected branch', b'gh006', b'gh013')),
+        ('authentication or permission denied', False, (b'authentication failed', b'could not read username',
+                                                       b'error: 401', b'error: 403', b'permission denied')),
+        ('remote branch changed', True, (b'non-fast-forward', b'fetch first', b'cannot lock ref')),
+        ('network failure', True, (b'could not resolve host', b'failed to connect', b'connection reset',
+                                   b'connection timed out')),
+    )
+    for label, retryable, markers in categories:
+        if any(marker in stderr for marker in markers):
+            return GitError(f'git {operation} failed (exit {result.returncode}, {label})', retryable=retryable)
+    return GitError(f'git {operation} failed (exit {result.returncode})')
 
 
 class GitStore:
@@ -76,15 +101,11 @@ class GitStore:
         self.root = Path(directory)
         self.root.mkdir(parents=True, exist_ok=True)
         self.branch = branch
-        self.git('init', '-q')
-        self.git('config', 'core.autocrlf', 'false')
-        self.git('config', 'user.name', 'Radar archive tool')
-        self.git('config', 'user.email', 'radar-archive@users.noreply.github.com')
-        self.git('remote', 'add', 'origin', remote)
-        self.git('fetch', 'origin', branch)
-        self.git('checkout', '-q', '-b', branch, 'FETCH_HEAD')
+        self.git('clone', '--quiet', '--no-local', '--single-branch', '--no-tags', '--branch', branch,
+                 '--config', 'core.autocrlf=false', '--config', 'user.name=Radar archive tool',
+                 '--config', 'user.email=radar-archive@users.noreply.github.com', '--', remote, '.')
 
-    def git(self, *args):
+    def git(self, *args, stdin=None):
         env = dict(os.environ, GIT_TERMINAL_PROMPT='0')
         token = env.get('RADAR_ARCHIVE_TOKEN')
         if token:
@@ -93,28 +114,43 @@ class GitStore:
                         'GIT_CONFIG_KEY_' + str(count): 'http.https://github.com/.extraheader',
                         'GIT_CONFIG_VALUE_' + str(count): 'AUTHORIZATION: basic ' +
                             base64.b64encode(('x-access-token:' + token).encode()).decode()})
-        result = subprocess.run(['git', '-C', str(self.root), *args], capture_output=True, timeout=120, env=env)
+        try:
+            result = subprocess.run(['git', '-C', str(self.root), *args], input=stdin,
+                                    capture_output=True, timeout=120, env=env)
+        except subprocess.TimeoutExpired:
+            raise GitError(f'git {args[0]} timed out after 120s') from None
         if result.returncode:
-            # Credential helpers can print secrets in stderr; do not echo it.
-            raise GitError('Git operation failed: ' + args[0] + '; retry uses a fresh remote snapshot')
+            raise git_failure(args[0], result)
         return result.stdout
 
-    def read(self, path):
+    def checked_path(self, path):
         target = (self.root / path).resolve()
         require(target.is_relative_to(self.root.resolve()), 'Path outside archive')
         require(not (self.root / path).is_symlink(), 'Archive file must not be a symlink')
+        return target
+
+    def read(self, path):
+        target = self.checked_path(path)
         return target.read_bytes() if target.is_file() else None
 
     def source(self, path):
-        commit = self.git('log', '-1', '--format=%H', '--', path).decode().strip()
+        detail = self.git('log', '-1', '--format=%H%x09%cI', '--', path).decode().strip()
+        commit, _, stamp = detail.partition('\t')
         require(re.fullmatch(r'[a-f0-9]{40}', commit), 'Missing submission commit')
-        stamp = self.git('show', '-s', '--format=%cI', commit).decode().strip()
         return {'path': path, 'commit': commit, 'submitted_at_utc': iso(utc(stamp))}
+
+    def historical_receipt(self, path):
+        # Older failed receipts did not retain their original archived identity.
+        commits = self.git('log', '--no-renames', '--diff-filter=AM', '--format=%H', '--', path).splitlines()
+        for commit in commits:
+            previous = json.loads(self.git('show', commit.decode('ascii') + ':' + path))
+            if previous.get('status') == 'archived':
+                return previous
+        return None
 
     def commit(self, changes, message):
         for path, raw in changes.items():
-            self.read(path)  # Validate the path before writing.
-            target = self.root / path
+            target = self.checked_path(path)
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(raw)
         self.git('add', '--', *changes)
@@ -124,14 +160,59 @@ class GitStore:
         commit = self.git('rev-parse', 'HEAD').decode().strip()
         self.git('fetch', 'origin', self.branch)
         self.git('merge-base', '--is-ancestor', commit, 'FETCH_HEAD')
-        for path, raw in changes.items():
-            require(self.git('show', commit + ':' + path) == raw, 'Remote readback mismatch: ' + path)
+        requests = ''.join(f'{commit}:{path}\n' for path in changes).encode('utf-8')
+        blobs = BytesIO(self.git('cat-file', '--batch', stdin=requests))
+        for path, expected in changes.items():
+            # Each response has an object header, the exact blob bytes, and one delimiter.
+            header = blobs.readline().split()
+            if (len(header) != 3 or header[1] != b'blob' or header[2] != str(len(expected)).encode()
+                    or blobs.read(len(expected)) != expected or blobs.read(1) != b'\n'):
+                # The push may already have succeeded. Reload the checkout and its index together.
+                raise GitError('Remote readback mismatch: ' + path)
+        if blobs.read(1):
+            raise GitError('Unexpected trailing Git readback data')
         return commit
 
 
 def read_json(store, path, default=None):
     raw = store.read(path)
     return json.loads(raw) if raw is not None else default
+
+
+class RunIndex:
+    """Index for a single checkout. Advance it only after the final commit succeeds."""
+
+    def __init__(self, store):
+        self.document = read_json(store, 'manifests/runs.json',
+                                  {'schema_version': 'radar_runs_v2', 'archive_mode': 'production', 'runs': []})
+        require(isinstance(self.document, dict) and
+                self.document.get('schema_version') in ('radar_runs_v1', 'radar_runs_v2') and
+                self.document.get('archive_mode') == 'production' and isinstance(self.document.get('runs'), list),
+                'Invalid run index')
+        self.by_id = {}
+        self.by_hash = {}
+        for row in self.document['runs']:
+            require(row['run_id'] not in self.by_id, 'Duplicate run_id in existing index')
+            self.remember(row)
+
+    def remember(self, row):
+        self.by_id[row['run_id']] = row
+        if row.get('submission_sha256'):
+            self.by_hash.setdefault(row['submission_sha256'], row)
+
+
+def receipt_history(store, name):
+    current = read_json(store, name)
+    if current is None:
+        return None, None
+    require(isinstance(current, dict), 'Invalid submission receipt')
+    if current.get('status') == 'archived':
+        return current, current
+    require(current.get('status') == 'failed', 'Unexpected submission receipt status')
+    archived = current['archived_receipt'] if 'archived_receipt' in current else store.historical_receipt(name)
+    require(archived is None or (isinstance(archived, dict) and archived.get('status') == 'archived'),
+            'Invalid prior archive receipt')
+    return current, archived
 
 
 def check_archived(store, manifest_ref):
@@ -163,33 +244,33 @@ def make_receipt(manifest, manifest_ref, source_hash):
                         manifest['reports'][d]['markdown']['path'] for d in DOMAINS}}
 
 
-def publish(store, path):
+def publish(store, path, *, index=None, source=None):
     receipt_name = receipt_path(path)
     raw = store.read(path)
     require(raw is not None, 'Submission not found')
-    bodies = parse_submission(raw)
     content_hash = digest(raw)
-    before = read_json(store, 'manifests/runs.json',
-                       {'schema_version': 'radar_runs_v2', 'archive_mode': 'production', 'runs': []})
-    require(before.get('schema_version') in ('radar_runs_v1', 'radar_runs_v2') and
-            before.get('archive_mode') == 'production' and isinstance(before.get('runs'), list), 'Invalid run index')
-    rows = before['runs']
-    require(len({row['run_id'] for row in rows}) == len(rows), 'Duplicate run_id in existing index')
-    previous = read_json(store, receipt_name)
-    if previous and previous.get('status') == 'archived':
-        require(previous['submission_sha256'] == content_hash, 'Published inbox file changed; use a new filename')
-        check_archived(store, previous['manifest'])
-        require(any(row['run_id'] == previous['run_id'] and row['manifest'] == previous['manifest'] for row in rows),
+    index = index if index is not None else RunIndex(store)
+    current, archived = receipt_history(store, receipt_name)
+    if archived is not None:
+        require(archived['submission_sha256'] == content_hash, 'Published inbox file changed; use a new filename')
+        check_archived(store, archived['manifest'])
+        row = index.by_id.get(archived['run_id'])
+        require(row is not None and row['manifest'] == archived['manifest'],
                 'Published receipt missing from run index')
-        return previous
-    for row in rows:
-        if row.get('submission_sha256') == content_hash:
-            manifest = check_archived(store, row['manifest'])
-            receipt = make_receipt(manifest, row['manifest'], content_hash)
-            store.commit({receipt_name: encode(receipt)}, 'Record identical GPT submission receipt')
-            return receipt
+        if current != archived:
+            store.commit({receipt_name: encode(archived)}, 'Restore GPT receipt after successful archive recheck')
+        return archived
 
-    source = store.source(path)
+    bodies = parse_submission(raw)
+    row = index.by_hash.get(content_hash)
+    if row is not None:
+        manifest = check_archived(store, row['manifest'])
+        receipt = make_receipt(manifest, row['manifest'], content_hash)
+        store.commit({receipt_name: encode(receipt)}, 'Record identical GPT submission receipt')
+        return receipt
+
+    if source is None:
+        source = store.source(path)
     submitted = utc(source['submitted_at_utc'])
     require(submitted <= datetime.now(timezone.utc) + timedelta(minutes=5), 'Submission timestamp is in the future')
     run_id = submitted.astimezone(BJT).strftime('%Y%m%dT%H%M%S+0800_') + content_hash[:32]
@@ -221,18 +302,20 @@ def publish(store, path):
     manifest_ref = {'path': manifest_path, 'sha256': digest(manifest_raw)}
     entry = {key: manifest[key] for key in ('run_id', 'submitted_at_utc', 'archived_at_utc', 'submission_sha256')}
     entry.update(manifest=manifest_ref, batch_status='complete', archive_format=FORMAT)
-    require(run_id not in {row['run_id'] for row in rows}, 'Conflicting run_id')
-    index = {**before, 'schema_version': 'radar_runs_v2', 'runs': [*rows, entry]}
+    require(run_id not in index.by_id, 'Conflicting run_id')
+    rows = index.document['runs']
+    next_index = {**index.document, 'schema_version': 'radar_runs_v2', 'runs': [*rows, entry]}
     latest = read_json(store, 'latest/run.json')
     if latest:
-        require(any(row['run_id'] == latest['run_id'] and row['manifest'] == latest['manifest'] for row in rows),
+        latest_row = index.by_id.get(latest['run_id'])
+        require(latest_row is not None and latest_row['manifest'] == latest['manifest'],
                 'Latest and index disagree; preserve them for repair')
     promote = all(order(entry) >= order(row) for row in rows)
     if latest:
         promote = promote and order(entry) >= order(latest)
     receipt = make_receipt(manifest, manifest_ref, content_hash)
     receipt['latest_promoted'] = promote
-    changes = {manifest_path: manifest_raw, 'manifests/runs.json': encode(index), receipt_name: encode(receipt)}
+    changes = {manifest_path: manifest_raw, 'manifests/runs.json': encode(next_index), receipt_name: encode(receipt)}
     if promote:
         pointer = {'schema_version': 'radar_latest_v2', 'archive_mode': 'production',
                    'run_id': run_id, 'submitted_at_utc': source['submitted_at_utc'], 'manifest': manifest_ref,
@@ -241,22 +324,49 @@ def publish(store, path):
         changes.update({'latest/' + name: data for name, data in files.items()})
         changes['latest/run.json'] = encode(pointer)
     store.commit(changes, 'Publish verified GPT batch and preserve archive history')
+    index.document = next_index
+    index.remember(entry)
     return receipt
 
 
+def record_failure(store, path, error):
+    failure = {'status': 'failed', 'submission': path, 'error': str(error)}
+    try:
+        name = receipt_path(path)
+        previous, archived = receipt_history(store, name)
+    except GitError:
+        raise
+    except (ValueError, KeyError):
+        # No valid receipt path or readable prior state. Keep the original bytes for repair.
+        return failure
+    record = {**failure, 'archived_receipt': archived}
+    if previous != record:
+        store.commit({name: encode(record)}, 'Record GPT submission failure and retain its archive reference')
+    return failure
+
+
 def process_inbox(store):
-    paths = store.git('ls-files', 'inbox/gpt/*.md').decode('utf-8').splitlines()
-    errors, receipts = [], []
+    names = store.git('ls-files', '-z', '--', 'inbox/gpt/*.md').decode('utf-8', errors='backslashreplace')
+    errors, receipts, sources = [], [], []
     # Scan all pending files so a superseded queued workflow cannot lose a submission.
-    for path in sorted(paths, key=lambda p: (store.source(p)['submitted_at_utc'], p)):
+    for path in names.split('\0')[:-1]:
         try:
-            receipts.append(publish(store, path))
+            receipt_path(path)
+            sources.append(store.source(path))
         except GitError:
             raise
-        except (ValueError, KeyError, UnicodeError) as exc:
-            failure = {'status': 'failed', 'submission': path, 'error': str(exc)}
-            store.commit({receipt_path(path): encode(failure)}, 'Record GPT submission failure without publishing reports')
-            errors.append(failure)
+        except (ValueError, KeyError) as exc:
+            errors.append(record_failure(store, path, exc))
+    if sources:
+        index = RunIndex(store)
+        for source in sorted(sources, key=lambda s: (s['submitted_at_utc'], s['path'])):
+            path = source['path']
+            try:
+                receipts.append(publish(store, path, index=index, source=source))
+            except GitError:
+                raise
+            except (ValueError, KeyError) as exc:
+                errors.append(record_failure(store, path, exc))
     return {'receipts': receipts, 'errors': errors}
 
 
@@ -317,9 +427,11 @@ def main():
                 result = process_inbox(GitStore(directory))
             print(json.dumps(result, ensure_ascii=False, indent=2))
             return 1 if result['errors'] else 0
-        except GitError:
-            if attempt == 2:
-                raise
+        except GitError as exc:
+            message = f'Attempt {attempt + 1}/3: {exc}'
+            if not exc.retryable or attempt == 2:
+                raise GitError(message, retryable=exc.retryable) from None
+            print(message + '. Retrying from a fresh checkout.', file=sys.stderr)
 
 
 if __name__ == '__main__':
