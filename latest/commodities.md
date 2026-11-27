@@ -16,7 +16,7 @@
 | 夜盘 | 11月26日晚至27日凌晨；806个请求中526个有夜盘成交、280个无夜盘成交 | 末bar为已完成5分钟线，不保证是官方最终结算；无夜盘持仓变化 |
 | 仓单 | 76个品种有可读仓单记录 | Wind原生单位按品种不同，不能跨品种直接加总 |
 | 代理基差 | 75个品种有代理基差 | Wind ANAL_BASIS代理字段；缺少现货等级、地区、税费完整匹配，不作可执行套利依据 |
-| 商品期权 | 64个品种、470个样本合约 | 有局部IV与Greeks；不是完整期权链，部分期限和两翼不合格 |
+| 商品期权 | 64个品种、464个样本合约 | 有局部IV与Greeks；不是完整期权链，部分期限和两翼不合格 |
 | 资金／国债 | 回购最新11月26日；国债期货11月27日 | 用于利率传导，不代表商品实体供需 |
 
 原件：[总览](https://github.com/farfromexact/China-Commodities-Engine/blob/85653b991f2005ccb4242f9e2b17bc4a46233137/data/chat/overview.json)、[商品报告索引](https://github.com/farfromexact/China-Commodities-Engine/blob/85653b991f2005ccb4242f9e2b17bc4a46233137/data/chat/report/index.json)、[产品分片16](https://github.com/farfromexact/China-Commodities-Engine/blob/85653b991f2005ccb4242f9e2b17bc4a46233137/data/chat/report/part-016.json)、[17](https://github.com/farfromexact/China-Commodities-Engine/blob/85653b991f2005ccb4242f9e2b17bc4a46233137/data/chat/report/part-017.json)、[18](https://github.com/farfromexact/China-Commodities-Engine/blob/85653b991f2005ccb4242f9e2b17bc4a46233137/data/chat/report/part-018.json)、[19](https://github.com/farfromexact/China-Commodities-Engine/blob/85653b991f2005ccb4242f9e2b17bc4a46233137/data/chat/report/part-019.json)、[20](https://github.com/farfromexact/China-Commodities-Engine/blob/85653b991f2005ccb4242f9e2b17bc4a46233137/data/chat/report/part-020.json)、[夜盘分片](https://github.com/farfromexact/China-Commodities-Engine/blob/85653b991f2005ccb4242f9e2b17bc4a46233137/data/chat/report/part-022.json)。
@@ -57,7 +57,7 @@
 
 ## 4. Delta Research｜今天为什么需要重新判断
 
-相较11月27日早间上一份商品报告，本批使用11月27日15:00日终数据。上一份以11月26日日盘为最新，判断“能源地缘溢价上升、金属去风险”；本批新数据显示白银、铜、锡出现明显单日反弹，但5日和20日收益仍弱，多数产品减仓，尚不足以推翻中期谨慎判断。前序：[11月27日早间商品报告](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/main/latest/commodities.md)。
+相较11月27日早间上一份商品报告，本批使用11月27日15:00日终数据。上一份以11月26日日盘为最新，判断“能源地缘溢价上升、金属去风险”；本批新数据显示白银、铜、锡出现明显单日反弹，但5日和20日收益仍弱，多数产品减仓，尚不足以推翻中期谨慎判断。前序：[11月27日早间商品报告](https://github.com/farfromexact/Global-Cross-Asset-Radar/blob/70ef40ff03c650a8d59caeb43678e9680b49cf5f/latest/commodities.md)。
 
 1. **贵金属反弹并不等于趋势反转。** 白银AG2702单日+6.85%，但5日−3.87%、20日−19.62%；黄金AU2702单日+2.49%，20日仍−10.27%。黄金增仓、白银减仓，说明两者边际参与者不同。下一观察是连续上涨能否带来持仓稳定与期限结构改善。
 2. **乙二醇强势仍缺少新多头确认。** EG2701 5日上涨8.27%，但持仓下降10.50%。这可能是空头回补、仓位迁移或部分新增多头抵消减仓；在没有港口库存、装置开工和现货基差的情况下，不将其解释成实体短缺。
@@ -117,11 +117,11 @@ JM2701五日上涨8.51%、20日上涨6.83%，但持仓下降6.36%。如果后续
 
 ## 8. 商品期权专项
 
-本批期权样本覆盖64个品种、470个合约，但没有有效买卖报价，无法确定可执行价差。部分商品平值IV可以用于比较波动率水平，不能替代完整期限曲面、偏斜或做市商净Gamma。对高波动品种，买跨式即使方向判断正确，也可能因事件后IV回落、时间价值损耗和买卖价差而亏损；卖波动则面临跳空、追加保证金和流动性尾部。本批没有可支持精确期权组合成本的报价，因此不构造跨式、宽跨式、风险逆转、日历价差和Gamma交易卡。
+本批期权样本覆盖64个品种、464个合约，；仓库总览记录432份双边、22份单边、10份无日盘tick；双边覆盖93.10%，IV覆盖83.84%。这些是截至日盘的样本盘口，不是当前可成交价，且模型Greeks、完整曲面及执行校验未就绪，故不直接给出可执行价差。部分商品平值IV可以用于比较波动率水平，不能替代完整期限曲面、偏斜或做市商净Gamma。对高波动品种，买跨式即使方向判断正确，也可能因事件后IV回落、时间价值损耗和买卖价差而亏损；卖波动则面临跳空、追加保证金和流动性尾部。本批没有可支持精确期权组合成本的报价，因此不构造跨式、宽跨式、风险逆转、日历价差和Gamma交易卡。
 
 ## 9. 下一合法交易窗口风险地图
 
-下一中国商品日盘为11月30日。周末中东事件、OPEC+会议及美国假期后市场重新定价可能形成跳空；本批夜盘末bar不是下一个交易日的可执行价格。
+下一中国商品日盘为11月30日；按常规安排，具备夜盘的品种11月27日21:00起进入下一交易日会话，具体品种与交易所临时通知仍需确认。周末中东事件、OPEC+会议及美国假期后市场重新定价可能形成跳空；本批夜盘末bar不是下一个交易日的可执行价格。
 
 - 原油：关注OPEC+产量政策、船舶通行、装船与炼厂实际停产，不以新闻标题替代交付量。
 - 贵金属和有色：观察反弹是否伴随持仓稳定、期限结构和现货指标改善。
