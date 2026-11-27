@@ -83,7 +83,7 @@ class HealthCheck:
                          f"{field}={actual!r}; expected {expected!r}", blocking=blocking)
 
     def bundle(self, entry: dict[str, Any], config: dict[str, Any],
-               *, blocking: bool, include_latest: bool) -> None:
+               *, blocking: bool, include_latest: bool) -> dict[str, Any] | None:
         report_date, edition = entry["report_date"], entry["edition"]
         stem = f"reports/{report_date[:4]}/{report_date[5:7]}/{report_date}_{edition}"
         history_path = stem + ".json"
@@ -102,11 +102,15 @@ class HealthCheck:
                          blocking=blocking)
 
         if not include_latest:
-            return
+            return None
         latest_path = config.get("latest_json", f"latest/{edition}.json")
         latest_md_path = config.get("latest_markdown", f"latest/{edition}.md")
-        latest = self.read_json(latest_path, blocking=blocking)
-        latest_md = self.read_markdown(latest_md_path, blocking=blocking)
+        retired_pair = False
+        if config.get("retired_latest_date") == report_date:
+            paths = [self.path(name, blocking=blocking) for name in (latest_path, latest_md_path)]
+            retired_pair = all(path is not None and not path.exists() for path in paths)
+        latest = None if retired_pair else self.read_json(latest_path, blocking=blocking)
+        latest_md = None if retired_pair else self.read_markdown(latest_md_path, blocking=blocking)
         status_path = config.get("status_path", f"status/{edition}_latest.json")
         status = self.read_json(status_path, blocking=False)
         if latest is not None:
@@ -133,6 +137,7 @@ class HealthCheck:
                 self.add("archive_status", relative, f"Archive state {archive_status!r}; not a readability failure")
         if status is not None and (status.get("report_date"), status.get("edition")) != (report_date, edition):
             self.add("status_sync", status_path, "Status metadata is not synchronized with the manifest")
+        return latest
 
     def load_index(self, *, blocking: bool) -> tuple[dict[str, Any], dict[tuple[str, str], dict[str, Any]]]:
         policy = self.read_json("config/archive-policy.json", blocking=True)
@@ -172,16 +177,16 @@ class HealthCheck:
         editions, entries = self.load_index(blocking=True)
         selected: dict[tuple[str, str], dict[str, Any]] = {}
         for edition, config in editions.items():
+            latest_path = config.get("latest_json", f"latest/{edition}.json")
             candidates = [entry for (day, ed), entry in entries.items() if ed == edition]
             if candidates:
                 newest = max(candidates, key=lambda entry: entry["report_date"])
                 selected[(newest["report_date"], edition)] = newest
-                self.bundle(newest, config, blocking=True, include_latest=True)
+                latest = self.bundle(newest, config, blocking=True, include_latest=True)
             else:
                 self.add("unindexed_edition", "manifests/reports.json", f"No entry for {edition}")
+                latest = self.read_json(latest_path, blocking=True)
             # Also check the actual latest report if it has not yet been indexed.
-            latest_path = config.get("latest_json", f"latest/{edition}.json")
-            latest = self.read_json(latest_path, blocking=True)
             if latest is None:
                 continue
             latest_date = latest.get("report_date")

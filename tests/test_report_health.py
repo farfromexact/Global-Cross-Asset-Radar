@@ -80,6 +80,28 @@ class ReportHealthTests(unittest.TestCase):
         (self.root / (self.stem + ".md")).unlink()
         self.assertFalse(self.check()["ok"])
 
+    def test_retired_latest_pair_still_requires_the_dated_archive(self):
+        self.config["retired_latest_date"] = self.day
+        self.write_json("config/archive-policy.json", self.policy)
+        (self.root / "latest/morning.json").unlink()
+        (self.root / "latest/morning.md").unlink()
+        self.assertTrue(self.check()["ok"])
+        self.write(self.stem + ".md", "")
+        self.assertFalse(self.check()["ok"])
+
+    def test_partial_pair_and_later_publications_still_require_latest_files(self):
+        self.config["retired_latest_date"] = self.day
+        self.write_json("config/archive-policy.json", self.policy)
+        (self.root / "latest/morning.json").unlink()
+        self.assertFalse(self.check()["ok"])
+        self.write_json("latest/morning.json", self.report)
+        (self.root / "latest/morning.md").unlink()
+        self.assertFalse(self.check()["ok"])
+        (self.root / "latest/morning.json").unlink()
+        self.config["retired_latest_date"] = "2026-10-15"
+        self.write_json("config/archive-policy.json", self.policy)
+        self.assertFalse(self.check()["ok"])
+
     def test_unreadable_manifest_blocks(self):
         self.write("manifests/reports.json", "broken")
         self.assertFalse(self.check()["ok"])

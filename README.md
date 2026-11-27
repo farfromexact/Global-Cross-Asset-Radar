@@ -21,12 +21,10 @@
 ├── config/
 │   └── archive-policy.json
 ├── latest/
-│   ├── morning.md
-│   ├── morning.json
-│   ├── evening.md
-│   └── evening.json
-│   ├── commodities_morning.md/json
-│   └── commodities_evening.md/json
+│   ├── run.json
+│   ├── global.{md,json}
+│   ├── commodities.{md,json}
+│   └── free.{md,json}
 ├── reports/
 │   └── YYYY/MM/YYYY-MM-DD_{morning|evening|commodities_morning|commodities_evening}.{md|json}
 ├── manifests/
@@ -72,7 +70,7 @@
 - 正式历史文件：`reports/YYYY/MM/YYYY-MM-DD_{edition}.*`；`edition` 必须在 `config/archive-policy.json` 中配置。
 - 同一日期、同一版本重复运行时更新同一路径，由 Git 历史保留版本差异，不生成无序副本。
 - 手工测试使用 `tests/YYYY-MM-DDTHH-MM-SS_{edition}.*`，其中 `edition` 必须在归档 policy 中配置；不得覆盖正式历史文件。
-- `latest/` 只保留各版本最近一次成功发布的报告。
+- `latest/run.json` 指向最近一次完整归档的全球、商品和 Free Report 三份报告。旧晨晚报可按日期在 `reports/YYYY/MM/` 查阅。
 
 ## 来源和引用
 
@@ -94,7 +92,7 @@ GitHub Markdown 不保留 ChatGPT 专用的引用标记。归档报告应把关�
 
 - **阻断**：当前报告 JSON 缺失、损坏、为空或不是对象；当前 Markdown 缺失或为空；Manifest 无法读取/没有可用条目；当前历史文件日期、edition 或 Manifest 路径明确指错；校验代码及其回归测试出错。
 - **提醒**：缺少 revision/schema 字段、字段别名、标题和字数差异、引用格式、状态元数据、latest 内容同步差异，以及旧归档问题。摘要与 JSON artifact 保留具体问题，不再让同一个历史问题每天阻断新报告。
-- 每次检查四个 edition 的最新 Manifest 记录和实际 latest 报告；历史 Manifest 修订不要求 latest 回退。拿不到 base ref 时仍检查全部当前报告。
+- 每次检查四个晨晚报版本各自最新的 Manifest 记录和历史原件。已成对清理的日期记在 `retired_latest_date` 中，后续新一期仍校验两个 latest 副本。历史修订沿用现行 latest，缺少 base ref 时仍检查全部当前报告。
 
 默认两个 job：`Current report readability` 检查当前可读性；`Archive advice and validator tests` 输出完整历史建议并运行回归测试。绿色只代表归档可读及校验代码通过，**不代表数据新鲜、研究结论正确或交易可执行**。
 
